@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ThiDievMcjLqfOO3TS3jQl19DoVf+zKyk7bGiY+oy9UjhtVzxUp6W14S7KFpI3HWZng9GfOwe29fleYG8ELEFg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Gabe\\Documents\\Projects\\CSE3902-TheLegendOfZelda-Remake\\LegendOfZelda\\LegendOfZelda\\LegendOfZelda.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Gabe\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\Gabe\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+  ],
+  "logs": []
+}
