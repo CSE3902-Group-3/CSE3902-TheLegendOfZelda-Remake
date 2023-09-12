@@ -102,24 +102,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Gabe\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\turte\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gabe\\Documents\\Projects\\CSE3902-TheLegendOfZelda-Remake\\LegendOfZelda\\LegendOfZelda\\LegendOfZelda.csproj",
+      "projectUniqueName": "C:\\Users\\turte\\OneDrive\\Documents\\00 Current Schedule\\Interactive Systems\\CSE3902-TheLegendOfZelda-Remake\\LegendOfZelda\\LegendOfZelda.csproj",
       "projectName": "LegendOfZelda",
-      "projectPath": "C:\\Users\\Gabe\\Documents\\Projects\\CSE3902-TheLegendOfZelda-Remake\\LegendOfZelda\\LegendOfZelda\\LegendOfZelda.csproj",
-      "packagesPath": "C:\\Users\\Gabe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gabe\\Documents\\Projects\\CSE3902-TheLegendOfZelda-Remake\\LegendOfZelda\\LegendOfZelda\\obj\\",
+      "projectPath": "C:\\Users\\turte\\OneDrive\\Documents\\00 Current Schedule\\Interactive Systems\\CSE3902-TheLegendOfZelda-Remake\\LegendOfZelda\\LegendOfZelda.csproj",
+      "packagesPath": "C:\\Users\\turte\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\turte\\OneDrive\\Documents\\00 Current Schedule\\Interactive Systems\\CSE3902-TheLegendOfZelda-Remake\\LegendOfZelda\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Gabe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\turte\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -127,7 +122,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
