@@ -5,7 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda
+namespace LegendOfZelda.Interfaces
 {
     public interface IPlayer : iUpdateable, iDrawable
     {
