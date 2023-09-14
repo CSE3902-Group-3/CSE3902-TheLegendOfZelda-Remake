@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    public interface iDrawable
+    public interface iSprite : iDrawable
     {
-        public void Draw();
+        public void UpdatePos(Vector2 pos);
     }
 }

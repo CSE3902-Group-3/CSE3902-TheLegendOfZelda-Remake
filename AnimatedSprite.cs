@@ -1,0 +1,80 @@
+﻿using LegendOfZelda;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace sprint0
+{
+    public class AnimatedSprite : iSprite
+    {
+        private Texture2D texture;
+        private Rectangle[] frames;
+        private int frame;
+        private SpriteBatch spriteBatch;
+        private int drawFramesPerAnimFrame;
+        private int currentFrameCounter = 0;
+        private int scale;
+        private Game1 game1;
+        private Vector2 pos = Vector2.Zero;
+        private SpriteEffects effect;
+        public bool paused { get; set; }
+        public Color color { get; set; } = Color.White;
+
+        public AnimatedSprite(Texture2D texture, Rectangle[] frames, SpriteEffects effect, int drawFramesPerAnimFrame, int scale)
+        {
+            this.texture = texture;
+            this.frames = frames;
+            frame = 0;
+            this.drawFramesPerAnimFrame = drawFramesPerAnimFrame;
+            this.scale = scale;
+            this.effect = effect;
+
+            game1 = Game1.instance;
+            spriteBatch = game1._spriteBatch;
+
+            RegisterSprite();
+        }
+
+        public void Draw()
+        {
+            spriteBatch.Draw(texture, pos, frames[frame], color, 0, Vector2.Zero, scale, effect, 1);
+
+            if(!paused) UpdateFrame();
+        }
+
+        //This is overridden in sprite classes for special animations
+        protected virtual void UpdateFrame()
+        {
+            currentFrameCounter++;
+            if (currentFrameCounter >= drawFramesPerAnimFrame)
+            {
+                frame++;
+                if (frame >= frames.Length)
+                {
+                    frame = 0;
+                }
+                currentFrameCounter = 0;
+            }
+        }
+
+        //Using a method instead of a property so that it can be overridden by sprite classes with special centerpoints
+        public virtual void UpdatePos(Vector2 pos)
+        {
+            this.pos = pos;
+        }
+
+        public void RegisterSprite()
+        {
+            game1.RegisterDrawable(this);
+        }
+
+        public void UnregisterSprite()
+        {
+            game1.RemoveDrawable(this);
+        }
+    }  
+}

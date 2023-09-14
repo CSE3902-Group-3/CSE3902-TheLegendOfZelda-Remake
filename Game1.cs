@@ -8,26 +8,28 @@ namespace LegendOfZelda
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        public SpriteBatch _spriteBatch { get; private set; }
         private List<iUpdateable> updateables;
         private List<iDrawable> drawables;
+        public SpriteFactory spriteFactory { get; private set; }
 
-        public Game1 instance { get; private set; }
+        public static Game1 instance { get; private set; }
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-
-            instance = this;
-            updateables = new List<iUpdateable>();
-            drawables = new List<iDrawable>();
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            instance = this;
+            updateables = new List<iUpdateable>();
+            drawables = new List<iDrawable>();
+
+            spriteFactory = new SpriteFactory(8, 8);
 
             base.Initialize();
         }
@@ -37,6 +39,10 @@ namespace LegendOfZelda
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            spriteFactory.LoadTextures();
+
+            //Uncomment the following line for testing
+            new AnimationTester();
         }
 
         protected override void Update(GameTime gameTime)
@@ -58,10 +64,10 @@ namespace LegendOfZelda
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
             foreach(iDrawable drawable in drawables)
             {
-                drawable.Draw(_spriteBatch);
+                drawable.Draw();
             }
             _spriteBatch.End();
 
