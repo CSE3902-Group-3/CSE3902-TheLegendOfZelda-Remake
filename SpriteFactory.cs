@@ -274,7 +274,7 @@ namespace LegendOfZelda
                 new Rectangle(191, 185, 16, 16)
             };
 
-            return new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return new MirrorSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
         }
 
         public AnimatedSprite CreateGelSprite()
@@ -317,7 +317,7 @@ namespace LegendOfZelda
                 new Rectangle(222, 11, 16, 16)
             };
 
-            return new AnimatedSprite(enemiesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return new MirrorSprite(enemiesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
         }
 
         public AnimatedSprite CreateGoriyaUpSprite()
@@ -327,7 +327,7 @@ namespace LegendOfZelda
                 new Rectangle(239, 11, 16, 16)
             };
 
-            return new AnimatedSprite(enemiesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return new MirrorSprite(enemiesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
         }
 
         public AnimatedSprite CreateGoriyaRightSprite()
@@ -370,7 +370,7 @@ namespace LegendOfZelda
                 new Rectangle(1, 59, 16, 16)
             };
 
-            return new AnimatedSprite(enemiesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return new MirrorSprite(enemiesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
         }
 
         public AnimatedSprite CreateRopeRightSprite()
