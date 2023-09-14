@@ -39,7 +39,8 @@ namespace sprint0
             RegisterSprite();
         }
 
-        public void Draw()
+        //Overridden in sprite classes with special positioning
+        public virtual void Draw()
         {
             spriteBatch.Draw(texture, pos, frames[frame], color, 0, Vector2.Zero, scale, effect, 1);
 
@@ -61,7 +62,7 @@ namespace sprint0
             }
         }
 
-        //Using a method instead of a property so that it can be overridden by sprite classes with special centerpoints
+        //Left virtual in case this needs to be overridden in the future
         public virtual void UpdatePos(Vector2 pos)
         {
             this.pos = pos;
