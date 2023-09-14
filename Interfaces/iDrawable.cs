@@ -9,6 +9,6 @@ namespace LegendOfZelda.Interfaces
 {
     public interface iDrawable
     {
-        public void Draw(SpriteBatch spriteBatch);
+        public void Draw();
     }
 }
