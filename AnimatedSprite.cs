@@ -11,16 +11,16 @@ namespace sprint0
 {
     public class AnimatedSprite : iSprite
     {
-        private Texture2D texture;
-        private Rectangle[] frames;
-        private int frame;
-        private SpriteBatch spriteBatch;
-        private int drawFramesPerAnimFrame;
-        private int currentFrameCounter = 0;
-        private int scale;
-        private Game1 game1;
-        private Vector2 pos = Vector2.Zero;
-        private SpriteEffects effect;
+        protected Texture2D texture;
+        protected Rectangle[] frames;
+        protected int frame;
+        protected SpriteBatch spriteBatch;
+        protected int drawFramesPerAnimFrame;
+        protected int currentFrameCounter = 0;
+        protected int scale;
+        protected Game1 game1;
+        protected Vector2 pos = Vector2.Zero;
+        protected SpriteEffects effect;
         public bool paused { get; set; }
         public Color color { get; set; } = Color.White;
 
