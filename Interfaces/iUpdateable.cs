@@ -1,13 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda
+namespace LegendOfZelda.Interfaces
 {
-    public interface iSprite : iDrawable
+    public interface iUpdateable
     {
-        public void UpdatePos(Vector2 pos);
+        public void Update(GameTime gameTime);
     }
 }
