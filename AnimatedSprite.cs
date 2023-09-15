@@ -20,7 +20,7 @@ namespace sprint0
         protected int currentFrameCounter = 0;
         protected int scale;
         protected Game1 game1;
-        protected Vector2 pos = Vector2.Zero;
+        public Vector2 pos { get; protected set; } = Vector2.Zero;
         protected SpriteEffects effect;
         public bool paused { get; set; }
         public Color color { get; set; } = Color.White;
@@ -40,26 +40,38 @@ namespace sprint0
             RegisterSprite();
         }
 
-        //Overridden in sprite classes with special positioning
+        //A bit of redundancy here to loosen coupling for extension
         public virtual void Draw()
         {
-            spriteBatch.Draw(texture, pos, frames[frame], color, 0, Vector2.Zero, scale, effect, 1);
+            DrawSprite();
 
-            if(!paused) UpdateFrame();
+            if(!paused) UpdateFrameCounter();
         }
 
-        //This is overridden in sprite classes for special animations
-        protected virtual void UpdateFrame()
+        //Overridden in sprites with special positioning
+        protected virtual void DrawSprite()
+        {
+            spriteBatch.Draw(texture, pos, frames[frame], color, 0, Vector2.Zero, scale, effect, 1);
+        }
+
+        //Left virtual in case it needs to be overridden in future
+        protected virtual void UpdateFrameCounter()
         {
             currentFrameCounter++;
             if (currentFrameCounter >= drawFramesPerAnimFrame)
             {
-                frame++;
-                if (frame >= frames.Length)
-                {
-                    frame = 0;
-                }
+                UpdateFrame();
                 currentFrameCounter = 0;
+            }
+        }
+
+        //This is overridden in sprite classes with special frame orders
+        protected virtual void UpdateFrame()
+        {
+            frame++;
+            if (frame >= frames.Length)
+            {
+                frame = 0;
             }
         }
 
@@ -77,6 +89,21 @@ namespace sprint0
         public void UnregisterSprite()
         {
             game1.RemoveDrawable(this);
+        }
+
+        public void Blink()
+        {
+
+        }
+
+        public void StartFlash()
+        {
+
+        }
+
+        public void EndFlash()
+        {
+
         }
     }  
 }

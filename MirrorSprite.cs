@@ -18,18 +18,15 @@ namespace LegendOfZelda
 
         protected override void UpdateFrame()
         {
-            currentFrameCounter++;
-            if (currentFrameCounter >= drawFramesPerAnimFrame)
+
+            if(effect == SpriteEffects.FlipHorizontally)
             {
-                if(effect == SpriteEffects.FlipHorizontally)
-                {
-                    effect = SpriteEffects.None;
-                } else
-                {
-                    effect = SpriteEffects.FlipHorizontally;
-                }
-                currentFrameCounter = 0;
+                effect = SpriteEffects.None;
+            } else
+            {
+                effect = SpriteEffects.FlipHorizontally;
             }
+
         }
     }
 }
