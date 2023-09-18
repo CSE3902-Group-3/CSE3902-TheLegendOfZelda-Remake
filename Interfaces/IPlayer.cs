@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Interfaces
 {
-    public interface IPlayer : iUpdateable, iDrawable
+    public interface IPlayer : IUpdateable, IDrawable
     {
         // ISprite here
         public Vector2 position { get { return position; } set { position = value; } }

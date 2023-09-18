@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using IDrawable = LegendOfZelda.Interfaces.IDrawable;
+using IUpdateable = LegendOfZelda.Interfaces.IUpdateable;
 
 namespace LegendOfZelda
 {
@@ -10,8 +12,8 @@ namespace LegendOfZelda
     {
         private GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch { get; private set; }
-        private List<iUpdateable> updateables;
-        private List<iDrawable> drawables;
+        private List<IUpdateable> updateables;
+        private List<IDrawable> drawables;
         public SpriteFactory spriteFactory { get; private set; }
 
         public static Game1 instance { get; private set; }
@@ -27,8 +29,8 @@ namespace LegendOfZelda
         {
             // TODO: Add your initialization logic here
             instance = this;
-            updateables = new List<iUpdateable>();
-            drawables = new List<iDrawable>();
+            updateables = new List<IUpdateable>();
+            drawables = new List<IDrawable>();
 
             spriteFactory = new SpriteFactory(8, 8);
 
@@ -52,7 +54,7 @@ namespace LegendOfZelda
                 Exit();
 
             // TODO: Add your update logic here
-            foreach (iUpdateable updateable in updateables)
+            foreach (IUpdateable updateable in updateables)
             {
                 updateable.Update(gameTime);
             }
@@ -66,7 +68,7 @@ namespace LegendOfZelda
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
-            foreach(iDrawable drawable in drawables)
+            foreach(IDrawable drawable in drawables)
             {
                 drawable.Draw();
             }
@@ -75,7 +77,7 @@ namespace LegendOfZelda
             base.Draw(gameTime);
         }
 
-        public bool RegisterDrawable(iDrawable drawable)
+        public bool RegisterDrawable(IDrawable drawable)
         {
             if (drawables.Contains(drawable))
             {
@@ -86,7 +88,7 @@ namespace LegendOfZelda
             return true;
         }
 
-        public bool RegisterUpdateable(iUpdateable updateable)
+        public bool RegisterUpdateable(IUpdateable updateable)
         {
             if (updateables.Contains(updateable))
             {
@@ -97,7 +99,7 @@ namespace LegendOfZelda
             return true;
         }
 
-        public bool RemoveDrawable(iDrawable drawable)
+        public bool RemoveDrawable(IDrawable drawable)
         {
             if (!drawables.Contains(drawable))
             {
@@ -108,7 +110,7 @@ namespace LegendOfZelda
             return true;
         }
 
-        public bool RemoveUpdateable(iUpdateable updateable)
+        public bool RemoveUpdateable(IUpdateable updateable)
         {
             if (!updateables.Contains(updateable))
             {
