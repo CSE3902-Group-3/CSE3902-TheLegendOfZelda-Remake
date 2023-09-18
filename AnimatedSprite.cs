@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace sprint0
 {
-    public class AnimatedSprite : iSprite
+    public class AnimatedSprite : ISprite
     {
         protected Texture2D texture;
         protected Rectangle[] frames;

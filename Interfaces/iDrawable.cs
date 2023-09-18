@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Interfaces
 {
-    public interface iDrawable
+    public interface IDrawable
     {
         public void Draw();
     }
