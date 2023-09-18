@@ -154,7 +154,7 @@ namespace LegendOfZelda
                 new Rectangle(52, 97, 16, 28)
             };
 
-            return new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return new StabUpSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
         }
 
         public AnimatedSprite CreateLinkWoodStabRightSprite()
@@ -180,7 +180,7 @@ namespace LegendOfZelda
                 new Rectangle(70, 77, 19, 16)
             };
 
-            return new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale);
+            return new StabLeftSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale);
         }
 
         public AnimatedSprite CreateArrowUpSprite()
