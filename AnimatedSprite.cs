@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda;
+using LegendOfZelda.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -11,16 +12,16 @@ namespace sprint0
 {
     public class AnimatedSprite : iSprite
     {
-        private Texture2D texture;
-        private Rectangle[] frames;
-        private int frame;
-        private SpriteBatch spriteBatch;
-        private int drawFramesPerAnimFrame;
-        private int currentFrameCounter = 0;
-        private int scale;
-        private Game1 game1;
-        private Vector2 pos = Vector2.Zero;
-        private SpriteEffects effect;
+        protected Texture2D texture;
+        protected Rectangle[] frames;
+        protected int frame;
+        protected SpriteBatch spriteBatch;
+        protected int drawFramesPerAnimFrame;
+        protected int currentFrameCounter = 0;
+        protected int scale;
+        protected Game1 game1;
+        protected Vector2 pos = Vector2.Zero;
+        protected SpriteEffects effect;
         public bool paused { get; set; }
         public Color color { get; set; } = Color.White;
 
@@ -39,7 +40,8 @@ namespace sprint0
             RegisterSprite();
         }
 
-        public void Draw()
+        //Overridden in sprite classes with special positioning
+        public virtual void Draw()
         {
             spriteBatch.Draw(texture, pos, frames[frame], color, 0, Vector2.Zero, scale, effect, 1);
 
@@ -61,7 +63,7 @@ namespace sprint0
             }
         }
 
-        //Using a method instead of a property so that it can be overridden by sprite classes with special centerpoints
+        //Left virtual in case this needs to be overridden in the future
         public virtual void UpdatePos(Vector2 pos)
         {
             this.pos = pos;

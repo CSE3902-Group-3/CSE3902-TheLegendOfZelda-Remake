@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    public class AnimationTester : iUpdateable
+    public class AnimationTester : Interfaces.iUpdateable
     {
         SpriteFactory spriteFactory;
         List<AnimatedSprite> sprites;
