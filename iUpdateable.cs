@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    public interface iUpdateable
+    public interface IUpdateable
     {
         public void Update(GameTime gameTime);
     }

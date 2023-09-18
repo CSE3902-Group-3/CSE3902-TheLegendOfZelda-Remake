@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace LegendOfZelda.LegendOfZelda.Interfaces
+namespace LegendOfZelda.Interfaces
 {
-    internal interface IEnemyState
+    public interface IEnemyState
     {
+        void ChangeDirection();
+        void Update();
+        void ChangePosition(SpriteBatch spritebatch, int x, int y);
     }
 }

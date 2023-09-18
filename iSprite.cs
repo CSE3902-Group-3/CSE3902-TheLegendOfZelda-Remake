@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    public interface iSprite : iDrawable
+    public interface ISprite : IDrawable
     {
         public void UpdatePos(Vector2 pos);
     }
