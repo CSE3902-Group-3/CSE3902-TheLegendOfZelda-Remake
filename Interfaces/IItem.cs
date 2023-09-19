@@ -10,6 +10,6 @@ namespace LegendOfZelda.Interfaces
 {
     public interface IItem : IDrawable
     {
-
+        //Left empty for sprint2
     }
 }
