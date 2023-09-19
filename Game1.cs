@@ -21,6 +21,8 @@ namespace LegendOfZelda
 
         public SpriteFactory spriteFactory { get; private set; }
 
+        private IController controller;
+
         public static Game1 instance { get; private set; }
 
         public Game1()
@@ -61,10 +63,15 @@ namespace LegendOfZelda
                 Exit();
 
             // TODO: Add your update logic here
+            /*
             foreach (IUpdateable updateable in updateables)
             {
                 updateable.Update(gameTime);
             }
+            */
+
+            controller = new PlayerController(this);
+            controller.Update();
 
             base.Update(gameTime);
         }

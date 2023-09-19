@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace LegendOfZelda.Interfaces
+{
+    public interface IItem : IDrawable
+    {
+        //Left empty for sprint2
+    }
+}
