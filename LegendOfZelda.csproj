@@ -11,8 +11,15 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="LinkCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
+    <None Remove="Content\Items\" />
+    <None Remove="Content\ZeldaSpriteRupy.gif" />
+    <None Remove="Content\Items\Heart.gif" />
+    <None Remove="ItemClasses\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icon.ico" />
@@ -24,6 +31,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="LegendOfZelda\obj\Release\" />
+    <Folder Include="Content\Items\" />
+    <Folder Include="ItemClasses\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />
