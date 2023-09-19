@@ -24,12 +24,6 @@ namespace LegendOfZelda.StateMachine.Link.LinkStates
             // update velocity if prevState was idle
         }
 
-        public void Execute()
-        {
-            // update damaged sprite effects?
-            // change animation dir based on input
-        }
-
         public void Exit()
         {
             // remove hurt sprite effects

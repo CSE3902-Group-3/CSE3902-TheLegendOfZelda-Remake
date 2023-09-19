@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.StateMachine.Link.LinkStates
 {
-    public class AttackingLInkState : IState
+    public class AttackingLinkState : IState
     {
         //private Link link;
 
-        public AttackingLInkState(/*Link link*/)
+        public AttackingLinkState(/*Link link*/)
         {
             //this.link = link;
         }
@@ -22,12 +22,6 @@ namespace LegendOfZelda.StateMachine.Link.LinkStates
             // start walking animation in direction
 
             // update velocity if prevState was idle
-        }
-
-        public void Execute()
-        {
-            // change animation dir based on input
-            // animate based on input
         }
 
         public void Exit()

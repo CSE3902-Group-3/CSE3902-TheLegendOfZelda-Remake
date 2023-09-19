@@ -22,11 +22,6 @@ namespace LegendOfZelda.StateMachine.Link.LinkStates
             // velocity = 0
         }
 
-        public void Execute ()
-        {
-            // if input is detected change animation
-        }
-
         public void Exit()
         {
 

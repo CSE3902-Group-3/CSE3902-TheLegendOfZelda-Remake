@@ -23,7 +23,6 @@
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="StateMachine\Link\LinkStates\" />
     <Folder Include="LegendOfZelda\obj\Release\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">

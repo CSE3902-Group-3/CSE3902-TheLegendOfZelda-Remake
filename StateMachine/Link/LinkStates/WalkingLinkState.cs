@@ -17,11 +17,6 @@ namespace LegendOfZelda.StateMachine.Link.LinkStates
             // update velocity if prevState was idle
         }
 
-        public void Execute()
-        {
-            // change animation dir based on input
-        }
-
         public void Exit()
         {
             // 
