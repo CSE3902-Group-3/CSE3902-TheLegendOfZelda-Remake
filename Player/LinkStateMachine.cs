@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda.Interfaces;
 
-namespace LegendOfZelda.StateMachine
+namespace LegendOfZelda.Player
 {
-    public class StateMachine
+    public class LinkStateMachine
     {
         IState currentState;
 
