@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sprint0
+namespace LegendOfZelda
 {
     public class AnimatedSprite : ISprite
     {

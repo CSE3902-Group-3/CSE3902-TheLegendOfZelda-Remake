@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using sprint0;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interfaces;
+using LegendOfZelda.Player;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -14,6 +15,10 @@ namespace LegendOfZelda
         public SpriteBatch _spriteBatch { get; private set; }
         private List<IUpdateable> updateables;
         private List<IDrawable> drawables;
+
+        // Link
+        public IPlayer link { get; private set; }
+
         public SpriteFactory spriteFactory { get; private set; }
 
         public static Game1 instance { get; private set; }
@@ -43,6 +48,8 @@ namespace LegendOfZelda
 
             // TODO: use this.Content to load your game content here
             spriteFactory.LoadTextures();
+
+            link = new Link(this, spriteFactory.CreateLinkWalkRightSprite());
 
             //Uncomment the following line for testing
             new AnimationTester();

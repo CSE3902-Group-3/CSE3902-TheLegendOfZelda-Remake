@@ -6,35 +6,50 @@ namespace LegendOfZelda.Player
 {
     public class Link : IPlayer
     {
-        public Rectangle Hitbox { get; set; }
-        public Vector2 Position { get; set; }
-        public ISprite Sprite { get; set; }
-        public LinkStateMachine StateMachine { get; set; }
-        //public States.LinkState State { get; set; } = ;
-        public int HP { get; set; } = 6;
-        public int MaxHP { get; set; } = 6;
-        public bool CanMove { get; set; } = true;
+        private Game1 game { get; set; }
+        public ISprite sprite { get; set; }
+        private LinkStateMachine stateMachine { get; set; }
+        private int HP { get; set; } = 6;
+        private int haxHP { get; set; } = 6;
+        private bool canMove { get; set; } = true;
 
-        public Link(Vector2 position)
+
+        public Link(Game1 game, ISprite linkDefaultSprite)
         {
-            Position = position;
-            StateMachine = new LinkStateMachine();
-            StateMachine.ChangeState(null); // chhange to default state
+            this.game = game;
+
+            this.sprite = linkDefaultSprite;
+            game.RegisterDrawable(sprite);
+
+            this.stateMachine = new LinkStateMachine();
+            //this.stateMachine.ChangeState(null); // set to default state
         }
 
-        public void Update(GameTime gameTime)
+        public void Update (GameTime gameTime)
         {
-            // update
+            // do nothing
         }
 
-        public void Update()
+        public void UseItem()
         {
-            // update
+            // do nothing
         }
 
-        public void Draw()
+        public void Reset()
+        {             
+            // do nothing
+        }
+
+        public void ChangeItem(int index)
         {
-            // Sprite.Draw(Position);
+            // do nothing
+            // index would be pos in inventory
+        }
+
+        public void ChangeWeapon(int index)
+        {
+            // do nothing
+            // index would be pos in inventory
         }
 
     }
