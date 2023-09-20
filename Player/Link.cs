@@ -43,13 +43,13 @@ namespace LegendOfZelda.Player
         public void ChangeItem(int index)
         {
             // do nothing
-            // index would be pos in inventory
+            // index will be pos in inventory
         }
 
         public void ChangeWeapon(int index)
         {
             // do nothing
-            // index would be pos in inventory
+            // index will be pos in inventory
         }
 
     }

@@ -54,7 +54,7 @@ namespace LegendOfZelda
             link = new Link(this, spriteFactory.CreateLinkWalkRightSprite());
 
             //Uncomment the following line for testing
-            new AnimationTester();
+            //new AnimationTester();
         }
 
         protected override void Update(GameTime gameTime)
