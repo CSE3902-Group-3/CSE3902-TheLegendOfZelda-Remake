@@ -17,9 +17,11 @@ namespace LegendOfZelda
         private Texture2D enemiesTexture;
         private Texture2D dungeonTexture;
         private Texture2D bossesTexture;
+        private Texture2D itemsTexture;
 
         private Game1 game1;
         private int drawFramesPerAnimFrame;
+        private const int slowAnimateFactor = 2;
         private int scale;
 
         public SpriteFactory(int drawFramesPerAnimFrame, int scale) {
@@ -35,6 +37,7 @@ namespace LegendOfZelda
             dungeonTexture = content.Load<Texture2D>("Dungeon");
             enemiesTexture = content.Load<Texture2D>("Enemies");
             bossesTexture = content.Load<Texture2D>("Bosses");
+            itemsTexture = content.Load<Texture2D>("Items");
         }
     
         public AnimatedSprite CreateLinkWalkDownSprite()
@@ -429,5 +432,166 @@ namespace LegendOfZelda
             return new AnimatedSprite(bossesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
         }
 
+        public AnimatedSprite CreateHeartSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(0, 0, 8, 8)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+        }
+
+        public AnimatedSprite CreateHalfHeartSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(8, 0, 8, 8)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+        }
+
+        public AnimatedSprite CreateEmptyHeartSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(16, 0, 8, 8)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+        }
+
+        public AnimatedSprite CreateBlueHeartSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(0, 8, 8, 8)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+        }
+
+        public AnimatedSprite CreateHeartContainerSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(24, 0, 16, 16)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+        }
+
+        public AnimatedSprite CreateFairySprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(40, 0, 8, 16)
+            };
+
+            return new MirrorSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+        }
+
+        public AnimatedSprite CreateClockSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(58, 0, 12, 16)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+        }
+
+        public AnimatedSprite CreateRupeeSprite()
+        {
+            Rectangle[] frames = new Rectangle[2]
+            {
+                new Rectangle(72, 0, 8, 16),
+                new Rectangle(72, 16, 8, 16)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame * slowAnimateFactor, scale);
+        }
+
+        public AnimatedSprite CreateBluePotionSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(80, 16, 8, 16)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+        }
+
+        public AnimatedSprite CreateMapSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(88, 0, 8, 16)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+        }
+
+        public AnimatedSprite CreateBoomerangItemSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(128, 3, 8, 8)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+        }
+
+        public AnimatedSprite CreateBowSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(144, 0, 8, 16)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+        }
+
+        public AnimatedSprite CreateBlueCandleSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(160, 16, 8, 16)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+        }
+
+        public AnimatedSprite CreateKeySprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(240, 0, 8, 16)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+        }
+
+        public AnimatedSprite CreateCompassSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(258, 1, 12, 12)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+        }
+
+        public AnimatedSprite CreateTriforcePieceSprite()
+        {
+            Rectangle[] frames = new Rectangle[2]
+            {
+                new Rectangle(274, 0, 12, 16),
+                new Rectangle(274, 16, 12, 16)
+            };
+
+            return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame * slowAnimateFactor, scale);
+        }
     }
 }
