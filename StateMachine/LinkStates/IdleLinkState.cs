@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda.StateMachine.Link.LinkStates
+namespace LegendOfZelda.StateMachine.LinkStates
 {
     public class IdleLinkState : IState
     {
         //private Link link;
 
-        public IdleLinkState (/*Link link*/)
+        public IdleLinkState(/*Link link*/)
         {
             //this.link = link;
         }

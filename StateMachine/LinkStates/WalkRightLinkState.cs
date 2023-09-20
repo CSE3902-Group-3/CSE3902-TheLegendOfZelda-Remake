@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda.Interfaces;
 using LegendOfZelda.Player;
+using System.Numerics;
 
 namespace LegendOfZelda.StateMachine.LinkStates
 {
@@ -21,7 +22,8 @@ namespace LegendOfZelda.StateMachine.LinkStates
 
         public void Walk()
         {
-            link.sprite.Update();
+            link.sprite.UpdatePos(Vector2.Zero);
+            // update pos only takes new value w/ no option to increment
         }
 
         public void Exit()

@@ -1,7 +1,7 @@
 ﻿using LegendOfZelda.Interfaces;
 using LegendOfZelda;
 using Microsoft.Xna.Framework;
-using LegendOfZelda.StateMachine.Link.LinkStates;
+using LegendOfZelda.StateMachine.LinkStates;
 
 namespace LegendOfZelda.Player
 {
@@ -24,7 +24,7 @@ namespace LegendOfZelda.Player
             this.game = game;
 
             this.sprite = linkDefaultSprite;
-            game.RegisterDrawable(sprite);
+            game.RegisterDrawable(sprite, 0);
 
             this.stateMachine = new LinkStateMachine();
             this.stateMachine.ChangeState(new IdleLinkState());
