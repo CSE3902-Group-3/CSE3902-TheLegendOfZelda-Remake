@@ -17,7 +17,7 @@ namespace LegendOfZelda
 
         protected override void UpdateFrame()
         {
-
+            
             if(effect == SpriteEffects.FlipHorizontally)
             {
                 effect = SpriteEffects.None;
