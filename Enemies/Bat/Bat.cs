@@ -6,8 +6,10 @@ namespace LegendOfZelda.Enemies.Bat
 {
     public class Bat : IEnemy
     {
+        private Game1 game { get; set; }
         public SpriteFactory spriteFactory;
         private readonly ISprite batSprite;
+        private int health { get; set; } = 1;
         public Vector2 Position;
 
         public Bat(Vector2 pos, SpriteFactory SpriteFactory)
