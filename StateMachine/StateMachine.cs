@@ -24,10 +24,9 @@ namespace LegendOfZelda.StateMachine
 
         public void Update()
         {
-            if (currentState != null)
-            {
-                currentState.Execute();
-            }
+            // update will be handled by ICommand
+            // StateMachine will control valid state switches and sprite/related changes
+            // but player movement will be handled by ICommmand
         }
     }
 }
