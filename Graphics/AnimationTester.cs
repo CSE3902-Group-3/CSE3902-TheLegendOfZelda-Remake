@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using sprint0;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +21,9 @@ namespace LegendOfZelda
 
             sprites = new List<AnimatedSprite>();
             
+            
             sprites.Add(spriteFactory.CreateLinkWalkDownSprite());
+            
             sprites.Add(spriteFactory.CreateLinkWalkRightSprite());
             sprites.Add(spriteFactory.CreateLinkWalkLeftSprite());
             sprites.Add(spriteFactory.CreateLinkWalkUpSprite());
@@ -42,7 +43,9 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateArrowLeftSprite());
             sprites.Add(spriteFactory.CreateArrowRightSprite());
             sprites.Add(spriteFactory.CreateBurstSprite());
+            
             sprites.Add(spriteFactory.CreateBoomerangSprite());
+            
             sprites.Add(spriteFactory.CreateBombSprite());
             sprites.Add(spriteFactory.CreateExplosionSprite());
             sprites.Add(spriteFactory.CreateFireSprite());
@@ -60,6 +63,7 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateBladeTrapSprite());
             sprites.Add(spriteFactory.CreateAquamentusSprite());
             sprites.Add(spriteFactory.CreateAquamentusBallSprite());
+            
             
 
             foreach (AnimatedSprite sprite in sprites)
@@ -85,10 +89,11 @@ namespace LegendOfZelda
             {
                 lastPause = gameTime.TotalGameTime.TotalMilliseconds;
                 //sprites[counter].paused = !sprites[counter].paused;
-                sprites[counter].blinking = !sprites[counter].flashing;
+                //sprites[counter].flashing = !sprites[counter].flashing;
+                sprites[counter].blinking = true;
             }
             
-            //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
+            sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
             
         }
 

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sprint0
+namespace LegendOfZelda
 {
     public class AnimatedSprite : ISprite
     {
@@ -66,7 +66,8 @@ namespace sprint0
         {
             DrawSprite();
 
-            if(!paused) UpdateFrameCounter();        }
+            UpdateFrameCounter();        
+        }
 
         //Overridden in sprites with special positioning
         protected virtual void DrawSprite()
@@ -80,7 +81,7 @@ namespace sprint0
             currentFrameCounter++;
             if (currentFrameCounter >= drawFramesPerAnimFrame)
             {
-                UpdateFrame();
+                if (!paused) UpdateFrame();
                 if (flashing) UpdateFlash();
                 if (blinking) UpdateBlink();
                 currentFrameCounter = 0;
