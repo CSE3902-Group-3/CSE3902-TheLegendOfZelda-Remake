@@ -20,8 +20,8 @@ namespace LegendOfZelda
             spriteFactory = Game1.instance.spriteFactory;
 
             sprites = new List<AnimatedSprite>();
-            
-            
+
+            /*
             sprites.Add(spriteFactory.CreateLinkWalkDownSprite());
             
             sprites.Add(spriteFactory.CreateLinkWalkRightSprite());
@@ -63,8 +63,24 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateBladeTrapSprite());
             sprites.Add(spriteFactory.CreateAquamentusSprite());
             sprites.Add(spriteFactory.CreateAquamentusBallSprite());
-            
-            
+            */
+
+            sprites.Add(spriteFactory.CreateHeartSprite());
+            sprites.Add(spriteFactory.CreateHalfHeartSprite());
+            sprites.Add(spriteFactory.CreateEmptyHeartSprite());
+            sprites.Add(spriteFactory.CreateBlueHeartSprite());
+            sprites.Add(spriteFactory.CreateHeartContainerSprite());
+            sprites.Add(spriteFactory.CreateFairySprite());
+            sprites.Add(spriteFactory.CreateClockSprite());
+            sprites.Add(spriteFactory.CreateRupeeSprite());
+            sprites.Add(spriteFactory.CreateBluePotionSprite());
+            sprites.Add(spriteFactory.CreateMapSprite());
+            sprites.Add(spriteFactory.CreateBoomerangItemSprite());
+            sprites.Add(spriteFactory.CreateBowSprite());
+            sprites.Add(spriteFactory.CreateBlueCandleSprite());
+            sprites.Add(spriteFactory.CreateKeySprite());
+            sprites.Add(spriteFactory.CreateCompassSprite());
+            sprites.Add(spriteFactory.CreateTriforcePieceSprite());
 
             foreach (AnimatedSprite sprite in sprites)
             {
@@ -90,10 +106,10 @@ namespace LegendOfZelda
                 lastPause = gameTime.TotalGameTime.TotalMilliseconds;
                 //sprites[counter].paused = !sprites[counter].paused;
                 //sprites[counter].flashing = !sprites[counter].flashing;
-                sprites[counter].blinking = true;
+                //sprites[counter].blinking = true;
             }
             
-            sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
+            //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
             
         }
 
