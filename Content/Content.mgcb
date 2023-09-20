@@ -13,6 +13,12 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin blink.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:blink.fx
+
 #begin Bosses.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -49,6 +55,18 @@
 /processorParam:TextureFormat=Color
 /build:Enemies (2).png;Enemies.png
 
+#begin flash1.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:flash1.fx
+
+#begin flash2.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:flash2.fx
+
 #begin Link.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -60,4 +78,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Link.png
+
+#begin normal.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:normal.fx
 

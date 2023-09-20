@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Graphics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -234,14 +235,13 @@ namespace LegendOfZelda
 
         public AnimatedSprite CreateBoomerangSprite()
         {
-            Rectangle[] frames = new Rectangle[3]
+            Rectangle[] frames = new Rectangle[2]
             {
                 new Rectangle(64, 189, 8, 8),
-                new Rectangle(73, 189, 8, 8),
-                new Rectangle(82, 189, 8, 8)
+                new Rectangle(73, 189, 8, 8)
             };
 
-            return new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return new BoomerangSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
         }
 
         public AnimatedSprite CreateBombSprite()

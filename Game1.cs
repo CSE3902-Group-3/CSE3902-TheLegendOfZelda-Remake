@@ -11,16 +11,23 @@ namespace LegendOfZelda
 {
     public class Game1 : Game
     {
+        /* Graphics */
         private GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch { get; private set; }
         private List<IUpdateable> updateables;
-        private List<IDrawable> drawables;
-
-        // Link
-        public IPlayer link { get; private set; }
-
+        private List<IDrawable>[] drawables;
+        private Effect[] shaders;
         public SpriteFactory spriteFactory { get; private set; }
 
+        public int numShaders
+        {
+            get { return shaders.Length; }
+        }
+
+        /* Link */
+        public IPlayer link { get; private set; }
+
+        /* Controller */
         private IController controller;
 
         public static Game1 instance { get; private set; }
@@ -37,7 +44,6 @@ namespace LegendOfZelda
             // TODO: Add your initialization logic here
             instance = this;
             updateables = new List<IUpdateable>();
-            drawables = new List<IDrawable>();
 
             spriteFactory = new SpriteFactory(8, 8);
 
@@ -49,6 +55,20 @@ namespace LegendOfZelda
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            shaders = new Effect[]
+            {
+                Content.Load<Effect>("normal"),
+                Content.Load<Effect>("flash1"),
+                Content.Load<Effect>("flash2"),
+                Content.Load<Effect>("blink")
+            };
+
+            drawables = new List<IDrawable>[shaders.Length];
+            for (int i = 0; i < drawables.Length; i++)
+            {
+                drawables[i] = new List<IDrawable>();
+            }
+
             spriteFactory.LoadTextures();
 
             link = new Link(this, spriteFactory.CreateLinkWalkRightSprite());
@@ -63,15 +83,10 @@ namespace LegendOfZelda
                 Exit();
 
             // TODO: Add your update logic here
-            /*
             foreach (IUpdateable updateable in updateables)
             {
                 updateable.Update(gameTime);
             }
-            */
-
-            controller = new PlayerController(this);
-            controller.Update();
 
             base.Update(gameTime);
         }
@@ -81,24 +96,27 @@ namespace LegendOfZelda
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
-            foreach(IDrawable drawable in drawables)
+            for(int i = 0; i < drawables.Length; i++)
             {
-                drawable.Draw();
+                _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp, effect: shaders[i]);
+                for(int j = drawables[i].Count - 1; j >= 0; j--)
+                {
+                    drawables[i][j].Draw();
+                }
+                _spriteBatch.End();
             }
-            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
 
-        public bool RegisterDrawable(IDrawable drawable)
+        public bool RegisterDrawable(IDrawable drawable, int effect)
         {
-            if (drawables.Contains(drawable))
+            if (drawables[effect].Contains(drawable))
             {
                 return false;
             }
 
-            drawables.Add(drawable);
+            drawables[effect].Add(drawable);
             return true;
         }
 
@@ -113,14 +131,14 @@ namespace LegendOfZelda
             return true;
         }
 
-        public bool RemoveDrawable(IDrawable drawable)
+        public bool RemoveDrawable(IDrawable drawable, int effect)
         {
-            if (!drawables.Contains(drawable))
+            if (!drawables[effect].Contains(drawable))
             {
                 return false;
             }
 
-            drawables.Remove(drawable);
+            drawables[effect].Remove(drawable);
             return true;
         }
 
