@@ -8,6 +8,7 @@ namespace LegendOfZelda.Interfaces
 {
     public interface ISprite : IDrawable
     {
+        public Vector2 pos { get; }
         public void UpdatePos(Vector2 pos);
     }
 }
