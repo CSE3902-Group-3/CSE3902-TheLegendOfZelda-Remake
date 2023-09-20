@@ -21,7 +21,7 @@ namespace LegendOfZelda
             spriteFactory = Game1.instance.spriteFactory;
 
             sprites = new List<AnimatedSprite>();
-            /*
+            
             sprites.Add(spriteFactory.CreateLinkWalkDownSprite());
             sprites.Add(spriteFactory.CreateLinkWalkRightSprite());
             sprites.Add(spriteFactory.CreateLinkWalkLeftSprite());
@@ -31,12 +31,12 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateLinkThrowRightSprite());
             sprites.Add(spriteFactory.CreateLinkThrowLeftSprite());
             sprites.Add(spriteFactory.CreateLinkGetItemSprite());
-            */
+            
             sprites.Add(spriteFactory.CreateLinkWoodStabDownSprite());
             sprites.Add(spriteFactory.CreateLinkWoodStabUpSprite());
             sprites.Add(spriteFactory.CreateLinkWoodStabLeftSprite());
             sprites.Add(spriteFactory.CreateLinkWoodStabRightSprite());
-            /*
+            
             sprites.Add(spriteFactory.CreateArrowDownSprite());
             sprites.Add(spriteFactory.CreateArrowUpSprite());
             sprites.Add(spriteFactory.CreateArrowLeftSprite());
@@ -60,7 +60,7 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateBladeTrapSprite());
             sprites.Add(spriteFactory.CreateAquamentusSprite());
             sprites.Add(spriteFactory.CreateAquamentusBallSprite());
-            */
+            
 
             foreach (AnimatedSprite sprite in sprites)
             {
@@ -80,15 +80,16 @@ namespace LegendOfZelda
                 sprites[counter].UpdatePos(new Vector2(400, 200));
             }
 
-            /*
-            if(gameTime.TotalGameTime.TotalMilliseconds > lastPause + 500)
+            
+            if(gameTime.TotalGameTime.TotalMilliseconds > lastPause + 1000)
             {
                 lastPause = gameTime.TotalGameTime.TotalMilliseconds;
-                sprites[counter].paused = !sprites[counter].paused;
+                //sprites[counter].paused = !sprites[counter].paused;
+                sprites[counter].blinking = !sprites[counter].flashing;
             }
             
-            sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
-            */
+            //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
+            
         }
 
     }
