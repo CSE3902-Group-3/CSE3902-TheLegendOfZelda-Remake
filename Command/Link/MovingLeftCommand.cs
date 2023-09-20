@@ -5,18 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda.Command
+namespace LegendOfZelda.Command.Link
 {
     internal class MovingLeftCommand : ICommands
     {
         SpriteFactory spriteFactory;
-        List<AnimatedSprite> sprites;
+        AnimatedSprite link;
+        //Prepare for later use
+        private IState linkState;
 
         public void Execute()
         {
             spriteFactory = Game1.instance.spriteFactory;
-            sprites = new List<AnimatedSprite>();
-            sprites.Add(spriteFactory.CreateLinkWalkLeftSprite());
+            link = spriteFactory.CreateLinkWalkLeftSprite();
+
+            link.UpdatePos(new Microsoft.Xna.Framework.Vector2(80, 0));
         }
     }
 }
