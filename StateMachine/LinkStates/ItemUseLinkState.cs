@@ -5,28 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda.StateMachine.Link.LinkStates
+namespace LegendOfZelda.StateMachine.LinkStates
 {
-    public class HurtLinkState : IState
+    public class ItemUseLinkState : IState
     {
         //private Link link;
 
-        public HurtLinkState(/*Link link*/)
+        public ItemUseLinkState(/*Link link*/)
         {
             //this.link = link;
         }
 
         public void Enter()
         {
-            // change sprites to hurt link
-
             // start walking animation in direction
             // update velocity if prevState was idle
         }
 
         public void Exit()
         {
-            // remove hurt sprite effects
+            // 
         }
+
     }
 }

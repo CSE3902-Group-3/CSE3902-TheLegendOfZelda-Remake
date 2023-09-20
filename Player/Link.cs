@@ -1,13 +1,18 @@
 ﻿using LegendOfZelda.Interfaces;
-using System;
+using LegendOfZelda;
 using Microsoft.Xna.Framework;
+using LegendOfZelda.StateMachine.Link.LinkStates;
 
 namespace LegendOfZelda.Player
 {
     public class Link : IPlayer
     {
+        public enum Direction { Up, Down, Left, Right };
+
         private Game1 game { get; set; }
         public ISprite sprite { get; set; }
+
+        public Direction currentDirection { get; set; } = Direction.Right;
         private LinkStateMachine stateMachine { get; set; }
         private int HP { get; set; } = 6;
         private int haxHP { get; set; } = 6;
@@ -22,7 +27,7 @@ namespace LegendOfZelda.Player
             game.RegisterDrawable(sprite);
 
             this.stateMachine = new LinkStateMachine();
-            //this.stateMachine.ChangeState(null); // set to default state
+            this.stateMachine.ChangeState(new IdleLinkState());
         }
 
         public void Update (GameTime gameTime)
