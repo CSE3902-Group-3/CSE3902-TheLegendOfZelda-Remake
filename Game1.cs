@@ -13,13 +13,8 @@ namespace LegendOfZelda
         private GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch { get; private set; }
         private List<IUpdateable> updateables;
-        private List<IDrawable>[] drawables;
+        private List<IDrawable> drawables;
         public SpriteFactory spriteFactory { get; private set; }
-        private Effect[] shaders;
-        public int numShaders
-        {
-            get { return shaders.Length; }
-        }
 
         private IController controller;
 
@@ -49,19 +44,8 @@ namespace LegendOfZelda
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            shaders = new Effect[]
-            {
-                Content.Load<Effect>("normal"),
-                Content.Load<Effect>("flash1"),
-                Content.Load<Effect>("flash2"),
-                Content.Load<Effect>("blink")
-            };
 
-            drawables = new List<IDrawable>[shaders.Length];
-            for (int i = 0; i < drawables.Length; i++)
-            {
-                drawables[i] = new List<IDrawable>();
-            }
+            drawables = new List<IDrawable>();
 
             spriteFactory.LoadTextures();
 
@@ -89,27 +73,25 @@ namespace LegendOfZelda
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            for(int i = 0; i < drawables.Length; i++)
+
+            _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp);
+            for(int j = drawables.Count - 1; j >= 0; j--)
             {
-                _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp, effect: shaders[i]);
-                for(int j = drawables[i].Count - 1; j >= 0; j--)
-                {
-                    drawables[i][j].Draw();
-                }
-                _spriteBatch.End();
+                drawables[j].Draw();
             }
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
 
-        public bool RegisterDrawable(IDrawable drawable, int effect)
+        public bool RegisterDrawable(IDrawable drawable)
         {
-            if (drawables[effect].Contains(drawable))
+            if (drawables.Contains(drawable))
             {
                 return false;
             }
 
-            drawables[effect].Add(drawable);
+            drawables.Add(drawable);
             return true;
         }
 
@@ -124,14 +106,14 @@ namespace LegendOfZelda
             return true;
         }
 
-        public bool RemoveDrawable(IDrawable drawable, int effect)
+        public bool RemoveDrawable(IDrawable drawable)
         {
-            if (!drawables[effect].Contains(drawable))
+            if (!drawables.Contains(drawable))
             {
                 return false;
             }
 
-            drawables[effect].Remove(drawable);
+            drawables.Remove(drawable);
             return true;
         }
 

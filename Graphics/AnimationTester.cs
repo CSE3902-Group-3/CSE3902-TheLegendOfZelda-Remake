@@ -21,7 +21,7 @@ namespace LegendOfZelda
 
             sprites = new List<AnimatedSprite>();
 
-            /*
+            
             sprites.Add(spriteFactory.CreateLinkWalkDownSprite());
             
             sprites.Add(spriteFactory.CreateLinkWalkRightSprite());
@@ -63,7 +63,7 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateBladeTrapSprite());
             sprites.Add(spriteFactory.CreateAquamentusSprite());
             sprites.Add(spriteFactory.CreateAquamentusBallSprite());
-            */
+            
 
             sprites.Add(spriteFactory.CreateHeartSprite());
             sprites.Add(spriteFactory.CreateHalfHeartSprite());
@@ -106,10 +106,10 @@ namespace LegendOfZelda
                 lastPause = gameTime.TotalGameTime.TotalMilliseconds;
                 //sprites[counter].paused = !sprites[counter].paused;
                 //sprites[counter].flashing = !sprites[counter].flashing;
-                //sprites[counter].blinking = true;
+                sprites[counter].blinking = true;
             }
             
-            //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
+            sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
             
         }
 
