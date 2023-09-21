@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
-    public class ArrowProjectile : IPlayerProjectile
+    public class FireProjectile : IPlayerProjectile
     {
         private ISprite sprite;
         private Game1 game;
@@ -11,7 +11,7 @@ namespace LegendOfZelda
         private const float speed = 2;
         private Vector2 pos;
         private Vector2 dir;
-        public ArrowProjectile(Vector2 position, Direction direction)
+        public FireProjectile(Vector2 position, Direction direction)
         {
             game = Game1.instance;
             SpriteFactory spriteFactory = game.spriteFactory;
@@ -20,23 +20,20 @@ namespace LegendOfZelda
             switch (direction)
             {
                 case Direction.up:
-                    sprite = spriteFactory.CreateArrowUpSprite();
                     dir = new Vector2(0, -1);
                     break;
                 case Direction.down:
-                    sprite = spriteFactory.CreateArrowDownSprite();
                     dir = new Vector2(0, 1);
                     break;
                 case Direction.right:
-                    sprite = spriteFactory.CreateArrowRightSprite();
                     dir = new Vector2(1, 0);
                     break;
                 case Direction.left:
-                    sprite = spriteFactory.CreateArrowLeftSprite();
                     dir = new Vector2(-1, 0);
                     break;
             }
 
+            sprite = spriteFactory.CreateFireSprite();
             sprite.UpdatePos(position);
 
             game.RegisterUpdateable(this);
@@ -54,3 +51,4 @@ namespace LegendOfZelda
         }
     }
 }
+
