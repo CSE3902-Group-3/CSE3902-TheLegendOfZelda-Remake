@@ -17,8 +17,8 @@ namespace LegendOfZelda.StateMachine.LinkStates
         public void Enter()
         {
             // cast then start flashing sprite
-            AnimatedSprite sprite = (AnimatedSprite)link.sprite;
-            sprite.flashing = true;
+            AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
+            spriteAlias.flashing = true;
         }
 
         public void Execute()
@@ -30,8 +30,8 @@ namespace LegendOfZelda.StateMachine.LinkStates
         public void Exit()
         {
             // cast then stop flashing sprite
-            AnimatedSprite sprite = (AnimatedSprite)link.sprite;
-            sprite.flashing = false;
+            AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
+            spriteAlias.flashing = false;
         }
     }
 }

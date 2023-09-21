@@ -1,5 +1,4 @@
 ﻿using LegendOfZelda.Interfaces;
-using LegendOfZelda;
 using Microsoft.Xna.Framework;
 using LegendOfZelda.StateMachine.LinkStates;
 
@@ -15,7 +14,7 @@ namespace LegendOfZelda.Player
         public Direction currentDirection { get; set; } = Direction.Right;
         public LinkStateMachine stateMachine { get; private set; }
         private int HP { get; set; } = 6;
-        private int haxHP { get; set; } = 6;
+        private int maxHP { get; set; } = 6;
         private bool canMove { get; set; } = true;
 
 
@@ -23,11 +22,10 @@ namespace LegendOfZelda.Player
         {
             this.game = game;
 
-            this.sprite = game.spriteFactory.CreateLinkWalkRightSprite(); // walk right is default, but IdleRightLinkState will pause animation
-            this.game.RegisterDrawable(sprite, 0);
+            this.sprite = game.spriteFactory.CreateLinkWalkRightSprite();
 
             this.stateMachine = new LinkStateMachine();
-            this.stateMachine.ChangeState(new IdleRightLinkState(this.game, this.sprite));
+            this.stateMachine.ChangeState(new InititalLinkState(this.game, this.sprite));
         }
 
         public void Update (GameTime gameTime)

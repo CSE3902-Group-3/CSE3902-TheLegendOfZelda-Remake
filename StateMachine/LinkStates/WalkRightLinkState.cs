@@ -29,7 +29,9 @@ namespace LegendOfZelda.StateMachine.LinkStates
 
         public void Exit()
         {
-            // nothing for walking, new state should change sprites to idle/attacking/whatever
+            // cast then unregister sprite drawing
+            AnimatedSprite spriteAlias = (AnimatedSprite)this.link.sprite;
+            spriteAlias.UnregisterSprite();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace LegendOfZelda.StateMachine.LinkStates
 
         public void Enter()
         {
-            link.sprite = game.spriteFactory.CreateLinkGetItemSprite();
+            link.sprite = game.spriteFactory.CreateLinkWoodStabRightSprite();
         }
 
         public void Execute()
@@ -26,7 +26,9 @@ namespace LegendOfZelda.StateMachine.LinkStates
 
         public void Exit()
         {
-            // do nothing
+            // cast then unregister sprite drawing
+            AnimatedSprite spriteAlias = (AnimatedSprite)this.link.sprite;
+            spriteAlias.UnregisterSprite();
         }
 
     }
