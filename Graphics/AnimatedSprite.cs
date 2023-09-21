@@ -23,26 +23,12 @@ namespace LegendOfZelda
         public Vector2 pos { get; protected set; } = Vector2.Zero;
         protected SpriteEffects effect;
         public bool paused { get; set; }
-        public Color color { get; set; } = Color.White;
+        public Color color { get; private set; } = Color.White;
         private int currentShader = 0;
 
+        private int flashCounter = 0;
         private bool _flashing = false;
-        public bool flashing
-        {
-            get
-            {
-                return _flashing;
-            }
-            set
-            {
-                _flashing = value;
-                if (!_flashing)
-                {
-                    UnregisterSprite();
-                    RegisterSprite(0);
-                }
-            }
-        }
+        public bool flashing { get; set; }
 
         public bool blinking { get; set; }
 
@@ -90,20 +76,33 @@ namespace LegendOfZelda
 
         protected virtual void UpdateFlash()
         {
-            UnregisterSprite();
-            RegisterSprite((currentShader + 1) % game1.numShaders);
+            switch (flashCounter)
+            {
+                case 0:
+                    color = Color.Blue;
+                    break;
+                case 1:
+                    color = Color.Green;
+                    break;
+                case 2:
+                    color = Color.Red; 
+                    break;
+                default:
+                    color = Color.White;
+                    flashCounter = 0;
+                    break;
+            }
+            flashCounter++;
         }
 
         protected virtual void UpdateBlink()
         {
-            if(currentShader == 0)
+            if(!color.Equals(Color.Red))
             {
-                UnregisterSprite();
-                RegisterSprite(game1.numShaders - 1);
+                color = Color.Red;
             } else
             {
-                UnregisterSprite();
-                RegisterSprite(0);
+                color = Color.White;
                 blinking = false;
             }
         }
@@ -126,18 +125,12 @@ namespace LegendOfZelda
 
         public void RegisterSprite()
         {
-            game1.RegisterDrawable(this, 0);
-        }
-
-        public void RegisterSprite(int shader)
-        {
-            game1.RegisterDrawable(this, shader);
-            currentShader = shader;
+            game1.RegisterDrawable(this);
         }
 
         public void UnregisterSprite()
         {
-            game1.RemoveDrawable(this, currentShader);
+            game1.RemoveDrawable(this);
         }
     }  
 }
