@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Command.TestUse
 {
-    internal class PreviousBlockCommand : ICommands
+    public class PreviousBlockCommand : ICommands
     {
         public void Execute()
         {

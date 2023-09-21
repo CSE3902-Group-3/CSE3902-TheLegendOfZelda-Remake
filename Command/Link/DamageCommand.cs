@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Command.Link
 {
-    internal class DamageCommand : ICommands
+    public class DamageCommand : ICommands
     {
         //Prepare for later use
         private IState linkState;

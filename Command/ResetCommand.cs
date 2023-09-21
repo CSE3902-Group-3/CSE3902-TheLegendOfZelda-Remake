@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Command
 {
-    internal class ResetCommand : ICommands
+    public class ResetCommand : ICommands
     {
         //Prepare for later use
         private IState linkState;

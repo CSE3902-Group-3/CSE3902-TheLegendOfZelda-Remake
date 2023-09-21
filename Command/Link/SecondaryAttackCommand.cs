@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Command.Link
 {
-    internal class SecondaryAttackCommand : ICommands
+    public class SecondaryAttackCommand : ICommands
     {
         SpriteFactory spriteFactory;
         AnimatedSprite link;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Command
 {
-    internal class QuitCommand : ICommands
+    public class QuitCommand : ICommands
     {
         private Game1 game;
 

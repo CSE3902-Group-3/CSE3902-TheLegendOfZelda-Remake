@@ -1,6 +1,6 @@
 ﻿using LegendOfZelda.Command;
-using LegendOfZelda.Command.TestUse;
 using LegendOfZelda.Command.Link;
+using LegendOfZelda.Command.TestUse;
 using LegendOfZelda.Interfaces;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -9,16 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda
+namespace LegendOfZelda.Controller
 {
-    internal class PlayerController : IController
+    internal class KeyboardMapping
     {
         private Dictionary<Keys, ICommands> controllerMappings;
         private Game1 game;
-        private ICommands command;
-        private Dictionary<Keys, bool> keyState;
 
-        public PlayerController(Game1 game)
+        public KeyboardMapping(Game1 game)
         {
             this.game = game;
             controllerMappings = new Dictionary<Keys, ICommands>();
@@ -46,37 +44,17 @@ namespace LegendOfZelda
             controllerMappings.Add(Keys.O, new PreviousEnemyCommand());
             controllerMappings.Add(Keys.P, new NextEnemyCommand());
 
-
-            keyState = new Dictionary<Keys, bool>();
         }
 
-        public void Update()
+        public ICommands GetCommand(Keys key)
         {
-
-            KeyboardState keyboardState = Keyboard.GetState();
-
-            foreach (Keys key in Enum.GetValues(typeof(Keys)))
+            if (controllerMappings.ContainsKey(key))
             {
-                if (keyboardState.IsKeyDown(key))
-                {
-                    // Check if the key is not in the keyState dictionary or if it was not pressed in the previous frame.
-                    if (!keyState.ContainsKey(key) || !keyState[key])
-                    {
-                        if (controllerMappings.ContainsKey(key))
-                        {
-                            command = controllerMappings[key];
-                            command.Execute();
-                        }
-                    }
-
-                    // Update the key state to indicate it's currently pressed.
-                    keyState[key] = true;
-                }
-                else
-                {
-                    // If the key is not pressed, mark it as released in the keyState dictionary.
-                    keyState[key] = false;
-                }
+                return controllerMappings[key];
+            }
+            else
+            {
+                return null;
             }
         }
     }

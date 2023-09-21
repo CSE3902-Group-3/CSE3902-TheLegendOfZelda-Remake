@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Command.TestUse
 {
-    internal class NextEnemyCommand : ICommands
+    public class NextEnemyCommand : ICommands
     {
         // Prepare for later
         IEnemy enemy;
