@@ -6,11 +6,13 @@ namespace LegendOfZelda.Enemies.Bat
 {
     public class Bat : IEnemy
     {
-        private Game1 game { get; set; }
+        private Game1 game;
         public SpriteFactory spriteFactory;
         private readonly ISprite batSprite;
         private int health { get; set; } = 1;
         public Vector2 Position;
+        private Vector2 Direction;
+        private double lastSwitch = 0;
 
         public Bat(Vector2 pos, SpriteFactory SpriteFactory)
         {
@@ -20,30 +22,16 @@ namespace LegendOfZelda.Enemies.Bat
         }
         public void ChangePosition()
         {
-            Random rand = new Random();
-            int random = rand.Next(0, 4);
+            Position += Direction;
+            if (Position.X < 0 || Position.Y < 0)
+            {
+                Position -= Direction;
+            }
 
-            // Move down and right
-            if (random == 0)
+            // This is kinda cursed, but it's to make sure the sprite does not venture beyond the screen border
+            if (Position.X >= Game1.instance.GraphicsDevice.Viewport.Width || Position.Y >= Game1.instance.GraphicsDevice.Viewport.Height)
             {
-                Position.X += 1;
-                Position.Y += 1;
-            // Move down and left
-            } else if (random == 1)
-            {
-                Position.X += -1;
-                Position.Y += 1;
-            // Move up and left
-            } else if (random == 2)
-            {
-                Position.X += -1;
-                Position.Y += -1;
-            // Move up and right
-            } else if (random == 3)
-            {
-                Position.X += 1;
-                Position.Y += -1;
-
+                Position -= Direction;
             }
             batSprite.UpdatePos(Position);
         }
@@ -62,18 +50,36 @@ namespace LegendOfZelda.Enemies.Bat
              */
         }
 
-        public void ChangeDirection() { 
-            // Bat does not change direction
+        public void ChangeDirection() {
+            Random rand = new Random();
+            int random = rand.Next(0, 4);
+
+            if (random == 0)
+            {
+                Direction = new Vector2(1, 1);
+            }
+            else if (random == 1)
+            {
+                Direction = new Vector2(-1, 1);
+            }
+            else if (random == 2)
+            {
+                Direction = new Vector2(1, -1);
+            }
+            else if (random == 3)
+            {
+                Direction = new Vector2(-1, -1);
+            }
         }
 
         public void Update(GameTime gameTime)
         {
-            /* 
-             * I don't think there is a valid
-             * implimentation for this at the moment.
-             * This could be applicable when we 
-             * have collision.
-            */
+           if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
+            {
+                lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
+                ChangeDirection();
+            }
+            ChangePosition();
         }
 
         public void Draw()
