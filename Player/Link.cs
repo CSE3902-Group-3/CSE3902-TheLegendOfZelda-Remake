@@ -31,6 +31,7 @@ namespace LegendOfZelda.Player
         public void Update (GameTime gameTime)
         {
             // do nothing
+            // this is inherited from iUpdateable, maybe it isn't needed but I would like to leave it for sprint2
         }
 
         public void UseItem()

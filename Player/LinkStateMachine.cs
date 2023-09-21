@@ -19,9 +19,8 @@ namespace LegendOfZelda.Player
 
         public void Update()
         {
-            // update will be handled by ICommand
-            // StateMachine will control valid state switches and sprite/related changes
-            // but player movement will be handled by ICommmand
+            // ICommand can handle changing the state, then we can just call LinkStateMachine.Update() in Game1.Update()
+            currentState.Execute();
         }
     }
 }

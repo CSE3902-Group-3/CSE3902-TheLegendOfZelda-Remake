@@ -4,27 +4,27 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.StateMachine.LinkStates
 {
-    public class WalkRightLinkState : IState
+    public class WalkLeftLinkState : IState
     {
         private Game1 game;
         private Link link;
 
-        public WalkRightLinkState(Game1 game)
+        public WalkLeftLinkState(Game1 game)
         {
             this.game = game;
             this.link = (Link)game.link;
-            this.link.currentDirection = Link.Direction.Right;
+            this.link.currentDirection = Link.Direction.Left;
         }
 
         public void Enter()
         {
-            link.sprite = game.spriteFactory.CreateLinkWalkRightSprite();
+            link.sprite = game.spriteFactory.CreateLinkWalkLeftSprite();
         }
 
         public void Execute()
         {
             Vector2 currPos = link.sprite.pos;
-            currPos.X += 1; // change this to velocity later
+            currPos.X -= 1; // change this to velocity later
             link.sprite.UpdatePos(currPos);
         }
 

@@ -13,8 +13,6 @@ namespace LegendOfZelda
 {
     public class Game1 : Game
     {
-        int tempFramecounter = 0;
-
         /* Graphics */
         private GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch { get; private set; }
@@ -90,23 +88,6 @@ namespace LegendOfZelda
             foreach (IUpdateable updateable in updateables)
             {
                 updateable.Update(gameTime);
-            }
-
-            if (tempFramecounter++ == 100)
-            {
-                link.stateMachine.ChangeState(new HurtLinkState(this));
-            } else if (tempFramecounter == 200)
-            {
-                link.stateMachine.ChangeState(new IdleLinkState(this));
-            } else if (tempFramecounter == 400)
-            {
-                link.stateMachine.ChangeState(new WalkRightLinkState(this));
-            } else if (tempFramecounter == 500)
-            {
-                link.stateMachine.ChangeState(new ItemRightUseLinkState(this));
-            } else if (tempFramecounter == 600)
-            {
-                link.stateMachine.ChangeState(new WalkRightLinkState(this));
             }
 
             base.Update(gameTime);
