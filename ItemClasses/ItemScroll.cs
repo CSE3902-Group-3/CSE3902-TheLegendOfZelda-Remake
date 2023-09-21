@@ -16,7 +16,7 @@ namespace LegendOfZelda
 
             itemCollection = new List<IItem>
             {
-                new Arrow(), new Bomb(), new Boomerang(), new Bow(), new Candle(), new Clock(), new Compass(), new HeartContainer(), new Key(), new Map(), new Potion()
+                new Arrow(), new Bomb(), new Boomerang(), new Bow(), new Candle(), new Clock(), new Compass(), new HeartContainer(), new Key(), new Map(), new Potion(), new Heart(), new Triforce(), new Fairy(), new Rupee()
             };
         }
 
