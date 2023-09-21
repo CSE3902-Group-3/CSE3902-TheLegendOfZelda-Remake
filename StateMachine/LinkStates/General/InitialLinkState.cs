@@ -35,6 +35,8 @@ namespace LegendOfZelda.StateMachine.LinkStates
             // cast then pause animation of sprite
             AnimatedSprite spriteAlias = (AnimatedSprite)this.sprite;
             spriteAlias.paused = false;
+
+            spriteAlias.UnregisterSprite();
         }
     }
 }
