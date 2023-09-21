@@ -3,7 +3,7 @@ using LegendOfZelda.Player;
 
 namespace LegendOfZelda.StateMachine.LinkStates
 {
-    public class HurtRightLinkState : IState
+    public class HurtLinkState : IState
     {
         private Game1 game { get; set; }
         private Link link { get; set; }
