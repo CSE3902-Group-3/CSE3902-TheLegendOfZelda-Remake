@@ -107,6 +107,11 @@ namespace LegendOfZelda
                 //sprites[counter].paused = !sprites[counter].paused;
                 //sprites[counter].flashing = !sprites[counter].flashing;
                 sprites[counter].blinking = true;
+
+                new ArrowProjectile(new Vector2(200, 200), Direction.up);
+                new ArrowProjectile(new Vector2(200, 200), Direction.right);
+                new ArrowProjectile(new Vector2(200, 200), Direction.left);
+                new ArrowProjectile(new Vector2(200, 200), Direction.down);
             }
             
             sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
