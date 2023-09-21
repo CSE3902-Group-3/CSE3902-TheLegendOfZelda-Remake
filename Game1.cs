@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda.Enemies.Aquamentus;
+using LegendOfZelda.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -66,7 +67,8 @@ namespace LegendOfZelda
             spriteFactory.LoadTextures();
 
             //Uncomment the following line for testing
-            new AnimationTester();
+            //new AnimationTester();
+            updateables.Add(new Aquamentus(new Vector2(400, 200), spriteFactory));
         }
 
         protected override void Update(GameTime gameTime)
