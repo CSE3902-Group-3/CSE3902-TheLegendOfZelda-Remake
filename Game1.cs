@@ -1,9 +1,11 @@
 ﻿using LegendOfZelda.Interfaces;
 using LegendOfZelda.Player;
+using LegendOfZelda.StateMachine.LinkStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Threading;
 using IDrawable = LegendOfZelda.Interfaces.IDrawable;
 using IUpdateable = LegendOfZelda.Interfaces.IUpdateable;
 
@@ -71,7 +73,7 @@ namespace LegendOfZelda
 
             spriteFactory.LoadTextures();
 
-            link = new Link(this, spriteFactory.CreateLinkWalkRightSprite());
+            link = new Link(this);
 
             //Uncomment the following line for testing
             //new AnimationTester();

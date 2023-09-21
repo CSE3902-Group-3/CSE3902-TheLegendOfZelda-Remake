@@ -1,6 +1,6 @@
 ﻿using LegendOfZelda.Interfaces;
 using LegendOfZelda.Player;
-using System.Numerics;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.StateMachine.LinkStates
 {
@@ -9,10 +9,10 @@ namespace LegendOfZelda.StateMachine.LinkStates
         private Game1 game;
         private Link link;
 
-        public WalkRightLinkState(Game1 game, Link link)
+        public WalkRightLinkState(Game1 game)
         {
             this.game = game;
-            this.link = link;
+            this.link = (Link)game.link;
         }
 
         public void Enter()
@@ -20,10 +20,11 @@ namespace LegendOfZelda.StateMachine.LinkStates
             link.sprite = game.spriteFactory.CreateLinkWalkRightSprite();
         }
 
-        public void Walk()
+        public void Execute()
         {
-            link.sprite.UpdatePos(Vector2.Zero);
-            // update pos only takes new value w/ no option to increment
+            Vector2 currPos = link.sprite.pos;
+            currPos.X += 1; // change this to velocity later
+            link.sprite.UpdatePos(currPos);
         }
 
         public void Exit()

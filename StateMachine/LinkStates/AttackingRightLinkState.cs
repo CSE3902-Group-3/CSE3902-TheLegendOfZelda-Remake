@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interfaces;
+using LegendOfZelda.Player;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +8,27 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.StateMachine.LinkStates
 {
-    public class ItemUseLinkState : IState
+    public class AttackingRightLinkState : IState
     {
-        //private Link link;
+        private Game1 game;
+        private Link link;
 
-        public ItemUseLinkState(/*Link link*/)
+        public AttackingRightLinkState(Game1 game)
         {
-            //this.link = link;
+            this.game = game;
+            this.link = (Link)game.link;
         }
 
         public void Enter()
         {
+            // swap to sprite with weapon
             // start walking animation in direction
+
             // update velocity if prevState was idle
+        }
+        public void Execute()
+        {
+            
         }
 
         public void Exit()

@@ -13,21 +13,21 @@ namespace LegendOfZelda.Player
         public ISprite sprite { get; set; }
 
         public Direction currentDirection { get; set; } = Direction.Right;
-        private LinkStateMachine stateMachine { get; set; }
+        public LinkStateMachine stateMachine { get; private set; }
         private int HP { get; set; } = 6;
         private int haxHP { get; set; } = 6;
         private bool canMove { get; set; } = true;
 
 
-        public Link(Game1 game, ISprite linkDefaultSprite)
+        public Link(Game1 game)
         {
             this.game = game;
 
-            this.sprite = linkDefaultSprite;
-            game.RegisterDrawable(sprite, 0);
+            this.sprite = game.spriteFactory.CreateLinkWalkRightSprite(); // walk right is default, but IdleRightLinkState will pause animation
+            this.game.RegisterDrawable(sprite, 0);
 
             this.stateMachine = new LinkStateMachine();
-            this.stateMachine.ChangeState(new IdleLinkState());
+            this.stateMachine.ChangeState(new IdleRightLinkState(this.game, this.sprite));
         }
 
         public void Update (GameTime gameTime)
