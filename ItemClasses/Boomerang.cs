@@ -7,22 +7,26 @@ namespace LegendOfZelda
 {
     public class Boomerang : IItem
     {
-        protected Texture2D texture;
-        protected SpriteBatch spriteBatch;
-        protected Game1 game1;
-        public Vector2 position { get; protected set; }
+        private Game1 game1;
+        protected AnimatedSprite boomerang;
+        private SpriteFactory spriteFactory;
 
-        public Boomerang(Texture2D texture, Vector2 position)
+
+        public Boomerang()
         {
-            this.texture = texture;
-            this.position = position;
             game1 = Game1.instance;
-            spriteBatch = game1._spriteBatch;
+            spriteFactory = game1.spriteFactory;
+            boomerang = spriteFactory.CreateBoomerangItemSprite();
         }
 
         public void Draw()
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            boomerang.Draw();
+        }
+
+        public void Collect()
+        {
+            //left empty for sprint2
         }
     }
 }

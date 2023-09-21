@@ -7,22 +7,26 @@ namespace LegendOfZelda
 {
     public class Potion : IItem
     {
-        protected Texture2D texture;
-        protected SpriteBatch spriteBatch;
-        protected Game1 game1;
-        public Vector2 position { get; protected set; }
+        private Game1 game1;
+        protected AnimatedSprite potion;
+        private SpriteFactory spriteFactory;
 
-        public Potion(Texture2D texture, Vector2 position)
+
+        public Potion()
         {
-            this.texture = texture;
-            this.position = position;
             game1 = Game1.instance;
-            spriteBatch = game1._spriteBatch;
+            spriteFactory = game1.spriteFactory;
+            potion = spriteFactory.CreateBluePotionSprite();
         }
 
         public void Draw()
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            potion.Draw();
+        }
+
+        public void Collect()
+        {
+            //left empty for sprint2
         }
     }
 }

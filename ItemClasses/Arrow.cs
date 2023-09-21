@@ -7,22 +7,26 @@ namespace LegendOfZelda
 {
     public class Arrow : IItem
     {
-        protected Texture2D texture;
-        protected SpriteBatch spriteBatch;
-        protected Game1 game1;
-        public Vector2 position { get; protected set; }
+        private Game1 game1;
+        protected AnimatedSprite arrow;
+        private SpriteFactory spriteFactory;
 
-        public Arrow(Texture2D texture, Vector2 position)
+
+        public Arrow()
         {
-            this.texture = texture;
-            this.position = position;
             game1 = Game1.instance;
-            spriteBatch = game1._spriteBatch;
+            spriteFactory = game1.spriteFactory;
+            arrow = spriteFactory.CreateArrowUpSprite();
         }
 
         public void Draw()
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            arrow.Draw();
+        }
+
+        public void Collect()
+        {
+            //left empty for sprint2
         }
     }
 }
