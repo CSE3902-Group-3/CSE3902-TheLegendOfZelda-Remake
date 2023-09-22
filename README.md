@@ -36,4 +36,4 @@ characters should move, animate, fire projectiles, etc. as they do in the final 
 -   Lines of Executable Code: 360
 
 Code Reviews:
--
+- Michael Herring reviewed Gabe Difore's code for quality in pull request #63
