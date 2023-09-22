@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LegendOfZelda.Player;
 
 namespace LegendOfZelda.Interfaces
 {
-    public interface IPlayer : IUpdateable, IDrawable
+    public interface IPlayer : IUpdateable
     {
-        // ISprite here
-        public Vector2 position { get { return position; } set { position = value; } }
-        public Vector2 prevPosition { get { return prevPosition; } private set { prevPosition = value; } }
+        ISprite sprite { get; }
+        LinkStateMachine stateMachine { get; }
 
-        public Vector2 velocity { get { return velocity; } set { velocity = value; } }
-        // IState here
+        public void UseItem();
 
-        // other fields, health, booleans go here?
+        public void ChangeItem(int index);
+        public void ChangeWeapon(int index);
 
-        public void Update();
+        public void Reset();
     }
 }

@@ -18,12 +18,12 @@ namespace LegendOfZelda
         protected SpriteBatch spriteBatch;
         protected int drawFramesPerAnimFrame;
         protected int currentFrameCounter = 0;
-        protected int scale;
+        public int scale { get; protected set; }
         protected Game1 game1;
         public Vector2 pos { get; protected set; } = Vector2.Zero;
         protected SpriteEffects effect;
         public bool paused { get; set; }
-        public Color color { get; private set; } = Color.White;
+        public Color color { get; protected set; } = Color.White;
         private int currentShader = 0;
 
         private int flashCounter = 0;
@@ -31,8 +31,10 @@ namespace LegendOfZelda
         public bool flashing { get; set; }
 
         public bool blinking { get; set; }
+        public bool repeating { get; protected set; }
+        public bool complete = false;
 
-        public AnimatedSprite(Texture2D texture, Rectangle[] frames, SpriteEffects effect, int drawFramesPerAnimFrame, int scale)
+        public AnimatedSprite(Texture2D texture, Rectangle[] frames, SpriteEffects effect, int drawFramesPerAnimFrame, int scale, bool repeating)
         {
             this.texture = texture;
             this.frames = frames;
@@ -40,6 +42,7 @@ namespace LegendOfZelda
             this.drawFramesPerAnimFrame = drawFramesPerAnimFrame;
             this.scale = scale;
             this.effect = effect;
+            this.repeating = repeating;
 
             game1 = Game1.instance;
             spriteBatch = game1._spriteBatch;
@@ -67,7 +70,7 @@ namespace LegendOfZelda
             currentFrameCounter++;
             if (currentFrameCounter >= drawFramesPerAnimFrame)
             {
-                if (!paused) UpdateFrame();
+                if (!paused && !complete) UpdateFrame();
                 if (flashing) UpdateFlash();
                 if (blinking) UpdateBlink();
                 currentFrameCounter = 0;
@@ -113,7 +116,14 @@ namespace LegendOfZelda
             frame++;
             if (frame >= frames.Length)
             {
-                frame = 0;
+                if (repeating)
+                {
+                    frame = 0;
+                } else
+                {
+                    frame--;
+                    complete = true;
+                }
             }
         }
 

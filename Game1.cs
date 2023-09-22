@@ -1,22 +1,31 @@
-﻿using LegendOfZelda.Environment;
+using LegendOfZelda.Environment;
 using LegendOfZelda.Interfaces;
+using LegendOfZelda.Player;
+using LegendOfZelda.StateMachine.LinkStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Threading;
 using IDrawable = LegendOfZelda.Interfaces.IDrawable;
 using IUpdateable = LegendOfZelda.Interfaces.IUpdateable;
 
 namespace LegendOfZelda
 {
+    public enum Direction { down, right, up, left };
     public class Game1 : Game
     {
+        /* Graphics */
         private GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch { get; private set; }
         private List<IUpdateable> updateables;
         private List<IDrawable> drawables;
         public SpriteFactory spriteFactory { get; private set; }
 
+        /* Link */
+        public IPlayer link { get; private set; }
+
+        /* Controller */
         private IController controller;
         public BlockCycler blockCycler { get; private set; }
 
@@ -34,7 +43,6 @@ namespace LegendOfZelda
             // TODO: Add your initialization logic here
             instance = this;
             updateables = new List<IUpdateable>();
-            
 
             spriteFactory = new SpriteFactory(8, 8);
 
@@ -55,6 +63,10 @@ namespace LegendOfZelda
             //Uncomment the following line for testing
             new AnimationTester();
 
+            link = new Link(this);
+
+            //Uncomment the following line for testing
+            //new AnimationTester();
         }
 
         protected override void Update(GameTime gameTime)
@@ -63,11 +75,10 @@ namespace LegendOfZelda
                 Exit();
 
             // TODO: Add your update logic here
-            foreach (IUpdateable updateable in updateables)
+            for(int i = updateables.Count - 1; i >= 0; i--)
             {
-                updateable.Update(gameTime);
+                updateables[i].Update(gameTime);
             }
-            
 
             base.Update(gameTime);
         }

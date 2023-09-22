@@ -1,4 +1,4 @@
-﻿using LegendOfZelda.Environment;
+using LegendOfZelda.Environment;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -92,6 +92,7 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
+            
             if(gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 2000)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
@@ -102,6 +103,7 @@ namespace LegendOfZelda
                 sprites[counter].UpdatePos(new Vector2(400, 200));
                 blockCycler.cycleForward();
             }
+            
 
             
             if(gameTime.TotalGameTime.TotalMilliseconds > lastPause + 5050)
@@ -118,7 +120,7 @@ namespace LegendOfZelda
                 blockCycler.cycleBackward();
             }
             
-            sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
+            //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
             
         }
 

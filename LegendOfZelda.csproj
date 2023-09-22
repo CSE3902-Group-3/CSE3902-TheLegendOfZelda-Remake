@@ -11,6 +11,9 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="LegendOfZelda\**" />
+    <EmbeddedResource Remove="LegendOfZelda\**" />
+    <None Remove="LegendOfZelda\**" />
     <Compile Remove="LinkCommand.cs" />
   </ItemGroup>
   <ItemGroup>
