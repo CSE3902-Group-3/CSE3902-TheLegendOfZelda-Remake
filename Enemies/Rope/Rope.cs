@@ -7,17 +7,15 @@ namespace LegendOfZelda.Enemies.Rope
     public class Rope : IEnemy
     {
         private Game1 Game { get; set; }
-        public SpriteFactory SpriteFactory;
         private readonly ISprite RopeSprite;
         private int Health { get; set; } = 1;
         public Vector2 Position;
         private int CycleCount = 0;
         private int PosIncrement = 2;
 
-        public Rope(Vector2 pos, SpriteFactory spriteFactory)
+        public Rope(Vector2 pos)
         {
-            this.SpriteFactory = spriteFactory;
-            //RopeSprite = this.SpriteFactory.CreateRopeSprite();
+            RopeSprite = Game1.instance.spriteFactory.CreateRopeLeftSprite();
             Position = pos;
         }
         public void ChangePosition()

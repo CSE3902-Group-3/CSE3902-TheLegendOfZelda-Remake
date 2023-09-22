@@ -11,13 +11,12 @@ namespace LegendOfZelda.Enemies.Aquamentus
         private int Health { get; set; } = 1;
         private Vector2 Position;
         private int CycleCount = 0;
-        private int MaxCycles = 10;
-        private int PosIncrement = 10;
+        private int MaxCycles = 50;
+        private int PosIncrement = 2;
 
         public Aquamentus(Vector2 pos)
         {
             AquamentusSprite = Game1.instance.spriteFactory.CreateAquamentusSprite();
-            Game1.instance.RegisterDrawable(AquamentusSprite, 1);
             Position = pos;
         }
         public void ChangePosition()
@@ -41,10 +40,7 @@ namespace LegendOfZelda.Enemies.Aquamentus
         }
         public void UpdateHealth()
         {
-            /* 
-             * This isn't needed for Sprint 2,
-             * however it will be needed later.
-             */
+
         }
 
         public void ChangeDirection()

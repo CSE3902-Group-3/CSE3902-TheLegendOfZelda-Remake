@@ -68,8 +68,6 @@ namespace LegendOfZelda
 
             //Uncomment the following line for testing
             //new AnimationTester();
-            Aquamentus enemy = new Aquamentus(new Vector2(400, 200));
-            updateables.Add(enemy);
         }
 
         protected override void Update(GameTime gameTime)

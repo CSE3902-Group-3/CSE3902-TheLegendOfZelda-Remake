@@ -9,7 +9,7 @@ using IUpdateable = LegendOfZelda.Interfaces.IUpdateable;
 
 namespace LegendOfZelda.Enemies.Aquamentus
 {
-    internal class AquamentusBall : IUpdateable
+    internal class AquamentusBall
     {
         private ISprite AquamentusBallSprite;
         private Vector2 Position;
@@ -17,7 +17,6 @@ namespace LegendOfZelda.Enemies.Aquamentus
         public AquamentusBall(Vector2 pos, Vector2 dir) 
         {
             AquamentusBallSprite = Game1.instance.spriteFactory.CreateAquamentusBallSprite();
-            Game1.instance.RegisterDrawable(AquamentusBallSprite, 1);
             Position = pos;
             Direction = dir;
         }
@@ -36,7 +35,7 @@ namespace LegendOfZelda.Enemies.Aquamentus
         public void Destroy()
         {
             Game1.instance.RemoveUpdateable(this);
-            Game1.instance.RemoveDrawable(AquamentusBallSprite, 1);
+            Game1.instance.RemoveDrawable(AquamentusBallSprite, 0);
 
         }
 
