@@ -1,8 +1,10 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda.Enemies.Goriya;
+using LegendOfZelda.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using IDrawable = LegendOfZelda.Interfaces.IDrawable;
 using IUpdateable = LegendOfZelda.Interfaces.IUpdateable;
 
@@ -18,7 +20,7 @@ namespace LegendOfZelda
         public SpriteFactory spriteFactory { get; private set; }
 
         private IController controller;
-
+        private Goriya goriya;
         public static Game1 instance { get; private set; }
 
         public Game1()
@@ -52,6 +54,7 @@ namespace LegendOfZelda
 
             //Uncomment the following line for testing
             new AnimationTester();
+            goriya = new Goriya(new Vector2(50, 50));
         }
 
         protected override void Update(GameTime gameTime)
@@ -64,8 +67,8 @@ namespace LegendOfZelda
             {
                 updateables[i].Update(gameTime);
             }
-            
 
+            goriya.Update(gameTime);
             base.Update(gameTime);
         }
 
