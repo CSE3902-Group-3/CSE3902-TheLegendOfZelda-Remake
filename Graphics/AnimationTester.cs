@@ -90,6 +90,7 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
+            
             if(gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 2000)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
@@ -99,17 +100,22 @@ namespace LegendOfZelda
                 sprites[counter].RegisterSprite();
                 sprites[counter].UpdatePos(new Vector2(400, 200));
             }
+            
 
             
-            if(gameTime.TotalGameTime.TotalMilliseconds > lastPause + 1000)
+            if(gameTime.TotalGameTime.TotalMilliseconds > lastPause + 3000)
             {
                 lastPause = gameTime.TotalGameTime.TotalMilliseconds;
                 //sprites[counter].paused = !sprites[counter].paused;
-                //sprites[counter].flashing = !sprites[counter].flashing;
-                sprites[counter].blinking = true;
+                sprites[counter].flashing = !sprites[counter].flashing;
+                //sprites[counter].blinking = true;
+
+                new FireProjectile(new Vector2(200, 200), Direction.left);
+                new ArrowProjectile(new Vector2(200, 200), Direction.up);
+                new BombProjectile(new Vector2(300, 200));
             }
             
-            sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
+            //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
             
         }
 

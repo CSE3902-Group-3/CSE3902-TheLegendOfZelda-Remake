@@ -8,6 +8,7 @@ using IUpdateable = LegendOfZelda.Interfaces.IUpdateable;
 
 namespace LegendOfZelda
 {
+    public enum Direction { down, right, up, left };
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
@@ -59,9 +60,9 @@ namespace LegendOfZelda
                 Exit();
 
             // TODO: Add your update logic here
-            foreach (IUpdateable updateable in updateables)
+            for(int i = updateables.Count - 1; i >= 0; i--)
             {
-                updateable.Update(gameTime);
+                updateables[i].Update(gameTime);
             }
             
 
