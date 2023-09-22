@@ -424,6 +424,88 @@ namespace LegendOfZelda
 
             return new AnimatedSprite(bossesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
         }
+
+        public AnimatedSprite CreateDodongoDownSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(1, 58, 16, 16)
+            };
+
+            return new MirrorSprite(bossesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateDodongoDownHitSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(18, 58, 16, 16)
+            };
+
+            return new AnimatedSprite(bossesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateDodongoUpSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(35, 58, 16, 16)
+            };
+
+            return new MirrorSprite(bossesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateDodongoUpHitSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(52, 58, 16, 16)
+            };
+
+            return new AnimatedSprite(bossesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateDodongoRightSprite()
+        {
+            Rectangle[] frames = new Rectangle[2]
+            {
+                new Rectangle(69, 58, 32, 16),
+                new Rectangle(102, 58, 32, 16)
+            };
+
+            return new AnimatedSprite(bossesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateDodongoLeftSprite()
+        {
+            Rectangle[] frames = new Rectangle[2]
+            {
+                new Rectangle(69, 58, 32, 16),
+                new Rectangle(102, 58, 32, 16)
+            };
+
+            return new AnimatedSprite(bossesTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateDodongoRightHitSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(135, 58, 32, 16)
+            };
+
+            return new AnimatedSprite(bossesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateDodongoLeftHitSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(135, 58, 32, 16)
+            };
+
+            return new AnimatedSprite(bossesTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale, true);
+        }
         public AnimatedSprite CreateAquamentusBallSprite()
         {
             Rectangle[] frames = new Rectangle[4]
