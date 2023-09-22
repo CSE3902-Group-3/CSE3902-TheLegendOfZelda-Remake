@@ -7,23 +7,23 @@ namespace LegendOfZelda.Enemies.Aquamentus
     public class Aquamentus : IEnemy
     {
         private Game1 Game { get; set; }
-        public SpriteFactory SpriteFactory;
-        private readonly ISprite AquamentusSprite;
+        private ISprite AquamentusSprite;
         private int Health { get; set; } = 1;
-        public Vector2 Position;
+        private Vector2 Position;
         private int CycleCount = 0;
-        private int PosIncrement = 2;
+        private int MaxCycles = 10;
+        private int PosIncrement = 10;
 
-        public Aquamentus(Vector2 pos, SpriteFactory spriteFactory)
+        public Aquamentus(Vector2 pos)
         {
-            this.SpriteFactory = spriteFactory;
-            AquamentusSprite = this.SpriteFactory.CreateAquamentusSprite();
+            AquamentusSprite = Game1.instance.spriteFactory.CreateAquamentusSprite();
+            Game1.instance.RegisterDrawable(AquamentusSprite, 1);
             Position = pos;
         }
         public void ChangePosition()
         {
             // Cycle left and right movement
-            if (CycleCount > 3)
+            if (CycleCount > MaxCycles)
             {
                 CycleCount = 0;
                 PosIncrement *= -1;
@@ -35,10 +35,9 @@ namespace LegendOfZelda.Enemies.Aquamentus
         }
         public void Attack()
         {
-            /* 
-             * This isn't needed for Sprint 2,
-             * however it will be needed later.
-             */
+            Game1.instance.RegisterUpdateable(new AquamentusBall(Position, new Vector2(-10, 0)));
+            Game1.instance.RegisterUpdateable(new AquamentusBall(Position, new Vector2(-10, 10)));
+            Game1.instance.RegisterUpdateable(new AquamentusBall(Position, new Vector2(-10, -10)));
         }
         public void UpdateHealth()
         {
@@ -57,12 +56,11 @@ namespace LegendOfZelda.Enemies.Aquamentus
 
         public void Update(GameTime gameTime)
         {
-            /* 
-             * I don't think there is a valid
-             * implimentation for this at the moment.
-             * This could be applicable when we 
-             * have collision.
-            */
+            ChangePosition();
+            if (CycleCount == MaxCycles)
+            {
+                Attack();
+            }
         }
 
         public void Draw()

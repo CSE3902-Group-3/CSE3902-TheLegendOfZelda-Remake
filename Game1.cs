@@ -68,7 +68,8 @@ namespace LegendOfZelda
 
             //Uncomment the following line for testing
             //new AnimationTester();
-            updateables.Add(new Aquamentus(new Vector2(400, 200), spriteFactory));
+            Aquamentus enemy = new Aquamentus(new Vector2(400, 200));
+            updateables.Add(enemy);
         }
 
         protected override void Update(GameTime gameTime)
@@ -77,9 +78,9 @@ namespace LegendOfZelda
                 Exit();
 
             // TODO: Add your update logic here
-            foreach (IUpdateable updateable in updateables)
+            for (int i = 0; i < updateables.Count; i++)
             {
-                updateable.Update(gameTime);
+                    updateables[i].Update(gameTime);
             }
             
 

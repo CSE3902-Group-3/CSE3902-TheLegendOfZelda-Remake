@@ -56,10 +56,10 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateRopeRightSprite());
             sprites.Add(spriteFactory.CreateRopeLeftSprite());
             sprites.Add(spriteFactory.CreateBladeTrapSprite());
-            */
             sprites.Add(spriteFactory.CreateAquamentusSprite());
-            /*
+            */
             sprites.Add(spriteFactory.CreateAquamentusBallSprite());
+            /*
             sprites.Add(spriteFactory.CreateHeartSprite());
             sprites.Add(spriteFactory.CreateHalfHeartSprite());
             sprites.Add(spriteFactory.CreateEmptyHeartSprite());

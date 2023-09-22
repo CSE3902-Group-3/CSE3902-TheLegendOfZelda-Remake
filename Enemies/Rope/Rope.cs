@@ -17,7 +17,7 @@ namespace LegendOfZelda.Enemies.Rope
         public Rope(Vector2 pos, SpriteFactory spriteFactory)
         {
             this.SpriteFactory = spriteFactory;
-            RopeSprite = this.SpriteFactory.CreateRopeSprite();
+            //RopeSprite = this.SpriteFactory.CreateRopeSprite();
             Position = pos;
         }
         public void ChangePosition()
