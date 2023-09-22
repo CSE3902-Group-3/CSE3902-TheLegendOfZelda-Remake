@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+using LegendOfZelda.Environment;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace LegendOfZelda
     public class AnimationTester : Interfaces.IUpdateable
     {
         SpriteFactory spriteFactory;
+        BlockCycler blockCycler;
         List<AnimatedSprite> sprites;
         double lastSwitch = 0;
         double lastPause = 0;
@@ -18,9 +20,9 @@ namespace LegendOfZelda
         public AnimationTester() {
             Game1.instance.RegisterUpdateable(this);
             spriteFactory = Game1.instance.spriteFactory;
+            blockCycler = Game1.instance.blockCycler;
 
             sprites = new List<AnimatedSprite>();
-
             
             sprites.Add(spriteFactory.CreateLinkWalkDownSprite());
             
@@ -99,20 +101,23 @@ namespace LegendOfZelda
                 if (counter >= sprites.Count) counter = 0;
                 sprites[counter].RegisterSprite();
                 sprites[counter].UpdatePos(new Vector2(400, 200));
+                blockCycler.cycleForward();
             }
             
 
             
-            if(gameTime.TotalGameTime.TotalMilliseconds > lastPause + 3000)
+            if(gameTime.TotalGameTime.TotalMilliseconds > lastPause + 5050)
             {
                 lastPause = gameTime.TotalGameTime.TotalMilliseconds;
                 //sprites[counter].paused = !sprites[counter].paused;
                 sprites[counter].flashing = !sprites[counter].flashing;
                 //sprites[counter].blinking = true;
 
-                new FireProjectile(new Vector2(200, 200), Direction.left);
-                new ArrowProjectile(new Vector2(200, 200), Direction.up);
-                new BombProjectile(new Vector2(300, 200));
+                //new FireProjectile(new Vector2(200, 200), Direction.left);
+                //new ArrowProjectile(new Vector2(200, 200), Direction.up);
+                //new BombProjectile(new Vector2(300, 200));
+
+                blockCycler.cycleBackward();
             }
             
             //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));

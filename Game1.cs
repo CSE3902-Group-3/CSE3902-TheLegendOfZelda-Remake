@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interfaces;
+using LegendOfZelda.Environment;
+using LegendOfZelda.Interfaces;
 using LegendOfZelda.Player;
 using LegendOfZelda.StateMachine.LinkStates;
 using Microsoft.Xna.Framework;
@@ -26,6 +27,7 @@ namespace LegendOfZelda
 
         /* Controller */
         private IController controller;
+        public BlockCycler blockCycler { get; private set; }
 
         public static Game1 instance { get; private set; }
 
@@ -56,6 +58,10 @@ namespace LegendOfZelda
             drawables = new List<IDrawable>();
 
             spriteFactory.LoadTextures();
+
+            blockCycler = new BlockCycler(new Vector2(300, 200));
+            //Uncomment the following line for testing
+            new AnimationTester();
 
             link = new Link(this);
 

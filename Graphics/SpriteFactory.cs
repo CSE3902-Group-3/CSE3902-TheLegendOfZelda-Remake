@@ -11,6 +11,11 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
+
+    /*
+     * This class is left very long intentionally. The sprite factory is intended to be completely decoupled from the functionality of the games,
+     * so to split it up based on what the sprites are used for would break this principle. Even though it is long it only serves one purpose.
+     */
     public class SpriteFactory
     {
         private Texture2D linkTexture;
@@ -592,6 +597,306 @@ namespace LegendOfZelda
             };
 
             return new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame * slowAnimateFactor, scale, true);
+        }
+
+        public AnimatedSprite CreateFloorTileSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(984, 11, 16, 16)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateWallSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(1001, 11, 16, 16)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateFishSculptureSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(1018, 11, 16, 16)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateDragonSculptureSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(1035, 11, 16, 16)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateBlackTileSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(984, 28, 16, 16)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateSandTileSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(1001, 28, 16, 16)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateBlueTileSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(1018, 28, 16, 16)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateStairsSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(1035, 28, 16, 16)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateBrickSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(984, 45, 16, 16)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateLadderSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(1001, 45, 16, 16)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateWallNorthSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(815, 11, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateWallWestSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(815, 44, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateWallEastSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(815, 77, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateWallSouthSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(815, 110, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateNorthOpenDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(848, 11, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateWestOpenDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(848, 44, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateEastOpenDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(848, 77, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateSouthOpenDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(848, 110, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateNorthLockedDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(881, 11, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateWestLockedDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(881, 44, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateEastLockedDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(881, 77, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateSouthLockedDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(881, 110, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateNorthClosedDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(914, 11, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateWestClosedDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(914, 44, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateEastClosedDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(914, 77, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateSouthClosedDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(914, 110, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateNorthHoleDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(947, 11, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateWestHoleDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(947, 44, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateEastHoleDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(947, 77, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateSouthHoleDoorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(947, 110, 32, 32)
+            };
+
+            return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
         }
     }
 }
