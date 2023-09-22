@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda.Environment;
+using LegendOfZelda.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -17,6 +18,7 @@ namespace LegendOfZelda
         public SpriteFactory spriteFactory { get; private set; }
 
         private IController controller;
+        public BlockCycler blockCycler { get; private set; }
 
         public static Game1 instance { get; private set; }
 
@@ -49,8 +51,10 @@ namespace LegendOfZelda
 
             spriteFactory.LoadTextures();
 
+            blockCycler = new BlockCycler(new Vector2(300, 200));
             //Uncomment the following line for testing
             new AnimationTester();
+
         }
 
         protected override void Update(GameTime gameTime)
