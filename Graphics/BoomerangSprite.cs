@@ -1,10 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LegendOfZelda.Graphics
 {
@@ -12,7 +8,7 @@ namespace LegendOfZelda.Graphics
     {
         private int nextCorner = 1;
         private Vector2 center;
-        public BoomerangSprite(Texture2D texture, Rectangle[] frames, SpriteEffects effect, int drawFramesPerAnimFrame, int scale) : base(texture, frames, effect, drawFramesPerAnimFrame, scale)
+        public BoomerangSprite(Texture2D texture, Rectangle[] frames, SpriteEffects effect, int drawFramesPerAnimFrame, int scale, bool repeating) : base(texture, frames, effect, drawFramesPerAnimFrame, scale, repeating)
         {
             center = new Vector2(frames[0].Width/2, frames[0].Height/2);
         }

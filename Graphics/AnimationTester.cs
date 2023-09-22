@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+using LegendOfZelda.Environment;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace LegendOfZelda
     public class AnimationTester : Interfaces.IUpdateable
     {
         SpriteFactory spriteFactory;
+        BlockCycler blockCycler;
         List<AnimatedSprite> sprites;
         double lastSwitch = 0;
         double lastPause = 0;
@@ -18,9 +20,10 @@ namespace LegendOfZelda
         public AnimationTester() {
             Game1.instance.RegisterUpdateable(this);
             spriteFactory = Game1.instance.spriteFactory;
+            blockCycler = Game1.instance.blockCycler;
 
             sprites = new List<AnimatedSprite>();
-
+            
             /*
             sprites.Add(spriteFactory.CreateLinkWalkDownSprite());
             
@@ -65,6 +68,16 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateAquamentusBallSprite());
             */
 
+            sprites.Add(spriteFactory.CreateDodongoUpSprite());
+            sprites.Add(spriteFactory.CreateDodongoRightSprite());
+            sprites.Add(spriteFactory.CreateDodongoDownSprite());
+            sprites.Add(spriteFactory.CreateDodongoLeftSprite());
+            sprites.Add(spriteFactory.CreateDodongoUpHitSprite());
+            sprites.Add(spriteFactory.CreateDodongoRightHitSprite());
+            sprites.Add(spriteFactory.CreateDodongoDownHitSprite());
+            sprites.Add(spriteFactory.CreateDodongoLeftHitSprite());
+
+            /*
             sprites.Add(spriteFactory.CreateHeartSprite());
             sprites.Add(spriteFactory.CreateHalfHeartSprite());
             sprites.Add(spriteFactory.CreateEmptyHeartSprite());
@@ -81,6 +94,7 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateKeySprite());
             sprites.Add(spriteFactory.CreateCompassSprite());
             sprites.Add(spriteFactory.CreateTriforcePieceSprite());
+            */
 
             foreach (AnimatedSprite sprite in sprites)
             {
@@ -90,6 +104,7 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
+            
             if(gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 2000)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
@@ -98,15 +113,23 @@ namespace LegendOfZelda
                 if (counter >= sprites.Count) counter = 0;
                 sprites[counter].RegisterSprite();
                 sprites[counter].UpdatePos(new Vector2(400, 200));
+                blockCycler.cycleForward();
             }
+            
 
             
-            if(gameTime.TotalGameTime.TotalMilliseconds > lastPause + 1000)
+            if(gameTime.TotalGameTime.TotalMilliseconds > lastPause + 5050)
             {
                 lastPause = gameTime.TotalGameTime.TotalMilliseconds;
                 //sprites[counter].paused = !sprites[counter].paused;
-                //sprites[counter].flashing = !sprites[counter].flashing;
+                sprites[counter].flashing = !sprites[counter].flashing;
                 //sprites[counter].blinking = true;
+
+                //new FireProjectile(new Vector2(200, 200), Direction.left);
+                //new ArrowProjectile(new Vector2(200, 200), Direction.up);
+                //new BombProjectile(new Vector2(300, 200));
+
+                blockCycler.cycleBackward();
             }
             
             //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
