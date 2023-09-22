@@ -19,11 +19,6 @@ namespace LegendOfZelda
             rupee = spriteFactory.CreateRupeeSprite();
         }
 
-        public void Draw()
-        {
-            rupee.Draw();
-        }
-
         public void Collect()
         {
             //left empty for sprint2

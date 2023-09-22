@@ -19,11 +19,6 @@ namespace LegendOfZelda
             compass = spriteFactory.CreateCompassSprite();
         }
 
-        public void Draw()
-        {
-            compass.Draw();
-        }
-
         public void Collect()
         {
             //left empty for sprint2

@@ -19,11 +19,6 @@ namespace LegendOfZelda
             candle = spriteFactory.CreateBlueCandleSprite();
         }
 
-        public void Draw()
-        {
-            candle.Draw();
-        }
-
         public void Collect()
         {
             //left empty for sprint2

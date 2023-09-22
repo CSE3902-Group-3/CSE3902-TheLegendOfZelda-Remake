@@ -20,14 +20,7 @@ namespace LegendOfZelda
             };
         }
 
-        public void Draw()
-        {
-            foreach (IItem item in itemCollection)
-            {
-                item.Draw();
-            }
-        }
-
+        
         public void Collect()
         {
             //Not needed here

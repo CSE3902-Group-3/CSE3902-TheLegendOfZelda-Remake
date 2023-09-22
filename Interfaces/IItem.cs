@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Interfaces
 {
-    public interface IItem : IDrawable
+    public interface IItem
     {
         void Collect();
     }

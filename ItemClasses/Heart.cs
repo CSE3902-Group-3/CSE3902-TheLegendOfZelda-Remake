@@ -19,11 +19,6 @@ namespace LegendOfZelda
             heart = spriteFactory.CreateHeartSprite();
         }
 
-        public void Draw()
-        {
-            heart.Draw();
-        }
-
         public void Collect()
         {
             //left empty for sprint2

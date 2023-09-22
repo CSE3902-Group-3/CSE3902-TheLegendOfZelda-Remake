@@ -19,11 +19,6 @@ namespace LegendOfZelda
             fairy = spriteFactory.CreateFairySprite();
         }
 
-        public void Draw()
-        {
-            fairy.Draw();
-        }
-
         public void Collect()
         {
             //left empty for sprint2

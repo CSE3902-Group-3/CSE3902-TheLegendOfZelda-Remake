@@ -19,11 +19,6 @@ namespace LegendOfZelda
             arrow = spriteFactory.CreateArrowUpSprite();
         }
 
-        public void Draw()
-        {
-            arrow.Draw();
-        }
-
         public void Collect()
         {
             //left empty for sprint2

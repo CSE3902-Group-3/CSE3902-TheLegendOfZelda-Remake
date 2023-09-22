@@ -19,11 +19,6 @@ namespace LegendOfZelda
             bomb = spriteFactory.CreateBombSprite();
         }
 
-        public void Draw()
-        {
-            bomb.Draw();
-        }
-
         public void Collect()
         {
             //left empty for sprint2

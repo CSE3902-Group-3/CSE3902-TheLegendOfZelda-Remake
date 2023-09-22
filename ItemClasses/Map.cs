@@ -19,11 +19,6 @@ namespace LegendOfZelda
             map = spriteFactory.CreateMapSprite();
         }
 
-        public void Draw()
-        {
-            map.Draw();
-        }
-
         public void Collect()
         {
             //left empty for sprint2

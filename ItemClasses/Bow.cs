@@ -19,11 +19,6 @@ namespace LegendOfZelda
             bow = spriteFactory.CreateBowSprite();
         }
 
-        public void Draw()
-        {
-            bow.Draw();
-        }
-
         public void Collect()
         {
             //left empty for sprint2

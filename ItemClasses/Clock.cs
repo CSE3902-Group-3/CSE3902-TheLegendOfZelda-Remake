@@ -19,11 +19,6 @@ namespace LegendOfZelda
             clock = spriteFactory.CreateClockSprite();
         }
 
-        public void Draw()
-        {
-            clock.Draw();
-        }
-
         public void Collect()
         {
             //left empty for sprint2
