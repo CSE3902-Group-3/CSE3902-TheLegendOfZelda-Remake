@@ -24,6 +24,7 @@ namespace LegendOfZelda
 
             sprites = new List<AnimatedSprite>();
             
+            /*
             sprites.Add(spriteFactory.CreateLinkWalkDownSprite());
             
             sprites.Add(spriteFactory.CreateLinkWalkRightSprite());
@@ -65,8 +66,18 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateBladeTrapSprite());
             sprites.Add(spriteFactory.CreateAquamentusSprite());
             sprites.Add(spriteFactory.CreateAquamentusBallSprite());
-            
+            */
 
+            sprites.Add(spriteFactory.CreateDodongoUpSprite());
+            sprites.Add(spriteFactory.CreateDodongoRightSprite());
+            sprites.Add(spriteFactory.CreateDodongoDownSprite());
+            sprites.Add(spriteFactory.CreateDodongoLeftSprite());
+            sprites.Add(spriteFactory.CreateDodongoUpHitSprite());
+            sprites.Add(spriteFactory.CreateDodongoRightHitSprite());
+            sprites.Add(spriteFactory.CreateDodongoDownHitSprite());
+            sprites.Add(spriteFactory.CreateDodongoLeftHitSprite());
+
+            /*
             sprites.Add(spriteFactory.CreateHeartSprite());
             sprites.Add(spriteFactory.CreateHalfHeartSprite());
             sprites.Add(spriteFactory.CreateEmptyHeartSprite());
@@ -83,6 +94,7 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateKeySprite());
             sprites.Add(spriteFactory.CreateCompassSprite());
             sprites.Add(spriteFactory.CreateTriforcePieceSprite());
+            */
 
             foreach (AnimatedSprite sprite in sprites)
             {
