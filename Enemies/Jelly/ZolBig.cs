@@ -2,22 +2,23 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace LegendOfZelda.Enemies.Bat
+namespace LegendOfZelda.Enemies.ZolBig
 {
-    public class Bat : IEnemy
+    public class ZolBig : IEnemy
     {
         private Game1 game;
         public SpriteFactory spriteFactory;
-        private readonly ISprite batSprite;
+        private readonly ISprite zolBigSprite;
         private int health { get; set; } = 1;
         public Vector2 Position;
         private Vector2 Direction;
         private double lastSwitch = 0;
 
-        public Bat(Vector2 pos, SpriteFactory SpriteFactory)
+        public ZolBig(Vector2 pos)
         {
-            spriteFactory = SpriteFactory;
-            batSprite = spriteFactory.CreateKeeseSprite();
+            game = Game1.instance;
+            spriteFactory = game.spriteFactory;
+            zolBigSprite = spriteFactory.CreateZolSprite();
             Position = pos;
         }
         public void ChangePosition()
@@ -33,7 +34,7 @@ namespace LegendOfZelda.Enemies.Bat
             {
                 Position -= Direction;
             }
-            batSprite.UpdatePos(Position);
+            zolBigSprite.UpdatePos(Position);
         }
         public void Attack()
         {   
@@ -56,19 +57,19 @@ namespace LegendOfZelda.Enemies.Bat
 
             if (random == 0)
             {
-                Direction = new Vector2(1, 1);
+                Direction = new Vector2(1, 0);
             }
             else if (random == 1)
             {
-                Direction = new Vector2(-1, 1);
+                Direction = new Vector2(-1, 0);
             }
             else if (random == 2)
             {
-                Direction = new Vector2(1, -1);
+                Direction = new Vector2(0, 1);
             }
             else if (random == 3)
             {
-                Direction = new Vector2(-1, -1);
+                Direction = new Vector2(0, -1);
             }
         }
 
@@ -84,7 +85,7 @@ namespace LegendOfZelda.Enemies.Bat
 
         public void Draw()
         {
-            batSprite.Draw();
+            zolBigSprite.Draw();
         }
     }
 }
