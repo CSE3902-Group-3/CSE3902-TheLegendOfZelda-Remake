@@ -19,6 +19,11 @@ namespace LegendOfZelda
             map = spriteFactory.CreateMapSprite();
         }
 
+        public void Remove()
+        {
+            map.UnregisterSprite();
+        }
+
         public void Collect()
         {
             //left empty for sprint2

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    public class ItemScroll : IItem
+    public class ItemScroll
     {
         private List<IItem> itemCollection;
 
@@ -18,12 +18,6 @@ namespace LegendOfZelda
             {
                 new Arrow(), new Bomb(), new Boomerang(), new Bow(), new Candle(), new Clock(), new Compass(), new HeartContainer(), new Key(), new Map(), new Potion(), new Heart(), new Triforce(), new Fairy(), new Rupee()
             };
-        }
-
-        
-        public void Collect()
-        {
-            //Not needed here
         }
 
     }

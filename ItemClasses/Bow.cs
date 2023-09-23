@@ -19,6 +19,11 @@ namespace LegendOfZelda
             bow = spriteFactory.CreateBowSprite();
         }
 
+        public void Remove()
+        {
+            bow.UnregisterSprite();
+        }
+
         public void Collect()
         {
             //left empty for sprint2

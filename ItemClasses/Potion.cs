@@ -19,6 +19,11 @@ namespace LegendOfZelda
             potion = spriteFactory.CreateBluePotionSprite();
         }
 
+        public void Remove()
+        {
+            potion.UnregisterSprite();
+        }
+
         public void Collect()
         {
             //left empty for sprint2

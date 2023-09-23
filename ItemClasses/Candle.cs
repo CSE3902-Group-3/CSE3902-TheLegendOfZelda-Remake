@@ -19,6 +19,11 @@ namespace LegendOfZelda
             candle = spriteFactory.CreateBlueCandleSprite();
         }
 
+        public void Remove()
+        {
+            candle.UnregisterSprite();
+        }
+
         public void Collect()
         {
             //left empty for sprint2

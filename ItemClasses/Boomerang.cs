@@ -19,6 +19,11 @@ namespace LegendOfZelda
             boomerang = spriteFactory.CreateBoomerangItemSprite();
         }
 
+        public void Remove()
+        {
+            boomerang.UnregisterSprite();
+        }
+
         public void Collect()
         {
             //left empty for sprint2

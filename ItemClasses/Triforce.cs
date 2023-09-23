@@ -19,6 +19,11 @@ namespace LegendOfZelda
             triforce = spriteFactory.CreateTriforcePieceSprite();
         }
 
+        public void Remove()
+        {
+            triforce.UnregisterSprite();
+        }
+
         public void Collect()
         {
             //left empty for sprint2

@@ -19,6 +19,11 @@ namespace LegendOfZelda
             key = spriteFactory.CreateKeySprite();
         }
 
+        public void Remove()
+        {
+            key.UnregisterSprite();
+        }
+
         public void Collect()
         {
             //left empty for sprint2

@@ -19,6 +19,11 @@ namespace LegendOfZelda
             clock = spriteFactory.CreateClockSprite();
         }
 
+        public void Remove()
+        {
+            clock.UnregisterSprite();
+        }
+
         public void Collect()
         {
             //left empty for sprint2

@@ -19,10 +19,17 @@ namespace LegendOfZelda
             arrow = spriteFactory.CreateArrowUpSprite();
         }
 
+        public void Remove()
+        {
+            arrow.UnregisterSprite();
+        }
+
         public void Collect()
         {
             //left empty for sprint2
         }
+
+        
     }
 }
 

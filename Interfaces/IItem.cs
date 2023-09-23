@@ -10,6 +10,7 @@ namespace LegendOfZelda.Interfaces
 {
     public interface IItem
     {
+        void Remove();
         void Collect();
     }
 }

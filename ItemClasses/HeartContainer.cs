@@ -19,6 +19,11 @@ namespace LegendOfZelda
             heartContainer = spriteFactory.CreateHeartContainerSprite();
         }
 
+        public void Remove()
+        {
+            heartContainer.UnregisterSprite();
+        }
+
         public void Collect()
         {
             //left empty for sprint2
