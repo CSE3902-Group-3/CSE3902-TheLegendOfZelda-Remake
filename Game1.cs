@@ -61,13 +61,11 @@ namespace LegendOfZelda
             spriteFactory.LoadTextures();
 
             blockCycler = new BlockCycler(new Vector2(300, 200));
+
             //Uncomment the following line for testing
             new AnimationTester();
 
             link = new Link(this);
-
-            //Uncomment the following line for testing
-            //new AnimationTester();
         }
 
         protected override void Update(GameTime gameTime)
