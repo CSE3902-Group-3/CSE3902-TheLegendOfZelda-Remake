@@ -22,6 +22,7 @@ namespace LegendOfZelda.Enemies
                 new Goriya(Position),
                 new GelSmall(Position),
                 new ZolBig(Position),
+                new Wizard(Position),
             };
         }
 
