@@ -67,9 +67,6 @@ namespace LegendOfZelda
             new AnimationTester();
 
             link = new Link(this);
-
-            //Uncomment the following line for testing
-            //new AnimationTester();
         }
 
         protected override void Update(GameTime gameTime)
