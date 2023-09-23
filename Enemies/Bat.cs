@@ -2,24 +2,24 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace LegendOfZelda.Enemies.GelSmall
+namespace LegendOfZelda.Enemies
 {
-
-    public class GelSmall : IEnemy
+    public class Bat : IEnemy
     {
         private Game1 game;
         public SpriteFactory spriteFactory;
-        private readonly ISprite gelSmallSprite;
+        private readonly AnimatedSprite batSprite;
         private int health { get; set; } = 1;
         public Vector2 Position;
         private Vector2 Direction;
         private double lastSwitch = 0;
 
-        public GelSmall(Vector2 pos)
+        public Bat(Vector2 pos)
         {
             game = Game1.instance;
+            game.RegisterUpdateable(this);
             spriteFactory = game.spriteFactory;
-            gelSmallSprite = spriteFactory.CreateGelSprite();
+            batSprite = spriteFactory.CreateKeeseSprite();
             Position = pos;
         }
         public void ChangePosition()
@@ -33,9 +33,9 @@ namespace LegendOfZelda.Enemies.GelSmall
             // This is kinda cursed, but it's to make sure the sprite does not venture beyond the screen border
             if (Position.X >= game.GraphicsDevice.Viewport.Width || Position.Y >= game.GraphicsDevice.Viewport.Height)
             {
-                Position -= Direction;
+                ChangeDirection();
             }
-            gelSmallSprite.UpdatePos(Position);
+            batSprite.UpdatePos(Position);
         }
         public void Attack()
         {
@@ -74,6 +74,10 @@ namespace LegendOfZelda.Enemies.GelSmall
                 Direction = new Vector2(0, -1);
             }
         }
+        public void Die()
+        {
+            batSprite.UnregisterSprite();
+        }
 
         public void Update(GameTime gameTime)
         {
@@ -87,7 +91,7 @@ namespace LegendOfZelda.Enemies.GelSmall
 
         public void Draw()
         {
-            gelSmallSprite.Draw();
+            batSprite.Draw();
         }
     }
 }

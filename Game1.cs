@@ -1,3 +1,4 @@
+using LegendOfZelda.Enemies;
 using LegendOfZelda.Environment;
 using LegendOfZelda.Interfaces;
 using LegendOfZelda.Player;
@@ -29,7 +30,7 @@ namespace LegendOfZelda
         /* Controller */
         private IController controller;
         public BlockCycler blockCycler { get; private set; }
-
+        public EnemyCycler enemyCycler { get; private set; }
         public static Game1 instance { get; private set; }
 
         public Game1()
@@ -61,6 +62,7 @@ namespace LegendOfZelda
             spriteFactory.LoadTextures();
 
             blockCycler = new BlockCycler(new Vector2(300, 200));
+            enemyCycler = new EnemyCycler(new Vector2(150, 150));
             //Uncomment the following line for testing
             new AnimationTester();
 

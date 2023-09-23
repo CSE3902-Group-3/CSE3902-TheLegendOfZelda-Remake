@@ -11,5 +11,6 @@ namespace LegendOfZelda.Interfaces
         void Attack();
         void ChangePosition();
         void ChangeDirection();
+        void Die();
     }
 }

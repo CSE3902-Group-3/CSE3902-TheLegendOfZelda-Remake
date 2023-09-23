@@ -1,3 +1,4 @@
+using LegendOfZelda.Enemies;
 using LegendOfZelda.Environment;
 using Microsoft.Xna.Framework;
 using System;
@@ -12,6 +13,7 @@ namespace LegendOfZelda
     {
         SpriteFactory spriteFactory;
         BlockCycler blockCycler;
+        EnemyCycler enemyCycler;
         List<AnimatedSprite> sprites;
         double lastSwitch = 0;
         double lastPause = 0;
@@ -21,6 +23,7 @@ namespace LegendOfZelda
             Game1.instance.RegisterUpdateable(this);
             spriteFactory = Game1.instance.spriteFactory;
             blockCycler = Game1.instance.blockCycler;
+            enemyCycler = Game1.instance.enemyCycler;
 
             sprites = new List<AnimatedSprite>();
             
@@ -114,6 +117,7 @@ namespace LegendOfZelda
                 sprites[counter].RegisterSprite();
                 sprites[counter].UpdatePos(new Vector2(400, 200));
                 blockCycler.cycleForward();
+                enemyCycler.CycleForward();
             }
             
 
@@ -130,6 +134,7 @@ namespace LegendOfZelda
                 //new BombProjectile(new Vector2(300, 200));
 
                 blockCycler.cycleBackward();
+                enemyCycler.CycleBackward();
             }
             
             //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
