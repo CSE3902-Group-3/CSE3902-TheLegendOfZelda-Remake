@@ -10,8 +10,6 @@ namespace LegendOfZelda.Command.TestUse
     public class PreviousEnemyCommand : ICommands
     {
         // Prepare for later
-        IEnemy enemy;
-        IEnemyState state;
         public void Execute()
         {
             //Prepare for later

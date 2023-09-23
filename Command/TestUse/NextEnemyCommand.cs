@@ -8,10 +8,7 @@ using System.Threading.Tasks;
 namespace LegendOfZelda.Command.TestUse
 {
     public class NextEnemyCommand : ICommands
-    {
-        // Prepare for later
-        IEnemy enemy;
-        IEnemyState state;
+    { 
         public void Execute()
         {
             //Prepare for later
