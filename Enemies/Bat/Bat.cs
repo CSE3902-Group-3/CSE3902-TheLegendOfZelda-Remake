@@ -36,21 +36,22 @@ namespace LegendOfZelda.Enemies.Bat
             batSprite.UpdatePos(Position);
         }
         public void Attack()
-        {   
+        {
             /* 
              * This isn't needed for Sprint 2,
              * however it will be needed later.
              */
         }
-        public void UpdateHealth() 
-        { 
+        public void UpdateHealth()
+        {
             /* 
              * This isn't needed for Sprint 2,
              * however it will be needed later.
              */
         }
 
-        public void ChangeDirection() {
+        public void ChangeDirection()
+        {
             Random rand = new Random();
             int random = rand.Next(0, 4);
 
@@ -74,7 +75,7 @@ namespace LegendOfZelda.Enemies.Bat
 
         public void Update(GameTime gameTime)
         {
-           if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 ChangeDirection();
