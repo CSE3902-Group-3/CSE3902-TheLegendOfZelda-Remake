@@ -37,7 +37,7 @@ namespace LegendOfZelda.Enemies.Wizard
 
         public void ChangeDirection()
         {
-            // Wizard does not have extra functionality, other than being drawn for Sprint 2
+            // Wizard does not change direction
         }
 
         public void Update(GameTime gameTime)
