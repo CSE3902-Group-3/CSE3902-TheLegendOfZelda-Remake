@@ -20,7 +20,6 @@ namespace LegendOfZelda
         public SpriteFactory spriteFactory { get; private set; }
 
         private IController controller;
-        private Goriya goriya;
         public static Game1 instance { get; private set; }
 
         public Game1()
@@ -54,7 +53,6 @@ namespace LegendOfZelda
 
             //Uncomment the following line for testing
             new AnimationTester();
-            goriya = new Goriya(new Vector2(50, 50));
         }
 
         protected override void Update(GameTime gameTime)
@@ -68,7 +66,6 @@ namespace LegendOfZelda
                 updateables[i].Update(gameTime);
             }
 
-            goriya.Update(gameTime);
             base.Update(gameTime);
         }
 
