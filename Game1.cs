@@ -1,10 +1,12 @@
-﻿using LegendOfZelda.Interfaces;
+using LegendOfZelda.Environment;
+using LegendOfZelda.Interfaces;
 using LegendOfZelda.Player;
 using LegendOfZelda.StateMachine.LinkStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading;
 using IDrawable = LegendOfZelda.Interfaces.IDrawable;
 using IUpdateable = LegendOfZelda.Interfaces.IUpdateable;
@@ -26,6 +28,7 @@ namespace LegendOfZelda
 
         /* Controller */
         private IController controller;
+        public BlockCycler blockCycler { get; private set; }
 
         public static Game1 instance { get; private set; }
 
@@ -56,6 +59,10 @@ namespace LegendOfZelda
             drawables = new List<IDrawable>();
 
             spriteFactory.LoadTextures();
+
+            blockCycler = new BlockCycler(new Vector2(300, 200));
+            //Uncomment the following line for testing
+            new AnimationTester();
 
             link = new Link(this);
 

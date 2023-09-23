@@ -2,24 +2,23 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace LegendOfZelda.Enemies.Bat
+namespace LegendOfZelda.Enemies.ZolBig
 {
-    public class Bat : IEnemy
+    public class ZolBig : IEnemy
     {
         private Game1 game;
         public SpriteFactory spriteFactory;
-        private readonly ISprite batSprite;
+        private readonly ISprite zolBigSprite;
         private int health { get; set; } = 1;
         public Vector2 Position;
         private Vector2 Direction;
         private double lastSwitch = 0;
 
-        public Bat(Vector2 pos)
+        public ZolBig(Vector2 pos)
         {
             game = Game1.instance;
-            game.RegisterUpdateable(this);
             spriteFactory = game.spriteFactory;
-            batSprite = spriteFactory.CreateKeeseSprite();
+            zolBigSprite = spriteFactory.CreateZolSprite();
             Position = pos;
         }
         public void ChangePosition()
@@ -31,29 +30,28 @@ namespace LegendOfZelda.Enemies.Bat
             }
 
             // This is kinda cursed, but it's to make sure the sprite does not venture beyond the screen border
-            if (Position.X >= game.GraphicsDevice.Viewport.Width || Position.Y >= game.GraphicsDevice.Viewport.Height)
+            if (Position.X >= Game1.instance.GraphicsDevice.Viewport.Width || Position.Y >= Game1.instance.GraphicsDevice.Viewport.Height)
             {
-                ChangeDirection();
+                Position -= Direction;
             }
-            batSprite.UpdatePos(Position);
+            zolBigSprite.UpdatePos(Position);
         }
         public void Attack()
-        {
+        {   
             /* 
              * This isn't needed for Sprint 2,
              * however it will be needed later.
              */
         }
-        public void UpdateHealth()
-        {
+        public void UpdateHealth() 
+        { 
             /* 
              * This isn't needed for Sprint 2,
              * however it will be needed later.
              */
         }
 
-        public void ChangeDirection()
-        {
+        public void ChangeDirection() {
             Random rand = new Random();
             int random = rand.Next(0, 4);
 
@@ -77,7 +75,7 @@ namespace LegendOfZelda.Enemies.Bat
 
         public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
+           if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 ChangeDirection();
@@ -87,7 +85,7 @@ namespace LegendOfZelda.Enemies.Bat
 
         public void Draw()
         {
-            batSprite.Draw();
+            zolBigSprite.Draw();
         }
     }
 }
