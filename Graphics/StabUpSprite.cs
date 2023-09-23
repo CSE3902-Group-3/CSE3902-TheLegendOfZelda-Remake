@@ -11,7 +11,7 @@ namespace LegendOfZelda
     public class StabUpSprite : AnimatedSprite
     {
 
-        public StabUpSprite(Texture2D texture, Rectangle[] frames, SpriteEffects effect, int drawFramesPerAnimFrame, int scale) : base(texture, frames, effect, drawFramesPerAnimFrame, scale)
+        public StabUpSprite(Texture2D texture, Rectangle[] frames, SpriteEffects effect, int drawFramesPerAnimFrame, int scale, bool repeating) : base(texture, frames, effect, drawFramesPerAnimFrame, scale, repeating)
         {
 
         }
