@@ -11,19 +11,17 @@ namespace LegendOfZelda.Enemies.Wizard
         private readonly ISprite wizardSprite;
         private int health { get; set; } = 1;
         public Vector2 Position;
-        private Vector2 Direction;
-        private double lastSwitch = 0;
 
         public Wizard(Vector2 pos)
         {
             game = Game1.instance;
             spriteFactory = game.spriteFactory;
-            wizardSprite = null; // Need to pull Wizard sprite from the sprite sheet
+            wizardSprite = spriteFactory.CreateOldManSprite();
             Position = pos;
         }
         public void ChangePosition()
         {
-            // Wizard does not have extra functionality, other than being drawn for Sprint 2
+            wizardSprite.UpdatePos(Position);
         }
         public void Attack()
         {
@@ -44,7 +42,7 @@ namespace LegendOfZelda.Enemies.Wizard
 
         public void Update(GameTime gameTime)
         {
-           // Wizard does not have extra functionality, other than being drawn for Sprint 2
+            ChangePosition();
         }
 
         public void Draw()
