@@ -65,7 +65,7 @@ namespace LegendOfZelda
             //Uncomment the following line for testing
             new AnimationTester();
 
-            link = new Player.Link(this);
+            link = new Link(this);
 
             //Uncomment the following line for testing
             //new AnimationTester();
