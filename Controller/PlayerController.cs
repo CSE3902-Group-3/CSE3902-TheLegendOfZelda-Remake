@@ -14,21 +14,28 @@ namespace LegendOfZelda.Controller
     internal class PlayerController : IController
     {
         //private Dictionary<Keys, ICommands> controllerMappings;
-        private Game1 game;
         private KeyboardMapping controllerMappings;
         private ICommands command;
-        private Dictionary<Keys, bool> keyState;
+        private KeyboardState currState;
+        private KeyboardState prevState;
+        //private Dictionary<Keys, bool> keyState;
 
-        public PlayerController(Game1 game)
+        public PlayerController(Game1 game, Player.Link link)
         {
-            controllerMappings = new KeyboardMapping(game);
-
-            keyState = new Dictionary<Keys, bool>();
+            controllerMappings = new KeyboardMapping(game, link);
+            
+            //keyState = new Dictionary<Keys, bool>();
         }
 
         public void Update()
         {
+            currState = Keyboard.GetState();
 
+            KeyDownEvents();
+            KeyUpEvents();
+
+            prevState = currState;
+            /*
             KeyboardState keyboardState = Keyboard.GetState();
             Keys[] pressedKeys = keyboardState.GetPressedKeys();
 
@@ -53,6 +60,43 @@ namespace LegendOfZelda.Controller
                 else
                 {
                     keyState[key] = false;
+                }
+            }
+            */
+        }
+
+        private void KeyDownEvents()
+        {
+            Keys[] currKeys= currState.GetPressedKeys();
+            Keys[] prevKeys = prevState.GetPressedKeys();
+
+            foreach (Keys key in currKeys)
+            {
+                if (!prevKeys.Contains(key))
+                {
+                    command = controllerMappings.GetCommand(key);
+                    if (command != null)
+                    {
+                        command.Execute();
+                    }
+                }
+            }
+        }
+
+        private void KeyUpEvents()
+        {
+            Keys[] currKeys = currState.GetPressedKeys();
+            Keys[] prevKeys = prevState.GetPressedKeys();
+
+            foreach (Keys key in prevKeys)
+            {
+                if (!currKeys.Contains(key))
+                {
+                    command = controllerMappings.GetCommand(key);
+                    if (command != null)
+                    {
+                        command.Execute();
+                    }
                 }
             }
         }

@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Interfaces;
+using LegendOfZelda.StateMachine.LinkStates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,18 @@ namespace LegendOfZelda.Command.Link
 {
     public class MovingLeftCommand : ICommands
     {
-        SpriteFactory spriteFactory;
-        AnimatedSprite link;
-        //Prepare for later use
-        private IState linkState;
+        private Player.Link link;
+
+        public MovingLeftCommand(Player.Link link)
+        {
+            this.link = link;
+            link.stateMachine.ChangeState(new WalkLeftLinkState(Game1.instance));
+            link.currentDirection = Player.Link.Direction.Left;
+        }
 
         public void Execute()
         {
-            spriteFactory = Game1.instance.spriteFactory;
-            link = spriteFactory.CreateLinkWalkLeftSprite();
-
-            link.UpdatePos(new Microsoft.Xna.Framework.Vector2(80, 0));
+            link.stateMachine.Update();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace LegendOfZelda.Controller
         private Dictionary<Keys, ICommands> controllerMappings;
         private Game1 game;
 
-        public KeyboardMapping(Game1 game)
+        public KeyboardMapping(Game1 game, Player.Link link)
         {
             this.game = game;
             controllerMappings = new Dictionary<Keys, ICommands>();
@@ -24,14 +24,14 @@ namespace LegendOfZelda.Controller
             controllerMappings.Add(Keys.Q, new QuitCommand(game));
             controllerMappings.Add(Keys.R, new ResetCommand());
 
-            controllerMappings.Add(Keys.W, new MovingUpCommand());
-            controllerMappings.Add(Keys.Up, new MovingUpCommand());
-            controllerMappings.Add(Keys.A, new MovingLeftCommand());
-            controllerMappings.Add(Keys.Left, new MovingLeftCommand());
-            controllerMappings.Add(Keys.S, new MovingDownCommand());
-            controllerMappings.Add(Keys.Down, new MovingDownCommand());
-            controllerMappings.Add(Keys.D, new MovingRightCommand());
-            controllerMappings.Add(Keys.Right, new MovingRightCommand());
+            controllerMappings.Add(Keys.W, new MovingUpCommand(link));
+            controllerMappings.Add(Keys.Up, new MovingUpCommand(link));
+            controllerMappings.Add(Keys.A, new MovingLeftCommand(link));
+            controllerMappings.Add(Keys.Left, new MovingLeftCommand(link));
+            controllerMappings.Add(Keys.S, new MovingDownCommand(link));
+            controllerMappings.Add(Keys.Down, new MovingDownCommand(link));
+            controllerMappings.Add(Keys.D, new MovingRightCommand(link));
+            controllerMappings.Add(Keys.Right, new MovingRightCommand(link));
             controllerMappings.Add(Keys.Z, new PrimaryAttackCommand());
             controllerMappings.Add(Keys.N, new SecondaryAttackCommand());
 

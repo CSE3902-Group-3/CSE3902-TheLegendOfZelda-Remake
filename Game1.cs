@@ -24,7 +24,7 @@ namespace LegendOfZelda
         public SpriteFactory spriteFactory { get; private set; }
 
         /* Link */
-        public IPlayer link { get; private set; }
+        public Player.Link link { get; private set; }
 
         /* Controller */
         private IController controller;
@@ -44,6 +44,7 @@ namespace LegendOfZelda
             // TODO: Add your initialization logic here
             instance = this;
             updateables = new List<IUpdateable>();
+            link = new Link(this);
 
             spriteFactory = new SpriteFactory(8, 8);
 
@@ -64,7 +65,7 @@ namespace LegendOfZelda
             //Uncomment the following line for testing
             new AnimationTester();
 
-            link = new Link(this);
+            link = new Player.Link(this);
 
             //Uncomment the following line for testing
             //new AnimationTester();
@@ -76,7 +77,7 @@ namespace LegendOfZelda
             //    Exit();
 
             // TODO: Add your update logic here
-            controller = new PlayerController(this);
+            controller = new PlayerController(this, link);
             controller.Update();
 
             for(int i = updateables.Count - 1; i >= 0; i--)
