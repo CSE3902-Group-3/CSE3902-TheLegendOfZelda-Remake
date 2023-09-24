@@ -1,19 +1,14 @@
 ﻿using LegendOfZelda.Interfaces;
 using LegendOfZelda.Player;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LegendOfZelda.StateMachine.LinkStates
 {
-    public class AttackingRightLinkState : IState
+    public class ItemThrowRightLinkState : IState
     {
         private Game1 game;
         private Link link;
 
-        public AttackingRightLinkState(Game1 game)
+        public ItemThrowRightLinkState(Game1 game)
         {
             this.game = game;
             this.link = (Link)game.link;
@@ -21,19 +16,19 @@ namespace LegendOfZelda.StateMachine.LinkStates
 
         public void Enter()
         {
-            // swap to sprite with weapon
-            // start walking animation in direction
-
-            // update velocity if prevState was idle
+            link.sprite = game.spriteFactory.CreateLinkThrowRightSprite();
         }
+
         public void Execute()
         {
-            
+            // do nothing
         }
 
         public void Exit()
         {
-            // 
+            // cast then unregister sprite drawing
+            AnimatedSprite spriteAlias = (AnimatedSprite)this.link.sprite;
+            spriteAlias.UnregisterSprite();
         }
 
     }

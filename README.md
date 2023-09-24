@@ -26,7 +26,6 @@ characters should move, animate, fire projectiles, etc. as they do in the final 
 - We had an implementation which used HLSL shaders to color sprites more accurately, but due to bugs in Monogame on Mac, we were forced to remove this
 
 ## Code Metrics:
-
 - 9/21:
 -   Maintainability: 88
 -   Cyclomatic Complexity: 221
