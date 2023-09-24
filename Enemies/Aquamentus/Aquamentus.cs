@@ -16,6 +16,7 @@ namespace LegendOfZelda.Enemies.Aquamentus
 
         public Aquamentus(Vector2 pos)
         {
+            Game1.instance.RegisterUpdateable(this);
             AquamentusSprite = Game1.instance.spriteFactory.CreateAquamentusSprite();
             Position = pos;
         }
@@ -62,6 +63,11 @@ namespace LegendOfZelda.Enemies.Aquamentus
         public void Draw()
         {
             AquamentusSprite.Draw();
+        }
+        public void Destroy()
+        {
+            Game1.instance.RemoveDrawable(AquamentusSprite);
+            Game1.instance.RemoveUpdateable(this);
         }
     }
 }

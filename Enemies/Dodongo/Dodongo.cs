@@ -7,30 +7,40 @@ namespace LegendOfZelda.Enemies.Dodongo
     public class Dodongo : IEnemy
     {
         private Game1 Game { get; set; }
-        public SpriteFactory SpriteFactory;
-        private readonly ISprite DodongoSprite;
+        private ISprite DodongoSprite;
         private int Health { get; set; } = 1;
         public Vector2 Position;
-        private int CycleCount = 0;
-        private int PosIncrement = 2;
+        private int PosIncrement = 5;
 
-        public Dodongo(Vector2 pos, SpriteFactory spriteFactory)
+        private double LastDirSwitch = 0;
+        private enum FacingDirection { facingDown, facingUp, facingRight, facingLeft };
+        private FacingDirection Direction = FacingDirection.facingRight;
+        private Boolean Injured = false;
+        private double LastHealthSwitch = 0;
+
+        public Dodongo(Vector2 pos)
         {
-            this.SpriteFactory = spriteFactory;
-            //DodongoSprite = this.SpriteFactory.CreateDodongoSprite();
+            Game1.instance.RegisterUpdateable(this);
+            DodongoSprite = Game1.instance.spriteFactory.CreateDodongoRightSprite();
             Position = pos;
         }
         public void ChangePosition()
         {
-            // Cycle left and right movement
-            if (CycleCount > 3)
+            switch(Direction)
             {
-                CycleCount = 0;
-                PosIncrement *= -1;
+                case (FacingDirection.facingDown):
+                    Position.Y += PosIncrement;
+                    break;
+                case(FacingDirection.facingUp):
+                    Position.Y -= PosIncrement;
+                    break;
+                case (FacingDirection.facingRight):
+                    Position.X += PosIncrement;
+                    break;
+                case (FacingDirection.facingLeft):
+                    Position.X -= PosIncrement;
+                    break;
             }
-            Position.X += PosIncrement;
-            CycleCount++;
-
             DodongoSprite.UpdatePos(Position);
         }
         public void Attack()
@@ -42,32 +52,75 @@ namespace LegendOfZelda.Enemies.Dodongo
         }
         public void UpdateHealth()
         {
-            /* 
-             * This isn't needed for Sprint 2,
-             * however it will be needed later.
-             */
+            if (Injured)
+            {
+                Game1.instance.RemoveDrawable(DodongoSprite);
+                switch (Direction)
+                {
+                    case (FacingDirection.facingDown):
+                        DodongoSprite = Game1.instance.spriteFactory.CreateDodongoDownHitSprite();
+                        break;
+                    case (FacingDirection.facingUp):
+                        DodongoSprite = Game1.instance.spriteFactory.CreateDodongoUpHitSprite();
+                        break;
+                    case (FacingDirection.facingRight):
+                        DodongoSprite = Game1.instance.spriteFactory.CreateDodongoRightHitSprite();
+                        break;
+                    case (FacingDirection.facingLeft):
+                        DodongoSprite = Game1.instance.spriteFactory.CreateDodongoLeftHitSprite();
+                        break;
+                }
+            }
+            Injured = !Injured;
         }
 
         public void ChangeDirection()
         {
-            // Dodongo cycles left and right movement,
-            // but it does not change the direction it is
-            // facing
+            Game1.instance.RemoveDrawable(DodongoSprite);
+            switch (Direction)
+            {
+                case (FacingDirection.facingDown):
+                    Direction = FacingDirection.facingRight;
+                    DodongoSprite = Game1.instance.spriteFactory.CreateDodongoRightSprite();
+                    break;
+                case (FacingDirection.facingUp):
+                    Direction = FacingDirection.facingLeft;
+                    DodongoSprite = Game1.instance.spriteFactory.CreateDodongoLeftSprite();
+                    break;
+                case (FacingDirection.facingRight):
+                    Direction = FacingDirection.facingUp;
+                    DodongoSprite = Game1.instance.spriteFactory.CreateDodongoUpSprite();
+                    break;
+                case (FacingDirection.facingLeft):
+                    Direction = FacingDirection.facingDown;
+                    DodongoSprite = Game1.instance.spriteFactory.CreateDodongoDownSprite();
+                    break;
+            }
         }
 
         public void Update(GameTime gameTime)
         {
-            /* 
-             * I don't think there is a valid
-             * implimentation for this at the moment.
-             * This could be applicable when we 
-             * have collision.
-            */
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastDirSwitch + 1000)
+            {
+                LastDirSwitch = gameTime.TotalGameTime.TotalMilliseconds;
+                ChangeDirection();
+            }
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastHealthSwitch + 550)
+            {
+                LastHealthSwitch = gameTime.TotalGameTime.TotalMilliseconds;
+                UpdateHealth();
+            }
+            ChangePosition();
         }
 
         public void Draw()
         {
             DodongoSprite.Draw();
+        }
+        public void Destroy()
+        {
+            Game1.instance.RemoveUpdateable(this);
+            Game1.instance.RemoveDrawable(DodongoSprite);
         }
     }
 }

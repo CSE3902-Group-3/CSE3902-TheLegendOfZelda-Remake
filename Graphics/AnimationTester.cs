@@ -20,10 +20,10 @@ namespace LegendOfZelda
         public AnimationTester() {
             Game1.instance.RegisterUpdateable(this);
             spriteFactory = Game1.instance.spriteFactory;
-            blockCycler = Game1.instance.blockCycler;
+            //blockCycler = Game1.instance.blockCycler;
 
             sprites = new List<AnimatedSprite>();
-            
+
             /*
             sprites.Add(spriteFactory.CreateLinkWalkDownSprite());
             sprites.Add(spriteFactory.CreateLinkWalkRightSprite());
@@ -78,6 +78,16 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateCompassSprite());
             sprites.Add(spriteFactory.CreateTriforcePieceSprite());
             */
+            sprites.Add(spriteFactory.CreateDodongoDownHitSprite());
+            sprites.Add(spriteFactory.CreateDodongoDownSprite());
+            sprites.Add(spriteFactory.CreateDodongoUpHitSprite());
+            sprites.Add(spriteFactory.CreateDodongoUpSprite());
+            sprites.Add(spriteFactory.CreateDodongoLeftHitSprite());
+            sprites.Add(spriteFactory.CreateDodongoLeftSprite());
+            sprites.Add(spriteFactory.CreateDodongoRightHitSprite());
+            sprites.Add(spriteFactory.CreateDodongoRightSprite());
+
+
 
             foreach (AnimatedSprite sprite in sprites)
             {
@@ -96,7 +106,7 @@ namespace LegendOfZelda
                 if (counter >= sprites.Count) counter = 0;
                 sprites[counter].RegisterSprite();
                 sprites[counter].UpdatePos(new Vector2(400, 200));
-                blockCycler.cycleForward();
+                //blockCycler.cycleForward();
             }
             
 
@@ -112,7 +122,7 @@ namespace LegendOfZelda
                 //new ArrowProjectile(new Vector2(200, 200), Direction.up);
                 //new BombProjectile(new Vector2(300, 200));
 
-                blockCycler.cycleBackward();
+                //blockCycler.cycleBackward();
             }
             
             //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));

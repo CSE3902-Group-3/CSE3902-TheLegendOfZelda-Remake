@@ -7,65 +7,78 @@ namespace LegendOfZelda.Enemies.Rope
     public class Rope : IEnemy
     {
         private Game1 Game { get; set; }
-        private readonly ISprite RopeSprite;
+        private ISprite RopeSprite;
         private int Health { get; set; } = 1;
         public Vector2 Position;
-        private int CycleCount = 0;
-        private int PosIncrement = 2;
+        private int PosIncrement = 5;
+        private Boolean facingLeft = false;
+        private double LastDirSwitch = 0;
 
         public Rope(Vector2 pos)
         {
-            RopeSprite = Game1.instance.spriteFactory.CreateRopeLeftSprite();
+            Game1.instance.RegisterUpdateable(this);
+            RopeSprite = Game1.instance.spriteFactory.CreateRopeRightSprite();
             Position = pos;
         }
         public void ChangePosition()
         {
             // Cycle left and right movement
-            if (CycleCount > 3)
+            if (facingLeft)
             {
-                CycleCount = 0;
-                PosIncrement *= -1;
+                Position.X -= PosIncrement;
+            } 
+            else
+            {
+                Position.X += PosIncrement;
             }
-            Position.X += PosIncrement;
-            CycleCount++;
 
             RopeSprite.UpdatePos(Position);
         }
         public void Attack()
         {
             /* 
-             * This isn't needed for Sprint 2,
-             * however it will be needed later.
+             * This isn't needed for Sprint 2, however it will be needed later.
              */
         }
         public void UpdateHealth()
         {
             /* 
-             * This isn't needed for Sprint 2,
-             * however it will be needed later.
+             * This isn't needed for Sprint 2, however it will be needed later.
              */
         }
 
         public void ChangeDirection()
         {
-            // Rope cycles left and right movement,
-            // but it does not change the direction it is
-            // facing
+            Game1.instance.RemoveDrawable(RopeSprite);
+            if (facingLeft)
+            {
+                RopeSprite = Game1.instance.spriteFactory.CreateRopeRightSprite();
+            } 
+            else
+            {
+                RopeSprite = Game1.instance.spriteFactory.CreateRopeLeftSprite();
+            }
+            facingLeft = !facingLeft;
         }
 
         public void Update(GameTime gameTime)
         {
-            /* 
-             * I don't think there is a valid
-             * implimentation for this at the moment.
-             * This could be applicable when we 
-             * have collision.
-            */
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastDirSwitch + 1000)
+            {
+                LastDirSwitch = gameTime.TotalGameTime.TotalMilliseconds;
+                ChangeDirection();
+            }
+            ChangePosition();
         }
 
         public void Draw()
         {
             RopeSprite.Draw();
+        }
+        public void Destroy()
+        {
+            Game1.instance.RemoveDrawable(RopeSprite);
+            Game1.instance.RemoveUpdateable(this);
         }
     }
 }

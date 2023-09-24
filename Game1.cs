@@ -1,3 +1,6 @@
+using LegendOfZelda.Enemies.Aquamentus;
+using LegendOfZelda.Enemies.Dodongo;
+using LegendOfZelda.Enemies.Rope;
 using LegendOfZelda.Environment;
 using LegendOfZelda.Interfaces;
 using LegendOfZelda.Player;
@@ -46,6 +49,12 @@ namespace LegendOfZelda
 
             spriteFactory = new SpriteFactory(8, 8);
 
+            // Change size of viewport
+            _graphics.IsFullScreen = false;
+            _graphics.PreferredBackBufferWidth = 3000;
+            _graphics.PreferredBackBufferHeight = 1500;
+            _graphics.ApplyChanges();
+
             base.Initialize();
         }
 
@@ -61,12 +70,12 @@ namespace LegendOfZelda
 
             blockCycler = new BlockCycler(new Vector2(300, 200));
             //Uncomment the following line for testing
-            new AnimationTester();
+            //new AnimationTester();
 
             link = new Link(this);
-
-            //Uncomment the following line for testing
-            //new AnimationTester();
+            //new Aquamentus(new Vector2(500, 500));
+            //new Rope(new Vector2(1000, 1000));
+            //new Dodongo(new Vector2(1500, 750));
         }
 
         protected override void Update(GameTime gameTime)
