@@ -15,7 +15,7 @@ namespace LegendOfZelda.Command.Link
         public MovingDownCommand(Player.Link link)
         {
             this.link = link;
-            link.stateMachine.ChangeState(new WalkDownLinkState(Game1.instance));
+            //link.stateMachine.ChangeState(new WalkDownLinkState(Game1.instance));
             link.currentDirection = Player.Link.Direction.Down;
         }
 

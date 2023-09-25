@@ -15,7 +15,7 @@ namespace LegendOfZelda.Command.Link
         public MovingLeftCommand(Player.Link link)
         {
             this.link = link;
-            link.stateMachine.ChangeState(new WalkLeftLinkState(Game1.instance));
+            //link.stateMachine.ChangeState(new WalkLeftLinkState(Game1.instance));
             link.currentDirection = Player.Link.Direction.Left;
         }
 

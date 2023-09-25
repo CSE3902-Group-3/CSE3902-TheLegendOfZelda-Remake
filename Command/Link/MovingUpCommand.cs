@@ -15,7 +15,7 @@ namespace LegendOfZelda.Command.Link
         public MovingUpCommand(Player.Link link)
         {
             this.link = link;
-            link.stateMachine.ChangeState(new WalkUpLinkState(Game1.instance));
+            //link.stateMachine.ChangeState(new WalkUpLinkState(Game1.instance));
             link.currentDirection = Player.Link.Direction.Up;
         }
 
