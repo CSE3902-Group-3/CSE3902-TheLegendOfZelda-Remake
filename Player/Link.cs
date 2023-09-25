@@ -7,9 +7,10 @@ namespace LegendOfZelda.Player
     public class Link : IPlayer
     {
         public enum Direction { Up, Down, Left, Right };
-
         private Game1 game { get; set; }
         public ISprite sprite { get; set; }
+
+        public Vector2 pos { get { return sprite.pos; } }
 
         public Direction currentDirection { get; set; } = Direction.Right;
         public LinkStateMachine stateMachine { get; private set; }
