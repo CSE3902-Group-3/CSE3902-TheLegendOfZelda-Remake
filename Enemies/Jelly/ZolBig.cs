@@ -87,5 +87,9 @@ namespace LegendOfZelda.Enemies.ZolBig
         {
             zolBigSprite.Draw();
         }
+        public void Destroy()
+        {
+
+        }
     }
 }

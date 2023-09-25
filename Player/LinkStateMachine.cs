@@ -4,6 +4,8 @@ namespace LegendOfZelda.Player
 {
     public class LinkStateMachine
     {
+        // might be useful for one frame states like throwing an item
+        IState prevState;
         IState currentState;
 
         public void ChangeState(IState newState)
@@ -13,6 +15,7 @@ namespace LegendOfZelda.Player
                 currentState.Exit();
             }
 
+            prevState = currentState;
             currentState = newState;
             currentState.Enter();
         }

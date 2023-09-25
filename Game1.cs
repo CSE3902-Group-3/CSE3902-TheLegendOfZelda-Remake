@@ -4,13 +4,13 @@ using LegendOfZelda.Enemies.Goriya;
 using LegendOfZelda.Enemies.Rope;
 using LegendOfZelda.Environment;
 using LegendOfZelda.Interfaces;
-using LegendOfZelda.Environment;
 using LegendOfZelda.Player;
 using LegendOfZelda.StateMachine.LinkStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading;
 using IDrawable = LegendOfZelda.Interfaces.IDrawable;
 using IUpdateable = LegendOfZelda.Interfaces.IUpdateable;
@@ -28,7 +28,7 @@ namespace LegendOfZelda
         public SpriteFactory spriteFactory { get; private set; }
 
         /* Link */
-        public Player.Link link { get; private set; }
+        public IPlayer link { get; private set; }
 
         /* Controller */
         private IController controller;
@@ -48,9 +48,14 @@ namespace LegendOfZelda
             // TODO: Add your initialization logic here
             instance = this;
             updateables = new List<IUpdateable>();
-            link = new Link(this);
 
             spriteFactory = new SpriteFactory(8, 8);
+
+            // Change size of viewport
+            _graphics.IsFullScreen = false;
+            _graphics.PreferredBackBufferWidth = 3000;
+            _graphics.PreferredBackBufferHeight = 1500;
+            _graphics.ApplyChanges();
 
             base.Initialize();
         }
@@ -66,25 +71,23 @@ namespace LegendOfZelda
             spriteFactory.LoadTextures();
 
             blockCycler = new BlockCycler(new Vector2(300, 200));
-            //Uncomment the following line for testing
-            new AnimationTester();
-
-            link = new Link(this);
 
             //Uncomment the following line for testing
             //new AnimationTester();
+            new Goriya(new Vector2(500, 500));
+
+            link = new Link(this);
         }
 
         protected override void Update(GameTime gameTime)
         {
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            //    Exit();
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
 
             // TODO: Add your update logic here
-
             for (int i = 0; i < updateables.Count; i++)
             {
-                updateables[i].Update(gameTime);
+                    updateables[i].Update(gameTime);
             }
 
             base.Update(gameTime);

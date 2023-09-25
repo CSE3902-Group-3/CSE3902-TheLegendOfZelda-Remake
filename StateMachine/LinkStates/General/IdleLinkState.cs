@@ -2,18 +2,18 @@
 using LegendOfZelda.Player;
 using System.Runtime.CompilerServices;
 
-namespace LegendOfZelda.StateMachine.LinkStates
+namespace LegendOfZelda.StateMachine.LinkStates.General
 {
     public class IdleLinkState : IState
     {
         private Game1 game;
         private Link link;
-        
+
         // can pause animation in any direction, no need for separate states
         public IdleLinkState(Game1 game)
         {
             this.game = game;
-            this.link = (Link)game.link;
+            link = (Link)game.link;
         }
 
         public void Enter()
@@ -32,7 +32,7 @@ namespace LegendOfZelda.StateMachine.LinkStates
         {
             // cast then pause animation of sprite
             AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
-            spriteAlias.paused = false;            
+            spriteAlias.paused = false;
 
             spriteAlias.UnregisterSprite();
         }

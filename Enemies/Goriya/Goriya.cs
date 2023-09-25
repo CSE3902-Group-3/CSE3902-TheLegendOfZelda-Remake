@@ -1,25 +1,39 @@
 ﻿using LegendOfZelda.Interfaces;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 
-namespace LegendOfZelda.Enemies.Bat
+namespace LegendOfZelda.Enemies.Goriya
 {
-    public class Bat : IEnemy
+    public class Goriya : IEnemy
     {
         private Game1 game;
         public SpriteFactory spriteFactory;
-        private readonly ISprite batSprite;
+        private List<AnimatedSprite> goriyaSprites;
+        private int currentSprite;
         private int health { get; set; } = 1;
         public Vector2 Position;
         private Vector2 Direction;
         private double lastSwitch = 0;
 
-        public Bat(Vector2 pos)
+        public Goriya(Vector2 pos)
         {
             game = Game1.instance;
             game.RegisterUpdateable(this);
             spriteFactory = game.spriteFactory;
-            batSprite = spriteFactory.CreateKeeseSprite();
+            goriyaSprites = new List<AnimatedSprite>
+            {
+                spriteFactory.CreateGoriyaRightSprite(),
+                spriteFactory.CreateGoriyaLeftSprite(),
+                spriteFactory.CreateGoriyaDownSprite(),
+                spriteFactory.CreateGoriyaUpSprite()
+            };
+
+            foreach (AnimatedSprite goriya in goriyaSprites)
+            {
+                goriya.UnregisterSprite();
+            }
+
             Position = pos;
         }
         public void ChangePosition()
@@ -35,27 +49,25 @@ namespace LegendOfZelda.Enemies.Bat
             {
                 ChangeDirection();
             }
-            batSprite.UpdatePos(Position);
+            goriyaSprites[currentSprite].UpdatePos(Position);
         }
         public void Attack()
         {
-            /* 
-             * This isn't needed for Sprint 2,
-             * however it will be needed later.
-             */
+            new GoriyaBoomerang(Position, Direction);
         }
-        public void UpdateHealth()
-        {
+        public void UpdateHealth() 
+        { 
             /* 
              * This isn't needed for Sprint 2,
              * however it will be needed later.
              */
         }
 
-        public void ChangeDirection()
-        {
+        public void ChangeDirection() {
             Random rand = new Random();
             int random = rand.Next(0, 4);
+            goriyaSprites[currentSprite].UnregisterSprite();
+            currentSprite = random;
 
             if (random == 0)
             {
@@ -73,6 +85,7 @@ namespace LegendOfZelda.Enemies.Bat
             {
                 Direction = new Vector2(0, -1);
             }
+            goriyaSprites[currentSprite].RegisterSprite();
         }
 
         public void Update(GameTime gameTime)
@@ -80,18 +93,19 @@ namespace LegendOfZelda.Enemies.Bat
             if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
+                Attack();
                 ChangeDirection();
             }
             ChangePosition();
         }
-
         public void Draw()
         {
-            batSprite.Draw();
+           goriyaSprites[currentSprite].Draw();
         }
         public void Destroy()
         {
-
+            //Game1.instance.RemoveDrawable(Goriya);
+            Game1.instance.RemoveUpdateable(this);
         }
     }
 }

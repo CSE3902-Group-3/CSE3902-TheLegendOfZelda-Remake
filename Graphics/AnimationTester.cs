@@ -1,4 +1,5 @@
 using LegendOfZelda.Environment;
+using LegendOfZelda.Player;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -17,16 +18,18 @@ namespace LegendOfZelda
         double lastPause = 0;
         int counter = 0;
 
+        Link testLink;
+
         public AnimationTester() {
             Game1.instance.RegisterUpdateable(this);
             spriteFactory = Game1.instance.spriteFactory;
-            blockCycler = Game1.instance.blockCycler;
+            //blockCycler = Game1.instance.blockCycler;
 
             sprites = new List<AnimatedSprite>();
+            //testLink = new Link(Game1.instance);
             
             /*
             sprites.Add(spriteFactory.CreateLinkWalkDownSprite());
-            
             sprites.Add(spriteFactory.CreateLinkWalkRightSprite());
             sprites.Add(spriteFactory.CreateLinkWalkLeftSprite());
             sprites.Add(spriteFactory.CreateLinkWalkUpSprite());
@@ -35,20 +38,16 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateLinkThrowRightSprite());
             sprites.Add(spriteFactory.CreateLinkThrowLeftSprite());
             sprites.Add(spriteFactory.CreateLinkGetItemSprite());
-            
             sprites.Add(spriteFactory.CreateLinkWoodStabDownSprite());
             sprites.Add(spriteFactory.CreateLinkWoodStabUpSprite());
             sprites.Add(spriteFactory.CreateLinkWoodStabLeftSprite());
             sprites.Add(spriteFactory.CreateLinkWoodStabRightSprite());
-            
             sprites.Add(spriteFactory.CreateArrowDownSprite());
             sprites.Add(spriteFactory.CreateArrowUpSprite());
             sprites.Add(spriteFactory.CreateArrowLeftSprite());
             sprites.Add(spriteFactory.CreateArrowRightSprite());
             sprites.Add(spriteFactory.CreateBurstSprite());
-            
             sprites.Add(spriteFactory.CreateBoomerangSprite());
-            
             sprites.Add(spriteFactory.CreateBombSprite());
             sprites.Add(spriteFactory.CreateExplosionSprite());
             sprites.Add(spriteFactory.CreateFireSprite());
@@ -66,18 +65,6 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateBladeTrapSprite());
             sprites.Add(spriteFactory.CreateAquamentusSprite());
             sprites.Add(spriteFactory.CreateAquamentusBallSprite());
-            */
-
-            sprites.Add(spriteFactory.CreateDodongoUpSprite());
-            sprites.Add(spriteFactory.CreateDodongoRightSprite());
-            sprites.Add(spriteFactory.CreateDodongoDownSprite());
-            sprites.Add(spriteFactory.CreateDodongoLeftSprite());
-            sprites.Add(spriteFactory.CreateDodongoUpHitSprite());
-            sprites.Add(spriteFactory.CreateDodongoRightHitSprite());
-            sprites.Add(spriteFactory.CreateDodongoDownHitSprite());
-            sprites.Add(spriteFactory.CreateDodongoLeftHitSprite());
-
-            /*
             sprites.Add(spriteFactory.CreateHeartSprite());
             sprites.Add(spriteFactory.CreateHalfHeartSprite());
             sprites.Add(spriteFactory.CreateEmptyHeartSprite());
@@ -95,6 +82,16 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateCompassSprite());
             sprites.Add(spriteFactory.CreateTriforcePieceSprite());
             */
+            sprites.Add(spriteFactory.CreateDodongoDownHitSprite());
+            sprites.Add(spriteFactory.CreateDodongoDownSprite());
+            sprites.Add(spriteFactory.CreateDodongoUpHitSprite());
+            sprites.Add(spriteFactory.CreateDodongoUpSprite());
+            sprites.Add(spriteFactory.CreateDodongoLeftHitSprite());
+            sprites.Add(spriteFactory.CreateDodongoLeftSprite());
+            sprites.Add(spriteFactory.CreateDodongoRightHitSprite());
+            sprites.Add(spriteFactory.CreateDodongoRightSprite());
+
+
 
             foreach (AnimatedSprite sprite in sprites)
             {
@@ -113,7 +110,7 @@ namespace LegendOfZelda
                 if (counter >= sprites.Count) counter = 0;
                 sprites[counter].RegisterSprite();
                 sprites[counter].UpdatePos(new Vector2(400, 200));
-                blockCycler.cycleForward();
+                //blockCycler.cycleForward();
             }
             
 
@@ -122,14 +119,15 @@ namespace LegendOfZelda
             {
                 lastPause = gameTime.TotalGameTime.TotalMilliseconds;
                 //sprites[counter].paused = !sprites[counter].paused;
-                sprites[counter].flashing = !sprites[counter].flashing;
+                //sprites[counter].flashing = !sprites[counter].flashing;
                 //sprites[counter].blinking = true;
 
                 //new FireProjectile(new Vector2(200, 200), Direction.left);
                 //new ArrowProjectile(new Vector2(200, 200), Direction.up);
                 //new BombProjectile(new Vector2(300, 200));
+                //new BoomerangProjectile(new Vector2(300, 200), new Vector2(1, 1), testLink);
 
-                blockCycler.cycleBackward();
+                //blockCycler.cycleBackward();
             }
             
             //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));

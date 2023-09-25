@@ -2,36 +2,36 @@
 using LegendOfZelda.Player;
 using Microsoft.Xna.Framework;
 
-namespace LegendOfZelda.StateMachine.LinkStates
+namespace LegendOfZelda.StateMachine.LinkStates.Walk
 {
-    public class WalkLeftLinkState : IState
+    public class WalkRightLinkState : IState
     {
         private Game1 game;
         private Link link;
 
-        public WalkLeftLinkState(Game1 game)
+        public WalkRightLinkState(Game1 game)
         {
             this.game = game;
-            this.link = (Link)game.link;
-            this.link.currentDirection = Link.Direction.Left;
+            link = (Link)game.link;
+            link.currentDirection = Link.Direction.Right;
         }
 
         public void Enter()
         {
-            link.sprite = game.spriteFactory.CreateLinkWalkLeftSprite();
+            link.sprite = game.spriteFactory.CreateLinkWalkRightSprite();
         }
 
         public void Execute()
         {
             Vector2 currPos = link.sprite.pos;
-            currPos.X -= 1; // change this to velocity later
+            currPos.X += 1; // change this to velocity later
             link.sprite.UpdatePos(currPos);
         }
 
         public void Exit()
         {
             // cast then unregister sprite drawing
-            AnimatedSprite spriteAlias = (AnimatedSprite)this.link.sprite;
+            AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
             spriteAlias.UnregisterSprite();
         }
     }

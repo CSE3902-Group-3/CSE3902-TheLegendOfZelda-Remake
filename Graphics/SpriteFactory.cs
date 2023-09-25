@@ -23,6 +23,7 @@ namespace LegendOfZelda
         private Texture2D dungeonTexture;
         private Texture2D bossesTexture;
         private Texture2D itemsTexture;
+        private Texture2D npcTexture;
 
         private Game1 game1;
         private int drawFramesPerAnimFrame;
@@ -43,6 +44,7 @@ namespace LegendOfZelda
             enemiesTexture = content.Load<Texture2D>("Enemies");
             bossesTexture = content.Load<Texture2D>("Bosses");
             itemsTexture = content.Load<Texture2D>("Items");
+            npcTexture = content.Load<Texture2D>("NPC");
         }
     
         public AnimatedSprite CreateLinkWalkDownSprite()
@@ -979,6 +981,16 @@ namespace LegendOfZelda
             };
 
             return new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+        }
+
+        public AnimatedSprite CreateOldManSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(0, 10, 18, 18),
+            };
+
+            return new AnimatedSprite(npcTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
         }
     }
 }
