@@ -19,7 +19,6 @@ namespace LegendOfZelda.Enemies
         public Goriya(Vector2 pos)
         {
             game = Game1.instance;
-            game.RegisterUpdateable(this);
             spriteFactory = game.spriteFactory;
             goriyaSprites = new List<AnimatedSprite>
             {
@@ -107,9 +106,10 @@ namespace LegendOfZelda.Enemies
             ChangePosition();
         }
 
-        public void Draw()
+        public void Spawn()
         {
             goriyaSprites[currentSprite].RegisterSprite();
+            game.RegisterUpdateable(this);
             goriyaSprites[currentSprite].UpdatePos(Position);
         }
     }

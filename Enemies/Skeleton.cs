@@ -17,12 +17,9 @@ namespace LegendOfZelda.Enemies
         public Skeleton(Vector2 pos)
         {
             game = Game1.instance;
-            game.RegisterUpdateable(this);
             spriteFactory = game.spriteFactory;
             skeletonSprite = spriteFactory.CreateStalfosSprite();
             Position = pos;
-
-            skeletonSprite.UnregisterSprite();
         }
         public void ChangePosition()
         {
@@ -58,7 +55,6 @@ namespace LegendOfZelda.Enemies
         {
             Random rand = new Random();
             int random = rand.Next(0, 4);
-            skeletonSprite.UnregisterSprite();
 
             if (random == 0)
             {
@@ -76,7 +72,6 @@ namespace LegendOfZelda.Enemies
             {
                 Direction = new Vector2(0, -1);
             }
-            skeletonSprite.RegisterSprite();
         }
         public void Die()
         {
@@ -94,9 +89,10 @@ namespace LegendOfZelda.Enemies
             ChangePosition();
         }
 
-        public void Draw()
+        public void Spawn()
         {
             skeletonSprite.RegisterSprite();
+            game.RegisterUpdateable(this);
             skeletonSprite.UpdatePos(Position);
         }
     }

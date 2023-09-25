@@ -32,7 +32,7 @@ namespace LegendOfZelda.Enemies
             }
         }
 
-        public void CycleForward(GameTime gameTime)
+        public void CycleForward()
         {
             // TODO: Draw enemy death explosion when an enemy is cycled out
             Enemies[index].Die();
@@ -43,11 +43,10 @@ namespace LegendOfZelda.Enemies
             }
 
             // TODO: Draw enemy cloud appearance when an enemy is cycled in
-            Enemies[index].Draw();
-            Enemies[index].Update(gameTime);
+            Enemies[index].Spawn();
         }
 
-        public void CycleBackward(GameTime gameTime)
+        public void CycleBackward()
         {
             // This method will be more useful when the button commands are available
 
@@ -60,8 +59,7 @@ namespace LegendOfZelda.Enemies
             }
 
             // TODO: Draw enemy cloud appearance when an enemy is cycled in
-            Enemies[index].Draw();
-            Enemies[index].Update(gameTime);
+            Enemies[index].Spawn();
         }
     }
 }

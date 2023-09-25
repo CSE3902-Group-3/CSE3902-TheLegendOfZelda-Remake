@@ -15,12 +15,9 @@ namespace LegendOfZelda.Enemies
         public Wizard(Vector2 pos)
         {
             game = Game1.instance;
-            game.RegisterUpdateable(this);
             spriteFactory = game.spriteFactory;
             wizardSprite = spriteFactory.CreateOldManSprite();
             Position = pos;
-
-            wizardSprite.UnregisterSprite();
         }
         public void ChangePosition()
         {
@@ -48,16 +45,12 @@ namespace LegendOfZelda.Enemies
             wizardSprite.UnregisterSprite();
             game.RemoveUpdateable(this);
         }
-        public void Update(GameTime gameTime)
-        {
-            wizardSprite.UnregisterSprite();
-            wizardSprite.RegisterSprite();
-            ChangePosition();
-        }
+        public void Update(GameTime gameTime) {}
 
-        public void Draw()
+        public void Spawn()
         {
             wizardSprite.RegisterSprite();
+            game.RegisterUpdateable(this);
             wizardSprite.UpdatePos(Position);
         }
     }

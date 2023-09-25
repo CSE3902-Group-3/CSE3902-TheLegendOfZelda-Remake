@@ -17,12 +17,9 @@ namespace LegendOfZelda.Enemies
         public ZolBig(Vector2 pos)
         {
             game = Game1.instance;
-            game.RegisterUpdateable(this);
             spriteFactory = game.spriteFactory;
             zolBigSprite = spriteFactory.CreateZolSprite();
             Position = pos;
-
-            zolBigSprite.UnregisterSprite();
         }
         public void ChangePosition()
         {
@@ -58,7 +55,6 @@ namespace LegendOfZelda.Enemies
         {
             Random rand = new Random();
             int random = rand.Next(0, 4);
-            zolBigSprite.UnregisterSprite();
 
             if (random == 0)
             {
@@ -76,7 +72,6 @@ namespace LegendOfZelda.Enemies
             {
                 Direction = new Vector2(0, -1);
             }
-            zolBigSprite.RegisterSprite();
         }
         public void Die()
         {
@@ -94,9 +89,10 @@ namespace LegendOfZelda.Enemies
             ChangePosition();
         }
 
-        public void Draw()
+        public void Spawn()
         {
             zolBigSprite.RegisterSprite();
+            game.RegisterUpdateable(this);
             zolBigSprite.UpdatePos(Position);
         }
     }

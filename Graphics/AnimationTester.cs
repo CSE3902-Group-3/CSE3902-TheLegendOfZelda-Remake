@@ -121,7 +121,7 @@ namespace LegendOfZelda
                 sprites[counter].RegisterSprite();
                 sprites[counter].UpdatePos(new Vector2(400, 200));
                 // blockCycler.cycleForward();
-                enemyCycler.CycleForward(gameTime);
+                enemyCycler.CycleForward();
             }
             
 
