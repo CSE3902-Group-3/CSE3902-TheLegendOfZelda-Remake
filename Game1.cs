@@ -1,4 +1,8 @@
-
+using LegendOfZelda.Enemies.Aquamentus;
+using LegendOfZelda.Enemies.Dodongo;
+using LegendOfZelda.Enemies.Goriya;
+using LegendOfZelda.Enemies.Rope;
+using LegendOfZelda.Environment;
 using LegendOfZelda.Interfaces;
 using LegendOfZelda.Environment;
 using LegendOfZelda.Player;
@@ -77,7 +81,11 @@ namespace LegendOfZelda
             //    Exit();
 
             // TODO: Add your update logic here
-            
+
+            for (int i = 0; i < updateables.Count; i++)
+            {
+                updateables[i].Update(gameTime);
+            }
 
             base.Update(gameTime);
         }
