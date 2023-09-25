@@ -1,3 +1,7 @@
+using LegendOfZelda.Enemies.Aquamentus;
+using LegendOfZelda.Enemies.Dodongo;
+using LegendOfZelda.Enemies.Goriya;
+using LegendOfZelda.Enemies.Rope;
 using LegendOfZelda.Environment;
 using LegendOfZelda.Interfaces;
 using LegendOfZelda.Player;
@@ -47,6 +51,12 @@ namespace LegendOfZelda
 
             spriteFactory = new SpriteFactory(8, 8);
 
+            // Change size of viewport
+            _graphics.IsFullScreen = false;
+            _graphics.PreferredBackBufferWidth = 3000;
+            _graphics.PreferredBackBufferHeight = 1500;
+            _graphics.ApplyChanges();
+
             base.Initialize();
         }
 
@@ -63,7 +73,8 @@ namespace LegendOfZelda
             blockCycler = new BlockCycler(new Vector2(300, 200));
 
             //Uncomment the following line for testing
-            new AnimationTester();
+            //new AnimationTester();
+            new Goriya(new Vector2(500, 500));
 
             link = new Link(this);
         }
@@ -74,9 +85,9 @@ namespace LegendOfZelda
                 Exit();
 
             // TODO: Add your update logic here
-            for(int i = updateables.Count - 1; i >= 0; i--)
+            for (int i = 0; i < updateables.Count; i++)
             {
-                updateables[i].Update(gameTime);
+                    updateables[i].Update(gameTime);
             }
 
             base.Update(gameTime);

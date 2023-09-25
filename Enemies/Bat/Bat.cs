@@ -89,5 +89,9 @@ namespace LegendOfZelda.Enemies.Bat
         {
             batSprite.Draw();
         }
+        public void Destroy()
+        {
+
+        }
     }
 }
