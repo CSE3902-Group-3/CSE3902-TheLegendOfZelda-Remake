@@ -1,17 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using LegendOfZelda.Interfaces;
+using System;
 
 namespace LegendOfZelda.Enemies
 {
     public class EnemyCycler
     {
+        public Game1 game;
         private readonly List<IEnemy> Enemies;
         private Vector2 Position;
         private int index = 0;
 
         public EnemyCycler(Vector2 pos)
         {
+            game = Game1.instance;
             Position = pos;
             Enemies = new List<IEnemy>()
             {
@@ -29,28 +32,34 @@ namespace LegendOfZelda.Enemies
             }
         }
 
-        public void CycleForward()
+        public void CycleForward(GameTime gameTime)
         {
-            // Draw enemy death explosion when an enemy is cycled out
+            // TODO: Draw enemy death explosion when an enemy is cycled out
             Enemies[index].Die();
             index++;
             if (index >= Enemies.Count)
             {
                 index = 0;
             }
-            // Draw enemy cloud appearance when an enemy is cycled in
+
+            // TODO: Draw enemy cloud appearance when an enemy is cycled in
+            Enemies[index].Draw();
+            Enemies[index].Update(gameTime);
         }
 
-        public void CycleBackward()
+        public void CycleBackward(GameTime gameTime)
         {
-            // Draw enemy death explosion when an enemy is cycled out
+            // TODO: Draw enemy death explosion when an enemy is cycled out
             Enemies[index].Die();
             index--;
             if (index < 0)
             {
                 index = Enemies.Count - 1;
             }
-            // Draw enemy cloud appearance when an enemy is cycled in
+
+            // TODO: Draw enemy cloud appearance when an enemy is cycled in
+            Enemies[index].Draw();
+            Enemies[index].Update(gameTime);
         }
     }
 }

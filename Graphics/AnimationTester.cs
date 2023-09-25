@@ -117,7 +117,7 @@ namespace LegendOfZelda
                 sprites[counter].RegisterSprite();
                 sprites[counter].UpdatePos(new Vector2(400, 200));
                 blockCycler.cycleForward();
-                enemyCycler.CycleForward();
+                enemyCycler.CycleForward(gameTime);
             }
             
 
@@ -134,7 +134,7 @@ namespace LegendOfZelda
                 //new BombProjectile(new Vector2(300, 200));
 
                 blockCycler.cycleBackward();
-                enemyCycler.CycleBackward();
+                enemyCycler.CycleBackward(gameTime);
             }
             
             //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));

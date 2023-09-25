@@ -109,7 +109,8 @@ namespace LegendOfZelda.Enemies
 
         public void Draw()
         {
-            goriyaSprites[currentSprite].Draw();
+            goriyaSprites[currentSprite].RegisterSprite();
+            goriyaSprites[currentSprite].UpdatePos(Position);
         }
     }
 }

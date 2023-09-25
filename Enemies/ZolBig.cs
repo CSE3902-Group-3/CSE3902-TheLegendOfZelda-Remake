@@ -96,7 +96,8 @@ namespace LegendOfZelda.Enemies
 
         public void Draw()
         {
-            zolBigSprite.Draw();
+            zolBigSprite.RegisterSprite();
+            zolBigSprite.UpdatePos(Position);
         }
     }
 }
