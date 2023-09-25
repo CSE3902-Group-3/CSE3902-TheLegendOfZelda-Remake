@@ -1,13 +1,14 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda.EnemyProjectiles;
+using LegendOfZelda.Interfaces;
 using Microsoft.Xna.Framework;
 using System;
 
-namespace LegendOfZelda.Enemies.Aquamentus
+namespace LegendOfZelda.Enemies
 {
     public class Aquamentus : IEnemy
     {
         private Game1 Game { get; set; }
-        private ISprite AquamentusSprite;
+        private AnimatedSprite AquamentusSprite;
         private int Health { get; set; } = 1;
         private Vector2 Position;
         private int CycleCount = 0;
@@ -16,9 +17,13 @@ namespace LegendOfZelda.Enemies.Aquamentus
 
         public Aquamentus(Vector2 pos)
         {
+            Position = pos;
+        }
+        public void Spawn ()
+        {
             Game1.instance.RegisterUpdateable(this);
             AquamentusSprite = Game1.instance.spriteFactory.CreateAquamentusSprite();
-            Position = pos;
+            AquamentusSprite.UpdatePos(Position);
         }
         public void ChangePosition()
         {
@@ -41,7 +46,7 @@ namespace LegendOfZelda.Enemies.Aquamentus
         }
         public void UpdateHealth()
         {
-
+            // Not needed
         }
 
         public void ChangeDirection()
@@ -59,9 +64,9 @@ namespace LegendOfZelda.Enemies.Aquamentus
                 Attack();
             }
         }
-        public void Destroy()
+        public void Die()
         {
-            Game1.instance.RemoveDrawable(AquamentusSprite);
+            AquamentusSprite.UnregisterSprite();
             Game1.instance.RemoveUpdateable(this);
         }
     }

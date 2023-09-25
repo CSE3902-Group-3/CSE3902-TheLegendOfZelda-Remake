@@ -3,6 +3,7 @@ using LegendOfZelda.Enemies.Aquamentus;
 using LegendOfZelda.Enemies.Dodongo;
 using LegendOfZelda.Enemies.Goriya;
 using LegendOfZelda.Enemies.Rope;
+using LegendOfZelda.Enemies;
 using LegendOfZelda.Environment;
 using LegendOfZelda.Interfaces;
 using LegendOfZelda.Player;
@@ -34,7 +35,7 @@ namespace LegendOfZelda
         /* Controller */
         private IController controller;
         public BlockCycler blockCycler { get; private set; }
-
+        public EnemyCycler enemyCycler { get; private set; }
         public static Game1 instance { get; private set; }
 
         public Game1()
@@ -54,8 +55,8 @@ namespace LegendOfZelda
 
             // Change size of viewport
             _graphics.IsFullScreen = false;
-            _graphics.PreferredBackBufferWidth = 3000;
-            _graphics.PreferredBackBufferHeight = 1500;
+            _graphics.PreferredBackBufferWidth = 1920;
+            _graphics.PreferredBackBufferHeight = 1080;
             _graphics.ApplyChanges();
 
             //controller = new PlayerController(instance, link);
@@ -74,10 +75,9 @@ namespace LegendOfZelda
             spriteFactory.LoadTextures();
 
             blockCycler = new BlockCycler(new Vector2(300, 200));
-
+            enemyCycler = new EnemyCycler(new Vector2(500, 500));
             //Uncomment the following line for testing
-            //new AnimationTester();
-            new Goriya(new Vector2(500, 500));
+            new AnimationTester();
 
             link = new Link(this);
         }

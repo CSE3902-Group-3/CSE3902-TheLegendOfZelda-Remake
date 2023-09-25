@@ -10,23 +10,26 @@ namespace LegendOfZelda.Enemies.Dodongo
 {
     internal class RightMovingDodongo : IEnemy
     {
-        private Dodongo Dodongo;
+        private DodongoState Dodongo;
         private Vector2 Position;
-        private ISprite Sprite;
+        private AnimatedSprite Sprite;
         private Vector2 Direction;
         private int MoveMagnitude = 5;
         private Boolean Injured = false;
-        public RightMovingDodongo(Dodongo dodongo, Vector2 pos)
+        public RightMovingDodongo(DodongoState dodongo, Vector2 pos)
         {
             Dodongo = dodongo;
             Direction = new Vector2(MoveMagnitude, 0);
             Position = pos;
+        }
+        public void Spawn()
+        {
             Sprite = Game1.instance.spriteFactory.CreateDodongoRightSprite();
             Sprite.UpdatePos(Position);
         }
         public void UpdateHealth()
         {
-            Game1.instance.RemoveDrawable(Sprite);
+            Sprite.UnregisterSprite();
             if (!Injured)
             {
                 Sprite = Game1.instance.spriteFactory.CreateDodongoRightHitSprite();
@@ -48,8 +51,9 @@ namespace LegendOfZelda.Enemies.Dodongo
         }
         public void ChangeDirection()
         {
-            Game1.instance.RemoveDrawable(Sprite);
+            Sprite.UnregisterSprite();
             Dodongo.State = new UpMovingDodongo(Dodongo, Position);
+            Dodongo.State.Spawn();
         }
         public void Attack()
         {
@@ -59,9 +63,9 @@ namespace LegendOfZelda.Enemies.Dodongo
         {
             //handled by Dodongo
         }
-        public void Destroy()
+        public void Die()
         {
-            Game1.instance.RemoveDrawable(Sprite);
+            Sprite.UnregisterSprite();
             Game1.instance.RemoveUpdateable(Dodongo);
         }
     }

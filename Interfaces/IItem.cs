@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Interfaces
 {
-    public interface IItem : IDrawable
+    public interface IItem
     {
-        //Left empty for sprint2
+        void Remove();
+        void Collect();
     }
 }

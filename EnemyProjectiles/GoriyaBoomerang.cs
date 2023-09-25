@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using LegendOfZelda.Interfaces;
 using Microsoft.Xna.Framework;
 
-namespace LegendOfZelda.Enemies.Goriya
+namespace LegendOfZelda.EnemyProjectiles
 {
     internal class GoriyaBoomerang : IEnemyProjectile
     {
@@ -20,7 +20,7 @@ namespace LegendOfZelda.Enemies.Goriya
             Position = pos;
             Direction = dir;
         }
-        public void Update (GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             Position += Direction;
             GoriyaBoomerangSprite.UpdatePos(Position);
@@ -29,7 +29,7 @@ namespace LegendOfZelda.Enemies.Goriya
                 Destroy();
             }
         }
-        public void Destroy ()
+        public void Destroy()
         {
             Game1.instance.RemoveUpdateable(this);
             Game1.instance.RemoveDrawable(GoriyaBoomerangSprite);

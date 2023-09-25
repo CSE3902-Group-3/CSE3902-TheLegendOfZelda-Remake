@@ -6,10 +6,11 @@ namespace LegendOfZelda.Interfaces
 {
     public interface IEnemy: IUpdateable
     {
+        void Spawn();
         void UpdateHealth();
         void Attack();
         void ChangePosition();
         void ChangeDirection();
-        void Destroy();
+        void Die();
     }
 }

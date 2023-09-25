@@ -2,23 +2,27 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace LegendOfZelda.Enemies.Rope
+namespace LegendOfZelda.Enemies
 {
     public class Rope : IEnemy
     {
         private Game1 Game { get; set; }
-        private ISprite RopeSprite;
+        private AnimatedSprite RopeSprite;
         private int Health { get; set; } = 1;
         public Vector2 Position;
         private int PosIncrement = 5;
-        private Boolean facingLeft = false;
+        private bool facingLeft = false;
         private double LastDirSwitch = 0;
 
         public Rope(Vector2 pos)
         {
+            Position = pos;
+        }
+        public void Spawn()
+        {
             Game1.instance.RegisterUpdateable(this);
             RopeSprite = Game1.instance.spriteFactory.CreateRopeRightSprite();
-            Position = pos;
+            RopeSprite.UpdatePos(Position);
         }
         public void ChangePosition()
         {
@@ -26,7 +30,7 @@ namespace LegendOfZelda.Enemies.Rope
             if (facingLeft)
             {
                 Position.X -= PosIncrement;
-            } 
+            }
             else
             {
                 Position.X += PosIncrement;
@@ -53,7 +57,7 @@ namespace LegendOfZelda.Enemies.Rope
             if (facingLeft)
             {
                 RopeSprite = Game1.instance.spriteFactory.CreateRopeRightSprite();
-            } 
+            }
             else
             {
                 RopeSprite = Game1.instance.spriteFactory.CreateRopeLeftSprite();
@@ -70,9 +74,9 @@ namespace LegendOfZelda.Enemies.Rope
             }
             ChangePosition();
         }
-        public void Destroy()
+        public void Die()
         {
-            Game1.instance.RemoveDrawable(RopeSprite);
+            RopeSprite.UnregisterSprite();
             Game1.instance.RemoveUpdateable(this);
         }
     }

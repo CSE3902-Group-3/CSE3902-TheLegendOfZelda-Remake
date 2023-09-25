@@ -5,24 +5,24 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 namespace LegendOfZelda
 {
-    public class Map : IItem
+    public class Heart : IItem
     {
         // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
-        protected AnimatedSprite map;
+        protected AnimatedSprite heart;
         private SpriteFactory spriteFactory;
 
 
-        public Map(Game1 game1, Vector2 pos)
+        public Heart(Game1 game1, Vector2 pos)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;
-            map = spriteFactory.CreateMapSprite();
-            map.UpdatePos(pos);
+            heart = spriteFactory.CreateHeartSprite();
+            heart.UpdatePos(pos);
         }
 
         public void Remove()
         {
-            map.UnregisterSprite();
+            heart.UnregisterSprite();
         }
 
         public void Collect()

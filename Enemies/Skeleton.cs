@@ -2,23 +2,23 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace LegendOfZelda.Enemies.ZolBig
+namespace LegendOfZelda.Enemies
 {
-    public class ZolBig : IEnemy
+    public class Skeleton : IEnemy
     {
         private Game1 game;
         public SpriteFactory spriteFactory;
-        private readonly ISprite zolBigSprite;
-        private int health { get; set; } = 1;
+        private readonly AnimatedSprite skeletonSprite;
+        private int health { get; set; } = 2;
         public Vector2 Position;
         private Vector2 Direction;
         private double lastSwitch = 0;
 
-        public ZolBig(Vector2 pos)
+        public Skeleton(Vector2 pos)
         {
             game = Game1.instance;
             spriteFactory = game.spriteFactory;
-            zolBigSprite = spriteFactory.CreateZolSprite();
+            skeletonSprite = spriteFactory.CreateStalfosSprite();
             Position = pos;
         }
         public void ChangePosition()
@@ -30,28 +30,29 @@ namespace LegendOfZelda.Enemies.ZolBig
             }
 
             // This is kinda cursed, but it's to make sure the sprite does not venture beyond the screen border
-            if (Position.X >= Game1.instance.GraphicsDevice.Viewport.Width || Position.Y >= Game1.instance.GraphicsDevice.Viewport.Height)
+            if (Position.X >= game.GraphicsDevice.Viewport.Width || Position.Y >= game.GraphicsDevice.Viewport.Height)
             {
                 Position -= Direction;
             }
-            zolBigSprite.UpdatePos(Position);
+            skeletonSprite.UpdatePos(Position);
         }
         public void Attack()
-        {   
+        {
             /* 
              * This isn't needed for Sprint 2,
              * however it will be needed later.
              */
         }
-        public void UpdateHealth() 
-        { 
+        public void UpdateHealth()
+        {
             /* 
              * This isn't needed for Sprint 2,
              * however it will be needed later.
              */
         }
 
-        public void ChangeDirection() {
+        public void ChangeDirection()
+        {
             Random rand = new Random();
             int random = rand.Next(0, 4);
 
@@ -72,10 +73,15 @@ namespace LegendOfZelda.Enemies.ZolBig
                 Direction = new Vector2(0, -1);
             }
         }
+        public void Die()
+        {
+            skeletonSprite.UnregisterSprite();
+            game.RemoveUpdateable(this);
+        }
 
         public void Update(GameTime gameTime)
         {
-           if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 100)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 ChangeDirection();
@@ -83,13 +89,11 @@ namespace LegendOfZelda.Enemies.ZolBig
             ChangePosition();
         }
 
-        public void Draw()
+        public void Spawn()
         {
-            zolBigSprite.Draw();
-        }
-        public void Destroy()
-        {
-
+            skeletonSprite.RegisterSprite();
+            game.RegisterUpdateable(this);
+            skeletonSprite.UpdatePos(Position);
         }
     }
 }

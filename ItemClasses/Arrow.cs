@@ -5,25 +5,32 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 namespace LegendOfZelda
 {
+    // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
     public class Arrow : IItem
     {
-        protected Texture2D texture;
-        protected SpriteBatch spriteBatch;
-        protected Game1 game1;
-        public Vector2 position { get; protected set; }
+        protected AnimatedSprite arrow;
+        private SpriteFactory spriteFactory;
 
-        public Arrow(Texture2D texture, Vector2 position)
+
+        public Arrow(Game1 game1, Vector2 pos)
         {
-            this.texture = texture;
-            this.position = position;
             game1 = Game1.instance;
-            spriteBatch = game1._spriteBatch;
+            spriteFactory = game1.spriteFactory;
+            arrow = spriteFactory.CreateArrowUpSprite();
+            arrow.UpdatePos(pos);
         }
 
-        public void Draw()
+        public void Remove()
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            arrow.UnregisterSprite();
         }
+
+        public void Collect()
+        {
+            //left empty for sprint2
+        }
+
+        
     }
 }
 

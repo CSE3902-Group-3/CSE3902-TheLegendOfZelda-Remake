@@ -7,22 +7,28 @@ namespace LegendOfZelda
 {
     public class Bow : IItem
     {
-        protected Texture2D texture;
-        protected SpriteBatch spriteBatch;
-        protected Game1 game1;
-        public Vector2 position { get; protected set; }
+        // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
 
-        public Bow(Texture2D texture, Vector2 position)
+        protected AnimatedSprite bow;
+        private SpriteFactory spriteFactory;
+
+
+        public Bow(Game1 game1, Vector2 pos)
         {
-            this.texture = texture;
-            this.position = position;
             game1 = Game1.instance;
-            spriteBatch = game1._spriteBatch;
+            spriteFactory = game1.spriteFactory;
+            bow = spriteFactory.CreateBowSprite();
+            bow.UpdatePos(pos);
         }
 
-        public void Draw()
+        public void Remove()
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            bow.UnregisterSprite();
+        }
+
+        public void Collect()
+        {
+            //left empty for sprint2
         }
     }
 }
