@@ -1,4 +1,4 @@
-using LegendOfZelda.Controller;
+
 using LegendOfZelda.Interfaces;
 using LegendOfZelda.Environment;
 using LegendOfZelda.Player;
@@ -77,13 +77,7 @@ namespace LegendOfZelda
             //    Exit();
 
             // TODO: Add your update logic here
-            controller = new PlayerController(this, link);
-            controller.Update();
-
-            for(int i = updateables.Count - 1; i >= 0; i--)
-            {
-                updateables[i].Update(gameTime);
-            }
+            
 
             base.Update(gameTime);
         }
