@@ -18,10 +18,6 @@ namespace LegendOfZelda.Player
         private int maxHP { get; set; } = 6;
         private bool canMove { get; set; } = true;
 
-        //TEMPORARY, not implemented
-        public Vector2 pos { get { return Vector2.Zero; } }
-
-
         public Link(Game1 game)
         {
             this.game = game;
