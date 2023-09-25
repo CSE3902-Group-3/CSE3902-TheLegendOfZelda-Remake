@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Interfaces
 {
-    internal interface EnemyProjectile : IUpdateable
+    public interface IEnemyProjectile : IUpdateable
     {
-        void Update();
         void Destroy();
     }
 }

@@ -9,7 +9,7 @@ using IUpdateable = LegendOfZelda.Interfaces.IUpdateable;
 
 namespace LegendOfZelda.Enemies.Aquamentus
 {
-    internal class AquamentusBall : IUpdateable
+    internal class AquamentusBall : IEnemyProjectile
     {
         private ISprite AquamentusBallSprite;
         private Vector2 Position;

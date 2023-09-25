@@ -75,7 +75,7 @@ namespace LegendOfZelda
             link = new Link(this);
             //new Aquamentus(new Vector2(500, 500));
             //new Rope(new Vector2(1000, 1000));
-            //new Dodongo(new Vector2(1500, 750));
+            new Dodongo(new Vector2(1500, 750));
         }
 
         protected override void Update(GameTime gameTime)

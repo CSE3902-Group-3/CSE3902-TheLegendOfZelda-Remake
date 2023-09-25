@@ -70,11 +70,6 @@ namespace LegendOfZelda.Enemies.Rope
             }
             ChangePosition();
         }
-
-        public void Draw()
-        {
-            RopeSprite.Draw();
-        }
         public void Destroy()
         {
             Game1.instance.RemoveDrawable(RopeSprite);

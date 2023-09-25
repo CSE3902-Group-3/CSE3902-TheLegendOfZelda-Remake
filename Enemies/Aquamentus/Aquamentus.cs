@@ -59,11 +59,6 @@ namespace LegendOfZelda.Enemies.Aquamentus
                 Attack();
             }
         }
-
-        public void Draw()
-        {
-            AquamentusSprite.Draw();
-        }
         public void Destroy()
         {
             Game1.instance.RemoveDrawable(AquamentusSprite);

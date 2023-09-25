@@ -89,5 +89,9 @@ namespace LegendOfZelda.Enemies.GelSmall
         {
             gelSmallSprite.Draw();
         }
+        public void Destroy()
+        {
+
+        }
     }
 }
