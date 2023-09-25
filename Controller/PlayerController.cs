@@ -15,16 +15,18 @@ namespace LegendOfZelda.Controller
     {
         //private Dictionary<Keys, ICommands> controllerMappings;
         private KeyboardMapping controllerMappings;
+        private IPlayer link;
         private ICommands command;
         private KeyboardState currState;
         private KeyboardState prevState;
         //private Dictionary<Keys, bool> keyState;
 
-        public PlayerController(Game1 game, Player.Link link)
+        public PlayerController(Game1 game, IPlayer Link)
         {
+            link = Link;
             controllerMappings = new KeyboardMapping(game, link);
             
-            //keyState = new Dictionary<Keys, bool>();
+            //keyState = new Dictionary<Keys, bool>();a
         }
 
         public void Update()
@@ -90,13 +92,10 @@ namespace LegendOfZelda.Controller
 
             foreach (Keys key in prevKeys)
             {
-                if (!currKeys.Contains(key))
+                if (!prevKeys.Contains(key))
                 {
-                    command = controllerMappings.GetCommand(key);
-                    if (command != null)
-                    {
-                        command.Execute();
-                    }
+                    command = new IdleCommand(link);
+                    command.Execute();
                 }
             }
         }

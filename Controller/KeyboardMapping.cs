@@ -16,7 +16,7 @@ namespace LegendOfZelda.Controller
         private Dictionary<Keys, ICommands> controllerMappings;
         private Game1 game;
 
-        public KeyboardMapping(Game1 game, Player.Link link)
+        public KeyboardMapping(Game1 game, IPlayer link)
         {
             this.game = game;
             controllerMappings = new Dictionary<Keys, ICommands>();

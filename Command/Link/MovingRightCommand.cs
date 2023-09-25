@@ -1,27 +1,22 @@
 ﻿using LegendOfZelda.Interfaces;
-using LegendOfZelda.StateMachine.LinkStates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LegendOfZelda.StateMachine.LinkStates.Walk;
 
 namespace LegendOfZelda.Command.Link
 {
     public class MovingRightCommand : ICommands
     {
-        private Player.Link link;
+        private IPlayer player;
 
-        public MovingRightCommand(Player.Link link)
+        public MovingRightCommand(IPlayer link)
         {
-            this.link = link;
-            //link.stateMachine.ChangeState(new WalkRightLinkState(Game1.instance));
-            link.currentDirection = Player.Link.Direction.Right;
+            this.player = link;
+            player.stateMachine.ChangeState(new WalkRightLinkState(Game1.instance)); //Runtime Error when initialize controller in Initialize(): Object reference not set to an instance of an object.
+            player.currentDirection = Player.Link.Direction.Right; //Does not contain a definition for currentDirection
         }
 
         public void Execute()
         {
-            //link.stateMachine.Update();
+            player.stateMachine.Update();
         }
     }
 }
