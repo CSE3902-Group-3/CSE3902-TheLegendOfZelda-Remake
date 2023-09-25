@@ -1,4 +1,5 @@
 using LegendOfZelda.Environment;
+using LegendOfZelda.Player;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -17,12 +18,15 @@ namespace LegendOfZelda
         double lastPause = 0;
         int counter = 0;
 
+        Link testLink;
+
         public AnimationTester() {
             Game1.instance.RegisterUpdateable(this);
             spriteFactory = Game1.instance.spriteFactory;
-            blockCycler = Game1.instance.blockCycler;
+            //blockCycler = Game1.instance.blockCycler;
 
             sprites = new List<AnimatedSprite>();
+            //testLink = new Link(Game1.instance);
             
             /*
             sprites.Add(spriteFactory.CreateLinkWalkDownSprite());
@@ -113,7 +117,7 @@ namespace LegendOfZelda
                 if (counter >= sprites.Count) counter = 0;
                 sprites[counter].RegisterSprite();
                 sprites[counter].UpdatePos(new Vector2(400, 200));
-                blockCycler.cycleForward();
+                //blockCycler.cycleForward();
             }
             
 
@@ -122,14 +126,15 @@ namespace LegendOfZelda
             {
                 lastPause = gameTime.TotalGameTime.TotalMilliseconds;
                 //sprites[counter].paused = !sprites[counter].paused;
-                sprites[counter].flashing = !sprites[counter].flashing;
+                //sprites[counter].flashing = !sprites[counter].flashing;
                 //sprites[counter].blinking = true;
 
                 //new FireProjectile(new Vector2(200, 200), Direction.left);
                 //new ArrowProjectile(new Vector2(200, 200), Direction.up);
                 //new BombProjectile(new Vector2(300, 200));
+                //new BoomerangProjectile(new Vector2(300, 200), new Vector2(1, 1), testLink);
 
-                blockCycler.cycleBackward();
+                //blockCycler.cycleBackward();
             }
             
             //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
