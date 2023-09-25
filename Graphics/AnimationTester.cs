@@ -134,7 +134,6 @@ namespace LegendOfZelda
                 //new BombProjectile(new Vector2(300, 200));
 
                 blockCycler.cycleBackward();
-                enemyCycler.CycleBackward(gameTime);
             }
             
             //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));

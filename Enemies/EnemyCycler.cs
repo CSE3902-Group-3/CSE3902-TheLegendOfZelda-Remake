@@ -49,6 +49,8 @@ namespace LegendOfZelda.Enemies
 
         public void CycleBackward(GameTime gameTime)
         {
+            // This method will be more useful when the button commands are available
+
             // TODO: Draw enemy death explosion when an enemy is cycled out
             Enemies[index].Die();
             index--;
