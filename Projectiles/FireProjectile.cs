@@ -5,17 +5,19 @@ namespace LegendOfZelda
 {
     public class FireProjectile : IPlayerProjectile
     {
-        private ISprite sprite;
+        private AnimatedSprite sprite;
         private Game1 game;
         private SpriteFactory spriteFactory;
         private const float speed = 2;
         private Vector2 pos;
         private Vector2 dir;
+        private Vector2 viewportSize;
         public FireProjectile(Vector2 position, Direction direction)
         {
             game = Game1.instance;
             SpriteFactory spriteFactory = game.spriteFactory;
             pos = position;
+            viewportSize = new Vector2(game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height);
 
             switch (direction)
             {
@@ -43,11 +45,17 @@ namespace LegendOfZelda
         {
             pos += dir * speed;
             sprite.UpdatePos(pos);
+
+            if (pos.X > viewportSize.X || pos.X < 0 || pos.Y > viewportSize.Y || pos.Y < 0)
+            {
+                Destroy();
+            }
         }
 
         public void Destroy()
         {
-            //Not needed for sprint 2
+            sprite.UnregisterSprite();
+            game.RemoveUpdateable(this);
         }
     }
 }
