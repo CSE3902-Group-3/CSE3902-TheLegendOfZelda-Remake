@@ -7,22 +7,25 @@ namespace LegendOfZelda
 {
     public class Bomb : IItem
     {
-        protected Texture2D texture;
-        protected SpriteBatch spriteBatch;
-        protected Game1 game1;
-        public Vector2 position { get; protected set; }
+        protected AnimatedSprite bomb;
+        private SpriteFactory spriteFactory;
 
-        public Bomb(Texture2D texture, Vector2 position)
+
+        public Bomb(Game1 game1)
         {
-            this.texture = texture;
-            this.position = position;
             game1 = Game1.instance;
-            spriteBatch = game1._spriteBatch;
+            spriteFactory = game1.spriteFactory;
+            bomb = spriteFactory.CreateBombSprite();
         }
 
-        public void Draw()
+        public void Remove()
         {
-            spriteBatch.Draw(texture, position, Color.White);
+            bomb.UnregisterSprite();
+        }
+
+        public void Collect()
+        {
+            //left empty for sprint2
         }
     }
 }

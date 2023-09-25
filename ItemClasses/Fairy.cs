@@ -5,30 +5,28 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 namespace LegendOfZelda
 {
-    public class Arrow : IItem
+    public class Fairy : IItem
     {
-        protected AnimatedSprite arrow;
+        protected AnimatedSprite fairy;
         private SpriteFactory spriteFactory;
 
 
-        public Arrow(Game1 game1)
+        public Fairy(Game1 game1)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;
-            arrow = spriteFactory.CreateArrowUpSprite();
+            fairy = spriteFactory.CreateFairySprite();
         }
 
         public void Remove()
         {
-            arrow.UnregisterSprite();
+            fairy.UnregisterSprite();
         }
 
         public void Collect()
         {
             //left empty for sprint2
         }
-
-        
     }
 }
 

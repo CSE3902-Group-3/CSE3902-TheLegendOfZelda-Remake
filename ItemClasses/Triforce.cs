@@ -5,30 +5,28 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 namespace LegendOfZelda
 {
-    public class Arrow : IItem
+    public class Triforce : IItem
     {
-        protected AnimatedSprite arrow;
+        protected AnimatedSprite triforce;
         private SpriteFactory spriteFactory;
 
 
-        public Arrow(Game1 game1)
+        public Triforce(Game1 game1)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;
-            arrow = spriteFactory.CreateArrowUpSprite();
+            triforce = spriteFactory.CreateTriforcePieceSprite();
         }
 
         public void Remove()
         {
-            arrow.UnregisterSprite();
+            triforce.UnregisterSprite();
         }
 
         public void Collect()
         {
             //left empty for sprint2
         }
-
-        
     }
 }
 
