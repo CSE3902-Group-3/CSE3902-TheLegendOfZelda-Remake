@@ -86,7 +86,7 @@ namespace LegendOfZelda.Enemies
 
         public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 100)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 ChangeDirection();
