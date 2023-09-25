@@ -50,8 +50,8 @@ namespace LegendOfZelda
 
             // Change size of viewport
             _graphics.IsFullScreen = false;
-            _graphics.PreferredBackBufferWidth = 3000;
-            _graphics.PreferredBackBufferHeight = 1500;
+            _graphics.PreferredBackBufferWidth = 1920;
+            _graphics.PreferredBackBufferHeight = 1080;
             _graphics.ApplyChanges();
 
             base.Initialize();
