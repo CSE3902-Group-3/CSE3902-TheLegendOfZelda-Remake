@@ -4,25 +4,25 @@ using System;
 
 namespace LegendOfZelda.Enemies
 {
-    public class ZolBig : IEnemy
+    public class Skeleton : IEnemy
     {
         private Game1 game;
         public SpriteFactory spriteFactory;
-        private readonly AnimatedSprite zolBigSprite;
-        private int health { get; set; } = 1;
+        private readonly AnimatedSprite skeletonSprite;
+        private int health { get; set; } = 2;
         public Vector2 Position;
         private Vector2 Direction;
         private double lastSwitch = 0;
 
-        public ZolBig(Vector2 pos)
+        public Skeleton(Vector2 pos)
         {
             game = Game1.instance;
             game.RegisterUpdateable(this);
             spriteFactory = game.spriteFactory;
-            zolBigSprite = spriteFactory.CreateZolSprite();
+            skeletonSprite = spriteFactory.CreateStalfosSprite();
             Position = pos;
 
-            zolBigSprite.UnregisterSprite();
+            skeletonSprite.UnregisterSprite();
         }
         public void ChangePosition()
         {
@@ -37,7 +37,7 @@ namespace LegendOfZelda.Enemies
             {
                 Position -= Direction;
             }
-            zolBigSprite.UpdatePos(Position);
+            skeletonSprite.UpdatePos(Position);
         }
         public void Attack()
         {
@@ -58,7 +58,7 @@ namespace LegendOfZelda.Enemies
         {
             Random rand = new Random();
             int random = rand.Next(0, 4);
-            zolBigSprite.UnregisterSprite();
+            skeletonSprite.UnregisterSprite();
 
             if (random == 0)
             {
@@ -76,11 +76,11 @@ namespace LegendOfZelda.Enemies
             {
                 Direction = new Vector2(0, -1);
             }
-            zolBigSprite.RegisterSprite();
+            skeletonSprite.RegisterSprite();
         }
         public void Die()
         {
-            zolBigSprite.UnregisterSprite();
+            skeletonSprite.UnregisterSprite();
         }
 
         public void Update(GameTime gameTime)
@@ -95,7 +95,7 @@ namespace LegendOfZelda.Enemies
 
         public void Draw()
         {
-            zolBigSprite.Draw();
+            skeletonSprite.Draw();
         }
     }
 }

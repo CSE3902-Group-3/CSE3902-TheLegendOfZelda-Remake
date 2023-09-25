@@ -21,6 +21,8 @@ namespace LegendOfZelda.Enemies
             spriteFactory = game.spriteFactory;
             batSprite = spriteFactory.CreateKeeseSprite();
             Position = pos;
+
+            batSprite.UnregisterSprite();
         }
         public void ChangePosition()
         {
@@ -56,6 +58,7 @@ namespace LegendOfZelda.Enemies
         {
             Random rand = new Random();
             int random = rand.Next(0, 4);
+            batSprite.UnregisterSprite();
 
             if (random == 0)
             {
@@ -73,6 +76,7 @@ namespace LegendOfZelda.Enemies
             {
                 Direction = new Vector2(0, -1);
             }
+            batSprite.RegisterSprite();
         }
         public void Die()
         {

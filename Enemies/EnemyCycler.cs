@@ -6,7 +6,6 @@ namespace LegendOfZelda.Enemies
 {
     public class EnemyCycler
     {
-        private readonly SpriteFactory SpriteFactory;
         private readonly List<IEnemy> Enemies;
         private Vector2 Position;
         private int index = 0;
@@ -14,16 +13,20 @@ namespace LegendOfZelda.Enemies
         public EnemyCycler(Vector2 pos)
         {
             Position = pos;
-            SpriteFactory = Game1.instance.spriteFactory;
-
             Enemies = new List<IEnemy>()
             {
                 new Bat(Position),
+                new Skeleton(Position),
                 new Goriya(Position),
                 new GelSmall(Position),
                 new ZolBig(Position),
                 new Wizard(Position),
             };
+
+            foreach (IEnemy enemy in Enemies)
+            {
+                enemy.Die();
+            }
         }
 
         public void CycleForward()
