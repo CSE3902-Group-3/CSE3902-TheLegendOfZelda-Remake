@@ -2,14 +2,14 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace LegendOfZelda.Enemies.GelSmall
+namespace LegendOfZelda.Enemies
 {
 
     public class GelSmall : IEnemy
     {
         private Game1 game;
         public SpriteFactory spriteFactory;
-        private readonly ISprite gelSmallSprite;
+        private readonly AnimatedSprite gelSmallSprite;
         private int health { get; set; } = 1;
         public Vector2 Position;
         private Vector2 Direction;
@@ -74,10 +74,15 @@ namespace LegendOfZelda.Enemies.GelSmall
                 Direction = new Vector2(0, -1);
             }
         }
+        public void Die()
+        {
+            gelSmallSprite.UnregisterSprite();
+            game.RemoveUpdateable(this);
+        }
 
         public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 100)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 ChangeDirection();
@@ -85,9 +90,11 @@ namespace LegendOfZelda.Enemies.GelSmall
             ChangePosition();
         }
 
-        public void Draw()
+        public void Spawn()
         {
-            gelSmallSprite.Draw();
+            gelSmallSprite.RegisterSprite();
+            game.RegisterUpdateable(this);
+            gelSmallSprite.UpdatePos(Position);
         }
         public void Destroy()
         {

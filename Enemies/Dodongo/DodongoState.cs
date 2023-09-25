@@ -5,16 +5,21 @@ using System.Runtime.InteropServices;
 
 namespace LegendOfZelda.Enemies.Dodongo
 {
-    public class Dodongo : IEnemy
+    public class DodongoState : IEnemy
     {
         public IEnemy State { get;  set; }
         private double LastDirSwitch = 0;
         private double LastHealthSwitch = 0;
 
-        public Dodongo(Vector2 pos)
+        public DodongoState(Vector2 pos)
+        {
+            State = new RightMovingDodongo(this, pos);
+            Spawn();
+        }
+        public void Spawn()
         {
             Game1.instance.RegisterUpdateable(this);
-            State = new RightMovingDodongo(this, pos);
+            State.Spawn();
         }
         public void ChangePosition()
         {
@@ -48,9 +53,9 @@ namespace LegendOfZelda.Enemies.Dodongo
             }
             State.ChangePosition();
         }
-        public void Destroy()
+        public void Die()
         {
-            State.Destroy();
+            State.Die();
         }
     }
 }

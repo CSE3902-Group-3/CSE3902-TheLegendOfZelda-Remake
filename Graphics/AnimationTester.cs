@@ -1,3 +1,4 @@
+using LegendOfZelda.Enemies;
 using LegendOfZelda.Environment;
 using LegendOfZelda.Player;
 using Microsoft.Xna.Framework;
@@ -13,6 +14,7 @@ namespace LegendOfZelda
     {
         SpriteFactory spriteFactory;
         BlockCycler blockCycler;
+        EnemyCycler enemyCycler;
         List<AnimatedSprite> sprites;
         double lastSwitch = 0;
         double lastPause = 0;
@@ -23,7 +25,8 @@ namespace LegendOfZelda
         public AnimationTester() {
             Game1.instance.RegisterUpdateable(this);
             spriteFactory = Game1.instance.spriteFactory;
-            //blockCycler = Game1.instance.blockCycler;
+            // blockCycler = Game1.instance.blockCycler;
+            enemyCycler = Game1.instance.enemyCycler;
 
             sprites = new List<AnimatedSprite>();
             //testLink = new Link(Game1.instance);
@@ -81,7 +84,6 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateKeySprite());
             sprites.Add(spriteFactory.CreateCompassSprite());
             sprites.Add(spriteFactory.CreateTriforcePieceSprite());
-            */
             sprites.Add(spriteFactory.CreateDodongoDownHitSprite());
             sprites.Add(spriteFactory.CreateDodongoDownSprite());
             sprites.Add(spriteFactory.CreateDodongoUpHitSprite());
@@ -90,6 +92,7 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateDodongoLeftSprite());
             sprites.Add(spriteFactory.CreateDodongoRightHitSprite());
             sprites.Add(spriteFactory.CreateDodongoRightSprite());
+            */
 
 
 
@@ -102,15 +105,16 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             
-            if(gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 2000)
+            if(gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 5000)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
-                sprites[counter].UnregisterSprite();
+                //sprites[counter].UnregisterSprite();
                 counter++;
-                if (counter >= sprites.Count) counter = 0;
-                sprites[counter].RegisterSprite();
-                sprites[counter].UpdatePos(new Vector2(400, 200));
-                //blockCycler.cycleForward();
+                //if (counter >= sprites.Count) counter = 0;
+                //sprites[counter].RegisterSprite();
+                //sprites[counter].UpdatePos(new Vector2(400, 200));
+                // blockCycler.cycleForward();
+                enemyCycler.CycleForward();
             }
             
 

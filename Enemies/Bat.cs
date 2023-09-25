@@ -2,13 +2,13 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace LegendOfZelda.Enemies.Bat
+namespace LegendOfZelda.Enemies
 {
     public class Bat : IEnemy
     {
         private Game1 game;
         public SpriteFactory spriteFactory;
-        private readonly ISprite batSprite;
+        private readonly AnimatedSprite batSprite;
         private int health { get; set; } = 1;
         public Vector2 Position;
         private Vector2 Direction;
@@ -17,7 +17,6 @@ namespace LegendOfZelda.Enemies.Bat
         public Bat(Vector2 pos)
         {
             game = Game1.instance;
-            game.RegisterUpdateable(this);
             spriteFactory = game.spriteFactory;
             batSprite = spriteFactory.CreateKeeseSprite();
             Position = pos;
@@ -74,10 +73,15 @@ namespace LegendOfZelda.Enemies.Bat
                 Direction = new Vector2(0, -1);
             }
         }
+        public void Die()
+        {
+            batSprite.UnregisterSprite();
+            game.RemoveUpdateable(this);
+        }
 
         public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 100)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 ChangeDirection();
@@ -85,13 +89,11 @@ namespace LegendOfZelda.Enemies.Bat
             ChangePosition();
         }
 
-        public void Draw()
+        public void Spawn()
         {
-            batSprite.Draw();
-        }
-        public void Destroy()
-        {
-
+            batSprite.RegisterSprite();
+            game.RegisterUpdateable(this);
+            batSprite.UpdatePos(Position);
         }
     }
 }

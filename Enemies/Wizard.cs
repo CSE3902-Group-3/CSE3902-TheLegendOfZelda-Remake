@@ -2,13 +2,13 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace LegendOfZelda.Enemies.Wizard
+namespace LegendOfZelda.Enemies
 {
     public class Wizard : IEnemy
     {
         private Game1 game;
         public SpriteFactory spriteFactory;
-        private readonly ISprite wizardSprite;
+        private readonly AnimatedSprite wizardSprite;
         private int health { get; set; } = 1;
         public Vector2 Position;
 
@@ -40,14 +40,18 @@ namespace LegendOfZelda.Enemies.Wizard
             // Wizard does not change direction
         }
 
-        public void Update(GameTime gameTime)
+        public void Die()
         {
-            ChangePosition();
+            wizardSprite.UnregisterSprite();
+            game.RemoveUpdateable(this);
         }
+        public void Update(GameTime gameTime) {}
 
-        public void Draw()
+        public void Spawn()
         {
-            wizardSprite.Draw();
+            wizardSprite.RegisterSprite();
+            game.RegisterUpdateable(this);
+            wizardSprite.UpdatePos(Position);
         }
         public void Destroy()
         {
