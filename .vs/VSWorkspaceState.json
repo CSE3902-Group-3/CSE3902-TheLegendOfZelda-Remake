@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Enemies",
+    "\\Player"
   ],
-  "SelectedNode": "\\LegendOfZelda.sln",
+  "SelectedNode": "\\Enemies\\Goriya.cs",
   "PreviewInSolutionExplorer": false
 }

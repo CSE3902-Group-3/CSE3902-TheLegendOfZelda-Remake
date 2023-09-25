@@ -95,9 +95,5 @@ namespace LegendOfZelda.Enemies
             game.RegisterUpdateable(this);
             batSprite.UpdatePos(Position);
         }
-        public void Destroy()
-        {
-
-        }
     }
 }

@@ -68,10 +68,9 @@ namespace LegendOfZelda
             spriteFactory.LoadTextures();
 
             blockCycler = new BlockCycler(new Vector2(300, 200));
-            enemyCycler = new EnemyCycler(new Vector2(150, 150));
+            enemyCycler = new EnemyCycler(new Vector2(500, 500));
             //Uncomment the following line for testing
-            //new AnimationTester();
-            new Goriya(new Vector2(500, 500));
+            new AnimationTester();
 
             link = new Link(this);
         }

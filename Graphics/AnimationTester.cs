@@ -84,7 +84,6 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateKeySprite());
             sprites.Add(spriteFactory.CreateCompassSprite());
             sprites.Add(spriteFactory.CreateTriforcePieceSprite());
-            */
             sprites.Add(spriteFactory.CreateDodongoDownHitSprite());
             sprites.Add(spriteFactory.CreateDodongoDownSprite());
             sprites.Add(spriteFactory.CreateDodongoUpHitSprite());
@@ -93,6 +92,7 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateDodongoLeftSprite());
             sprites.Add(spriteFactory.CreateDodongoRightHitSprite());
             sprites.Add(spriteFactory.CreateDodongoRightSprite());
+            */
 
 
 
@@ -105,14 +105,14 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             
-            if(gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 2000)
+            if(gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 5000)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
-                sprites[counter].UnregisterSprite();
+                //sprites[counter].UnregisterSprite();
                 counter++;
-                if (counter >= sprites.Count) counter = 0;
-                sprites[counter].RegisterSprite();
-                sprites[counter].UpdatePos(new Vector2(400, 200));
+                //if (counter >= sprites.Count) counter = 0;
+                //sprites[counter].RegisterSprite();
+                //sprites[counter].UpdatePos(new Vector2(400, 200));
                 // blockCycler.cycleForward();
                 enemyCycler.CycleForward();
             }

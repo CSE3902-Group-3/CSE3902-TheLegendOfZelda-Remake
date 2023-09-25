@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda.EnemyProjectiles;
+using LegendOfZelda.Interfaces;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -52,7 +53,7 @@ namespace LegendOfZelda.Enemies
         }
         public void Attack()
         {
-            new GoriyaBoomerang(Position, Direction);
+            //new GoriyaBoomerang(Position, Direction);
         }
         public void UpdateHealth()
         {

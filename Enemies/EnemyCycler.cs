@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using LegendOfZelda.Interfaces;
 using System;
+using LegendOfZelda.Enemies.Dodongo;
 
-namespace LegendOfZelda.Enemies
+namespace LegendOfZelda.Enemies 
 {
+
     public class EnemyCycler
     {
         public Game1 game;
@@ -17,19 +19,17 @@ namespace LegendOfZelda.Enemies
             game = Game1.instance;
             Position = pos;
             Enemies = new List<IEnemy>()
-            {
-                new Bat(Position),
-                new Skeleton(Position),
-                new Goriya(Position),
-                new GelSmall(Position),
-                new ZolBig(Position),
-                new Wizard(Position),
-            };
-
-            foreach (IEnemy enemy in Enemies)
-            {
-                enemy.Die();
-            }
+        {
+            new DodongoState(Position),
+            new Bat(Position),
+            new Skeleton(Position),
+            new Goriya(Position),
+            new GelSmall(Position),
+            new ZolBig(Position),
+            new Wizard(Position),
+            new Aquamentus(Position),
+            new Rope(Position),
+        };
         }
 
         public void CycleForward()
