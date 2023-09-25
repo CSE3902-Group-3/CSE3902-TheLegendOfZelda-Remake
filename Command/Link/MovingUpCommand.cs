@@ -21,7 +21,7 @@ namespace LegendOfZelda.Command.Link
 
         public void Execute()
         {
-            link.stateMachine.Update();
+            //link.stateMachine.Update();
         }
     }
 }
