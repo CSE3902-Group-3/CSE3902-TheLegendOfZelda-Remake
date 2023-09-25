@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading;
 using IDrawable = LegendOfZelda.Interfaces.IDrawable;
 using IUpdateable = LegendOfZelda.Interfaces.IUpdateable;
@@ -69,13 +70,11 @@ namespace LegendOfZelda
             spriteFactory.LoadTextures();
 
             blockCycler = new BlockCycler(new Vector2(300, 200));
+
             //Uncomment the following line for testing
             //new AnimationTester();
 
             link = new Link(this);
-            //new Aquamentus(new Vector2(500, 500));
-            //new Rope(new Vector2(1000, 1000));
-            new Dodongo(new Vector2(1500, 750));
         }
 
         protected override void Update(GameTime gameTime)
