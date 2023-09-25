@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Player;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda.Interfaces
 {
@@ -6,6 +7,8 @@ namespace LegendOfZelda.Interfaces
     {
         ISprite sprite { get; }
         LinkStateMachine stateMachine { get; }
+
+        Vector2 pos { get; }
 
         public void UseItem();
 
