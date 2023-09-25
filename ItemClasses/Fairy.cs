@@ -7,12 +7,11 @@ namespace LegendOfZelda
 {
     public class Fairy : IItem
     {
-        private Game1 game1;
         protected AnimatedSprite fairy;
         private SpriteFactory spriteFactory;
 
 
-        public Fairy()
+        public Fairy(Game1 game1)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;

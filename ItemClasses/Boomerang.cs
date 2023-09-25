@@ -7,12 +7,11 @@ namespace LegendOfZelda
 {
     public class Boomerang : IItem
     {
-        private Game1 game1;
         protected AnimatedSprite boomerang;
         private SpriteFactory spriteFactory;
 
 
-        public Boomerang()
+        public Boomerang(Game1 game1)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;

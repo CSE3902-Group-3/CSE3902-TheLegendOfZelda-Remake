@@ -7,12 +7,11 @@ namespace LegendOfZelda
 {
     public class Key : IItem
     {
-        private Game1 game1;
         protected AnimatedSprite key;
         private SpriteFactory spriteFactory;
 
 
-        public Key()
+        public Key(Game1 game1)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;

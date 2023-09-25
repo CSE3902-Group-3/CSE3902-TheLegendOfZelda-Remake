@@ -7,12 +7,11 @@ namespace LegendOfZelda
 {
     public class Bow : IItem
     {
-        private Game1 game1;
         protected AnimatedSprite bow;
         private SpriteFactory spriteFactory;
 
 
-        public Bow()
+        public Bow(Game1 game1)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;

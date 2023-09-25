@@ -7,12 +7,11 @@ namespace LegendOfZelda
 {
     public class Heart : IItem
     {
-        private Game1 game1;
         protected AnimatedSprite heart;
         private SpriteFactory spriteFactory;
 
 
-        public Heart()
+        public Heart(Game1 game1)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;

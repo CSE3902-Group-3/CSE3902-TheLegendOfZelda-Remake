@@ -7,12 +7,11 @@ namespace LegendOfZelda
 {
     public class Compass : IItem
     {
-        private Game1 game1;
         protected AnimatedSprite compass;
         private SpriteFactory spriteFactory;
 
 
-        public Compass()
+        public Compass(Game1 game1)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;

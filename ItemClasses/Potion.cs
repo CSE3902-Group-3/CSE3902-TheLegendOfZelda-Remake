@@ -7,12 +7,11 @@ namespace LegendOfZelda
 {
     public class Potion : IItem
     {
-        private Game1 game1;
         protected AnimatedSprite potion;
         private SpriteFactory spriteFactory;
 
 
-        public Potion()
+        public Potion(Game1 game1)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;

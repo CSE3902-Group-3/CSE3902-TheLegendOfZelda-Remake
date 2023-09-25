@@ -7,12 +7,11 @@ namespace LegendOfZelda
 {
     public class Clock : IItem
     {
-        private Game1 game1;
         protected AnimatedSprite clock;
         private SpriteFactory spriteFactory;
 
 
-        public Clock()
+        public Clock(Game1 game1)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;

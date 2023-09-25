@@ -7,12 +7,11 @@ namespace LegendOfZelda
 {
     public class Candle : IItem
     {
-        private Game1 game1;
         protected AnimatedSprite candle;
         private SpriteFactory spriteFactory;
 
 
-        public Candle()
+        public Candle(Game1 game1)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;

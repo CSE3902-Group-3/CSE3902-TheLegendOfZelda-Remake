@@ -7,12 +7,11 @@ namespace LegendOfZelda
 {
     public class Triforce : IItem
     {
-        private Game1 game1;
         protected AnimatedSprite triforce;
         private SpriteFactory spriteFactory;
 
 
-        public Triforce()
+        public Triforce(Game1 game1)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;

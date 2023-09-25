@@ -7,12 +7,11 @@ namespace LegendOfZelda
 {
     public class Bomb : IItem
     {
-        private Game1 game1;
         protected AnimatedSprite bomb;
         private SpriteFactory spriteFactory;
 
 
-        public Bomb()
+        public Bomb(Game1 game1)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;

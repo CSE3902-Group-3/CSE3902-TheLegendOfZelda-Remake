@@ -7,12 +7,11 @@ namespace LegendOfZelda
 {
     public class Map : IItem
     {
-        private Game1 game1;
         protected AnimatedSprite map;
         private SpriteFactory spriteFactory;
 
 
-        public Map()
+        public Map(Game1 game1)
         {
             game1 = Game1.instance;
             spriteFactory = game1.spriteFactory;
