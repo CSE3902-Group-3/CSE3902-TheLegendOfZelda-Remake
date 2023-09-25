@@ -52,11 +52,8 @@ namespace LegendOfZelda.Enemies.Goriya
             goriyaSprites[currentSprite].UpdatePos(Position);
         }
         public void Attack()
-        {   
-            /* 
-             * This isn't needed for Sprint 2,
-             * however it will be needed later.
-             */
+        {
+            new GoriyaBoomerang(Position, Direction);
         }
         public void UpdateHealth() 
         { 
@@ -93,17 +90,22 @@ namespace LegendOfZelda.Enemies.Goriya
 
         public void Update(GameTime gameTime)
         {
-           if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
+                Attack();
                 ChangeDirection();
             }
             ChangePosition();
         }
-
         public void Draw()
         {
            goriyaSprites[currentSprite].Draw();
+        }
+        public void Destroy()
+        {
+            //Game1.instance.RemoveDrawable(Goriya);
+            Game1.instance.RemoveUpdateable(this);
         }
     }
 }

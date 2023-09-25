@@ -35,9 +35,9 @@ namespace LegendOfZelda.Enemies.Aquamentus
         }
         public void Attack()
         {
-            Game1.instance.RegisterUpdateable(new AquamentusBall(Position, new Vector2(-10, 0)));
-            Game1.instance.RegisterUpdateable(new AquamentusBall(Position, new Vector2(-10, 10)));
-            Game1.instance.RegisterUpdateable(new AquamentusBall(Position, new Vector2(-10, -10)));
+            new AquamentusBall(Position, new Vector2(-10, 0));
+            new AquamentusBall(Position, new Vector2(-10, 10));
+            new AquamentusBall(Position, new Vector2(-10, -10));
         }
         public void UpdateHealth()
         {

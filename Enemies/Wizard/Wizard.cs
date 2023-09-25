@@ -49,5 +49,9 @@ namespace LegendOfZelda.Enemies.Wizard
         {
             wizardSprite.Draw();
         }
+        public void Destroy()
+        {
+
+        }
     }
 }

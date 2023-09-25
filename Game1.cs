@@ -1,5 +1,6 @@
 using LegendOfZelda.Enemies.Aquamentus;
 using LegendOfZelda.Enemies.Dodongo;
+using LegendOfZelda.Enemies.Goriya;
 using LegendOfZelda.Enemies.Rope;
 using LegendOfZelda.Environment;
 using LegendOfZelda.Interfaces;
@@ -73,6 +74,7 @@ namespace LegendOfZelda
 
             //Uncomment the following line for testing
             //new AnimationTester();
+            new Goriya(new Vector2(500, 500));
 
             link = new Link(this);
         }
