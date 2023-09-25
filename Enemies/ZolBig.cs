@@ -95,5 +95,9 @@ namespace LegendOfZelda.Enemies
             game.RegisterUpdateable(this);
             zolBigSprite.UpdatePos(Position);
         }
+        public void Destroy()
+        {
+
+        }
     }
 }

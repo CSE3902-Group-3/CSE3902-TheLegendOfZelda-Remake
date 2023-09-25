@@ -53,5 +53,9 @@ namespace LegendOfZelda.Enemies
             game.RegisterUpdateable(this);
             wizardSprite.UpdatePos(Position);
         }
+        public void Destroy()
+        {
+
+        }
     }
 }
