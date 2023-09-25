@@ -81,6 +81,7 @@ namespace LegendOfZelda.Enemies
         public void Die()
         {
             zolBigSprite.UnregisterSprite();
+            game.RemoveUpdateable(this);
         }
 
         public void Update(GameTime gameTime)

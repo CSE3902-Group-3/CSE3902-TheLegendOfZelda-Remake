@@ -94,6 +94,7 @@ namespace LegendOfZelda.Enemies
         public void Die()
         {
             goriyaSprites[currentSprite].UnregisterSprite();
+            game.RemoveUpdateable(this);
         }
 
         public void Update(GameTime gameTime)
