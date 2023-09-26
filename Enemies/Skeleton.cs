@@ -8,7 +8,7 @@ namespace LegendOfZelda.Enemies
     {
         private Game1 game;
         public SpriteFactory spriteFactory;
-        private readonly AnimatedSprite skeletonSprite;
+        private AnimatedSprite skeletonSprite;
         private int health { get; set; } = 2;
         public Vector2 Position;
         private Vector2 Direction;
@@ -17,9 +17,14 @@ namespace LegendOfZelda.Enemies
         public Skeleton(Vector2 pos)
         {
             game = Game1.instance;
-            spriteFactory = game.spriteFactory;
-            skeletonSprite = spriteFactory.CreateStalfosSprite();
             Position = pos;
+            skeletonSprite = game.spriteFactory.CreateStalfosSprite();
+        }
+        public void Spawn()
+        {
+            game.RegisterUpdateable(this);
+            skeletonSprite.RegisterSprite();
+            skeletonSprite.UpdatePos(Position);
         }
         public void ChangePosition()
         {
@@ -87,13 +92,6 @@ namespace LegendOfZelda.Enemies
                 ChangeDirection();
             }
             ChangePosition();
-        }
-
-        public void Spawn()
-        {
-            skeletonSprite.RegisterSprite();
-            game.RegisterUpdateable(this);
-            skeletonSprite.UpdatePos(Position);
         }
     }
 }

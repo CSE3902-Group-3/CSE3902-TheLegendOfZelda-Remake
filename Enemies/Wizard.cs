@@ -8,16 +8,21 @@ namespace LegendOfZelda.Enemies
     {
         private Game1 game;
         public SpriteFactory spriteFactory;
-        private readonly AnimatedSprite wizardSprite;
+        private AnimatedSprite wizardSprite;
         private int health { get; set; } = 1;
         public Vector2 Position;
 
         public Wizard(Vector2 pos)
         {
             game = Game1.instance;
-            spriteFactory = game.spriteFactory;
-            wizardSprite = spriteFactory.CreateOldManSprite();
             Position = pos;
+            wizardSprite = game.spriteFactory.CreateOldManSprite();
+        }
+        public void Spawn()
+        {
+            game.RegisterUpdateable(this);           
+            wizardSprite.RegisterSprite();
+            wizardSprite.UpdatePos(Position);
         }
         public void ChangePosition()
         {
@@ -46,16 +51,5 @@ namespace LegendOfZelda.Enemies
             game.RemoveUpdateable(this);
         }
         public void Update(GameTime gameTime) {}
-
-        public void Spawn()
-        {
-            wizardSprite.RegisterSprite();
-            game.RegisterUpdateable(this);
-            wizardSprite.UpdatePos(Position);
-        }
-        public void Destroy()
-        {
-
-        }
     }
 }

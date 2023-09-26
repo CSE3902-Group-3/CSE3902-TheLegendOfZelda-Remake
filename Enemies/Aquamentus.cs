@@ -7,7 +7,7 @@ namespace LegendOfZelda.Enemies
 {
     public class Aquamentus : IEnemy
     {
-        private Game1 Game { get; set; }
+        private Game1 game { get; set; }
         private AnimatedSprite AquamentusSprite;
         private int Health { get; set; } = 1;
         private Vector2 Position;
@@ -17,12 +17,14 @@ namespace LegendOfZelda.Enemies
 
         public Aquamentus(Vector2 pos)
         {
+            game = Game1.instance;
             Position = pos;
+            AquamentusSprite = game.spriteFactory.CreateAquamentusSprite();
         }
         public void Spawn ()
         {
-            Game1.instance.RegisterUpdateable(this);
-            AquamentusSprite = Game1.instance.spriteFactory.CreateAquamentusSprite();
+            game.RegisterUpdateable(this);
+            AquamentusSprite.RegisterSprite();
             AquamentusSprite.UpdatePos(Position);
         }
         public void ChangePosition()

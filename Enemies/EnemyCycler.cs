@@ -9,27 +9,33 @@ namespace LegendOfZelda.Enemies
 
     public class EnemyCycler
     {
-        public Game1 game;
         private readonly List<IEnemy> Enemies;
         private Vector2 Position;
         private int index = 0;
 
         public EnemyCycler(Vector2 pos)
         {
-            game = Game1.instance;
             Position = pos;
             Enemies = new List<IEnemy>()
-        {
-            new DodongoState(Position),
-            new Bat(Position),
-            new Skeleton(Position),
-            new Goriya(Position),
-            new GelSmall(Position),
-            new ZolBig(Position),
-            new Wizard(Position),
-            new Aquamentus(Position),
-            new Rope(Position),
-        };
+            {
+                new Bat(Position),
+                new Skeleton(Position),
+                new Goriya(Position),
+                new GelSmall(Position),
+                new ZolBig(Position),
+                new Wizard(Position),
+                new Aquamentus(Position),
+                new Rope(Position),
+                new DodongoState(Position),
+            };
+
+            foreach (IEnemy entity in Enemies)
+            {
+                entity.Die();
+            }
+
+            // Draw the first enemy to the screen
+            Enemies[0].Spawn();
         }
 
         public void CycleForward()
