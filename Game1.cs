@@ -1,3 +1,5 @@
+using LegendOfZelda.Controller;
+using LegendOfZelda.Enemies.Dodongo;
 using LegendOfZelda.Enemies;
 using LegendOfZelda.Environment;
 using LegendOfZelda.Interfaces;
@@ -31,6 +33,8 @@ namespace LegendOfZelda
         private IController controller;
         public BlockCycler blockCycler { get; private set; }
         public EnemyCycler enemyCycler { get; private set; }
+
+        public ItemScroll itemCycler { get; private set; }
         public static Game1 instance { get; private set; }
 
         public Game1()
@@ -54,6 +58,8 @@ namespace LegendOfZelda
             _graphics.PreferredBackBufferHeight = 1080;
             _graphics.ApplyChanges();
 
+            //controller = new PlayerController(instance, link);
+
             base.Initialize();
         }
 
@@ -67,24 +73,32 @@ namespace LegendOfZelda
 
             spriteFactory.LoadTextures();
 
+            link = new Link(this);
             blockCycler = new BlockCycler(new Vector2(300, 200));
             enemyCycler = new EnemyCycler(new Vector2(500, 500));
+            itemCycler = new ItemScroll(new Vector2(800, 300));
             //Uncomment the following line for testing
-            new AnimationTester();
+            //new AnimationTester();
+            controller = new PlayerController(this, (Link)link);
 
-            link = new Link(this);
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            //    Exit();
 
             // TODO: Add your update logic here
+            /*
             for (int i = 0; i < updateables.Count; i++)
             {
                     updateables[i].Update(gameTime);
             }
+            */
+
+            
+
+            controller.Update();
 
             base.Update(gameTime);
         }
