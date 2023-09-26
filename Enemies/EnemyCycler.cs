@@ -29,6 +29,7 @@ namespace LegendOfZelda.Enemies
             new Wizard(Position),
             new Aquamentus(Position),
             new Rope(Position),
+            new WallMaster(Position),
         };
         }
 
