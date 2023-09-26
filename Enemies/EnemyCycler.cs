@@ -27,6 +27,7 @@ namespace LegendOfZelda.Enemies
                 new Aquamentus(Position),
                 new Rope(Position),
                 new DodongoState(Position),
+                new WallMaster(Position),
             };
 
             foreach (IEnemy entity in Enemies)
