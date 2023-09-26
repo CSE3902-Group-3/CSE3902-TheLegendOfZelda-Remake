@@ -8,7 +8,7 @@ namespace LegendOfZelda.Player
         IState prevState;
         IState currentState;
 
-        // used for states like hurt, where we just want to
+        // used for states like hurt, where we just want to apply a sprite affect
         IState superState;
 
         public void ChangeState(IState newState)
