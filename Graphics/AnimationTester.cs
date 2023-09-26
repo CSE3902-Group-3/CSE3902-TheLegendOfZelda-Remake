@@ -15,6 +15,7 @@ namespace LegendOfZelda
         SpriteFactory spriteFactory;
         BlockCycler blockCycler;
         EnemyCycler enemyCycler;
+        ItemScroll itemScroll;
         List<AnimatedSprite> sprites;
         double lastSwitch = 0;
         double lastPause = 0;
@@ -27,6 +28,7 @@ namespace LegendOfZelda
             spriteFactory = Game1.instance.spriteFactory;
             // blockCycler = Game1.instance.blockCycler;
             // enemyCycler = Game1.instance.enemyCycler;
+            itemScroll = new ItemScroll(new Vector2(200,200));
 
             sprites = new List<AnimatedSprite>();
             //testLink = new Link(Game1.instance);
@@ -105,7 +107,7 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             
-            if(gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 5000)
+            if(gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 2000)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 //sprites[counter].UnregisterSprite();
@@ -114,7 +116,8 @@ namespace LegendOfZelda
                 //sprites[counter].RegisterSprite();
                 //sprites[counter].UpdatePos(new Vector2(400, 200));
                 // blockCycler.cycleForward();
-               // enemyCycler.CycleForward();
+                // enemyCycler.CycleForward();
+                itemScroll.nextItem();
             }
             
 
@@ -132,6 +135,7 @@ namespace LegendOfZelda
                 //new BoomerangProjectile(new Vector2(300, 200), new Vector2(1, 1), testLink);
 
                 //blockCycler.cycleBackward();
+                itemScroll.previousItem();
             }
             
             //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
