@@ -84,13 +84,10 @@ namespace LegendOfZelda.Controller
 
             foreach (Keys key in currKeys)
             {
-                if (!prevKeys.Contains(key))
+                command = controllerMappings.GetCommand(key);
+                if (command != null)
                 {
-                    command = controllerMappings.GetCommand(key);
-                    if (command != null)
-                    {
-                        command.Execute();
-                    }
+                    command.Execute();
                 }
             }
         }
