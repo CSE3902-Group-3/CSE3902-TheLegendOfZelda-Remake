@@ -20,21 +20,25 @@ namespace LegendOfZelda.Enemies
         public Goriya(Vector2 pos)
         {
             game = Game1.instance;
-            spriteFactory = game.spriteFactory;
+            Position = pos;
             goriyaSprites = new List<AnimatedSprite>
             {
-                spriteFactory.CreateGoriyaRightSprite(),
-                spriteFactory.CreateGoriyaLeftSprite(),
-                spriteFactory.CreateGoriyaDownSprite(),
-                spriteFactory.CreateGoriyaUpSprite()
+                game.spriteFactory.CreateGoriyaRightSprite(),
+                game.spriteFactory.CreateGoriyaLeftSprite(),
+                game.spriteFactory.CreateGoriyaDownSprite(),
+                game.spriteFactory.CreateGoriyaUpSprite()
             };
 
             foreach (AnimatedSprite goriya in goriyaSprites)
             {
                 goriya.UnregisterSprite();
             }
-
-            Position = pos;
+        }
+        public void Spawn()
+        {
+            game.RegisterUpdateable(this);           
+            goriyaSprites[currentSprite].RegisterSprite();
+            goriyaSprites[currentSprite].UpdatePos(Position);
         }
         public void ChangePosition()
         {
@@ -103,18 +107,6 @@ namespace LegendOfZelda.Enemies
                 ChangeDirection();
             }
             ChangePosition();
-        }
-
-        public void Spawn()
-        {
-            goriyaSprites[currentSprite].RegisterSprite();
-            game.RegisterUpdateable(this);
-            goriyaSprites[currentSprite].UpdatePos(Position);
-        }
-        public void Destroy()
-        {
-            //Game1.instance.RemoveDrawable(Goriya);
-            Game1.instance.RemoveUpdateable(this);
         }
     }
 }

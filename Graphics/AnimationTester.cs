@@ -26,7 +26,7 @@ namespace LegendOfZelda
             Game1.instance.RegisterUpdateable(this);
             spriteFactory = Game1.instance.spriteFactory;
             // blockCycler = Game1.instance.blockCycler;
-            enemyCycler = Game1.instance.enemyCycler;
+            // enemyCycler = Game1.instance.enemyCycler;
 
             sprites = new List<AnimatedSprite>();
             //testLink = new Link(Game1.instance);
@@ -114,7 +114,7 @@ namespace LegendOfZelda
                 //sprites[counter].RegisterSprite();
                 //sprites[counter].UpdatePos(new Vector2(400, 200));
                 // blockCycler.cycleForward();
-                enemyCycler.CycleForward();
+               // enemyCycler.CycleForward();
             }
             
 
