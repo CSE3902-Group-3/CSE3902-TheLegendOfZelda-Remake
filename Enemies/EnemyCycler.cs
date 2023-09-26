@@ -18,7 +18,6 @@ namespace LegendOfZelda.Enemies
             Position = pos;
             Enemies = new List<IEnemy>()
             {
-                new DodongoState(Position),
                 new Bat(Position),
                 new Skeleton(Position),
                 new Goriya(Position),
@@ -27,12 +26,16 @@ namespace LegendOfZelda.Enemies
                 new Wizard(Position),
                 new Aquamentus(Position),
                 new Rope(Position),
+                new DodongoState(Position),
             };
 
             foreach (IEnemy entity in Enemies)
             {
                 entity.Die();
             }
+
+            // Draw the first enemy to the screen
+            Enemies[0].Spawn();
         }
 
         public void CycleForward()
