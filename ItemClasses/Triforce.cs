@@ -7,17 +7,21 @@ namespace LegendOfZelda
 {
     public class Triforce : IItem
     {
-        // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
         protected AnimatedSprite triforce;
         private SpriteFactory spriteFactory;
+        private Vector2 position;
 
-
-        public Triforce(Game1 game1, Vector2 pos)
+        public Triforce(Vector2 pos)
         {
-            game1 = Game1.instance;
-            spriteFactory = game1.spriteFactory;
+            spriteFactory = Game1.instance.spriteFactory;
             triforce = spriteFactory.CreateTriforcePieceSprite();
-            triforce.UpdatePos(pos);
+            position = pos;
+        }
+
+        public void Show()
+        {
+            triforce.RegisterSprite();
+            triforce.UpdatePos(position);
         }
 
         public void Remove()

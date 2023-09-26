@@ -7,17 +7,21 @@ namespace LegendOfZelda
 {
     public class Map : IItem
     {
-        // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
         protected AnimatedSprite map;
         private SpriteFactory spriteFactory;
+        private Vector2 position;
 
-
-        public Map(Game1 game1, Vector2 pos)
+        public Map(Vector2 pos)
         {
-            game1 = Game1.instance;
-            spriteFactory = game1.spriteFactory;
+            spriteFactory = Game1.instance.spriteFactory;
             map = spriteFactory.CreateMapSprite();
-            map.UpdatePos(pos);
+            position = pos;
+        }
+
+        public void Show()
+        {
+            map.RegisterSprite();
+            map.UpdatePos(position);
         }
 
         public void Remove()

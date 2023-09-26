@@ -7,18 +7,21 @@ namespace LegendOfZelda
 {
     public class Bomb : IItem
     {
-        // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
-
         protected AnimatedSprite bomb;
         private SpriteFactory spriteFactory;
+        private Vector2 position;
 
-
-        public Bomb(Game1 game1, Vector2 pos)
+        public Bomb(Vector2 pos)
         {
-            game1 = Game1.instance;
-            spriteFactory = game1.spriteFactory;
+            spriteFactory = Game1.instance.spriteFactory;
             bomb = spriteFactory.CreateBombSprite();
-            bomb.UpdatePos(pos);
+            position = pos;
+        }
+
+        public void Show()
+        {
+            bomb.RegisterSprite();
+            bomb.UpdatePos(position);
         }
 
         public void Remove()

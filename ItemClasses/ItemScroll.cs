@@ -8,50 +8,49 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
     public class ItemScroll
     {
-        //private List<IItem> itemCollection;
+        private List<IItem> itemCollection;
         private int i = 0;
-        private IItem item;
         private Vector2 pos;
 
         public ItemScroll(Vector2 pos)
         {
-            /*
-            itemCollection = new List<IItem>
+            
+            itemCollection = new List<IItem>()
             {
-                new Arrow(Game1.instance),
-                new Bomb(Game1.instance),
-                new Boomerang(Game1.instance),
-                new Bow(Game1.instance),
-                new Candle(Game1.instance),
-                new Clock(Game1.instance),
-                new Compass(Game1.instance),
-                new HeartContainer(Game1.instance),
-                new Key(Game1.instance),
-                new Map(Game1.instance),
-                new Potion(Game1.instance),
-                new Heart(Game1.instance),
-                new Triforce(Game1.instance),
-                new Fairy(Game1.instance),
-                new Rupee(Game1.instance)
+                new Arrow(pos),
+                new Bomb(pos),
+                new Boomerang(pos),
+                new Bow(pos),
+                new Candle(pos),
+                new Clock(pos),
+                new Compass(pos),
+                new HeartContainer(pos),
+                new Key(pos),
+                new Map(pos),
+                new Potion(pos),
+                new Heart(pos),
+                new Triforce(pos),
+                new Fairy(pos),
+                new Rupee(pos)
             };
-            */
+
+            foreach (IItem item in itemCollection)
+            {
+                item.Remove();
+            }
 
             this.pos = pos;
-            item = createItem(i);
-            
+            itemCollection[i].Show();
+
         }
 
-        /*Hard coded the number of elements in itemCollection since that will be all that are 
-         * needed and this number is not likely to be changed later.
-         * */
         public void nextItem()
         {
-            item.Remove();
+            itemCollection[i].Remove();
 
-            if(i == 14)
+            if (i == itemCollection.Count-1)
             {
                 i = 0;
             }
@@ -60,63 +59,23 @@ namespace LegendOfZelda
                 i++;
             }
 
-            item = createItem(i);
+            itemCollection[i].Show();
         }
 
         public void previousItem()
         {
-            item.Remove();
+            itemCollection[i].Remove();
 
-            if(i == 0)
+            if (i == 0)
             {
-                i = 14;
+                i = itemCollection.Count-1;
             }
             else
             {
                 i--;
             }
 
-            item = createItem(i);
-        }
-
-        private IItem createItem(int id)
-        {
-            switch(id)
-            {
-                case 0:
-                    return new Arrow(Game1.instance, pos);
-                case 1:
-                    return new Bomb(Game1.instance, pos);
-                case 2:
-                    return new Boomerang(Game1.instance, pos);
-                case 3:
-                    return new Bow(Game1.instance, pos);
-                case 4:
-                    return new Candle(Game1.instance, pos);
-                case 5:
-                    return new Clock(Game1.instance, pos);
-                case 6:
-                    return new Compass(Game1.instance, pos);
-                case 7:
-                    return new HeartContainer(Game1.instance, pos);
-                case 8:
-                    return new Key(Game1.instance, pos);
-                case 9:
-                    return new Map(Game1.instance, pos);
-                case 10:
-                    return new Potion(Game1.instance, pos);
-                case 11:
-                    return new Heart(Game1.instance, pos);
-                case 12:
-                    return new Triforce(Game1.instance, pos);
-                case 13:
-                    return new Fairy(Game1.instance, pos);
-                case 14:
-                    return new Rupee(Game1.instance, pos);
-                default:
-                    return null;
-
-            }
+            itemCollection[i].Show();
         }
 
     }

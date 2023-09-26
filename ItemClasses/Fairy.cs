@@ -7,17 +7,21 @@ namespace LegendOfZelda
 {
     public class Fairy : IItem
     {
-        // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
         protected AnimatedSprite fairy;
         private SpriteFactory spriteFactory;
+        private Vector2 position;
 
-
-        public Fairy(Game1 game1, Vector2 pos)
+        public Fairy(Vector2 pos)
         {
-            game1 = Game1.instance;
-            spriteFactory = game1.spriteFactory;
+            spriteFactory = Game1.instance.spriteFactory;
             fairy = spriteFactory.CreateFairySprite();
-            fairy.UpdatePos(pos);
+            position = pos;
+        }
+
+        public void Show()
+        {
+            fairy.RegisterSprite();
+            fairy.UpdatePos(position);
         }
 
         public void Remove()

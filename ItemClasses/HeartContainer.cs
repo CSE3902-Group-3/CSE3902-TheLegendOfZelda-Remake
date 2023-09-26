@@ -7,17 +7,21 @@ namespace LegendOfZelda
 {
     public class HeartContainer : IItem
     {
-        // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
         protected AnimatedSprite heartContainer;
         private SpriteFactory spriteFactory;
+        private Vector2 position;
 
-
-        public HeartContainer(Game1 game1, Vector2 pos)
+        public HeartContainer(Vector2 pos)
         {
-            game1 = Game1.instance;
-            spriteFactory = game1.spriteFactory;
+            spriteFactory = Game1.instance.spriteFactory;
             heartContainer = spriteFactory.CreateHeartContainerSprite();
-            heartContainer.UpdatePos(pos);
+            position = pos;
+        }
+
+        public void Show()
+        {
+            heartContainer.RegisterSprite();
+            heartContainer.UpdatePos(position);
         }
 
         public void Remove()
