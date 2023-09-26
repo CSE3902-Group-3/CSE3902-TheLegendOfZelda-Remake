@@ -9,18 +9,15 @@ namespace LegendOfZelda.Enemies
 
     public class EnemyCycler
     {
-        public Game1 game;
         private readonly List<IEnemy> Enemies;
         private Vector2 Position;
         private int index = 0;
 
         public EnemyCycler(Vector2 pos)
         {
-            game = Game1.instance;
             Position = pos;
             Enemies = new List<IEnemy>()
         {
-            new DodongoState(Position),
             new Bat(Position),
             new Skeleton(Position),
             new Goriya(Position),
@@ -29,6 +26,7 @@ namespace LegendOfZelda.Enemies
             new Wizard(Position),
             new Aquamentus(Position),
             new Rope(Position),
+            new DodongoState(Position),
             new WallMaster(Position),
         };
         }
