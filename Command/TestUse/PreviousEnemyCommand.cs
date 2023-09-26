@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda.Enemies;
+using LegendOfZelda.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,14 @@ namespace LegendOfZelda.Command.TestUse
 {
     public class PreviousEnemyCommand : ICommands
     {
-        // Prepare for later
+        EnemyCycler enemyCycler;
+        public PreviousEnemyCommand(EnemyCycler enemyCycler)
+        {
+            this.enemyCycler = enemyCycler;
+        }
         public void Execute()
         {
-            //Prepare for later
+            enemyCycler.CycleBackward();
         }
     }
 }

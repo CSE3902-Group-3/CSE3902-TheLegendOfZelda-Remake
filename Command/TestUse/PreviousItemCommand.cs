@@ -9,10 +9,14 @@ namespace LegendOfZelda.Command.TestUse
 {
     public class PreviousItemCommand : ICommands
     {
-        private IItem item;
+        ItemScroll itemCycler;
+        public PreviousItemCommand(ItemScroll itemCycler)
+        {
+            this.itemCycler = itemCycler;
+        }
         public void Execute()
         {
-            //Prepare for later
+            itemCycler.previousItem();
         }
     }
 }

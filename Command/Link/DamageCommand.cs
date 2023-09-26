@@ -1,4 +1,6 @@
 ﻿using LegendOfZelda.Interfaces;
+using LegendOfZelda.StateMachine.LinkStates;
+using LegendOfZelda.StateMachine.LinkStates.General;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +11,19 @@ namespace LegendOfZelda.Command.Link
 {
     public class DamageCommand : ICommands
     {
-        //Prepare for later use
-        private IState linkState;
+        //Class completed last minute in order to meet functionality check. Original author still needs to come back and finish the class.
+
+        private IPlayer player;
+
+        public DamageCommand(IPlayer link)
+        {
+            player = link;
+
+        }
 
         public void Execute()
         {
-            //Prepare for later
+            player.stateMachine.ChangeState(new HurtLinkState(Game1.instance));
         }
     }
 }

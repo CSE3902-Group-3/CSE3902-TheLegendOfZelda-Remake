@@ -10,12 +10,11 @@ namespace LegendOfZelda.Command.Link
         public MovingRightCommand(IPlayer link)
         {
             this.player = link;
-            player.stateMachine.ChangeState(new WalkRightLinkState(Game1.instance)); //Runtime Error when initialize controller in Initialize(): Object reference not set to an instance of an object.
-            player.currentDirection = Player.Link.Direction.Right; //Does not contain a definition for currentDirection
         }
 
         public void Execute()
         {
+            player.stateMachine.ChangeState(new WalkRightLinkState(Game1.instance));
             player.stateMachine.Update();
         }
     }

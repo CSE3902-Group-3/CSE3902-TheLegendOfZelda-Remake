@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda.Environment;
+using LegendOfZelda.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,14 @@ namespace LegendOfZelda.Command.TestUse
 {
     public class NextItemCommand : ICommands
     {
-        private IItem item;
+        ItemScroll itemCycler;
+        public NextItemCommand(ItemScroll itemCycler)
+        {
+            this.itemCycler = itemCycler;
+        }
         public void Execute()
         {
-            //Prepare for later
+            itemCycler.nextItem();
         }
     }
 }

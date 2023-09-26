@@ -1,22 +1,48 @@
 ﻿using LegendOfZelda.Interfaces;
+using LegendOfZelda.Player;
+using LegendOfZelda.StateMachine.LinkStates.Attack;
+using LegendOfZelda.StateMachine.LinkStates.Walk;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda.Command.Link
+namespace LegendOfZelda.Command
 {
     public class PrimaryAttackCommand : ICommands
     {
+        /*
         SpriteFactory spriteFactory;
         AnimatedSprite link;
-        //Prepare for later use
         private IState linkState;
+        */
+        private Player.Link player;
+
+
+        public PrimaryAttackCommand(Player.Link link)
+        {
+            player = link;
+
+        }
 
         public void Execute()
         {
-            //Prepare for later
+            switch (player.currentDirection)
+            {
+                case Player.Link.Direction.Left:
+                    player.stateMachine.ChangeState(new AttackingLeftLinkState(Game1.instance));
+                    break;
+                case Player.Link.Direction.Up:
+                    player.stateMachine.ChangeState(new AttackingUpLinkState(Game1.instance));
+                    break;
+                case Player.Link.Direction.Right:
+                    player.stateMachine.ChangeState(new AttackingRightLinkState(Game1.instance));
+                    break;
+                case Player.Link.Direction.Down:
+                    player.stateMachine.ChangeState(new AttackingDownLinkState(Game1.instance));
+                    break;
+            }
         }
     }
 }

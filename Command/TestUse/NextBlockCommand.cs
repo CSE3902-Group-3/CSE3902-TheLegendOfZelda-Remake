@@ -1,4 +1,5 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda.Environment;
+using LegendOfZelda.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,13 @@ namespace LegendOfZelda.Command.TestUse
 {
     public class NextBlockCommand : ICommands
     {
+        BlockCycler blockCycler;
+        public NextBlockCommand(BlockCycler blockCycler) {
+            this.blockCycler = blockCycler;
+        }
         public void Execute()
         {
-            //Prepare for later
+            blockCycler.cycleForward();
         }
     }
 }

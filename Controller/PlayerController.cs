@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.Command;
 using LegendOfZelda.Command.TestUse;
 using LegendOfZelda.Command.Link;
+using LegendOfZelda.Player;
 using LegendOfZelda.Interfaces;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -11,32 +12,39 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Controller
 {
+    //Class completed last minute by Michael in order to meet functionality check. This is not clean nor intended to be permanent. Original author still needs to come back and finish the class themself.
     internal class PlayerController : IController
     {
         //private Dictionary<Keys, ICommands> controllerMappings;
         private KeyboardMapping controllerMappings;
-        private IPlayer link;
+        private Player.Link link;
         private ICommands command;
+        /*
         private KeyboardState currState;
         private KeyboardState prevState;
         //private Dictionary<Keys, bool> keyState;
+        */
+        private Keys[] currKeys;
+        private Keys[] prevKeys;
 
-        public PlayerController(Game1 game, IPlayer Link)
+        public PlayerController(Game1 game, Player.Link Link)
         {
             link = Link;
             controllerMappings = new KeyboardMapping(game, link);
+            prevKeys = Array.Empty<Keys>();
+            currKeys = Array.Empty<Keys>();
             
             //keyState = new Dictionary<Keys, bool>();a
         }
 
         public void Update()
         {
-            currState = Keyboard.GetState();
+            prevKeys = currKeys;
+            currKeys = Keyboard.GetState().GetPressedKeys();
 
             KeyDownEvents();
             KeyUpEvents();
 
-            prevState = currState;
             /*
             KeyboardState keyboardState = Keyboard.GetState();
             Keys[] pressedKeys = keyboardState.GetPressedKeys();
@@ -69,8 +77,10 @@ namespace LegendOfZelda.Controller
 
         private void KeyDownEvents()
         {
+            /*
             Keys[] currKeys= currState.GetPressedKeys();
             Keys[] prevKeys = prevState.GetPressedKeys();
+            */
 
             foreach (Keys key in currKeys)
             {
@@ -87,15 +97,20 @@ namespace LegendOfZelda.Controller
 
         private void KeyUpEvents()
         {
+            /*
             Keys[] currKeys = currState.GetPressedKeys();
             Keys[] prevKeys = prevState.GetPressedKeys();
+            */
 
             foreach (Keys key in prevKeys)
             {
-                if (!prevKeys.Contains(key))
+                if (!currKeys.Contains(key))
                 {
-                    command = new IdleCommand(link);
-                    command.Execute();
+                    command = controllerMappings.GetUpCommand(key);
+                    if (command != null)
+                    {
+                        command.Execute();
+                    }
                 }
             }
         }
