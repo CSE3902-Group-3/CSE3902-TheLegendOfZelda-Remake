@@ -8,6 +8,9 @@ namespace LegendOfZelda.Player
         IState prevState;
         IState currentState;
 
+        // used for states like hurt, where we just want to apply a sprite affect
+        IState superState;
+
         public void ChangeState(IState newState)
         {
             if (currentState != null)
@@ -18,6 +21,18 @@ namespace LegendOfZelda.Player
             prevState = currentState;
             currentState = newState;
             currentState.Enter();
+        }
+
+        public void ApplySuperState(IState newState)
+        {
+            superState = newState;
+            superState.Enter();
+        }
+
+        public void RemoveSuperState()
+        {
+            superState.Exit();
+            superState = null;
         }
 
         public void Update()
