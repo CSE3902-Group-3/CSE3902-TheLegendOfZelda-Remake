@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda.Controller
 {
+    //Class completed last minute in order to meet functionality check. Original author still needs to come back and finish the class.
     internal class KeyboardMapping
     {
         private Dictionary<Keys, ICommands> controllerMappings;
@@ -36,6 +37,10 @@ namespace LegendOfZelda.Controller
             controllerMappings.Add(Keys.Down, new MovingDownCommand(link));
             controllerMappings.Add(Keys.D, new MovingRightCommand(link));
             controllerMappings.Add(Keys.Right, new MovingRightCommand(link));
+            keyUpMappings.Add(Keys.W, new ToIdleCommand(link));
+            keyUpMappings.Add(Keys.A, new ToIdleCommand(link));
+            keyUpMappings.Add(Keys.S, new ToIdleCommand(link));
+            keyUpMappings.Add(Keys.D, new ToIdleCommand(link));
             keyUpMappings.Add(Keys.Z, new PrimaryAttackCommand(link));
             keyUpMappings.Add(Keys.N, new PrimaryAttackCommand(link));
 

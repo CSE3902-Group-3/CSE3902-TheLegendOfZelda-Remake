@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace LegendOfZelda.StateMachine.LinkStates.General
 {
+    //Modified last minute by Michael to meet functionality deadline. Original author still needs to come back and finish
     public class IdleLinkState : IState
     {
         private Game1 game;
@@ -19,6 +20,7 @@ namespace LegendOfZelda.StateMachine.LinkStates.General
         public void Enter()
         {
             // cast then pause animation of sprite
+            link.sprite = Game1.instance.spriteFactory.CreateLinkWalkDownSprite();
             AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
             spriteAlias.paused = true;
         }

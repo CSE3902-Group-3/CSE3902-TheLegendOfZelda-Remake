@@ -12,6 +12,7 @@ namespace LegendOfZelda.Command
 {
     public class PrimaryAttackCommand : ICommands
     {
+        //Class completed last minute in order to meet functionality check. Original author still needs to come back and finish the class.
         /*
         SpriteFactory spriteFactory;
         AnimatedSprite link;

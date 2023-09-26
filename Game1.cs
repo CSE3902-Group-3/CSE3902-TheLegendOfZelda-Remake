@@ -85,16 +85,15 @@ namespace LegendOfZelda
 
         protected override void Update(GameTime gameTime)
         {
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            //    Exit();
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) Exit();
 
             // TODO: Add your update logic here
-            /*
+            
             for (int i = 0; i < updateables.Count; i++)
             {
                     updateables[i].Update(gameTime);
             }
-            */
+            
 
             
 

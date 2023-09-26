@@ -25,7 +25,7 @@ namespace LegendOfZelda.StateMachine.LinkStates.Walk
         public void Execute()
         {
             Vector2 currPos = link.sprite.pos;
-            currPos.Y += 1; // change this to velocity later
+            currPos.Y -= 1; // change this to velocity later
             link.sprite.UpdatePos(currPos);
         }
 
