@@ -9,7 +9,7 @@ namespace LegendOfZelda.Enemies
     {
         private Game1 game;
         public SpriteFactory spriteFactory;
-        private readonly AnimatedSprite gelSmallSprite;
+        private AnimatedSprite gelSmallSprite;
         private int health { get; set; } = 1;
         public Vector2 Position;
         private Vector2 Direction;
@@ -18,9 +18,14 @@ namespace LegendOfZelda.Enemies
         public GelSmall(Vector2 pos)
         {
             game = Game1.instance;
-            spriteFactory = game.spriteFactory;
-            gelSmallSprite = spriteFactory.CreateGelSprite();
             Position = pos;
+            gelSmallSprite = game.spriteFactory.CreateGelSprite();
+        }
+        public void Spawn()
+        {
+            game.RegisterUpdateable(this);            
+            gelSmallSprite.RegisterSprite();
+            gelSmallSprite.UpdatePos(Position);
         }
         public void ChangePosition()
         {
@@ -88,17 +93,6 @@ namespace LegendOfZelda.Enemies
                 ChangeDirection();
             }
             ChangePosition();
-        }
-
-        public void Spawn()
-        {
-            gelSmallSprite.RegisterSprite();
-            game.RegisterUpdateable(this);
-            gelSmallSprite.UpdatePos(Position);
-        }
-        public void Destroy()
-        {
-
         }
     }
 }
