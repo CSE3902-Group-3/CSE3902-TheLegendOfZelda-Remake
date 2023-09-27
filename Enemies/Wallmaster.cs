@@ -1,8 +1,8 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
 using System;
 
-namespace LegendOfZelda.Enemies
+namespace LegendOfZelda
 {
     public class WallMaster : IEnemy
     {

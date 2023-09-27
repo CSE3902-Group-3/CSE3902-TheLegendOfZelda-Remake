@@ -1,10 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using LegendOfZelda.Interfaces;
+using LegendOfZelda;
 using System;
-using LegendOfZelda.Enemies.Dodongo;
 
-namespace LegendOfZelda.Enemies 
+namespace LegendOfZelda
 {
 
     public class EnemyCycler

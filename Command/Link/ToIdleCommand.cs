@@ -1,12 +1,11 @@
-﻿using LegendOfZelda.Interfaces;
-using LegendOfZelda.StateMachine.LinkStates.General;
+﻿using LegendOfZelda;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda.Command.Link
+namespace LegendOfZelda
 {
     //Class completed last minute in order to meet functionality check. Original author still needs to come back and finish the class.
     internal class ToIdleCommand : ICommands

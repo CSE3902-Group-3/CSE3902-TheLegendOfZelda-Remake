@@ -1,4 +1,4 @@
-﻿using LegendOfZelda.Graphics;
+﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;

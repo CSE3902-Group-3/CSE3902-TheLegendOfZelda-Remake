@@ -1,4 +1,4 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda.Command
+namespace LegendOfZelda
 {
     public class ResetCommand : ICommands
     {

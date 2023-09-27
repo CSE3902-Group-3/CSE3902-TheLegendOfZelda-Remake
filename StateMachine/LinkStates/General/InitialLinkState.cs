@@ -1,6 +1,6 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda;
 
-namespace LegendOfZelda.StateMachine.LinkStates
+namespace LegendOfZelda
 {
     public class InititalLinkState : IState
     {

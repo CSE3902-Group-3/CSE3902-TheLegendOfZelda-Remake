@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace LegendOfZelda.Graphics
+namespace LegendOfZelda
 {
     public class BoomerangSprite : AnimatedSprite
     {

@@ -1,8 +1,7 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
-using LegendOfZelda.StateMachine.LinkStates;
 
-namespace LegendOfZelda.Player
+namespace LegendOfZelda
 {
     public class Link : IPlayer
     {

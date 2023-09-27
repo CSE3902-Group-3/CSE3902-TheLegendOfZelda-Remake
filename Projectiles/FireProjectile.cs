@@ -1,4 +1,4 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda

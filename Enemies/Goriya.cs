@@ -1,10 +1,9 @@
-﻿using LegendOfZelda.EnemyProjectiles;
-using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.Enemies
+namespace LegendOfZelda
 {
     public class Goriya : IEnemy
     {

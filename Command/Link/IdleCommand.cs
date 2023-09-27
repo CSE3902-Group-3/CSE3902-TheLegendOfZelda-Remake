@@ -1,7 +1,6 @@
-﻿using LegendOfZelda.Interfaces;
-using LegendOfZelda.StateMachine.LinkStates.General;
+﻿using LegendOfZelda;
 
-namespace LegendOfZelda.Command.Link
+namespace LegendOfZelda
 {
     internal class IdleCommand : ICommands
     {

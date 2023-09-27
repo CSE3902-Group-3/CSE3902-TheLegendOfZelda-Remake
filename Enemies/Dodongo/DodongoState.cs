@@ -1,9 +1,9 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
 using System;
 using System.Runtime.InteropServices;
 
-namespace LegendOfZelda.Enemies.Dodongo
+namespace LegendOfZelda
 {
     public class DodongoState : IEnemy
     {

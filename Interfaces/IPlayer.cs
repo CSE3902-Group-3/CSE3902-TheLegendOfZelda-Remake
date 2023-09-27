@@ -1,7 +1,7 @@
-﻿using LegendOfZelda.Player;
+﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
 
-namespace LegendOfZelda.Interfaces
+namespace LegendOfZelda
 {
     public interface IPlayer : IUpdateable
     {

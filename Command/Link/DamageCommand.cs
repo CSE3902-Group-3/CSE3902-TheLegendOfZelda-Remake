@@ -1,13 +1,11 @@
-﻿using LegendOfZelda.Interfaces;
-using LegendOfZelda.StateMachine.LinkStates;
-using LegendOfZelda.StateMachine.LinkStates.General;
+﻿using LegendOfZelda;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda.Command.Link
+namespace LegendOfZelda
 {
     public class DamageCommand : ICommands
     {

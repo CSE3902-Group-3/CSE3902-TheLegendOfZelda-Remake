@@ -1,14 +1,11 @@
-﻿using LegendOfZelda.Interfaces;
-using LegendOfZelda.Player;
-using LegendOfZelda.StateMachine.LinkStates.Attack;
-using LegendOfZelda.StateMachine.LinkStates.Walk;
+﻿using LegendOfZelda;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda.Command
+namespace LegendOfZelda
 {
     public class PrimaryAttackCommand : ICommands
     {
@@ -18,10 +15,10 @@ namespace LegendOfZelda.Command
         AnimatedSprite link;
         private IState linkState;
         */
-        private Player.Link player;
+        private Link player;
 
 
-        public PrimaryAttackCommand(Player.Link link)
+        public PrimaryAttackCommand(Link link)
         {
             player = link;
 
@@ -31,16 +28,16 @@ namespace LegendOfZelda.Command
         {
             switch (player.currentDirection)
             {
-                case Player.Link.Direction.Left:
+                case Link.Direction.Left:
                     player.stateMachine.ChangeState(new AttackingLeftLinkState(Game1.instance));
                     break;
-                case Player.Link.Direction.Up:
+                case Link.Direction.Up:
                     player.stateMachine.ChangeState(new AttackingUpLinkState(Game1.instance));
                     break;
-                case Player.Link.Direction.Right:
+                case Link.Direction.Right:
                     player.stateMachine.ChangeState(new AttackingRightLinkState(Game1.instance));
                     break;
-                case Player.Link.Direction.Down:
+                case Link.Direction.Down:
                     player.stateMachine.ChangeState(new AttackingDownLinkState(Game1.instance));
                     break;
             }

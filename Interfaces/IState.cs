@@ -1,4 +1,4 @@
-﻿namespace LegendOfZelda.Interfaces
+﻿namespace LegendOfZelda
 {
     public interface IState
     {

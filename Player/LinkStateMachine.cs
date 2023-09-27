@@ -1,8 +1,7 @@
-﻿using LegendOfZelda.Interfaces;
-using LegendOfZelda.StateMachine.LinkStates.Walk;
+﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
 
-namespace LegendOfZelda.Player
+namespace LegendOfZelda
 {
     //Modified last minute by Michael to meet functionality deadline. Original author still needs to come back and finish
     public class LinkStateMachine

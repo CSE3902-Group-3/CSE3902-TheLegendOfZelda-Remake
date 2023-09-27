@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace LegendOfZelda.Interfaces
+namespace LegendOfZelda
 {
     public interface IEnemyProjectile : IUpdateable
     {

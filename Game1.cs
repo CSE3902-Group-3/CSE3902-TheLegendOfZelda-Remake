@@ -1,18 +1,10 @@
-using LegendOfZelda.Controller;
-using LegendOfZelda.Enemies.Dodongo;
-using LegendOfZelda.Enemies;
-using LegendOfZelda.Environment;
-using LegendOfZelda.Interfaces;
-using LegendOfZelda.Player;
-using LegendOfZelda.StateMachine.LinkStates;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
-using IDrawable = LegendOfZelda.Interfaces.IDrawable;
-using IUpdateable = LegendOfZelda.Interfaces.IUpdateable;
+using LegendOfZelda;
 
 namespace LegendOfZelda
 {

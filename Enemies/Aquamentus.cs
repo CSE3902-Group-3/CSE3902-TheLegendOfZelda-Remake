@@ -1,9 +1,8 @@
-﻿using LegendOfZelda.EnemyProjectiles;
-using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
 using System;
 
-namespace LegendOfZelda.Enemies
+namespace LegendOfZelda
 {
     public class Aquamentus : IEnemy
     {

@@ -1,6 +1,4 @@
-using LegendOfZelda.Enemies;
-using LegendOfZelda.Environment;
-using LegendOfZelda.Player;
+using LegendOfZelda;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -10,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    public class AnimationTester : Interfaces.IUpdateable
+    public class AnimationTester : IUpdateable
     {
         SpriteFactory spriteFactory;
         BlockCycler blockCycler;

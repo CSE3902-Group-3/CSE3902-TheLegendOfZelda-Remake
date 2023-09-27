@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace LegendOfZelda.Interfaces
+namespace LegendOfZelda
 {
     public interface IEnemy: IUpdateable
     {

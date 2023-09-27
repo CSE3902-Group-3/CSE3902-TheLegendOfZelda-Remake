@@ -1,11 +1,11 @@
-﻿using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda.Environment
+namespace LegendOfZelda
 {
     public class BlockCycler
     {

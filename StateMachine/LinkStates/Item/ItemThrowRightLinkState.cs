@@ -1,7 +1,6 @@
-﻿using LegendOfZelda.Interfaces;
-using LegendOfZelda.Player;
+﻿using LegendOfZelda;
 
-namespace LegendOfZelda.StateMachine.LinkStates
+namespace LegendOfZelda
 {
     public class ItemThrowRightLinkState : IState
     {

@@ -1,8 +1,7 @@
-﻿using LegendOfZelda.Interfaces;
-using LegendOfZelda.Player;
+﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
 
-namespace LegendOfZelda.StateMachine.LinkStates.Walk
+namespace LegendOfZelda
 {
     public class WalkUpLinkState : IState
     {

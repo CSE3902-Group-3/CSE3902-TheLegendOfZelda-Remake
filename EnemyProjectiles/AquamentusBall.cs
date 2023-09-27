@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LegendOfZelda.Interfaces;
+using LegendOfZelda;
 using Microsoft.Xna.Framework;
-using IUpdateable = LegendOfZelda.Interfaces.IUpdateable;
 
-namespace LegendOfZelda.EnemyProjectiles
+namespace LegendOfZelda
 {
     internal class AquamentusBall : IEnemyProjectile
     {

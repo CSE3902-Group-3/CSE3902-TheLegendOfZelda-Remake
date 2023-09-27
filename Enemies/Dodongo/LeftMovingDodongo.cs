@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LegendOfZelda.Interfaces;
+using LegendOfZelda;
 using Microsoft.Xna.Framework;
 
-namespace LegendOfZelda.Enemies.Dodongo
+namespace LegendOfZelda
 {
     internal class LeftMovingDodongo : IEnemy
     {

@@ -1,7 +1,6 @@
-﻿using LegendOfZelda.Interfaces;
-using LegendOfZelda.StateMachine.LinkStates.Walk;
+﻿using LegendOfZelda;
 
-namespace LegendOfZelda.Command.Link
+namespace LegendOfZelda
 {
     public class MovingLeftCommand : ICommands
     {

@@ -1,8 +1,7 @@
-﻿using LegendOfZelda.Interfaces;
-using LegendOfZelda.Player;
+﻿using LegendOfZelda;
 using System.Runtime.CompilerServices;
 
-namespace LegendOfZelda.StateMachine.LinkStates.General
+namespace LegendOfZelda
 {
     //Modified last minute by Michael to meet functionality deadline. Original author still needs to come back and finish
     public class IdleLinkState : IState

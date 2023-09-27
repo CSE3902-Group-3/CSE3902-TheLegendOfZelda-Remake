@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda.Interfaces
+namespace LegendOfZelda
 {
     public interface IDrawable
     {

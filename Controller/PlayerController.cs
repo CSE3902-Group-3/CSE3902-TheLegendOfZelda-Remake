@@ -1,8 +1,4 @@
-﻿using LegendOfZelda.Command;
-using LegendOfZelda.Command.TestUse;
-using LegendOfZelda.Command.Link;
-using LegendOfZelda.Player;
-using LegendOfZelda.Interfaces;
+﻿using LegendOfZelda;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
@@ -10,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda.Controller
+namespace LegendOfZelda
 {
     //Class completed last minute by Michael in order to meet functionality check. This is not clean nor intended to be permanent. Original author still needs to come back and finish the class themself.
     internal class PlayerController : IController
     {
         //private Dictionary<Keys, ICommands> controllerMappings;
         private KeyboardMapping controllerMappings;
-        private Player.Link link;
+        private Link link;
         private ICommands command;
         /*
         private KeyboardState currState;
@@ -27,7 +23,7 @@ namespace LegendOfZelda.Controller
         private Keys[] currKeys;
         private Keys[] prevKeys;
 
-        public PlayerController(Game1 game, Player.Link Link)
+        public PlayerController(Game1 game, Link Link)
         {
             link = Link;
             controllerMappings = new KeyboardMapping(game, link);
