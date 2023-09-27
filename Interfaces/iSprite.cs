@@ -10,5 +10,7 @@ namespace LegendOfZelda
     {
         public Vector2 pos { get; }
         public void UpdatePos(Vector2 pos);
+        public void RegisterSprite();
+        public void UnregisterSprite();
     }
 }
