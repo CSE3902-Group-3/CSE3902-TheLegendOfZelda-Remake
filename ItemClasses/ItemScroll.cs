@@ -12,7 +12,6 @@ namespace LegendOfZelda
     {
         private List<IItem> itemCollection;
         private int i = 0;
-        private Vector2 pos;
 
         public ItemScroll(Vector2 pos)
         {
@@ -41,7 +40,6 @@ namespace LegendOfZelda
                 item.Remove();
             }
 
-            this.pos = pos;
             itemCollection[i].Show();
 
         }
