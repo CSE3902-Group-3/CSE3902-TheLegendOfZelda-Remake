@@ -5,18 +5,22 @@ using System;
 namespace LegendOfZelda
 {
     public class Potion : IItem
-    {
-        // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
+    { 
         protected AnimatedSprite potion;
         private SpriteFactory spriteFactory;
+        private Vector2 position;
 
-
-        public Potion(Game1 game1, Vector2 pos)
+        public Potion(Vector2 pos)
         {
-            game1 = Game1.instance;
-            spriteFactory = game1.spriteFactory;
+            spriteFactory = Game1.instance.spriteFactory;
             potion = spriteFactory.CreateBluePotionSprite();
-            potion.UpdatePos(pos);
+            position = pos;
+        }
+
+        public void Show()
+        {
+            potion.RegisterSprite();
+            potion.UpdatePos(position);
         }
 
         public void Remove()
