@@ -25,7 +25,7 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            // do nothing in idle state
+            ((AnimatedSprite)link.sprite).flashing = link.isTakingDamage;
         }
 
         public void Exit()

@@ -13,6 +13,9 @@ namespace LegendOfZelda
 
         public Direction currentDirection { get; set; } = Direction.Right;
         public LinkStateMachine stateMachine { get; private set; }
+
+        public bool isTakingDamage { get; private set; }
+
         private int HP { get; set; } = 6;
         private int maxHP { get; set; } = 6;
         private bool canMove { get; set; } = true;
@@ -25,6 +28,16 @@ namespace LegendOfZelda
 
             this.stateMachine = new LinkStateMachine();
             this.stateMachine.ChangeState(new InititalLinkState(this.game, this.sprite));
+        }
+
+        public void TakeDamage()
+        {
+            isTakingDamage = true;
+        }
+
+        public void Heal()
+        {
+            isTakingDamage = false;
         }
 
         public void Update (GameTime gameTime)

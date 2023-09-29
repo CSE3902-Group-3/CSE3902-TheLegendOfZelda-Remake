@@ -85,9 +85,6 @@ namespace LegendOfZelda
             {
                     updateables[i].Update(gameTime);
             }
-            
-
-            
 
             controller.Update();
 

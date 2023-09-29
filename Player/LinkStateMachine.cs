@@ -10,17 +10,12 @@ namespace LegendOfZelda
         IState prevState;
         IState currentState;
 
-        // used for states like hurt, where we just want to apply a sprite affect
-        IState superState;
         Vector2 position = new Vector2(0,0);
 
         public void ChangeState(IState newState)
         {
-            if (newState is WalkDownLinkState && currentState is WalkDownLinkState) return;
-            if (newState is WalkRightLinkState && currentState is WalkRightLinkState) return;
-            if (newState is WalkLeftLinkState && currentState is WalkLeftLinkState) return;
-            if (newState is WalkUpLinkState && currentState is WalkUpLinkState) return;
-
+            // only change if states are different
+            if (currentState != null && (newState.GetType() == currentState.GetType())) return;
 
             Link link = (Link)Game1.instance.link;
             if(link != null)
@@ -42,18 +37,6 @@ namespace LegendOfZelda
                 link.sprite.UpdatePos(position);
             }
             
-        }
-
-        public void ApplySuperState(IState newState)
-        {
-            superState = newState;
-            superState.Enter();
-        }
-
-        public void RemoveSuperState()
-        {
-            superState.Exit();
-            superState = null;
         }
 
         public void Update()
