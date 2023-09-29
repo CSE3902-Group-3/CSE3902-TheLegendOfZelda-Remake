@@ -17,6 +17,12 @@ namespace LegendOfZelda
 
         public void Enter()
         {
+            if (link.sprite != null)
+            {
+                // if there was a previous sprite, cast then unregister sprite
+                AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
+                spriteAlias.UnregisterSprite();
+            }
             link.sprite = game.spriteFactory.CreateLinkWalkRightSprite();
         }
 
@@ -29,9 +35,7 @@ namespace LegendOfZelda
 
         public void Exit()
         {
-            // cast then unregister sprite drawing
-            AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
-            spriteAlias.UnregisterSprite();
+
         }
     }
 }

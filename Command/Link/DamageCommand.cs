@@ -21,7 +21,7 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            player.stateMachine.ChangeState(new HurtLinkState(Game1.instance));
+            player.stateMachine.ApplySuperState(new HurtLinkState(Game1.instance));
         }
     }
 }
