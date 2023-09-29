@@ -76,5 +76,11 @@ namespace LegendOfZelda
             itemCollection[i].Show();
         }
 
+        public void Reset()
+        {
+            itemCollection[i].Remove();
+            itemCollection[0].Show();
+        }
+
     }
 }
