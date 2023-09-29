@@ -1,18 +1,16 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
-using System;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
     public class Rope : IEnemy
     {
-        private Game1 game { get; set; }
+        private readonly Game1 game;
         private AnimatedSprite RopeSprite;
         private int Health { get; set; } = 1;
         public Vector2 Position;
         private int PosIncrement = 5;
         private bool facingLeft = false;
-        private double LastDirSwitch = 0;
+        private double lastSwitch = 0;
 
         public Rope(Vector2 pos)
         {
@@ -46,7 +44,7 @@ namespace LegendOfZelda
              * This isn't needed for Sprint 2, however it will be needed later.
              */
         }
-        public void UpdateHealth()
+        public void UpdateHealth(int damagePoints)
         {
             /* 
              * This isn't needed for Sprint 2, however it will be needed later.
@@ -69,9 +67,9 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > LastDirSwitch + 1000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
             {
-                LastDirSwitch = gameTime.TotalGameTime.TotalMilliseconds;
+                lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 ChangeDirection();
             }
             ChangePosition();

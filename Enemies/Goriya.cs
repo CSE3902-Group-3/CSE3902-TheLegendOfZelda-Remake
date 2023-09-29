@@ -1,5 +1,4 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -7,19 +6,20 @@ namespace LegendOfZelda
 {
     public class Goriya : IEnemy
     {
-        private Game1 game;
-        public SpriteFactory spriteFactory;
-        private List<AnimatedSprite> goriyaSprites;
+        private readonly Game1 game;
+        private readonly List<AnimatedSprite> goriyaSprites;
         private int currentSprite;
-        private int health { get; set; } = 1;
-        public Vector2 Position;
-        private Vector2 Direction;
+        private int Health { get; set; } = 1;
+        public Vector2 position;
+        private Vector2 direction;
+        private Vector2 viewportSize;
         private double lastSwitch = 0;
-
+        private int updateCount = 0;
         public Goriya(Vector2 pos)
         {
             game = Game1.instance;
-            Position = pos;
+            position = pos;
+            viewportSize = new Vector2(game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height);
             goriyaSprites = new List<AnimatedSprite>
             {
                 game.spriteFactory.CreateGoriyaRightSprite(),
@@ -37,28 +37,27 @@ namespace LegendOfZelda
         {
             game.RegisterUpdateable(this);           
             goriyaSprites[currentSprite].RegisterSprite();
-            goriyaSprites[currentSprite].UpdatePos(Position);
+            goriyaSprites[currentSprite].UpdatePos(position);
         }
         public void ChangePosition()
         {
-            Position += Direction;
-            if (Position.X < 0 || Position.Y < 0)
+            position += direction;
+            if (position.X < 0 || position.Y < 0)
             {
-                Position -= Direction;
+                position -= direction;
             }
 
-            // This is kinda cursed, but it's to make sure the sprite does not venture beyond the screen border
-            if (Position.X >= game.GraphicsDevice.Viewport.Width || Position.Y >= game.GraphicsDevice.Viewport.Height)
+            if (position.X >= viewportSize.X || position.Y >= viewportSize.Y)
             {
                 ChangeDirection();
             }
-            goriyaSprites[currentSprite].UpdatePos(Position);
+            goriyaSprites[currentSprite].UpdatePos(position);
         }
         public void Attack()
         {
-            //new GoriyaBoomerang(Position, Direction);
+            new GoriyaBoomerang(position, direction * 3);
         }
-        public void UpdateHealth()
+        public void UpdateHealth(int damagePoints)
         {
             /* 
              * This isn't needed for Sprint 2,
@@ -68,26 +67,26 @@ namespace LegendOfZelda
 
         public void ChangeDirection()
         {
-            Random rand = new Random();
+            Random rand = new();
             int random = rand.Next(0, 4);
             goriyaSprites[currentSprite].UnregisterSprite();
             currentSprite = random;
 
             if (random == 0)
             {
-                Direction = new Vector2(1, 0);
+                direction = new Vector2(1, 0);
             }
             else if (random == 1)
             {
-                Direction = new Vector2(-1, 0);
+                direction = new Vector2(-1, 0);
             }
             else if (random == 2)
             {
-                Direction = new Vector2(0, 1);
+                direction = new Vector2(0, 1);
             }
             else if (random == 3)
             {
-                Direction = new Vector2(0, -1);
+                direction = new Vector2(0, -1);
             }
             goriyaSprites[currentSprite].RegisterSprite();
         }
@@ -99,11 +98,17 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 100)
+            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
-                Attack();
+                updateCount++;
+
                 ChangeDirection();
+
+                if (updateCount % 4 == 0)
+                {
+                    Attack();
+                }
             }
             ChangePosition();
         }

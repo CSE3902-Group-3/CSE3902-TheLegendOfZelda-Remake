@@ -1,55 +1,45 @@
-﻿using LegendOfZelda;
+﻿using LegendOfZelda.Enemies;
 using Microsoft.Xna.Framework;
-using System;
 
 namespace LegendOfZelda
 {
     public class Wizard : IEnemy
     {
-        private Game1 game;
-        public SpriteFactory spriteFactory;
-        private AnimatedSprite wizardSprite;
-        private int health { get; set; } = 1;
-        public Vector2 Position;
+        private readonly Game1 game;
+        private readonly SimpleEnemyStateMachine stateMachine;
+        private int Health { get; set; } = 1;
+        public Vector2 position;
 
         public Wizard(Vector2 pos)
         {
             game = Game1.instance;
-            Position = pos;
-            wizardSprite = game.spriteFactory.CreateOldManSprite();
+            position = pos;
+            stateMachine = new SimpleEnemyStateMachine(pos)
+            {
+                Sprite = game.spriteFactory.CreateOldManSprite(),
+                Health = Health
+            };
         }
         public void Spawn()
         {
-            game.RegisterUpdateable(this);           
-            wizardSprite.RegisterSprite();
-            wizardSprite.UpdatePos(Position);
+            stateMachine.Spawn();
         }
-        public void ChangePosition()
-        {
-            wizardSprite.UpdatePos(Position);
-        }
+        public void ChangePosition() {}
         public void Attack()
         {
-            // Wizard does not attack unless attacked.
+            stateMachine.Attack();
         }
-        public void UpdateHealth()
+        public void UpdateHealth(int damagePoints)
         {
-            /* 
-             * This isn't needed for Sprint 2,
-             * however it will be needed later.
-             */
+            stateMachine.UpdateHealth(damagePoints);
         }
 
-        public void ChangeDirection()
-        {
-            // Wizard does not change direction
-        }
-
+        public void ChangeDirection() {}
         public void Die()
         {
-            wizardSprite.UnregisterSprite();
-            game.RemoveUpdateable(this);
+            stateMachine.Die();
         }
+
         public void Update(GameTime gameTime) {}
     }
 }

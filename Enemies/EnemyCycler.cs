@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using LegendOfZelda;
-using System;
 
 namespace LegendOfZelda
 {
