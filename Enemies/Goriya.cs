@@ -12,6 +12,7 @@ namespace LegendOfZelda
         private int Health { get; set; } = 1;
         public Vector2 position;
         private Vector2 direction;
+        private readonly Direction dir;
         private Vector2 viewportSize;
         private double lastSwitch = 0;
         private int updateCount = 0;
@@ -19,6 +20,7 @@ namespace LegendOfZelda
         {
             game = Game1.instance;
             position = pos;
+            dir = Direction.right;
             viewportSize = new Vector2(game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height);
             goriyaSprites = new List<AnimatedSprite>
             {
