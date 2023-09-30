@@ -1,22 +1,10 @@
-﻿using LegendOfZelda;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace LegendOfZelda
 {
     public class PrimaryAttackCommand : ICommands
     {
-        //Class completed last minute in order to meet functionality check. Original author still needs to come back and finish the class.
-        /*
-        SpriteFactory spriteFactory;
-        AnimatedSprite link;
-        private IState linkState;
-        */
-        private Link player;
 
+        private Link player;
 
         public PrimaryAttackCommand(Link link)
         {
