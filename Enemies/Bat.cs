@@ -4,49 +4,49 @@ namespace LegendOfZelda
 {
     public class Bat : IEnemy
     {
-        private readonly Game1 game;
-        private SimpleEnemyStateMachine stateMachine;
+        private readonly Game1 Game;
+        private readonly SimpleEnemyStateMachine StateMachine;
         private int Health { get; set; } = 1;
-        public Vector2 position;
+        public Vector2 Position;
         public Bat(Vector2 pos)
         {
-            game = Game1.instance;
-            position = pos;
-            stateMachine = new SimpleEnemyStateMachine(pos)
+            Game = Game1.instance;
+            Position = pos;
+            StateMachine = new SimpleEnemyStateMachine(pos)
             {
-                Sprite = game.spriteFactory.CreateKeeseSprite(),
+                Sprite = Game.spriteFactory.CreateKeeseSprite(),
                 Health = Health,
             };
         }
         public void Spawn()
         {
-            stateMachine.Spawn();
+            StateMachine.Spawn();
         }
         public void ChangePosition()
         {
-            stateMachine.ChangePosition();
+            StateMachine.ChangePosition();
         }
         public void Attack()
         {
-            stateMachine.Attack();
+            StateMachine.Attack();
         }
         public void UpdateHealth(int damagePoints)
         {
-            stateMachine.UpdateHealth(damagePoints);
+            StateMachine.UpdateHealth(damagePoints);
         }
 
         public void ChangeDirection()
         {
-            stateMachine.ChangeDirection();
+            StateMachine.ChangeDirection();
         }
         public void Die()
         {
-            stateMachine.Die();
+            StateMachine.Die();
         }
 
         public void Update(GameTime gameTime)
         {
-            stateMachine.Update(gameTime);
+            StateMachine.Update(gameTime);
         }
     }
 }

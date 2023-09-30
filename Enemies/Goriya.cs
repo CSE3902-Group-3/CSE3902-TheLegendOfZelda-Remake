@@ -6,58 +6,56 @@ namespace LegendOfZelda
 {
     public class Goriya : IEnemy
     {
-        private readonly Game1 game;
-        private readonly List<AnimatedSprite> goriyaSprites;
-        private int currentSprite;
+        private readonly Game1 Game;
+        private readonly List<AnimatedSprite> GoriyaSprites;
+        private int CurrentSprite;
         private int Health { get; set; } = 1;
-        public Vector2 position;
-        private Vector2 direction;
-        private readonly Direction dir;
-        private Vector2 viewportSize;
-        private double lastSwitch = 0;
-        private int updateCount = 0;
+        public Vector2 Position;
+        private Vector2 Direction;
+        private Vector2 ViewportSize;
+        private double LastSwitch = 0;
+        private int UpdateCount = 0;
         public Goriya(Vector2 pos)
         {
-            game = Game1.instance;
-            position = pos;
-            dir = Direction.right;
-            viewportSize = new Vector2(game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height);
-            goriyaSprites = new List<AnimatedSprite>
+            Game = Game1.instance;
+            Position = pos;
+            ViewportSize = new Vector2(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
+            GoriyaSprites = new List<AnimatedSprite>
             {
-                game.spriteFactory.CreateGoriyaRightSprite(),
-                game.spriteFactory.CreateGoriyaLeftSprite(),
-                game.spriteFactory.CreateGoriyaDownSprite(),
-                game.spriteFactory.CreateGoriyaUpSprite()
+                Game.spriteFactory.CreateGoriyaRightSprite(),
+                Game.spriteFactory.CreateGoriyaLeftSprite(),
+                Game.spriteFactory.CreateGoriyaDownSprite(),
+                Game.spriteFactory.CreateGoriyaUpSprite()
             };
 
-            foreach (AnimatedSprite goriya in goriyaSprites)
+            foreach (AnimatedSprite goriya in GoriyaSprites)
             {
                 goriya.UnregisterSprite();
             }
         }
         public void Spawn()
         {
-            game.RegisterUpdateable(this);           
-            goriyaSprites[currentSprite].RegisterSprite();
-            goriyaSprites[currentSprite].UpdatePos(position);
+            Game.RegisterUpdateable(this);           
+            GoriyaSprites[CurrentSprite].RegisterSprite();
+            GoriyaSprites[CurrentSprite].UpdatePos(Position);
         }
         public void ChangePosition()
         {
-            position += direction;
-            if (position.X < 0 || position.Y < 0)
+            Position += Direction;
+            if (Position.X < 0 || Position.Y < 0)
             {
-                position -= direction;
+                Position -= Direction;
             }
 
-            if (position.X >= viewportSize.X || position.Y >= viewportSize.Y)
+            if (Position.X >= ViewportSize.X || Position.Y >= ViewportSize.Y)
             {
                 ChangeDirection();
             }
-            goriyaSprites[currentSprite].UpdatePos(position);
+            GoriyaSprites[CurrentSprite].UpdatePos(Position);
         }
         public void Attack()
         {
-            new GoriyaBoomerang(position, direction * 3);
+            new GoriyaBoomerang(Position, Direction * 3);
         }
         public void UpdateHealth(int damagePoints)
         {
@@ -71,43 +69,43 @@ namespace LegendOfZelda
         {
             Random rand = new();
             int random = rand.Next(0, 4);
-            goriyaSprites[currentSprite].UnregisterSprite();
-            currentSprite = random;
+            GoriyaSprites[CurrentSprite].UnregisterSprite();
+            CurrentSprite = random;
 
             if (random == 0)
             {
-                direction = new Vector2(1, 0);
+                Direction = new Vector2(1, 0);
             }
             else if (random == 1)
             {
-                direction = new Vector2(-1, 0);
+                Direction = new Vector2(-1, 0);
             }
             else if (random == 2)
             {
-                direction = new Vector2(0, 1);
+                Direction = new Vector2(0, 1);
             }
             else if (random == 3)
             {
-                direction = new Vector2(0, -1);
+                Direction = new Vector2(0, -1);
             }
-            goriyaSprites[currentSprite].RegisterSprite();
+            GoriyaSprites[CurrentSprite].RegisterSprite();
         }
         public void Die()
         {
-            goriyaSprites[currentSprite].UnregisterSprite();
-            game.RemoveUpdateable(this);
+            GoriyaSprites[CurrentSprite].UnregisterSprite();
+            Game.RemoveUpdateable(this);
         }
 
         public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 1000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
             {
-                lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
-                updateCount++;
+                LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
+                UpdateCount++;
 
                 ChangeDirection();
 
-                if (updateCount % 4 == 0)
+                if (UpdateCount % 4 == 0)
                 {
                     Attack();
                 }

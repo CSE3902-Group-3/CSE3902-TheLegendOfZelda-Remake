@@ -4,26 +4,26 @@ namespace LegendOfZelda
 {
     public class Aquamentus : IEnemy
     {
-        private readonly Game1 game;
-        private readonly AnimatedSprite aquamentusSprite;
+        private readonly Game1 Game;
+        private readonly AnimatedSprite AquamentusSprite;
         private int Health { get; set; } = 1;
-        private Vector2 position;
+        private Vector2 Position;
 
         private int CycleCount = 0;
-        private int MaxCycles = 50;
+        private readonly int MaxCycles = 50;
         private int PosIncrement = 2;
 
         public Aquamentus(Vector2 pos)
         {
-            game = Game1.instance;
-            position = pos;
-            aquamentusSprite = game.spriteFactory.CreateAquamentusSprite();
+            Game = Game1.instance;
+            Position = pos;
+            AquamentusSprite = Game.spriteFactory.CreateAquamentusSprite();
         }
         public void Spawn ()
         {
-            game.RegisterUpdateable(this);
-            aquamentusSprite.RegisterSprite();
-            aquamentusSprite.UpdatePos(position);
+            Game.RegisterUpdateable(this);
+            AquamentusSprite.RegisterSprite();
+            AquamentusSprite.UpdatePos(Position);
         }
         public void ChangePosition()
         {
@@ -33,16 +33,16 @@ namespace LegendOfZelda
                 CycleCount = 0;
                 PosIncrement *= -1;
             }
-            position.X += PosIncrement;
+            Position.X += PosIncrement;
             CycleCount++;
 
-            aquamentusSprite.UpdatePos(position);
+            AquamentusSprite.UpdatePos(Position);
         }
         public void Attack()
         {
-            new AquamentusBall(position, new Vector2(-10, 0));
-            new AquamentusBall(position, new Vector2(-10, 10));
-            new AquamentusBall(position, new Vector2(-10, -10));
+            new AquamentusBall(Position, new Vector2(-10, 0));
+            new AquamentusBall(Position, new Vector2(-10, 10));
+            new AquamentusBall(Position, new Vector2(-10, -10));
         }
         public void UpdateHealth(int damagePoints)
         {
@@ -66,8 +66,8 @@ namespace LegendOfZelda
         }
         public void Die()
         {
-            aquamentusSprite.UnregisterSprite();
-            game.RemoveUpdateable(this);
+            AquamentusSprite.UnregisterSprite();
+            Game.RemoveUpdateable(this);
         }
     }
 }

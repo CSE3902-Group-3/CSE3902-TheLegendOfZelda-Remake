@@ -5,7 +5,7 @@ namespace LegendOfZelda
 {
     internal class UpMovingDodongo : IEnemy
     {
-        private readonly Game1 game;
+        private readonly Game1 Game;
         private readonly DodongoState Dodongo;
         private Vector2 Position;
         private AnimatedSprite Sprite;
@@ -14,14 +14,14 @@ namespace LegendOfZelda
         private Boolean Injured = false;
         public UpMovingDodongo(DodongoState dodongo, Vector2 pos)
         {
-            game = Game1.instance;
+            Game = Game1.instance;
             Dodongo = dodongo;
             Direction = new Vector2(0, -MoveMagnitude);
             Position = pos;
         }
         public void Spawn()
         {
-            Sprite = game.spriteFactory.CreateDodongoUpSprite();
+            Sprite = Game.spriteFactory.CreateDodongoUpSprite();
             Sprite.UpdatePos(Position);
         }
         public void UpdateHealth(int damagePoints)
@@ -29,11 +29,11 @@ namespace LegendOfZelda
             Sprite.UnregisterSprite();
             if (!Injured)
             {
-                Sprite = game.spriteFactory.CreateDodongoUpHitSprite();
+                Sprite = Game.spriteFactory.CreateDodongoUpHitSprite();
             }
             else
             {
-                Sprite = game.spriteFactory.CreateDodongoUpSprite();
+                Sprite = Game.spriteFactory.CreateDodongoUpSprite();
             }
             Sprite.UpdatePos(Position);
             Injured = !Injured;
@@ -63,7 +63,7 @@ namespace LegendOfZelda
         public void Die()
         {
             Sprite.UnregisterSprite();
-            game.RemoveUpdateable(Dodongo);
+            Game.RemoveUpdateable(Dodongo);
         }
     }
 }

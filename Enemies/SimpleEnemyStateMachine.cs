@@ -5,20 +5,35 @@ namespace LegendOfZelda
 {
     public class SimpleEnemyStateMachine : IEnemy
     {
-        private readonly Game1 game;
+        private readonly Game1 Game;
         public AnimatedSprite Sprite { get; set; }
         public enum Speed { slow, medium, fast };
+        public Speed EnemySpeed { get; set; }
+        public int SpeedMultiplier;
         public int Health { get; set; }
-        public Vector2 position;
-        private Vector2 direction;
-        public Vector2 viewportSize;
-        private double lastSwitch = 0;
+        private Vector2 Position;
+        private Vector2 Direction;
+        public Vector2 ViewportSize;
+        private double LastSwitch = 0;
 
         public SimpleEnemyStateMachine(Vector2 pos)
         {
-            game = Game1.instance;
-            position = pos;
-            viewportSize = new Vector2(game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height);
+            Game = Game1.instance;
+            Position = pos;
+            ViewportSize = new Vector2(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
+            
+            switch (EnemySpeed)
+            {
+                case Speed.slow:
+                    SpeedMultiplier = 1;
+                    break;
+                case Speed.medium:
+                    SpeedMultiplier = 2;
+                    break;
+                case Speed.fast:
+                    SpeedMultiplier = 3;
+                    break;
+            }
         }
         public void Attack()
         {
@@ -35,56 +50,56 @@ namespace LegendOfZelda
 
             if (random == 0)
             {
-                direction = new Vector2(1, 0);
+                Direction = new Vector2(1, 0);
             }
             else if (random == 1)
             {
-                direction = new Vector2(-1, 0);
+                Direction = new Vector2(-1, 0);
             }
             else if (random == 2)
             {
-                direction = new Vector2(0, 1);
+                Direction = new Vector2(0, 1);
             }
             else if (random == 3)
             {
-                direction = new Vector2(0, -1);
+                Direction = new Vector2(0, -1);
             }
         }
 
         public void ChangePosition()
         {
-            position += direction;
-            if (position.X < 0 || position.Y < 0)
+            Position += Direction * SpeedMultiplier;
+            if (Position.X < 0 || Position.Y < 0)
             {
-                position -= direction;
+                Position -= Direction;
             }
 
-            if (position.X >= viewportSize.X || position.Y >= viewportSize.Y)
+            if (Position.X >= ViewportSize.X || Position.Y >= ViewportSize.Y)
             {
                 ChangeDirection();
             }
-            Sprite.UpdatePos(position);
+            Sprite.UpdatePos(Position);
         }
 
         public void Die()
         {
             Sprite.UnregisterSprite();
-            game.RemoveUpdateable(this);
+            Game.RemoveUpdateable(this);
         }
 
         public void Spawn()
         {
-            game.RegisterUpdateable(this);
+            Game.RegisterUpdateable(this);
             Sprite.RegisterSprite();
-            Sprite.UpdatePos(position);
+            Sprite.UpdatePos(Position);
         }
 
         public void Update(GameTime gameTime)
         {
 
-            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 0)
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
             {
-                lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
+                LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 ChangeDirection();
             }
             ChangePosition();

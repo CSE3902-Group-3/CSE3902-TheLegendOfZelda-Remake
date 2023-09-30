@@ -4,50 +4,50 @@ namespace LegendOfZelda
 {
     public class GelSmall : IEnemy
     {
-        private readonly Game1 game;
-        private readonly SimpleEnemyStateMachine stateMachine;
+        private readonly Game1 Game;
+        private readonly SimpleEnemyStateMachine StateMachine;
         private int Health { get; set; } = 1;
-        public Vector2 position;
+        public Vector2 Position;
 
         public GelSmall(Vector2 pos)
         {
-            game = Game1.instance;
-            position = pos;
-            stateMachine = new SimpleEnemyStateMachine(pos)
+            Game = Game1.instance;
+            Position = pos;
+            StateMachine = new SimpleEnemyStateMachine(pos)
             {
-                Sprite = game.spriteFactory.CreateGelSprite(),
+                Sprite = Game.spriteFactory.CreateGelSprite(),
                 Health = Health
             };
         }
         public void Spawn()
         {
-            stateMachine.Spawn();
+            StateMachine.Spawn();
         }
         public void ChangePosition()
         {
-            stateMachine.ChangePosition();
+            StateMachine.ChangePosition();
         }
         public void Attack()
         {
-            stateMachine.Attack();
+            StateMachine.Attack();
         }
         public void UpdateHealth(int damagePoints)
         {
-            stateMachine.UpdateHealth(damagePoints);
+            StateMachine.UpdateHealth(damagePoints);
         }
 
         public void ChangeDirection()
         {
-            stateMachine.ChangeDirection();
+            StateMachine.ChangeDirection();
         }
         public void Die()
         {
-            stateMachine.Die();
+            StateMachine.Die();
         }
 
         public void Update(GameTime gameTime)
         {
-            stateMachine.Update(gameTime);
+            StateMachine.Update(gameTime);
         }
     }
 }
