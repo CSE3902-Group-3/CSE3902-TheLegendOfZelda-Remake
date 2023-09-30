@@ -19,7 +19,6 @@ namespace LegendOfZelda
         public void Enter()
         {
             // cast then pause animation of sprite
-            link.sprite = Game1.instance.spriteFactory.CreateLinkWalkDownSprite();
             AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
             spriteAlias.paused = true;
         }
@@ -34,8 +33,6 @@ namespace LegendOfZelda
             // cast then pause animation of sprite
             AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
             spriteAlias.paused = false;
-
-            spriteAlias.UnregisterSprite();
         }
     }
 }

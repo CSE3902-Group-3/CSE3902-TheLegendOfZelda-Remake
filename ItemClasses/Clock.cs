@@ -6,18 +6,21 @@ namespace LegendOfZelda
 {
     public class Clock : IItem
     {
-        // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
-
         protected AnimatedSprite clock;
         private SpriteFactory spriteFactory;
+        private Vector2 position;
 
-
-        public Clock(Game1 game1, Vector2 pos)
+        public Clock(Vector2 pos)
         {
-            game1 = Game1.instance;
-            spriteFactory = game1.spriteFactory;
+            spriteFactory = Game1.instance.spriteFactory;
             clock = spriteFactory.CreateClockSprite();
-            clock.UpdatePos(pos);
+            position = pos;
+        }
+
+        public void Show()
+        {
+            clock.RegisterSprite();
+            clock.UpdatePos(position);
         }
 
         public void Remove()

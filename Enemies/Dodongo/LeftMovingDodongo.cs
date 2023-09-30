@@ -35,6 +35,7 @@ namespace LegendOfZelda
             {
                 Sprite = Game.spriteFactory.CreateDodongoLeftSprite();
             }
+            Sprite.UpdatePos(Position);
             Injured = !Injured;
         }
         public void ChangePosition()

@@ -6,18 +6,21 @@ namespace LegendOfZelda
 {
     public class Bow : IItem
     {
-        // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
-
         protected AnimatedSprite bow;
         private SpriteFactory spriteFactory;
+        private Vector2 position;
 
-
-        public Bow(Game1 game1, Vector2 pos)
+        public Bow(Vector2 pos)
         {
-            game1 = Game1.instance;
-            spriteFactory = game1.spriteFactory;
+            spriteFactory = Game1.instance.spriteFactory;
             bow = spriteFactory.CreateBowSprite();
-            bow.UpdatePos(pos);
+            position = pos;
+        }
+
+        public void Show()
+        {
+            bow.RegisterSprite();
+            bow.UpdatePos(position);
         }
 
         public void Remove()

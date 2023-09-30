@@ -6,18 +6,21 @@ namespace LegendOfZelda
 {
     public class Candle : IItem
     {
-        // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
-
         protected AnimatedSprite candle;
         private SpriteFactory spriteFactory;
+        private Vector2 position;
 
-
-        public Candle(Game1 game1, Vector2 pos)
+        public Candle(Vector2 pos)
         {
-            game1 = Game1.instance;
-            spriteFactory = game1.spriteFactory;
+            spriteFactory = Game1.instance.spriteFactory;
             candle = spriteFactory.CreateBlueCandleSprite();
-            candle.UpdatePos(pos);
+            position = pos;
+        }
+
+        public void Show()
+        {
+            candle.RegisterSprite();
+            candle.UpdatePos(position);
         }
 
         public void Remove()

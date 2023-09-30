@@ -6,18 +6,21 @@ namespace LegendOfZelda
 {
     public class Boomerang : IItem
     {
-        // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
-
         protected AnimatedSprite boomerang;
         private SpriteFactory spriteFactory;
+        private Vector2 position;
 
-
-        public Boomerang(Game1 game1, Vector2 pos)
+        public Boomerang(Vector2 pos)
         {
-            game1 = Game1.instance;
-            spriteFactory = game1.spriteFactory;
+            spriteFactory = Game1.instance.spriteFactory;
             boomerang = spriteFactory.CreateBoomerangItemSprite();
-            boomerang.UpdatePos(pos);
+            position = pos;
+        }
+
+        public void Show()
+        {
+            boomerang.RegisterSprite();
+            boomerang.UpdatePos(position);
         }
 
         public void Remove()

@@ -6,17 +6,21 @@ namespace LegendOfZelda
 {
     public class Compass : IItem
     {
-        // Modified last minute by Michael to meet functionality deadline. Needs refactoring by original author
         protected AnimatedSprite compass;
         private SpriteFactory spriteFactory;
+        private Vector2 position;
 
-
-        public Compass(Game1 game1, Vector2 pos)
+        public Compass(Vector2 pos)
         {
-            game1 = Game1.instance;
-            spriteFactory = game1.spriteFactory;
+            spriteFactory = Game1.instance.spriteFactory;
             compass = spriteFactory.CreateCompassSprite();
-            compass.UpdatePos(pos);
+            position = pos;
+        }
+
+        public void Show()
+        {
+            compass.RegisterSprite();
+            compass.UpdatePos(position);
         }
 
         public void Remove()

@@ -10,6 +10,7 @@ namespace LegendOfZelda
 {
     public interface IItem
     {
+        void Show();
         void Remove();
         void Collect();
     }
