@@ -1,5 +1,4 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -9,47 +8,137 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    public class AnimatedSprite : ISprite
+    /*
+     * Animated sprite implemented using the strategy pattern for animation effects
+     */
+
+    //This struct is used to lesson the amount of parameters that need to be passes around by animation effects
+    public struct DrawInfo
     {
-        protected Texture2D texture;
-        protected Rectangle[] frames;
-        public int frame { get; protected set; }
+        public DrawInfo(Texture2D texture, Rectangle[] frames, float scale, SpriteEffects effect)
+        {
+            this.texture = texture;
+            pos = Vector2.Zero;
+            this.frames = frames;
+            frame = 0;
+            color = Color.White;
+            rotation = 0;
+            origin = Vector2.Zero;
+            this.scale = scale;
+            this.effect = effect;
+        }
+
+        public Texture2D texture;
+        public Vector2 pos;
+        public Rectangle[] frames;
+        public int frame;
+        public Color color;
+        public float rotation;
+        public Vector2 origin;
+        public float scale;
+        public SpriteEffects effect;
+    }
+
+    public class AnimatedSprite : IAnimatedSprite
+    {
+        
+
+        //This is public so it can be freely modified by sprite effects
+        public DrawInfo drawInfo;
+        public int frame { get { return drawInfo.frame; } }
+
         protected SpriteBatch spriteBatch;
         protected int drawFramesPerAnimFrame;
         protected int currentFrameCounter = 0;
-        public int scale { get; protected set; }
+        public float scale { get { return drawInfo.scale; } }
+
         protected Game1 game1;
-        public Vector2 pos { get; protected set; } = Vector2.Zero;
-        protected SpriteEffects effect;
+        public Vector2 pos { get { return drawInfo.pos; } }
         public bool paused { get; set; }
-        public Color color { get; protected set; } = Color.White;
-        private int currentShader = 0;
+        public Color color { get { return drawInfo.color; } set { drawInfo.color = value; } }
 
         private int flashCounter = 0;
         private bool _flashing = false;
-        public bool flashing { get; set; }
-
-        public bool blinking { get; set; }
-        public bool repeating { get; protected set; }
-        public bool complete = false;
-
-        public AnimatedSprite(Texture2D texture, Rectangle[] frames, SpriteEffects effect, int drawFramesPerAnimFrame, int scale, bool repeating)
+        public bool flashing
         {
-            this.texture = texture;
-            this.frames = frames;
-            frame = 0;
+            get { return _flashing; }
+            set
+            {
+                if (value)
+                {
+                    AddEffect(new FlashingEffect(this));
+                }
+                else
+                {
+                    RemoveEffect(FlashingEffect.name);
+                }
+                _flashing = value;
+            }
+        }
+
+        private bool _blinking = false;
+        public bool blinking 
+        {
+            get { return _blinking; }
+            set
+            {
+                if (value)
+                {
+                    AddEffect(new BlinkEffect(this));
+                }
+                else
+                {
+                    RemoveEffect(BlinkEffect.name);
+                }
+                _blinking = value;
+            }
+        }
+        public bool complete { get; set; } = false;
+
+        protected List<IAnimatedSpriteEffect> effectList;
+
+        public AnimatedSprite(Texture2D texture, Rectangle[] frames, SpriteEffects effect, int drawFramesPerAnimFrame, int scale)
+        {
+            drawInfo = new DrawInfo(texture, frames, scale, effect);
+
             this.drawFramesPerAnimFrame = drawFramesPerAnimFrame;
-            this.scale = scale;
-            this.effect = effect;
-            this.repeating = repeating;
 
             game1 = Game1.instance;
             spriteBatch = game1._spriteBatch;
 
+            effectList = new List<IAnimatedSpriteEffect>();
+
             RegisterSprite();
         }
 
-        //A bit of redundancy here to loosen coupling for extension
+        public bool AddEffect(IAnimatedSpriteEffect effect)
+        {
+            foreach(IAnimatedSpriteEffect thisEffect in effectList)
+            {
+                if (thisEffect.Name.Equals(effect.Name))
+                {
+                    return false;
+                }
+            }
+
+            effectList.Add(effect);
+            return true;
+        }
+
+        public bool RemoveEffect(string effectName)
+        {
+            foreach (IAnimatedSpriteEffect thisEffect in effectList)
+            {
+                if (thisEffect.Name.Equals(effectName))
+                {
+                    effectList.Remove(thisEffect);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        
         public virtual void Draw()
         {
             DrawSprite();
@@ -57,79 +146,43 @@ namespace LegendOfZelda
             UpdateFrameCounter();        
         }
 
-        //Overridden in sprites with special positioning
         protected virtual void DrawSprite()
         {
-            spriteBatch.Draw(texture, pos, frames[frame], color, 0, Vector2.Zero, scale, effect, 1);
+            DrawInfo tempDrawInfo = drawInfo;
+
+            for(int i = effectList.Count - 1; i >= 0; i--)
+            {
+                if (effectList[i] is IAnimatedSpriteDrawEffect)
+                {
+                    IAnimatedSpriteDrawEffect drawEffect = (IAnimatedSpriteDrawEffect)(effectList[i]);
+                    tempDrawInfo = drawEffect.ApplyEffect(tempDrawInfo);
+                }
+            }
+
+            spriteBatch.Draw(tempDrawInfo.texture, tempDrawInfo.pos, tempDrawInfo.frames[drawInfo.frame], tempDrawInfo.color, tempDrawInfo.rotation, tempDrawInfo.origin, tempDrawInfo.scale, tempDrawInfo.effect, 1);
         }
 
-        //The rest are left virtual in case it needs to be overridden in future
         protected virtual void UpdateFrameCounter()
         {
             currentFrameCounter++;
             if (currentFrameCounter >= drawFramesPerAnimFrame)
             {
-                if (!paused && !complete) UpdateFrame();
-                if (flashing) UpdateFlash();
-                if (blinking) UpdateBlink();
+                for (int i = effectList.Count - 1; i >= 0; i--)
+                {
+                    if (effectList[i] is IAnimatedSpriteUpdateEffect)
+                    {
+                        IAnimatedSpriteUpdateEffect updateEffect = (IAnimatedSpriteUpdateEffect)(effectList[i]);
+                        updateEffect.ExecuteEffect();
+                    }
+                }
+
                 currentFrameCounter = 0;
             }
         }
 
-        protected virtual void UpdateFlash()
-        {
-            switch (flashCounter)
-            {
-                case 0:
-                    color = Color.Blue;
-                    break;
-                case 1:
-                    color = Color.Green;
-                    break;
-                case 2:
-                    color = Color.Red; 
-                    break;
-                default:
-                    color = Color.White;
-                    flashCounter = 0;
-                    break;
-            }
-            flashCounter++;
-        }
-
-        protected virtual void UpdateBlink()
-        {
-            if(!color.Equals(Color.Red))
-            {
-                color = Color.Red;
-            } else
-            {
-                color = Color.White;
-                blinking = false;
-            }
-        }
-
-        //This is overridden in sprite classes with special frame orders
-        protected virtual void UpdateFrame()
-        {
-            frame++;
-            if (frame >= frames.Length)
-            {
-                if (repeating)
-                {
-                    frame = 0;
-                } else
-                {
-                    frame--;
-                    complete = true;
-                }
-            }
-        }
-
-        //Left virtual in case this needs to be overridden in the future
         public virtual void UpdatePos(Vector2 pos)
         {
-            this.pos = pos;
+            drawInfo.pos = pos;
         }
 
         public void RegisterSprite()
