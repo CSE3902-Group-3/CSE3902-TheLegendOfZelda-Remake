@@ -34,7 +34,7 @@ Code Reviews:
 - Michael Herring reviewed Gabe DiFiore's code for quality in pull request #63
 - Gabriel DiFiore reviewed MengQi Lei's code for quality in pull request #73
 - Michael Herring reviewed Ethan Glenwright's code for readability in pull request #84
-- Gabriel DiFiore (will) reviewed Zhenyi Hu's code for readability in pull request #68
+- Gabriel DiFiore reviewed Zhenyi Hu's code for readability (See `Code Review/Sprint 2`)
 - Ethan Glenwright reviewed Matt Curie's code for quality in pull request #87
 - Ethan Glenwright reviewed Matt Curie`s code for quality in pull request #101
 - MengQi Lei reviewed Gabe DiFiore`s code for readability in pull request #102
