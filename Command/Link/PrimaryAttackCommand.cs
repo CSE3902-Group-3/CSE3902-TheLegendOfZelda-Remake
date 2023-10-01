@@ -28,16 +28,16 @@ namespace LegendOfZelda
         {
             switch (player.currentDirection)
             {
-                case Link.Direction.Left:
+                case Direction.left:
                     player.stateMachine.ChangeState(new AttackingLeftLinkState(Game1.instance));
                     break;
-                case Link.Direction.Up:
+                case Direction.up:
                     player.stateMachine.ChangeState(new AttackingUpLinkState(Game1.instance));
                     break;
-                case Link.Direction.Right:
+                case Direction.right:
                     player.stateMachine.ChangeState(new AttackingRightLinkState(Game1.instance));
                     break;
-                case Link.Direction.Down:
+                case Direction.down:
                     player.stateMachine.ChangeState(new AttackingDownLinkState(Game1.instance));
                     break;
             }
