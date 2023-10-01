@@ -13,6 +13,8 @@ namespace LegendOfZelda
 
         private IPlayer player;
 
+        private bool active;
+
         public DamageCommand(IPlayer link)
         {
             player = link;
@@ -21,7 +23,15 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            player.stateMachine.ApplySuperState(new HurtLinkState(Game1.instance));
+            if (active)
+            {
+                active = false;
+                ((Link)player).TakeDamage();
+            } else
+            {
+                active = true;
+                ((Link)player).Heal();
+            }
         }
     }
 }
