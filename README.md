@@ -37,3 +37,4 @@ Code Reviews:
 - Gabriel DiFiore (will) reviewed Zhenyi Hu's code for readability in pull request #68
 - Ethan Glenwright reviewed Matt Curie's code for quality in pull request #87
 - Ethan Glenwright reviewed Matt Curie's code for quality in pull request #101
+- MengQi Lei reviewed Gabe DiFiore's code for readability in pull request #102
