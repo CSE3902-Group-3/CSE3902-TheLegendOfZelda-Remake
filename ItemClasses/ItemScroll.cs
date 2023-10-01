@@ -79,7 +79,8 @@ namespace LegendOfZelda
         public void Reset()
         {
             itemCollection[i].Remove();
-            itemCollection[0].Show();
+            i = 0;
+            itemCollection[i].Show();
         }
 
     }
