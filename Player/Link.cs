@@ -5,13 +5,11 @@ namespace LegendOfZelda
 {
     public class Link : IPlayer
     {
-        public enum Direction { Up, Down, Left, Right };
         private Game1 game { get; set; }
         public ISprite sprite { get; set; }
-
         public Vector2 pos { get { return sprite.pos; } }
 
-        public Direction currentDirection { get; set; } = Direction.Right;
+        public Direction currentDirection { get; set; } = Direction.right;
         public LinkStateMachine stateMachine { get; private set; }
 
         public bool isTakingDamage { get; private set; }
@@ -19,6 +17,8 @@ namespace LegendOfZelda
         private int HP { get; set; } = 6;
         private int maxHP { get; set; } = 6;
         private bool canMove { get; set; } = true;
+
+        public int velocity { get; set; } = 5; // link moves at 1pixel per frame in original NES game, scaled up to 1080p is roughly 5pixels per frame
 
         public Link(Game1 game)
         {
@@ -52,8 +52,9 @@ namespace LegendOfZelda
         }
 
         public void Reset()
-        {             
-            // do nothing
+        {
+            ((AnimatedSprite)sprite).UpdatePos(new Vector2(0,0));
+            this.stateMachine.ChangeState(new IdleLinkState(this.game));
         }
 
         public void ChangeItem(int index)

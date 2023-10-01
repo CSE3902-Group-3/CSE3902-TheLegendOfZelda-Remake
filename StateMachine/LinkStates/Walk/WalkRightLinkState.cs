@@ -12,7 +12,7 @@ namespace LegendOfZelda
         {
             this.game = game;
             link = (Link)game.link;
-            link.currentDirection = Link.Direction.Right;
+            link.currentDirection = Direction.down;
         }
 
         public void Enter()
@@ -29,7 +29,7 @@ namespace LegendOfZelda
         public void Execute()
         {
             Vector2 currPos = link.sprite.pos;
-            currPos.X += 1; // change this to velocity later
+            currPos.X += link.velocity;
             link.sprite.UpdatePos(currPos);
 
             ((AnimatedSprite)link.sprite).flashing = link.isTakingDamage;
