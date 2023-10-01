@@ -1,0 +1,11 @@
+﻿Code review: Readability
+Reviewer: Gabriel DiFiore
+Author: Zhenyi Hu
+Date: 10 / 1 / 2023
+Sprint: 2
+Name of the .cs file being reviewed: Command/*.cs
+
+- very good use of the Command design pattern, Execute() functions are all very short and easy to understand with descriptive class/file names
+- someone with minimal knowledge of the codebase could fairly easily create their own command
+- this goes for all other code reviews, we need to make Game1 a singleton so we aren't passing it into every function
+- overall, nice job on readability overall!

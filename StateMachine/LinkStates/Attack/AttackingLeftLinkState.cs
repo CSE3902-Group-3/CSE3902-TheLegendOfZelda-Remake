@@ -31,7 +31,7 @@ namespace LegendOfZelda
         }
         public void Execute()
         {
-            // do nothing (for now)
+            ((AnimatedSprite)link.sprite).flashing = link.isTakingDamage;
         }
 
         public void Exit()

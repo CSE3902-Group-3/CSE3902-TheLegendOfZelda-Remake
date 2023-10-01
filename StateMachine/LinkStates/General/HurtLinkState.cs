@@ -4,13 +4,13 @@ namespace LegendOfZelda
 {
     public class HurtLinkState : IState
     {
-        private Game1 game { get; set; }
-        private Link link { get; set; }
+        private Game1 game;
+        private Link link;
 
         public HurtLinkState(Game1 game)
         {
             this.game = game;
-            this.link = (Link)this.game.link;
+            this.link = (Link)game.link;
         }
 
         public void Enter()

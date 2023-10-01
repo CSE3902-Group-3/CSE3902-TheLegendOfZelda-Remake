@@ -70,7 +70,7 @@ namespace LegendOfZelda
             enemyCycler = new EnemyCycler(new Vector2(500, 500));
             itemCycler = new ItemScroll(new Vector2(800, 300));
             //Uncomment the following line for testing
-            //new AnimationTester();
+            new AnimationTester();
             controller = new PlayerController(this, (Link)link);
 
         }
@@ -85,9 +85,6 @@ namespace LegendOfZelda
             {
                     updateables[i].Update(gameTime);
             }
-            
-
-            
 
             controller.Update();
 
