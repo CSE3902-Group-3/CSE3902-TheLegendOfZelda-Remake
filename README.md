@@ -39,3 +39,4 @@ Code Reviews:
 - Ethan Glenwright reviewed Matt Curie`s code for quality in pull request #101
 - MengQi Lei reviewed Gabe DiFiore`s code for readability in pull request #102
 - MengQi Lei reviewed ZhengYi Hu's code for quality in pull request #104
+- Matthew Curie reviewed Michael's code for quality in pull request #72, #85, #94,
