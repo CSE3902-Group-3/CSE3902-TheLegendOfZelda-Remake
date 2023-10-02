@@ -1,21 +1,25 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace LegendOfZelda
 {
     public class ResetCommand : ICommands
     {
         //Prepare for later use
-        private IState linkState;
+        private ItemScroll itemCycler;
+        private EnemyCycler enemyCycler;
+        private IPlayer link;
+
+        public ResetCommand(ItemScroll itemCycler, EnemyCycler enemyCycler, IPlayer link)
+        {
+            this.itemCycler = itemCycler;
+            this.enemyCycler = enemyCycler;
+            this.link = link;
+        }
 
         public void Execute()
         {
-            //Prepare for later
+           link.Reset(); 
+           enemyCycler.Reset();
+           itemCycler.Reset();
         }
 
     }

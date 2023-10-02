@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LegendOfZelda;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
-    internal class AquamentusBall : IEnemyProjectile
+    public class AquamentusBall : IEnemyProjectile
     {
-        private ISprite AquamentusBallSprite;
+        private readonly ISprite AquamentusBallSprite;
         private Vector2 Position;
         private Vector2 Direction;
         public AquamentusBall(Vector2 pos, Vector2 dir)

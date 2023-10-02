@@ -1,5 +1,4 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -7,37 +6,38 @@ namespace LegendOfZelda
 {
     public class Goriya : IEnemy
     {
-        private Game1 game;
-        public SpriteFactory spriteFactory;
-        private List<AnimatedSprite> goriyaSprites;
-        private int currentSprite;
-        private int health { get; set; } = 1;
+        private readonly Game1 Game;
+        private readonly List<AnimatedSprite> GoriyaSprites;
+        private int CurrentSprite;
+        private int Health { get; set; } = 1;
         public Vector2 Position;
         private Vector2 Direction;
-        private double lastSwitch = 0;
-
+        private Vector2 ViewportSize;
+        private double LastSwitch = 0;
+        private int UpdateCount = 0;
         public Goriya(Vector2 pos)
         {
             game = Game1.getInstance();
             Position = pos;
-            goriyaSprites = new List<AnimatedSprite>
+            ViewportSize = new Vector2(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
+            GoriyaSprites = new List<AnimatedSprite>
             {
-                game.spriteFactory.CreateGoriyaRightSprite(),
-                game.spriteFactory.CreateGoriyaLeftSprite(),
-                game.spriteFactory.CreateGoriyaDownSprite(),
-                game.spriteFactory.CreateGoriyaUpSprite()
+                Game.spriteFactory.CreateGoriyaRightSprite(),
+                Game.spriteFactory.CreateGoriyaLeftSprite(),
+                Game.spriteFactory.CreateGoriyaDownSprite(),
+                Game.spriteFactory.CreateGoriyaUpSprite()
             };
 
-            foreach (AnimatedSprite goriya in goriyaSprites)
+            foreach (AnimatedSprite goriya in GoriyaSprites)
             {
                 goriya.UnregisterSprite();
             }
         }
         public void Spawn()
         {
-            game.RegisterUpdateable(this);           
-            goriyaSprites[currentSprite].RegisterSprite();
-            goriyaSprites[currentSprite].UpdatePos(Position);
+            Game.RegisterUpdateable(this);           
+            GoriyaSprites[CurrentSprite].RegisterSprite();
+            GoriyaSprites[CurrentSprite].UpdatePos(Position);
         }
         public void ChangePosition()
         {
@@ -47,18 +47,17 @@ namespace LegendOfZelda
                 Position -= Direction;
             }
 
-            // This is kinda cursed, but it's to make sure the sprite does not venture beyond the screen border
-            if (Position.X >= game.GraphicsDevice.Viewport.Width || Position.Y >= game.GraphicsDevice.Viewport.Height)
+            if (Position.X >= ViewportSize.X || Position.Y >= ViewportSize.Y)
             {
                 ChangeDirection();
             }
-            goriyaSprites[currentSprite].UpdatePos(Position);
+            GoriyaSprites[CurrentSprite].UpdatePos(Position);
         }
         public void Attack()
         {
-            //new GoriyaBoomerang(Position, Direction);
+            new GoriyaBoomerang(Position, Direction * 3);
         }
-        public void UpdateHealth()
+        public void UpdateHealth(int damagePoints)
         {
             /* 
              * This isn't needed for Sprint 2,
@@ -68,10 +67,10 @@ namespace LegendOfZelda
 
         public void ChangeDirection()
         {
-            Random rand = new Random();
+            Random rand = new();
             int random = rand.Next(0, 4);
-            goriyaSprites[currentSprite].UnregisterSprite();
-            currentSprite = random;
+            GoriyaSprites[CurrentSprite].UnregisterSprite();
+            CurrentSprite = random;
 
             if (random == 0)
             {
@@ -89,21 +88,27 @@ namespace LegendOfZelda
             {
                 Direction = new Vector2(0, -1);
             }
-            goriyaSprites[currentSprite].RegisterSprite();
+            GoriyaSprites[CurrentSprite].RegisterSprite();
         }
         public void Die()
         {
-            goriyaSprites[currentSprite].UnregisterSprite();
-            game.RemoveUpdateable(this);
+            GoriyaSprites[CurrentSprite].UnregisterSprite();
+            Game.RemoveUpdateable(this);
         }
 
         public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 100)
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
             {
-                lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
-                Attack();
+                LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
+                UpdateCount++;
+
                 ChangeDirection();
+
+                if (UpdateCount % 4 == 0)
+                {
+                    Attack();
+                }
             }
             ChangePosition();
         }

@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LegendOfZelda;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
-    internal class GoriyaBoomerang : IEnemyProjectile
+    public class GoriyaBoomerang : IEnemyProjectile
     {
-        ISprite GoriyaBoomerangSprite;
-        Vector2 Direction;
-        Vector2 Position;
+        private readonly Game1 game;
+        private readonly ISprite GoriyaBoomerangSprite;
+        private Vector2 Direction;
+        private Vector2 Position;
         public GoriyaBoomerang(Vector2 pos, Vector2 dir)
         {
             Game1.getInstance().RegisterUpdateable(this);

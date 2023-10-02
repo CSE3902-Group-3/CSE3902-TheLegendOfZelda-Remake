@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LegendOfZelda;
 using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
     internal class UpMovingDodongo : IEnemy
     {
-        private DodongoState Dodongo;
+        private readonly Game1 Game;
+        private readonly DodongoState Dodongo;
         private Vector2 Position;
         private AnimatedSprite Sprite;
         private Vector2 Direction;
@@ -18,6 +14,7 @@ namespace LegendOfZelda
         private Boolean Injured = false;
         public UpMovingDodongo(DodongoState dodongo, Vector2 pos)
         {
+            Game = Game1.instance;
             Dodongo = dodongo;
             Direction = new Vector2(0, -MoveMagnitude);
             Position = pos;
@@ -27,7 +24,7 @@ namespace LegendOfZelda
             Sprite = Game1.getInstance().spriteFactory.CreateDodongoUpSprite();
             Sprite.UpdatePos(Position);
         }
-        public void UpdateHealth()
+        public void UpdateHealth(int damagePoints)
         {
             Sprite.UnregisterSprite();
             if (!Injured)

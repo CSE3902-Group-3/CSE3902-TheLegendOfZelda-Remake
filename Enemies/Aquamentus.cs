@@ -1,28 +1,27 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
-using System;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
     public class Aquamentus : IEnemy
     {
-        private Game1 game { get; set; }
-        private AnimatedSprite AquamentusSprite;
+        private readonly Game1 Game;
+        private readonly AnimatedSprite AquamentusSprite;
         private int Health { get; set; } = 1;
         private Vector2 Position;
+
         private int CycleCount = 0;
-        private int MaxCycles = 50;
+        private readonly int MaxCycles = 50;
         private int PosIncrement = 2;
 
         public Aquamentus(Vector2 pos)
         {
             game = Game1.getInstance();
             Position = pos;
-            AquamentusSprite = game.spriteFactory.CreateAquamentusSprite();
+            AquamentusSprite = Game.spriteFactory.CreateAquamentusSprite();
         }
         public void Spawn ()
         {
-            game.RegisterUpdateable(this);
+            Game.RegisterUpdateable(this);
             AquamentusSprite.RegisterSprite();
             AquamentusSprite.UpdatePos(Position);
         }
@@ -45,7 +44,7 @@ namespace LegendOfZelda
             new AquamentusBall(Position, new Vector2(-10, 10));
             new AquamentusBall(Position, new Vector2(-10, -10));
         }
-        public void UpdateHealth()
+        public void UpdateHealth(int damagePoints)
         {
             // Not needed
         }

@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using LegendOfZelda;
-using System;
 
 namespace LegendOfZelda
 {
@@ -65,6 +63,18 @@ namespace LegendOfZelda
             }
 
             // TODO: Draw enemy cloud appearance when an enemy is cycled in
+            Enemies[index].Spawn();
+        }
+
+        public void Reset()
+        {
+            foreach (IEnemy entity in Enemies)
+            {
+                entity.Die();
+            }
+
+            index = 0;
+            // Draw the first enemy to the screen
             Enemies[index].Spawn();
         }
     }

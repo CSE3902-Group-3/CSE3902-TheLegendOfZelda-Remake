@@ -1,55 +1,44 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
-using System;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
     public class Wizard : IEnemy
     {
-        private Game1 game;
-        public SpriteFactory spriteFactory;
-        private AnimatedSprite wizardSprite;
-        private int health { get; set; } = 1;
+        private readonly Game1 Game;
+        private readonly AnimatedSprite Sprite;
+        private int Health { get; set; } = 1;
         public Vector2 Position;
 
         public Wizard(Vector2 pos)
         {
             game = Game1.getInstance();
             Position = pos;
-            wizardSprite = game.spriteFactory.CreateOldManSprite();
+            Sprite = Game.spriteFactory.CreateOldManSprite();
+
         }
         public void Spawn()
         {
-            game.RegisterUpdateable(this);           
-            wizardSprite.RegisterSprite();
-            wizardSprite.UpdatePos(Position);
+            Game.RegisterUpdateable(this);
+            Sprite.RegisterSprite();
+            Sprite.UpdatePos(Position);
         }
-        public void ChangePosition()
-        {
-            wizardSprite.UpdatePos(Position);
-        }
+        public void ChangePosition() {}
         public void Attack()
         {
-            // Wizard does not attack unless attacked.
+
         }
-        public void UpdateHealth()
+        public void UpdateHealth(int damagePoints)
         {
-            /* 
-             * This isn't needed for Sprint 2,
-             * however it will be needed later.
-             */
+
         }
 
-        public void ChangeDirection()
-        {
-            // Wizard does not change direction
-        }
-
+        public void ChangeDirection() {}
         public void Die()
         {
-            wizardSprite.UnregisterSprite();
-            game.RemoveUpdateable(this);
+            Sprite.UnregisterSprite();
+            Game.RemoveUpdateable(this);
         }
+
         public void Update(GameTime gameTime) {}
     }
 }

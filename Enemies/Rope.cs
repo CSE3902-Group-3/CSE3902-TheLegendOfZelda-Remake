@@ -1,35 +1,33 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
-using System;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
     public class Rope : IEnemy
     {
-        private Game1 game { get; set; }
+        private readonly Game1 Game;
         private AnimatedSprite RopeSprite;
         private int Health { get; set; } = 1;
         public Vector2 Position;
-        private int PosIncrement = 5;
-        private bool facingLeft = false;
-        private double LastDirSwitch = 0;
+        private readonly int PosIncrement = 5;
+        private bool FacingLeft = false;
+        private double LastSwitch = 0;
 
         public Rope(Vector2 pos)
         {
             game = Game1.getInstance();
             Position = pos;
-            RopeSprite = game.spriteFactory.CreateRopeRightSprite();
+            RopeSprite = Game.spriteFactory.CreateRopeRightSprite();
         }
         public void Spawn()
         {
-            game.RegisterUpdateable(this);            
+            Game.RegisterUpdateable(this);
             RopeSprite.RegisterSprite();
             RopeSprite.UpdatePos(Position);
         }
         public void ChangePosition()
         {
             // Cycle left and right movement
-            if (facingLeft)
+            if (FacingLeft)
             {
                 Position.X -= PosIncrement;
             }
@@ -42,36 +40,30 @@ namespace LegendOfZelda
         }
         public void Attack()
         {
-            /* 
-             * This isn't needed for Sprint 2, however it will be needed later.
-             */
         }
-        public void UpdateHealth()
+        public void UpdateHealth(int damagePoints)
         {
-            /* 
-             * This isn't needed for Sprint 2, however it will be needed later.
-             */
         }
 
         public void ChangeDirection()
         {
-            game.RemoveDrawable(RopeSprite);
-            if (facingLeft)
+            Game.RemoveDrawable(RopeSprite);
+            if (FacingLeft)
             {
-                RopeSprite = game.spriteFactory.CreateRopeRightSprite();
+                RopeSprite = Game.spriteFactory.CreateRopeRightSprite();
             }
             else
             {
-                RopeSprite = game.spriteFactory.CreateRopeLeftSprite();
+                RopeSprite = Game.spriteFactory.CreateRopeLeftSprite();
             }
-            facingLeft = !facingLeft;
+            FacingLeft = !FacingLeft;
         }
 
         public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > LastDirSwitch + 1000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
             {
-                LastDirSwitch = gameTime.TotalGameTime.TotalMilliseconds;
+                LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 ChangeDirection();
             }
             ChangePosition();
@@ -79,7 +71,7 @@ namespace LegendOfZelda
         public void Die()
         {
             RopeSprite.UnregisterSprite();
-            game.RemoveUpdateable(this);
+            Game.RemoveUpdateable(this);
         }
     }
 }
