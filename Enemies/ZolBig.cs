@@ -11,7 +11,7 @@ namespace LegendOfZelda
 
         public ZolBig(Vector2 pos)
         {
-            game = Game1.getInstance();
+            Game = Game1.getInstance();
             Position = pos;
             StateMachine = new SimpleEnemyStateMachine(pos)
             {

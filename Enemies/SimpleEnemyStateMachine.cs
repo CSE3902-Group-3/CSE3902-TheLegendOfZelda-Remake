@@ -18,7 +18,7 @@ namespace LegendOfZelda
 
         public SimpleEnemyStateMachine(Vector2 pos)
         {
-            Game = Game1.instance;
+            Game = Game1.getInstance();
             Position = pos;
             ViewportSize = new Vector2(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
             

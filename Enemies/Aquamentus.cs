@@ -15,7 +15,7 @@ namespace LegendOfZelda
 
         public Aquamentus(Vector2 pos)
         {
-            game = Game1.getInstance();
+            Game = Game1.getInstance();
             Position = pos;
             AquamentusSprite = Game.spriteFactory.CreateAquamentusSprite();
         }

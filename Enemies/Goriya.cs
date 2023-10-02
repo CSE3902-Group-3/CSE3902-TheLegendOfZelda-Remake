@@ -17,7 +17,7 @@ namespace LegendOfZelda
         private int UpdateCount = 0;
         public Goriya(Vector2 pos)
         {
-            game = Game1.getInstance();
+            Game = Game1.getInstance();
             Position = pos;
             ViewportSize = new Vector2(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
             GoriyaSprites = new List<AnimatedSprite>

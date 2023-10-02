@@ -14,7 +14,7 @@ namespace LegendOfZelda
 
         public Rope(Vector2 pos)
         {
-            game = Game1.getInstance();
+            Game = Game1.getInstance();
             Position = pos;
             RopeSprite = Game.spriteFactory.CreateRopeRightSprite();
         }

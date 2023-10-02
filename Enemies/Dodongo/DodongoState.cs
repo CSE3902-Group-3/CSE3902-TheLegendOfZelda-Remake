@@ -12,7 +12,7 @@ namespace LegendOfZelda
         public DodongoState(Vector2 pos)
         {
             State = new RightMovingDodongo(this, pos);
-            Game = Game1.instance;
+            Game = Game1.getInstance();
             Spawn();
         }
         public void Spawn()

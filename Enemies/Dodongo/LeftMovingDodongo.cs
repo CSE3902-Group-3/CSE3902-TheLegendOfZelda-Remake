@@ -13,7 +13,7 @@ namespace LegendOfZelda
         private bool Injured = false;
         public LeftMovingDodongo(DodongoState dodongo, Vector2 pos)
         {
-            Game = Game1.instance;
+            Game = Game1.getInstance();
             Dodongo = dodongo;
             Direction = new Vector2(-MoveMagnitude, 0);
             Position = pos;
