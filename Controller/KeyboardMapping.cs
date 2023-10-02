@@ -1,17 +1,11 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework.Input;
-using System;
+﻿using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    //Class completed last minute in order to meet functionality check. Original author still needs to come back and finish the class.
     internal class KeyboardMapping
     {
-        private Dictionary<Keys, ICommands> controllerMappings;
+        private Dictionary<Keys, ICommands> KeyDownMapping;
         private Dictionary<Keys, ICommands> keyUpMappings;
 
         private Game1 game;
@@ -19,20 +13,20 @@ namespace LegendOfZelda
         public KeyboardMapping(Game1 game, Link link)
         {
             this.game = game;
-            controllerMappings = new Dictionary<Keys, ICommands>();
-            keyUpMappings = new Dictionary<Keys, ICommands>();
+            KeyDownMapping = new Dictionary<Keys, ICommands>(); // Dictionary of held commands
+            keyUpMappings = new Dictionary<Keys, ICommands>(); // Dictionary of single pressed commands
 
             keyUpMappings.Add(Keys.Q, new QuitCommand(game));
-            keyUpMappings.Add(Keys.R, new ResetCommand());
+            keyUpMappings.Add(Keys.R, new ResetCommand(game.itemCycler, game.enemyCycler, link));
 
-            controllerMappings.Add(Keys.W, new MovingUpCommand(link));
-            controllerMappings.Add(Keys.Up, new MovingUpCommand(link));
-            controllerMappings.Add(Keys.A, new MovingLeftCommand(link));
-            controllerMappings.Add(Keys.Left, new MovingLeftCommand(link));
-            controllerMappings.Add(Keys.S, new MovingDownCommand(link));
-            controllerMappings.Add(Keys.Down, new MovingDownCommand(link));
-            controllerMappings.Add(Keys.D, new MovingRightCommand(link));
-            controllerMappings.Add(Keys.Right, new MovingRightCommand(link));
+            KeyDownMapping.Add(Keys.W, new MovingUpCommand(link));
+            KeyDownMapping.Add(Keys.Up, new MovingUpCommand(link));
+            KeyDownMapping.Add(Keys.A, new MovingLeftCommand(link));
+            KeyDownMapping.Add(Keys.Left, new MovingLeftCommand(link));
+            KeyDownMapping.Add(Keys.S, new MovingDownCommand(link));
+            KeyDownMapping.Add(Keys.Down, new MovingDownCommand(link));
+            KeyDownMapping.Add(Keys.D, new MovingRightCommand(link));
+            KeyDownMapping.Add(Keys.Right, new MovingRightCommand(link));
             keyUpMappings.Add(Keys.W, new ToIdleCommand(link));
             keyUpMappings.Add(Keys.A, new ToIdleCommand(link));
             keyUpMappings.Add(Keys.S, new ToIdleCommand(link));
@@ -55,11 +49,11 @@ namespace LegendOfZelda
 
         }
 
-        public ICommands GetCommand(Keys key)
+        public ICommands KeyDownCommand(Keys key)
         {
-            if (controllerMappings.ContainsKey(key))
+            if (KeyDownMapping.ContainsKey(key))
             {
-                return controllerMappings[key];
+                return KeyDownMapping[key];
             }
             else
             {
@@ -67,7 +61,7 @@ namespace LegendOfZelda
             }
         }
 
-        public ICommands GetUpCommand(Keys key)
+        public ICommands KeyUpCommand(Keys key)
         {
             if (keyUpMappings.ContainsKey(key))
             {
