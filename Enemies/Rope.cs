@@ -6,7 +6,6 @@ namespace LegendOfZelda
     {
         private readonly Game1 Game;
         private AnimatedSprite RopeSprite;
-        private readonly SimpleEnemyStateMachine StateMachine;
         private int Health { get; set; } = 1;
         public Vector2 Position;
         private readonly int PosIncrement = 5;
@@ -18,15 +17,12 @@ namespace LegendOfZelda
             Game = Game1.instance;
             Position = pos;
             RopeSprite = Game.spriteFactory.CreateRopeRightSprite();
-            StateMachine = new SimpleEnemyStateMachine(pos)
-            {
-                Sprite = RopeSprite,
-                Health = Health
-            };
         }
         public void Spawn()
         {
-           StateMachine.Spawn();
+            Game.RegisterUpdateable(this);
+            RopeSprite.RegisterSprite();
+            RopeSprite.UpdatePos(Position);
         }
         public void ChangePosition()
         {
@@ -44,11 +40,9 @@ namespace LegendOfZelda
         }
         public void Attack()
         {
-            StateMachine.Attack();
         }
         public void UpdateHealth(int damagePoints)
         {
-            StateMachine.UpdateHealth(damagePoints);
         }
 
         public void ChangeDirection()
@@ -67,11 +61,17 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
-            StateMachine.Update(gameTime);
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
+            {
+                LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
+                ChangeDirection();
+            }
+            ChangePosition();
         }
         public void Die()
         {
-            StateMachine.Die();
+            RopeSprite.UnregisterSprite();
+            Game.RemoveUpdateable(this);
         }
     }
 }

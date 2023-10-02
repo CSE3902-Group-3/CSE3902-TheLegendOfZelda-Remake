@@ -5,7 +5,7 @@ namespace LegendOfZelda
     public class Wizard : IEnemy
     {
         private readonly Game1 Game;
-        private readonly SimpleEnemyStateMachine StateMachine;
+        private readonly AnimatedSprite Sprite;
         private int Health { get; set; } = 1;
         public Vector2 Position;
 
@@ -13,30 +13,30 @@ namespace LegendOfZelda
         {
             Game = Game1.instance;
             Position = pos;
-            StateMachine = new SimpleEnemyStateMachine(pos)
-            {
-                Sprite = Game.spriteFactory.CreateOldManSprite(),
-                Health = Health
-            };
+            Sprite = Game.spriteFactory.CreateOldManSprite();
+
         }
         public void Spawn()
         {
-            StateMachine.Spawn();
+            Game.RegisterUpdateable(this);
+            Sprite.RegisterSprite();
+            Sprite.UpdatePos(Position);
         }
         public void ChangePosition() {}
         public void Attack()
         {
-            StateMachine.Attack();
+            
         }
         public void UpdateHealth(int damagePoints)
         {
-            StateMachine.UpdateHealth(damagePoints);
+            
         }
 
         public void ChangeDirection() {}
         public void Die()
         {
-            StateMachine.Die();
+            Sprite.UnregisterSprite();
+            Game.RemoveUpdateable(this);
         }
 
         public void Update(GameTime gameTime) {}
