@@ -17,7 +17,7 @@ namespace LegendOfZelda
 
         public GelSmall(Vector2 pos)
         {
-            game = Game1.instance;
+            game = Game1.getInstance();
             Position = pos;
             gelSmallSprite = game.spriteFactory.CreateGelSprite();
         }

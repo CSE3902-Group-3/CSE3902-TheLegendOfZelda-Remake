@@ -12,7 +12,7 @@ namespace LegendOfZelda
 
         public Rupee(Vector2 pos)
         {
-            spriteFactory = Game1.instance.spriteFactory;
+            spriteFactory = Game1.getInstance().spriteFactory;
             rupee = spriteFactory.CreateRupeeSprite();
             position = pos;
         }

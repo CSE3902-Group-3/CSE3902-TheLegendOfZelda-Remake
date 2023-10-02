@@ -14,7 +14,7 @@ namespace LegendOfZelda
 
         public Wizard(Vector2 pos)
         {
-            game = Game1.instance;
+            game = Game1.getInstance();
             Position = pos;
             wizardSprite = game.spriteFactory.CreateOldManSprite();
         }

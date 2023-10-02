@@ -16,7 +16,7 @@ namespace LegendOfZelda
 
         public Aquamentus(Vector2 pos)
         {
-            game = Game1.instance;
+            game = Game1.getInstance();
             Position = pos;
             AquamentusSprite = game.spriteFactory.CreateAquamentusSprite();
         }
@@ -68,7 +68,7 @@ namespace LegendOfZelda
         public void Die()
         {
             AquamentusSprite.UnregisterSprite();
-            Game1.instance.RemoveUpdateable(this);
+            Game1.getInstance().RemoveUpdateable(this);
         }
     }
 }

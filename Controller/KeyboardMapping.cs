@@ -16,13 +16,13 @@ namespace LegendOfZelda
 
         private Game1 game;
 
-        public KeyboardMapping(Game1 game, Link link)
+        public KeyboardMapping(Link link)
         {
-            this.game = game;
+            this.game = Game1.getInstance();
             controllerMappings = new Dictionary<Keys, ICommands>();
             keyUpMappings = new Dictionary<Keys, ICommands>();
 
-            keyUpMappings.Add(Keys.Q, new QuitCommand(game));
+            keyUpMappings.Add(Keys.Q, new QuitCommand());
             keyUpMappings.Add(Keys.R, new ResetCommand());
 
             controllerMappings.Add(Keys.W, new MovingUpCommand(link));

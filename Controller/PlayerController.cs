@@ -23,10 +23,10 @@ namespace LegendOfZelda
         private Keys[] currKeys;
         private Keys[] prevKeys;
 
-        public PlayerController(Game1 game, Link Link)
+        public PlayerController(Link Link)
         {
             link = Link;
-            controllerMappings = new KeyboardMapping(game, link);
+            controllerMappings = new KeyboardMapping(link);
             prevKeys = Array.Empty<Keys>();
             currKeys = Array.Empty<Keys>();
             

@@ -15,7 +15,7 @@ namespace LegendOfZelda
 
         public WallMaster(Vector2 pos)
         {
-            game = Game1.instance;
+            game = Game1.getInstance();
             Position = pos;
             wallMasterSprite = game.spriteFactory.CreateWallmasterSprite();
         }

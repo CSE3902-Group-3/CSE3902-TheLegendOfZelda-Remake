@@ -12,7 +12,7 @@ namespace LegendOfZelda
 
         public Boomerang(Vector2 pos)
         {
-            spriteFactory = Game1.instance.spriteFactory;
+            spriteFactory = Game1.getInstance().spriteFactory;
             boomerang = spriteFactory.CreateBoomerangItemSprite();
             position = pos;
         }

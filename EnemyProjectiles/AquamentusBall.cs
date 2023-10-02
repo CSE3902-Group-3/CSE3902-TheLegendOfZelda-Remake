@@ -15,8 +15,8 @@ namespace LegendOfZelda
         private Vector2 Direction;
         public AquamentusBall(Vector2 pos, Vector2 dir)
         {
-            Game1.instance.RegisterUpdateable(this);
-            AquamentusBallSprite = Game1.instance.spriteFactory.CreateAquamentusBallSprite();
+            Game1.getInstance().RegisterUpdateable(this);
+            AquamentusBallSprite = Game1.getInstance().spriteFactory.CreateAquamentusBallSprite();
             Position = pos;
             Direction = dir;
         }
@@ -25,7 +25,7 @@ namespace LegendOfZelda
         {
             Position += Direction;
             AquamentusBallSprite.UpdatePos(Position);
-            if (Position.X >= Game1.instance.GraphicsDevice.Viewport.Width || Position.Y >= Game1.instance.GraphicsDevice.Viewport.Height || Position.X < 0 || Position.Y < 0)
+            if (Position.X >= Game1.getInstance().GraphicsDevice.Viewport.Width || Position.Y >= Game1.getInstance().GraphicsDevice.Viewport.Height || Position.X < 0 || Position.Y < 0)
             {
                 Destroy();
             }
@@ -33,8 +33,8 @@ namespace LegendOfZelda
 
         public void Destroy()
         {
-            Game1.instance.RemoveUpdateable(this);
-            Game1.instance.RemoveDrawable(AquamentusBallSprite);
+            Game1.getInstance().RemoveUpdateable(this);
+            Game1.getInstance().RemoveDrawable(AquamentusBallSprite);
         }
 
     }

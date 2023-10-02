@@ -18,7 +18,7 @@ namespace LegendOfZelda
         }
         public void Spawn()
         {
-            Game1.instance.RegisterUpdateable(this);
+            Game1.getInstance().RegisterUpdateable(this);
             State.Spawn();
         }
         public void ChangePosition()

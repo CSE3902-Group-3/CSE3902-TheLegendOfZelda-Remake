@@ -16,7 +16,7 @@ namespace LegendOfZelda
 
         public Bat(Vector2 pos)
         {
-            game = Game1.instance;
+            game = Game1.getInstance();
             Position = pos;
             batSprite = game.spriteFactory.CreateKeeseSprite();
         }

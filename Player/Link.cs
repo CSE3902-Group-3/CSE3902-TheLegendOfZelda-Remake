@@ -27,7 +27,7 @@ namespace LegendOfZelda
             this.sprite = game.spriteFactory.CreateLinkWalkRightSprite();
 
             this.stateMachine = new LinkStateMachine();
-            this.stateMachine.ChangeState(new InititalLinkState(this.game, this.sprite));
+            this.stateMachine.ChangeState(new InititalLinkState(this.sprite));
         }
 
         public void TakeDamage()
@@ -54,7 +54,7 @@ namespace LegendOfZelda
         public void Reset()
         {
             ((AnimatedSprite)sprite).UpdatePos(new Vector2(0,0));
-            this.stateMachine.ChangeState(new IdleLinkState(this.game));
+            this.stateMachine.ChangeState(new IdleLinkState());
         }
 
         public void ChangeItem(int index)

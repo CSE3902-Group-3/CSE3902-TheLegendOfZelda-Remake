@@ -11,9 +11,9 @@ namespace LegendOfZelda
     {
         private Game1 game;
 
-        public QuitCommand(Game1 game) 
+        public QuitCommand() 
         {
-            this.game = game;
+            this.game = Game1.getInstance();
         }
 
         public void Execute()

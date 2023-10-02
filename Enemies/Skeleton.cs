@@ -16,7 +16,7 @@ namespace LegendOfZelda
 
         public Skeleton(Vector2 pos)
         {
-            game = Game1.instance;
+            game = Game1.getInstance();
             Position = pos;
             skeletonSprite = game.spriteFactory.CreateStalfosSprite();
         }

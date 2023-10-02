@@ -15,7 +15,7 @@ namespace LegendOfZelda
         private Vector2 viewportSize;
         public ArrowProjectile(Vector2 position, Direction direction)
         {
-            game = Game1.instance;
+            game = Game1.getInstance();
             SpriteFactory spriteFactory = game.spriteFactory;
             pos = position;
             viewportSize = new Vector2(game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height);

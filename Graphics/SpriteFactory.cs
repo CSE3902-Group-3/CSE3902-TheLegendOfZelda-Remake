@@ -33,7 +33,7 @@ namespace LegendOfZelda
         private int scale;
 
         private SpriteFactory(int drawFramesPerAnimFrame, int scale) {
-            game1 = Game1.instance;
+            game1 = Game1.getInstance();
             this.drawFramesPerAnimFrame = drawFramesPerAnimFrame;
             this.scale = scale;
         }

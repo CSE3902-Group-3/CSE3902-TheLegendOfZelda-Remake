@@ -12,7 +12,7 @@ namespace LegendOfZelda
 
         public Candle(Vector2 pos)
         {
-            spriteFactory = Game1.instance.spriteFactory;
+            spriteFactory = Game1.getInstance().spriteFactory;
             candle = spriteFactory.CreateBlueCandleSprite();
             position = pos;
         }

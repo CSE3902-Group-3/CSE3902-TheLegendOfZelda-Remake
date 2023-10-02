@@ -12,7 +12,7 @@ namespace LegendOfZelda
 
         public Bomb(Vector2 pos)
         {
-            spriteFactory = Game1.instance.spriteFactory;
+            spriteFactory = Game1.getInstance().spriteFactory;
             bomb = spriteFactory.CreateBombSprite();
             position = pos;
         }

@@ -14,7 +14,7 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            player.stateMachine.ChangeState(new WalkDownLinkState(Game1.instance));
+            player.stateMachine.ChangeState(new WalkDownLinkState());
             player.stateMachine.Update();
         }
     }

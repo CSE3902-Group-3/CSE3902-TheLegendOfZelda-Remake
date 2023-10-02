@@ -15,8 +15,8 @@ namespace LegendOfZelda
         Vector2 Position;
         public GoriyaBoomerang(Vector2 pos, Vector2 dir)
         {
-            Game1.instance.RegisterUpdateable(this);
-            GoriyaBoomerangSprite = Game1.instance.spriteFactory.CreateAquamentusBallSprite();
+            Game1.getInstance().RegisterUpdateable(this);
+            GoriyaBoomerangSprite = Game1.getInstance().spriteFactory.CreateAquamentusBallSprite();
             Position = pos;
             Direction = dir;
         }
@@ -24,15 +24,15 @@ namespace LegendOfZelda
         {
             Position += Direction;
             GoriyaBoomerangSprite.UpdatePos(Position);
-            if (Position.X >= Game1.instance.GraphicsDevice.Viewport.Width || Position.Y >= Game1.instance.GraphicsDevice.Viewport.Height || Position.X < 0 || Position.Y < 0)
+            if (Position.X >= Game1.getInstance().GraphicsDevice.Viewport.Width || Position.Y >= Game1.getInstance().GraphicsDevice.Viewport.Height || Position.X < 0 || Position.Y < 0)
             {
                 Destroy();
             }
         }
         public void Destroy()
         {
-            Game1.instance.RemoveUpdateable(this);
-            Game1.instance.RemoveDrawable(GoriyaBoomerangSprite);
+            Game1.getInstance().RemoveUpdateable(this);
+            Game1.getInstance().RemoveDrawable(GoriyaBoomerangSprite);
         }
     }
 }

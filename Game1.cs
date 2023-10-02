@@ -27,7 +27,7 @@ namespace LegendOfZelda
         public EnemyCycler enemyCycler { get; private set; }
 
         public ItemScroll itemCycler { get; private set; }
-        public static Game1 instance { get; private set; }
+        private static Game1 instance;
 
         private Game1()
         {
@@ -79,7 +79,7 @@ namespace LegendOfZelda
             itemCycler = new ItemScroll(new Vector2(800, 300));
             //Uncomment the following line for testing
             new AnimationTester();
-            controller = new PlayerController(this, (Link)link);
+            controller = new PlayerController((Link)link);
 
         }
 

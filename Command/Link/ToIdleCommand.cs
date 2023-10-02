@@ -20,7 +20,7 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            player.stateMachine.ChangeState(new IdleLinkState(Game1.instance));
+            player.stateMachine.ChangeState(new IdleLinkState());
         }
     }
 }

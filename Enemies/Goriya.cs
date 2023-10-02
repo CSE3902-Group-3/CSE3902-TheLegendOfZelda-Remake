@@ -18,7 +18,7 @@ namespace LegendOfZelda
 
         public Goriya(Vector2 pos)
         {
-            game = Game1.instance;
+            game = Game1.getInstance();
             Position = pos;
             goriyaSprites = new List<AnimatedSprite>
             {

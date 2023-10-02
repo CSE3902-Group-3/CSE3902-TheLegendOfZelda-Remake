@@ -18,7 +18,7 @@ namespace LegendOfZelda
         private IPlayer player;
         public BoomerangProjectile(Vector2 position, Vector2 direction, IPlayer player)
         {
-            game = Game1.instance;
+            game = Game1.getInstance();
             SpriteFactory spriteFactory = game.spriteFactory;
             pos = position;
             this.player = player;
