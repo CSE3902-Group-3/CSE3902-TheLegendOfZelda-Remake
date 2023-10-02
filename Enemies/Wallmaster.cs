@@ -15,7 +15,7 @@ namespace LegendOfZelda
             Position = pos;
             StateMachine = new SimpleEnemyStateMachine(pos)
             {
-                Sprite = Game.spriteFactory.CreateWallmasterSprite(),
+                Sprite = SpriteFactory.getInstance().CreateWallmasterSprite(),
                 Health = Health
             };
         }

@@ -13,7 +13,7 @@ namespace LegendOfZelda
         {
             Game = Game1.getInstance();
             Position = pos;
-            Sprite = Game.spriteFactory.CreateOldManSprite();
+            Sprite = SpriteFactory.getInstance().CreateOldManSprite();
 
         }
         public void Spawn()

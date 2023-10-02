@@ -15,7 +15,7 @@ namespace LegendOfZelda
         public FireProjectile(Vector2 position, Direction direction)
         {
             game = Game1.getInstance();
-            SpriteFactory spriteFactory = game.spriteFactory;
+            SpriteFactory spriteFactory = SpriteFactory.getInstance();
             pos = position;
             viewportSize = new Vector2(game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height);
 

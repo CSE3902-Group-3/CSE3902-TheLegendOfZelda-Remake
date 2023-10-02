@@ -22,10 +22,10 @@ namespace LegendOfZelda
             ViewportSize = new Vector2(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
             GoriyaSprites = new List<AnimatedSprite>
             {
-                Game.spriteFactory.CreateGoriyaRightSprite(),
-                Game.spriteFactory.CreateGoriyaLeftSprite(),
-                Game.spriteFactory.CreateGoriyaDownSprite(),
-                Game.spriteFactory.CreateGoriyaUpSprite()
+                SpriteFactory.getInstance().CreateGoriyaRightSprite(),
+                SpriteFactory.getInstance().CreateGoriyaLeftSprite(),
+                SpriteFactory.getInstance().CreateGoriyaDownSprite(),
+                SpriteFactory.getInstance().CreateGoriyaUpSprite()
             };
 
             foreach (AnimatedSprite goriya in GoriyaSprites)

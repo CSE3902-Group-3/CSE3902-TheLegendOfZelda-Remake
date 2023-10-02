@@ -11,7 +11,7 @@ namespace LegendOfZelda
         public Explosion(Vector2 position)
         {
             game = Game1.getInstance();
-            SpriteFactory spriteFactory = game.spriteFactory;
+            SpriteFactory spriteFactory = SpriteFactory.getInstance();
             game.RegisterUpdateable(this);
 
             sprite = spriteFactory.CreateExplosionSprite();

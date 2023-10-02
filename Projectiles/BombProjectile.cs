@@ -16,7 +16,7 @@ namespace LegendOfZelda
         public BombProjectile(Vector2 position)
         {
             game = Game1.getInstance();
-            spriteFactory = game.spriteFactory;
+            spriteFactory = SpriteFactory.getInstance();
             pos = position;
             game.RegisterUpdateable(this);
 

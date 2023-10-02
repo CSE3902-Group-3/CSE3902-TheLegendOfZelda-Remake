@@ -16,7 +16,7 @@ namespace LegendOfZelda
         {
             Game = Game1.getInstance();
             Position = pos;
-            RopeSprite = Game.spriteFactory.CreateRopeRightSprite();
+            RopeSprite = SpriteFactory.getInstance().CreateRopeRightSprite();
         }
         public void Spawn()
         {
@@ -50,11 +50,11 @@ namespace LegendOfZelda
             Game.RemoveDrawable(RopeSprite);
             if (FacingLeft)
             {
-                RopeSprite = Game.spriteFactory.CreateRopeRightSprite();
+                RopeSprite = SpriteFactory.getInstance().CreateRopeRightSprite();
             }
             else
             {
-                RopeSprite = Game.spriteFactory.CreateRopeLeftSprite();
+                RopeSprite = SpriteFactory.getInstance().CreateRopeLeftSprite();
             }
             FacingLeft = !FacingLeft;
         }

@@ -17,7 +17,7 @@ namespace LegendOfZelda
         {
             Game = Game1.getInstance();
             Position = pos;
-            AquamentusSprite = Game.spriteFactory.CreateAquamentusSprite();
+            AquamentusSprite = SpriteFactory.getInstance().CreateAquamentusSprite();
         }
         public void Spawn ()
         {
