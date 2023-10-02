@@ -26,12 +26,12 @@ namespace LegendOfZelda
             spriteFactory = Game1.instance.spriteFactory;
             // blockCycler = Game1.instance.blockCycler;
             // enemyCycler = Game1.instance.enemyCycler;
-            itemScroll = new ItemScroll(new Vector2(200,200));
+            // itemScroll = new ItemScroll(new Vector2(200,200));
 
             sprites = new List<AnimatedSprite>();
             //testLink = new Link(Game1.instance);
             
-            /*
+            
             sprites.Add(spriteFactory.CreateLinkWalkDownSprite());
             sprites.Add(spriteFactory.CreateLinkWalkRightSprite());
             sprites.Add(spriteFactory.CreateLinkWalkLeftSprite());
@@ -66,6 +66,8 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateRopeRightSprite());
             sprites.Add(spriteFactory.CreateRopeLeftSprite());
             sprites.Add(spriteFactory.CreateBladeTrapSprite());
+
+            
             sprites.Add(spriteFactory.CreateAquamentusSprite());
             sprites.Add(spriteFactory.CreateAquamentusBallSprite());
             sprites.Add(spriteFactory.CreateHeartSprite());
@@ -92,7 +94,7 @@ namespace LegendOfZelda
             sprites.Add(spriteFactory.CreateDodongoLeftSprite());
             sprites.Add(spriteFactory.CreateDodongoRightHitSprite());
             sprites.Add(spriteFactory.CreateDodongoRightSprite());
-            */
+            
 
 
 
@@ -105,27 +107,27 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             
-            if(gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 2000)
+            if(gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 3000)
             {
                 lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
-                //sprites[counter].UnregisterSprite();
+                sprites[counter].UnregisterSprite();
                 counter++;
-                //if (counter >= sprites.Count) counter = 0;
-                //sprites[counter].RegisterSprite();
-                //sprites[counter].UpdatePos(new Vector2(400, 200));
+                if (counter >= sprites.Count) counter = 0;
+                sprites[counter].RegisterSprite();
+                sprites[counter].UpdatePos(new Vector2(400, 200));
                 // blockCycler.cycleForward();
                 // enemyCycler.CycleForward();
-                itemScroll.nextItem();
+                //itemScroll.nextItem();
             }
             
 
             
-            if(gameTime.TotalGameTime.TotalMilliseconds > lastPause + 5050)
+            if(gameTime.TotalGameTime.TotalMilliseconds > lastPause + 1000)
             {
                 lastPause = gameTime.TotalGameTime.TotalMilliseconds;
                 //sprites[counter].paused = !sprites[counter].paused;
                 //sprites[counter].flashing = !sprites[counter].flashing;
-                //sprites[counter].blinking = true;
+                sprites[counter].blinking = true;
 
                 //new FireProjectile(new Vector2(200, 200), Direction.left);
                 //new ArrowProjectile(new Vector2(200, 200), Direction.up);
@@ -133,7 +135,7 @@ namespace LegendOfZelda
                 //new BoomerangProjectile(new Vector2(300, 200), new Vector2(1, 1), testLink);
 
                 //blockCycler.cycleBackward();
-                itemScroll.previousItem();
+                //itemScroll.previousItem();
             }
             
             //sprites[counter].UpdatePos(new Vector2(sprites[counter].pos.X - 1, 200));
