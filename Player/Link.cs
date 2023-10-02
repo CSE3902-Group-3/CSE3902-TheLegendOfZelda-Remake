@@ -54,6 +54,7 @@ namespace LegendOfZelda
         public void Reset()
         {
             ((AnimatedSprite)sprite).UpdatePos(new Vector2(0,0));
+            this.stateMachine.ChangeState(new WalkRightLinkState(this.game));
             this.stateMachine.ChangeState(new IdleLinkState(this.game));
         }
 

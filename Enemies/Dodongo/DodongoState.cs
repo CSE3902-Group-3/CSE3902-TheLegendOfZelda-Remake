@@ -1,12 +1,10 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
-using System;
-using System.Runtime.InteropServices;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
     public class DodongoState : IEnemy
     {
+        private readonly Game1 Game;
         public IEnemy State { get;  set; }
         private double LastDirSwitch = 0;
         private double LastHealthSwitch = 0;
@@ -14,11 +12,12 @@ namespace LegendOfZelda
         public DodongoState(Vector2 pos)
         {
             State = new RightMovingDodongo(this, pos);
+            Game = Game1.instance;
             Spawn();
         }
         public void Spawn()
         {
-            Game1.instance.RegisterUpdateable(this);
+            Game.RegisterUpdateable(this);
             State.Spawn();
         }
         public void ChangePosition()
@@ -29,9 +28,9 @@ namespace LegendOfZelda
         {
             State.Attack();
         }
-        public void UpdateHealth()
+        public void UpdateHealth(int damagePoints)
         {
-            State.UpdateHealth();
+            State.UpdateHealth(damagePoints);
         }
 
         public void ChangeDirection()
@@ -49,7 +48,7 @@ namespace LegendOfZelda
             if (gameTime.TotalGameTime.TotalMilliseconds > LastHealthSwitch + 333)
             {
                 LastHealthSwitch = gameTime.TotalGameTime.TotalMilliseconds;
-                State.UpdateHealth();
+                State.UpdateHealth(0); // Passing 0 since nothing in this method handles actual damage points yet
             }
             State.ChangePosition();
         }

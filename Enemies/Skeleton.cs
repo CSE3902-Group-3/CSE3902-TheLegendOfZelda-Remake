@@ -1,97 +1,53 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
-using System;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
     public class Skeleton : IEnemy
     {
-        private Game1 game;
-        public SpriteFactory spriteFactory;
-        private AnimatedSprite skeletonSprite;
-        private int health { get; set; } = 2;
+        private readonly Game1 Game;
+        private readonly SimpleEnemyStateMachine StateMachine;
+        private int Health { get; set; } = 1;
         public Vector2 Position;
-        private Vector2 Direction;
-        private double lastSwitch = 0;
 
         public Skeleton(Vector2 pos)
         {
-            game = Game1.instance;
+            Game = Game1.instance;
             Position = pos;
-            skeletonSprite = game.spriteFactory.CreateStalfosSprite();
+            StateMachine = new SimpleEnemyStateMachine(pos)
+            {
+                Sprite = Game.spriteFactory.CreateStalfosSprite(),
+                Health = Health
+            };
         }
         public void Spawn()
         {
-            game.RegisterUpdateable(this);
-            skeletonSprite.RegisterSprite();
-            skeletonSprite.UpdatePos(Position);
+            StateMachine.Spawn();
         }
         public void ChangePosition()
         {
-            Position += Direction;
-            if (Position.X < 0 || Position.Y < 0)
-            {
-                Position -= Direction;
-            }
-
-            // This is kinda cursed, but it's to make sure the sprite does not venture beyond the screen border
-            if (Position.X >= game.GraphicsDevice.Viewport.Width || Position.Y >= game.GraphicsDevice.Viewport.Height)
-            {
-                Position -= Direction;
-            }
-            skeletonSprite.UpdatePos(Position);
+            StateMachine.ChangePosition();
         }
         public void Attack()
         {
-            /* 
-             * This isn't needed for Sprint 2,
-             * however it will be needed later.
-             */
+            StateMachine.Attack();
         }
-        public void UpdateHealth()
+        public void UpdateHealth(int damagePoints)
         {
-            /* 
-             * This isn't needed for Sprint 2,
-             * however it will be needed later.
-             */
+            StateMachine.UpdateHealth(damagePoints);
         }
 
         public void ChangeDirection()
         {
-            Random rand = new Random();
-            int random = rand.Next(0, 4);
-
-            if (random == 0)
-            {
-                Direction = new Vector2(1, 0);
-            }
-            else if (random == 1)
-            {
-                Direction = new Vector2(-1, 0);
-            }
-            else if (random == 2)
-            {
-                Direction = new Vector2(0, 1);
-            }
-            else if (random == 3)
-            {
-                Direction = new Vector2(0, -1);
-            }
+            StateMachine.ChangeDirection();
         }
         public void Die()
         {
-            skeletonSprite.UnregisterSprite();
-            game.RemoveUpdateable(this);
+            StateMachine.Die();
         }
 
         public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > lastSwitch + 100)
-            {
-                lastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
-                ChangeDirection();
-            }
-            ChangePosition();
+            StateMachine.Update(gameTime);
         }
     }
 }
