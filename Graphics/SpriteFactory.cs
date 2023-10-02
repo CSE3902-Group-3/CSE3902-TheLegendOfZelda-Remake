@@ -18,6 +18,8 @@ namespace LegendOfZelda
      */
     public class SpriteFactory
     {
+        private static SpriteFactory instance = new SpriteFactory(8, 8);
+
         private Texture2D linkTexture;
         private Texture2D enemiesTexture;
         private Texture2D dungeonTexture;
@@ -30,10 +32,18 @@ namespace LegendOfZelda
         private const int slowAnimateFactor = 2;
         private int scale;
 
-        public SpriteFactory(int drawFramesPerAnimFrame, int scale) {
+        private SpriteFactory(int drawFramesPerAnimFrame, int scale) {
             game1 = Game1.instance;
             this.drawFramesPerAnimFrame = drawFramesPerAnimFrame;
             this.scale = scale;
+        }
+
+        public static SpriteFactory getInstance()
+        {
+            if (instance == null)
+                instance = new SpriteFactory(8, 8);
+
+            return instance;
         }
 
         public void LoadTextures()

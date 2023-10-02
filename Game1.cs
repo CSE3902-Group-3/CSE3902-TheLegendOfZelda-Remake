@@ -29,11 +29,19 @@ namespace LegendOfZelda
         public ItemScroll itemCycler { get; private set; }
         public static Game1 instance { get; private set; }
 
-        public Game1()
+        private Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+        }
+
+        public static Game1 getInstance()
+        {
+            if (instance == null)
+                instance = new Game1();
+
+            return instance;
         }
 
         protected override void Initialize()
@@ -42,7 +50,7 @@ namespace LegendOfZelda
             instance = this;
             updateables = new List<IUpdateable>();
 
-            spriteFactory = new SpriteFactory(8, 8);
+            spriteFactory = SpriteFactory.getInstance();
 
             // Change size of viewport
             _graphics.IsFullScreen = false;
