@@ -7,7 +7,7 @@ namespace LegendOfZelda
     public interface IEnemy: IUpdateable
     {
         void Spawn();
-        void UpdateHealth();
+        void UpdateHealth(int damagePoints);
         void Attack();
         void ChangePosition();
         void ChangeDirection();
