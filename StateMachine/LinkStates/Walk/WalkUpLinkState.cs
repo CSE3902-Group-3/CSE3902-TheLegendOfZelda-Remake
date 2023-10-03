@@ -12,7 +12,7 @@ namespace LegendOfZelda
         {
             this.game = game;
             link = (Link)game.link;
-            link.currentDirection = Direction.down;
+            link.currentDirection = Direction.up;
 
         }
 
