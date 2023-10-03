@@ -21,6 +21,7 @@ characters should move, animate, fire projectiles, etc. as they do in the final 
 
 ## Known Bugs:
 - Sometimes pressing `e` to enter hurt link state does not apply until another command is processed
+- Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
 
 ## Tools:
 - We had an implementation which used HLSL shaders to color sprites more accurately, but due to bugs in Monogame on Mac, we were forced to remove this
