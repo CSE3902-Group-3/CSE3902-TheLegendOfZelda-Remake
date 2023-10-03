@@ -31,7 +31,7 @@ characters should move, animate, fire projectiles, etc. as they do in the final 
 -   9/25: 85, 569, 2, 72, 3807, 925
 -   10/2: 85, 732, 2, 135, 5151, 1399
 
-Code Reviews:
+## Code Reviews:
 - Michael Herring reviewed Gabe DiFiore's code for quality in pull request #63
 - Gabriel DiFiore reviewed MengQi Lei's code for quality in pull request #73
 - Michael Herring reviewed Ethan Glenwright's code for readability in pull request #84
@@ -43,3 +43,6 @@ Code Reviews:
 - Matthew Curie reviewed Michael's code for quality in pull request #72, #85, #94,
 - Zhengyi Hu reviewed Mengqi Lei's code for quality in pull request # 103
 - Zhengyi Hu reviewed Gabriel DiFiore's code for readability (See 'Code Review/Sprint 2')
+
+## Sprint Reflections:
+See `Code Review/Sprint# Reflections.txt` for sprint reflections
