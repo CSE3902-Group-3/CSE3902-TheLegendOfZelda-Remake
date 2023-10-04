@@ -53,6 +53,8 @@ namespace LegendOfZelda
             {
                 block.enabled = false;
             }
+
+            blocks[index].enabled = true;
         }
 
         public void cycleForward()
@@ -74,6 +76,13 @@ namespace LegendOfZelda
             {
                 index = blocks.Count - 1;
             }
+            blocks[index].enabled = true;
+        }
+
+        public void Reset()
+        {
+            blocks[index].enabled = false;
+            index = 0;
             blocks[index].enabled = true;
         }
     }

@@ -33,12 +33,24 @@ namespace LegendOfZelda
 
         private void KeyDownEvents()
         {
+            bool isMovingHorizontally = false;
+            bool isMovingVertically = false;
+
             foreach (Keys key in currKeys)
             {
                 command = controllerMappings.KeyDownCommand(key);
                 if (command != null)
                 {
-                    command.Execute();
+                    if (isHorizontal(key) && !isMovingVertically)
+                    {
+                        command.Execute();
+                        isMovingHorizontally = true;
+                    }
+                    else if(isVertical(key) && !isMovingHorizontally)
+                    {
+                        command.Execute();
+                        isMovingVertically = true;
+                    }
                 }
             }
         }
@@ -57,5 +69,15 @@ namespace LegendOfZelda
                 }
             }
         }
+
+        private Boolean isHorizontal(Keys key)
+        {
+            return key == Keys.A || key == Keys.Left || key == Keys.D || key == Keys.Right;
+        }
+
+        private Boolean isVertical(Keys key)
+        {
+            return key == Keys.W || key == Keys.Up || key == Keys.S || key == Keys.Down;
+        } 
     }
 }

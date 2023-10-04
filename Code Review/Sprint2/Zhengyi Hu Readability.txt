@@ -1,0 +1,9 @@
+Readability code review:
+Author: Zhengyi Hu
+Date: Oct.2nd.2023
+Sprint 2
+Files reviewed: Link.cs, LinkStateMachine.cs and LinkStates classes
+Review time: Approximately 30 minutes
+Comments:
+-The readability is great! Classes and methods can be easily understand and implemented in the commands
+-There is some confusion between IPlayer and Link. Hope to be solved in later sprint
