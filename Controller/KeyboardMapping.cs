@@ -16,7 +16,7 @@ namespace LegendOfZelda
             KeyDownMapping = new Dictionary<Keys, ICommands>();
             keyUpMappings = new Dictionary<Keys, ICommands>();
 
-            keyUpMappings.Add(Keys.Q, new QuitCommand(game));
+            keyUpMappings.Add(Keys.Q, new QuitCommand());
             keyUpMappings.Add(Keys.R, new ResetCommand(game.itemCycler, game.enemyCycler, game.blockCycler, link));
 
             KeyDownMapping.Add(Keys.W, new MovingUpCommand(link));
