@@ -26,6 +26,8 @@ namespace LegendOfZelda
                 AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
                 spriteAlias.UnregisterSprite();
             }
+
+            link.canMove = false;
             // Need to wait for PR#72 so this only executes once
             link.sprite = SpriteFactory.getInstance().CreateLinkWoodStabLeftSprite();
         }
@@ -36,7 +38,7 @@ namespace LegendOfZelda
 
         public void Exit()
         {
-
+            link.canMove = true;
         }
 
     }

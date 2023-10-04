@@ -23,9 +23,9 @@ namespace LegendOfZelda
             if (link.sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
-                spriteAlias.UnregisterSprite();
+                ((AnimatedSprite)link.sprite).UnregisterSprite();
             }
+            link.canMove = false;
             // Need to wait for PR#72 so this only executes once
             link.sprite = SpriteFactory.getInstance().CreateLinkWoodStabDownSprite();
         }
@@ -36,7 +36,7 @@ namespace LegendOfZelda
 
         public void Exit()
         {
-
+            link.canMove = true;
         }
 
     }

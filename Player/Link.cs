@@ -16,7 +16,7 @@ namespace LegendOfZelda
 
         private int HP { get; set; } = 6;
         private int maxHP { get; set; } = 6;
-        private bool canMove { get; set; } = true;
+        public bool canMove { get; set; } = true;
 
         public int velocity { get; set; } = 5; // link moves at 1pixel per frame in original NES game, scaled up to 1080p is roughly 5pixels per frame
 
