@@ -7,15 +7,15 @@ namespace LegendOfZelda
         private Game1 game;
         private Link link;
 
-        public ItemThrowUpLinkState(Game1 game)
+        public ItemThrowUpLinkState()
         {
-            this.game = game;
+            this.game = Game1.getInstance();
             this.link = (Link)game.link;
         }
 
         public void Enter()
         {
-            link.sprite = game.spriteFactory.CreateLinkThrowUpSprite();
+            link.sprite = SpriteFactory.getInstance().CreateLinkThrowUpSprite();
         }
 
         public void Execute()

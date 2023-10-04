@@ -12,7 +12,7 @@ namespace LegendOfZelda
 
         public Key(Vector2 pos)
         {
-            spriteFactory = Game1.instance.spriteFactory;
+            spriteFactory = SpriteFactory.getInstance();
             key = spriteFactory.CreateKeySprite();
             position = pos;
         }

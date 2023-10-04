@@ -8,9 +8,9 @@ namespace LegendOfZelda
         private IPlayer link;
         private ISprite sprite;
 
-        public InititalLinkState(Game1 game, ISprite sprite)
+        public InititalLinkState(ISprite sprite)
         {
-            this.game = game;
+            this.game = Game1.getInstance();
             this.link = game.link;
             // really really hacky solution to an initialization problem
             // basically, the sprite is null when the state is created (bc it is initied in the link constructor)

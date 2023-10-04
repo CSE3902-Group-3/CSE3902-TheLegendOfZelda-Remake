@@ -12,7 +12,7 @@ namespace LegendOfZelda
 
         public Compass(Vector2 pos)
         {
-            spriteFactory = Game1.instance.spriteFactory;
+            spriteFactory = SpriteFactory.getInstance();
             compass = spriteFactory.CreateCompassSprite();
             position = pos;
         }

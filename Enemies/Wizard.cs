@@ -11,9 +11,9 @@ namespace LegendOfZelda
 
         public Wizard(Vector2 pos)
         {
-            Game = Game1.instance;
+            Game = Game1.getInstance();
             Position = pos;
-            Sprite = Game.spriteFactory.CreateOldManSprite();
+            Sprite = SpriteFactory.getInstance().CreateOldManSprite();
 
         }
         public void Spawn()
@@ -25,11 +25,11 @@ namespace LegendOfZelda
         public void ChangePosition() {}
         public void Attack()
         {
-            
+
         }
         public void UpdateHealth(int damagePoints)
         {
-            
+
         }
 
         public void ChangeDirection() {}

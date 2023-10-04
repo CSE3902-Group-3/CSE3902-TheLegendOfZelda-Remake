@@ -1,3 +1,3 @@
 ﻿
-using var game = new LegendOfZelda.Game1();
+using var game = LegendOfZelda.Game1.getInstance();
 game.Run();

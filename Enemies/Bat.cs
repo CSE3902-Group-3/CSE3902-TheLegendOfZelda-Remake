@@ -10,11 +10,11 @@ namespace LegendOfZelda
         public Vector2 Position;
         public Bat(Vector2 pos)
         {
-            Game = Game1.instance;
+            Game = Game1.getInstance();
             Position = pos;
             StateMachine = new SimpleEnemyStateMachine(pos)
             {
-                Sprite = Game.spriteFactory.CreateKeeseSprite(),
+                Sprite = SpriteFactory.getInstance().CreateKeeseSprite(),
                 Health = Health,
             };
         }

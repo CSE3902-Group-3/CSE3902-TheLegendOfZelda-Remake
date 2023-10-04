@@ -12,9 +12,9 @@ namespace LegendOfZelda
         private Game1 game;
         private Link link;
 
-        public AttackingUpLinkState(Game1 game)
+        public AttackingUpLinkState()
         {
-            this.game = game;
+            this.game = Game1.getInstance();
             link = (Link)game.link;
         }
 
@@ -27,7 +27,7 @@ namespace LegendOfZelda
                 spriteAlias.UnregisterSprite();
             }
             // Need to wait for PR#72 so this only executes once
-            link.sprite = game.spriteFactory.CreateLinkWoodStabUpSprite();
+            link.sprite = SpriteFactory.getInstance().CreateLinkWoodStabUpSprite();
         }
         public void Execute()
         {

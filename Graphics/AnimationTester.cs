@@ -22,14 +22,14 @@ namespace LegendOfZelda
         Link testLink;
 
         public AnimationTester() {
-            Game1.instance.RegisterUpdateable(this);
-            spriteFactory = Game1.instance.spriteFactory;
-            // blockCycler = Game1.instance.blockCycler;
-            // enemyCycler = Game1.instance.enemyCycler;
+            Game1.getInstance().RegisterUpdateable(this);
+            spriteFactory = SpriteFactory.getInstance();
+            // blockCycler = Game1.getInstance().blockCycler;
+            // enemyCycler = Game1.getInstance().enemyCycler;
             // itemScroll = new ItemScroll(new Vector2(200,200));
 
             sprites = new List<AnimatedSprite>();
-            //testLink = new Link(Game1.instance);
+            //testLink = new Link(Game1.getInstance());
             
             
             sprites.Add(spriteFactory.CreateLinkWalkDownSprite());
