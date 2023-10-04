@@ -30,6 +30,8 @@ namespace LegendOfZelda
         {
             Vector2 currPos = link.sprite.pos;
             currPos.Y += link.velocity;
+            currPos.Y += LinkUtilities.SnapToGrid((int)currPos.Y);
+
             link.sprite.UpdatePos(currPos);
 
             ((AnimatedSprite)link.sprite).flashing = link.isTakingDamage;
