@@ -12,7 +12,7 @@ namespace LegendOfZelda
 
         public HeartContainer(Vector2 pos)
         {
-            spriteFactory = Game1.getInstance().spriteFactory;
+            spriteFactory = SpriteFactory.getInstance();
             heartContainer = spriteFactory.CreateHeartContainerSprite();
             position = pos;
         }

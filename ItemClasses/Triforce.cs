@@ -12,7 +12,7 @@ namespace LegendOfZelda
 
         public Triforce(Vector2 pos)
         {
-            spriteFactory = Game1.getInstance().spriteFactory;
+            spriteFactory = SpriteFactory.getInstance();
             triforce = spriteFactory.CreateTriforcePieceSprite();
             position = pos;
         }

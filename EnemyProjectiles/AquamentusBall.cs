@@ -10,7 +10,7 @@ namespace LegendOfZelda
         public AquamentusBall(Vector2 pos, Vector2 dir)
         {
             Game1.getInstance().RegisterUpdateable(this);
-            AquamentusBallSprite = Game1.getInstance().spriteFactory.CreateAquamentusBallSprite();
+            AquamentusBallSprite = SpriteFactory.getInstance().CreateAquamentusBallSprite();
             Position = pos;
             Direction = dir;
         }

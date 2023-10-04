@@ -12,7 +12,7 @@ namespace LegendOfZelda
 
         public Potion(Vector2 pos)
         {
-            spriteFactory = Game1.getInstance().spriteFactory;
+            spriteFactory = SpriteFactory.getInstance();
             potion = spriteFactory.CreateBluePotionSprite();
             position = pos;
         }

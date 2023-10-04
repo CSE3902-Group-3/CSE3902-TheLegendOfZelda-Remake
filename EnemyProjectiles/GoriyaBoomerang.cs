@@ -11,7 +11,7 @@ namespace LegendOfZelda
         public GoriyaBoomerang(Vector2 pos, Vector2 dir)
         {
             Game1.getInstance().RegisterUpdateable(this);
-            GoriyaBoomerangSprite = Game1.getInstance().spriteFactory.CreateAquamentusBallSprite();
+            GoriyaBoomerangSprite = SpriteFactory.getInstance().CreateAquamentusBallSprite();
             Position = pos;
             Direction = dir;
         }

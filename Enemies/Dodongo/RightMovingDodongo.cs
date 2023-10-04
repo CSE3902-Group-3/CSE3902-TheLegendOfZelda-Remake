@@ -20,7 +20,7 @@ namespace LegendOfZelda
         }
         public void Spawn()
         {
-            Sprite = Game1.getInstance().spriteFactory.CreateDodongoRightSprite();
+            Sprite = SpriteFactory.getInstance().CreateDodongoRightSprite();
             Sprite.UpdatePos(Position);
         }
         public void UpdateHealth(int damagePoints)
@@ -28,11 +28,11 @@ namespace LegendOfZelda
             Sprite.UnregisterSprite();
             if (!Injured)
             {
-                Sprite = Game1.getInstance().spriteFactory.CreateDodongoRightHitSprite();
+                Sprite = SpriteFactory.getInstance().CreateDodongoRightHitSprite();
             }
             else
             {
-                Sprite = Game1.getInstance().spriteFactory.CreateDodongoRightSprite();
+                Sprite = SpriteFactory.getInstance().CreateDodongoRightSprite();
             }
             Sprite.UpdatePos(Position);
             Injured = !Injured;

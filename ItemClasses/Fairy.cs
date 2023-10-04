@@ -12,7 +12,7 @@ namespace LegendOfZelda
 
         public Fairy(Vector2 pos)
         {
-            spriteFactory = Game1.getInstance().spriteFactory;
+            spriteFactory = SpriteFactory.getInstance();
             fairy = spriteFactory.CreateFairySprite();
             position = pos;
         }
