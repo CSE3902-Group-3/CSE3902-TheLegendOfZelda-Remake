@@ -20,8 +20,7 @@ namespace LegendOfZelda
             if (link.sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
-                spriteAlias.UnregisterSprite();
+                ((AnimatedSprite)link.sprite).UnregisterSprite();
             }
             link.sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
         }

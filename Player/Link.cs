@@ -12,6 +12,9 @@ namespace LegendOfZelda
         public Direction currentDirection { get; set; } = Direction.right;
         public LinkStateMachine stateMachine { get; private set; }
 
+        public LinkInventory inventory { get; private set; }
+        public IItem currentItem { get; private set;}
+
         public bool isTakingDamage { get; private set; }
 
         private int HP { get; set; } = 6;
@@ -28,6 +31,8 @@ namespace LegendOfZelda
 
             this.stateMachine = new LinkStateMachine();
             this.stateMachine.ChangeState(new InititalLinkState(this.sprite));
+
+            this.inventory = new LinkInventory();
         }
 
         public void TakeDamage()
@@ -46,9 +51,16 @@ namespace LegendOfZelda
             // this is inherited from iUpdateable, maybe it isn't needed but I would like to leave it for sprint2
         }
 
-        public void UseItem()
+        public void UseItem(bool primary)
         {
-            // do nothing
+            if (primary)
+            {
+                currentItem = inventory.GetPrimaryItem();
+            }
+            else
+            {
+                currentItem = inventory.GetSecondaryItem();
+            }
         }
 
         public void Reset()
