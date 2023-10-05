@@ -13,14 +13,14 @@ namespace LegendOfZelda
         private bool Injured = false;
         public LeftMovingDodongo(DodongoState dodongo, Vector2 pos)
         {
-            Game = Game1.instance;
+            Game = Game1.getInstance();
             Dodongo = dodongo;
             Direction = new Vector2(-MoveMagnitude, 0);
             Position = pos;
         }
         public void Spawn()
         {
-            Sprite = Game.spriteFactory.CreateDodongoLeftSprite();
+            Sprite = SpriteFactory.getInstance().CreateDodongoLeftSprite();
             Sprite.UpdatePos(Position);
         }
         public void UpdateHealth(int damagePoints)
@@ -28,12 +28,12 @@ namespace LegendOfZelda
             Sprite.UnregisterSprite();
             if (!Injured)
             {
-                Sprite = Game.spriteFactory.CreateDodongoLeftHitSprite();
+                Sprite = SpriteFactory.getInstance().CreateDodongoLeftHitSprite();
 
             }
             else
             {
-                Sprite = Game.spriteFactory.CreateDodongoLeftSprite();
+                Sprite = SpriteFactory.getInstance().CreateDodongoLeftSprite();
             }
             Sprite.UpdatePos(Position);
             Injured = !Injured;
@@ -62,8 +62,8 @@ namespace LegendOfZelda
         }
         public void Die()
         {
-            Game.RemoveDrawable(Sprite);
-            Game.RemoveUpdateable(Dodongo);
+            Game1.getInstance().RemoveDrawable(Sprite);
+            Game1.getInstance().RemoveUpdateable(Dodongo);
         }
     }
 }

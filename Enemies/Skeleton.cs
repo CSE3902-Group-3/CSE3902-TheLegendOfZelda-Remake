@@ -11,11 +11,11 @@ namespace LegendOfZelda
 
         public Skeleton(Vector2 pos)
         {
-            Game = Game1.instance;
+            Game = Game1.getInstance();
             Position = pos;
             StateMachine = new SimpleEnemyStateMachine(pos)
             {
-                Sprite = Game.spriteFactory.CreateStalfosSprite(),
+                Sprite = SpriteFactory.getInstance().CreateStalfosSprite(),
                 Health = Health
             };
         }

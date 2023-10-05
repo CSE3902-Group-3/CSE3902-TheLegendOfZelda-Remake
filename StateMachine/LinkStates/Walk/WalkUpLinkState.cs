@@ -8,9 +8,9 @@ namespace LegendOfZelda
         private Game1 game;
         private Link link;
 
-        public WalkUpLinkState(Game1 game)
+        public WalkUpLinkState()
         {
-            this.game = game;
+            this.game = Game1.getInstance();
             link = (Link)game.link;
             link.currentDirection = Direction.up;
 
@@ -24,7 +24,7 @@ namespace LegendOfZelda
                 AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
                 spriteAlias.UnregisterSprite();
             }
-            link.sprite = game.spriteFactory.CreateLinkWalkUpSprite();
+            link.sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
         }
 
         public void Execute()

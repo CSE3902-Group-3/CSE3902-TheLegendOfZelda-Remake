@@ -12,7 +12,7 @@ namespace LegendOfZelda
 
         public Clock(Vector2 pos)
         {
-            spriteFactory = Game1.instance.spriteFactory;
+            spriteFactory = SpriteFactory.getInstance();
             clock = spriteFactory.CreateClockSprite();
             position = pos;
         }

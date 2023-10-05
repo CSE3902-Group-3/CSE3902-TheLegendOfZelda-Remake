@@ -21,6 +21,7 @@ characters should move, animate, fire projectiles, etc. as they do in the final 
 
 ## Known Bugs:
 - Sometimes pressing `e` to enter hurt link state does not apply until another command is processed
+- Attacking does not block Link from walking and Link's sprite does not change back to idle after attacking
 - Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
 
 ## Tools:

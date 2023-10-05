@@ -7,9 +7,9 @@ namespace LegendOfZelda
         private Game1 game;
         private Link link;
 
-        public HurtLinkState(Game1 game)
+        public HurtLinkState()
         {
-            this.game = game;
+            this.game = Game1.getInstance();
             this.link = (Link)game.link;
         }
 

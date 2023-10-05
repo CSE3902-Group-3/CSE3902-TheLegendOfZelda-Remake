@@ -10,9 +10,9 @@ namespace LegendOfZelda
         private Link link;
 
         // can pause animation in any direction, no need for separate states
-        public IdleLinkState(Game1 game)
+        public IdleLinkState()
         {
-            this.game = game;
+            this.game = Game1.getInstance();
             link = (Link)game.link;
         }
 

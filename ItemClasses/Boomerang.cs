@@ -7,13 +7,11 @@ namespace LegendOfZelda
     public class Boomerang : IItem
     {
         protected AnimatedSprite boomerang;
-        private SpriteFactory spriteFactory;
         private Vector2 position;
 
         public Boomerang(Vector2 pos)
         {
-            spriteFactory = Game1.instance.spriteFactory;
-            boomerang = spriteFactory.CreateBoomerangItemSprite();
+            boomerang = SpriteFactory.getInstance().CreateBoomerangItemSprite();
             position = pos;
         }
 

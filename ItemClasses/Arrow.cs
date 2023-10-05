@@ -12,7 +12,7 @@ namespace LegendOfZelda
 
         public Arrow(Vector2 pos)
         {
-            spriteFactory = Game1.instance.spriteFactory;
+            spriteFactory = SpriteFactory.getInstance();
             arrow = spriteFactory.CreateArrowUpSprite();
             position = pos;
         }

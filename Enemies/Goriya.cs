@@ -17,15 +17,15 @@ namespace LegendOfZelda
         private int UpdateCount = 0;
         public Goriya(Vector2 pos)
         {
-            Game = Game1.instance;
+            Game = Game1.getInstance();
             Position = pos;
             ViewportSize = new Vector2(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
             GoriyaSprites = new List<AnimatedSprite>
             {
-                Game.spriteFactory.CreateGoriyaRightSprite(),
-                Game.spriteFactory.CreateGoriyaLeftSprite(),
-                Game.spriteFactory.CreateGoriyaDownSprite(),
-                Game.spriteFactory.CreateGoriyaUpSprite()
+                SpriteFactory.getInstance().CreateGoriyaRightSprite(),
+                SpriteFactory.getInstance().CreateGoriyaLeftSprite(),
+                SpriteFactory.getInstance().CreateGoriyaDownSprite(),
+                SpriteFactory.getInstance().CreateGoriyaUpSprite()
             };
 
             foreach (AnimatedSprite goriya in GoriyaSprites)

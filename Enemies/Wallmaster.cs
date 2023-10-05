@@ -11,11 +11,11 @@ namespace LegendOfZelda
 
         public WallMaster(Vector2 pos)
         {
-            Game = Game1.instance;
+            Game = Game1.getInstance();
             Position = pos;
             StateMachine = new SimpleEnemyStateMachine(pos)
             {
-                Sprite = Game.spriteFactory.CreateWallmasterSprite(),
+                Sprite = SpriteFactory.getInstance().CreateWallmasterSprite(),
                 Health = Health
             };
         }

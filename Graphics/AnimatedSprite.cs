@@ -103,7 +103,7 @@ namespace LegendOfZelda
 
             this.drawFramesPerAnimFrame = drawFramesPerAnimFrame;
 
-            game1 = Game1.instance;
+            game1 = Game1.getInstance();
             spriteBatch = game1._spriteBatch;
 
             effectList = new List<IAnimatedSpriteEffect>();

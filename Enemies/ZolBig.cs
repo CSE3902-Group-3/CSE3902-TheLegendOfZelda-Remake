@@ -11,11 +11,11 @@ namespace LegendOfZelda
 
         public ZolBig(Vector2 pos)
         {
-            Game = Game1.instance;
+            Game = Game1.getInstance();
             Position = pos;
             StateMachine = new SimpleEnemyStateMachine(pos)
             {
-                Sprite = Game.spriteFactory.CreateZolSprite(),
+                Sprite = SpriteFactory.getInstance().CreateZolSprite(),
                 Health = Health
             };
         }

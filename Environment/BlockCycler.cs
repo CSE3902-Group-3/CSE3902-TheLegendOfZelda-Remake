@@ -15,7 +15,7 @@ namespace LegendOfZelda
         private int index = 0;
         public BlockCycler(Vector2 pos) {
             this.pos = pos;
-            spriteFactory = Game1.instance.spriteFactory;
+            spriteFactory = SpriteFactory.getInstance();
             blocks = new List<Block>();
 
             blocks.Add(new Block(spriteFactory.CreateFloorTileSprite(), pos));

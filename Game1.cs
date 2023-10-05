@@ -27,13 +27,21 @@ namespace LegendOfZelda
         public EnemyCycler enemyCycler { get; private set; }
 
         public ItemScroll itemCycler { get; private set; }
-        public static Game1 instance { get; private set; }
+        private static Game1 instance;
 
-        public Game1()
+        private Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+        }
+
+        public static Game1 getInstance()
+        {
+            if (instance == null)
+                instance = new Game1();
+
+            return instance;
         }
 
         protected override void Initialize()
@@ -42,7 +50,7 @@ namespace LegendOfZelda
             instance = this;
             updateables = new List<IUpdateable>();
 
-            spriteFactory = new SpriteFactory(8, 8);
+            spriteFactory = SpriteFactory.getInstance();
 
             // Change size of viewport
             _graphics.IsFullScreen = false;
@@ -70,8 +78,8 @@ namespace LegendOfZelda
             enemyCycler = new EnemyCycler(new Vector2(500, 500));
             itemCycler = new ItemScroll(new Vector2(800, 300));
             //Uncomment the following line for testing
-            //new AnimationTester();
-            controller = new PlayerController(this, (Link)link);
+            new AnimationTester();
+            controller = new PlayerController((Link)link);
 
         }
 
