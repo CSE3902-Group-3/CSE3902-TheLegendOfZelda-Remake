@@ -10,7 +10,7 @@ namespace LegendOfZelda
     {
         // original game is a 16x16 grid, so link moved along a 8x8 grid
         // i forget if we scaled up the background, lmk in code review if it needs changed
-        public static int SnapToGrid(int position, int alignTo = 8)
+        public static int SnapToGrid(int position, int alignTo = 32)
         {
             int remainder = position % alignTo;
             int halfway = alignTo / 2;
