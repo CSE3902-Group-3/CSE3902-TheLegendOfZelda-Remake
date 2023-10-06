@@ -89,8 +89,6 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
-            Dictionary<ICollidable, List<CollisionInfo>> collisions;
-
             /*
              * This looks like several orders of looping but it is actually testing much fewer collisions than if 
              * we were to loop once over every collider for every collider. The foreaches have O(1) entries.
