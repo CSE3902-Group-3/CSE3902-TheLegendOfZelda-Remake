@@ -30,7 +30,7 @@ namespace LegendOfZelda
         private Game1 game1;
         private int drawFramesPerAnimFrame;
         private const int slowAnimateFactor = 2;
-        private int scale;
+        public int scale { get; private set; }
 
         private SpriteFactory(int drawFramesPerAnimFrame, int scale) {
             game1 = Game1.getInstance();
