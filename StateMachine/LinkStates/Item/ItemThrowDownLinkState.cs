@@ -15,19 +15,29 @@ namespace LegendOfZelda
 
         public void Enter()
         {
+            if (link.sprite != null)
+            {
+                // if there was a previous sprite, cast then unregister sprite
+                ((AnimatedSprite)link.sprite).UnregisterSprite();
+            }
+            link.stateMachine.canMove = false;
             link.sprite = SpriteFactory.getInstance().CreateLinkThrowDownSprite();
         }
 
         public void Execute()
         {
             ((AnimatedSprite)link.sprite).flashing = link.isTakingDamage;
+
+            if (((AnimatedSprite)link.sprite).complete)
+            {
+                link.stateMachine.ChangeState(new IdleLinkState());
+            }
         }
 
         public void Exit()
         {
-            // cast then unregister sprite drawing
-            AnimatedSprite spriteAlias = (AnimatedSprite)this.link.sprite;
-            spriteAlias.UnregisterSprite();
+            link.stateMachine.canMove = true;
+            ((AnimatedSprite)link.sprite).UnregisterSprite();
         }
 
     }

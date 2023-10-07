@@ -27,7 +27,7 @@ namespace LegendOfZelda
                 spriteAlias.UnregisterSprite();
             }
             link.stateMachine.canMove = false;
-            // Need to wait for PR#72 so this only executes once
+
             link.sprite = SpriteFactory.getInstance().CreateLinkWoodStabRightSprite();
         }
         public void Execute()

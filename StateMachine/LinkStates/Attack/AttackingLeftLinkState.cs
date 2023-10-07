@@ -28,7 +28,7 @@ namespace LegendOfZelda
             }
 
             link.stateMachine.canMove = false;
-            // Need to wait for PR#72 so this only executes once
+
             link.sprite = SpriteFactory.getInstance().CreateLinkWoodStabLeftSprite();
         }
         public void Execute()
