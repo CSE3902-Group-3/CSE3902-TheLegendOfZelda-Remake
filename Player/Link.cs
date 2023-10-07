@@ -8,15 +8,12 @@ namespace LegendOfZelda
         private Game1 game { get; set; }
         public ISprite sprite { get; set; }
         public Vector2 pos { get { return sprite.pos; } }
-
-        public Direction currentDirection { get; set; } = Direction.right;
         public LinkStateMachine stateMachine { get; private set; }
 
         public bool isTakingDamage { get; private set; }
 
         private int HP { get; set; } = 6;
         private int maxHP { get; set; } = 6;
-        public bool canMove { get; set; } = true;
 
         public int velocity { get; set; } = 5; // link moves at 1pixel per frame in original NES game, scaled up to 1080p is roughly 5pixels per frame
 

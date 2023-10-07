@@ -96,6 +96,12 @@ namespace LegendOfZelda
 
             controller.Update();
 
+            // if link is walking, update is constantly being called on button down
+            if (!link.stateMachine.isWalking)
+            {
+                link.stateMachine.Update();
+            }
+
             base.Update(gameTime);
         }
 

@@ -167,13 +167,12 @@ namespace LegendOfZelda
 
         public AnimatedSprite CreateLinkWoodStabDownSprite()
         {
-            Rectangle[] frames = new Rectangle[5]
+            Rectangle[] frames = new Rectangle[4]
             {
                 new Rectangle(1, 47, 16, 28),
                 new Rectangle(18, 47, 16, 28),
                 new Rectangle(35, 47, 16, 28),
-                new Rectangle(52, 47, 16, 28),
-                new Rectangle(1, 11, 16, 16),
+                new Rectangle(52, 47, 16, 28)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
@@ -183,13 +182,12 @@ namespace LegendOfZelda
 
         public AnimatedSprite CreateLinkWoodStabUpSprite()
         {
-            Rectangle[] frames = new Rectangle[5]
+            Rectangle[] frames = new Rectangle[4]
             {
                 new Rectangle(1, 97, 16, 28),
                 new Rectangle(18, 97, 16, 28),
                 new Rectangle(35, 97, 16, 28),
-                new Rectangle(52, 97, 16, 28),
-                new Rectangle(69, 11, 16, 16)
+                new Rectangle(52, 97, 16, 28)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
@@ -200,13 +198,12 @@ namespace LegendOfZelda
 
         public AnimatedSprite CreateLinkWoodStabRightSprite()
         {
-            Rectangle[] frames = new Rectangle[5]
+            Rectangle[] frames = new Rectangle[4]
             {
                 new Rectangle(1, 77, 16, 16),
                 new Rectangle(18, 77, 27, 16),
                 new Rectangle(46, 77, 23, 16),
-                new Rectangle(70, 77, 19, 16),
-                new Rectangle(35, 11, 16, 16)
+                new Rectangle(70, 77, 19, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
@@ -216,13 +213,12 @@ namespace LegendOfZelda
 
         public AnimatedSprite CreateLinkWoodStabLeftSprite()
         {
-            Rectangle[] frames = new Rectangle[5]
+            Rectangle[] frames = new Rectangle[4]
             {
                 new Rectangle(1, 77, 16, 16),
                 new Rectangle(18, 77, 27, 16),
                 new Rectangle(46, 77, 23, 16),
-                new Rectangle(70, 77, 19, 16),
-                new Rectangle(52, 11, 16, 16)
+                new Rectangle(70, 77, 19, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale);

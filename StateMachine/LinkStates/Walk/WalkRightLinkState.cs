@@ -12,11 +12,12 @@ namespace LegendOfZelda
         {
             this.game = Game1.getInstance();
             link = (Link)game.link;
-            link.currentDirection = Direction.right;
+            link.stateMachine.currentDirection = Direction.right;
         }
 
         public void Enter()
         {
+            link.stateMachine.isWalking = true;
             if (link.sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
@@ -28,7 +29,7 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            if (link.canMove)
+            if (link.stateMachine.canMove)
             {
                 Vector2 currPos = link.sprite.pos;
                 currPos.X += link.velocity;
@@ -40,7 +41,7 @@ namespace LegendOfZelda
 
         public void Exit()
         {
-
+            link.stateMachine.isWalking = false;
         }
     }
 }
