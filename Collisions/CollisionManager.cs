@@ -10,7 +10,7 @@ namespace LegendOfZelda
 {
     public enum CollisionLayer
     {
-        Player, Enemy, Wall, PlayerWeapon, EnemyWeapon
+        Player, Enemy, Wall, PlayerWeapon, EnemyWeapon, Item
     }
 
     public struct CollisionInfo
@@ -58,11 +58,12 @@ namespace LegendOfZelda
             }
 
             legalCollisions = new Dictionary<CollisionLayer, List<CollisionLayer>>();
-            legalCollisions.Add(CollisionLayer.Player, new List<CollisionLayer>{ CollisionLayer.Enemy, CollisionLayer.Wall, CollisionLayer.EnemyWeapon });
+            legalCollisions.Add(CollisionLayer.Player, new List<CollisionLayer>{ CollisionLayer.Enemy, CollisionLayer.Wall, CollisionLayer.EnemyWeapon, CollisionLayer.Item });
             legalCollisions.Add(CollisionLayer.Enemy, new List<CollisionLayer> { CollisionLayer.Wall, CollisionLayer.PlayerWeapon });
             legalCollisions.Add(CollisionLayer.PlayerWeapon, new List<CollisionLayer> { CollisionLayer.Wall });
             legalCollisions.Add(CollisionLayer.EnemyWeapon, new List<CollisionLayer> { CollisionLayer.Wall });
             legalCollisions.Add(CollisionLayer.Wall, new List<CollisionLayer>());
+            legalCollisions.Add(CollisionLayer.Item, new List<CollisionLayer>());
 
             collisionBuffer = new Dictionary<ICollidable, List<CollisionInfo>>();
         }
