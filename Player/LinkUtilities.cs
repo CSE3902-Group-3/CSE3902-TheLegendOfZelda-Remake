@@ -8,9 +8,8 @@ namespace LegendOfZelda
 {
     public class LinkUtilities
     {
-        // original game is a 16x16 grid, so link moved along a 8x8 grid
-        // i forget if we scaled up the background, lmk in code review if it needs changed
-        public static int SnapToGrid(int position, int alignTo = 32)
+        // I can't just multiply by SpriteFactory.getInstance().scale because it must be a compile time constant
+        public static int SnapToGrid(int position, int alignTo = 64) // original 8 * scale 8
         {
             int remainder = position % alignTo;
             int halfway = alignTo / 2;
