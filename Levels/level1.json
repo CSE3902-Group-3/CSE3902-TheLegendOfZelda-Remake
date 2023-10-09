@@ -1,0 +1,75 @@
+{
+    "Rooms": [
+        {
+            "RoomNumber": 0,
+            "AdjacentRooms": [
+                {
+                    "RoomNumber": 1,
+                    "Direction": "West"
+                }
+            ],
+            "MapElements": [
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 9,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 9,
+                    "XLocation": 1,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 9,
+                    "XLocation": 2,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 9,
+                    "XLocation": 3,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 13,
+                    "XLocation": 5,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 9,
+                    "XLocation": 6,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 9,
+                    "XLocation": 7,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 9,
+                    "XLocation": 8,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 9,
+                    "XLocation": 9,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 9,
+                    "XLocation": 10,
+                    "YLocation": 0
+                }
+            ]
+        }
+    ]
+}

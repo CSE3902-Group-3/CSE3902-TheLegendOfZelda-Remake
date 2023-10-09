@@ -74,11 +74,16 @@ namespace LegendOfZelda
             spriteFactory.LoadTextures();
 
             link = new Link(this);
-            blockCycler = new BlockCycler(new Vector2(300, 200));
-            enemyCycler = new EnemyCycler(new Vector2(500, 500));
-            itemCycler = new ItemScroll(new Vector2(800, 300));
+            //blockCycler = new BlockCycler(new Vector2(300, 200));
+            //enemyCycler = new EnemyCycler(new Vector2(500, 500));
+            //itemCycler = new ItemScroll(new Vector2(800, 300));
             //Uncomment the following line for testing
-            new AnimationTester();
+            //new AnimationTester();
+
+            // Level 1
+            Level level = new Level("level1.json");
+            level.NavigateToRoom(0);
+
             controller = new PlayerController((Link)link);
 
         }
