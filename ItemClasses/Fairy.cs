@@ -28,10 +28,12 @@ namespace LegendOfZelda
             fairy.UnregisterSprite();
         }
 
-        public void Collect()
+        public AnimatedSprite Collect()
         {
-            //left empty for sprint2
+            fairy.UnregisterSprite();
+            return fairy;
         }
+
     }
 }
 

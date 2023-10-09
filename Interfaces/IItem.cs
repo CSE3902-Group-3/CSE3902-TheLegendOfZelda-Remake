@@ -12,6 +12,6 @@ namespace LegendOfZelda
     {
         void Show();
         void Remove();
-        void Collect();
+        AnimatedSprite Collect();
     }
 }

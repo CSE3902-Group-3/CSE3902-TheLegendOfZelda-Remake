@@ -58,6 +58,14 @@ namespace LegendOfZelda
             }
 
             itemCollection[i].Show();
+
+            /* Uncomment the part below for explosion testing */
+            /*if(i == 1)
+            {
+                Bomb bomb = (Bomb)itemCollection[i];
+                bomb.Explode();
+            }
+            */
         }
 
         public void previousItem()

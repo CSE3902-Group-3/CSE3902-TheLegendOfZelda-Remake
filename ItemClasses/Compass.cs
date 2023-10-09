@@ -28,9 +28,10 @@ namespace LegendOfZelda
             compass.UnregisterSprite();
         }
 
-        public void Collect()
+        public AnimatedSprite Collect()
         {
-            //left empty for sprint2
+            compass.UnregisterSprite();
+            return compass;
         }
     }
 }

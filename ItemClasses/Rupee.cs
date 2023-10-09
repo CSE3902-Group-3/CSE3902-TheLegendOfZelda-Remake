@@ -28,9 +28,10 @@ namespace LegendOfZelda
             rupee.UnregisterSprite();
         }
 
-        public void Collect()
+        public AnimatedSprite Collect()
         {
-            //left empty for sprint2
+            rupee.UnregisterSprite();
+            return rupee;
         }
     }
 }
