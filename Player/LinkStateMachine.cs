@@ -10,7 +10,10 @@ namespace LegendOfZelda
         IState prevState;
         IState currentState;
 
-        Vector2 position = new Vector2(0,0);
+        public Vector2 position = new Vector2(0,0);
+        public IItem currentItem;
+        public bool isTakingDamage { get; set; }
+
 
         public void ChangeState(IState newState)
         {

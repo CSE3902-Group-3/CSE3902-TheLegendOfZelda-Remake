@@ -36,17 +36,16 @@ namespace LegendOfZelda
             keyUpMappings.Add(Keys.Left, new ToIdleCommand(link));
             keyUpMappings.Add(Keys.Down, new ToIdleCommand(link));
             keyUpMappings.Add(Keys.Right, new ToIdleCommand(link));
-            keyUpMappings.Add(Keys.Z, new PrimaryAttackCommand(link));
-            keyUpMappings.Add(Keys.N, new PrimaryAttackCommand(link));
+            KeyDownMapping.Add(Keys.Z, new PrimaryAttackCommand(link));
+            KeyDownMapping.Add(Keys.N, new PrimaryAttackCommand(link));
 
-            keyUpMappings.Add(Keys.E, new DamageCommand(link));
-            keyUpMappings.Add(Keys.D1, new UseItemCommand(link));
-            keyUpMappings.Add(Keys.T, new PreviousBlockCommand(game.blockCycler));
-            keyUpMappings.Add(Keys.Y, new NextBlockCommand(game.blockCycler));
-            keyUpMappings.Add(Keys.U, new PreviousItemCommand(game.itemCycler));
-            keyUpMappings.Add(Keys.I, new NextItemCommand(game.itemCycler));
-            keyUpMappings.Add(Keys.O, new PreviousEnemyCommand(game.enemyCycler));
-            keyUpMappings.Add(Keys.P, new NextEnemyCommand(game.enemyCycler));
+            KeyDownMapping.Add(Keys.E, new DamageCommand(link));
+            KeyDownMapping.Add(Keys.T, new PreviousBlockCommand(game.blockCycler));
+            KeyDownMapping.Add(Keys.Y, new NextBlockCommand(game.blockCycler));
+            KeyDownMapping.Add(Keys.U, new PreviousItemCommand(game.itemCycler));
+            KeyDownMapping.Add(Keys.I, new NextItemCommand(game.itemCycler));
+            KeyDownMapping.Add(Keys.O, new PreviousEnemyCommand(game.enemyCycler));
+            KeyDownMapping.Add(Keys.P, new NextEnemyCommand(game.enemyCycler));
 
         }
 

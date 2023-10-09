@@ -29,9 +29,11 @@ namespace LegendOfZelda
         {
             Vector2 currPos = link.sprite.pos;
             currPos.X -= link.velocity;
+
+            link.stateMachine.position = currPos;
             link.sprite.UpdatePos(currPos);
 
-            ((AnimatedSprite)link.sprite).flashing = link.isTakingDamage;
+            ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
         }
 
         public void Exit()

@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
@@ -21,16 +22,21 @@ namespace LegendOfZelda
                 ((AnimatedSprite)link.sprite).UnregisterSprite();
             }
             link.sprite = SpriteFactory.getInstance().CreateLinkThrowUpSprite();
+
+            link.stateMachine.currentItem = new Bomb(link.stateMachine.position - new Vector2(-30, 150));
+            link.stateMachine.currentItem.Show();
         }
 
         public void Execute()
         {
-            ((AnimatedSprite)link.sprite).flashing = link.isTakingDamage;
+            ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
         }
 
         public void Exit()
         {
-
+            // this should be done in the Item class I think? link shouldn't be responsible for this
+            link.stateMachine.currentItem.Remove();
+            link.stateMachine.currentItem = null;
         }
 
     }
