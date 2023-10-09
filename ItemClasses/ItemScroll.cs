@@ -59,7 +59,11 @@ namespace LegendOfZelda
 
             itemCollection[i].Show();
 
-            /* Uncomment the part below for explosion testing */
+            /* Uncomment the part below for explosion testing.
+             * When you press I and change the item being displayed from arrow to bomb,
+             * it is basically equal to placing the bomb. Bomb dissapears after 1 second.
+             * /
+
             /*if(i == 1)
             {
                 Bomb bomb = (Bomb)itemCollection[i];
