@@ -28,10 +28,10 @@ namespace LegendOfZelda
             triforce.UnregisterSprite();
         }
 
-        public AnimatedSprite Collect()
+        public IItem Collect()
         {
             triforce.UnregisterSprite();
-            return triforce;
+            return this;
         }
     }
 }

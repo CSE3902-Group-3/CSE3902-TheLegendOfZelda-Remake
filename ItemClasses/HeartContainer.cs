@@ -28,10 +28,10 @@ namespace LegendOfZelda
             heartContainer.UnregisterSprite();
         }
 
-        public AnimatedSprite Collect()
+        public IItem Collect()
         {
             heartContainer.UnregisterSprite();
-            return heartContainer;
+            return this;
         }
     }
 }

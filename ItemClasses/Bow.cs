@@ -28,10 +28,10 @@ namespace LegendOfZelda
             bow.UnregisterSprite();
         }
 
-        public AnimatedSprite Collect()
+        public IItem Collect()
         {
             bow.UnregisterSprite();
-            return bow;
+            return this;
         }
     }
 }

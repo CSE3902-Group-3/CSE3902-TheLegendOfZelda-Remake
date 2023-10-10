@@ -28,10 +28,10 @@ namespace LegendOfZelda
             map.UnregisterSprite();
         }
 
-        public AnimatedSprite Collect()
+        public IItem Collect()
         {
             map.UnregisterSprite();
-            return map;
+            return this;
         }
     }
 }

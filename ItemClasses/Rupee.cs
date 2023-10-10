@@ -28,10 +28,10 @@ namespace LegendOfZelda
             rupee.UnregisterSprite();
         }
 
-        public AnimatedSprite Collect()
+        public IItem Collect()
         {
             rupee.UnregisterSprite();
-            return rupee;
+            return this;
         }
     }
 }

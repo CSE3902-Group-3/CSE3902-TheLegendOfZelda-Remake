@@ -35,16 +35,23 @@ namespace LegendOfZelda
             fairy.UpdatePos(position);
         }
 
+        /* this is added in case fairy should be displayed in inventory, where it should not move */
+        public void ShowIdle()
+        {
+            fairy.RegisterSprite();
+            fairy.UpdatePos(position);
+        }
+
         public void Remove()
         {
             fairy.UnregisterSprite();
             game.RemoveUpdateable(this);
         }
 
-        public AnimatedSprite Collect()
+        public IItem Collect()
         {
             fairy.UnregisterSprite();
-            return fairy;
+            return this;
         }
 
         public void Update(GameTime gameTime)
