@@ -5,9 +5,9 @@ namespace LegendOfZelda
 {
 	public class Inventory
 	{
-        private Dictionary<AnimatedSprite, int> inventory = new Dictionary<AnimatedSprite, int>();
+        private Dictionary<IItem, int> inventory = new Dictionary<IItem, int>();
 
-        public void AddItem(AnimatedSprite item)
+        public void AddItem(IItem item)
         {
             if (inventory.ContainsKey(item))
             {
@@ -19,7 +19,7 @@ namespace LegendOfZelda
             }
         }
 
-        public void RemoveItem(AnimatedSprite item)
+        public void RemoveItem(IItem item)
         {
             if (inventory.ContainsKey(item))
             {
@@ -32,7 +32,7 @@ namespace LegendOfZelda
             }
         }
 
-        public int GetQuantity(AnimatedSprite item)
+        public int GetQuantity(IItem item)
         {
             int itemAmount = 0;
             if (inventory.ContainsKey(item))
