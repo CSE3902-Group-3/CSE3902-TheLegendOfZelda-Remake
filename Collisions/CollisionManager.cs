@@ -58,8 +58,8 @@ namespace LegendOfZelda
             }
 
             legalCollisions = new Dictionary<CollisionLayer, List<CollisionLayer>>();
-            legalCollisions.Add(CollisionLayer.Player, new List<CollisionLayer>{ CollisionLayer.Enemy, CollisionLayer.Wall, CollisionLayer.EnemyWeapon, CollisionLayer.Item });
-            legalCollisions.Add(CollisionLayer.Enemy, new List<CollisionLayer> { CollisionLayer.Wall, CollisionLayer.PlayerWeapon });
+            legalCollisions.Add(CollisionLayer.Player, new List<CollisionLayer>{ CollisionLayer.Enemy, CollisionLayer.Wall, CollisionLayer.EnemyWeapon, CollisionLayer.Item, CollisionLayer.PlayerWeapon });
+            legalCollisions.Add(CollisionLayer.Enemy, new List<CollisionLayer> { CollisionLayer.Wall, CollisionLayer.PlayerWeapon, CollisionLayer.EnemyWeapon });
             legalCollisions.Add(CollisionLayer.PlayerWeapon, new List<CollisionLayer> { CollisionLayer.Wall });
             legalCollisions.Add(CollisionLayer.EnemyWeapon, new List<CollisionLayer> { CollisionLayer.Wall });
             legalCollisions.Add(CollisionLayer.Wall, new List<CollisionLayer>());
