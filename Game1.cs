@@ -17,9 +17,11 @@ namespace LegendOfZelda
         private List<IUpdateable> updateables;
         private List<IDrawable> drawables;
         public SpriteFactory spriteFactory { get; private set; }
+        public RoomTexture roomTexture { get; private set; }
 
         /* Link */
         public IPlayer link { get; private set; }
+
 
         /* Controller */
         private IController controller;
@@ -27,6 +29,7 @@ namespace LegendOfZelda
         public EnemyCycler enemyCycler { get; private set; }
 
         public ItemScroll itemCycler { get; private set; }
+        public RoomCycler roomCycler { get; private set; }
         private static Game1 instance;
 
         private Game1()
@@ -51,6 +54,7 @@ namespace LegendOfZelda
             updateables = new List<IUpdateable>();
 
             spriteFactory = SpriteFactory.getInstance();
+            roomTexture = RoomTexture.getInstance();
 
             // Change size of viewport
             _graphics.IsFullScreen = false;
@@ -72,15 +76,16 @@ namespace LegendOfZelda
             drawables = new List<IDrawable>();
 
             spriteFactory.LoadTextures();
+            roomTexture.LoadTextures();
 
             link = new Link(this);
             blockCycler = new BlockCycler(new Vector2(300, 200));
             enemyCycler = new EnemyCycler(new Vector2(500, 500));
             itemCycler = new ItemScroll(new Vector2(800, 300));
+            roomCycler = new RoomCycler();
             //Uncomment the following line for testing
             new AnimationTester();
             controller = new PlayerController((Link)link);
-
         }
 
         protected override void Update(GameTime gameTime)

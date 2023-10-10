@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using LegendOfZelda.Command.TestUse;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Linq;
 
@@ -7,6 +8,7 @@ namespace LegendOfZelda
     internal class PlayerController : IController
     {
         private KeyboardMapping controllerMappings;
+        private MouseState mouseState;
         private Link link;
         private ICommands command;
         private Keys[] currKeys;
@@ -16,10 +18,11 @@ namespace LegendOfZelda
         {
             link = Link;
             controllerMappings = new KeyboardMapping(link);
+            mouseState = new MouseState();
             prevKeys = Array.Empty<Keys>();
             currKeys = Array.Empty<Keys>();
             
-            //keyState = new Dictionary<Keys, bool>();a
+            //keyState = new Dictionary<Keys, bool>();
         }
 
         public void Update()
@@ -29,6 +32,28 @@ namespace LegendOfZelda
 
             KeyDownEvents();
             KeyUpEvents();
+            MouseEvents();
+        }
+
+        private void MouseEvents()
+        {
+            mouseState = Mouse.GetState();
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                command = new NextRoomCommand(Game1.getInstance().roomCycler);
+                if (command != null)
+                {
+                    command.Execute();
+                }
+            }
+            else if (mouseState.RightButton == ButtonState.Pressed)
+            {
+                command = new PreviousRoomCommand(Game1.getInstance().roomCycler);
+                if (command != null)
+                {
+                    command.Execute();
+                }
+            }
         }
 
         private void KeyDownEvents()
