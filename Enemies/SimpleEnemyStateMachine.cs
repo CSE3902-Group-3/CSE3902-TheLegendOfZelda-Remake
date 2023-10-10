@@ -7,6 +7,8 @@ namespace LegendOfZelda
     {
         private readonly Game1 Game;
         public AnimatedSprite Sprite { get; set; }
+        private AnimateOnlyOnceEffect EnemySpawnEffect;
+        private AnimateOnlyOnceEffect EnemyDeathEffect;
         public enum Speed { slow, medium, fast };
         public Speed EnemySpeed { get; set; }
         public int SpeedMultiplier;
@@ -21,7 +23,7 @@ namespace LegendOfZelda
             Game = Game1.getInstance();
             Position = pos;
             ViewportSize = new Vector2(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
-            
+
             switch (EnemySpeed)
             {
                 case Speed.slow:
@@ -34,6 +36,8 @@ namespace LegendOfZelda
                     SpeedMultiplier = 3;
                     break;
             }
+            EnemySpawnEffect = new AnimateOnlyOnceEffect(SpriteFactory.getInstance().CreateEnemyCloudSprite());
+            EnemyDeathEffect = new AnimateOnlyOnceEffect(SpriteFactory.getInstance().CreateEnemyDeathSprite());
         }
         public void Attack()
         {
@@ -85,10 +89,12 @@ namespace LegendOfZelda
         {
             Sprite.UnregisterSprite();
             Game.RemoveUpdateable(this);
+            new EnemyDeathEffect(Position);
         }
 
         public void Spawn()
         {
+            new EnemySpawnEffect(Position);
             Game.RegisterUpdateable(this);
             Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
