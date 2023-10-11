@@ -18,10 +18,10 @@ namespace LegendOfZelda
             new CollisionDemoObject(spriteFactory.CreateBoomerangSprite(), CollisionLayer.EnemyWeapon, 8, 8);
             new CollisionDemoObject(spriteFactory.CreateLinkWalkLeftSprite(), CollisionLayer.Player, 16, 16);
 
-            new RectCollider(new Rectangle(0, -50, (int)viewportSize.X, 50), CollisionLayer.Wall, this);
-            new RectCollider(new Rectangle(-50, 0, 50, (int)viewportSize.Y), CollisionLayer.Wall, this);
-            new RectCollider(new Rectangle((int)viewportSize.X, 0, 50, (int)viewportSize.Y), CollisionLayer.Wall, this);
-            new RectCollider(new Rectangle(0, (int)viewportSize.Y, (int)viewportSize.X, 50), CollisionLayer.Wall, this);
+            new RectCollider(new Rectangle(0, -50, (int)viewportSize.X, 50), CollisionLayer.OuterWall, this);
+            new RectCollider(new Rectangle(-50, 0, 50, (int)viewportSize.Y), CollisionLayer.OuterWall, this);
+            new RectCollider(new Rectangle((int)viewportSize.X, 0, 50, (int)viewportSize.Y), CollisionLayer.OuterWall, this);
+            new RectCollider(new Rectangle(0, (int)viewportSize.Y, (int)viewportSize.X, 50), CollisionLayer.OuterWall, this);
 
             IAnimatedSprite wall = spriteFactory.CreateWallSprite();
             wall.UpdatePos(new Vector2(1500, 600));
