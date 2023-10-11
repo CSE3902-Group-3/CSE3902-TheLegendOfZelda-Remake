@@ -1117,6 +1117,17 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        public AnimatedSprite CreateWallExteriorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(521, 11, 256, 176)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
         public AnimatedSprite CreateOldManSprite()
         {
             Rectangle[] frames = new Rectangle[1]

@@ -28,9 +28,10 @@ namespace LegendOfZelda
             candle.UnregisterSprite();
         }
 
-        public void Collect()
+        public IItem Collect()
         {
-            //left empty for sprint2
+            candle.UnregisterSprite();
+            return this;
         }
     }
 }
