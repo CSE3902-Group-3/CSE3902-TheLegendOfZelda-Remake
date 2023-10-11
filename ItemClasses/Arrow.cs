@@ -28,12 +28,11 @@ namespace LegendOfZelda
             arrow.UnregisterSprite();
         }
 
-        public void Collect()
+        public IItem Collect()
         {
-            //left empty for sprint2
+            arrow.UnregisterSprite();
+            return this;
         }
-
-        
     }
 }
 

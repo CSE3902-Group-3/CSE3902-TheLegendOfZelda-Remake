@@ -28,9 +28,10 @@ namespace LegendOfZelda
             triforce.UnregisterSprite();
         }
 
-        public void Collect()
+        public IItem Collect()
         {
-            //left empty for sprint2
+            triforce.UnregisterSprite();
+            return this;
         }
     }
 }

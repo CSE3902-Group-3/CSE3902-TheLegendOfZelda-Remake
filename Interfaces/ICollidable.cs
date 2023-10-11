@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace LegendOfZelda
 {
-    public interface IItem
+    public interface ICollidable
     {
-        void Show();
-        void Remove();
-        IItem Collect();
+        public void OnCollision(List<CollisionInfo> collisions);
     }
 }
