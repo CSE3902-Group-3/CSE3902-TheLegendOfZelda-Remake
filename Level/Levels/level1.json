@@ -68,6 +68,12 @@
                     "ElementValue": 9,
                     "XLocation": 10,
                     "YLocation": 0
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 4
                 }
             ]
         }

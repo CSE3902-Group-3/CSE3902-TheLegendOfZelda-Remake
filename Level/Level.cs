@@ -13,12 +13,14 @@ namespace LegendOfZelda
         public int CurrentRoom;
         public static int Scale = 128;
         private BlockLamda BlockLamda = BlockLamda.GetInstance();
+        private ItemLamda ItemLamda = ItemLamda.GetInstance();
+        private EnemyLamda EnemyLamda = EnemyLamda.GetInstance();
         public Level(string levelFileName)
         {
             // Read JSON file and store information in RoomList
             try
             {
-                string filepath = Path.Combine(Environment.CurrentDirectory, "..", "..", "..", "Levels\\" + levelFileName);
+                string filepath = Path.Combine(Environment.CurrentDirectory, "..", "..", "..", "Level\\Levels\\" + levelFileName);
                 string jsonText = File.ReadAllText(filepath);
                 RoomList = JsonSerializer.Deserialize<RoomList>(jsonText);
             } 
@@ -66,10 +68,10 @@ namespace LegendOfZelda
                     BlockLamda.BlockFunctionArray[mapElement.ElementValue](mapElement);
                     break;
                 case "Item":
-                    
+                    ItemLamda.ItemFunctionArray[mapElement.ElementValue](mapElement);
                     break;
                 case "Enemy":
-
+                    EnemyLamda.EnemyFunctionArray[mapElement.ElementValue](mapElement);
                     break;
                 default:
                     Console.WriteLine("INVALID MAP ELEMENT TYPE: " + mapElement.ElementType);
