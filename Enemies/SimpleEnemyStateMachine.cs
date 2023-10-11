@@ -7,8 +7,6 @@ namespace LegendOfZelda
     {
         private readonly Game1 Game;
         public AnimatedSprite Sprite { get; set; }
-        private AnimateOnlyOnceEffect EnemySpawnEffect;
-        private AnimateOnlyOnceEffect EnemyDeathEffect;
         public enum Speed { slow, medium, fast };
         public Speed EnemySpeed { get; set; }
         public int SpeedMultiplier;
@@ -36,8 +34,6 @@ namespace LegendOfZelda
                     SpeedMultiplier = 3;
                     break;
             }
-            EnemySpawnEffect = new AnimateOnlyOnceEffect(SpriteFactory.getInstance().CreateEnemyCloudSprite());
-            EnemyDeathEffect = new AnimateOnlyOnceEffect(SpriteFactory.getInstance().CreateEnemyDeathSprite());
         }
         public void Attack()
         {
