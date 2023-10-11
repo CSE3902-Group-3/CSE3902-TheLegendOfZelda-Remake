@@ -28,7 +28,7 @@ namespace LegendOfZelda
         private Vector2 dir;
         private Vector2 viewportSize;
         private bool moving = true;
-        private const double moveDelay = 10;
+        private const double moveDelay = 2;
         private const double haltDelay = 1;
         private Timer timer;
         private RectCollider collider;
