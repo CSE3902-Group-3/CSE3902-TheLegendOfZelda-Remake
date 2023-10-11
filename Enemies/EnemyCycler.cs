@@ -25,6 +25,7 @@ namespace LegendOfZelda
                 new Rope(Position),
                 new DodongoState(Position),
                 new WallMaster(Position),
+                new BladeTrap(Position),
             };
 
             foreach (IEnemy entity in Enemies)
