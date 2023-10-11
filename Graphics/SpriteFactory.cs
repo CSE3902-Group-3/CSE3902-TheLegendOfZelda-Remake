@@ -650,6 +650,18 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        public AnimatedSprite CreateBlinkingHeartSprite()
+        {
+            Rectangle[] frames = new Rectangle[2]
+            {
+                new Rectangle(0, 0, 8, 8),
+                new Rectangle(0, 8, 8, 8)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame * slowAnimateFactor, scale);
+            return newSprite;
+        }
+
         public AnimatedSprite CreateHeartContainerSprite()
         {
             Rectangle[] frames = new Rectangle[1]
@@ -684,7 +696,7 @@ namespace LegendOfZelda
             return newSprite;
         }
 
-        public AnimatedSprite CreateRupeeSprite()
+        public AnimatedSprite CreateBlinkingRupeeSprite()
         {
             Rectangle[] frames = new Rectangle[2]
             {
@@ -694,6 +706,17 @@ namespace LegendOfZelda
 
             AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame * slowAnimateFactor, scale);
             newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateRupeeSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(72, 16, 8, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
             return newSprite;
         }
 
