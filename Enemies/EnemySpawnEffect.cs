@@ -8,7 +8,7 @@ namespace LegendOfZelda
         public EnemySpawnEffect(Vector2 position)
         {
             Game1.getInstance().RegisterUpdateable(this);
-            Sprite = SpriteFactory.getInstance().CreateEnemyCloudSprite();
+            Sprite = SpriteFactory.getInstance().CreateExplosionSprite();
             Sprite.UpdatePos(position);
         }
 
