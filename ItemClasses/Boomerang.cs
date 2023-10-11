@@ -26,9 +26,10 @@ namespace LegendOfZelda
             boomerang.UnregisterSprite();
         }
 
-        public void Collect()
+        public IItem Collect()
         {
-            //left empty for sprint2
+            boomerang.UnregisterSprite();
+            return this;
         }
     }
 }
