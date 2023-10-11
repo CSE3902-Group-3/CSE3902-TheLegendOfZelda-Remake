@@ -12,11 +12,11 @@ namespace LegendOfZelda
             Vector2 viewportSize = new Vector2(Game1.getInstance().GraphicsDevice.Viewport.Width, Game1.getInstance().GraphicsDevice.Viewport.Height);
 
             SpriteFactory spriteFactory = SpriteFactory.getInstance();
-            new CollisionDemoObject(spriteFactory.CreateLinkWalkDownSprite(), CollisionLayer.Player, 16, 16);
-            new CollisionDemoObject(spriteFactory.CreateAquamentusSprite(), CollisionLayer.Enemy, 24, 32);
-            new CollisionDemoObject(spriteFactory.CreateArrowRightSprite(), CollisionLayer.PlayerWeapon, 16, 5);
-            new CollisionDemoObject(spriteFactory.CreateBoomerangSprite(), CollisionLayer.EnemyWeapon, 8, 8);
-            new CollisionDemoObject(spriteFactory.CreateLinkWalkLeftSprite(), CollisionLayer.Player, 16, 16);
+            //new CollisionDemoObject(spriteFactory.CreateLinkWalkDownSprite(), CollisionLayer.Player, 16, 16);
+            //new CollisionDemoObject(spriteFactory.CreateAquamentusSprite(), CollisionLayer.Enemy, 24, 32);
+            //new CollisionDemoObject(spriteFactory.CreateArrowRightSprite(), CollisionLayer.PlayerWeapon, 16, 5);
+            //new CollisionDemoObject(spriteFactory.CreateBoomerangSprite(), CollisionLayer.EnemyWeapon, 8, 8);
+            //new CollisionDemoObject(spriteFactory.CreateLinkWalkLeftSprite(), CollisionLayer.Player, 16, 16);
 
             new RectCollider(new Rectangle(0, -50, (int)viewportSize.X, 50), CollisionLayer.Wall, this);
             new RectCollider(new Rectangle(-50, 0, 50, (int)viewportSize.Y), CollisionLayer.Wall, this);

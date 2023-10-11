@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static LegendOfZelda.SimpleEnemyStateMachine;
 
 namespace LegendOfZelda
 {
@@ -173,6 +174,23 @@ namespace LegendOfZelda
                 collisionList.Key.OnCollision(collisionList.Value);
             }
             collisionBuffer.Clear();
+        }
+
+        public static Vector2 PosSnappedToEdge(Direction direction, Rectangle overlapRectangle, Vector2 overlappedPos)
+        {
+            switch (direction)
+            {
+                case Direction.up:
+                    return new Vector2(overlappedPos.X, overlappedPos.Y + overlapRectangle.Height);
+                case Direction.down:
+                    return new Vector2(overlappedPos.X, overlappedPos.Y - overlapRectangle.Height);
+                case Direction.right:
+                    return new Vector2(overlappedPos.X - overlapRectangle.Width, overlappedPos.Y);
+                case Direction.left:
+                    return new Vector2(overlappedPos.X + overlapRectangle.Width, overlappedPos.Y);
+                default:
+                    return Vector2.Zero;
+            }
         }
     }
 }
