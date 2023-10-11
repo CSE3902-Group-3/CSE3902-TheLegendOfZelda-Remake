@@ -32,7 +32,7 @@ namespace LegendOfZelda
         private Game1 game1;
         private int drawFramesPerAnimFrame;
         private const int slowAnimateFactor = 2;
-        private int scale;
+        public int scale { get; private set; }
 
         private SpriteFactory(int drawFramesPerAnimFrame, int scale) {
             game1 = Game1.getInstance();
@@ -1115,6 +1115,17 @@ namespace LegendOfZelda
             Rectangle[] frames = new Rectangle[1]
             {
                 new Rectangle(947, 110, 32, 32)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateWallExteriorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(521, 11, 256, 176)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
