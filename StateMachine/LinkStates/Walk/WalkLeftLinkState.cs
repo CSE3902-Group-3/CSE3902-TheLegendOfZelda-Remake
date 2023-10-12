@@ -33,6 +33,8 @@ namespace LegendOfZelda
             {
                 Vector2 currPos = link.sprite.pos;
                 currPos.X -= link.velocity;
+                currPos.Y += LinkUtilities.SnapToGrid((int)currPos.Y);
+
                 link.sprite.UpdatePos(currPos);
             }
 

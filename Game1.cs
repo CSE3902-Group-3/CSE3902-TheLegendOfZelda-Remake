@@ -29,6 +29,8 @@ namespace LegendOfZelda
         public ItemScroll itemCycler { get; private set; }
         private static Game1 instance;
 
+        private CollisionManager collisionManager;
+
         private Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -58,6 +60,8 @@ namespace LegendOfZelda
             _graphics.PreferredBackBufferHeight = 1080;
             _graphics.ApplyChanges();
 
+            collisionManager = new CollisionManager();
+
             //controller = new PlayerController(instance, link);
 
             base.Initialize();
@@ -77,8 +81,9 @@ namespace LegendOfZelda
             blockCycler = new BlockCycler(new Vector2(300, 200));
             enemyCycler = new EnemyCycler(new Vector2(500, 500));
             itemCycler = new ItemScroll(new Vector2(800, 300));
-            //Uncomment the following line for testing
+            //Uncomment the following lines for testing
             new AnimationTester();
+            new CollisionDemo();
             controller = new PlayerController((Link)link);
 
         }
@@ -95,6 +100,8 @@ namespace LegendOfZelda
             }
 
             controller.Update();
+            //CollisionManager always updates last
+            collisionManager.Update(gameTime);
 
             // if link is walking, update is constantly being called on button down
             if (!link.stateMachine.isWalking)

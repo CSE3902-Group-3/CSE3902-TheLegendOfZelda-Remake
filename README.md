@@ -42,7 +42,8 @@ characters should move, animate, fire projectiles, etc. as they do in the final 
 - MengQi Lei reviewed ZhengYi Hu's code for quality in pull request #104
 - Matthew Curie reviewed Michael's code for quality in pull request #72, #85, #94,
 - Zhengyi Hu reviewed Mengqi Lei's code for quality in pull request # 103
-- Zhengyi Hu reviewed Gabriel DiFiore's code for readability (See 'Code Review/Sprint 2')
+- Zhengyi Hu reviewed Gabriel DiFiore's code for readability (See `Code Review/Sprint 2`)
+- Zhengyi Hu reviewed Mengqi Lei's code for quality in pull request #129
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections

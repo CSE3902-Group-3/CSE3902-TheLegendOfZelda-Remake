@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Threading.Tasks;
 using System;
 namespace LegendOfZelda
 {
@@ -26,9 +27,10 @@ namespace LegendOfZelda
             bomb.UnregisterSprite();
         }
 
-        public void Collect()
+        public IItem Collect()
         {
-            //left empty for sprint2
+            bomb.UnregisterSprite();
+            return this;
         }
     }
 }

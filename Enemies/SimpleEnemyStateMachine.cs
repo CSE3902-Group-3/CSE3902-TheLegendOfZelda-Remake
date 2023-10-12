@@ -21,7 +21,7 @@ namespace LegendOfZelda
             Game = Game1.getInstance();
             Position = pos;
             ViewportSize = new Vector2(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
-            
+
             switch (EnemySpeed)
             {
                 case Speed.slow:
@@ -85,10 +85,12 @@ namespace LegendOfZelda
         {
             Sprite.UnregisterSprite();
             Game.RemoveUpdateable(this);
+            new EnemyDeathEffect(Position);
         }
 
         public void Spawn()
         {
+            new EnemySpawnEffect(Position);
             Game.RegisterUpdateable(this);
             Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
