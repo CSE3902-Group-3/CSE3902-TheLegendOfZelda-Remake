@@ -27,6 +27,8 @@ namespace LegendOfZelda
             this.stateMachine = new LinkStateMachine();
             this.stateMachine.ChangeState(new InititalLinkState(this.sprite));
 
+            this.stateMachine.linkInventory = new Inventory();
+
         }
 
         public void TakeDamage()

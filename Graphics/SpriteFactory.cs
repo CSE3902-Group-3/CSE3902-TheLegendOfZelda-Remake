@@ -115,10 +115,9 @@ namespace LegendOfZelda
 
         public AnimatedSprite CreateLinkThrowDownSprite()
         {
-            Rectangle[] frames = new Rectangle[2]
+            Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(107, 11, 16, 16),
-                new Rectangle(1, 11, 16, 16)
+                new Rectangle(107, 11, 16, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
@@ -128,10 +127,9 @@ namespace LegendOfZelda
 
         public AnimatedSprite CreateLinkThrowRightSprite()
         {
-            Rectangle[] frames = new Rectangle[2]
+            Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(124, 11, 16, 16),
-                new Rectangle(35, 11, 16, 16)
+                new Rectangle(124, 11, 16, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
@@ -140,10 +138,9 @@ namespace LegendOfZelda
         }
         public AnimatedSprite CreateLinkThrowLeftSprite()
         {
-            Rectangle[] frames = new Rectangle[2]
+            Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(124, 11, 16, 16),
-                new Rectangle(52, 11, 16, 16)
+                new Rectangle(124, 11, 16, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale);
@@ -153,10 +150,9 @@ namespace LegendOfZelda
 
         public AnimatedSprite CreateLinkThrowUpSprite()
         {
-            Rectangle[] frames = new Rectangle[2]
+            Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(141, 11, 16, 16),
-                new Rectangle(69, 11, 16, 16)
+                new Rectangle(141, 11, 16, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
