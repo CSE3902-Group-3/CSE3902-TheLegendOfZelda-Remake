@@ -79,5 +79,16 @@ namespace LegendOfZelda
             AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
             return newSprite;
         }
+
+        public AnimatedSprite CreateDungeonFloor03()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(196, 192, FLOOR_WIDTH, FLOOR_HEIGHT)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
     }
 }

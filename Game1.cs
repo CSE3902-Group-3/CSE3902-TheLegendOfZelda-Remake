@@ -62,8 +62,6 @@ namespace LegendOfZelda
             _graphics.PreferredBackBufferHeight = 1080;
             _graphics.ApplyChanges();
 
-            //controller = new PlayerController(instance, link);
-
             base.Initialize();
         }
 
@@ -75,14 +73,15 @@ namespace LegendOfZelda
 
             drawables = new List<IDrawable>();
 
-            spriteFactory.LoadTextures();
             roomTexture.LoadTextures();
+            spriteFactory.LoadTextures();
 
+            roomCycler = new RoomCycler();
             link = new Link(this);
             blockCycler = new BlockCycler(new Vector2(300, 200));
             enemyCycler = new EnemyCycler(new Vector2(500, 500));
             itemCycler = new ItemScroll(new Vector2(800, 300));
-            roomCycler = new RoomCycler();
+            
             //Uncomment the following line for testing
             new AnimationTester();
             controller = new PlayerController((Link)link);

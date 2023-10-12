@@ -21,7 +21,7 @@ namespace LegendOfZelda
         public void nextRoom()
         {
             index++;
-            if (index > 2)
+            if (index > 3)
             {
                 index = 1;
             }
@@ -35,7 +35,7 @@ namespace LegendOfZelda
             index--;
             if (index < 1)
             {
-                index = 2;
+                index = 3;
             }
             room.Update(index);
             //room.Clear();
