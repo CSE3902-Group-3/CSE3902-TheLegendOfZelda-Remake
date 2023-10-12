@@ -29,6 +29,8 @@ namespace LegendOfZelda
         public ItemScroll itemCycler { get; private set; }
         private static Game1 instance;
 
+        private CollisionManager collisionManager;
+
         private Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -58,6 +60,8 @@ namespace LegendOfZelda
             _graphics.PreferredBackBufferHeight = 1080;
             _graphics.ApplyChanges();
 
+            collisionManager = new CollisionManager();
+
             //controller = new PlayerController(instance, link);
 
             base.Initialize();
@@ -79,6 +83,7 @@ namespace LegendOfZelda
             itemCycler = new ItemScroll(new Vector2(800, 300));
             // Uncomment the following line for testing
             new AnimationTester();
+            new CollisionDemo();
             controller = new PlayerController((Link)link);
 
         }
@@ -95,6 +100,8 @@ namespace LegendOfZelda
             }
 
             controller.Update();
+            //CollisionManager always updates last
+            collisionManager.Update(gameTime);
 
             base.Update(gameTime);
         }

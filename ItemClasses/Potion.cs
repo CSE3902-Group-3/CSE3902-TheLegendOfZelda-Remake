@@ -28,9 +28,10 @@ namespace LegendOfZelda
             potion.UnregisterSprite();
         }
 
-        public void Collect()
+        public IItem Collect()
         {
-            //left empty for sprint2
+            potion.UnregisterSprite();
+            return this;
         }
     }
 }
