@@ -663,6 +663,7 @@ namespace LegendOfZelda
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame * slowAnimateFactor, scale);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
             return newSprite;
         }
 
