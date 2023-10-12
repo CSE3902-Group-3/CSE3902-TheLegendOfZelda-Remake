@@ -12,7 +12,7 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            player.UseItem();
+            //player.UseItem();
         }
     }
 }

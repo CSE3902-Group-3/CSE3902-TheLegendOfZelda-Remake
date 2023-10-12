@@ -10,7 +10,7 @@ namespace LegendOfZelda
         IState prevState;
         IState currentState;
 
-        Vector2 position = new Vector2(0,0);
+        public Vector2 position = new Vector2(0,0);
 
         public void ChangeState(IState newState)
         {

@@ -78,14 +78,15 @@ namespace LegendOfZelda
             spriteFactory.LoadTextures();
 
             link = new Link(this);
+            RegisterUpdateable(link);
             blockCycler = new BlockCycler(new Vector2(300, 200));
             enemyCycler = new EnemyCycler(new Vector2(500, 500));
             itemCycler = new ItemScroll(new Vector2(800, 300));
             //Uncomment the following lines for testing
             new AnimationTester();
             new CollisionDemo();
-            controller = new PlayerController((Link)link);
 
+            controller = new PlayerController((Link)link);
         }
 
         protected override void Update(GameTime gameTime)
