@@ -29,7 +29,7 @@ namespace LegendOfZelda
         public Direction EstimatedDirection { get; private set; }
         public Rectangle OverlapRectangle { get; private set; }
 
-        public Boolean wasCollision
+        public Boolean WasCollision
         {
             get
             {
@@ -61,8 +61,8 @@ namespace LegendOfZelda
             legalCollisions = new Dictionary<CollisionLayer, List<CollisionLayer>>();
             legalCollisions.Add(CollisionLayer.Player, new List<CollisionLayer>{ CollisionLayer.Enemy, CollisionLayer.Wall, CollisionLayer.OuterWall, CollisionLayer.EnemyWeapon, CollisionLayer.Item, CollisionLayer.PlayerWeapon });
             legalCollisions.Add(CollisionLayer.Enemy, new List<CollisionLayer> { CollisionLayer.Wall, CollisionLayer.OuterWall, CollisionLayer.PlayerWeapon, CollisionLayer.EnemyWeapon });
-            legalCollisions.Add(CollisionLayer.PlayerWeapon, new List<CollisionLayer> { CollisionLayer.OuterWall });
-            legalCollisions.Add(CollisionLayer.EnemyWeapon, new List<CollisionLayer> { CollisionLayer.OuterWall });
+            legalCollisions.Add(CollisionLayer.PlayerWeapon, new List<CollisionLayer> { CollisionLayer.OuterWall, CollisionLayer.Wall });
+            legalCollisions.Add(CollisionLayer.EnemyWeapon, new List<CollisionLayer> { CollisionLayer.OuterWall, CollisionLayer.Wall });
             legalCollisions.Add(CollisionLayer.Wall, new List<CollisionLayer>());
             legalCollisions.Add(CollisionLayer.OuterWall, new List<CollisionLayer>());
             legalCollisions.Add(CollisionLayer.Item, new List<CollisionLayer>());

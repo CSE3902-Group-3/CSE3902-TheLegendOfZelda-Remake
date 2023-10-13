@@ -21,16 +21,16 @@ namespace LegendOfZelda
             switch (i)
             {
                 case 0:
-                    new ArrowProjectile(pos, Direction.up);
+                    new BlueArrowProjectile(pos, Direction.right);
                     break;
                 case 1:
-                    new ArrowProjectile(pos, Direction.right);
+                    new BlueArrowProjectile(pos, Direction.up);
                     break;
                 case 2:
-                    new ArrowProjectile(pos, Direction.down);
+                    new BlueArrowProjectile(pos, Direction.left);
                     break;
                 case 3:
-                    new ArrowProjectile(pos, Direction.left);
+                    new BlueArrowProjectile(pos, Direction.down);
                     break;
                 case 4:
                     new BombProjectile(pos);
