@@ -18,7 +18,7 @@ namespace LegendOfZelda
      */
     public class SpriteFactory
     {
-        private static SpriteFactory instance = new SpriteFactory(8, 4);
+        private static SpriteFactory instance;
 
         private Texture2D linkTexture;
         private Texture2D enemiesTexture;
@@ -41,7 +41,7 @@ namespace LegendOfZelda
         public static SpriteFactory getInstance()
         {
             if (instance == null)
-                instance = new SpriteFactory(8, 7);
+                instance = new SpriteFactory(8, 4);
 
             return instance;
         }
