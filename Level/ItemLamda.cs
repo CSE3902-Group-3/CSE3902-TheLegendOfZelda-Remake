@@ -63,7 +63,7 @@ namespace LegendOfZelda
         {
             IItem item = new Arrow(new Vector2(mapElement.XLocation, mapElement.YLocation));
             item.Show();
-        },
+        }
         static void Bomb(MapElement mapElement)
         {
             IItem item = new Bomb(new Vector2(mapElement.XLocation, mapElement.YLocation));

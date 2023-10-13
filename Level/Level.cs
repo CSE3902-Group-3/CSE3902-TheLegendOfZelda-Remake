@@ -43,6 +43,7 @@ namespace LegendOfZelda
 
             return true;
         }
+        // Might just wait until Sprint 4 to 
         public Boolean NavigateNorth() 
         {
             return true;

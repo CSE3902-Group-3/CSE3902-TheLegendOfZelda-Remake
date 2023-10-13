@@ -1,0 +1,38 @@
+﻿Instructions for writing new levels for the level parser:
+
+1) Use the following json format:
+    "Rooms": [
+        {
+            "RoomNumber": 0,
+            "AdjacentRooms": [
+                {
+                    "RoomNumber": 1,
+                    "Direction": "West"
+                },
+                ...
+            ],
+            "MapElements": [
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 33,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                ...
+            ]
+        },
+        ...
+    ]
+
+2) Put bottom layer elements at the start of "MapElements" array:
+    - for example put the wall exterior, the doors, then the floor tiles, then the other blocks, then the items / enemies on top
+
+3) Door location in MapElements does not matter, a northern door will always be placed in the same spot, only the type of door and existance of a door matter
+
+4) Blocks are placed in a grid with x values of (0 - 11) and y values of (0 - 6), values less than or greater than these are out of bounds
+
+5) As enemies and items all have a unique size, they must be placed with precise pixel locations
+    - viewport size: (1024 x 1024)
+    - level view size: (1024 x 704) spanning y vales 320 - 1024
+    - thickness of exterior wall: 128
+    - block size: 64
