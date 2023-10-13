@@ -84,6 +84,7 @@ namespace LegendOfZelda
             //Uncomment the following lines for testing
             new AnimationTester();
             new CollisionDemo();
+            new ProjectileTest();
             controller = new PlayerController((Link)link);
 
         }

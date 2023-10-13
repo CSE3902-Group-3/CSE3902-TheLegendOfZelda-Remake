@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
@@ -9,37 +10,42 @@ namespace LegendOfZelda
         private AnimatedSprite sprite;
         private Game1 game;
         private SpriteFactory spriteFactory;
-        private const float delay = 1000;
+        private const double delay = 1;
         private const int explosionPixelOffset = 4;
         private double startTime = 0;
         private Vector2 pos;
+        private Timer timer;
         public BombProjectile(Vector2 position)
         {
             game = Game1.getInstance();
             spriteFactory = SpriteFactory.getInstance();
             pos = position;
-            game.RegisterUpdateable(this);
 
             sprite = spriteFactory.CreateBombSprite();
             sprite.UpdatePos(pos);
+
+            timer = new Timer(delay, SpawnExplosion);
         }
 
         public void Update(GameTime gameTime)
         {
-            if(startTime == 0)
-            {
-                startTime = gameTime.TotalGameTime.TotalMilliseconds;
-            } else if (gameTime.TotalGameTime.TotalMilliseconds > startTime + delay)
-            {
-                new Explosion(new Vector2(pos.X - explosionPixelOffset * sprite.scale, pos.Y));
-                Destroy();
-            }
+            
         }
 
+        public void SpawnExplosion()
+        {
+            new Explosion(new Vector2(pos.X - explosionPixelOffset * sprite.scale, pos.Y));
+            Destroy();
+        }
         public void Destroy()
         {
             sprite.UnregisterSprite();
             game.RemoveUpdateable(this);
+        }
+
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
+            
         }
     }
 }

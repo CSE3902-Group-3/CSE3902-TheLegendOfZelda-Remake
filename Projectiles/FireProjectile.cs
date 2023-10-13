@@ -1,5 +1,8 @@
 ﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 
 namespace LegendOfZelda
 {
@@ -8,15 +11,32 @@ namespace LegendOfZelda
         private AnimatedSprite sprite;
         private Game1 game;
         private SpriteFactory spriteFactory;
-        private const float speed = 2;
-        private Vector2 pos;
+        private const float speed = 4;
+
+        private Vector2 _pos;
+        private Vector2 Pos
+        {
+            get { return _pos; }
+            set
+            {
+                _pos = value;
+                sprite.UpdatePos(_pos);
+                collider.Pos = _pos;
+            }
+        }
+
         private Vector2 dir;
         private Vector2 viewportSize;
+        private bool moving = true;
+        private const double moveDelay = 2;
+        private const double haltDelay = 1;
+        private Timer timer;
+        private RectCollider collider;
         public FireProjectile(Vector2 position, Direction direction)
         {
             game = Game1.getInstance();
             SpriteFactory spriteFactory = SpriteFactory.getInstance();
-            pos = position;
+            _pos = position;
             viewportSize = new Vector2(game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height);
 
             switch (direction)
@@ -38,17 +58,20 @@ namespace LegendOfZelda
             sprite = spriteFactory.CreateFireSprite();
             sprite.UpdatePos(position);
 
+            int scale = spriteFactory.scale;
+            collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, 16 * scale, 16 * scale), CollisionLayer.PlayerWeapon, this);
+
+            timer = new Timer(moveDelay, StopMoving);
+
             game.RegisterUpdateable(this);
         }
 
+        //Could benefit from a state machine, but it would be overkill
         public void Update(GameTime gameTime)
         {
-            pos += dir * speed;
-            sprite.UpdatePos(pos);
-
-            if (pos.X > viewportSize.X || pos.X < 0 || pos.Y > viewportSize.Y || pos.Y < 0)
+            if (moving)
             {
-                Destroy();
+                Pos += dir * speed;
             }
         }
 
@@ -56,6 +79,23 @@ namespace LegendOfZelda
         {
             sprite.UnregisterSprite();
             game.RemoveUpdateable(this);
+        }
+
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
+            foreach(CollisionInfo collision in collisions)
+            {
+                if(collision.CollidedWith.Layer == CollisionLayer.Wall)
+                {
+                    Pos = CollisionManager.PosSnappedToEdge(collision.EstimatedDirection, collision.OverlapRectangle, Pos);
+                }
+            }
+        }
+
+        private void StopMoving()
+        {
+            moving = false;
+            timer = new Timer(haltDelay, Destroy);
         }
     }
 }
