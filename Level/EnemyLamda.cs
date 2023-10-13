@@ -12,20 +12,6 @@ namespace LegendOfZelda
         public delegate void Lamda(MapElement mapElement);
         public Lamda[] EnemyFunctionArray { get; }
         private static EnemyLamda Instance;
-        /**
-         * Enemy Lamda Function Dictionary
-         * 
-         * Aquamentus,
-         * Bat,
-         * BladeTrap,
-         * Dodongo,
-         * GelSmall,
-         * Goriya,
-         * Rope,
-         * Skeleton,
-         * WallMaster,
-         * Wizard
-         */
         private EnemyLamda()
         {
             EnemyFunctionArray = new Lamda[]

@@ -21,44 +21,6 @@ namespace LegendOfZelda
         private static Vector2 SouthDoorPosition = new Vector2(448, 896);
         private static Vector2 WestDoorPosition = new Vector2(0, 608);
 
-        /**
-         * Block Lamda Function Dictionary
-         * 
-         * FloorTile, 0
-         * Wall, 1
-         * FishSculpture, 2
-         * DragonSculpture, 3
-         * BlackTile, 4
-         * SandTile, 5
-         * BlueTile, 6
-         * Stairs, 7 
-         * Brick, 8 
-         * WallNorth, 9
-         * WallEast, 10
-         * WallSouth, 11
-         * WallWest, 12
-         * NorthOpenDoor, 13
-         * EastOpenDoor, 14
-         * SouthOpenDoor, 15
-         * WestOpenDoor, 16
-         * NorthLockedDoor, 17
-         * EastLockedDoor, 18
-         * SouthLockedDoor, 19
-         * WestLockedDoor, 20
-         * NorthClosedDoor, 21
-         * EastClosedDoor, 22
-         * SouthClosedDoor, 23
-         * WestClosedDoor, 24
-         * NorthLockedDoor, 25
-         * EastLockedDoor, 26
-         * SouthLockedDoor, 27
-         * WestLockedDoor, 28
-         * NorthHoleDoor, 29
-         * EastHoleDoor, 30
-         * SouthHoleDoor, 31
-         * WestHoleDoor, 32
-         * WallExterior, 33
-         */
         private BlockLamda() 
         {
             SpriteFactory = SpriteFactory.getInstance();

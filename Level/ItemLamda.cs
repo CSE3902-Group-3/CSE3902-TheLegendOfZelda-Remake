@@ -12,26 +12,6 @@ namespace LegendOfZelda
         public delegate void Lamda(MapElement mapElement);
         public Lamda[] ItemFunctionArray { get; }
         private static ItemLamda Instance;
-        /**
-         * Item Lamda Function Dictionary
-         * 
-         * Arrow, 0
-         * Bomb, 1
-         * Boomerang, 2
-         * Bow, 3
-         * Candle, 4
-         * Clock, 5
-         * Compass, 6
-         * Fairy, 7
-         * Heart, 8
-         * HeartContainer, 9
-         * Key, 10
-         * Map, 11
-         * Potion, 12
-         * Rupee, 13
-         * Triforce, 14
-         * 
-         */
         private ItemLamda()
         {
             ItemFunctionArray = new Lamda[]
