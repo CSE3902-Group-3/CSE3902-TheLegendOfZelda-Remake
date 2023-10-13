@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
@@ -30,6 +31,11 @@ namespace LegendOfZelda
         {
             sprite.UnregisterSprite();
             game.RemoveUpdateable(this);
+        }
+
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
+            
         }
     }
 }

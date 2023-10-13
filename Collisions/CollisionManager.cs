@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static LegendOfZelda.SimpleEnemyStateMachine;
 
 namespace LegendOfZelda
 {
     public enum CollisionLayer
     {
-        Player, Enemy, Wall, PlayerWeapon, EnemyWeapon, Item
+        Player, Enemy, Wall, PlayerWeapon, EnemyWeapon, Item, OuterWall
     }
 
     public struct CollisionInfo
@@ -58,11 +59,12 @@ namespace LegendOfZelda
             }
 
             legalCollisions = new Dictionary<CollisionLayer, List<CollisionLayer>>();
-            legalCollisions.Add(CollisionLayer.Player, new List<CollisionLayer>{ CollisionLayer.Enemy, CollisionLayer.Wall, CollisionLayer.EnemyWeapon, CollisionLayer.Item, CollisionLayer.PlayerWeapon });
-            legalCollisions.Add(CollisionLayer.Enemy, new List<CollisionLayer> { CollisionLayer.Wall, CollisionLayer.PlayerWeapon, CollisionLayer.EnemyWeapon });
-            legalCollisions.Add(CollisionLayer.PlayerWeapon, new List<CollisionLayer> { CollisionLayer.Wall });
-            legalCollisions.Add(CollisionLayer.EnemyWeapon, new List<CollisionLayer> { CollisionLayer.Wall });
+            legalCollisions.Add(CollisionLayer.Player, new List<CollisionLayer>{ CollisionLayer.Enemy, CollisionLayer.Wall, CollisionLayer.OuterWall, CollisionLayer.EnemyWeapon, CollisionLayer.Item, CollisionLayer.PlayerWeapon });
+            legalCollisions.Add(CollisionLayer.Enemy, new List<CollisionLayer> { CollisionLayer.Wall, CollisionLayer.OuterWall, CollisionLayer.PlayerWeapon, CollisionLayer.EnemyWeapon });
+            legalCollisions.Add(CollisionLayer.PlayerWeapon, new List<CollisionLayer> { CollisionLayer.OuterWall });
+            legalCollisions.Add(CollisionLayer.EnemyWeapon, new List<CollisionLayer> { CollisionLayer.OuterWall });
             legalCollisions.Add(CollisionLayer.Wall, new List<CollisionLayer>());
+            legalCollisions.Add(CollisionLayer.OuterWall, new List<CollisionLayer>());
             legalCollisions.Add(CollisionLayer.Item, new List<CollisionLayer>());
 
             collisionBuffer = new Dictionary<ICollidable, List<CollisionInfo>>();
@@ -173,6 +175,23 @@ namespace LegendOfZelda
                 collisionList.Key.OnCollision(collisionList.Value);
             }
             collisionBuffer.Clear();
+        }
+
+        public static Vector2 PosSnappedToEdge(Direction direction, Rectangle overlapRectangle, Vector2 overlappedPos)
+        {
+            switch (direction)
+            {
+                case Direction.up:
+                    return new Vector2(overlappedPos.X, overlappedPos.Y + overlapRectangle.Height);
+                case Direction.down:
+                    return new Vector2(overlappedPos.X, overlappedPos.Y - overlapRectangle.Height);
+                case Direction.right:
+                    return new Vector2(overlappedPos.X - overlapRectangle.Width, overlappedPos.Y);
+                case Direction.left:
+                    return new Vector2(overlappedPos.X + overlapRectangle.Width, overlappedPos.Y);
+                default:
+                    return Vector2.Zero;
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
@@ -69,6 +70,21 @@ namespace LegendOfZelda
         {
             sprite.UnregisterSprite();
             game.RemoveUpdateable(this);
+        }
+
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
+            //Separating this logic into separate classes would be overkill here
+            foreach(CollisionInfo collision in collisions)
+            {
+                if (collision.CollidedWith.Layer == CollisionLayer.Player)
+                {
+                    Destroy();
+                } else if(collision.CollidedWith.Layer == CollisionLayer.Enemy)
+                {
+                    returning = true;
+                }
+            }
         }
     }
 }

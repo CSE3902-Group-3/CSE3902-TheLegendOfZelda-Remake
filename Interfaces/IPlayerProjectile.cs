@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    public interface IPlayerProjectile : IUpdateable
+    public interface IPlayerProjectile : IUpdateable, ICollidable
     {
     }
 }
