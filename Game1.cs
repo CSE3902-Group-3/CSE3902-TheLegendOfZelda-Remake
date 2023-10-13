@@ -56,8 +56,8 @@ namespace LegendOfZelda
 
             // Change size of viewport
             _graphics.IsFullScreen = false;
-            _graphics.PreferredBackBufferWidth = 1920;
-            _graphics.PreferredBackBufferHeight = 1080;
+            _graphics.PreferredBackBufferWidth = 1024;
+            _graphics.PreferredBackBufferHeight = 1024;
             _graphics.ApplyChanges();
 
             collisionManager = new CollisionManager();
@@ -117,7 +117,7 @@ namespace LegendOfZelda
             // TODO: Add your drawing code here
 
             _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp);
-            for(int j = drawables.Count - 1; j >= 0; j--)
+            for(int j = 0; j < drawables.Count; j++)
             {
                 drawables[j].Draw();
             }

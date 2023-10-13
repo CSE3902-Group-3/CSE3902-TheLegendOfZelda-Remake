@@ -11,7 +11,6 @@ namespace LegendOfZelda
         public List<IUpdateable> LevelUpdateableList { get; set; }
         public List<IDrawable> LevelDrawableList { get; set; }
         public int CurrentRoom;
-        public static int Scale = 128;
         private BlockLamda BlockLamda = BlockLamda.GetInstance();
         private ItemLamda ItemLamda = ItemLamda.GetInstance();
         private EnemyLamda EnemyLamda = EnemyLamda.GetInstance();
