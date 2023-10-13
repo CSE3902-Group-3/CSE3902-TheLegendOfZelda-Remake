@@ -115,22 +115,22 @@ namespace LegendOfZelda
         }
         static void WallNorth(MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWallNorthSprite(), new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation));
+            Block block = new Block(SpriteFactory.CreateWallNorthSprite(), NorthDoorPosition);
             block.enabled = true;
         }
         static void WallEast(MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWallEastSprite(), new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation));
+            Block block = new Block(SpriteFactory.CreateWallEastSprite(), EastDoorPosition);
             block.enabled = true;
         }
         static void WallSouth(MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWallSouthSprite(), new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation));
+            Block block = new Block(SpriteFactory.CreateWallSouthSprite(), SouthDoorPosition);
             block.enabled = true;
         }
         static void WallWest(MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWallWestSprite(), new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation));
+            Block block = new Block(SpriteFactory.CreateWallWestSprite(), WestDoorPosition);
             block.enabled = true;
         }
         static void NorthOpenDoor(MapElement mapElement)
