@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using LegendOfZelda;
 
 namespace LegendOfZelda
 {
@@ -107,7 +106,7 @@ namespace LegendOfZelda
         }
         static void Rupee(MapElement mapElement)
         {
-            IItem item = new Rupee(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new FiveRupee(new Vector2(mapElement.XLocation, mapElement.YLocation));
             item.Show();
         }
         static void Triforce(MapElement mapElement)
