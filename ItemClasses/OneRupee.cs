@@ -4,13 +4,13 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 namespace LegendOfZelda
 {
-    public class Rupee : IItem
+    public class OneRupee : IItem
     {
         protected AnimatedSprite rupee;
         private SpriteFactory spriteFactory;
         private Vector2 position;
 
-        public Rupee(Vector2 pos)
+        public OneRupee(Vector2 pos)
         {
             spriteFactory = SpriteFactory.getInstance();
             rupee = spriteFactory.CreateRupeeSprite();

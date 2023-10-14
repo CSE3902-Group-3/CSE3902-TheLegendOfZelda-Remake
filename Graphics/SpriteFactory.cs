@@ -18,7 +18,7 @@ namespace LegendOfZelda
      */
     public class SpriteFactory
     {
-        private static SpriteFactory instance = new SpriteFactory(8, 8);
+        private static SpriteFactory instance;
 
         private Texture2D linkTexture;
         private Texture2D enemiesTexture;
@@ -43,7 +43,7 @@ namespace LegendOfZelda
         public static SpriteFactory getInstance()
         {
             if (instance == null)
-                instance = new SpriteFactory(8, 8);
+                instance = new SpriteFactory(8, 4);
 
             return instance;
         }
@@ -663,6 +663,7 @@ namespace LegendOfZelda
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame * slowAnimateFactor, scale);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
             return newSprite;
         }
 

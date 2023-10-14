@@ -56,8 +56,8 @@ namespace LegendOfZelda
 
             // Change size of viewport
             _graphics.IsFullScreen = false;
-            _graphics.PreferredBackBufferWidth = 1920;
-            _graphics.PreferredBackBufferHeight = 1080;
+            _graphics.PreferredBackBufferWidth = 1024;
+            _graphics.PreferredBackBufferHeight = 1024;
             _graphics.ApplyChanges();
 
             collisionManager = new CollisionManager();
@@ -78,13 +78,17 @@ namespace LegendOfZelda
             spriteFactory.LoadTextures();
 
             link = new Link(this);
-            RegisterUpdateable(link);
-            blockCycler = new BlockCycler(new Vector2(300, 200));
-            enemyCycler = new EnemyCycler(new Vector2(500, 500));
-            itemCycler = new ItemScroll(new Vector2(800, 300));
-            //Uncomment the following lines for testing
-            new AnimationTester();
-            new CollisionDemo();
+            //blockCycler = new BlockCycler(new Vector2(300, 200));
+            //enemyCycler = new EnemyCycler(new Vector2(500, 500));
+            //itemCycler = new ItemScroll(new Vector2(800, 300));
+            //Uncomment the following line for testing
+            //new AnimationTester();
+
+            // Level 1
+            Level level = new Level("level1.json");
+            level.NavigateToRoom(0);
+
+            controller = new PlayerController((Link)link);
 
             controller = new PlayerController((Link)link);
         }
@@ -114,7 +118,7 @@ namespace LegendOfZelda
             // TODO: Add your drawing code here
 
             _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp);
-            for(int j = drawables.Count - 1; j >= 0; j--)
+            for(int j = 0; j < drawables.Count; j++)
             {
                 drawables[j].Draw();
             }
