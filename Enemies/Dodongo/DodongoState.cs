@@ -14,11 +14,10 @@ namespace LegendOfZelda
         {
             State = new RightMovingDodongo(this, pos);
             Game = Game1.getInstance();
-            Spawn();
         }
         public void Spawn()
         {
-            Game1.getInstance().RegisterUpdateable(this);
+            Game.RegisterUpdateable(this);
             State.Spawn();
         }
         public void ChangePosition()
