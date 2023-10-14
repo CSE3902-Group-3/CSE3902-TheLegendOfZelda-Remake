@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
-    public interface IEnemyProjectile : IUpdateable
+    public interface IEnemyProjectile : IUpdateable, ICollidable
     {
         void Destroy();
     }
