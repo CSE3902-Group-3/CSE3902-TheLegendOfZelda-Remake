@@ -384,6 +384,126 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        public AnimatedSprite CreateSwordBeamUpSprite()
+        {
+            Rectangle[] frames = new Rectangle[4]
+            {
+                new Rectangle(1, 154, 8, 16),
+                new Rectangle(36, 154, 8, 16),
+                new Rectangle(71, 154, 8, 16),
+                new Rectangle(106, 154, 8, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, 2, scale);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateSwordBeamRightSprite()
+        {
+            Rectangle[] frames = new Rectangle[4]
+            {
+                new Rectangle(10, 159, 16, 8),
+                new Rectangle(45, 159, 16, 8),
+                new Rectangle(80, 159, 16, 8),
+                new Rectangle(115, 159, 16, 8)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, 2, scale);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateSwordBeamDownSprite()
+        {
+            Rectangle[] frames = new Rectangle[4]
+            {
+                new Rectangle(1, 154, 8, 16),
+                new Rectangle(36, 154, 8, 16),
+                new Rectangle(71, 154, 8, 16),
+                new Rectangle(106, 154, 8, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipVertically, 2, scale);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateSwordBeamLeftSprite()
+        {
+            Rectangle[] frames = new Rectangle[4]
+            {
+                new Rectangle(10, 159, 16, 8),
+                new Rectangle(45, 159, 16, 8),
+                new Rectangle(80, 159, 16, 8),
+                new Rectangle(115, 159, 16, 8)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, 2, scale);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBeamProjectileUpLeftSprite()
+        {
+            Rectangle[] frames = new Rectangle[4]
+            {
+                new Rectangle(27, 157, 8, 10),
+                new Rectangle(62, 157, 8, 10),
+                new Rectangle(97, 157, 8, 10),
+                new Rectangle(132, 157, 8, 10)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, 2, scale);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBeamProjectileUpRightSprite()
+        {
+            Rectangle[] frames = new Rectangle[4]
+            {
+                new Rectangle(27, 157, 8, 10),
+                new Rectangle(62, 157, 8, 10),
+                new Rectangle(97, 157, 8, 10),
+                new Rectangle(132, 157, 8, 10)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, 2, scale);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBeamProjectileDownLeftSprite()
+        {
+            Rectangle[] frames = new Rectangle[4]
+            {
+                new Rectangle(27, 157, 8, 10),
+                new Rectangle(62, 157, 8, 10),
+                new Rectangle(97, 157, 8, 10),
+                new Rectangle(132, 157, 8, 10)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipVertically, 2, scale);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBeamProjectileDownRightSprite()
+        {
+            Rectangle[] frames = new Rectangle[4]
+            {
+                new Rectangle(27, 157, 8, 10),
+                new Rectangle(62, 157, 8, 10),
+                new Rectangle(97, 157, 8, 10),
+                new Rectangle(132, 157, 8, 10)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally | SpriteEffects.FlipVertically, 2, scale);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            return newSprite;
+        }
+
         public AnimatedSprite CreateGelSprite()
         {
             Rectangle[] frames = new Rectangle[2]

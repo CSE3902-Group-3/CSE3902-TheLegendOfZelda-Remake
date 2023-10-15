@@ -26,7 +26,6 @@ namespace LegendOfZelda
         }
 
         private Vector2 dir;
-        private Vector2 viewportSize;
         private bool moving = true;
         private const double moveDelay = 2;
         private const double haltDelay = 1;
@@ -37,7 +36,6 @@ namespace LegendOfZelda
             game = Game1.getInstance();
             SpriteFactory spriteFactory = SpriteFactory.getInstance();
             _pos = position;
-            viewportSize = new Vector2(game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height);
 
             switch (direction)
             {
