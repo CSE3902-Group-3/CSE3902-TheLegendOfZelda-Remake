@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
@@ -12,14 +13,18 @@ namespace LegendOfZelda
         public int SpeedMultiplier;
         public int Health { get; set; }
         private Vector2 Position;
+        private RectCollider Collider;
         private Vector2 Direction;
         public Vector2 ViewportSize;
         private double LastSwitch = 0;
+        public bool IsFlying { get; set; }
 
         public SimpleEnemyStateMachine(Vector2 pos)
         {
             Game = Game1.getInstance();
             Position = pos;
+            Collider.Pos = pos;
+            int scale = SpriteFactory.getInstance().scale;
             ViewportSize = new Vector2(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
 
             switch (EnemySpeed)
@@ -34,6 +39,7 @@ namespace LegendOfZelda
                     SpeedMultiplier = 3;
                     break;
             }
+            Collider = new RectCollider(new Rectangle((int)Position.X, (int)Position.Y, 16 * scale, 16 * scale), CollisionLayer.Enemy, this);
         }
         public void Attack()
         {
@@ -120,6 +126,25 @@ namespace LegendOfZelda
                 Sprite.blinking = true;
             }
             Sprite.blinking = false;
+        }
+
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
+            foreach (CollisionInfo collision in collisions)
+            {
+                CollisionLayer collidedWith = collision.CollidedWith.Layer;
+
+                if (collidedWith == CollisionLayer.OuterWall)
+                {
+                    ChangeDirection();
+                }
+                else if (collidedWith == CollisionLayer.PlayerWeapon)
+                {
+                    UpdateHealth(1); // Choose different values for each type of player weapon
+                }
+
+                if (!IsFlying && collidedWith == CollisionLayer.Wall) { }
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
@@ -19,10 +20,6 @@ namespace LegendOfZelda
         {
             Position += Direction;
             AquamentusBallSprite.UpdatePos(Position);
-            if (Position.X >= Game1.getInstance().GraphicsDevice.Viewport.Width || Position.Y >= Game1.getInstance().GraphicsDevice.Viewport.Height || Position.X < 0 || Position.Y < 0)
-            {
-                Destroy();
-            }
         }
 
         public void Destroy()
@@ -31,5 +28,17 @@ namespace LegendOfZelda
             Game1.getInstance().RemoveDrawable(AquamentusBallSprite);
         }
 
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
+            foreach (CollisionInfo collision in collisions)
+            {
+                CollisionLayer collidedWith = collision.CollidedWith.Layer;
+
+                if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.PlayerWeapon)
+                {
+                    Destroy();
+                }
+            }
+        }
     }
 }

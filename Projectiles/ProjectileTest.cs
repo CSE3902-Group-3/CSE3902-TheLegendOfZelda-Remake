@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -21,20 +21,16 @@ namespace LegendOfZelda
             switch (i)
             {
                 case 0:
-                    new ArrowProjectile(pos, Direction.up);
-                    new BoomerangProjectile(pos, new Vector2(0, 1), Game1.getInstance().link);
+                    new BlueArrowProjectile(pos, Direction.right);
                     break;
                 case 1:
-                    new ArrowProjectile(pos, Direction.right);
-                    new BoomerangProjectile(pos, new Vector2(1, 1), Game1.getInstance().link);
+                    new BlueArrowProjectile(pos, Direction.up);
                     break;
                 case 2:
-                    new BoomerangProjectile(pos, new Vector2(1, 0), Game1.getInstance().link);
-                    new ArrowProjectile(pos, Direction.down);
+                    new BlueArrowProjectile(pos, Direction.left);
                     break;
                 case 3:
-                    new ArrowProjectile(pos, Direction.left);
-                    new BoomerangProjectile(pos, new Vector2(1, -1), Game1.getInstance().link);
+                    new BlueArrowProjectile(pos, Direction.down);
                     break;
                 case 4:
                     new BoomerangProjectile(pos, new Vector2(0, -1), Game1.getInstance().link);
