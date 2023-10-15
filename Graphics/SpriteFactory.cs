@@ -275,6 +275,50 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        public AnimatedSprite CreateBlueArrowUpSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(29, 185, 5, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBlueArrowDownSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(29, 185, 5, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipVertically, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBlueArrowRightSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(36, 190, 16, 5)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBlueArrowLeftSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(36, 190, 16, 5)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
         public AnimatedSprite CreateBurstSprite()
         {
             Rectangle[] frames = new Rectangle[1]

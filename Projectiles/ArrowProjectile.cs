@@ -2,20 +2,22 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Reflection.PortableExecutable;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace LegendOfZelda
 {
     public class ArrowProjectile : IPlayerProjectile
     {
-        private AnimatedSprite sprite;
-        private Game1 game;
+        protected AnimatedSprite sprite;
+        protected Game1 game;
+        protected SpriteFactory spriteFactory;
 
         private const float speed = 6;
         private Vector2 horizontalArrowBurstOffset;
         private Vector2 verticalArrowBurstOffset;
 
         private Vector2 _pos;
-        private Vector2 Pos
+        protected Vector2 Pos
         {
             get { return _pos; }
             set
@@ -26,13 +28,13 @@ namespace LegendOfZelda
             }
         }
 
-        private Vector2 dir;
-        private RectCollider collider;
+        protected Vector2 dir;
+        protected RectCollider collider;
 
         public ArrowProjectile(Vector2 position, Direction direction)
         {
             game = Game1.getInstance();
-            SpriteFactory spriteFactory = SpriteFactory.getInstance();
+            spriteFactory = SpriteFactory.getInstance();
             _pos = position;
 
             int scale = spriteFactory.scale;
@@ -40,6 +42,15 @@ namespace LegendOfZelda
             horizontalArrowBurstOffset = new Vector2(4 * scale, -2 * scale);
             verticalArrowBurstOffset = new Vector2(-2 * scale, 4 * scale);
 
+            CreateSpriteAndCollider(direction, scale);
+
+            sprite.UpdatePos(position);
+
+            game.RegisterUpdateable(this);
+        }
+
+        protected virtual void CreateSpriteAndCollider(Direction direction, int scale)
+        {
             switch (direction)
             {
                 case Direction.up:
@@ -63,12 +74,7 @@ namespace LegendOfZelda
                     collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, 16 * scale, 5 * scale), CollisionLayer.PlayerWeapon, this);
                     break;
             }
-
-            sprite.UpdatePos(position);
-
-            game.RegisterUpdateable(this);
         }
-
 
         public void Update(GameTime gameTime)
         {
@@ -77,6 +83,15 @@ namespace LegendOfZelda
 
         public void Destroy()
         {
+            if (dir.X == 0)
+            {
+                new Burst(Pos + verticalArrowBurstOffset);
+            }
+            else
+            {
+                new Burst(Pos + horizontalArrowBurstOffset);
+            }
+
             sprite.UnregisterSprite();
             game.RemoveUpdateable(this);
             collider.Active = false;
@@ -84,14 +99,13 @@ namespace LegendOfZelda
 
         public void OnCollision(List<CollisionInfo> collisions)
         {
-            if(dir.X == 0)
+            foreach(CollisionInfo collision in collisions)
             {
-                new Burst(Pos + verticalArrowBurstOffset);
-            } else
-            {
-                new Burst(Pos + horizontalArrowBurstOffset);
+                if(collision.CollidedWith.Layer != CollisionLayer.Wall)
+                {
+                    Destroy();
+                }
             }
-            Destroy();
         }
     }
 }
