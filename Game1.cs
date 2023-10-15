@@ -62,8 +62,6 @@ namespace LegendOfZelda
 
             collisionManager = new CollisionManager();
 
-            //controller = new PlayerController(instance, link);
-
             base.Initialize();
         }
 
@@ -89,7 +87,6 @@ namespace LegendOfZelda
             level.NavigateToRoom(0);
 
             controller = new PlayerController((Link)link);
-
         }
 
         protected override void Update(GameTime gameTime)

@@ -117,10 +117,11 @@ namespace LegendOfZelda
         {
             Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(107, 11, 16, 16),
+                new Rectangle(107, 11, 16, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
 
@@ -128,20 +129,22 @@ namespace LegendOfZelda
         {
             Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(124, 11, 16, 16),
+                new Rectangle(124, 11, 16, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
         public AnimatedSprite CreateLinkThrowLeftSprite()
         {
             Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(124, 11, 16, 16),
+                new Rectangle(124, 11, 16, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale);
+            newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
 
@@ -149,10 +152,11 @@ namespace LegendOfZelda
         {
             Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(141, 11, 16, 16),
+                new Rectangle(141, 11, 16, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
 
