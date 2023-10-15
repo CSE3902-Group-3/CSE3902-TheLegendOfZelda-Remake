@@ -19,7 +19,6 @@ namespace LegendOfZelda
 
         public void spawn()
         {
-            new BombProjectile(pos);
             switch (i)
             {
                 case 0:
