@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -22,34 +22,37 @@ namespace LegendOfZelda
             switch (i)
             {
                 case 0:
-                    new ArrowProjectile(pos, Direction.up);
+                    new BlueArrowProjectile(pos, Direction.right);
                     break;
                 case 1:
-                    new ArrowProjectile(pos, Direction.right);
+                    new BlueArrowProjectile(pos, Direction.up);
                     break;
                 case 2:
-                    new ArrowProjectile(pos, Direction.down);
+                    new BlueArrowProjectile(pos, Direction.left);
                     break;
                 case 3:
-                    new ArrowProjectile(pos, Direction.left);
+                    new BlueArrowProjectile(pos, Direction.down);
                     break;
                 case 4:
-                    //new BombProjectile(pos);
+                    new BoomerangProjectile(pos, new Vector2(0, -1), Game1.getInstance().link);
+                    new BombProjectile(pos);
                     break;
                 case 5:
-                    new BoomerangProjectile(pos, new Vector2(1, 1), Game1.getInstance().link);
+                    new BoomerangProjectile(pos, new Vector2(-1, -1), Game1.getInstance().link);
                     break;
                 case 6:
-                    new FireProjectile(pos, Direction.up);
+                    //new FireProjectile(pos, Direction.up);
+                    new BoomerangProjectile(pos, new Vector2(-1, 0), Game1.getInstance().link);
                     break;
                 case 7:
-                    new FireProjectile(pos, Direction.right);
+                    //new FireProjectile(pos, Direction.right);
+                    new BoomerangProjectile(pos, new Vector2(-1, 1), Game1.getInstance().link);
                     break;
                 case 8:
-                    new FireProjectile(pos, Direction.down);
+                    //new FireProjectile(pos, Direction.down);
                     break;
                 case 9:
-                    new FireProjectile(pos, Direction.left);
+                    //new FireProjectile(pos, Direction.left);
                     break;
             }
 
