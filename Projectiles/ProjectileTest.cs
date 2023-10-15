@@ -8,7 +8,7 @@ namespace LegendOfZelda
 {
     public class ProjectileTest
     {
-        int i = 0;
+        int i = 4;
         double wait = 2;
         Vector2 pos = new Vector2(800, 600);
 
@@ -18,6 +18,7 @@ namespace LegendOfZelda
 
         public void spawn()
         {
+            new BombProjectile(pos);
             switch (i)
             {
                 case 0:

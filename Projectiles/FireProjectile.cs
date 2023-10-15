@@ -78,6 +78,7 @@ namespace LegendOfZelda
         public void Destroy()
         {
             sprite.UnregisterSprite();
+            collider.Active = false;
             game.RemoveUpdateable(this);
         }
 
