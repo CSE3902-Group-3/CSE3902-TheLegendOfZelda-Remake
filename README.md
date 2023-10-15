@@ -22,7 +22,8 @@ characters should move, animate, fire projectiles, etc. as they do in the final 
 ## Known Bugs:
 - Sometimes pressing `e` to enter hurt link state does not apply until another command is processed
 - Attacking does not block Link from walking and Link's sprite does not change back to idle after attacking
-- Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
+- Occasional run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
+- Sprites do not always draw in the correct order
 
 ## Tools:
 - We had an implementation which used HLSL shaders to color sprites more accurately, but due to bugs in Monogame on Mac, we were forced to remove this
