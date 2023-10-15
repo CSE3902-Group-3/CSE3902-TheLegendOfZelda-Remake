@@ -69,7 +69,7 @@ namespace LegendOfZelda
         public void ChangeDirection()
         {
             Random rand = new();
-            int random = rand.Next(0, 4);
+            int random = rand.Next(0, 8);
 
             if (random == 0)
             {
@@ -86,6 +86,22 @@ namespace LegendOfZelda
             else if (random == 3)
             {
                 Direction = new Vector2(0, -1);
+            }
+            else if (random == 4)
+            {
+                Direction = new Vector2(1, 1);
+            }
+            else if (random == 5)
+            {
+                Direction = new Vector2(-1, 1);
+            }
+            else if (random == 6)
+            {
+                Direction = new Vector2(1, -1);
+            }
+            else if (random == 7)
+            {
+                Direction = new Vector2(-1, -1);
             }
         }
         public void ChangePosition()

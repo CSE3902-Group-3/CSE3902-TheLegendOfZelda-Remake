@@ -18,7 +18,7 @@ namespace LegendOfZelda
      */
     public class SpriteFactory
     {
-        private static SpriteFactory instance = new SpriteFactory(8, 8);
+        private static SpriteFactory instance;
 
         private Texture2D linkTexture;
         private Texture2D enemiesTexture;
@@ -43,7 +43,7 @@ namespace LegendOfZelda
         public static SpriteFactory getInstance()
         {
             if (instance == null)
-                instance = new SpriteFactory(8, 8);
+                instance = new SpriteFactory(8, 4);
 
             return instance;
         }
@@ -273,6 +273,50 @@ namespace LegendOfZelda
             Rectangle[] frames = new Rectangle[1]
             {
                 new Rectangle(10, 190, 16, 5)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBlueArrowUpSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(29, 185, 5, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBlueArrowDownSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(29, 185, 5, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipVertically, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBlueArrowRightSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(36, 190, 16, 5)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBlueArrowLeftSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(36, 190, 16, 5)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale);
@@ -667,6 +711,7 @@ namespace LegendOfZelda
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame * slowAnimateFactor, scale);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
             return newSprite;
         }
 

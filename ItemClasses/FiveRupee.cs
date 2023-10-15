@@ -4,35 +4,34 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 namespace LegendOfZelda
 {
-    public class Heart : IItem
+    public class FiveRupee : IItem
     {
-        protected AnimatedSprite heart;
+        protected AnimatedSprite rupee;
         private SpriteFactory spriteFactory;
         private Vector2 position;
 
-        public Heart(Vector2 pos)
+        public FiveRupee(Vector2 pos)
         {
             spriteFactory = SpriteFactory.getInstance();
-            heart = spriteFactory.CreateBlinkingHeartSprite();
+            rupee = spriteFactory.CreateBlinkingRupeeSprite();
             position = pos;
         }
 
         public void Show()
         {
-            heart.RegisterSprite();
-            heart.UpdatePos(position);
+            rupee.RegisterSprite();
+            rupee.UpdatePos(position);
         }
 
         public void Remove()
         {
-            heart.UnregisterSprite();
+            rupee.UnregisterSprite();
         }
 
         public IItem Collect()
         {
-            heart.UnregisterSprite();
+            rupee.UnregisterSprite();
             return this;
         }
     }
 }
-

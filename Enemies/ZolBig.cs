@@ -1,22 +1,22 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
     public class ZolBig : IEnemy
     {
-        private readonly Game1 Game;
         private readonly SimpleEnemyStateMachine StateMachine;
         private int Health { get; set; } = 1;
         public Vector2 Position;
 
         public ZolBig(Vector2 pos)
         {
-            Game = Game1.getInstance();
             Position = pos;
             StateMachine = new SimpleEnemyStateMachine(pos)
             {
                 Sprite = SpriteFactory.getInstance().CreateZolSprite(),
-                Health = Health
+                Health = Health,
+                IsFlying = false
             };
         }
         public void Spawn()
@@ -48,6 +48,11 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             StateMachine.Update(gameTime);
+        }
+
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
+            StateMachine.OnCollision(collisions);
         }
     }
 }

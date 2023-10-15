@@ -1,21 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
     public class Bat : IEnemy
     {
-        private readonly Game1 Game;
         private readonly SimpleEnemyStateMachine StateMachine;
         private int Health { get; set; } = 1;
         public Vector2 Position;
         public Bat(Vector2 pos)
         {
-            Game = Game1.getInstance();
             Position = pos;
             StateMachine = new SimpleEnemyStateMachine(pos)
             {
                 Sprite = SpriteFactory.getInstance().CreateKeeseSprite(),
                 Health = Health,
+                IsFlying = true,
             };
         }
         public void Spawn()
@@ -47,6 +47,11 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             StateMachine.Update(gameTime);
+        }
+
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
+            StateMachine.OnCollision(collisions);
         }
     }
 }

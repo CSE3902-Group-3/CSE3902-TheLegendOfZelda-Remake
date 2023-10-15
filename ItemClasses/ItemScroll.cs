@@ -32,7 +32,8 @@ namespace LegendOfZelda
                 new Heart(pos),
                 new Triforce(pos),
                 new Fairy(pos),
-                new Rupee(pos)
+                new OneRupee(pos),
+                new FiveRupee(pos)
             };
 
             foreach (IItem item in itemCollection)
