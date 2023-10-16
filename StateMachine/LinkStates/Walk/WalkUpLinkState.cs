@@ -12,8 +12,8 @@ namespace LegendOfZelda
         {
             this.game = Game1.getInstance();
             link = (Link)game.link;
-            link.prevDirection = link.currentDirection;
-            link.currentDirection = Direction.up;
+            link.stateMachine.prevDirection = link.stateMachine.currentDirection;
+            link.stateMachine.currentDirection = Direction.up;
         }
 
         public void Enter()
@@ -31,10 +31,9 @@ namespace LegendOfZelda
             Vector2 currPos = link.sprite.pos;
             currPos.Y -= link.velocity;
 
-            link.stateMachine.position = currPos;
             currPos.X += LinkUtilities.SnapToGrid((int)currPos.X);
 
-            link.sprite.UpdatePos(currPos);
+            LinkUtilities.UpdatePositions(link, currPos);
 
             ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
         }

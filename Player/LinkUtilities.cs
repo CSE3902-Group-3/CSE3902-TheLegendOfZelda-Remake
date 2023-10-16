@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
@@ -18,6 +14,13 @@ namespace LegendOfZelda
                 return alignTo - remainder;
             else
                 return -remainder;
+        }
+
+        public static void UpdatePositions(Link link, Vector2 newPositon)
+        {
+            link.sprite.UpdatePos(newPositon);
+            link.stateMachine.position = newPositon;
+            link.collider.Pos = newPositon;
         }
     }
 }
