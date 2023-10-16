@@ -16,8 +16,7 @@ namespace LegendOfZelda
         public void Enter()
         {
             // cast then start flashing sprite
-            AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
-            spriteAlias.flashing = true;
+            ((AnimatedSprite)link.sprite).flashing = true;
         }
 
         public void Execute()
@@ -29,8 +28,7 @@ namespace LegendOfZelda
         public void Exit()
         {
             // cast then stop flashing sprite
-            AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
-            spriteAlias.flashing = false;
+            ((AnimatedSprite)link.sprite).flashing = false;
         }
     }
 }

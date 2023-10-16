@@ -23,8 +23,7 @@ namespace LegendOfZelda
             if (link.sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
-                spriteAlias.UnregisterSprite();
+                ((AnimatedSprite)link.sprite).UnregisterSprite();
             }
 
             link.stateMachine.canMove = false;
@@ -33,12 +32,11 @@ namespace LegendOfZelda
         }
         public void Execute()
         {
-            ((AnimatedSprite)link.sprite).flashing = link.isTakingDamage;
-
             if (((AnimatedSprite)link.sprite).complete)
             {
                 link.stateMachine.ChangeState(new IdleLinkState());
             }
+            ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
         }
 
         public void Exit()

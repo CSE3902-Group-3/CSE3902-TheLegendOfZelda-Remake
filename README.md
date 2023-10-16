@@ -30,6 +30,7 @@ characters should move, animate, fire projectiles, etc. as they do in the final 
 -   9/21: 88, 221, 2, 52, 1611, 360
 -   9/25: 85, 569, 2, 72, 3807, 925
 -   10/2: 85, 732, 2, 135, 5151, 1399
+-   10/15: 84, 1127, 2, 187, 7443, 2032
 
 ## Code Reviews:
 - Michael Herring reviewed Gabe DiFiore's code for quality in pull request #63

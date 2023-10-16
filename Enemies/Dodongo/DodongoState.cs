@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
@@ -13,11 +14,10 @@ namespace LegendOfZelda
         {
             State = new RightMovingDodongo(this, pos);
             Game = Game1.getInstance();
-            Spawn();
         }
         public void Spawn()
         {
-            Game1.getInstance().RegisterUpdateable(this);
+            Game.RegisterUpdateable(this);
             State.Spawn();
         }
         public void ChangePosition()
@@ -55,6 +55,23 @@ namespace LegendOfZelda
         public void Die()
         {
             State.Die();
+        }
+
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
+            foreach (CollisionInfo collision in collisions)
+            {
+                CollisionLayer collidedWith = collision.CollidedWith.Layer;
+
+                if (collidedWith == CollisionLayer.OuterWall)
+                {
+                    ChangeDirection();
+                }
+                else if (collidedWith == CollisionLayer.PlayerWeapon)
+                {
+                    UpdateHealth(1); // Choose different values for each type of player weapon
+                }
+            }
         }
     }
 }

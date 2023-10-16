@@ -31,12 +31,11 @@ namespace LegendOfZelda
         }
         public void Execute()
         {
-            ((AnimatedSprite)link.sprite).flashing = link.isTakingDamage;
-
             if (((AnimatedSprite)link.sprite).complete)
             {
                 link.stateMachine.ChangeState(new IdleLinkState());
             }
+            ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
         }
 
         public void Exit()

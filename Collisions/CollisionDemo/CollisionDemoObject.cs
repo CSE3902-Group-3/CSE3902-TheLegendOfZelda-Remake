@@ -77,7 +77,7 @@ namespace LegendOfZelda
                 /*
                  * You will likely need to sort out the collisions by the Layer of the collidable you collided with
                  */
-                if (collision.CollidedWith.Layer == CollisionLayer.Wall)
+                if (collision.CollidedWith.Layer == CollisionLayer.OuterWall || collision.CollidedWith.Layer == CollisionLayer.Wall)
                 {
                     HandleCollisionWithWall(collision.EstimatedDirection, collision.OverlapRectangle);
                 } else

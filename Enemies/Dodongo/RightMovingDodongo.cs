@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
@@ -62,7 +63,12 @@ namespace LegendOfZelda
         public void Die()
         {
             Sprite.UnregisterSprite();
-            Game1.getInstance().RemoveUpdateable(Dodongo);
+            Game.RemoveUpdateable(Dodongo);
+        }
+
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
+            Dodongo.OnCollision(collisions);
         }
     }
 }

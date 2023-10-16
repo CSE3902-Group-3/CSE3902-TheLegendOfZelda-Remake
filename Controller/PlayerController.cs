@@ -51,6 +51,12 @@ namespace LegendOfZelda
                         command.Execute();
                         isMovingVertically = true;
                     }
+
+                    // Handle non-walking commands without restrictions
+                    if (!isMovingHorizontally && !isMovingVertically)
+                    {
+                        command.Execute();
+                    }
                 }
             }
         }

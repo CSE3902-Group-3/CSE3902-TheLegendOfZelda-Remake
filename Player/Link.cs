@@ -10,8 +10,6 @@ namespace LegendOfZelda
         public Vector2 pos { get { return sprite.pos; } }
         public LinkStateMachine stateMachine { get; private set; }
 
-        public bool isTakingDamage { get; private set; }
-
         private int HP { get; set; } = 6;
         private int maxHP { get; set; } = 6;
 
@@ -25,16 +23,19 @@ namespace LegendOfZelda
 
             this.stateMachine = new LinkStateMachine();
             this.stateMachine.ChangeState(new InititalLinkState(this.sprite));
+
+            this.stateMachine.linkInventory = new Inventory();
+
         }
 
         public void TakeDamage()
         {
-            isTakingDamage = true;
+            this.stateMachine.isTakingDamage = true;
         }
 
         public void Heal()
         {
-            isTakingDamage = false;
+            this.stateMachine.isTakingDamage = false;
         }
 
         public void Update (GameTime gameTime)
@@ -43,9 +44,9 @@ namespace LegendOfZelda
             // this is inherited from iUpdateable, maybe it isn't needed but I would like to leave it for sprint2
         }
 
-        public void UseItem()
+        public void UseItem(bool primary)
         {
-            // do nothing
+
         }
 
         public void Reset()

@@ -15,7 +15,11 @@ namespace LegendOfZelda
         public Direction currentDirection { get; set; } = Direction.right;
 
 
-        Vector2 position = new Vector2(0,0);
+        public Vector2 position = new Vector2(0,0);
+        public Inventory linkInventory { get; set; }
+        public IItem currentItem { get; set; }
+        public bool isTakingDamage { get; set; }
+
 
         public void ChangeState(IState newState)
         {

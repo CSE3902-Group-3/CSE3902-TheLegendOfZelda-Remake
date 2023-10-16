@@ -10,7 +10,7 @@ namespace LegendOfZelda
 
         Vector2 pos { get; }
 
-        public void UseItem();
+        public void UseItem(bool primary);
 
         public void ChangeItem(int index);
         public void ChangeWeapon(int index);
