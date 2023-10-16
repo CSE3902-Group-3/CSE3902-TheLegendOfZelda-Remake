@@ -105,6 +105,12 @@ namespace LegendOfZelda
             //CollisionManager always updates last
             collisionManager.Update(gameTime);
 
+            // if link is walking, update is constantly being called on button down
+            if (!link.stateMachine.isWalking)
+            {
+                link.stateMachine.Update();
+            }
+
             base.Update(gameTime);
         }
 

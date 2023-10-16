@@ -18,6 +18,7 @@ namespace LegendOfZelda
 
         public void Enter()
         {
+            link.stateMachine.isWalking = true;
             if (link.sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
@@ -28,19 +29,21 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            Vector2 currPos = link.sprite.pos;
-            currPos.X -= link.velocity;
+            if (link.stateMachine.canMove)
+            {
+                Vector2 currPos = link.sprite.pos;
+                currPos.X -= link.velocity;
+                currPos.Y += LinkUtilities.SnapToGrid((int)currPos.Y);
 
-            currPos.Y += LinkUtilities.SnapToGrid((int)currPos.Y);
-
-            LinkUtilities.UpdatePositions(link, currPos);
+                LinkUtilities.UpdatePositions(link, currPos);
+            }
 
             ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
         }
 
         public void Exit()
         {
-
+            link.stateMachine.isWalking = false;
         }
     }
 }
