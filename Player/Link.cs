@@ -62,7 +62,7 @@ namespace LegendOfZelda
             }
 
             this.stateMachine.Update();
-            //LinkUtilities.UpdatePositions(this, this.sprite.pos);
+            LinkUtilities.UpdatePositions(this, this.sprite.pos);
         }
 
         public void Reset()
