@@ -12,8 +12,8 @@ namespace LegendOfZelda
         {
             this.game = Game1.getInstance();
             link = (Link)game.link;
+            link.prevDirection = link.currentDirection;
             link.currentDirection = Direction.up;
-
         }
 
         public void Enter()

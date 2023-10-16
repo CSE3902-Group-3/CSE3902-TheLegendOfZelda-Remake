@@ -14,6 +14,7 @@ namespace LegendOfZelda
         public ISprite sprite { get; set; }
         public Vector2 pos { get { return sprite.pos; } }
         private RectCollider collider;
+        public Direction prevDirection;
 
         public Direction currentDirection { get; set; } = Direction.right;
         public LinkStateMachine stateMachine { get; private set; }
@@ -40,6 +41,7 @@ namespace LegendOfZelda
                 CollisionLayer.Player,
                 this
             );
+            this.stateMachine.position = this.sprite.pos;
             collider.Pos = this.stateMachine.position;
 
             game.RegisterUpdateable(this);
@@ -58,6 +60,12 @@ namespace LegendOfZelda
         public void Update (GameTime gameTime)
         {
             collider.Pos = this.stateMachine.position;
+
+            if (ChangedDirection())
+            {
+                this.velocity = 5;
+            }
+
             this.stateMachine.Update();
         }
 
@@ -67,6 +75,11 @@ namespace LegendOfZelda
             this.stateMachine.position = new Vector2(0, 0);
             this.stateMachine.ChangeState(new WalkRightLinkState());
             this.stateMachine.ChangeState(new IdleLinkState());
+        }
+
+        private bool ChangedDirection()
+        {
+            return prevDirection != currentDirection;
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
@@ -92,20 +105,24 @@ namespace LegendOfZelda
             switch (direction)
             {
                 case Direction.up:
-                    this.stateMachine.position = new Vector2(this.stateMachine.position.X, this.stateMachine.position.Y + overlapRectangle.Height);
+                    this.sprite.UpdatePos(new Vector2(this.sprite.pos.X, this.sprite.pos.Y + overlapRectangle.Height));
+                    this.velocity = 0;
                     break;
                 case Direction.down:
-                    this.stateMachine.position = new Vector2(this.stateMachine.position.X, this.stateMachine.position.Y - overlapRectangle.Height);
+                    this.sprite.UpdatePos(new Vector2(this.sprite.pos.X, this.sprite.pos.Y - overlapRectangle.Height));
+                    this.velocity = 0;
                     break;
                 case Direction.right:
-                    this.stateMachine.position = new Vector2(this.stateMachine.position.X - overlapRectangle.Width, this.stateMachine.position.Y);
+                    this.sprite.UpdatePos(new Vector2(this.sprite.pos.X - overlapRectangle.Width, this.sprite.pos.Y));
+                    this.velocity = 0;
                     break;
                 case Direction.left:
-                    this.stateMachine.position = new Vector2(this.stateMachine.position.X + overlapRectangle.Width, this.stateMachine.position.Y);
+                    this.sprite.UpdatePos(new Vector2(this.sprite.pos.X + overlapRectangle.Width, this.sprite.pos.Y));
+                    this.velocity = 0;
                     break;
             }
 
-            this.sprite.UpdatePos(this.stateMachine.position);
+            this.stateMachine.position = this.sprite.pos;
         }
 
         private void HandleCollisionWithEntity()
