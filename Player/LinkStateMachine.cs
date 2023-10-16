@@ -7,8 +7,13 @@ namespace LegendOfZelda
     public class LinkStateMachine
     {
         // might be useful for one frame states like throwing an item
-        IState prevState;
-        IState currentState;
+        public IState PrevState { get; private set; }
+        public IState CurrentState { get; private set; }
+
+        public bool canMove { get; set; } = true;
+        public bool isWalking { get; set; } = false;
+        public Direction currentDirection { get; set; } = Direction.right;
+
 
         public Vector2 position = new Vector2(0,0);
         public Inventory linkInventory { get; set; }
@@ -19,7 +24,7 @@ namespace LegendOfZelda
         public void ChangeState(IState newState)
         {
             // only change if states are different
-            if (currentState != null && (newState.GetType() == currentState.GetType())) return;
+            if (CurrentState != null && (newState.GetType() == CurrentState.GetType())) return;
 
             Link link = (Link)Game1.getInstance().link;
             if(link != null)
@@ -27,14 +32,14 @@ namespace LegendOfZelda
                 position = link.sprite.pos;
             }
             
-            if (currentState != null)
+            if (CurrentState != null)
             {
-                currentState.Exit();
+                CurrentState.Exit();
             }
 
-            prevState = currentState;
-            currentState = newState;
-            currentState.Enter();
+            PrevState = CurrentState;
+            CurrentState = newState;
+            CurrentState.Enter();
 
             if(link != null)
             {
@@ -46,7 +51,7 @@ namespace LegendOfZelda
         public void Update()
         {
             // ICommand can handle changing the state, then we can just call LinkStateMachine.Update() in Game1.Update()
-            currentState.Execute();
+            CurrentState.Execute();
         }
     }
 }
