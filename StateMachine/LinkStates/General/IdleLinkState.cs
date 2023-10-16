@@ -19,20 +19,18 @@ namespace LegendOfZelda
         public void Enter()
         {
             // cast then pause animation of sprite
-            AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
-            spriteAlias.paused = true;
+            ((AnimatedSprite)link.sprite).paused = true;
         }
 
         public void Execute()
         {
-            ((AnimatedSprite)link.sprite).flashing = link.isTakingDamage;
+            ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
         }
 
         public void Exit()
         {
             // cast then pause animation of sprite
-            AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
-            spriteAlias.paused = false;
+            ((AnimatedSprite)link.sprite).paused = false;
         }
     }
 }

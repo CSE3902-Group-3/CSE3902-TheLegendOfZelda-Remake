@@ -548,6 +548,12 @@
                     "ElementValue": 13,
                     "XLocation": 200,
                     "YLocation": 500
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 0,
+                    "XLocation": 650,
+                    "YLocation": 800
                 }
             ]
         }

@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
@@ -15,19 +16,27 @@ namespace LegendOfZelda
 
         public void Enter()
         {
+            if (link.sprite != null)
+            {
+                // if there was a previous sprite, cast then unregister sprite
+                ((AnimatedSprite)link.sprite).UnregisterSprite();
+            }
             link.sprite = SpriteFactory.getInstance().CreateLinkThrowLeftSprite();
+
+            link.stateMachine.currentItem = new Bomb(link.stateMachine.position - new Vector2(90, 0));
+            link.stateMachine.currentItem.Show();
         }
 
         public void Execute()
         {
-            ((AnimatedSprite)link.sprite).flashing = link.isTakingDamage;
+            ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
         }
 
         public void Exit()
         {
-            // cast then unregister sprite drawing
-            AnimatedSprite spriteAlias = (AnimatedSprite)this.link.sprite;
-            spriteAlias.UnregisterSprite();
+            // this should be done in the Item class I think? link shouldn't be responsible for this
+            link.stateMachine.currentItem.Remove();
+            link.stateMachine.currentItem = null;
         }
 
     }

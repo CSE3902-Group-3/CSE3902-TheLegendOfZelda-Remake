@@ -12,7 +12,21 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            //player.UseItem();
+            switch (player.stateMachine.currentDirection)
+            {
+                case Direction.left:
+                    player.stateMachine.ChangeState(new ItemThrowLeftLinkState());
+                    break;
+                case Direction.up:
+                    player.stateMachine.ChangeState(new ItemThrowUpLinkState());
+                    break;
+                case Direction.right:
+                    player.stateMachine.ChangeState(new ItemThrowRightLinkState());
+                    break;
+                case Direction.down:
+                    player.stateMachine.ChangeState(new ItemThrowDownLinkState());
+                    break;
+            }
         }
     }
 }

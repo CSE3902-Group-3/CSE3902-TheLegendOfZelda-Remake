@@ -21,8 +21,7 @@ namespace LegendOfZelda
             if (link.sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                AnimatedSprite spriteAlias = (AnimatedSprite)link.sprite;
-                spriteAlias.UnregisterSprite();
+                ((AnimatedSprite)link.sprite).UnregisterSprite();
             }
             link.sprite = SpriteFactory.getInstance().CreateLinkWalkLeftSprite();
         }
@@ -31,11 +30,13 @@ namespace LegendOfZelda
         {
             Vector2 currPos = link.sprite.pos;
             currPos.X -= link.velocity;
+
+            link.stateMachine.position = currPos;
             currPos.Y += LinkUtilities.SnapToGrid((int)currPos.Y);
 
             link.sprite.UpdatePos(currPos);
 
-            ((AnimatedSprite)link.sprite).flashing = link.isTakingDamage;
+            ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
         }
 
         public void Exit()

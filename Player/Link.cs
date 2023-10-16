@@ -19,8 +19,6 @@ namespace LegendOfZelda
         public Direction currentDirection { get; set; } = Direction.right;
         public LinkStateMachine stateMachine { get; private set; }
 
-        public bool isTakingDamage { get; private set; }
-
         private int HP { get; set; } = 6;
         private int maxHP { get; set; } = 6;
         private bool canMove { get; set; } = true;
@@ -36,6 +34,8 @@ namespace LegendOfZelda
             this.stateMachine = new LinkStateMachine();
             this.stateMachine.ChangeState(new InititalLinkState(this.sprite));
 
+            this.stateMachine.linkInventory = new Inventory();
+
             collider = new RectCollider(
                 new Rectangle((int)this.stateMachine.position.X, (int)+this.stateMachine.position.Y, 16 * SpriteFactory.getInstance().scale, 16 * SpriteFactory.getInstance().scale),
                 CollisionLayer.Player,
@@ -49,12 +49,12 @@ namespace LegendOfZelda
 
         public void TakeDamage()
         {
-            isTakingDamage = true;
+            this.stateMachine.isTakingDamage = true;
         }
 
         public void Heal()
         {
-            isTakingDamage = false;
+            this.stateMachine.isTakingDamage = false;
         }
 
         public void Update (GameTime gameTime)

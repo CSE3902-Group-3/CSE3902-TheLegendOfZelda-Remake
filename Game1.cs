@@ -62,8 +62,6 @@ namespace LegendOfZelda
 
             collisionManager = new CollisionManager();
 
-            //controller = new PlayerController(instance, link);
-
             base.Initialize();
         }
 
