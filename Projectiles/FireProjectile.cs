@@ -78,6 +78,7 @@ namespace LegendOfZelda
         public void Destroy()
         {
             sprite.UnregisterSprite();
+            collider.Active = false;
             game.RemoveUpdateable(this);
         }
 
@@ -85,7 +86,7 @@ namespace LegendOfZelda
         {
             foreach(CollisionInfo collision in collisions)
             {
-                if(collision.CollidedWith.Layer == CollisionLayer.Wall)
+                if(collision.CollidedWith.Layer == CollisionLayer.Wall || collision.CollidedWith.Layer == CollisionLayer.OuterWall)
                 {
                     Pos = CollisionManager.PosSnappedToEdge(collision.EstimatedDirection, collision.OverlapRectangle, Pos);
                 }

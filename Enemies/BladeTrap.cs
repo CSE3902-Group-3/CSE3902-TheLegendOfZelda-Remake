@@ -1,10 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-    public class BladeTrap:IEnemy
+    public class BladeTrap : IEnemy
     {
-        private AnimatedSprite Sprite;
+        private readonly AnimatedSprite Sprite;
         public Vector2 Position;
 
         public BladeTrap(Vector2 pos)
@@ -28,5 +29,18 @@ namespace LegendOfZelda
 
         public void ChangeDirection() {}
         public void Update(GameTime gameTime) {}
+
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
+            foreach (CollisionInfo collision in collisions)
+            {
+                CollisionLayer collidedWith = collision.CollidedWith.Layer;
+
+                if (collidedWith == CollisionLayer.PlayerWeapon)
+                {
+                    UpdateHealth(1); // Choose different values for each type of player weapon
+                }
+            }
+        }
     }
 }

@@ -7,30 +7,43 @@ namespace LegendOfZelda
     public class BoomerangProjectile : IPlayerProjectile
     {
         private AnimatedSprite sprite;
+        private IRectCollider collider;
+
         private Game1 game;
         private SpriteFactory spriteFactory;
-        private float speed = 10;
-        private const float accel = .5f;
-        private const float dist = 200;
-        private Vector2 pos;
+        private float speed = 15;
+        private const float accel = .25f;
+
+        private Vector2 _pos;
+        private Vector2 Pos
+        {
+            get { return _pos; }
+            set
+            {
+                _pos = value;
+                sprite.UpdatePos(_pos);
+                collider.Pos = _pos;
+            }
+        }
+
         private Vector2 dir;
-        private Vector2 target;
         private bool returning = false;
         private IPlayer player;
         public BoomerangProjectile(Vector2 position, Vector2 direction, IPlayer player)
         {
             game = Game1.getInstance();
             SpriteFactory spriteFactory = SpriteFactory.getInstance();
-            pos = position;
+            _pos = position;
             this.player = player;
 
             dir = direction;
             dir.Normalize();
 
-            target = pos + dir * dist;
-
             sprite = spriteFactory.CreateBoomerangSprite();
             sprite.UpdatePos(position);
+
+            int scale = spriteFactory.scale;
+            collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, 8 * scale, 8 * scale), CollisionLayer.PlayerWeapon, this);
 
             game.RegisterUpdateable(this);
         }
@@ -40,7 +53,7 @@ namespace LegendOfZelda
             //State pattern would work better here but would be overkill for such a small class
             if (returning)
             {
-                dir = player.pos - pos;
+                dir = player.pos - Pos;
                 if(dir.Length() < speed)
                 {
                     Destroy();
@@ -48,9 +61,8 @@ namespace LegendOfZelda
                 else
                 {
                     dir.Normalize();
-                    pos += dir * speed;
+                    Pos += dir * speed;
                     speed += accel;
-                    sprite.UpdatePos(pos);
                 }
             }
             else
@@ -59,16 +71,16 @@ namespace LegendOfZelda
                     returning = true;
                 } else
                 {
-                    pos += speed * dir;
+                    Pos += speed * dir;
                     speed -= accel;
                 }
-                sprite.UpdatePos(pos);
             }
         }
 
         public void Destroy()
         {
             sprite.UnregisterSprite();
+            collider.Active = false;
             game.RemoveUpdateable(this);
         }
 

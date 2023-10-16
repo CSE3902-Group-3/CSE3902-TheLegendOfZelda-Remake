@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-    public interface IEnemy: IUpdateable
+    public interface IEnemy: IUpdateable, ICollidable
     {
         void Spawn();
         void UpdateHealth(int damagePoints);

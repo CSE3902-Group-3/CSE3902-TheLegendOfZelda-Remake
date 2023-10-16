@@ -117,10 +117,11 @@ namespace LegendOfZelda
         {
             Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(107, 11, 16, 16),
+                new Rectangle(107, 11, 16, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
 
@@ -128,20 +129,22 @@ namespace LegendOfZelda
         {
             Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(124, 11, 16, 16),
+                new Rectangle(124, 11, 16, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
         public AnimatedSprite CreateLinkThrowLeftSprite()
         {
             Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(124, 11, 16, 16),
+                new Rectangle(124, 11, 16, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale);
+            newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
 
@@ -149,10 +152,11 @@ namespace LegendOfZelda
         {
             Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(141, 11, 16, 16),
+                new Rectangle(141, 11, 16, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
 
@@ -275,6 +279,50 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        public AnimatedSprite CreateBlueArrowUpSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(29, 185, 5, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBlueArrowDownSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(29, 185, 5, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipVertically, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBlueArrowRightSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(36, 190, 16, 5)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBlueArrowLeftSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(36, 190, 16, 5)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
         public AnimatedSprite CreateBurstSprite()
         {
             Rectangle[] frames = new Rectangle[1]
@@ -324,6 +372,54 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        public AnimatedSprite CreateBombLongExplosionSprite()
+        {
+            Rectangle[] frames = new Rectangle[36]
+            {
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(138, 185, 16, 16),
+                new Rectangle(155, 185, 16, 16),
+                new Rectangle(155, 185, 16, 16),
+                new Rectangle(155, 185, 16, 16),
+                new Rectangle(155, 185, 16, 16),
+                new Rectangle(155, 185, 16, 16),
+                new Rectangle(155, 185, 16, 16),
+                new Rectangle(155, 185, 16, 16),
+                new Rectangle(155, 185, 16, 16),
+                new Rectangle(172, 185, 16, 16),
+                new Rectangle(172, 185, 16, 16),
+                new Rectangle(172, 185, 16, 16),
+                new Rectangle(172, 185, 16, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, 1, scale);
+            newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
+            newSprite.AddEffect(new StrobeEffect(newSprite));
+            return newSprite;
+        }
+
         public AnimatedSprite CreateFireSprite()
         {
             Rectangle[] frames = new Rectangle[1]
@@ -331,7 +427,7 @@ namespace LegendOfZelda
                 new Rectangle(191, 185, 16, 16)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame / slowAnimateFactor, scale);
             newSprite.AddEffect(new MirrorAnimateEffect(newSprite));
             return newSprite;
         }

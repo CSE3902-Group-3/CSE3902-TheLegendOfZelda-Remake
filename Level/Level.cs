@@ -7,10 +7,8 @@ namespace LegendOfZelda
 {
     internal class Level
     {
-        private RoomList RoomList;
-        public List<IUpdateable> LevelUpdateableList { get; set; }
-        public List<IDrawable> LevelDrawableList { get; set; }
-        public int CurrentRoom;
+        private List<List<IUpdateable>> RoomListUpdateables;
+        private List<List<IDrawable>> RoomListDrawables;
         private BlockLamda BlockLamda = BlockLamda.GetInstance();
         private ItemLamda ItemLamda = ItemLamda.GetInstance();
         private EnemyLamda EnemyLamda = EnemyLamda.GetInstance();
@@ -21,7 +19,16 @@ namespace LegendOfZelda
             {
                 string filepath = Path.Combine(Environment.CurrentDirectory, "..", "..", "..", "Level\\Levels\\" + levelFileName);
                 string jsonText = File.ReadAllText(filepath);
-                RoomList = JsonSerializer.Deserialize<RoomList>(jsonText);
+                RoomList RoomList = JsonSerializer.Deserialize<RoomList>(jsonText);
+
+                for (int i = 0; i < RoomList.Rooms.Count; i++)
+                {
+                    foreach (MapElement mapElement in RoomList.Rooms[i].MapElements)
+                    {
+                        ProcessMapElement(mapElement);
+                    }
+                    RoomListUpdateables = Game1.getInstance().
+                }
             } 
             catch (Exception ex)
             {
