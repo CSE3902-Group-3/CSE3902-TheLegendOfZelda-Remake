@@ -23,6 +23,7 @@ namespace LegendOfZelda
 
         public void ChangeState(IState newState)
         {
+            if (LinkUtilities.IsAttackingStateWithIncompleteAnimation(this.CurrentState)) return;
             // only change if states are different
             if (CurrentState != null && (newState.GetType() == CurrentState.GetType())) return;
 

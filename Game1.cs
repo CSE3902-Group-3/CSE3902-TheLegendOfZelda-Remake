@@ -8,7 +8,7 @@ using LegendOfZelda;
 
 namespace LegendOfZelda
 {
-    public enum Direction { down, right, up, left };
+    public enum Direction { down, right, up, left, upLeft, upRight, downLeft, downRight };
     public class Game1 : Game
     {
         /* Graphics */
@@ -79,13 +79,15 @@ namespace LegendOfZelda
             //blockCycler = new BlockCycler(new Vector2(300, 200));
             //enemyCycler = new EnemyCycler(new Vector2(500, 500));
             //itemCycler = new ItemScroll(new Vector2(800, 300));
-            //Uncomment the following line for testing
             //new AnimationTester();
 
             new CollisionDemo();
             // Level 1
-            //Level level = new Level("level1.json");
-            //level.NavigateToRoom(0);
+            Level level = new Level("level1.json");
+            level.NavigateToRoom(0);
+
+            new CollisionDemo();
+            new ProjectileTest();
 
             controller = new PlayerController((Link)link);
         }
