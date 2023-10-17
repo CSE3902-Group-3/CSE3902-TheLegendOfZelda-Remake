@@ -83,7 +83,7 @@ namespace LegendOfZelda
             //new AnimationTester();
 
             // Level 1
-            Level level = new Level("level1.json");
+            Level level = new Level(LevelParser.Parse("level1.json"));
             level.NavigateToRoom(0);
 
             controller = new PlayerController((Link)link);
