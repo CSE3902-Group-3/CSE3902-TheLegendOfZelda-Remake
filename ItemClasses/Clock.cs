@@ -45,7 +45,7 @@ namespace LegendOfZelda
             {
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
 
-                if (collidedWith == CollisionLayer.OuterWall)
+                if (collidedWith == CollisionLayer.Player)
                 {
                     Collect();
                 }
