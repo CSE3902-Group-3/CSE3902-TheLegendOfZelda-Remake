@@ -70,16 +70,16 @@ namespace LegendOfZelda
         }
         public static void Update(GameTime gameTime)
         {
-            foreach (IUpdateable updateable in RoomListUpdateables[CurrentRoom]) 
+            for (int i = CurrentRoomUpdateables.Count - 1; i >= 0; i--)
             {
-                updateable.Update(gameTime);
+                CurrentRoomUpdateables[i].Update(gameTime);
             }
         }
         public static void Draw()
         {
-            foreach (IDrawable drawable in RoomListDrawables[CurrentRoom])
+            for (int i = 0; i < CurrentRoomDrawables.Count; i++)
             {
-                drawable.Draw();
+                CurrentRoomDrawables[i].Draw();
             }
         }
         public static bool RegisterDrawable(IDrawable drawable)

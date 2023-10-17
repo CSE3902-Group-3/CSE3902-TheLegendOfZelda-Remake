@@ -16,6 +16,10 @@ namespace LegendOfZelda
         private static int XOffset = 128; // x position starts at the edge of the wall
         private static int YOffset = 448; // y position starts at top menu height + edge of the wall, i.e. 320 + 128
         private static int Scale = 64; // size of a block
+        private static Vector2 NorthWestCorner = new Vector2(128, 448);
+        private static Vector2 NorthEastCorner = new Vector2(896, 448);
+        private static Vector2 SouthWestCorner = new Vector2(128, 896);
+        private static Vector2 SouthEastCorner = new Vector2(896, 896);
         private static Vector2 NorthDoorPosition = new Vector2(448, 320);
         private static Vector2 EastDoorPosition = new Vector2(896, 608);
         private static Vector2 SouthDoorPosition = new Vector2(448, 896);
@@ -217,6 +221,14 @@ namespace LegendOfZelda
         {
             Block block = new Block(SpriteFactory.CreateWallExteriorSprite(), new Vector2(0, 320));
             block.enabled = true;
+            new RectCollider(new Rectangle((int)NorthWestCorner.X, (int)NorthWestCorner.Y, 320, -1), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)NorthWestCorner.X, (int)NorthWestCorner.Y, -1, 160), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)NorthEastCorner.X, (int)NorthEastCorner.Y, -320, 1), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)NorthEastCorner.X, (int)NorthEastCorner.Y, 1, 160), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)SouthWestCorner.X, (int)SouthWestCorner.Y, 320, 1), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)SouthWestCorner.X, (int)SouthWestCorner.Y, -1, -160), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)SouthEastCorner.X, (int)SouthEastCorner.Y, -320, -1), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)SouthEastCorner.X, (int)SouthEastCorner.Y, 1, -160), CollisionLayer.OuterWall, block);
         }
     }
 }

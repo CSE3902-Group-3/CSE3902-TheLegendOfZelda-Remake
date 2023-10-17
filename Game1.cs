@@ -72,13 +72,12 @@ namespace LegendOfZelda
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            spriteFactory.LoadTextures();
 
             // Level 1
             LevelMaster = LevelMaster.GetInstance();
             LevelMaster.StartLevel("level1.json");
             LevelMaster.NavigateToRoom(0);
-
-            spriteFactory.LoadTextures();
 
             link = new Link(this);
             //blockCycler = new BlockCycler(new Vector2(300, 200));

@@ -5,7 +5,7 @@
             "AdjacentRooms": [
                 {
                     "RoomNumber": 1,
-                    "Direction": "East"
+                    "Direction": "West"
                 }
             ],
             "MapElements": [
@@ -17,7 +17,7 @@
                 },
                 {
                     "ElementType": "Block",
-                    "ElementValue": 9,
+                    "ElementValue": 13,
                     "XLocation": 0,
                     "YLocation": 0
                 },
@@ -29,13 +29,13 @@
                 },
                 {
                     "ElementType": "Block",
-                    "ElementValue": 11,
+                    "ElementValue": 15,
                     "XLocation": 0,
                     "YLocation": 0
                 },
                 {
                     "ElementType": "Block",
-                    "ElementValue": 12,
+                    "ElementValue": 16,
                     "XLocation": 0,
                     "YLocation": 0
                 },
@@ -542,30 +542,6 @@
                     "ElementValue": 0,
                     "XLocation": 11,
                     "YLocation": 6
-                },
-                {
-                    "ElementType": "Item",
-                    "ElementValue": 10,
-                    "XLocation": 640,
-                    "YLocation": 832
-                },
-                {
-                    "ElementType": "Enemy",
-                    "ElementValue": 10,
-                    "XLocation": 192,
-                    "YLocation": 512
-                },
-                {
-                    "ElementType": "Enemy",
-                    "ElementValue": 10,
-                    "XLocation": 320,
-                    "YLocation": 576
-                },
-                {
-                    "ElementType": "Enemy",
-                    "ElementValue": 10,
-                    "XLocation": 192,
-                    "YLocation": 768
                 }
             ]
         }
