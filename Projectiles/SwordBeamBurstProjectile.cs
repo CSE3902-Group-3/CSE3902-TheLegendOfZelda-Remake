@@ -31,7 +31,7 @@ namespace LegendOfZelda.Projectiles
         private RectCollider collider;
 
         private Timer timer;
-        private const double delay = 1;
+        private const double delay = .5;
         public SwordBeamBurstProjectile(Vector2 position, Direction direction)
         {
             game = Game1.getInstance();
