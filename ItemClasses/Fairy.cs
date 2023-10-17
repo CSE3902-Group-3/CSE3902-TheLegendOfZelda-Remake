@@ -24,8 +24,8 @@ namespace LegendOfZelda
             position = pos;
             game = Game1.getInstance();
             ViewportSize = new Vector2(game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height);
-            collider.Pos = position;
             collider = new RectCollider(new Rectangle((int)position.X, (int)position.Y, 8 * scale, 16 * scale), CollisionLayer.Item, this);
+            collider.Pos = pos;
         }
 
         public void Show()

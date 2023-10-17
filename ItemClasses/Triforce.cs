@@ -17,8 +17,8 @@ namespace LegendOfZelda
         {
             triforce = SpriteFactory.getInstance().CreateTriforcePieceSprite();
             position = pos;
-            collider.Pos = position;
-            collider = new RectCollider(new Rectangle((int)position.X, (int)position.Y, 12 * scale, 16 * scale), CollisionLayer.Item, this);
+            collider = new RectCollider(new Rectangle((int)position.X, (int)position.Y, 8 * scale, 16 * scale), CollisionLayer.Item, this);
+            collider.Pos = pos;
         }
 
         public void Show()
