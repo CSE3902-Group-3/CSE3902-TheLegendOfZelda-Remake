@@ -79,49 +79,7 @@ namespace LegendOfZelda
 
         public void OnCollision(List<CollisionInfo> collisions)
         {
-            foreach (CollisionInfo collision in collisions)
-            {
-                /*
-                 * You will likely need to sort out the collisions by the Layer of the collidable you collided with
-                 */
-                if (collision.CollidedWith.Layer == CollisionLayer.OuterWall || collision.CollidedWith.Layer == CollisionLayer.Wall)
-                {
-                    HandleCollisionWithWall(collision.EstimatedDirection, collision.OverlapRectangle);
-                }
-                else
-                {
-                    HandleCollisionWithEntity();
-                }
-            }
-        }
-
-        private void HandleCollisionWithWall(Direction direction, Rectangle overlapRectangle)
-        {
-            Vector2 newPosition = this.sprite.pos;
-
-            switch (direction)
-            {
-                case Direction.up:
-                    newPosition.Y += overlapRectangle.Height;
-                    break;
-                case Direction.down:
-                    newPosition.Y -= overlapRectangle.Height;
-                    break;
-                case Direction.right:
-                    newPosition.X -= overlapRectangle.Width;
-                    break;
-                case Direction.left:
-                    newPosition.X += overlapRectangle.Width;
-                    break;
-            }
-
-            LinkUtilities.UpdatePositions(this, newPosition);
-            this.velocity = 0;
-        }
-
-        private void HandleCollisionWithEntity()
-        {
-            //do nothing for now
+            LinkCollisionHandler.OnCollision(collisions);
         }
 
     }

@@ -20,9 +20,9 @@ namespace LegendOfZelda
         public void Execute()
         {
             link.Reset(); 
-            enemyCycler.Reset();
-            itemCycler.Reset();
-            blockCycler.Reset();
+            //enemyCycler.Reset();
+            //itemCycler.Reset();
+            //blockCycler.Reset();
         }
 
     }
