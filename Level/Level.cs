@@ -19,7 +19,7 @@ namespace LegendOfZelda
             // Read JSON file and store information in RoomList
             try
             {
-                string filepath = Path.Combine(Environment.CurrentDirectory, "..", "..", "..", "Level\\Levels\\" + levelFileName);
+                string filepath = Path.Combine(Environment.CurrentDirectory, "..", "..", "..", "Level/Levels/" + levelFileName);
                 string jsonText = File.ReadAllText(filepath);
                 RoomList = JsonSerializer.Deserialize<RoomList>(jsonText);
             } 
