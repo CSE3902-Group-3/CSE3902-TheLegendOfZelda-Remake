@@ -22,5 +22,15 @@ namespace LegendOfZelda
             link.stateMachine.position = newPositon;
             link.collider.Pos = newPositon;
         }
+
+        public static bool IsAttackingStateWithIncompleteAnimation(IState state)
+        {
+            if (state is AttackingUpLinkState || state is AttackingDownLinkState ||
+                state is AttackingLeftLinkState || state is AttackingRightLinkState)
+            {
+                return !((AnimatedSprite)Game1.getInstance().link.sprite).complete;
+            }
+            return false;
+        }
     }
 }
