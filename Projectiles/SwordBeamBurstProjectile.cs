@@ -66,7 +66,7 @@ namespace LegendOfZelda.Projectiles
             int scale = spriteFactory.scale;
             collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, 8 * scale, 10 * scale), CollisionLayer.PlayerWeapon, this);
 
-            game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
 
             timer = new Timer(delay, Destroy);
         }
@@ -79,7 +79,7 @@ namespace LegendOfZelda.Projectiles
         public void Destroy()
         {
             sprite.UnregisterSprite();
-            game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

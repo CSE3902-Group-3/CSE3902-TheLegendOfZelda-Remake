@@ -107,11 +107,6 @@ namespace LegendOfZelda
             {
                 position -= Direction * 2;
             }
-
-            if (position.X >= ViewportSize.X || position.Y >= ViewportSize.Y)
-            {
-                ChangeDirection();
-            }
             fairy.UpdatePos(position);
         }
 
