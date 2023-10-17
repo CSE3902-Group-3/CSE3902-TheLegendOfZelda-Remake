@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-    public class LinkCollisionWithEntity
+    public class LinkCollisionWithEnemyWeapon
     {
-        public static void HandleCollisionWithEnemy(CollisionInfo collision)
+        public static void HandleCollisionWithEnemyWeapon(CollisionInfo collision)
         {
-            IEnemy enemyCollidedWith = null;
+            IEnemyProjectile enemyProjectileCollidedWith = collision.CollidedWith.Collidable as IEnemyProjectile;
 
             var enemyDamageMap = new Dictionary<Type, float>
             {
@@ -16,7 +16,7 @@ namespace LegendOfZelda
                 { typeof(FireProjectile), 1.0f }  // dodongo?
             };
 
-            Type enemyType = enemyCollidedWith.GetType();
+            Type enemyType = enemyProjectileCollidedWith.GetType();
             if (enemyDamageMap.ContainsKey(enemyType))
             {
                 float damage = enemyDamageMap[enemyType];

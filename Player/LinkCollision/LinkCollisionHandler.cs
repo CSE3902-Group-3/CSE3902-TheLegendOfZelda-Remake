@@ -17,11 +17,11 @@ namespace LegendOfZelda
                 }
                 else if (collision.CollidedWith.Layer == CollisionLayer.Enemy)
                 {
-                    LinkCollisionWithEntity.HandleCollisionWithEnemy(collision);
+                    LinkCollisionWithEnemy.HandleCollisionWithEnemy(collision);
                 }
                 else if (collision.CollidedWith.Layer == CollisionLayer.EnemyWeapon)
                 {
-                    LinkCollisionWithEnemy.HandleCollisionWithEnemy(collision);
+                    LinkCollisionWithEnemyWeapon.HandleCollisionWithEnemyWeapon(collision);
                 }
                 else if (collision.CollidedWith.Layer == CollisionLayer.Item)
                 {

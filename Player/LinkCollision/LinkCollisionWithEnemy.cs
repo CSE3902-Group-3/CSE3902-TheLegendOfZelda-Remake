@@ -8,7 +8,7 @@ namespace LegendOfZelda
     {
         public static void HandleCollisionWithEnemy(CollisionInfo collision)
         {
-            IEnemy enemyCollidedWith = null;
+            IEnemy enemyCollidedWith = collision.CollidedWith.Collidable as IEnemy;
 
             var enemyDamageMap = new Dictionary<Type, float>
             {
