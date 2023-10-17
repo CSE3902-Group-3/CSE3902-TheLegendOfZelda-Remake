@@ -5,7 +5,6 @@ namespace LegendOfZelda
 {
     public class Aquamentus : IEnemy
     {
-        private readonly Game1 Game;
         private readonly AnimatedSprite AquamentusSprite;
         private int Health { get; set; } = 1;
         private Vector2 Position;
@@ -16,13 +15,12 @@ namespace LegendOfZelda
 
         public Aquamentus(Vector2 pos)
         {
-            Game = Game1.getInstance();
             Position = pos;
             AquamentusSprite = SpriteFactory.getInstance().CreateAquamentusSprite();
         }
         public void Spawn ()
         {
-            Game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
             AquamentusSprite.RegisterSprite();
             AquamentusSprite.UpdatePos(Position);
         }
@@ -68,7 +66,7 @@ namespace LegendOfZelda
         public void Die()
         {
             AquamentusSprite.UnregisterSprite();
-            Game1.getInstance().RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
         public void OnCollision(List<CollisionInfo> collisions)
         {

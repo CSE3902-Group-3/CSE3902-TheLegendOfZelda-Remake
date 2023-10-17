@@ -12,7 +12,6 @@ namespace LegendOfZelda
         private Vector2 originalPosition;
         private bool moveUp;
         private bool moveRight;
-        private Game1 game;
         private Vector2 Direction;
         public Vector2 ViewportSize;
         private double LastSwitch = 0;
@@ -23,14 +22,11 @@ namespace LegendOfZelda
             fairy = spriteFactory.CreateFairySprite();
             position = pos;
             originalPosition = pos;
-            game = Game1.getInstance();
-            ViewportSize = new Vector2(game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height);
-
         }
 
         public void Show()
         {
-            game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
             fairy.RegisterSprite();
             fairy.UpdatePos(position);
         }
@@ -45,7 +41,7 @@ namespace LegendOfZelda
         public void Remove()
         {
             fairy.UnregisterSprite();
-            game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
 
         public IItem Collect()

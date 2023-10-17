@@ -9,7 +9,6 @@ namespace LegendOfZelda
     public class ArrowProjectile : IPlayerProjectile
     {
         protected AnimatedSprite sprite;
-        protected Game1 game;
         protected SpriteFactory spriteFactory;
 
         private const float speed = 6;
@@ -33,7 +32,6 @@ namespace LegendOfZelda
 
         public ArrowProjectile(Vector2 position, Direction direction)
         {
-            game = Game1.getInstance();
             spriteFactory = SpriteFactory.getInstance();
             _pos = position;
 
@@ -46,7 +44,7 @@ namespace LegendOfZelda
 
             sprite.UpdatePos(position);
 
-            game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
         }
 
         protected virtual void CreateSpriteAndCollider(Direction direction, int scale)
@@ -93,7 +91,7 @@ namespace LegendOfZelda
             }
 
             sprite.UnregisterSprite();
-            game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
             collider.Active = false;
         }
 

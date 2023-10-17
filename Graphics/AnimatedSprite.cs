@@ -187,12 +187,12 @@ namespace LegendOfZelda
 
         public void RegisterSprite()
         {
-            game1.RegisterDrawable(this);
+            LevelMaster.RegisterDrawable(this);
         }
 
         public void UnregisterSprite()
         {
-            game1.RemoveDrawable(this);
+            LevelMaster.RemoveDrawable(this);
         }
     }  
 }

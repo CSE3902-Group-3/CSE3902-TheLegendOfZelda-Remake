@@ -13,8 +13,8 @@ namespace LegendOfZelda
         private static Level CurrentLevel;
         private static RoomList RoomList { get; set; }
         public static int CurrentRoom { get; set; }
-        private static List<List<IUpdateable>> RoomListUpdateables { get; set; }
-        private static List<List<IDrawable>> RoomListDrawables { get; set; }
+        public static List<List<IUpdateable>> RoomListUpdateables { get; set; }
+        public static List<List<IDrawable>> RoomListDrawables { get; set; }
         public static List<IUpdateable> CurrentRoomUpdateables { get; set; }
         public static List<IDrawable> CurrentRoomDrawables { get; set; }
         private LevelMaster() 
@@ -51,11 +51,6 @@ namespace LegendOfZelda
             {
                 CurrentLevel = new Level(filename);
                 RoomList = CurrentLevel.RoomList;
-                for (int i = 0; i < RoomList.Rooms.Count; i++)
-                {
-                    RoomListUpdateables.Add(new List<IUpdateable>());
-                    RoomListDrawables.Add(new List<IDrawable>());
-                }
                 return true;
             }
         }

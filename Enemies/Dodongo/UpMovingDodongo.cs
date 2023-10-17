@@ -6,16 +6,14 @@ namespace LegendOfZelda
 {
     internal class UpMovingDodongo : IEnemy
     {
-        private readonly Game1 Game;
         private readonly DodongoState Dodongo;
         private Vector2 Position;
         private AnimatedSprite Sprite;
         private Vector2 Direction;
         private int MoveMagnitude = 5;
-        private Boolean Injured = false;
+        private bool Injured = false;
         public UpMovingDodongo(DodongoState dodongo, Vector2 pos)
         {
-            Game = Game1.getInstance();
             Dodongo = dodongo;
             Direction = new Vector2(0, -MoveMagnitude);
             Position = pos;
@@ -64,7 +62,7 @@ namespace LegendOfZelda
         public void Die()
         {
             Sprite.UnregisterSprite();
-            Game1.getInstance().RemoveUpdateable(Dodongo);
+            LevelMaster.RemoveUpdateable(Dodongo);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

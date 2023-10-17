@@ -6,7 +6,6 @@ namespace LegendOfZelda
 {
     public class SimpleEnemyStateMachine : IEnemy
     {
-        private readonly Game1 Game;
         public AnimatedSprite Sprite { get; set; }
         public enum Speed { slow, medium, fast };
         public Speed EnemySpeed { get; set; }
@@ -15,17 +14,14 @@ namespace LegendOfZelda
         private Vector2 Position;
         private RectCollider Collider;
         private Vector2 Direction;
-        public Vector2 ViewportSize;
         private double LastSwitch = 0;
         public bool IsFlying { get; set; }
 
         public SimpleEnemyStateMachine(Vector2 pos)
         {
-            Game = Game1.getInstance();
             Position = pos;
             Collider.Pos = pos;
             int scale = SpriteFactory.getInstance().scale;
-            ViewportSize = new Vector2(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
 
             switch (EnemySpeed)
             {
@@ -79,25 +75,20 @@ namespace LegendOfZelda
             {
                 Position -= Direction;
             }
-
-            if (Position.X >= ViewportSize.X || Position.Y >= ViewportSize.Y)
-            {
-                ChangeDirection();
-            }
             Sprite.UpdatePos(Position);
         }
 
         public void Die()
         {
             Sprite.UnregisterSprite();
-            Game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
         }
 
         public void Spawn()
         {
             new EnemySpawnEffect(Position);
-            Game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
             Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
         }

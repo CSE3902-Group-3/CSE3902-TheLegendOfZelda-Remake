@@ -10,7 +10,7 @@ namespace LegendOfZelda
         private Vector2 Direction;
         public AquamentusBall(Vector2 pos, Vector2 dir)
         {
-            Game1.getInstance().RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
             AquamentusBallSprite = SpriteFactory.getInstance().CreateAquamentusBallSprite();
             Position = pos;
             Direction = dir;
@@ -24,8 +24,8 @@ namespace LegendOfZelda
 
         public void Destroy()
         {
-            Game1.getInstance().RemoveUpdateable(this);
-            Game1.getInstance().RemoveDrawable(AquamentusBallSprite);
+            LevelMaster.RemoveUpdateable(this);
+            LevelMaster.RemoveDrawable(AquamentusBallSprite);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

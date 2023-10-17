@@ -9,7 +9,6 @@ namespace LegendOfZelda
     public class FireProjectile : IPlayerProjectile
     {
         private AnimatedSprite sprite;
-        private Game1 game;
         private SpriteFactory spriteFactory;
         private const float speed = 4;
 
@@ -26,7 +25,6 @@ namespace LegendOfZelda
         }
 
         private Vector2 dir;
-        private Vector2 viewportSize;
         private bool moving = true;
         private const double moveDelay = 2;
         private const double haltDelay = 1;
@@ -34,10 +32,8 @@ namespace LegendOfZelda
         private RectCollider collider;
         public FireProjectile(Vector2 position, Direction direction)
         {
-            game = Game1.getInstance();
             SpriteFactory spriteFactory = SpriteFactory.getInstance();
             _pos = position;
-            viewportSize = new Vector2(game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height);
 
             switch (direction)
             {
@@ -63,7 +59,7 @@ namespace LegendOfZelda
 
             timer = new Timer(moveDelay, StopMoving);
 
-            game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
         }
 
         //Could benefit from a state machine, but it would be overkill
@@ -79,7 +75,7 @@ namespace LegendOfZelda
         {
             sprite.UnregisterSprite();
             collider.Active = false;
-            game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

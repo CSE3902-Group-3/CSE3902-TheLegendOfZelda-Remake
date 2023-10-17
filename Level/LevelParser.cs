@@ -15,7 +15,6 @@ namespace LegendOfZelda
         private static BlockLamda BlockLamda = BlockLamda.GetInstance();
         private static ItemLamda ItemLamda = ItemLamda.GetInstance();
         private static EnemyLamda EnemyLamda = EnemyLamda.GetInstance();
-        private static LevelMaster LevelMaster = LevelMaster.GetInstance();
 
         public RoomList RoomList { get; }
         private static void ProcessMapElement(MapElement mapElement)
@@ -47,6 +46,8 @@ namespace LegendOfZelda
                 for (int i = 0; i < RoomList.Rooms.Count; i++)
                 {
                     LevelMaster.CurrentRoom = i;
+                    LevelMaster.RoomListUpdateables.Add(new List<IUpdateable>());
+                    LevelMaster.RoomListDrawables.Add(new List<IDrawable>());
                     foreach (MapElement mapElement in RoomList.Rooms[i].MapElements)
                     {
                         ProcessMapElement(mapElement);
