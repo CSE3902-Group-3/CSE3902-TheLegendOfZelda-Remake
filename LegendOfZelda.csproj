@@ -37,6 +37,7 @@
   <ItemGroup>
     <Folder Include="LegendOfZelda\obj\Release\" />
     <Folder Include="ItemClasses\" />
+    <Folder Include="StateMachine\LinkStates\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Level\Levels\level1.json">

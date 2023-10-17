@@ -1,3 +1,4 @@
+using LegendOfZelda.Projectiles;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,6 @@ namespace LegendOfZelda
 
         public void spawn()
         {
-            new BombProjectile(pos);
             switch (i)
             {
                 case 0:
@@ -41,17 +41,21 @@ namespace LegendOfZelda
                     new BoomerangProjectile(pos, new Vector2(-1, -1), Game1.getInstance().link);
                     break;
                 case 6:
+                    new SwordBeam(pos, Direction.up);
                     //new FireProjectile(pos, Direction.up);
-                    new BoomerangProjectile(pos, new Vector2(-1, 0), Game1.getInstance().link);
+                    //new BoomerangProjectile(pos, new Vector2(-1, 0), Game1.getInstance().link);
                     break;
                 case 7:
+                    new SwordBeam(pos, Direction.left);
                     //new FireProjectile(pos, Direction.right);
-                    new BoomerangProjectile(pos, new Vector2(-1, 1), Game1.getInstance().link);
+                    //new BoomerangProjectile(pos, new Vector2(-1, 1), Game1.getInstance().link);
                     break;
                 case 8:
+                    new SwordBeam(pos, Direction.down);
                     //new FireProjectile(pos, Direction.down);
                     break;
                 case 9:
+                    new SwordBeam(pos, Direction.right);
                     //new FireProjectile(pos, Direction.left);
                     break;
             }
