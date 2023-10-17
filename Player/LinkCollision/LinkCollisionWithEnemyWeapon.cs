@@ -1,16 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LegendOfZelda.Player.LinkCollision
+namespace LegendOfZelda
 {
-    public class LinkCollisionWithEnemyWeapon
+    public class LinkCollisionWithEntity
     {
-        public static void HandleCollisionWithEnemy()
+        public static void HandleCollisionWithEnemy(CollisionInfo collision)
         {
-            ((Link)Game1.getInstance().link).TakeDamage();
+            IEnemy enemyCollidedWith = null;
+
+            var enemyDamageMap = new Dictionary<Type, float>
+            {
+                { typeof(AquamentusBall), 0.5f },
+                { typeof(GoriyaBoomerang), 0.5f },
+                { typeof(FireProjectile), 1.0f }  // dodongo?
+            };
+
+            Type enemyType = enemyCollidedWith.GetType();
+            if (enemyDamageMap.ContainsKey(enemyType))
+            {
+                float damage = enemyDamageMap[enemyType];
+                ((Link)Game1.getInstance().link).TakeDamage(damage);
+            }
+
+            ((Link)Game1.getInstance().link).StopTakingDamage();
         }
     }
 }

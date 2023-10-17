@@ -17,8 +17,8 @@ namespace LegendOfZelda
 
         public LinkStateMachine stateMachine { get; private set; }
 
-        private int HP { get; set; } = 6;
-        private int maxHP { get; set; } = 6;
+        private float HP { get; set; } = 6;
+        private float maxHP { get; set; } = 6;
 
         public int velocity { get; set; } = 5; // link moves at 1pixel per frame in original NES game, scaled up to 1080p is roughly 5pixels per frame
 
@@ -43,12 +43,17 @@ namespace LegendOfZelda
             game.RegisterUpdateable(this);
         }
 
-        public void TakeDamage()
+        public void TakeDamage(float damage)
         {
             this.stateMachine.isTakingDamage = true;
+            this.HP -= damage;
+            if (this.HP <= 0)
+            {
+                this.Die();
+            }
         }
 
-        public void Heal()
+        public void StopTakingDamage()
         {
             this.stateMachine.isTakingDamage = false;
         }
@@ -70,6 +75,12 @@ namespace LegendOfZelda
             this.stateMachine.position = new Vector2(0, 0);
             this.stateMachine.ChangeState(new WalkRightLinkState());
             this.stateMachine.ChangeState(new IdleLinkState());
+        }
+
+        public void Die()
+        {
+            // just call Reset for now
+            this.Reset();
         }
 
         private bool ChangedDirection()

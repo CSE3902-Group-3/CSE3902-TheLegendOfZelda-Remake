@@ -17,15 +17,15 @@ namespace LegendOfZelda
                 }
                 else if (collision.CollidedWith.Layer == CollisionLayer.Enemy)
                 {
-                    LinkCollisionWithEntity.HandleCollisionWithEnemy();
+                    LinkCollisionWithEntity.HandleCollisionWithEnemy(collision);
                 }
                 else if (collision.CollidedWith.Layer == CollisionLayer.EnemyWeapon)
                 {
-
+                    LinkCollisionWithEnemy.HandleCollisionWithEnemy(collision);
                 }
                 else if (collision.CollidedWith.Layer == CollisionLayer.Item)
                 {
-                    LinkCollisionWithItem.HandleCollisionWithItem(collision.CollidedWith);
+                    LinkCollisionWithItem.HandleCollisionWithItem(collision);
                 }
                 // there's also a PlayerWeapon layer, but i don't think we need it unless we add a second player? correct me if i'm wrong
             }
