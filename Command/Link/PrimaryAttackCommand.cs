@@ -14,7 +14,7 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            switch (player.currentDirection)
+            switch (player.stateMachine.currentDirection)
             {
                 case Direction.left:
                     player.stateMachine.ChangeState(new AttackingLeftLinkState());
