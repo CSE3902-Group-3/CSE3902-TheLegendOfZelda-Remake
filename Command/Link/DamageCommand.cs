@@ -19,11 +19,11 @@ namespace LegendOfZelda
             if (active)
             {
                 active = false;
-                ((Link)player).TakeDamage();
+                ((Link)player).TakeDamage(0.0f);
             } else
             {
                 active = true;
-                ((Link)player).Heal();
+                ((Link)player).StopTakingDamage();
             }
         }
     }
