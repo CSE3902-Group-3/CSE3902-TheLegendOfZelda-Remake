@@ -129,6 +129,12 @@ namespace LegendOfZelda
                 {
                     ChangeDirection();
                 }
+
+                //The part below only meet requirement for sprint3 and should be refactored in sprint4
+                if (collidedWith == CollisionLayer.Player)
+                {
+                    Collect();
+                }
             }
         }
     }
