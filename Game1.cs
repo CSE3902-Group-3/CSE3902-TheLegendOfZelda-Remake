@@ -73,6 +73,11 @@ namespace LegendOfZelda
 
             // TODO: use this.Content to load your game content here
 
+            // Level 1
+            LevelMaster = LevelMaster.GetInstance();
+            LevelMaster.StartLevel("level1.json");
+            LevelMaster.NavigateToRoom(0);
+
             spriteFactory.LoadTextures();
 
             link = new Link(this);
@@ -81,9 +86,6 @@ namespace LegendOfZelda
             //itemCycler = new ItemScroll(new Vector2(800, 300));
             //Uncomment the following line for testing
             //new AnimationTester();
-
-            // Level 1
-            LevelMaster = LevelMaster.GetInstance();
 
             controller = new PlayerController((Link)link);
         }

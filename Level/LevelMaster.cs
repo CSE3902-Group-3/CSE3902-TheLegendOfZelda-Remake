@@ -21,6 +21,7 @@ namespace LegendOfZelda
         {
             RoomListUpdateables = new List<List<IUpdateable>>();
             RoomListDrawables = new List<List<IDrawable>>();
+            CurrentRoom = 0;
         }
         public static LevelMaster GetInstance()
         {
@@ -45,13 +46,13 @@ namespace LegendOfZelda
         {
             if (CurrentLevel == null)
             {
-                return false;
-            } 
-            else
-            {
                 CurrentLevel = new Level(filename);
                 RoomList = CurrentLevel.RoomList;
                 return true;
+            } 
+            else
+            {
+                return false;
             }
         }
         public bool EndLevel()
