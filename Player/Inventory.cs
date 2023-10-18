@@ -1,43 +1,100 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
 	public class Inventory
 	{
-        private Dictionary<IItem, int> inventory = new Dictionary<IItem, int>();
+        private Dictionary<IItem, int> inventory;
+
+        public Inventory()
+        {
+            /* All items in inventory will have a position of (0, 0),
+             * their position can be changed when being used.
+             */
+
+            /* Amount of rupee will always be displayed on top of screen 
+             * so initialize inventory with 0 rupee in dictionary
+             */
+            inventory = new Dictionary<IItem, int>
+            {
+                { new OneRupee(Vector2.Zero), 0 }
+            };
+        }
 
         public void AddItem(IItem item)
         {
-            if (inventory.ContainsKey(item))
+            IItem inventoryItem = item.GenerateInventoryItem();
+            if (inventory.ContainsKey(inventoryItem))
             {
-                inventory[item]++;
+                inventory[inventoryItem]++;
             }
             else
             {
-                inventory[item] = 1;
+                inventory.Add(inventoryItem, 1);
+            }
+            
+        }
+
+        // Return a boolean letting player know if item exists in inventory
+        public bool RemoveItem(IItem item)
+        {
+            bool contain = false;
+            IItem inventoryItem = item.GenerateInventoryItem();
+            if (inventory.ContainsKey(inventoryItem))
+            {
+                inventory[inventoryItem]--;
+                contain = true;
+                if (inventory[inventoryItem] <= 0)
+                {
+                    inventory.Remove(inventoryItem);
+                }
+            }
+
+            return contain;
+        }
+
+        /* Be sure to use this when adding rupee since there are two different kinds of rupee
+         * and the way they are treated is a special case.
+         */
+        public void AddRupee(IItem rupee)
+        {
+            IItem inventoryRupee = rupee.GenerateInventoryItem();
+            if (rupee is FiveRupee)
+            {
+                inventory[inventoryRupee] += 5;
+            }
+            if (rupee is OneRupee)
+            {
+                inventory[inventoryRupee]++;
             }
         }
 
-        public void RemoveItem(IItem item)
+        public bool SpendRupee(int price)
         {
-            if (inventory.ContainsKey(item))
+            bool afford = true;
+            IItem inventoryRupee = new OneRupee(Vector2.Zero);
+            int inPocket = inventory[inventoryRupee];
+            if (inPocket < price)
             {
-                inventory[item]--;
+                afford = false;
+            }
+            if (afford)
+            {
+                inventory[inventoryRupee] -= price;
+            }
 
-            }
-            else if (inventory[item] <= 0)
-            {
-                inventory.Remove(item);
-            }
+            return afford;
         }
 
         public int GetQuantity(IItem item)
         {
+            IItem inventoryItem = item.GenerateInventoryItem();
             int itemAmount = 0;
-            if (inventory.ContainsKey(item))
+            if (inventory.ContainsKey(inventoryItem))
             {
-                itemAmount = inventory[item];
+                itemAmount = inventory[inventoryItem];
             }
 
             return itemAmount;
