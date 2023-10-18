@@ -14,13 +14,7 @@ namespace LegendOfZelda
              * their position can be changed when being used.
              */
 
-            /* Amount of rupee will always be displayed on top of screen 
-             * so initialize inventory with 0 rupee in dictionary
-             */
-            inventory = new Dictionary<IItem, int>
-            {
-                { new OneRupee(Vector2.Zero), 0 }
-            };
+            inventory = new Dictionary<IItem, int>();
         }
 
         public void AddItem(IItem item)
