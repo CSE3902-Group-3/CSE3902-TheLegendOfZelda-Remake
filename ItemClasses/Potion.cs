@@ -35,6 +35,7 @@ namespace LegendOfZelda
         public IItem Collect()
         {
             potion.UnregisterSprite();
+            collider = null;
             return this;
         }
 

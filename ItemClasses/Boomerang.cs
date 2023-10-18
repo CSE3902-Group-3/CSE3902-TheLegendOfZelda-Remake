@@ -35,6 +35,7 @@ namespace LegendOfZelda
         public IItem Collect()
         {
             boomerang.UnregisterSprite();
+            collider = null;
             return this;
         }
 

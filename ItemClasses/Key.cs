@@ -35,6 +35,7 @@ namespace LegendOfZelda
         public IItem Collect()
         {
             key.UnregisterSprite();
+            collider = null;
             return this;
         }
 

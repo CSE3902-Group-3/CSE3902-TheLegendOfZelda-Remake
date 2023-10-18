@@ -35,6 +35,7 @@ namespace LegendOfZelda
         public IItem Collect()
         {
             heartContainer.UnregisterSprite();
+            collider = null;
             return this;
         }
 

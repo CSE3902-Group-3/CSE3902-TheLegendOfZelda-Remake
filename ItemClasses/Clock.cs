@@ -35,6 +35,7 @@ namespace LegendOfZelda
         public IItem Collect()
         {
             clock.UnregisterSprite();
+            collider = null;
             return this;
         }
 

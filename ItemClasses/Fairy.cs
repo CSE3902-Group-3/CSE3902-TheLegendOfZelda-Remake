@@ -51,6 +51,7 @@ namespace LegendOfZelda
         public IItem Collect()
         {
             fairy.UnregisterSprite();
+            collider = null;
             return this;
         }
 

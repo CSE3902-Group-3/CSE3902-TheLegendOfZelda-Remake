@@ -35,6 +35,7 @@ namespace LegendOfZelda
         public IItem Collect()
         {
             rupee.UnregisterSprite();
+            collider = null;
             return this;
         }
 
