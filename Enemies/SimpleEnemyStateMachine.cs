@@ -20,8 +20,8 @@ namespace LegendOfZelda
         public SimpleEnemyStateMachine(Vector2 pos)
         {
             Position = pos;
-            Collider.Pos = pos;
             int scale = SpriteFactory.getInstance().scale;
+            Collider = new RectCollider(new Rectangle((int)Position.X, (int)Position.Y, 16 * scale, 16 * scale), CollisionLayer.Enemy, this);
 
             switch (EnemySpeed)
             {
@@ -35,7 +35,6 @@ namespace LegendOfZelda
                     SpeedMultiplier = 3;
                     break;
             }
-            Collider = new RectCollider(new Rectangle((int)Position.X, (int)Position.Y, 16 * scale, 16 * scale), CollisionLayer.Enemy, this);
         }
         public void Attack()
         {

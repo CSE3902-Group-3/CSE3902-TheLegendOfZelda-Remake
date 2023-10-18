@@ -551,19 +551,19 @@
                 },
                 {
                     "ElementType": "Enemy",
-                    "ElementValue": 10,
+                    "ElementValue": 1,
                     "XLocation": 192,
                     "YLocation": 512
                 },
                 {
                     "ElementType": "Enemy",
-                    "ElementValue": 10,
+                    "ElementValue": 1,
                     "XLocation": 320,
                     "YLocation": 576
                 },
                 {
                     "ElementType": "Enemy",
-                    "ElementValue": 10,
+                    "ElementValue": 1,
                     "XLocation": 192,
                     "YLocation": 768
                 }
