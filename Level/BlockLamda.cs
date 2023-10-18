@@ -116,7 +116,7 @@ namespace LegendOfZelda
         }
         static void Brick(MapElement mapElement)
         {
-            Vector2 pos = new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation);
+            Vector2 pos = new Vector2(Scale * mapElement.XLocation, 320 + Scale * mapElement.YLocation);
             Block block = new Block(SpriteFactory.CreateBrickSprite(), pos);
             block.enabled = true;
             new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, Scale, Scale), CollisionLayer.Wall, block);
