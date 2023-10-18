@@ -45,6 +45,12 @@ namespace LegendOfZelda
             boomerang.UpdatePos(newPos);
         }
 
+        public IItem GenerateInventoryItem()
+        {
+            //All item in inventory will have a zero position
+            return new Arrow(Vector2.Zero);
+        }
+
         public void OnCollision(List<CollisionInfo> collisions)
         {
             //The body of OnCollision is to meet requirement of sprint3 and will be refactored in sprint4
