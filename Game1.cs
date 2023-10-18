@@ -21,6 +21,8 @@ namespace LegendOfZelda
 
         /* Controller */
         private IController controller;
+
+        /* Cylers */
         public BlockCycler blockCycler { get; private set; }
         public EnemyCycler enemyCycler { get; private set; }
         public ItemScroll itemCycler { get; private set; }
@@ -77,7 +79,7 @@ namespace LegendOfZelda
             // Level 1
             LevelMaster = LevelMaster.GetInstance();
             LevelMaster.StartLevel("level1.json");
-            LevelMaster.NavigateToRoom(5);
+            LevelMaster.NavigateToRoom(1);
 
             link = new Link();
             //blockCycler = new BlockCycler(new Vector2(300, 200));
