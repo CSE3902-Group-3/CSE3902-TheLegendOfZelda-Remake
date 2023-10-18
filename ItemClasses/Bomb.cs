@@ -39,6 +39,12 @@ namespace LegendOfZelda
             return this;
         }
 
+        public void Use(Vector2 newPos)
+        {
+            bomb.RegisterSprite();
+            bomb.UpdatePos(newPos);
+        }
+
         public void OnCollision(List<CollisionInfo> collisions)
         {
             //The body of OnCollision is to meet requirement of sprint3 and will be refactored in sprint4

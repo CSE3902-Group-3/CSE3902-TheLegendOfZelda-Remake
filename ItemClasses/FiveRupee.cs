@@ -15,7 +15,7 @@ namespace LegendOfZelda
 
         public FiveRupee(Vector2 pos)
         {
-            rupee = SpriteFactory.getInstance().CreateBlinkingRupeeSprite();
+            rupee = SpriteFactory.getInstance().CreateRupeeSprite();
             position = pos;
             collider = new RectCollider(new Rectangle((int)position.X, (int)position.Y, 8 * scale, 16 * scale), CollisionLayer.Item, this);
             collider.Pos = pos;
@@ -36,6 +36,12 @@ namespace LegendOfZelda
         {
             rupee.UnregisterSprite();
             return this;
+        }
+
+        public void Use(Vector2 newPos)
+        {
+            rupee.RegisterSprite();
+            rupee.UpdatePos(newPos);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

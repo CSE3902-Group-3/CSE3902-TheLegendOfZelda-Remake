@@ -54,6 +54,12 @@ namespace LegendOfZelda
             return this;
         }
 
+        public void Use(Vector2 newPos)
+        {
+            fairy.RegisterSprite();
+            fairy.UpdatePos(newPos);
+        }
+
         public void Update(GameTime gameTime)
         {
 
