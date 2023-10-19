@@ -119,5 +119,23 @@ namespace LegendOfZelda
 
             base.Draw(gameTime);
         }
+
+        // Helper method to draw the outline of a rectangle
+        public void DrawRectangleOutline(Rectangle rectangle, Color color)
+        {
+            Texture2D _texture;
+
+            _texture = new Texture2D(_graphics.GraphicsDevice, 1, 1);
+            _texture.SetData(new Color[] { Color.White });
+
+            _spriteBatch.Begin();
+
+            _spriteBatch.Draw(_texture, new Rectangle(rectangle.Left, rectangle.Top, rectangle.Width, 1), Color.White);
+            _spriteBatch.Draw(_texture, new Rectangle(rectangle.Right, rectangle.Top, 1, rectangle.Height), Color.White);
+            _spriteBatch.Draw(_texture, new Rectangle(rectangle.Left, rectangle.Bottom, rectangle.Width, 1), Color.White);
+            _spriteBatch.Draw(_texture, new Rectangle(rectangle.Left, rectangle.Top, 1, rectangle.Height), Color.White);
+            _spriteBatch.End();
+
+        }
     }
 }

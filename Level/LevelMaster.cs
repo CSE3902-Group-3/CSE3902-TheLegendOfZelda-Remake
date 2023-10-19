@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
-    internal class LevelMaster
+    public class LevelMaster
     {
         private static LevelMaster Instance;
         private static Level CurrentLevel;

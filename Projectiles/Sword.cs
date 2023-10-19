@@ -9,6 +9,8 @@ namespace LegendOfZelda
         public RectCollider collider;
         public Vector2 spawnPos;
 
+        private LevelMaster level;
+
         public Sword(Direction linkDirection, Vector2 linkPos)
         {
             // Set the spawn position based on Link's position and direction
@@ -17,7 +19,7 @@ namespace LegendOfZelda
             // Create the collider based on the direction
             CreateCollider(linkDirection);
 
-            Game1.getInstance().RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
         }
 
         private void CreateCollider(Direction direction)
@@ -42,12 +44,13 @@ namespace LegendOfZelda
 
             // Initialize the collider with the spawn position
             collider = new RectCollider(new Rectangle((int)spawnPos.X, (int)spawnPos.Y, colliderWidth, colliderHeight), CollisionLayer.PlayerWeapon, this);
+            Game1.getInstance().DrawRectangleOutline(new Rectangle((int)spawnPos.X, (int)spawnPos.Y, colliderWidth, colliderHeight), Color.DarkSalmon);
         }
 
         public void Destroy()
         {
             collider = null;
-            Game1.getInstance().RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
 
         // Update the collider's position when the sword's position changes
