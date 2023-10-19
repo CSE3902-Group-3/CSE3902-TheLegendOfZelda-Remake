@@ -18,7 +18,7 @@ namespace LegendOfZelda
             this.length = length;
             this.callback = callback;
             game1 = Game1.getInstance();
-            game1.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
         }
 
         public void Update(GameTime gameTime)
@@ -37,7 +37,7 @@ namespace LegendOfZelda
 
         public void Destroy()
         {
-            game1.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
     }
 }

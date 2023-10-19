@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    public class Block
+    public class Block : ICollidable
     {
         public AnimatedSprite sprite { get; private set; }
         private Vector2 _pos;
@@ -38,11 +38,14 @@ namespace LegendOfZelda
                 _enabled = value;
             }
         }
-
         public Block(AnimatedSprite sprite, Vector2 pos) {
             this.sprite = sprite;
             this.pos = pos;
             sprite.UpdatePos(pos);
+        }
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
+
         }
     }
 }
