@@ -9,7 +9,6 @@ namespace LegendOfZelda
         private AnimatedSprite sprite;
         private IRectCollider collider;
 
-        private Game1 game;
         private SpriteFactory spriteFactory;
         private float speed = 15;
         private const float accel = .25f;
@@ -31,7 +30,6 @@ namespace LegendOfZelda
         private IPlayer player;
         public BoomerangProjectile(Vector2 position, Vector2 direction, IPlayer player)
         {
-            game = Game1.getInstance();
             SpriteFactory spriteFactory = SpriteFactory.getInstance();
             _pos = position;
             this.player = player;
@@ -45,7 +43,7 @@ namespace LegendOfZelda
             int scale = spriteFactory.scale;
             collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, 8 * scale, 8 * scale), CollisionLayer.PlayerWeapon, this);
 
-            game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
         }
 
         public void Update(GameTime gameTime)
@@ -81,7 +79,7 @@ namespace LegendOfZelda
         {
             sprite.UnregisterSprite();
             collider.Active = false;
-            game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

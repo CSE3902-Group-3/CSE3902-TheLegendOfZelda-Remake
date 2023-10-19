@@ -62,7 +62,7 @@ namespace LegendOfZelda
                 this
             );
 
-            Game1.getInstance().RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
         }
 
         /*

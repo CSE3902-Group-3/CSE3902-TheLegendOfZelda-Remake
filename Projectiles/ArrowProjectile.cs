@@ -7,7 +7,6 @@ namespace LegendOfZelda
     public class ArrowProjectile : IPlayerProjectile
     {
         protected AnimatedSprite sprite;
-        protected Game1 game;
         protected SpriteFactory spriteFactory;
 
         private const float speed = 8;
@@ -31,7 +30,6 @@ namespace LegendOfZelda
 
         public ArrowProjectile(Vector2 position, Direction direction)
         {
-            game = Game1.getInstance();
             spriteFactory = SpriteFactory.getInstance();
             _pos = position;
 
@@ -44,7 +42,7 @@ namespace LegendOfZelda
 
             sprite.UpdatePos(position);
 
-            game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
         }
 
         //This method is overridden in the Blue Arrow and Sword Beam
@@ -98,7 +96,7 @@ namespace LegendOfZelda
             SpawnBurst();
 
             sprite.UnregisterSprite();
-            game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
             collider.Active = false;
         }
 

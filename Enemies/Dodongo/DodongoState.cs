@@ -5,7 +5,6 @@ namespace LegendOfZelda
 {
     public class DodongoState : IEnemy
     {
-        private readonly Game1 Game;
         public IEnemy State { get;  set; }
         private double LastDirSwitch = 0;
         private double LastHealthSwitch = 0;
@@ -13,11 +12,10 @@ namespace LegendOfZelda
         public DodongoState(Vector2 pos)
         {
             State = new RightMovingDodongo(this, pos);
-            Game = Game1.getInstance();
         }
         public void Spawn()
         {
-            Game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
             State.Spawn();
         }
         public void ChangePosition()

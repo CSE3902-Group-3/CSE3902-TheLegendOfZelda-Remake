@@ -2,35 +2,31 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
+
 namespace LegendOfZelda
 {
-    public class Fairy : IItem, IUpdateable
+    public class Fairy : IItem, IUpdateable, ICollidable
     {
         protected AnimatedSprite fairy;
-        private SpriteFactory spriteFactory;
         private Vector2 position;
-        private Vector2 originalPosition;
-        private bool moveUp;
-        private bool moveRight;
-        private Game1 game;
         private Vector2 Direction;
-        public Vector2 ViewportSize;
         private double LastSwitch = 0;
+        private RectCollider collider;
+        private int scale = SpriteFactory.getInstance().scale;
+        private Timer timer;
 
         public Fairy(Vector2 pos)
         {
-            spriteFactory = SpriteFactory.getInstance();
-            fairy = spriteFactory.CreateFairySprite();
+            fairy = SpriteFactory.getInstance().CreateFairySprite();
             position = pos;
-            originalPosition = pos;
-            game = Game1.getInstance();
-            ViewportSize = new Vector2(game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height);
-
+            collider = new RectCollider(new Rectangle((int)position.X, (int)position.Y, 8 * scale, 16 * scale), CollisionLayer.Item, this);
+            collider.Pos = pos;
         }
 
         public void Show()
         {
-            game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
             fairy.RegisterSprite();
             fairy.UpdatePos(position);
         }
@@ -45,7 +41,7 @@ namespace LegendOfZelda
         public void Remove()
         {
             fairy.UnregisterSprite();
-            game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
 
         public IItem Collect()
@@ -111,12 +107,26 @@ namespace LegendOfZelda
             {
                 position -= Direction * 2;
             }
-
-            if (position.X >= ViewportSize.X || position.Y >= ViewportSize.Y)
-            {
-                ChangeDirection();
-            }
             fairy.UpdatePos(position);
+        }
+
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
+            foreach (CollisionInfo collision in collisions)
+            {
+                CollisionLayer collidedWith = collision.CollidedWith.Layer;
+
+                if (collidedWith == CollisionLayer.OuterWall)
+                {
+                    ChangeDirection();
+                }
+
+                //The part below only meet requirement for sprint3 and should be refactored in sprint4
+                if (collidedWith == CollisionLayer.Player)
+                {
+                    Collect();
+                }
+            }
         }
     }
 }
