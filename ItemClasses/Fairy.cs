@@ -10,9 +10,7 @@ namespace LegendOfZelda
     {
         protected AnimatedSprite fairy;
         private Vector2 position;
-        private Game1 game;
         private Vector2 Direction;
-        public Vector2 ViewportSize;
         private double LastSwitch = 0;
         private RectCollider collider;
         private int scale = SpriteFactory.getInstance().scale;
@@ -22,15 +20,13 @@ namespace LegendOfZelda
         {
             fairy = SpriteFactory.getInstance().CreateFairySprite();
             position = pos;
-            game = Game1.getInstance();
-            ViewportSize = new Vector2(game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height);
             collider = new RectCollider(new Rectangle((int)position.X, (int)position.Y, 8 * scale, 16 * scale), CollisionLayer.Item, this);
             collider.Pos = pos;
         }
 
         public void Show()
         {
-            game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
             fairy.RegisterSprite();
             fairy.UpdatePos(position);
         }
@@ -45,7 +41,7 @@ namespace LegendOfZelda
         public void Remove()
         {
             fairy.UnregisterSprite();
-            game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
 
         public IItem Collect()
@@ -110,11 +106,6 @@ namespace LegendOfZelda
             if (position.X < 0 || position.Y < 0)
             {
                 position -= Direction * 2;
-            }
-
-            if (position.X >= ViewportSize.X || position.Y >= ViewportSize.Y)
-            {
-                ChangeDirection();
             }
             fairy.UpdatePos(position);
         }

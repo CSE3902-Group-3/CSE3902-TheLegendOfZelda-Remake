@@ -40,7 +40,7 @@ namespace LegendOfZelda
             );
             LinkUtilities.UpdatePositions(this, this.sprite.pos);
 
-            game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
         }
 
         public void TakeDamage()

@@ -6,20 +6,16 @@ namespace LegendOfZelda
 {
     public class Goriya : IEnemy
     {
-        private readonly Game1 Game;
         private readonly List<AnimatedSprite> GoriyaSprites;
         private int CurrentSprite;
         private int Health { get; set; } = 1;
         public Vector2 Position;
         private Vector2 Direction;
-        private Vector2 ViewportSize;
         private double LastSwitch = 0;
         private int UpdateCount = 0;
         public Goriya(Vector2 pos)
         {
-            Game = Game1.getInstance();
             Position = pos;
-            ViewportSize = new Vector2(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
             GoriyaSprites = new List<AnimatedSprite>
             {
                 SpriteFactory.getInstance().CreateGoriyaRightSprite(),
@@ -35,7 +31,7 @@ namespace LegendOfZelda
         }
         public void Spawn()
         {
-            Game.RegisterUpdateable(this);           
+            LevelMaster.RegisterUpdateable(this);           
             GoriyaSprites[CurrentSprite].RegisterSprite();
             GoriyaSprites[CurrentSprite].UpdatePos(Position);
         }
@@ -47,10 +43,6 @@ namespace LegendOfZelda
                 Position -= Direction;
             }
 
-            if (Position.X >= ViewportSize.X || Position.Y >= ViewportSize.Y)
-            {
-                ChangeDirection();
-            }
             GoriyaSprites[CurrentSprite].UpdatePos(Position);
         }
         public void Attack()
@@ -93,7 +85,7 @@ namespace LegendOfZelda
         public void Die()
         {
             GoriyaSprites[CurrentSprite].UnregisterSprite();
-            Game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
 
         public void Update(GameTime gameTime)
