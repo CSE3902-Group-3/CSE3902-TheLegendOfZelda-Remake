@@ -75,18 +75,24 @@ namespace LegendOfZelda
         }
         static void Wall(MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWallSprite(), new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation));
+            Vector2 pos = new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation);
+            Block block = new Block(SpriteFactory.CreateWallSprite(), pos);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, Scale, Scale), CollisionLayer.Wall, block);
         }
         static void FishSculpture(MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateFishSculptureSprite(), new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation));
+            Vector2 pos = new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation);
+            Block block = new Block(SpriteFactory.CreateFishSculptureSprite(), pos);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, Scale, Scale), CollisionLayer.Wall, block);
         }
         static void DragonSculpture(MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateDragonSculptureSprite(), new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation));
+            Vector2 pos = new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation);
+            Block block = new Block(SpriteFactory.CreateDragonSculptureSprite(), pos);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, Scale, Scale), CollisionLayer.Wall, block);
         }
         static void BlackTile(MapElement mapElement)
         {
@@ -110,28 +116,34 @@ namespace LegendOfZelda
         }
         static void Brick(MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateBrickSprite(), new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation));
+            Vector2 pos = new Vector2(Scale * mapElement.XLocation, 320 + Scale * mapElement.YLocation);
+            Block block = new Block(SpriteFactory.CreateBrickSprite(), pos);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, Scale, Scale), CollisionLayer.Wall, block);
         }
         static void WallNorth(MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWallNorthSprite(), new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation));
+            Block block = new Block(SpriteFactory.CreateWallNorthSprite(), NorthDoorPosition);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)NorthDoorPosition.X, (int)NorthDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
         }
         static void WallEast(MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWallEastSprite(), new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation));
+            Block block = new Block(SpriteFactory.CreateWallEastSprite(), EastDoorPosition);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)EastDoorPosition.X, (int)EastDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
         }
         static void WallSouth(MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWallSouthSprite(), new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation));
+            Block block = new Block(SpriteFactory.CreateWallSouthSprite(), SouthDoorPosition);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)SouthDoorPosition.X, (int)SouthDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
         }
         static void WallWest(MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWallWestSprite(), new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation));
+            Block block = new Block(SpriteFactory.CreateWallWestSprite(), WestDoorPosition);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)WestDoorPosition.X, (int)WestDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
         }
         static void NorthOpenDoor(MapElement mapElement)
         {
@@ -157,41 +169,49 @@ namespace LegendOfZelda
         {
             Block block = new Block(SpriteFactory.CreateNorthLockedDoorSprite(), NorthDoorPosition);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)NorthDoorPosition.X, (int)NorthDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
         }
         static void EastLockedDoor(MapElement mapElement)
         {
             Block block = new Block(SpriteFactory.CreateEastLockedDoorSprite(), EastDoorPosition);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)EastDoorPosition.X, (int)EastDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
         }
         static void SouthLockedDoor(MapElement mapElement)
         {
             Block block = new Block(SpriteFactory.CreateSouthLockedDoorSprite(), SouthDoorPosition);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)SouthDoorPosition.X, (int)SouthDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
         }
         static void WestLockedDoor(MapElement mapElement)
         {
             Block block = new Block(SpriteFactory.CreateWestLockedDoorSprite(), WestDoorPosition);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)WestDoorPosition.X, (int)WestDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
         }
         static void NorthClosedDoor(MapElement mapElement)
         {
             Block block = new Block(SpriteFactory.CreateNorthClosedDoorSprite(), NorthDoorPosition);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)NorthDoorPosition.X, (int)NorthDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
         }
         static void EastClosedDoor(MapElement mapElement)
         {
             Block block = new Block(SpriteFactory.CreateEastClosedDoorSprite(), EastDoorPosition);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)EastDoorPosition.X, (int)EastDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
         }
         static void SouthClosedDoor(MapElement mapElement)
         {
             Block block = new Block(SpriteFactory.CreateSouthClosedDoorSprite(), SouthDoorPosition);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)SouthDoorPosition.X, (int)SouthDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
         }
         static void WestClosedDoor(MapElement mapElement)
         {
             Block block = new Block(SpriteFactory.CreateWestClosedDoorSprite(), WestDoorPosition);
             block.enabled = true;
+            new RectCollider(new Rectangle((int)WestDoorPosition.X, (int)WestDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
         }
         static void NorthHoleDoor(MapElement mapElement)
         {
@@ -217,6 +237,22 @@ namespace LegendOfZelda
         {
             Block block = new Block(SpriteFactory.CreateWallExteriorSprite(), new Vector2(0, 320));
             block.enabled = true;
+
+            // North wall collisions
+            new RectCollider(new Rectangle(128, 320, 320, 128), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(576, 320, 320, 128), CollisionLayer.OuterWall, block);
+
+            // South wall collisions
+            new RectCollider(new Rectangle(128, 896, 320, 128), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(576, 896, 320, 128), CollisionLayer.OuterWall, block);
+
+            // West wall collisions
+            new RectCollider(new Rectangle(0, 448, 128, 160), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(0, 736, 128, 160), CollisionLayer.OuterWall, block);
+
+            // East wall collisions
+            new RectCollider(new Rectangle(896, 448, 128, 160), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(896, 736, 128, 160), CollisionLayer.OuterWall, block);
         }
     }
 }

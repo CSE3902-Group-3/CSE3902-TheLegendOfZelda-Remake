@@ -12,7 +12,6 @@ namespace LegendOfZelda
      */
     public class Explosion : IPlayerProjectile
     {
-        private Game1 game;
         private SpriteFactory spriteFactory;
         private List<IAnimatedSprite> sprites;
         private Vector2 pos;
@@ -29,9 +28,8 @@ namespace LegendOfZelda
 
         public Explosion(Vector2 position)
         {
-            game = Game1.getInstance();
             spriteFactory = SpriteFactory.getInstance();
-            game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
 
             pos = position;
 
@@ -101,7 +99,7 @@ namespace LegendOfZelda
             {
                 rectCollider.Active = false;
             }
-            game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

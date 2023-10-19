@@ -7,7 +7,7 @@ namespace LegendOfZelda
         private readonly AnimatedSprite Sprite;
         public EnemyDeathEffect(Vector2 position)
         {
-            Game1.getInstance().RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
             Sprite = SpriteFactory.getInstance().CreateEnemyDeathSprite();
             Sprite.UpdatePos(position);
         }
@@ -23,7 +23,7 @@ namespace LegendOfZelda
         public void Dissipate()
         {
             Sprite.UnregisterSprite();
-            Game1.getInstance().RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
     }
 }

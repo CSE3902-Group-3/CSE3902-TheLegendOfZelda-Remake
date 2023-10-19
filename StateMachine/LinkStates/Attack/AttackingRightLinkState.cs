@@ -25,17 +25,23 @@ namespace LegendOfZelda
                 // if there was a previous sprite, cast then unregister sprite
                 ((AnimatedSprite)link.sprite).UnregisterSprite();
             }
-            // Need to wait for PR#72 so this only executes once
+            link.stateMachine.canMove = false;
+
             link.sprite = SpriteFactory.getInstance().CreateLinkWoodStabRightSprite();
         }
         public void Execute()
         {
+            if (((AnimatedSprite)link.sprite).complete)
+            {
+                link.stateMachine.ChangeState(new IdleLinkState());
+            }
+
             ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
         }
 
         public void Exit()
         {
-
+            link.stateMachine.canMove = true;
         }
 
     }

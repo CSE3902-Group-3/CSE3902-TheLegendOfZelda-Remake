@@ -12,11 +12,13 @@ namespace LegendOfZelda
         {
             this.game = Game1.getInstance();
             link = (Link)game.link;
-            link.currentDirection = Direction.down;
+            link.stateMachine.prevDirection = link.stateMachine.currentDirection;
+            link.stateMachine.currentDirection = Direction.down;
         }
 
         public void Enter()
         {
+            link.stateMachine.isWalking = true;
             if (link.sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
@@ -27,20 +29,21 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            Vector2 currPos = link.sprite.pos;
-            currPos.Y += link.velocity;
+            if (link.stateMachine.canMove)
+            {
+                Vector2 currPos = link.sprite.pos;
+                currPos.Y += link.velocity;
+                currPos.X += LinkUtilities.SnapToGrid((int)currPos.X);
 
-            link.stateMachine.position = currPos;
-            currPos.X += LinkUtilities.SnapToGrid((int)currPos.X);
-
-            link.sprite.UpdatePos(currPos);
+                LinkUtilities.UpdatePositions(link, currPos);
+            }
 
             ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
         }
 
         public void Exit()
         {
-            // cast then unregister sprite drawing
+            link.stateMachine.isWalking = false;
         }
     }
 }

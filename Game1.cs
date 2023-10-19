@@ -8,14 +8,12 @@ using LegendOfZelda;
 
 namespace LegendOfZelda
 {
-    public enum Direction { down, right, up, left };
+    public enum Direction { down, right, up, left, upLeft, upRight, downLeft, downRight };
     public class Game1 : Game
     {
         /* Graphics */
         private GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch { get; private set; }
-        private List<IUpdateable> updateables;
-        private List<IDrawable> drawables;
         public SpriteFactory spriteFactory { get; private set; }
 
         /* Link */
@@ -23,13 +21,20 @@ namespace LegendOfZelda
 
         /* Controller */
         private IController controller;
+
+        /* Cylers */
         public BlockCycler blockCycler { get; private set; }
         public EnemyCycler enemyCycler { get; private set; }
-
         public ItemScroll itemCycler { get; private set; }
-        private static Game1 instance;
 
+        /* Level */
+        private LevelMaster LevelMaster;
+
+        /* Collisions */
         private CollisionManager collisionManager;
+
+        /* Singleton */
+        private static Game1 instance;
 
         private Game1()
         {
@@ -50,7 +55,6 @@ namespace LegendOfZelda
         {
             // TODO: Add your initialization logic here
             instance = this;
-            updateables = new List<IUpdateable>();
 
             spriteFactory = SpriteFactory.getInstance();
 
@@ -70,21 +74,18 @@ namespace LegendOfZelda
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-
-            drawables = new List<IDrawable>();
-
             spriteFactory.LoadTextures();
 
-            link = new Link(this);
+            // Level 1
+            LevelMaster = LevelMaster.GetInstance();
+            LevelMaster.StartLevel("level1.json");
+            LevelMaster.NavigateToRoom(1);
+
+            link = new Link();
             //blockCycler = new BlockCycler(new Vector2(300, 200));
             //enemyCycler = new EnemyCycler(new Vector2(500, 500));
             //itemCycler = new ItemScroll(new Vector2(800, 300));
-            //Uncomment the following line for testing
             //new AnimationTester();
-
-            // Level 1
-            Level level = new Level("level1.json");
-            level.NavigateToRoom(0);
 
             controller = new PlayerController((Link)link);
         }
@@ -95,10 +96,7 @@ namespace LegendOfZelda
 
             // TODO: Add your update logic here
             
-            for (int i = 0; i < updateables.Count; i++)
-            {
-                    updateables[i].Update(gameTime);
-            }
+            LevelMaster.Update(gameTime);
 
             controller.Update();
             //CollisionManager always updates last
@@ -114,57 +112,12 @@ namespace LegendOfZelda
             // TODO: Add your drawing code here
 
             _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp);
-            for(int j = 0; j < drawables.Count; j++)
-            {
-                drawables[j].Draw();
-            }
+
+            LevelMaster.Draw();
+
             _spriteBatch.End();
 
             base.Draw(gameTime);
-        }
-
-        public bool RegisterDrawable(IDrawable drawable)
-        {
-            if (drawables.Contains(drawable))
-            {
-                return false;
-            }
-
-            drawables.Add(drawable);
-            return true;
-        }
-
-        public bool RegisterUpdateable(IUpdateable updateable)
-        {
-            if (updateables.Contains(updateable))
-            {
-                return false;
-            }
-
-            updateables.Add(updateable);
-            return true;
-        }
-
-        public bool RemoveDrawable(IDrawable drawable)
-        {
-            if (!drawables.Contains(drawable))
-            {
-                return false;
-            }
-
-            drawables.Remove(drawable);
-            return true;
-        }
-
-        public bool RemoveUpdateable(IUpdateable updateable)
-        {
-            if (!updateables.Contains(updateable))
-            {
-                return false;
-            }
-
-            updateables.Remove(updateable);
-            return true;
         }
     }
 }
