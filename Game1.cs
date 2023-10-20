@@ -25,9 +25,12 @@ namespace LegendOfZelda
         private IController controller;
         public BlockCycler blockCycler { get; private set; }
         public EnemyCycler enemyCycler { get; private set; }
+        public RoomCycler roomCycler { get; private set; }
 
         public ItemScroll itemCycler { get; private set; }
         private static Game1 instance;
+
+        private Level level;
 
         private CollisionManager collisionManager;
 
@@ -84,7 +87,8 @@ namespace LegendOfZelda
 
             new CollisionDemo();
             // Level 1
-            //Level level = new Level("level1.json");
+            level = new Level("level1.json");
+            roomCycler = new RoomCycler(level);
             //level.NavigateToRoom(0);
 
             controller = new PlayerController((Link)link);

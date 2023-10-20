@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace LegendOfZelda
 {
-    internal class Level
+    public class Level
     {
         private RoomList RoomList;
         public List<IUpdateable> LevelUpdateableList { get; set; }
@@ -77,6 +77,11 @@ namespace LegendOfZelda
                     Console.WriteLine("INVALID MAP ELEMENT TYPE: " + mapElement.ElementType);
                     break;
             }
+        }
+
+        public int GetRoomNumber()
+        {
+            return RoomList.Rooms.Count;
         }
     }
 }
