@@ -1,18 +1,15 @@
 ﻿using LegendOfZelda;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Reflection.PortableExecutable;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace LegendOfZelda
 {
     public class ArrowProjectile : IPlayerProjectile
     {
         protected AnimatedSprite sprite;
-        protected Game1 game;
         protected SpriteFactory spriteFactory;
 
-        private const float speed = 6;
+        private const float speed = 8;
         private Vector2 horizontalArrowBurstOffset;
         private Vector2 verticalArrowBurstOffset;
 
@@ -33,7 +30,6 @@ namespace LegendOfZelda
 
         public ArrowProjectile(Vector2 position, Direction direction)
         {
-            game = Game1.getInstance();
             spriteFactory = SpriteFactory.getInstance();
             _pos = position;
 
@@ -46,9 +42,10 @@ namespace LegendOfZelda
 
             sprite.UpdatePos(position);
 
-            game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
         }
 
+        //This method is overridden in the Blue Arrow and Sword Beam
         protected virtual void CreateSpriteAndCollider(Direction direction, int scale)
         {
             switch (direction)
@@ -81,7 +78,8 @@ namespace LegendOfZelda
             Pos += dir * speed;
         }
 
-        public void Destroy()
+        //This method is overridden in the Sword Beam
+        protected virtual void SpawnBurst()
         {
             if (dir.X == 0)
             {
@@ -91,9 +89,14 @@ namespace LegendOfZelda
             {
                 new Burst(Pos + horizontalArrowBurstOffset);
             }
+        }
+
+        public void Destroy()
+        {
+            SpawnBurst();
 
             sprite.UnregisterSprite();
-            game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
             collider.Active = false;
         }
 

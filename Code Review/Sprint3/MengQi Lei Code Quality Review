@@ -1,0 +1,10 @@
+Author of the code review: MengQi Lei
+Date of the code review: Oct.20th.2023
+Sprint number: 3
+Name of the .cs file being reviewed: LinkUtility.cs
+Author of the .cs file being reviewed: Gabe DiFiore
+Specific comments on code quality:
+  It is a really good choice to have this class to achieve certain functionalities like force Link to walk in a grid.
+It simplifies Link class and is also a good start for any future changes of this kind.
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
+  If Link should move for a certain distance during attck, this could be easily implemented in this class and the Link class can remain simple and clear.

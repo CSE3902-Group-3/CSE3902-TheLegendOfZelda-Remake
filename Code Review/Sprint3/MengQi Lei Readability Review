@@ -1,0 +1,12 @@
+Author of the code review: MengQi Lei
+Date of the code review: Oct.20th.2023
+Sprint number: 3
+Name of the .cs file being reviewed: Collision classes
+Author of the .cs file being reviewed: Michael Herring
+Number of minutes taken to complete the review: 20
+Specific comments on what is readable and what is not:
+  Collisions are surely not something that would be easy to understand and use at first glance,
+but adding a collision and having a lot of clear comments that explains everything hugely improves
+the readability.
+  One downside is the naming convention might not be the best. It might be a liitle confusing if it is
+the first time looking at this piece of code.

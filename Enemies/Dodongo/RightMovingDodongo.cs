@@ -5,7 +5,6 @@ namespace LegendOfZelda
 {
     internal class RightMovingDodongo : IEnemy
     {
-        private readonly Game1 Game;
         private readonly DodongoState Dodongo;
         private Vector2 Position;
         private AnimatedSprite Sprite;
@@ -14,7 +13,6 @@ namespace LegendOfZelda
         private bool Injured = false;
         public RightMovingDodongo(DodongoState dodongo, Vector2 pos)
         {
-            Game = Game1.getInstance();
             Dodongo = dodongo;
             Direction = new Vector2(MoveMagnitude, 0);
             Position = pos;
@@ -63,7 +61,7 @@ namespace LegendOfZelda
         public void Die()
         {
             Sprite.UnregisterSprite();
-            Game.RemoveUpdateable(Dodongo);
+            LevelMaster.RemoveUpdateable(Dodongo);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

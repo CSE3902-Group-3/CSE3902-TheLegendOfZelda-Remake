@@ -5,7 +5,6 @@ namespace LegendOfZelda
 {
     public class Rope : IEnemy
     {
-        private readonly Game1 Game;
         private AnimatedSprite RopeSprite;
         private int Health { get; set; } = 1;
         public Vector2 Position;
@@ -15,13 +14,12 @@ namespace LegendOfZelda
 
         public Rope(Vector2 pos)
         {
-            Game = Game1.getInstance();
             Position = pos;
             RopeSprite = SpriteFactory.getInstance().CreateRopeRightSprite();
         }
         public void Spawn()
         {
-            Game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
             RopeSprite.RegisterSprite();
             RopeSprite.UpdatePos(Position);
         }
@@ -41,14 +39,16 @@ namespace LegendOfZelda
         }
         public void Attack()
         {
+
         }
         public void UpdateHealth(int damagePoints)
         {
+
         }
 
         public void ChangeDirection()
         {
-            Game.RemoveDrawable(RopeSprite);
+            LevelMaster.RemoveDrawable(RopeSprite);
             if (FacingLeft)
             {
                 RopeSprite = SpriteFactory.getInstance().CreateRopeRightSprite();
@@ -72,7 +72,7 @@ namespace LegendOfZelda
         public void Die()
         {
             RopeSprite.UnregisterSprite();
-            Game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
