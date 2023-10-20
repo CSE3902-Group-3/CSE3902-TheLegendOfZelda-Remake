@@ -36,11 +36,13 @@ Remake of NES The Legend of Zelda game
 - Matthew Curie reviewed Michael's code for quality in pull request #72, #85, #94,
 - Zhengyi Hu reviewed Mengqi Lei's code for quality in pull request # 103
 - Zhengyi Hu reviewed Gabriel DiFiore's code for readability (See `Code Review/Sprint 2`)
-- Zhengyi Hu reviewed Mengqi Lei's code for quality in pull request #129
+
 
 #### Sprint 3
 - Gabriel DiFiore reviewed Ethan Glenwright's code for quality in pull request #177
 - MengQi Lei reviewed Michael Herring's code for readability (See `Code Review/Sprint 3`)
+- Zhengyi Hu reviewed Mengqi Lei's code for quality in pull request #129
+- Zhengyi Hu reviewed Ethan Glenwright's code for readability (See `Code Review/Sprint 3`)
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
