@@ -9,22 +9,22 @@ namespace LegendOfZelda
 {
     public class RoomCycler
     {
-        private Level level;
+        private LevelMaster lm;
         private int index = 0;
-        public RoomCycler(Level level)
+        public RoomCycler(LevelMaster lm)
         {
-            this.level = level;
-            level.NavigateToRoom(index);
+            this.lm = lm;
+            lm.NavigateToRoom(index);
         }
 
         public void NextRoom()
         {
             index++;
-            if (index > level.GetRoomNumber())
+            if (index > lm.GetRoomNumber() - 1)
             {
                 index = 0;
             }
-            level.NavigateToRoom(index);
+            lm.NavigateToRoom(index);
             Console.WriteLine("Navigate to room " + index);
         }
 
@@ -33,9 +33,9 @@ namespace LegendOfZelda
             index--;
             if (index < 0)
             {
-                index = level.GetRoomNumber() - 1;
+                index = lm.GetRoomNumber() - 1;
             }
-            level.NavigateToRoom(index);
+            lm.NavigateToRoom(index);
             Console.WriteLine("Navigate to room " + index);
         }
     }
