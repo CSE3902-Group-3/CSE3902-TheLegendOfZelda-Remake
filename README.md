@@ -40,6 +40,7 @@ Remake of NES The Legend of Zelda game
 
 #### Sprint 3
 - Gabriel DiFiore reviewed Ethan Glenwright's code for quality in pull request #177
+- MengQi Lei reviewed Michael Herring's code for readability (See `Code Review/Sprint 3`)
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
