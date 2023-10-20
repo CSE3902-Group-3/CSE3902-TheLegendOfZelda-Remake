@@ -53,6 +53,8 @@ namespace LegendOfZelda
             collisionManager = CollisionManager.instance;
             _active = true;
             collisionManager.AddRectCollider(this);
+
+            LevelMaster.RegisterCollider(this);
         }
     }
 }
