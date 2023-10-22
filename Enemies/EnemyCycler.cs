@@ -23,7 +23,7 @@ namespace LegendOfZelda
                 new Wizard(Position),
                 new Aquamentus(Position),
                 new Rope(Position),
-                new DodongoState(Position),
+                new NewDodongo(Position),
                 new WallMaster(Position),
                 new BladeTrap(Position),
             };

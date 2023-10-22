@@ -4,30 +4,46 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-    public class Goriya : IEnemy
+    public class NewDodongo : IEnemy
     {
-        private readonly List<AnimatedSprite> GoriyaSprites;
+        private readonly List<AnimatedSprite> Sprites;
+        private readonly List<AnimatedSprite> HurtSprites;
         private int CurrentSprite;
+        private int CurrentHurtSprite;
         private int Health { get; set; } = 1;
         public Vector2 Position;
         private Vector2 Direction;
         private double LastSwitch = 0;
         private int UpdateCount = 0;
+        private bool Injured = false;
         public RectCollider Collider { get; private set; }
-        public Goriya(Vector2 pos)
+        public NewDodongo(Vector2 pos)
         {
             Position = pos;
-            GoriyaSprites = new List<AnimatedSprite>
+            Sprites = new List<AnimatedSprite>
             {
-                SpriteFactory.getInstance().CreateGoriyaRightSprite(),
-                SpriteFactory.getInstance().CreateGoriyaLeftSprite(),
-                SpriteFactory.getInstance().CreateGoriyaDownSprite(),
-                SpriteFactory.getInstance().CreateGoriyaUpSprite()
+                SpriteFactory.getInstance().CreateDodongoRightSprite(),
+                SpriteFactory.getInstance().CreateDodongoLeftSprite(),
+                SpriteFactory.getInstance().CreateDodongoDownSprite(),
+                SpriteFactory.getInstance().CreateDodongoUpSprite()
             };
 
-            foreach (AnimatedSprite goriya in GoriyaSprites)
+            HurtSprites = new List<AnimatedSprite>
             {
-                goriya.UnregisterSprite();
+                SpriteFactory.getInstance().CreateDodongoRightHitSprite(),
+                SpriteFactory.getInstance().CreateDodongoLeftHitSprite(),
+                SpriteFactory.getInstance().CreateDodongoDownHitSprite(),
+                SpriteFactory.getInstance().CreateDodongoUpHitSprite()
+            };
+
+            foreach (AnimatedSprite dodongo in Sprites)
+            {
+                dodongo.UnregisterSprite();
+            }
+
+            foreach (AnimatedSprite dodongo in HurtSprites)
+            {
+                dodongo.UnregisterSprite();
             }
 
             int scale = SpriteFactory.getInstance().scale;
@@ -41,9 +57,10 @@ namespace LegendOfZelda
         public void Spawn()
         {
             new EnemySpawnEffect(Position);
-            LevelMaster.RegisterUpdateable(this);           
-            GoriyaSprites[CurrentSprite].RegisterSprite();
-            GoriyaSprites[CurrentSprite].UpdatePos(Position);
+            LevelMaster.RegisterUpdateable(this);
+            Sprites[CurrentSprite].RegisterSprite();
+            Sprites[CurrentSprite].UpdatePos(Position);
+            Collider.Pos = Position;
         }
         public void ChangePosition()
         {
@@ -53,26 +70,30 @@ namespace LegendOfZelda
                 Position -= Direction;
             }
 
-            GoriyaSprites[CurrentSprite].UpdatePos(Position);
+            Sprites[CurrentSprite].UpdatePos(Position);
             Collider.Pos = Position;
         }
-        public void Attack()
-        {
-            new GoriyaBoomerang(Position, Direction * 3);
-        }
+        public void Attack() {}
         public void UpdateHealth(int damagePoints)
         {
-            /* 
-             * This isn't needed for Sprint 2,
-             * however it will be needed later.
-             */
+            Sprites[CurrentSprite].UnregisterSprite();
+            if (!Injured)
+            {
+                Sprites[CurrentSprite] = HurtSprites[CurrentSprite];
+            }
+            else
+            {
+                Sprites[CurrentSprite] = Sprites[CurrentSprite];
+            }
+            Sprites[CurrentSprite].UpdatePos(Position);
+            Injured = !Injured;
         }
 
         public void ChangeDirection()
         {
             Random rand = new();
             int random = rand.Next(0, 4);
-            GoriyaSprites[CurrentSprite].UnregisterSprite();
+            Sprites[CurrentSprite].UnregisterSprite();
             CurrentSprite = random;
 
             if (random == 0)
@@ -91,12 +112,12 @@ namespace LegendOfZelda
             {
                 Direction = new Vector2(0, -1);
             }
-            GoriyaSprites[CurrentSprite].RegisterSprite();
+            Sprites[CurrentSprite].RegisterSprite();
             Collider.Pos = Position;
         }
         public void Die()
         {
-            GoriyaSprites[CurrentSprite].UnregisterSprite();
+            Sprites[CurrentSprite].UnregisterSprite();
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
         }
@@ -109,11 +130,6 @@ namespace LegendOfZelda
                 UpdateCount++;
 
                 ChangeDirection();
-
-                if (UpdateCount % 2 == 0)
-                {
-                    Attack();
-                }
             }
             ChangePosition();
         }
@@ -125,7 +141,7 @@ namespace LegendOfZelda
 
                 if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Wall)
                 {
-                    Direction = -Direction;
+                    ChangeDirection();
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)
                 {

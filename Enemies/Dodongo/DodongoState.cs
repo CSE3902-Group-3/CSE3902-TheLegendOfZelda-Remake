@@ -7,7 +7,6 @@ namespace LegendOfZelda
     {
         public IEnemy State { get;  set; }
         private double LastDirSwitch = 0;
-        private double LastHealthSwitch = 0;
 
         public DodongoState(Vector2 pos)
         {
@@ -38,16 +37,12 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > LastDirSwitch + 2000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastDirSwitch + 2500)
             {
                 LastDirSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 State.ChangeDirection();
             }
-            if (gameTime.TotalGameTime.TotalMilliseconds > LastHealthSwitch + 333)
-            {
-                LastHealthSwitch = gameTime.TotalGameTime.TotalMilliseconds;
-                State.UpdateHealth(0); // Passing 0 since nothing in this method handles actual damage points yet
-            }
+            
             State.ChangePosition();
         }
         public void Die()

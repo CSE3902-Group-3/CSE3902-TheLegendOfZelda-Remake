@@ -11,16 +11,25 @@ namespace LegendOfZelda
         private Vector2 Direction;
         private int MoveMagnitude = 5;
         private bool Injured = false;
+        public RectCollider Collider { get; private set; }
         public RightMovingDodongo(DodongoState dodongo, Vector2 pos)
         {
             Dodongo = dodongo;
             Direction = new Vector2(MoveMagnitude, 0);
             Position = pos;
+            Sprite = SpriteFactory.getInstance().CreateDodongoRightSprite();
+            int scale = SpriteFactory.getInstance().scale;
+
+            Collider = new RectCollider(
+               new Rectangle((int)this.Position.X, (int)+this.Position.Y, 8 * scale, 8 * scale),
+               CollisionLayer.Enemy,
+               this
+           );
         }
         public void Spawn()
         {
-            Sprite = SpriteFactory.getInstance().CreateDodongoRightSprite();
             Sprite.UpdatePos(Position);
+            Collider.Pos = Position;
         }
         public void UpdateHealth(int damagePoints)
         {
@@ -42,6 +51,7 @@ namespace LegendOfZelda
             {
                 Position += Direction;
                 Sprite.UpdatePos(Position);
+                Collider.Pos = Position;
             }
         }
         public void ChangeDirection()
