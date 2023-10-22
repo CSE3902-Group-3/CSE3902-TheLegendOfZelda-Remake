@@ -26,6 +26,8 @@ Remake of NES The Legend of Zelda game
 -   10/20: 83, 1277, 2, 186, 8167, 2317
 
 ## Code Reviews:
+When possible, we tried to do our code reviews as part of pull requests, which are listed below. In cases where that was impossible (no PR's ready for review), we wrote them in text files.
+
 #### Sprint2:
 - Michael Herring reviewed Gabe DiFiore's code for quality in pull request #63
 - Gabriel DiFiore reviewed MengQi Lei's code for quality in pull request #73
@@ -46,6 +48,7 @@ Remake of NES The Legend of Zelda game
 - Zhengyi Hu reviewed Mengqi Lei's code for quality in pull request #129
 - Zhengyi Hu reviewed Ethan Glenwright's code for readability (See `Code Review/Sprint 3`)
 - MengQi Lei reviewed Gabe DiFiore's code for code quality (See `Code Review/Sprint 3`)
+- Michael Herring reviewed Menqi Lei's code for readability (See 'Code Review/Sprint 3')
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
