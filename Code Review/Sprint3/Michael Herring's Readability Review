@@ -1,0 +1,10 @@
+Author of the code review: Michael Herring
+Date of the code review: 10/22/2023
+Sprint number: 3
+Name of the .cs file being reviewed: Player/Inventory.cs
+Author of the .cs file being reviewed: MengQi Lei
+Number of minutes taken to complete the review
+Specific comments on what is readable and what is not:
+- The names of the methods are descriptive
+- Logic is only one or two layers deep which is easy to read
+- Using IItem as the key of the dictionary instead of Type or and Enum makes it a bit confusing to read through (I'm also not sure if it is correct, but this is a readability review)
