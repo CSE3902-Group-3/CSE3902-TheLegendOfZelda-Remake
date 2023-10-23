@@ -72,10 +72,11 @@ namespace LegendOfZelda
 
         public void Reset()
         {
-            ((AnimatedSprite)sprite).UpdatePos(new Vector2(0,0));
-            this.stateMachine.position = new Vector2(0, 0);
+            LinkUtilities.UpdatePositions(this, new Vector2(150, 600));
             this.stateMachine.ChangeState(new WalkRightLinkState());
             this.stateMachine.ChangeState(new IdleLinkState());
+
+            this.HP = this.maxHP;
         }
 
         public void Die()
