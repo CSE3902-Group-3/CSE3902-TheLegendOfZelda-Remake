@@ -106,8 +106,10 @@ namespace LegendOfZelda
         }
         static void BlueTile(MapElement mapElement)
         {
+            Vector2 pos = new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation);
             Block block = new Block(SpriteFactory.CreateBlueTileSprite(), new Vector2(XOffset + Scale * mapElement.XLocation, YOffset + Scale * mapElement.YLocation));
             block.enabled = true;
+            new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, Scale, Scale), CollisionLayer.Wall, block);
         }
         static void Stairs(MapElement mapElement)
         {

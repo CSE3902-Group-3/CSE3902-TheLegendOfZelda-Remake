@@ -8,17 +8,18 @@ namespace LegendOfZelda
         private readonly SimpleEnemyStateMachine StateMachine;
         private int Health { get; set; } = 1;
         public Vector2 Position;
+        public Vector2 Offset = new Vector2(0, 16);
         public RectCollider Collider { get; private set; }
         public Bat(Vector2 pos)
         {
             Position = pos;
             int scale = SpriteFactory.getInstance().scale;
             Collider = new RectCollider(
-               new Rectangle((int)this.Position.X, (int)+this.Position.Y, 8 * scale, 8 * scale),
+               new Rectangle((int)Position.X, (int)Position.Y + (int)Offset.Y, 16 * scale, 10 * scale),
                CollisionLayer.Enemy,
                this
            );
-            StateMachine = new SimpleEnemyStateMachine(pos, Collider)
+            StateMachine = new SimpleEnemyStateMachine(Position, Offset, Collider)
             {
                 Sprite = SpriteFactory.getInstance().CreateKeeseSprite(),
                 Health = Health,
@@ -45,7 +46,7 @@ namespace LegendOfZelda
         public void ChangeDirection()
         {
             StateMachine.ChangeDirection();
-            Collider.Pos = Position;
+            Collider.Pos = Position + Offset;
         }
         public void Die()
         {

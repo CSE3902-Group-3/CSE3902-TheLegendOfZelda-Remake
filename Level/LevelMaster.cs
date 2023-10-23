@@ -11,9 +11,8 @@ namespace LegendOfZelda
     public class LevelMaster
     {
         private static LevelMaster Instance;
-        private static Level CurrentLevel;
-        private static RoomList RoomList { get; set; }
         public static int CurrentRoom { get; set; }
+        public static int NumberOfRooms { get; set; }
         public static List<List<IUpdateable>> RoomListUpdateables { get; set; }
         public static List<List<IDrawable>> RoomListDrawables { get; set; }
         public static List<List<IRectCollider>> RoomListColliders { get; set; }
@@ -21,7 +20,10 @@ namespace LegendOfZelda
         public static List<IDrawable> CurrentRoomDrawables { get; set; }
         public static List<IRectCollider> CurrentRoomColliders { get; set; }
         public static CollisionManager collisionManager;
-        private LevelMaster() 
+        private static BlockLamda BlockLamda = BlockLamda.GetInstance();
+        private static ItemLamda ItemLamda = ItemLamda.GetInstance();
+        private static EnemyLamda EnemyLamda = EnemyLamda.GetInstance();
+        private LevelMaster()
         {
             RoomListUpdateables = new List<List<IUpdateable>>();
             RoomListDrawables = new List<List<IDrawable>>();
@@ -39,7 +41,7 @@ namespace LegendOfZelda
         }
         public bool NavigateToRoom(int roomNumber)
         {
-            if (roomNumber >= 0 || roomNumber < RoomList.Rooms.Count)
+            if (roomNumber >= 0 || roomNumber < NumberOfRooms)
             {
                 CurrentRoom = roomNumber;
                 CurrentRoomUpdateables = RoomListUpdateables[roomNumber];
@@ -51,7 +53,7 @@ namespace LegendOfZelda
         }
         private void SwapColliders(int roomNumber)
         {
-            if(CurrentRoomColliders != null)
+            if (CurrentRoomColliders != null)
             {
                 foreach (IRectCollider collider in CurrentRoomColliders)
                 {
@@ -59,7 +61,7 @@ namespace LegendOfZelda
                 }
             }
             CurrentRoomColliders = RoomListColliders[roomNumber];
-            foreach(IRectCollider collider in CurrentRoomColliders)
+            foreach (IRectCollider collider in CurrentRoomColliders)
             {
                 if (collider.Active)
                 {
@@ -67,32 +69,49 @@ namespace LegendOfZelda
                 }
             }
         }
-        public bool StartLevel(string filename)
+        private static void ProcessMapElement(MapElement mapElement)
         {
-            if (CurrentLevel == null)
+            switch (mapElement.ElementType)
             {
-                CurrentLevel = new Level(filename);
-                RoomList = CurrentLevel.RoomList;
-                return true;
-            } 
-            else
-            {
-                return false;
+                case "Block":
+                    BlockLamda.BlockFunctionArray[mapElement.ElementValue](mapElement);
+                    break;
+                case "Item":
+                    ItemLamda.ItemFunctionArray[mapElement.ElementValue](mapElement);
+                    break;
+                case "Enemy":
+                    EnemyLamda.EnemyFunctionArray[mapElement.ElementValue](mapElement);
+                    break;
+                default:
+                    Console.WriteLine("INVALID MAP ELEMENT TYPE: " + mapElement.ElementType);
+                    break;
             }
         }
-        public bool EndLevel()
+        public void StartLevel(string filename)
         {
-            if (CurrentLevel == null)
+            RoomListUpdateables = new List<List<IUpdateable>>();
+            RoomListDrawables = new List<List<IDrawable>>();
+            RoomListColliders = new List<List<IRectCollider>>();
+            RoomList roomList = LevelParser.Parse(filename);
+            NumberOfRooms = roomList.Rooms.Count;
+            for (int i = 0; i < roomList.Rooms.Count; i++)
             {
-                return false;
+                CurrentRoom = i;
+                RoomListUpdateables.Add(new List<IUpdateable>());
+                RoomListDrawables.Add(new List<IDrawable>());
+                RoomListColliders.Add(new List<IRectCollider>());
+                foreach (MapElement mapElement in roomList.Rooms[i].MapElements)
+                {
+                    ProcessMapElement(mapElement);
+                }
+
+                //Deactivate colliders (since most objects are not in the first room)
+                foreach (IRectCollider rectCollider in RoomListColliders[i])
+                {
+                    collisionManager.RemoveRectCollider(rectCollider);
+                }
             }
-            else
-            {
-                RoomListUpdateables = new List<List<IUpdateable>>();
-                RoomListDrawables = new List<List<IDrawable>>();
-                RoomListColliders = new List<List<IRectCollider>>();
-                return true;
-            }
+            CurrentRoom = 0;
         }
         public static void Update(GameTime gameTime)
         {
@@ -110,7 +129,7 @@ namespace LegendOfZelda
         }
         public static bool RegisterDrawable(IDrawable drawable)
         {
-            if (RoomListDrawables[CurrentRoom].Contains(drawable))
+            if (RoomListDrawables == null || RoomListDrawables[CurrentRoom].Contains(drawable))
             {
                 return false;
             }
@@ -130,7 +149,7 @@ namespace LegendOfZelda
         }
         public static bool RegisterCollider(IRectCollider collider)
         {
-            if (RoomListColliders[CurrentRoom].Contains(collider))
+            if (RoomListColliders == null || RoomListColliders[CurrentRoom].Contains(collider))
             {
                 return false;
             }
@@ -157,13 +176,6 @@ namespace LegendOfZelda
             RoomListUpdateables[CurrentRoom].Remove(updateable);
             return true;
         }
-
-        // This is used for RoomCycler
-        public int GetRoomNumber()
-        {
-            return RoomList.Rooms.Count;
-        }
-
         public static bool RemoveCollider(IRectCollider collider)
         {
             if (!RoomListColliders[CurrentRoom].Contains(collider))
