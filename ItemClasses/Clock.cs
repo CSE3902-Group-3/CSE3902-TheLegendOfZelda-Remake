@@ -35,7 +35,20 @@ namespace LegendOfZelda
         public IItem Collect()
         {
             clock.UnregisterSprite();
+            collider = null;
             return this;
+        }
+
+        public void Use(Vector2 newPos)
+        {
+            clock.RegisterSprite();
+            clock.UpdatePos(newPos);
+        }
+
+        public IItem GenerateInventoryItem()
+        {
+            //All item in inventory will have a zero position
+            return new Arrow(Vector2.Zero);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

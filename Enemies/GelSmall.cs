@@ -7,20 +7,27 @@ namespace LegendOfZelda
     {
         private readonly SimpleEnemyStateMachine StateMachine;
         private int Health { get; set; } = 1;
-        public Vector2 Position;
-
+        public Vector2 Position { get; set; }
+        public RectCollider Collider { get; private set; }
         public GelSmall(Vector2 pos)
         {
             Position = pos;
-            StateMachine = new SimpleEnemyStateMachine(pos)
+            int scale = SpriteFactory.getInstance().scale;
+
+            Collider = new RectCollider(
+               new Rectangle((int)this.Position.X, (int)+this.Position.Y, 4 * scale, 4 * scale),
+               CollisionLayer.Enemy,
+               this
+           );
+            StateMachine = new SimpleEnemyStateMachine(pos, Collider)
             {
                 Sprite = SpriteFactory.getInstance().CreateGelSprite(),
                 Health = Health,
-                IsFlying = false,
             };
         }
         public void Spawn()
         {
+            new EnemySpawnEffect(Position);
             StateMachine.Spawn();
         }
         public void ChangePosition()
@@ -43,6 +50,7 @@ namespace LegendOfZelda
         public void Die()
         {
             StateMachine.Die();
+            new EnemyDeathEffect(Position);
         }
 
         public void Update(GameTime gameTime)

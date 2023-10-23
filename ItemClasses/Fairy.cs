@@ -47,7 +47,20 @@ namespace LegendOfZelda
         public IItem Collect()
         {
             fairy.UnregisterSprite();
+            collider = null;
             return this;
+        }
+
+        public void Use(Vector2 newPos)
+        {
+            fairy.RegisterSprite();
+            fairy.UpdatePos(newPos);
+        }
+
+        public IItem GenerateInventoryItem()
+        {
+            //All item in inventory will have a zero position
+            return new Arrow(Vector2.Zero);
         }
 
         public void Update(GameTime gameTime)
