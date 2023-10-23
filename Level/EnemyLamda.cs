@@ -51,7 +51,7 @@ namespace LegendOfZelda
         }
         static void Dodongo(MapElement mapElement)
         {
-            IEnemy enemy = new DodongoState(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IEnemy enemy = new Dodongo(new Vector2(mapElement.XLocation, mapElement.YLocation));
             enemy.Spawn();
         }
         static void GelSmall(MapElement mapElement)

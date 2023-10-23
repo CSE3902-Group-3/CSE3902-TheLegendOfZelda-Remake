@@ -26,6 +26,7 @@ namespace LegendOfZelda
         public BlockCycler blockCycler { get; private set; }
         public EnemyCycler enemyCycler { get; private set; }
         public ItemScroll itemCycler { get; private set; }
+        public RoomCycler roomCycler { get; private set; }
 
         /* Level */
         private LevelMaster LevelMaster;
@@ -79,12 +80,13 @@ namespace LegendOfZelda
             // Level 1
             LevelMaster = LevelMaster.GetInstance();
             LevelMaster.StartLevel("level1.json");
-            LevelMaster.NavigateToRoom(1);
+            LevelMaster.NavigateToRoom(10);
 
             link = new Link();
             //blockCycler = new BlockCycler(new Vector2(300, 200));
             //enemyCycler = new EnemyCycler(new Vector2(500, 500));
             //itemCycler = new ItemScroll(new Vector2(800, 300));
+            roomCycler = new RoomCycler(LevelMaster);
             //new AnimationTester();
 
             controller = new PlayerController((Link)link);
