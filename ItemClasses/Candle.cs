@@ -15,7 +15,7 @@ namespace LegendOfZelda
 
         public Candle(Vector2 pos)
         {
-            SpriteFactory.getInstance().CreateBlueCandleSprite();
+            candle = SpriteFactory.getInstance().CreateBlueCandleSprite();
             position = pos;
             collider = new RectCollider(new Rectangle((int)position.X, (int)position.Y, 8 * scale, 16 * scale), CollisionLayer.Item, this);
             collider.Pos = pos;

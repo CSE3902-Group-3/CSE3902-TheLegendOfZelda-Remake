@@ -52,7 +52,7 @@ namespace LegendOfZelda
 
         public void ChangeDirection()
         {
-            LevelMaster.RemoveDrawable(Sprite);
+            Sprite.UnregisterSprite();
             if (FacingLeft)
             {
                 Sprite = SpriteFactory.getInstance().CreateRopeRightSprite();
@@ -62,6 +62,8 @@ namespace LegendOfZelda
                 Sprite = SpriteFactory.getInstance().CreateRopeLeftSprite();
             }
             FacingLeft = !FacingLeft;
+            Sprite.RegisterSprite();
+            Sprite.UpdatePos(Position);
             Collider.Pos = Position;
         }
 

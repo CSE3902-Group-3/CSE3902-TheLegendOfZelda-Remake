@@ -7,7 +7,8 @@ namespace LegendOfZelda
     {
         private readonly SimpleEnemyStateMachine StateMachine;
         private int Health { get; set; } = 1;
-        public Vector2 Position { get; set; }
+        public Vector2 Position;
+        public Vector2 Offset = new Vector2(0, 0);
         public RectCollider Collider { get; private set; }
         public ZolBig(Vector2 pos)
         {
@@ -19,7 +20,7 @@ namespace LegendOfZelda
                CollisionLayer.Enemy,
                this
            );
-            StateMachine = new SimpleEnemyStateMachine(pos, Collider)
+            StateMachine = new SimpleEnemyStateMachine(Position, Offset, Collider)
             {
                 Sprite = SpriteFactory.getInstance().CreateZolSprite(),
                 Health = Health,

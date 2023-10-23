@@ -11,6 +11,8 @@ namespace LegendOfZelda
         private ICommands command;
         private Keys[] currKeys;
         private Keys[] prevKeys;
+        private MouseState mouseState;
+        private MouseState previousMouseState;
 
         public PlayerController(Link Link)
         {
@@ -19,7 +21,7 @@ namespace LegendOfZelda
             prevKeys = Array.Empty<Keys>();
             currKeys = Array.Empty<Keys>();
             
-            //keyState = new Dictionary<Keys, bool>();a
+            //keyState = new Dictionary<Keys, bool>();
         }
 
         public void Update()
@@ -29,6 +31,7 @@ namespace LegendOfZelda
 
             KeyDownEvents();
             KeyUpEvents();
+            MouseEvents();
         }
 
         private void KeyDownEvents()
@@ -74,6 +77,31 @@ namespace LegendOfZelda
                     }
                 }
             }
+        }
+
+        private void MouseEvents()
+        {
+            mouseState = Mouse.GetState();
+            RoomCycler roomCycler = Game1.getInstance().roomCycler;
+
+            if (mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Released && roomCycler != null)
+            {
+                command = new NextRoomCommand(roomCycler);
+                if (command != null)
+                {
+                    command.Execute();
+                }
+            }
+            else if (mouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Released && roomCycler != null)
+            {
+                command = new PreviousRoomCommand(roomCycler);
+                if (command != null)
+                {
+                    command.Execute();
+                }
+            }
+
+            previousMouseState = mouseState;
         }
 
         private Boolean isHorizontal(Keys key)

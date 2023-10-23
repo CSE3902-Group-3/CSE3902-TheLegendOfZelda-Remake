@@ -26,6 +26,7 @@ namespace LegendOfZelda
         public BlockCycler blockCycler { get; private set; }
         public EnemyCycler enemyCycler { get; private set; }
         public ItemScroll itemCycler { get; private set; }
+        public RoomCycler roomCycler { get; private set; }
 
         /* Level */
         private LevelMaster LevelMaster;
@@ -76,15 +77,16 @@ namespace LegendOfZelda
             // TODO: use this.Content to load your game content here
             spriteFactory.LoadTextures();
 
+            link = Link.getInstance();
+
             // Level 1
             LevelMaster = LevelMaster.GetInstance();
             LevelMaster.StartLevel("level1.json");
-            LevelMaster.NavigateToRoom(1);
 
-            link = new Link();
             //blockCycler = new BlockCycler(new Vector2(300, 200));
             //enemyCycler = new EnemyCycler(new Vector2(500, 500));
             //itemCycler = new ItemScroll(new Vector2(800, 300));
+            roomCycler = new RoomCycler(LevelMaster);
             //new AnimationTester();
 
             controller = new PlayerController((Link)link);
@@ -97,6 +99,7 @@ namespace LegendOfZelda
             // TODO: Add your update logic here
             
             LevelMaster.Update(gameTime);
+            link.Update(gameTime);
 
             controller.Update();
             //CollisionManager always updates last
@@ -114,6 +117,7 @@ namespace LegendOfZelda
             _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp);
 
             LevelMaster.Draw();
+            link.sprite.Draw();
 
             _spriteBatch.End();
 
