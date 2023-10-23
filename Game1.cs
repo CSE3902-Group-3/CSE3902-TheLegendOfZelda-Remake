@@ -77,12 +77,12 @@ namespace LegendOfZelda
             // TODO: use this.Content to load your game content here
             spriteFactory.LoadTextures();
 
+            link = Link.getInstance();
+
             // Level 1
             LevelMaster = LevelMaster.GetInstance();
             LevelMaster.StartLevel("level1.json");
-            LevelMaster.NavigateToRoom(10);
 
-            link = Link.getInstance();
             //blockCycler = new BlockCycler(new Vector2(300, 200));
             //enemyCycler = new EnemyCycler(new Vector2(500, 500));
             //itemCycler = new ItemScroll(new Vector2(800, 300));
@@ -99,6 +99,7 @@ namespace LegendOfZelda
             // TODO: Add your update logic here
             
             LevelMaster.Update(gameTime);
+            link.Update(gameTime);
 
             controller.Update();
             //CollisionManager always updates last
@@ -116,6 +117,7 @@ namespace LegendOfZelda
             _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp);
 
             LevelMaster.Draw();
+            link.sprite.Draw();
 
             _spriteBatch.End();
 
