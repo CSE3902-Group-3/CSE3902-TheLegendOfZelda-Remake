@@ -13,6 +13,7 @@ Remake of NES The Legend of Zelda game
 ## Known Bugs:
 - Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
 - Link should be able to walk in front of a wall as long as his bottom half is below it, but right now his top half blocks him from walking in front
+- Link sprite sometimes lingers in previous room when switching rooms.
 
 ## Tools:
 - We had an implementation which used HLSL shaders to color sprites more accurately, but due to bugs in Monogame on Mac, we were forced to remove this
@@ -54,6 +55,8 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - Gabriel DiFiore reviewed Michael Herring's code for readability in pull request #189
 - Ethan Glenwright reviewed Matt Curie's code for quality in pull request #191
 - Ethan Glenwright reviewed ZhengYi Hu's code for readability in pull request #190
+- Matt Curie reviewed Michael Herring's code for quality in pull requests #142, #150, #151 and #158
+- - Matt Curie reviewed Michael Herring's code for reusability in pull requests #159
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
