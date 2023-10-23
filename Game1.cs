@@ -85,7 +85,7 @@ namespace LegendOfZelda
             link = Link.getInstance();
             //blockCycler = new BlockCycler(new Vector2(300, 200));
             //enemyCycler = new EnemyCycler(new Vector2(500, 500));
-            //itemCycler = new ItemScroll(new Vector2(800, 300));
+            //itemCycler = new ItemScroll(new Vector2(800, 600));
             roomCycler = new RoomCycler(LevelMaster);
             //new AnimationTester();
 
