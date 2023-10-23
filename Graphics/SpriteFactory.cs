@@ -23,7 +23,6 @@ namespace LegendOfZelda
         public Texture2D linkTexture { get; private set; }
         private Texture2D enemiesTexture;
         private Texture2D enemyDeathTexture;
-        private Texture2D enemyCloudTexture;
         private Texture2D dungeonTexture;
         private Texture2D bossesTexture;
         private Texture2D itemsTexture;
@@ -56,7 +55,6 @@ namespace LegendOfZelda
             dungeonTexture = content.Load<Texture2D>("Dungeon");
             enemiesTexture = content.Load<Texture2D>("Enemies");
             enemyDeathTexture = content.Load<Texture2D>("EnemyDeath");
-            enemyCloudTexture = content.Load<Texture2D>("EnemyCloud");
             bossesTexture = content.Load<Texture2D>("Bosses");
             itemsTexture = content.Load<Texture2D>("Items");
             npcTexture = content.Load<Texture2D>("NPC");
@@ -1383,20 +1381,6 @@ namespace LegendOfZelda
             AnimatedSprite newSprite = new AnimatedSprite(npcTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
             return newSprite;
         }
-
-        public AnimatedSprite CreateEnemyCloudSprite()
-        {
-            Rectangle[] frames = new Rectangle[3]
-            {
-                new Rectangle(0, 0, 16, 16),
-                new Rectangle(16, 0, 16, 16),
-                new Rectangle(32, 0, 16, 16),
-            };
-            AnimatedSprite newSprite = new AnimatedSprite(enemyCloudTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
-            newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
-            return newSprite;
-        }
-
         public AnimatedSprite CreateEnemyDeathSprite()
         {
             Rectangle[] frames = new Rectangle[4]
@@ -1406,6 +1390,7 @@ namespace LegendOfZelda
                 new Rectangle(32, 0, 16, 16),
                 new Rectangle(48, 0, 16, 16),
             };
+
             AnimatedSprite newSprite = new AnimatedSprite(enemyDeathTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
             newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
