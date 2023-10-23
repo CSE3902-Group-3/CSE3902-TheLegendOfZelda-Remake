@@ -51,6 +51,8 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - Michael Herring reviewed Menqi Lei's code for readability (See `Code Review/Sprint 3`)
 - Michael Herring reviewed Matt Curie's code for quality (See `Code Review/Sprint 3`)
 - Gabriel DiFiore reviewed Michael Herring's code for readability in pull request #189
+- Ethan Glenwright reviewed Matt Curie's code for quality in pull request #191
+- Ethan Glenwright reviewed ZhengYi Hu's code for readability in pull request #190
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
