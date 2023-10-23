@@ -4,12 +4,11 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-    public class NewDodongo : IEnemy
+    public class Dodongo : IEnemy
     {
         private readonly List<AnimatedSprite> Sprites;
         private readonly List<AnimatedSprite> HurtSprites;
         private int CurrentSprite;
-        private int CurrentHurtSprite;
         private int Health { get; set; } = 1;
         public Vector2 Position;
         private Vector2 Direction;
@@ -17,7 +16,7 @@ namespace LegendOfZelda
         private int UpdateCount = 0;
         private bool Injured = false;
         public RectCollider Collider { get; private set; }
-        public NewDodongo(Vector2 pos)
+        public Dodongo(Vector2 pos)
         {
             Position = pos;
             Sprites = new List<AnimatedSprite>
