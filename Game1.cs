@@ -83,7 +83,7 @@ namespace LegendOfZelda
 
             link = new Link();
             //blockCycler = new BlockCycler(new Vector2(300, 200));
-            //enemyCycler = new EnemyCycler(new Vector2(500, 500));
+            enemyCycler = new EnemyCycler(new Vector2(500, 500));
             //itemCycler = new ItemScroll(new Vector2(800, 300));
             //new AnimationTester();
 
