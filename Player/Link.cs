@@ -13,7 +13,7 @@ namespace LegendOfZelda
         private Game1 game { get; set; }
         public ISprite sprite { get; set; }
         public Vector2 pos { get { return sprite.pos; } }
-        public RectCollider collider { get; private set; }
+        public RectCollider collider { get; set; }
 
         public LinkStateMachine stateMachine { get; private set; }
 
@@ -37,7 +37,7 @@ namespace LegendOfZelda
             this.game = Game1.getInstance();
 
             this.sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
-            this.sprite.UpdatePos(new Vector2(100, 600));
+            this.sprite.UpdatePos(new Vector2(448, 864));
 
             this.stateMachine = new LinkStateMachine();
             this.stateMachine.ChangeState(new InititalLinkState(this.sprite));
@@ -50,8 +50,6 @@ namespace LegendOfZelda
                 this
             );
             LinkUtilities.UpdatePositions(this, this.sprite.pos);
-
-            LevelMaster.RegisterUpdateable(this);
         }
 
         public void TakeDamage()

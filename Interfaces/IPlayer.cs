@@ -6,6 +6,7 @@ namespace LegendOfZelda
     public interface IPlayer : IUpdateable
     {
         ISprite sprite { get; }
+        public RectCollider collider { get; set; }
         LinkStateMachine stateMachine { get; }
 
         Vector2 pos { get; }
