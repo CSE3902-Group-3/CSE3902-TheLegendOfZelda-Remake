@@ -80,7 +80,7 @@ namespace LegendOfZelda
             // Level 1
             LevelMaster = LevelMaster.GetInstance();
             LevelMaster.StartLevel("level1.json");
-            //LevelMaster.NavigateToRoom(1);
+            LevelMaster.NavigateToRoom(10);
 
             link = new Link();
             //blockCycler = new BlockCycler(new Vector2(300, 200));
