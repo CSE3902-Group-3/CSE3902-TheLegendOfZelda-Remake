@@ -566,6 +566,192 @@
                     "ElementValue": 1,
                     "XLocation": 192,
                     "YLocation": 768
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 0,
+                    "XLocation": 832,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 0,
+                    "XLocation": 832,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 0,
+                    "XLocation": 832,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 0,
+                    "XLocation": 832,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 0,
+                    "XLocation": 832,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 1,
+                    "XLocation": 768,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 1,
+                    "XLocation": 768,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 1,
+                    "XLocation": 768,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 1,
+                    "XLocation": 768,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 1,
+                    "XLocation": 768,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 2,
+                    "XLocation": 704,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 2,
+                    "XLocation": 704,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 2,
+                    "XLocation": 704,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 2,
+                    "XLocation": 704,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 2,
+                    "XLocation": 704,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 3,
+                    "XLocation": 640,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 4,
+                    "XLocation": 576,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 5,
+                    "XLocation": 512,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 6,
+                    "XLocation": 448,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 7,
+                    "XLocation": 384,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 8,
+                    "XLocation": 320,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 9,
+                    "XLocation": 256,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 10,
+                    "XLocation": 192,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 10,
+                    "XLocation": 192,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 10,
+                    "XLocation": 192,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 10,
+                    "XLocation": 192,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 10,
+                    "XLocation": 192,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 11,
+                    "XLocation": 128,
+                    "YLocation": 448
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 12,
+                    "XLocation": 832,
+                    "YLocation": 832
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 13,
+                    "XLocation": 768,
+                    "YLocation": 832
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 14,
+                    "XLocation": 704,
+                    "YLocation": 832
                 }
             ]
         },
