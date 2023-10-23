@@ -22,7 +22,17 @@ namespace LegendOfZelda
 
         public int velocity { get; set; } = 5; // link moves at 1pixel per frame in original NES game, scaled up to 1080p is roughly 5pixels per frame
 
-        public Link()
+        private static Link instance;
+
+        public static Link getInstance()
+        {
+            if (instance == null)
+                instance = new Link();
+
+            return instance;
+        }
+
+        private Link()
         {
             this.game = Game1.getInstance();
 
