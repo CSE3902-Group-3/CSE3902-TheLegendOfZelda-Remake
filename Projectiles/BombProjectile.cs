@@ -8,7 +8,6 @@ namespace LegendOfZelda
     public class BombProjectile : IPlayerProjectile
     {
         private AnimatedSprite sprite;
-        private Game1 game;
         private SpriteFactory spriteFactory;
         private const double delay = 1;
         private const int explosionPixelOffset = 4;
@@ -17,7 +16,6 @@ namespace LegendOfZelda
         private Timer timer;
         public BombProjectile(Vector2 position)
         {
-            game = Game1.getInstance();
             spriteFactory = SpriteFactory.getInstance();
             pos = position;
 
@@ -40,7 +38,7 @@ namespace LegendOfZelda
         public void Destroy()
         {
             sprite.UnregisterSprite();
-            game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

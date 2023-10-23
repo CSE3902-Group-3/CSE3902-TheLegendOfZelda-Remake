@@ -2,12 +2,12 @@
 
 namespace LegendOfZelda
 {
-    public class EnemyDeathEffect: IEnemyEffect
+    public class AquamentusBallExplosion : IEnemyEffect
     {
         private readonly AnimatedSprite Sprite;
-        public EnemyDeathEffect(Vector2 position)
+        public AquamentusBallExplosion(Vector2 position)
         {
-            Sprite = SpriteFactory.getInstance().CreateEnemyDeathSprite();
+            Sprite = SpriteFactory.getInstance().CreateExplosionSprite();
             Sprite.UpdatePos(position);
             new Timer(0.5, Dissipate);
         }

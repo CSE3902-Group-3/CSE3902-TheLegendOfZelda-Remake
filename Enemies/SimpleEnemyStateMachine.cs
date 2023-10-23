@@ -6,26 +6,19 @@ namespace LegendOfZelda
 {
     public class SimpleEnemyStateMachine : IEnemy
     {
-        private readonly Game1 Game;
         public AnimatedSprite Sprite { get; set; }
         public enum Speed { slow, medium, fast };
         public Speed EnemySpeed { get; set; }
         public int SpeedMultiplier;
         public int Health { get; set; }
         private Vector2 Position;
-        private RectCollider Collider;
         private Vector2 Direction;
-        public Vector2 ViewportSize;
         private double LastSwitch = 0;
-        public bool IsFlying { get; set; }
+        public RectCollider Collider { get; set; }
 
-        public SimpleEnemyStateMachine(Vector2 pos)
+        public SimpleEnemyStateMachine(Vector2 pos, RectCollider collider)
         {
-            Game = Game1.getInstance();
             Position = pos;
-            Collider.Pos = pos;
-            int scale = SpriteFactory.getInstance().scale;
-            ViewportSize = new Vector2(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
 
             switch (EnemySpeed)
             {
@@ -39,7 +32,7 @@ namespace LegendOfZelda
                     SpeedMultiplier = 3;
                     break;
             }
-            Collider = new RectCollider(new Rectangle((int)Position.X, (int)Position.Y, 16 * scale, 16 * scale), CollisionLayer.Enemy, this);
+            Collider = collider;
         }
         public void Attack()
         {
@@ -79,27 +72,23 @@ namespace LegendOfZelda
             {
                 Position -= Direction;
             }
-
-            if (Position.X >= ViewportSize.X || Position.Y >= ViewportSize.Y)
-            {
-                ChangeDirection();
-            }
             Sprite.UpdatePos(Position);
         }
 
         public void Die()
         {
+            Sprite.UpdatePos(Position);
+            Collider.Pos = Position;
             Sprite.UnregisterSprite();
-            Game.RemoveUpdateable(this);
-            new EnemyDeathEffect(Position);
+            LevelMaster.RemoveUpdateable(this);
         }
 
         public void Spawn()
         {
-            new EnemySpawnEffect(Position);
-            Game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
             Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
+            Collider.Pos = Position;
         }
 
         public void Update(GameTime gameTime)
@@ -111,6 +100,7 @@ namespace LegendOfZelda
                 ChangeDirection();
             }
             ChangePosition();
+            Collider.Pos = Position;
         }
 
         public void UpdateHealth(int damagePoints)
@@ -128,13 +118,12 @@ namespace LegendOfZelda
             Sprite.blinking = false;
         }
 
-        public void OnCollision(List<CollisionInfo> collisions)
-        {
+        public void OnCollision(List<CollisionInfo> collisions) {
             foreach (CollisionInfo collision in collisions)
             {
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
 
-                if (collidedWith == CollisionLayer.OuterWall)
+                if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Wall)
                 {
                     ChangeDirection();
                 }
@@ -142,8 +131,6 @@ namespace LegendOfZelda
                 {
                     UpdateHealth(1); // Choose different values for each type of player weapon
                 }
-
-                if (!IsFlying && collidedWith == CollisionLayer.Wall) { }
             }
         }
     }

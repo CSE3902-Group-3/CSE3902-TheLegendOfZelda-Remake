@@ -1,0 +1,13 @@
+Author of the code review: Michael Herring
+Date of the code review: 10/22/2023
+Sprint number: 3
+Name of the .cs file being reviewed: Enemies/SimpleEnemyStateMachine.cs
+Author of the .cs file being reviewed: Matt Curie
+Specific comments on code quality:
+- This class does a good job of separating out some of the functionality shared by many enemies
+- It has a little bit of low cohesion since it does some different things, but I think it's okay since its keeping that out of the enemies
+- There are a couple small problems with the class, for example line 118 seems to reverse line 116
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change
+- One change that we actually did make which isn't easily supported here is collision hitboxes which vary in size by enemy. As of right now 
+the class is using 16x16 as a placeholder size for all enemies, but if we want to continue using this implementation the class will need to know more information
+about the individual enemies

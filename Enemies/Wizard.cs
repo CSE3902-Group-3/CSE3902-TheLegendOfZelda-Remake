@@ -5,22 +5,28 @@ namespace LegendOfZelda
 {
     public class Wizard : IEnemy
     {
-        private readonly Game1 Game;
         private readonly AnimatedSprite Sprite;
         private int Health { get; set; } = 1;
         public Vector2 Position;
+        public RectCollider Collider { get; private set; }
 
         public Wizard(Vector2 pos)
         {
-            Game = Game1.getInstance();
             Position = pos;
             Sprite = SpriteFactory.getInstance().CreateOldManSprite();
+            int scale = SpriteFactory.getInstance().scale;
+            Collider = new RectCollider(
+               new Rectangle((int)Position.X, (int)+ Position.Y, 8 * scale, 8 * scale),
+               CollisionLayer.Enemy,
+               this
+           );
         }
         public void Spawn()
         {
-            Game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
             Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
+            Collider.Pos = Position;
         }
         public void ChangePosition() {}
         public void Attack()
@@ -37,7 +43,7 @@ namespace LegendOfZelda
         public void Die()
         {
             Sprite.UnregisterSprite();
-            Game.RemoveUpdateable(this);
+            LevelMaster.RemoveUpdateable(this);
         }
 
         public void Update(GameTime gameTime) {}
@@ -47,12 +53,7 @@ namespace LegendOfZelda
             foreach (CollisionInfo collision in collisions)
             {
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
-
-                if (collidedWith == CollisionLayer.OuterWall)
-                {
-                    ChangeDirection();
-                }
-                else if (collidedWith == CollisionLayer.PlayerWeapon)
+                if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
                     UpdateHealth(1); // Choose different values for each type of player weapon
                     Attack();

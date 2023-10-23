@@ -27,6 +27,7 @@ namespace LegendOfZelda
             this.game = Game1.getInstance();
 
             this.sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
+            this.sprite.UpdatePos(new Vector2(100, 600));
 
             this.stateMachine = new LinkStateMachine();
             this.stateMachine.ChangeState(new InititalLinkState(this.sprite));
@@ -40,7 +41,7 @@ namespace LegendOfZelda
             );
             LinkUtilities.UpdatePositions(this, this.sprite.pos);
 
-            game.RegisterUpdateable(this);
+            LevelMaster.RegisterUpdateable(this);
         }
 
         public void TakeDamage(float damage)

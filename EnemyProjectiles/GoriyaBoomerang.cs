@@ -5,26 +5,38 @@ namespace LegendOfZelda
 {
     public class GoriyaBoomerang : IEnemyProjectile
     {
-        private readonly Game1 game;
-        private readonly ISprite GoriyaBoomerangSprite;
+        private readonly AnimatedSprite Sprite;
         private Vector2 Direction;
         private Vector2 Position;
+        public RectCollider Collider { get; private set; }
         public GoriyaBoomerang(Vector2 pos, Vector2 dir)
         {
-            Game1.getInstance().RegisterUpdateable(this);
-            GoriyaBoomerangSprite = SpriteFactory.getInstance().CreateBoomerangSprite();
+            LevelMaster.RegisterUpdateable(this);
+            Sprite = SpriteFactory.getInstance().CreateBoomerangSprite();
             Position = pos;
             Direction = dir;
+
+            int scale = SpriteFactory.getInstance().scale;
+
+            Collider = new RectCollider(
+               new Rectangle((int)this.Position.X, (int)+this.Position.Y, 16 * scale, 16 * scale),
+               CollisionLayer.EnemyWeapon,
+               this
+           );
+            Collider.Active = true;
         }
         public void Update(GameTime gameTime)
         {
             Position += Direction;
-            GoriyaBoomerangSprite.UpdatePos(Position);
+            Sprite.UpdatePos(Position);
+            Collider.Pos = Position;
         }
         public void Destroy()
         {
-            Game1.getInstance().RemoveUpdateable(this);
-            Game1.getInstance().RemoveDrawable(GoriyaBoomerangSprite);
+            new Burst(Position);
+            LevelMaster.RemoveUpdateable(this);
+            LevelMaster.RemoveDrawable(Sprite);
+            Collider.Active = false;
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
@@ -33,7 +45,7 @@ namespace LegendOfZelda
             {
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
 
-                if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.PlayerWeapon)
+                if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Player || collidedWith == CollisionLayer.PlayerWeapon)
                 {
                     Destroy();
                 }

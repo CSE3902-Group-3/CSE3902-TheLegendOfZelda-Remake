@@ -5,27 +5,38 @@ namespace LegendOfZelda
 {
     public class AquamentusBall : IEnemyProjectile
     {
-        private readonly ISprite AquamentusBallSprite;
-        private Vector2 Position;
+        private readonly AnimatedSprite Sprite;
         private Vector2 Direction;
+        private Vector2 Position;
+        public RectCollider Collider { get; private set; }
         public AquamentusBall(Vector2 pos, Vector2 dir)
         {
-            Game1.getInstance().RegisterUpdateable(this);
-            AquamentusBallSprite = SpriteFactory.getInstance().CreateAquamentusBallSprite();
+            LevelMaster.RegisterUpdateable(this);
+            Sprite = SpriteFactory.getInstance().CreateAquamentusBallSprite();
             Position = pos;
             Direction = dir;
-        }
 
+            int scale = SpriteFactory.getInstance().scale;
+
+            Collider = new RectCollider(
+               new Rectangle((int)this.Position.X, (int)+this.Position.Y, 16 * scale, 16 * scale),
+               CollisionLayer.EnemyWeapon,
+               this
+           );
+            Collider.Active = true;
+        }
         public void Update(GameTime gameTime)
         {
             Position += Direction;
-            AquamentusBallSprite.UpdatePos(Position);
+            Sprite.UpdatePos(Position);
+            Collider.Pos = Position;
         }
-
         public void Destroy()
         {
-            Game1.getInstance().RemoveUpdateable(this);
-            Game1.getInstance().RemoveDrawable(AquamentusBallSprite);
+            new AquamentusBallExplosion(Position);
+            LevelMaster.RemoveUpdateable(this);
+            LevelMaster.RemoveDrawable(Sprite);
+            Collider.Active = false;
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
@@ -34,7 +45,7 @@ namespace LegendOfZelda
             {
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
 
-                if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.PlayerWeapon)
+                if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Player || collidedWith == CollisionLayer.PlayerWeapon)
                 {
                     Destroy();
                 }

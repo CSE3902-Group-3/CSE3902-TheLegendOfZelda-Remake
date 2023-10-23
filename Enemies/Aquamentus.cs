@@ -5,26 +5,33 @@ namespace LegendOfZelda
 {
     public class Aquamentus : IEnemy
     {
-        private readonly Game1 Game;
-        private readonly AnimatedSprite AquamentusSprite;
+        private readonly AnimatedSprite Sprite;
         private int Health { get; set; } = 1;
         private Vector2 Position;
-
         private int CycleCount = 0;
         private readonly int MaxCycles = 50;
         private int PosIncrement = 2;
+        public RectCollider Collider { get; private set; }
 
         public Aquamentus(Vector2 pos)
         {
-            Game = Game1.getInstance();
             Position = pos;
-            AquamentusSprite = SpriteFactory.getInstance().CreateAquamentusSprite();
+            Sprite = SpriteFactory.getInstance().CreateAquamentusSprite();
+
+            int scale = SpriteFactory.getInstance().scale;
+
+            Collider = new RectCollider(
+               new Rectangle((int)this.Position.X, (int)+this.Position.Y, 16 * scale, 16 * scale),
+               CollisionLayer.Enemy,
+               this
+           );
         }
         public void Spawn ()
         {
-            Game.RegisterUpdateable(this);
-            AquamentusSprite.RegisterSprite();
-            AquamentusSprite.UpdatePos(Position);
+            new EnemySpawnEffect(Position);
+            LevelMaster.RegisterUpdateable(this);
+            Sprite.RegisterSprite();
+            Sprite.UpdatePos(Position);
         }
         public void ChangePosition()
         {
@@ -37,7 +44,8 @@ namespace LegendOfZelda
             Position.X += PosIncrement;
             CycleCount++;
 
-            AquamentusSprite.UpdatePos(Position);
+            Sprite.UpdatePos(Position);
+            Collider.Pos = Position;
         }
         public void Attack()
         {
@@ -67,8 +75,10 @@ namespace LegendOfZelda
         }
         public void Die()
         {
-            AquamentusSprite.UnregisterSprite();
-            Game1.getInstance().RemoveUpdateable(this);
+            Sprite.UpdatePos(Position);
+            Sprite.UnregisterSprite();
+            LevelMaster.RemoveUpdateable(this);
+            new EnemyDeathEffect(Position);
         }
         public void OnCollision(List<CollisionInfo> collisions)
         {

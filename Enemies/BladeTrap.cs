@@ -7,15 +7,24 @@ namespace LegendOfZelda
     {
         private readonly AnimatedSprite Sprite;
         public Vector2 Position;
-
+        public RectCollider Collider { get; private set; }
         public BladeTrap(Vector2 pos)
         {
             Position = pos;
             Sprite = SpriteFactory.getInstance().CreateBladeTrapSprite();
+
+            int scale = SpriteFactory.getInstance().scale;
+
+            Collider = new RectCollider(
+               new Rectangle((int)this.Position.X, (int)+this.Position.Y, 16 * scale, 16 * scale),
+               CollisionLayer.Enemy,
+               this
+           );
         }
         public void Spawn() {
             Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
+            Collider.Pos = Position;
         }
         public void Die()
         {

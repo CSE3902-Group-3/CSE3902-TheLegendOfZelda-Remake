@@ -5,25 +5,32 @@ namespace LegendOfZelda
 {
     public class Rope : IEnemy
     {
-        private readonly Game1 Game;
-        private AnimatedSprite RopeSprite;
+        private AnimatedSprite Sprite;
         private int Health { get; set; } = 1;
         public Vector2 Position;
         private readonly int PosIncrement = 5;
         private bool FacingLeft = false;
         private double LastSwitch = 0;
-
+        public RectCollider Collider { get; private set; }
         public Rope(Vector2 pos)
         {
-            Game = Game1.getInstance();
             Position = pos;
-            RopeSprite = SpriteFactory.getInstance().CreateRopeRightSprite();
+            Sprite = SpriteFactory.getInstance().CreateRopeRightSprite();
+
+            int scale = SpriteFactory.getInstance().scale;
+
+            Collider = new RectCollider(
+               new Rectangle((int)this.Position.X, (int)+this.Position.Y, 16 * scale, 16 * scale),
+               CollisionLayer.Enemy,
+               this
+           );
         }
         public void Spawn()
         {
-            Game.RegisterUpdateable(this);
-            RopeSprite.RegisterSprite();
-            RopeSprite.UpdatePos(Position);
+            new EnemySpawnEffect(Position);
+            LevelMaster.RegisterUpdateable(this);
+            Sprite.RegisterSprite();
+            Sprite.UpdatePos(Position);
         }
         public void ChangePosition()
         {
@@ -37,27 +44,25 @@ namespace LegendOfZelda
                 Position.X += PosIncrement;
             }
 
-            RopeSprite.UpdatePos(Position);
+            Sprite.UpdatePos(Position);
+            Collider.Pos = Position;
         }
-        public void Attack()
-        {
-        }
-        public void UpdateHealth(int damagePoints)
-        {
-        }
+        public void Attack() {}
+        public void UpdateHealth(int damagePoints) {}
 
         public void ChangeDirection()
         {
-            Game.RemoveDrawable(RopeSprite);
+            LevelMaster.RemoveDrawable(Sprite);
             if (FacingLeft)
             {
-                RopeSprite = SpriteFactory.getInstance().CreateRopeRightSprite();
+                Sprite = SpriteFactory.getInstance().CreateRopeRightSprite();
             }
             else
             {
-                RopeSprite = SpriteFactory.getInstance().CreateRopeLeftSprite();
+                Sprite = SpriteFactory.getInstance().CreateRopeLeftSprite();
             }
             FacingLeft = !FacingLeft;
+            Collider.Pos = Position;
         }
 
         public void Update(GameTime gameTime)
@@ -71,8 +76,10 @@ namespace LegendOfZelda
         }
         public void Die()
         {
-            RopeSprite.UnregisterSprite();
-            Game.RemoveUpdateable(this);
+            Sprite.UpdatePos(Position);
+            Sprite.UnregisterSprite();
+            LevelMaster.RemoveUpdateable(this);
+            new EnemyDeathEffect(Position);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
@@ -81,7 +88,7 @@ namespace LegendOfZelda
             {
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
 
-                if (collidedWith == CollisionLayer.OuterWall)
+                if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Wall)
                 {
                     ChangeDirection();
                 }
