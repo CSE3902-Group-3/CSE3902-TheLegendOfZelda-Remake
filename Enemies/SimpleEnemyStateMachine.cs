@@ -12,16 +12,13 @@ namespace LegendOfZelda
         public int SpeedMultiplier;
         public int Health { get; set; }
         private Vector2 Position;
-        private RectCollider Collider;
         private Vector2 Direction;
         private double LastSwitch = 0;
-        public bool IsFlying { get; set; }
+        public RectCollider Collider { get; set; }
 
-        public SimpleEnemyStateMachine(Vector2 pos)
+        public SimpleEnemyStateMachine(Vector2 pos, RectCollider collider)
         {
             Position = pos;
-            int scale = SpriteFactory.getInstance().scale;
-            Collider = new RectCollider(new Rectangle((int)Position.X, (int)Position.Y, 16 * scale, 16 * scale), CollisionLayer.Enemy, this);
 
             switch (EnemySpeed)
             {
@@ -35,6 +32,7 @@ namespace LegendOfZelda
                     SpeedMultiplier = 3;
                     break;
             }
+            Collider = collider;
         }
         public void Attack()
         {
@@ -79,17 +77,18 @@ namespace LegendOfZelda
 
         public void Die()
         {
+            Sprite.UpdatePos(Position);
+            Collider.Pos = Position;
             Sprite.UnregisterSprite();
             LevelMaster.RemoveUpdateable(this);
-            new EnemyDeathEffect(Position);
         }
 
         public void Spawn()
         {
-            new EnemySpawnEffect(Position);
             LevelMaster.RegisterUpdateable(this);
             Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
+            Collider.Pos = Position;
         }
 
         public void Update(GameTime gameTime)
@@ -101,6 +100,7 @@ namespace LegendOfZelda
                 ChangeDirection();
             }
             ChangePosition();
+            Collider.Pos = Position;
         }
 
         public void UpdateHealth(int damagePoints)
@@ -118,13 +118,12 @@ namespace LegendOfZelda
             Sprite.blinking = false;
         }
 
-        public void OnCollision(List<CollisionInfo> collisions)
-        {
+        public void OnCollision(List<CollisionInfo> collisions) {
             foreach (CollisionInfo collision in collisions)
             {
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
 
-                if (collidedWith == CollisionLayer.OuterWall)
+                if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Wall)
                 {
                     ChangeDirection();
                 }
@@ -132,8 +131,6 @@ namespace LegendOfZelda
                 {
                     UpdateHealth(1); // Choose different values for each type of player weapon
                 }
-
-                if (!IsFlying && collidedWith == CollisionLayer.Wall) { }
             }
         }
     }

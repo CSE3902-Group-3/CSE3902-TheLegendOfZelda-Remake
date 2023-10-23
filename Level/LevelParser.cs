@@ -48,9 +48,16 @@ namespace LegendOfZelda
                     LevelMaster.CurrentRoom = i;
                     LevelMaster.RoomListUpdateables.Add(new List<IUpdateable>());
                     LevelMaster.RoomListDrawables.Add(new List<IDrawable>());
+                    LevelMaster.RoomListColliders.Add(new List<IRectCollider>());
                     foreach (MapElement mapElement in RoomList.Rooms[i].MapElements)
                     {
                         ProcessMapElement(mapElement);
+                    }
+
+                    //Deactivate colliders (since most objects are not in the first room)
+                    foreach(IRectCollider rectCollider in LevelMaster.RoomListColliders[i])
+                    {
+                        LevelMaster.collisionManager.RemoveRectCollider(rectCollider);
                     }
                 }
                 LevelMaster.CurrentRoom = 0;
