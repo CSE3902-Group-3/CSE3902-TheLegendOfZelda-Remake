@@ -21,7 +21,7 @@ namespace LegendOfZelda
             int scale = SpriteFactory.getInstance().scale;
 
             Collider = new RectCollider(
-               new Rectangle((int)this.Position.X, (int)+this.Position.Y, 16 * scale, 16 * scale),
+               new Rectangle((int)this.Position.X, (int)+this.Position.Y, 24 * scale, 32 * scale),
                CollisionLayer.Enemy,
                this
            );

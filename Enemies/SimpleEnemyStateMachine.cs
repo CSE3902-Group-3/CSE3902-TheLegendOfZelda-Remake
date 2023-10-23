@@ -12,13 +12,15 @@ namespace LegendOfZelda
         public int SpeedMultiplier;
         public int Health { get; set; }
         private Vector2 Position;
+        private Vector2 Offset;
         private Vector2 Direction;
         private double LastSwitch = 0;
         public RectCollider Collider { get; set; }
 
-        public SimpleEnemyStateMachine(Vector2 pos, RectCollider collider)
+        public SimpleEnemyStateMachine(Vector2 pos, Vector2 offset, RectCollider collider)
         {
             Position = pos;
+            Offset = offset;
 
             switch (EnemySpeed)
             {
@@ -78,7 +80,6 @@ namespace LegendOfZelda
         public void Die()
         {
             Sprite.UpdatePos(Position);
-            Collider.Pos = Position;
             Sprite.UnregisterSprite();
             LevelMaster.RemoveUpdateable(this);
         }
@@ -88,7 +89,7 @@ namespace LegendOfZelda
             LevelMaster.RegisterUpdateable(this);
             Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
-            Collider.Pos = Position;
+            Collider.Pos = Position + Offset;
         }
 
         public void Update(GameTime gameTime)
@@ -100,7 +101,7 @@ namespace LegendOfZelda
                 ChangeDirection();
             }
             ChangePosition();
-            Collider.Pos = Position;
+            Collider.Pos = Position + Offset;
         }
 
         public void UpdateHealth(int damagePoints)

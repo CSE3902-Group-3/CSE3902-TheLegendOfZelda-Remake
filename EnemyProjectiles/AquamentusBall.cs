@@ -8,6 +8,7 @@ namespace LegendOfZelda
         private readonly AnimatedSprite Sprite;
         private Vector2 Direction;
         private Vector2 Position;
+        private Vector2 Offset = new Vector2(0, 12);
         public RectCollider Collider { get; private set; }
         public AquamentusBall(Vector2 pos, Vector2 dir)
         {
@@ -19,7 +20,7 @@ namespace LegendOfZelda
             int scale = SpriteFactory.getInstance().scale;
 
             Collider = new RectCollider(
-               new Rectangle((int)this.Position.X, (int)+this.Position.Y, 16 * scale, 16 * scale),
+               new Rectangle((int)Position.X + (int)Offset.X, (int)Position.Y + (int)Offset.Y, 8 * scale, 10 * scale),
                CollisionLayer.EnemyWeapon,
                this
            );
@@ -29,7 +30,7 @@ namespace LegendOfZelda
         {
             Position += Direction;
             Sprite.UpdatePos(Position);
-            Collider.Pos = Position;
+            Collider.Pos = Position + Offset;
         }
         public void Destroy()
         {
