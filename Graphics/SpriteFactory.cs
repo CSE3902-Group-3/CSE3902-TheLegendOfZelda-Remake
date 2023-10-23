@@ -20,7 +20,7 @@ namespace LegendOfZelda
     {
         private static SpriteFactory instance;
 
-        private Texture2D linkTexture;
+        public Texture2D linkTexture { get; private set; }
         private Texture2D enemiesTexture;
         private Texture2D enemyDeathTexture;
         private Texture2D enemyCloudTexture;
@@ -1408,6 +1408,16 @@ namespace LegendOfZelda
             };
             AnimatedSprite newSprite = new AnimatedSprite(enemyDeathTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
             newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
+            return newSprite;
+        }
+
+        public AnimatedSprite CreatePixelSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(782, 11, 1, 1)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
             return newSprite;
         }
     }
