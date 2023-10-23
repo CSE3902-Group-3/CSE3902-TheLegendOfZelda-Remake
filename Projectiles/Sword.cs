@@ -31,35 +31,48 @@ namespace LegendOfZelda
             switch (direction)
             {
                 case Direction.up:
+                    colliderWidth = 16 * SpriteFactory.getInstance().scale;
+                    colliderHeight = 28 * SpriteFactory.getInstance().scale;
+
+                    // Initialize the collider with the spawn position
+                    collider = new RectCollider(new Rectangle((int)spawnPos.X, (int)spawnPos.Y-46, colliderWidth, colliderHeight), CollisionLayer.PlayerWeapon, this);
+                    break;
+
                 case Direction.down:
                     colliderWidth = 16 * SpriteFactory.getInstance().scale;
                     colliderHeight = 28 * SpriteFactory.getInstance().scale;
+
+                    // Initialize the collider with the spawn position
+                    collider = new RectCollider(new Rectangle((int)spawnPos.X, (int)spawnPos.Y, colliderWidth, colliderHeight), CollisionLayer.PlayerWeapon, this);
                     break;
+
                 case Direction.right:
+                    colliderWidth = 23 * SpriteFactory.getInstance().scale; // Use the widest frame's width
+                    colliderHeight = 16 * SpriteFactory.getInstance().scale;
+
+                    // Initialize the collider with the spawn position
+                    collider = new RectCollider(new Rectangle((int)spawnPos.X+16, (int)spawnPos.Y, colliderWidth, colliderHeight), CollisionLayer.PlayerWeapon, this);
+                    break;
+
                 case Direction.left:
                     colliderWidth = 23 * SpriteFactory.getInstance().scale; // Use the widest frame's width
                     colliderHeight = 16 * SpriteFactory.getInstance().scale;
+
+                    // Initialize the collider with the spawn position
+                    collider = new RectCollider(new Rectangle((int)spawnPos.X-46, (int)spawnPos.Y, colliderWidth, colliderHeight), CollisionLayer.PlayerWeapon, this);
                     break;
             }
-
-            // Initialize the collider with the spawn position
-            collider = new RectCollider(new Rectangle((int)spawnPos.X, (int)spawnPos.Y, colliderWidth, colliderHeight), CollisionLayer.PlayerWeapon, this);
-            Game1.getInstance().DrawRectangleOutline(new Rectangle((int)spawnPos.X, (int)spawnPos.Y, colliderWidth, colliderHeight), Color.DarkSalmon);
         }
 
         public void Destroy()
         {
-            collider = null;
+            collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
         }
 
-        // Update the collider's position when the sword's position changes
         public void Update(GameTime gameTime)
         {
-            if (collider != null)
-            {
-                collider.Pos = new Vector2((int)spawnPos.X, (int)spawnPos.Y);
-            }
+
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
