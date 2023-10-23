@@ -82,18 +82,19 @@ namespace LegendOfZelda
         private void MouseEvents()
         {
             mouseState = Mouse.GetState();
+            RoomCycler roomCycler = Game1.getInstance().roomCycler;
 
-            if (mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Released)
+            if (mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Released && roomCycler != null)
             {
-                command = new NextRoomCommand(Game1.getInstance().roomCycler);
+                command = new NextRoomCommand(roomCycler);
                 if (command != null)
                 {
                     command.Execute();
                 }
             }
-            else if (mouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Released)
+            else if (mouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Released && roomCycler != null)
             {
-                command = new PreviousRoomCommand(Game1.getInstance().roomCycler);
+                command = new PreviousRoomCommand(roomCycler);
                 if (command != null)
                 {
                     command.Execute();
