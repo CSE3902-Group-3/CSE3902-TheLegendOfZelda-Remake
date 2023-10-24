@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace LegendOfZelda
     {
         private Game1 game;
         private Link link;
+
+        private Sword sword;
 
         public AttackingLeftLinkState()
         {
@@ -29,7 +32,10 @@ namespace LegendOfZelda
             link.stateMachine.canMove = false;
 
             link.sprite = SpriteFactory.getInstance().CreateLinkWoodStabLeftSprite();
+
+            sword = new Sword(link.stateMachine.currentDirection, link.stateMachine.position);
         }
+
         public void Execute()
         {
             if (((AnimatedSprite)link.sprite).complete)
@@ -42,6 +48,7 @@ namespace LegendOfZelda
         public void Exit()
         {
             link.stateMachine.canMove = true;
+            sword.Destroy();
         }
 
     }
