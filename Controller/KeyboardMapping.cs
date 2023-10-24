@@ -41,7 +41,6 @@ namespace LegendOfZelda
             KeyDownMapping.Add(Keys.Z, new PrimaryAttackCommand(link));
             KeyDownMapping.Add(Keys.N, new PrimaryAttackCommand(link));
 
-            KeyDownMapping.Add(Keys.E, new DamageCommand(link));
             KeyDownMapping.Add(Keys.T, new PreviousBlockCommand(game.blockCycler));
             KeyDownMapping.Add(Keys.Y, new NextBlockCommand(game.blockCycler));
             KeyDownMapping.Add(Keys.U, new PreviousItemCommand(game.itemCycler));

@@ -17,8 +17,8 @@ namespace LegendOfZelda
 
         public LinkStateMachine stateMachine { get; private set; }
 
-        private int HP { get; set; } = 6;
-        private int maxHP { get; set; } = 6;
+        private float HP { get; set; } = 6;
+        private float maxHP { get; set; } = 6;
 
         public int velocity { get; set; } = 5; // link moves at 1pixel per frame in original NES game, scaled up to 1080p is roughly 5pixels per frame
 
@@ -52,12 +52,17 @@ namespace LegendOfZelda
             LinkUtilities.UpdatePositions(this, this.sprite.pos);
         }
 
-        public void TakeDamage()
+        public void TakeDamage(float damage)
         {
             this.stateMachine.isTakingDamage = true;
+            this.HP -= damage;
+            if (this.HP <= 0)
+            {
+                this.Die();
+            }
         }
 
-        public void Heal()
+        public void StopTakingDamage()
         {
             this.stateMachine.isTakingDamage = false;
         }
@@ -75,10 +80,17 @@ namespace LegendOfZelda
 
         public void Reset()
         {
-            ((AnimatedSprite)sprite).UpdatePos(new Vector2(0,0));
-            this.stateMachine.position = new Vector2(0, 0);
+            LinkUtilities.UpdatePositions(this, new Vector2(448, 864));
             this.stateMachine.ChangeState(new WalkRightLinkState());
             this.stateMachine.ChangeState(new IdleLinkState());
+
+            this.HP = this.maxHP;
+        }
+
+        public void Die()
+        {
+            // just call Reset for now
+            this.Reset();
         }
 
         private bool ChangedDirection()
@@ -88,49 +100,7 @@ namespace LegendOfZelda
 
         public void OnCollision(List<CollisionInfo> collisions)
         {
-            foreach (CollisionInfo collision in collisions)
-            {
-                /*
-                 * You will likely need to sort out the collisions by the Layer of the collidable you collided with
-                 */
-                if (collision.CollidedWith.Layer == CollisionLayer.OuterWall || collision.CollidedWith.Layer == CollisionLayer.Wall)
-                {
-                    HandleCollisionWithWall(collision.EstimatedDirection, collision.OverlapRectangle);
-                }
-                else
-                {
-                    HandleCollisionWithEntity();
-                }
-            }
-        }
-
-        private void HandleCollisionWithWall(Direction direction, Rectangle overlapRectangle)
-        {
-            Vector2 newPosition = this.sprite.pos;
-
-            switch (direction)
-            {
-                case Direction.up:
-                    newPosition.Y += overlapRectangle.Height;
-                    break;
-                case Direction.down:
-                    newPosition.Y -= overlapRectangle.Height;
-                    break;
-                case Direction.right:
-                    newPosition.X -= overlapRectangle.Width;
-                    break;
-                case Direction.left:
-                    newPosition.X += overlapRectangle.Width;
-                    break;
-            }
-
-            LinkUtilities.UpdatePositions(this, newPosition);
-            this.velocity = 0;
-        }
-
-        private void HandleCollisionWithEntity()
-        {
-            //do nothing for now
+            LinkCollisionHandler.OnCollision(collisions);
         }
 
     }
