@@ -80,7 +80,7 @@ namespace LegendOfZelda
 
         public void Reset()
         {
-            LinkUtilities.UpdatePositions(this, new Vector2(150, 600));
+            LinkUtilities.UpdatePositions(this, new Vector2(448, 864));
             this.stateMachine.ChangeState(new WalkRightLinkState());
             this.stateMachine.ChangeState(new IdleLinkState());
 
