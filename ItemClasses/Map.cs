@@ -35,7 +35,7 @@ namespace LegendOfZelda
         public IItem Collect()
         {
             map.UnregisterSprite();
-            collider = null;
+            collider.Active = false;
             return this;
         }
 

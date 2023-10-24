@@ -65,7 +65,7 @@ namespace LegendOfZelda
             legalCollisions.Add(CollisionLayer.EnemyWeapon, new List<CollisionLayer> { CollisionLayer.OuterWall, CollisionLayer.Wall });
             legalCollisions.Add(CollisionLayer.Wall, new List<CollisionLayer>());
             legalCollisions.Add(CollisionLayer.OuterWall, new List<CollisionLayer>());
-            legalCollisions.Add(CollisionLayer.Item, new List<CollisionLayer>());
+            legalCollisions.Add(CollisionLayer.Item, new List<CollisionLayer>() { CollisionLayer.OuterWall});
 
             collisionBuffer = new Dictionary<ICollidable, List<CollisionInfo>>();
         }
