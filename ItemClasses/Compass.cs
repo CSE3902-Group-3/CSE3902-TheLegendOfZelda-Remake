@@ -35,7 +35,7 @@ namespace LegendOfZelda
         public IItem Collect()
         {
             compass.UnregisterSprite();
-            collider = null;
+            collider.Active = false;
             return this;
         }
 

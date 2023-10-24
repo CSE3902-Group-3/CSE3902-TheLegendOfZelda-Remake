@@ -49,7 +49,7 @@ namespace LegendOfZelda
         {
             fairy.UnregisterSprite();
             LevelMaster.RemoveUpdateable(this);
-            collider = null;
+            collider.Active = false;
             return this;
         }
 
