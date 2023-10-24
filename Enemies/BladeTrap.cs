@@ -16,7 +16,7 @@ namespace LegendOfZelda
             int scale = SpriteFactory.getInstance().scale;
 
             Collider = new RectCollider(
-               new Rectangle((int)this.Position.X, (int)+this.Position.Y, 16 * scale, 16 * scale),
+               new Rectangle((int)Position.X, (int)Position.Y, 16 * scale, 16 * scale),
                CollisionLayer.Enemy,
                this
            );
@@ -29,6 +29,7 @@ namespace LegendOfZelda
         public void Die()
         {
             Sprite.UnregisterSprite();
+            Collider.Active = false;
         }
         public void UpdateHealth(int damagePoints) {}
 
