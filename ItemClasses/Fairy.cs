@@ -29,6 +29,7 @@ namespace LegendOfZelda
             LevelMaster.RegisterUpdateable(this);
             fairy.RegisterSprite();
             fairy.UpdatePos(position);
+            collider.Pos = position;
         }
 
         /* this is added in case fairy should be displayed in inventory, where it should not move */
@@ -47,7 +48,8 @@ namespace LegendOfZelda
         public IItem Collect()
         {
             fairy.UnregisterSprite();
-            collider = null;
+            LevelMaster.RemoveUpdateable(this);
+            collider.Active = false;
             return this;
         }
 
@@ -72,7 +74,7 @@ namespace LegendOfZelda
                 ChangeDirection();
             }
             ChangePosition();
-
+            collider.Pos = position;
         }
 
         public void ChangeDirection()
@@ -129,7 +131,7 @@ namespace LegendOfZelda
             {
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
 
-                if (collidedWith == CollisionLayer.OuterWall)
+                if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Wall)
                 {
                     ChangeDirection();
                 }

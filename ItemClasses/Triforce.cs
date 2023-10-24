@@ -35,6 +35,7 @@ namespace LegendOfZelda
         public IItem Collect()
         {
             triforce.UnregisterSprite();
+            collider.Active = false;
             return this;
         }
 
