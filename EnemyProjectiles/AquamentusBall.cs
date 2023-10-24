@@ -35,6 +35,7 @@ namespace LegendOfZelda
         public void Destroy()
         {
             new AquamentusBallExplosion(Position);
+            Collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
             LevelMaster.RemoveDrawable(Sprite);
             Collider.Active = false;

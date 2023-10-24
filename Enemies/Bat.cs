@@ -51,6 +51,7 @@ namespace LegendOfZelda
         public void Die()
         {
             StateMachine.Die();
+            Collider.Active = false;
             new EnemyDeathEffect(Position);
         }
 

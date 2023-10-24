@@ -16,7 +16,7 @@ namespace LegendOfZelda
             int scale = SpriteFactory.getInstance().scale;
 
             Collider = new RectCollider(
-               new Rectangle((int)this.Position.X, (int)+this.Position.Y, 4 * scale, 4 * scale),
+               new Rectangle((int)Position.X, (int)Position.Y, 4 * scale, 4 * scale),
                CollisionLayer.Enemy,
                this
            );
@@ -51,6 +51,7 @@ namespace LegendOfZelda
         public void Die()
         {
             StateMachine.Die();
+            Collider.Active = false;
             new EnemyDeathEffect(Position);
         }
 

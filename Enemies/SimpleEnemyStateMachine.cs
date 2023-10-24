@@ -80,6 +80,7 @@ namespace LegendOfZelda
         public void Die()
         {
             Sprite.UpdatePos(Position);
+            Collider.Active = false;
             Sprite.UnregisterSprite();
             LevelMaster.RemoveUpdateable(this);
         }

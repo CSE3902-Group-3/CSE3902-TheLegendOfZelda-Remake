@@ -34,6 +34,7 @@ namespace LegendOfZelda
         public void Destroy()
         {
             new Burst(Position);
+            Collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
             LevelMaster.RemoveDrawable(Sprite);
             Collider.Active = false;
