@@ -44,7 +44,7 @@ namespace LegendOfZelda
 
             if(link != null)
             {
-                link.sprite.UpdatePos(position);
+                LinkUtilities.UpdatePositions(link, position);
             }
         }
 

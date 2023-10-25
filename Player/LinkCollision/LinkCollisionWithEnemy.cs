@@ -6,6 +6,9 @@ namespace LegendOfZelda
 {
     public class LinkCollisionWithEnemy
     {
+
+        private static bool isTakingDamage = false; // Flag to track if Link is taking damage
+
         public static void HandleCollisionWithEnemy(CollisionInfo collision)
         {
             IEnemy enemyCollidedWith = collision.CollidedWith.Collidable as IEnemy;
@@ -22,19 +25,14 @@ namespace LegendOfZelda
             };
 
             Type enemyType = enemyCollidedWith.GetType();
-            if (enemyDamageMap.ContainsKey(enemyType))
+            if (enemyDamageMap.ContainsKey(enemyType) && !isTakingDamage)
             {
                 float damage = enemyDamageMap[enemyType];
                 ((Link)Game1.getInstance().link).TakeDamage(damage);
+                isTakingDamage = true; // Set the flag to true to indicate Link is taking damage
             }
-            // bat half heart damage
-            // Aquamentus half heart damage (fireball 1/2)
-            // Goriya 1 heart (boomerang 1)
-            // Dodongo fire 1 heart / tail 1/2 heart
-            // gel 1/2 heart
-            // rope half heart
-            // stalfos 1/2 heart
-            // blade trap 1/4 heart
+
+            Link.getInstance().stateMachine.ChangeState(new KnockBackLinkState());
         }
     }
 }
