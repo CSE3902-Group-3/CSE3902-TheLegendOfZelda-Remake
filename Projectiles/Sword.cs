@@ -32,7 +32,7 @@ namespace LegendOfZelda
             {
                 case Direction.up:
                     colliderWidth = 16 * SpriteFactory.getInstance().scale;
-                    colliderHeight = 28 * SpriteFactory.getInstance().scale;
+                    colliderHeight = 11 * SpriteFactory.getInstance().scale;
 
                     // Initialize the collider with the spawn position
                     collider = new RectCollider(new Rectangle((int)spawnPos.X, (int)spawnPos.Y-46, colliderWidth, colliderHeight), CollisionLayer.PlayerWeapon, this);
@@ -40,22 +40,22 @@ namespace LegendOfZelda
 
                 case Direction.down:
                     colliderWidth = 16 * SpriteFactory.getInstance().scale;
-                    colliderHeight = 28 * SpriteFactory.getInstance().scale;
+                    colliderHeight = 11 * SpriteFactory.getInstance().scale;
 
                     // Initialize the collider with the spawn position
-                    collider = new RectCollider(new Rectangle((int)spawnPos.X, (int)spawnPos.Y, colliderWidth, colliderHeight), CollisionLayer.PlayerWeapon, this);
+                    collider = new RectCollider(new Rectangle((int)spawnPos.X, (int)spawnPos.Y+62, colliderWidth, colliderHeight), CollisionLayer.PlayerWeapon, this);
                     break;
 
                 case Direction.right:
-                    colliderWidth = 23 * SpriteFactory.getInstance().scale; // Use the widest frame's width
+                    colliderWidth = 13 * SpriteFactory.getInstance().scale; // Use the widest frame's width
                     colliderHeight = 16 * SpriteFactory.getInstance().scale;
 
                     // Initialize the collider with the spawn position
-                    collider = new RectCollider(new Rectangle((int)spawnPos.X+16, (int)spawnPos.Y, colliderWidth, colliderHeight), CollisionLayer.PlayerWeapon, this);
+                    collider = new RectCollider(new Rectangle((int)spawnPos.X+56, (int)spawnPos.Y, colliderWidth, colliderHeight), CollisionLayer.PlayerWeapon, this);
                     break;
 
                 case Direction.left:
-                    colliderWidth = 23 * SpriteFactory.getInstance().scale; // Use the widest frame's width
+                    colliderWidth = 13 * SpriteFactory.getInstance().scale; // Use the widest frame's width
                     colliderHeight = 16 * SpriteFactory.getInstance().scale;
 
                     // Initialize the collider with the spawn position
