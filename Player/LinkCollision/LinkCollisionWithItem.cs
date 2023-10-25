@@ -4,7 +4,9 @@
     {
         public static void HandleCollisionWithItem(CollisionInfo collision)
         {
-            // nothing for sprint 3, in this sprint items add themselves to the inventory and despawn
+            IItem itemCollidedWith = collision.CollidedWith.Collidable as IItem;
+
+            Link.getInstance().stateMachine.ChangeState(new CollectItemLinkState(itemCollidedWith));
         }
 
     }

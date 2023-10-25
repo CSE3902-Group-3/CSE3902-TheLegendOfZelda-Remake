@@ -23,10 +23,11 @@ namespace LegendOfZelda
             link.collider.Pos = newPositon;
         }
 
-        public static bool IsAttackingStateWithIncompleteAnimation(IState state)
+        public static bool IsStateWithIncompleteAnimation(IState state)
         {
             if (state is AttackingUpLinkState || state is AttackingDownLinkState ||
-                state is AttackingLeftLinkState || state is AttackingRightLinkState)
+                state is AttackingLeftLinkState || state is AttackingRightLinkState ||
+                state is CollectItemLinkState)
             {
                 return !((AnimatedSprite)Game1.getInstance().link.sprite).complete;
             }
