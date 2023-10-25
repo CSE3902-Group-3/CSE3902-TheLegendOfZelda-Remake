@@ -22,8 +22,6 @@ namespace LegendOfZelda
                 float damage = enemyDamageMap[enemyType];
                 ((Link)Game1.getInstance().link).TakeDamage(damage);
             }
-
-            ((Link)Game1.getInstance().link).StopTakingDamage();
         }
     }
 }

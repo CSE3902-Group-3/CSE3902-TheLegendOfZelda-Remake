@@ -34,8 +34,6 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
-
             item.Use((link.stateMachine.position - new Vector2(-5, 60)));
 
             if (((AnimatedSprite)link.sprite).complete)

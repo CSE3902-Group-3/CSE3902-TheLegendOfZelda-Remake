@@ -37,8 +37,6 @@ namespace LegendOfZelda
 
                 LinkUtilities.UpdatePositions(link, currPos);
             }
-
-            ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
         }
 
         public void Exit()

@@ -17,10 +17,13 @@ namespace LegendOfZelda
 
         public LinkStateMachine stateMachine { get; private set; }
 
-        private float HP { get; set; } = 6;
-        private float maxHP { get; set; } = 6;
+        public float HP { get; private set; } = 6;
+        public float maxHP { get; private set; } = 6;
 
         public int velocity { get; set; } = 5; // link moves at 1pixel per frame in original NES game, scaled up to 1080p is roughly 5pixels per frame
+
+        private float damageAnimationTimer = 0; // Initialize it to 0
+        private float damageAnimationDuration = 1.0f; // Set the duration (in seconds) for the animation
 
         private static Link instance;
 
@@ -37,7 +40,7 @@ namespace LegendOfZelda
             this.game = Game1.getInstance();
 
             this.sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
-            this.sprite.UpdatePos(new Vector2(448, 864));
+            this.sprite.UpdatePos(LinkUtilities.originalLinkPosition);
 
             this.stateMachine = new LinkStateMachine();
             this.stateMachine.ChangeState(new InititalLinkState(this.sprite));
@@ -60,6 +63,7 @@ namespace LegendOfZelda
             {
                 this.Die();
             }
+            this.damageAnimationTimer = this.damageAnimationDuration;
         }
 
         public void StopTakingDamage()
@@ -69,6 +73,19 @@ namespace LegendOfZelda
 
         public void Update (GameTime gameTime)
         {
+
+            if (damageAnimationTimer > 0)
+            {
+                damageAnimationTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (damageAnimationTimer <= 0)
+                {
+                    // Stop the flashing animation and reset any related variables.
+                    damageAnimationTimer = 0;
+                    StopTakingDamage();
+                }
+            }
+
             if (ChangedDirection())
             {
                 this.velocity = 5;
@@ -76,11 +93,13 @@ namespace LegendOfZelda
 
             this.stateMachine.Update();
             LinkUtilities.UpdatePositions(this, this.sprite.pos);
+
+            ((AnimatedSprite)this.sprite).flashing = this.stateMachine.isTakingDamage;
         }
 
         public void Reset()
         {
-            LinkUtilities.UpdatePositions(this, new Vector2(448, 864));
+            LinkUtilities.UpdatePositions(this, LinkUtilities.originalLinkPosition);
             this.stateMachine.ChangeState(new WalkRightLinkState());
             this.stateMachine.ChangeState(new IdleLinkState());
 

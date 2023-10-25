@@ -2,8 +2,10 @@
 
 namespace LegendOfZelda
 {
-    public class LinkUtilities
+    public static class LinkUtilities
     {
+
+        public static Vector2 originalLinkPosition = new Vector2(130, 640);
         public static int SnapToGrid(int position)
         {
             int alignTo = 8 * SpriteFactory.getInstance().scale;

@@ -35,7 +35,6 @@ namespace LegendOfZelda
             // rope half heart
             // stalfos 1/2 heart
             // blade trap 1/4 heart
-            ((Link)Game1.getInstance().link).StopTakingDamage();
         }
     }
 }
