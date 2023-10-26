@@ -95,12 +95,8 @@ namespace LegendOfZelda
             roomCycler = new RoomCycler(LevelMaster);
             //new AnimationTester();
 
-        Add-Pause
             playerController = new PlayerController((Link)link);
             pauseController = new PauseController();
-            
-            new ProjectileTest();
-        main
         }
 
         protected override void Update(GameTime gameTime)
