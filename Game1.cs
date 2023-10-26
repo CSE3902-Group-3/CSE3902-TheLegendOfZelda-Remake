@@ -28,6 +28,8 @@ namespace LegendOfZelda
         public ItemScroll itemCycler { get; private set; }
         public RoomCycler roomCycler { get; private set; }
 
+        public LetterTester letterTester { get; private set; }
+
         /* Level */
         private LevelMaster LevelMaster;
 
@@ -88,6 +90,7 @@ namespace LegendOfZelda
             //itemCycler = new ItemScroll(new Vector2(800, 600));
             roomCycler = new RoomCycler(LevelMaster);
             //new AnimationTester();
+            letterTester = new LetterTester();
 
             controller = new PlayerController((Link)link);
         }
@@ -110,7 +113,7 @@ namespace LegendOfZelda
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
 
@@ -118,6 +121,7 @@ namespace LegendOfZelda
 
             LevelMaster.Draw();
             link.sprite.Draw();
+            letterTester.Show();
 
             _spriteBatch.End();
 
