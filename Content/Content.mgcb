@@ -109,3 +109,10 @@
 /processorParam:TextureFormat=Color
 /build:NPC.png
 
+#begin Pause.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Pause.spritefont
+
