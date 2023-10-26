@@ -79,7 +79,8 @@ namespace LegendOfZelda.Projectiles
         public void Destroy()
         {
             sprite.UnregisterSprite();
-            LevelMaster.RemoveUpdateable(this);
+            LevelMaster.RemoveCollider(collider);
+            collider.Active = false;
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
