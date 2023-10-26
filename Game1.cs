@@ -90,7 +90,6 @@ namespace LegendOfZelda
             //new AnimationTester();
 
             controller = new PlayerController((Link)link);
-            new ProjectileTest();
         }
 
         protected override void Update(GameTime gameTime)

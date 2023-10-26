@@ -1,5 +1,4 @@
 ﻿using LegendOfZelda;
-using LegendOfZelda.Projectiles;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -36,7 +35,7 @@ namespace LegendOfZelda
             
             if (link.HP == link.maxHP)
             {
-                //new SwordBeam(link.stateMachine.position, link.stateMachine.currentDirection);
+                swordBeam = new SwordBeam(link.stateMachine.position, link.stateMachine.currentDirection);
             }
             else
             {
