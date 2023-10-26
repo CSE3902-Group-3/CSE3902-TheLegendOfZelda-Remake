@@ -20,7 +20,8 @@ namespace LegendOfZelda
         public IPlayer link { get; private set; }
 
         /* Controller */
-        private IController controller;
+        private IController playerController;
+        private IController pauseController;
 
         /* Cylers */
         public BlockCycler blockCycler { get; private set; }
@@ -33,6 +34,9 @@ namespace LegendOfZelda
 
         /* Collisions */
         private CollisionManager collisionManager;
+
+        /* Pausing */
+        public PauseManager pauseManager;
 
         /* Singleton */
         private static Game1 instance;
@@ -67,6 +71,8 @@ namespace LegendOfZelda
 
             collisionManager = new CollisionManager();
 
+            pauseManager = new PauseManager();
+
             base.Initialize();
         }
 
@@ -89,22 +95,28 @@ namespace LegendOfZelda
             roomCycler = new RoomCycler(LevelMaster);
             //new AnimationTester();
 
-            controller = new PlayerController((Link)link);
+            playerController = new PlayerController((Link)link);
+            pauseController = new PauseController();
         }
 
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) Exit();
 
-            // TODO: Add your update logic here
-            
-            LevelMaster.Update(gameTime);
-            link.Update(gameTime);
 
-            controller.Update();
+            // TODO: Add your update logic here
+            if (!pauseManager.isPaused())
+            {
+                LevelMaster.Update(gameTime);
+                link.Update(gameTime);
+                playerController.Update();
+            }
+            pauseController.Update();
+            
             //CollisionManager always updates last
             collisionManager.Update(gameTime);
-
+            
+            
             base.Update(gameTime);
         }
 

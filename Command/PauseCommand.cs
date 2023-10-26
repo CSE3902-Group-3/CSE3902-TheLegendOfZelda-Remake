@@ -1,0 +1,19 @@
+﻿using System;
+namespace LegendOfZelda
+{
+	public class PauseCommand : ICommands
+	{
+		private PauseManager pauseHandler;
+
+		public PauseCommand(PauseManager pauseManager)
+		{
+			pauseHandler = pauseManager;
+		}
+
+		public void Execute()
+		{
+			pauseHandler.TogglePause();
+		}
+	}
+}
+
