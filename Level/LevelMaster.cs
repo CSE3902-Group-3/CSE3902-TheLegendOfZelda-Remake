@@ -115,9 +115,14 @@ namespace LegendOfZelda
         }
         public static void Update(GameTime gameTime)
         {
-            for (int i = CurrentRoomUpdateables.Count - 1; i >= 0; i--)
+            //Create unchangeable list of updateables
+            List<IUpdateable> thisFrameUpdates = CurrentRoomUpdateables.ToList();
+            for (int i = thisFrameUpdates.Count - 1; i >= 0; i--)
             {
-                CurrentRoomUpdateables[i].Update(gameTime);
+                if (thisFrameUpdates[i] != null)
+                {
+                    thisFrameUpdates[i].Update(gameTime);
+                }
             }
         }
         public static void Draw()
