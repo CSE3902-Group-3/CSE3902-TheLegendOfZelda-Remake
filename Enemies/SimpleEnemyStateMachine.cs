@@ -7,17 +7,20 @@ namespace LegendOfZelda
 {
     public class SimpleEnemyStateMachine : IEnemy
     {
-        public EnemyClass Classification {get; set;}
+        public EnemyClass Classification { get; set; }
         public AnimatedSprite Sprite { get; set; }
         public enum Speed { slow, medium, fast };
         public Speed EnemySpeed { get; set; }
         public int SpeedMultiplier;
         public float Health { get; set; }
         private Vector2 Position;
+        private Vector2 Center;
         private Vector2 Offset;
         private Vector2 Direction;
         private double LastSwitch = 0;
         private float currentCooldown = 0.0f;
+        public int Width;
+        public int Height;
         public RectCollider Collider { get; set; }
 
         public SimpleEnemyStateMachine(Vector2 pos, Vector2 offset, RectCollider collider)
@@ -79,9 +82,9 @@ namespace LegendOfZelda
             Sprite.UpdatePos(Position);
             Collider.Active = false;
             new EnemyDeathEffect(Position);
+            DropItem();
             Sprite.UnregisterSprite();
             LevelMaster.RemoveUpdateable(this);
-            DropItem();
         }
 
         public void Spawn()
@@ -140,7 +143,25 @@ namespace LegendOfZelda
         }
         public void DropItem()
         {
-            Drop(Classification, Position);
+            Center = EnemyUtilities.GetCenter(Position, Width, Height);
+
+            switch (Classification)
+            {
+                case EnemyClass.A:
+                    DropClassAItem(Center);
+                    break;
+                case EnemyClass.B:
+                    DropClassBItem(Center);
+                    break;
+                case EnemyClass.C:
+                    DropClassCItem(Center);
+                    break;
+                case EnemyClass.D:
+                    DropClassBItem(Center);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

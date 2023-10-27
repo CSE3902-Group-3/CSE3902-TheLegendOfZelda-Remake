@@ -1,15 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using static LegendOfZelda.EnemyItemDrop;
 
 namespace LegendOfZelda
 {
     public class Rope : IEnemy
     {
-        public EnemyClass Classification = EnemyClass.B;
         private AnimatedSprite Sprite;
         private float Health { get; set; } = 0.5f;
         public Vector2 Position;
+        private Vector2 Center;
         private readonly int PosIncrement = 5;
         private bool FacingLeft = false;
         private double LastSwitch = 0;
@@ -124,7 +123,8 @@ namespace LegendOfZelda
         }
         public void DropItem()
         {
-            Drop(Classification, Position);
+            Center = EnemyUtilities.GetCenter(Position, 16, 16);
+            EnemyItemDrop.DropClassBItem(Center);
         }
     }
 }

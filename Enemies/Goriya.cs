@@ -1,17 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using static LegendOfZelda.EnemyItemDrop;
 
 namespace LegendOfZelda
 {
     public class Goriya : IEnemy
     {
-        public EnemyClass Classification = EnemyClass.B;
         private readonly List<AnimatedSprite> Sprites;
         private int CurrentSprite;
         private float Health { get; set; } = 3.0f;
         public Vector2 Position;
+        private Vector2 Center;
         private Vector2 Direction;
         private double LastSwitch = 0;
         private int UpdateCount = 0;
@@ -153,7 +152,8 @@ namespace LegendOfZelda
         }
         public void DropItem()
         {
-            Drop(Classification, Position);
+            Center = EnemyUtilities.GetCenter(Position, 16, 16);
+            EnemyItemDrop.DropClassBItem(Center);
         }
     }
 }

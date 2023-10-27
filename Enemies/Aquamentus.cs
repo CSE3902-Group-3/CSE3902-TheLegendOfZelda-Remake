@@ -1,15 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using static LegendOfZelda.EnemyItemDrop;
 
 namespace LegendOfZelda
 {
     public class Aquamentus : IEnemy
     {
-        public EnemyClass Classification = EnemyClass.D;
         private readonly AnimatedSprite Sprite;
         private float Health = 6.0f;
         private Vector2 Position;
+        private Vector2 Center;
         private int CycleCount = 0;
         private readonly int MaxCycles = 50;
         private int PosIncrement = 2;
@@ -118,7 +117,8 @@ namespace LegendOfZelda
 
         public void DropItem()
         {
-            Drop(Classification, Position);
+            Center = EnemyUtilities.GetCenter(Position, 24, 32);
+            EnemyItemDrop.DropClassDItem(Center);
         }
     }
 }

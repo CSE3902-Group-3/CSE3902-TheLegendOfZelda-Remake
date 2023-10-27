@@ -1,12 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using static LegendOfZelda.EnemyItemDrop;
 
 namespace LegendOfZelda
 {
     public class WallMaster : IEnemy
     {
-        public EnemyClass Classification = EnemyClass.C;
         private readonly SimpleEnemyStateMachine StateMachine;
         private float Health { get; set; } = 1.0f;
         public Vector2 Position;
@@ -26,7 +24,9 @@ namespace LegendOfZelda
             {
                 Sprite = SpriteFactory.getInstance().CreateWallmasterSprite(),
                 Health = Health,
-                Classification = Classification,
+                Classification = EnemyItemDrop.EnemyClass.C,
+                Width = 16,
+                Height = 16,
             };
         }
         public void Spawn()
