@@ -71,7 +71,10 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - Ethan Glenwright reviewed Matt Curie's code for quality in pull request #191
 - Ethan Glenwright reviewed ZhengYi Hu's code for readability in pull request #190
 - Matt Curie reviewed Michael Herring's code for quality in pull requests #142, #150, #151 and #158
-- - Matt Curie reviewed Michael Herring's code for reusability in pull requests #159
+- Matt Curie reviewed Michael Herring's code for reusability in pull requests #159
+
+#### Sprint 4
+- Michael Herring reviewed Zhengyi Hu's code for quality in pull request #257
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections

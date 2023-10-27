@@ -6,8 +6,9 @@ namespace LegendOfZelda
     public class Wizard : IEnemy
     {
         private readonly AnimatedSprite Sprite;
-        private int Health { get; set; } = 1;
+        private float Health { get; set; } = 1.0f;
         public Vector2 Position;
+        private float currentCooldown = 0.0f;
         public RectCollider Collider { get; private set; }
 
         public Wizard(Vector2 pos)
@@ -33,10 +34,8 @@ namespace LegendOfZelda
         {
             // Mechanics of this attack can be changed later
             new FireProjectile(Position, Direction.right);
-            new FireProjectile(Position, Direction.left);
-            new FireProjectile(Position, Direction.down);
-            new FireProjectile(Position, Direction.up);
         }
+
         public void UpdateHealth(int damagePoints) {
             SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
         }
@@ -50,7 +49,9 @@ namespace LegendOfZelda
             new EnemyDeathEffect(Position);
         }
 
-        public void Update(GameTime gameTime) {}
+        public void Update(GameTime gameTime) {
+            currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
+        }
 
         public void OnCollision(List<CollisionInfo> collisions)
         {
@@ -59,8 +60,11 @@ namespace LegendOfZelda
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
                 if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
-                    UpdateHealth(1); // Choose different values for each type of player weapon
-                    Attack();
+                    if (currentCooldown <= 0)
+                    {
+                        UpdateHealth(1.0f); // Choose different values for each type of player weapon
+                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                    }
                 }
             }
         }
