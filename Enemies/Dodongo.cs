@@ -9,12 +9,13 @@ namespace LegendOfZelda
         private readonly List<AnimatedSprite> Sprites;
         private readonly List<AnimatedSprite> HurtSprites;
         private int CurrentSprite;
-        private int Health { get; set; } = 1;
+        private float Health { get; set; } = 8.0f;
         public Vector2 Position;
         private Vector2 Direction;
         private double LastSwitch = 0;
         private int UpdateCount = 0;
         private bool Injured = false;
+        private float currentCooldown = 0.0f;
         public RectCollider Collider { get; private set; }
         public Dodongo(Vector2 pos)
         {
@@ -73,21 +74,32 @@ namespace LegendOfZelda
             Sprites[CurrentSprite].UpdatePos(Position);
             Collider.Pos = Position;
         }
-        public void Attack() {}
-        public void UpdateHealth(int damagePoints)
+        public void Attack() { }
+        public void UpdateHealth(float damagePoints)
         {
-            Sprites[CurrentSprite].UnregisterSprite();
-            if (!Injured)
+            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+            Health -= damagePoints;
+
+            // Indicate damage, or if health has reached 0, die
+            if (Health < 0)
             {
                 Sprites[CurrentSprite] = HurtSprites[CurrentSprite];
-                SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+                Die();
             }
             else
             {
-                Sprites[CurrentSprite] = Sprites[CurrentSprite];
+                if (!Injured)
+                {
+                    Sprites[CurrentSprite] = HurtSprites[CurrentSprite];
+                    Sprites[CurrentSprite].blinking = true;
+                }
+                else
+                {
+                    Sprites[CurrentSprite] = Sprites[CurrentSprite];
+                }
+                Sprites[CurrentSprite].UpdatePos(Position);
+                Injured = !Injured;
             }
-            Sprites[CurrentSprite].UpdatePos(Position);
-            Injured = !Injured;
         }
 
         public void ChangeDirection()
@@ -147,7 +159,11 @@ namespace LegendOfZelda
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
-                    UpdateHealth(1); // Choose different values for each type of player weapon
+                    if (currentCooldown <= 0)
+                    {
+                        UpdateHealth(1.0f); // Choose different values for each type of player weapon
+                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                    }
                 }
             }
         }

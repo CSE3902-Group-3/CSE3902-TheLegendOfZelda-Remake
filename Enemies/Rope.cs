@@ -1,16 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 
 namespace LegendOfZelda
 {
     public class Rope : IEnemy
     {
         private AnimatedSprite Sprite;
-        private int Health { get; set; } = 1;
+        private float Health { get; set; } = 0.5f;
         public Vector2 Position;
         private readonly int PosIncrement = 5;
         private bool FacingLeft = false;
         private double LastSwitch = 0;
+        private float currentCooldown = 0.0f;
         public RectCollider Collider { get; private set; }
         public Rope(Vector2 pos)
         {
@@ -47,9 +49,21 @@ namespace LegendOfZelda
             Sprite.UpdatePos(Position);
             Collider.Pos = Position;
         }
-        public void Attack() {}
-        public void UpdateHealth(int damagePoints) {
+        public void Attack() { }
+        public void UpdateHealth(float damagePoints)
+        {
             SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+            Health -= damagePoints;
+
+            // Indicate damage, or if health has reached 0, die
+            if (Health < 0)
+            {
+                Die();
+            }
+            else
+            {
+                Sprite.blinking = true;
+            }
         }
 
         public void ChangeDirection()
@@ -71,6 +85,7 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
+            currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
             if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
             {
                 LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
@@ -99,7 +114,11 @@ namespace LegendOfZelda
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
-                    UpdateHealth(1); // Choose different values for each type of player weapon
+                    if (currentCooldown <= 0)
+                    {
+                        UpdateHealth(1.0f); // Choose different values for each type of player weapon
+                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                    }
                 }
             }
         }
