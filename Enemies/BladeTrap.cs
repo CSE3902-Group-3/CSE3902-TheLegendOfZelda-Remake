@@ -1,10 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using static LegendOfZelda.EnemyItemDrop;
 
 namespace LegendOfZelda
 {
     public class BladeTrap : IEnemy
     {
+        public EnemyClass classification = EnemyClass.X;
         private readonly AnimatedSprite Sprite;
         public Vector2 Position;
         public RectCollider Collider { get; private set; }

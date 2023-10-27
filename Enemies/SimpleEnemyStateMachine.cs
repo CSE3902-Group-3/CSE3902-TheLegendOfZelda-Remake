@@ -1,11 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using static LegendOfZelda.EnemyItemDrop;
 
 namespace LegendOfZelda
 {
     public class SimpleEnemyStateMachine : IEnemy
     {
+        public EnemyClass Classification {get; set;}
         public AnimatedSprite Sprite { get; set; }
         public enum Speed { slow, medium, fast };
         public Speed EnemySpeed { get; set; }
@@ -79,6 +81,7 @@ namespace LegendOfZelda
             new EnemyDeathEffect(Position);
             Sprite.UnregisterSprite();
             LevelMaster.RemoveUpdateable(this);
+            DropItem();
         }
 
         public void Spawn()
@@ -137,7 +140,7 @@ namespace LegendOfZelda
         }
         public void DropItem()
         {
-            EnemyItemDrop.Drop();
+            Drop(Classification, Position);
         }
     }
 }

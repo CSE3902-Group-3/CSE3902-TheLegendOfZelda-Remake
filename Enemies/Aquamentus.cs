@@ -1,10 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using static LegendOfZelda.EnemyItemDrop;
 
 namespace LegendOfZelda
 {
     public class Aquamentus : IEnemy
     {
+        public EnemyClass Classification = EnemyClass.D;
         private readonly AnimatedSprite Sprite;
         private float Health = 6.0f;
         private Vector2 Position;
@@ -91,6 +93,7 @@ namespace LegendOfZelda
             Collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
+            DropItem();
         }
         public void OnCollision(List<CollisionInfo> collisions)
         {
@@ -115,7 +118,7 @@ namespace LegendOfZelda
 
         public void DropItem()
         {
-            EnemyItemDrop.Drop();
+            Drop(Classification, Position);
         }
     }
 }

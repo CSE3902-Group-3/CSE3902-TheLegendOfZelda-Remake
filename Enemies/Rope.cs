@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Reflection.Emit;
+using static LegendOfZelda.EnemyItemDrop;
 
 namespace LegendOfZelda
 {
     public class Rope : IEnemy
     {
+        public EnemyClass Classification = EnemyClass.B;
         private AnimatedSprite Sprite;
         private float Health { get; set; } = 0.5f;
         public Vector2 Position;
@@ -98,6 +99,7 @@ namespace LegendOfZelda
             Collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
+            DropItem();
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
@@ -122,7 +124,7 @@ namespace LegendOfZelda
         }
         public void DropItem()
         {
-            EnemyItemDrop.Drop();
+            Drop(Classification, Position);
         }
     }
 }

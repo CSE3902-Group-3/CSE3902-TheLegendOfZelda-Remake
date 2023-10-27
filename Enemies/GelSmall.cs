@@ -1,10 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using static LegendOfZelda.EnemyItemDrop;
 
 namespace LegendOfZelda
 {
     public class GelSmall : IEnemy
     {
+        public EnemyClass Classification = EnemyClass.X;
         private readonly SimpleEnemyStateMachine StateMachine;
         private float Health { get; set; } = 0.5f;
         public Vector2 Position;
@@ -24,6 +26,7 @@ namespace LegendOfZelda
             {
                 Sprite = SpriteFactory.getInstance().CreateGelSprite(),
                 Health = Health,
+                Classification = Classification,
             };
         }
         public void Spawn()

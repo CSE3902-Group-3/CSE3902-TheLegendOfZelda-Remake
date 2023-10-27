@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
@@ -30,85 +30,93 @@ namespace LegendOfZelda
         }
         private static void GetClassAItem(Vector2 pos)
         {
+            IItem item;
             switch(DropCounter)
             {
                 case 0: case 2: case 4: case 7: case 8:
-                    new OneRupee(pos);
+                    item = new OneRupee(pos);
                     break;
                 case 3:
-                    new Fairy(pos);
+                    item = new Fairy(pos);
                     break;
                 case 1: case 5: case 6:
-                    new Heart(pos);
+                    item = new Heart(pos);
                     break;
-                case 9:
-                    new Heart(pos);
+                default: // case where drop counter is 9
+                    item = new Heart(pos);
                     DropCounter = 0;
                     break;
             }
+            item.Show();
         }
         private static void GetClassBItem(Vector2 pos)
         {
+            IItem item;
             switch (DropCounter)
             {
                 case 0: case 5: case 7:
-                    new Bomb(pos);
+                    item = new Bomb(pos);
                     break;
                 case 1: case 3: case 6:
-                    new OneRupee(pos);
+                    item = new OneRupee(pos);
                     break;
                 case 4: case 8:
-                    new Heart(pos);
+                    item = new Heart(pos);
                     break;
                 case 2:
-                    new Clock(pos);
+                    item = new Clock(pos);
                     break;
-                case 9:
-                    new Heart(pos);
+                default: // case where drop counter is 9
+                    item = new Heart(pos);
                     DropCounter = 0;
                     break;
             }
+            item.Show();
         }
         private static void GetClassCItem(Vector2 pos)
         {
+            IItem item;
             switch (DropCounter)
             {
                 case 0: case 2: case 6: case 7: case 8:
-                    new OneRupee(pos);
+                    item = new OneRupee(pos);
                     break;
                 case 1: case 4:
-                    new Heart(pos);
+                    item = new Heart(pos);
                     break;
                 case 3:
-                    new FiveRupee(pos);
+                    item = new FiveRupee(pos);
                     break;
                 case 5:
-                    new Clock(pos);
+                    item = new Clock(pos);
                     break;
-                case 9:
-                    new FiveRupee(pos);
+                default: // case where drop counter is 9
+                    item = new FiveRupee(pos);
                     DropCounter = 0;
                     break;
             }
+            item.Show();
         }
         private static void GetClassDItem(Vector2 pos)
         {
+            IItem item;
             switch (DropCounter)
             {
                 case 0: case 3: case 5: case 6: case 7:
-                    new Heart(pos);
+                    item = new Heart(pos);
                     break;
                 case 1: case 4:
-                    new Fairy(pos);
+                    item = new Fairy(pos);
                     break;
                 case 2: case 8:
-                    new OneRupee(pos);
+                    item = new OneRupee(pos);
                     break;
-                case 9:
-                    new Heart(pos);
+                default: // case where drop counter is 9
+                    item = new Heart(pos);
                     DropCounter = 0;
                     break;
             }
+            item.Show();
         }
     }
 }

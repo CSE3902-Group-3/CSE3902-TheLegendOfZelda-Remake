@@ -1,11 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using static LegendOfZelda.EnemyItemDrop;
 
 namespace LegendOfZelda
 {
     public class Dodongo : IEnemy
     {
+        public EnemyClass Classification = EnemyClass.D;
         private readonly List<AnimatedSprite> Sprites;
         private readonly List<AnimatedSprite> HurtSprites;
         private int CurrentSprite;
@@ -127,10 +129,12 @@ namespace LegendOfZelda
         }
         public void Die()
         {
+            Sprites[CurrentSprite].UpdatePos(Position);
             Sprites[CurrentSprite].UnregisterSprite();
             Collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
+            DropItem();
         }
 
         public void Update(GameTime gameTime)
@@ -166,7 +170,7 @@ namespace LegendOfZelda
         }
         public void DropItem()
         {
-            EnemyItemDrop.Drop();
+            Drop(Classification, Position);
         }
     }
 }

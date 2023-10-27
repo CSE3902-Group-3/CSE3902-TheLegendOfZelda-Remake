@@ -64,9 +64,6 @@ namespace LegendOfZelda
                 }
             }
         }
-        public void DropItem()
-        {
-            StateMachine.DropItem();
-        }
+        public void DropItem() {}
     }
 }
