@@ -134,5 +134,9 @@ namespace LegendOfZelda
                 }
             }
         }
+        public void DropItem()
+        {
+            EnemyItemDrop.Drop();
+        }
     }
 }

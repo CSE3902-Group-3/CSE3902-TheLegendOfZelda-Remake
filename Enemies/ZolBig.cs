@@ -64,5 +64,9 @@ namespace LegendOfZelda
         {
             StateMachine.OnCollision(collisions);
         }
+        public void DropItem()
+        {
+            StateMachine.DropItem();
+        }
     }
 }
