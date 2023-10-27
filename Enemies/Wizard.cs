@@ -37,7 +37,9 @@ namespace LegendOfZelda
             new FireProjectile(Position, Direction.down);
             new FireProjectile(Position, Direction.up);
         }
-        public void UpdateHealth(int damagePoints) {}
+        public void UpdateHealth(int damagePoints) {
+            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+        }
 
         public void ChangeDirection() {}
         public void Die()
@@ -45,6 +47,7 @@ namespace LegendOfZelda
             Sprite.UnregisterSprite();
             Collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
+            new EnemyDeathEffect(Position);
         }
 
         public void Update(GameTime gameTime) {}

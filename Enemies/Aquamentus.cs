@@ -49,13 +49,14 @@ namespace LegendOfZelda
         }
         public void Attack()
         {
+            SoundFactory.PlaySound(SoundFactory.getInstance().BossScream1, 1.0f, 0.0f, 0.0f);
             new AquamentusBall(Position, new Vector2(-10, 0));
             new AquamentusBall(Position, new Vector2(-10, 10));
             new AquamentusBall(Position, new Vector2(-10, -10));
         }
         public void UpdateHealth(int damagePoints)
         {
-            // Not needed
+            SoundFactory.PlaySound(SoundFactory.getInstance().BossHit, 1.0f, 0.0f, 0.0f);
         }
 
         public void ChangeDirection()

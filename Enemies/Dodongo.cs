@@ -55,6 +55,7 @@ namespace LegendOfZelda
         }
         public void Spawn()
         {
+            SoundFactory.PlaySound(SoundFactory.getInstance().BossScream2, 1.0f, 0.0f, 0.0f);
             new EnemySpawnEffect(Position);
             LevelMaster.RegisterUpdateable(this);
             Sprites[CurrentSprite].RegisterSprite();
@@ -79,6 +80,7 @@ namespace LegendOfZelda
             if (!Injured)
             {
                 Sprites[CurrentSprite] = HurtSprites[CurrentSprite];
+                SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
             }
             else
             {

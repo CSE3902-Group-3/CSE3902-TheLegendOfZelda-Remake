@@ -48,7 +48,9 @@ namespace LegendOfZelda
             Collider.Pos = Position;
         }
         public void Attack() {}
-        public void UpdateHealth(int damagePoints) {}
+        public void UpdateHealth(int damagePoints) {
+            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+        }
 
         public void ChangeDirection()
         {
