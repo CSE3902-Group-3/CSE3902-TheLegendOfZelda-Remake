@@ -35,7 +35,7 @@ namespace LegendOfZelda
             // Mechanics of this attack can be changed later
             new FireProjectile(Position, Direction.right);
         }
-        public void UpdateHealth(int damagePoints)
+        public void UpdateHealth(float damagePoints)
         {
             SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
         }
