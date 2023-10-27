@@ -31,7 +31,7 @@ namespace LegendOfZelda
             Sprite.UnregisterSprite();
             Collider.Active = false;
         }
-        public void UpdateHealth(int damagePoints) {}
+        public void UpdateHealth(float damagePoints) {}
 
         public void Attack() {}
 

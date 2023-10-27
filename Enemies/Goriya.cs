@@ -8,11 +8,12 @@ namespace LegendOfZelda
     {
         private readonly List<AnimatedSprite> GoriyaSprites;
         private int CurrentSprite;
-        private int Health { get; set; } = 1;
+        private float Health { get; set; } = 3.0f;
         public Vector2 Position;
         private Vector2 Direction;
         private double LastSwitch = 0;
         private int UpdateCount = 0;
+        private float currentCooldown = 0.0f;
         public RectCollider Collider { get; private set; }
         public Goriya(Vector2 pos)
         {
@@ -60,12 +61,19 @@ namespace LegendOfZelda
         {
             new GoriyaBoomerang(Position, Direction * 3);
         }
-        public void UpdateHealth(int damagePoints)
+        public void UpdateHealth(float damagePoints)
         {
-            /* 
-             * This isn't needed for Sprint 2,
-             * however it will be needed later.
-             */
+            Health -= damagePoints;
+
+            // Indicate damage, or if health has reached 0, die
+            if (Health < 0)
+            {
+                Die();
+            }
+            else
+            {
+                GoriyaSprites[CurrentSprite].blinking = true;
+            }
         }
 
         public void ChangeDirection()
@@ -104,6 +112,7 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
+            currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
             if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
             {
                 LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
@@ -130,7 +139,11 @@ namespace LegendOfZelda
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
-                    UpdateHealth(1); // Choose different values for each type of player weapon
+                    if (currentCooldown <= 0)
+                    {
+                        UpdateHealth(1.0f); // Choose different values for each type of player weapon
+                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                    }
                 }
             }
         }

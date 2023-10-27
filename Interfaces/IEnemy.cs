@@ -3,7 +3,7 @@
     public interface IEnemy: IUpdateable, ICollidable
     {
         void Spawn();
-        void UpdateHealth(int damagePoints);
+        void UpdateHealth(float damagePoints);
         void Attack();
         void ChangePosition();
         void ChangeDirection();
