@@ -83,11 +83,7 @@ namespace LegendOfZelda
             LevelMaster = LevelMaster.GetInstance();
             LevelMaster.StartLevel("level1.json");
 
-            //blockCycler = new BlockCycler(new Vector2(300, 200));
-            //enemyCycler = new EnemyCycler(new Vector2(500, 500));
-            //itemCycler = new ItemScroll(new Vector2(800, 600));
             roomCycler = new RoomCycler(LevelMaster);
-            //new AnimationTester();
 
             controller = new PlayerController((Link)link);
             new ProjectileTest();

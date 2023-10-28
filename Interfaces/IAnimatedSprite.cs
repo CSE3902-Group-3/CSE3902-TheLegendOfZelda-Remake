@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
+    //This interface has a lot of members because it is intended to hold all of the features of AnimatedSprite, use ISprite for a more generic interface
     public interface IAnimatedSprite : ISprite
     {
         public int frame { get; }
