@@ -180,14 +180,23 @@ namespace LegendOfZelda
         }
         public static void Update(GameTime gameTime)
         {
-            for (int i = PersistentUpdateables.Count - 1; i >= 0; i--)
+            //Create unchangeable list of updateables to prevent loop being messed with during updating
+            List<IUpdateable> thisFramePersisitantUpdates = PersistentUpdateables;
+            for (int i = thisFramePersisitantUpdates.Count - 1; i >= 0; i--)
             {
-                PersistentUpdateables[i].Update(gameTime);
+                if (thisFramePersisitantUpdates[i] != null)
+                {
+                    thisFramePersisitantUpdates[i].Update(gameTime);
+                }
             }
 
-            for (int i = CurrentRoomUpdateables.Count - 1; i >= 0; i--)
+            List<IUpdateable> thisFrameUpdates = CurrentRoomUpdateables.ToList();
+            for (int i = thisFrameUpdates.Count - 1; i >= 0; i--)
             {
-                CurrentRoomUpdateables[i].Update(gameTime);
+                if (thisFrameUpdates[i] != null)
+                {
+                    thisFrameUpdates[i].Update(gameTime);
+                }
             }
         }
         public static void Draw()
