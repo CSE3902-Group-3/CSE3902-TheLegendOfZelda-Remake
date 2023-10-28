@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using LegendOfZelda;
+using LegendOfZelda.Graphics;
 
 namespace LegendOfZelda
 {
@@ -30,6 +31,9 @@ namespace LegendOfZelda
 
         /* Level */
         private LevelMaster LevelMaster;
+
+        /* Camera Controller */
+        private CameraController CameraController;
 
         /* Collisions */
         private CollisionManager collisionManager;
@@ -77,11 +81,14 @@ namespace LegendOfZelda
             // TODO: use this.Content to load your game content here
             spriteFactory.LoadTextures();
 
-            link = Link.getInstance();
+            
 
             // Level 1
             LevelMaster = LevelMaster.GetInstance();
+
             LevelMaster.StartLevel("level1.json");
+
+            link = Link.getInstance();
 
             //blockCycler = new BlockCycler(new Vector2(300, 200));
             //enemyCycler = new EnemyCycler(new Vector2(500, 500));
@@ -90,6 +97,9 @@ namespace LegendOfZelda
             //new AnimationTester();
 
             controller = new PlayerController((Link)link);
+            CameraController = CameraController.GetInstance();
+            BackgroundGenerator.GenerateMenuBackgrounds();
+            new CameraControllerTest();
         }
 
         protected override void Update(GameTime gameTime)
@@ -99,7 +109,6 @@ namespace LegendOfZelda
             // TODO: Add your update logic here
             
             LevelMaster.Update(gameTime);
-            link.Update(gameTime);
 
             controller.Update();
             //CollisionManager always updates last
@@ -114,12 +123,7 @@ namespace LegendOfZelda
 
             // TODO: Add your drawing code here
 
-            _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp);
-
-            LevelMaster.Draw();
-            link.sprite.Draw();
-
-            _spriteBatch.End();
+            CameraController.Draw(_spriteBatch);
 
             base.Draw(gameTime);
         }

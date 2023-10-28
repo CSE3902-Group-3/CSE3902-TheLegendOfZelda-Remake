@@ -11,18 +11,24 @@ namespace LegendOfZelda
     public class LevelMaster
     {
         private static LevelMaster Instance;
+        public static int roomWidth { get; set; }
+        public static int roomHeight { get; set; }
         public static int CurrentRoom { get; set; }
         public static int NumberOfRooms { get; set; }
         public static List<List<IUpdateable>> RoomListUpdateables { get; set; }
         public static List<List<IDrawable>> RoomListDrawables { get; set; }
         public static List<List<IRectCollider>> RoomListColliders { get; set; }
         public static List<IUpdateable> CurrentRoomUpdateables { get; set; }
+        public static List<IUpdateable> PersistentUpdateables { get; set; }
         public static List<IDrawable> CurrentRoomDrawables { get; set; }
+        public static List<IDrawable> PersistentDrawables { get; set; }
         public static List<IRectCollider> CurrentRoomColliders { get; set; }
+        public static List<IRectCollider> PersistentColliders { get; set; }
         public static CollisionManager collisionManager;
         private static BlockLamda BlockLamda = BlockLamda.GetInstance();
         private static ItemLamda ItemLamda = ItemLamda.GetInstance();
         private static EnemyLamda EnemyLamda = EnemyLamda.GetInstance();
+        private static RoomList roomList;
         private LevelMaster()
         {
             RoomListUpdateables = new List<List<IUpdateable>>();
@@ -30,6 +36,9 @@ namespace LegendOfZelda
             RoomListColliders = new List<List<IRectCollider>>();
             CurrentRoom = 0;
             collisionManager = CollisionManager.instance;
+
+            roomWidth = SpriteFactory.getInstance().scale * 256;
+            roomHeight = SpriteFactory.getInstance().scale * 176;
         }
         public static LevelMaster GetInstance()
         {
@@ -47,11 +56,64 @@ namespace LegendOfZelda
                 CurrentRoomUpdateables = RoomListUpdateables[roomNumber];
                 CurrentRoomDrawables = RoomListDrawables[roomNumber];
                 SwapColliders(roomNumber);
+
+                //PLACEHOLDER - Likeley remove this method as the coords of each room is not stored, making this method impossible
+                CameraController.GetInstance().SnapCamToRoom(roomNumber, Vector2.Zero);
                 return true;
             }
             return false;
         }
-        private void SwapColliders(int roomNumber)
+
+        public bool NavigateInDirection(Direction direction)
+        {
+            int targetRoom = DetermineRoomInDirection(CurrentRoom, direction);
+            if(targetRoom == CurrentRoom)
+            {
+                return false;
+            }
+
+            CurrentRoom = targetRoom;
+            CurrentRoomUpdateables = RoomListUpdateables[targetRoom];
+            CurrentRoomDrawables = RoomListDrawables[targetRoom];
+            SwapColliders(targetRoom);
+
+            CameraController.GetInstance().PanCamToRoom(targetRoom, direction);
+            return true;
+        }
+
+        private static int DetermineRoomInDirection(int startingRoom, Direction direction)
+        {
+            List<AdjacentRoom> adjacentRooms = roomList.Rooms[startingRoom].AdjacentRooms;
+            string directionString = DirectionToDirectionString(direction);
+            foreach(AdjacentRoom adjacentRoom in adjacentRooms)
+            {
+                if (adjacentRoom.Direction.Equals(directionString))
+                {
+                    return adjacentRoom.RoomNumber;
+                }
+            }
+
+            return startingRoom;
+        }
+
+        private static string DirectionToDirectionString(Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.up:
+                    return "North";
+                case Direction.down:
+                    return "South";
+                case Direction.left:
+                    return "West";
+                case Direction.right:
+                    return "East";
+                default:
+                    return "other";
+            }
+        }
+
+        private static void SwapColliders(int roomNumber)
         {
             if (CurrentRoomColliders != null)
             {
@@ -90,9 +152,12 @@ namespace LegendOfZelda
         public void StartLevel(string filename)
         {
             RoomListUpdateables = new List<List<IUpdateable>>();
+            PersistentUpdateables = new List<IUpdateable>();
             RoomListDrawables = new List<List<IDrawable>>();
+            PersistentDrawables = new List<IDrawable>();
             RoomListColliders = new List<List<IRectCollider>>();
-            RoomList roomList = LevelParser.Parse(filename);
+            PersistentColliders = new List<IRectCollider>();
+            roomList = LevelParser.Parse(filename);
             NumberOfRooms = roomList.Rooms.Count;
             for (int i = 0; i < roomList.Rooms.Count; i++)
             {
@@ -115,6 +180,11 @@ namespace LegendOfZelda
         }
         public static void Update(GameTime gameTime)
         {
+            for (int i = PersistentUpdateables.Count - 1; i >= 0; i--)
+            {
+                PersistentUpdateables[i].Update(gameTime);
+            }
+
             for (int i = CurrentRoomUpdateables.Count - 1; i >= 0; i--)
             {
                 CurrentRoomUpdateables[i].Update(gameTime);
@@ -127,62 +197,134 @@ namespace LegendOfZelda
                 CurrentRoomDrawables[i].Draw();
             }
         }
-        public static bool RegisterDrawable(IDrawable drawable)
+        public static bool RegisterDrawable(IDrawable drawable, bool persistent = false)
         {
-            if (RoomListDrawables == null || RoomListDrawables[CurrentRoom].Contains(drawable))
+            if (persistent)
             {
-                return false;
-            }
+                if (PersistentDrawables == null || PersistentDrawables.Contains(drawable))
+                {
+                    return false;
+                }
 
-            RoomListDrawables[CurrentRoom].Add(drawable);
-            return true;
-        }
-        public static bool RegisterUpdateable(IUpdateable updateable)
-        {
-            if (RoomListUpdateables[CurrentRoom].Contains(updateable))
-            {
-                return false;
+                PersistentDrawables.Add(drawable);
             }
+            else
+            {
+                if (RoomListDrawables == null || RoomListDrawables[CurrentRoom].Contains(drawable))
+                {
+                    return false;
+                }
 
-            RoomListUpdateables[CurrentRoom].Add(updateable);
+                RoomListDrawables[CurrentRoom].Add(drawable);
+            }
             return true;
         }
-        public static bool RegisterCollider(IRectCollider collider)
+        public static bool RegisterUpdateable(IUpdateable updateable, bool persistent = false)
         {
-            if (RoomListColliders == null || RoomListColliders[CurrentRoom].Contains(collider))
+            if (persistent)
             {
-                return false;
-            }
+                if (PersistentUpdateables.Contains(updateable))
+                {
+                    return false;
+                }
 
-            RoomListColliders[CurrentRoom].Add(collider);
-            return true;
-        }
-        public static bool RemoveDrawable(IDrawable drawable)
-        {
-            if (!RoomListDrawables[CurrentRoom].Contains(drawable))
-            {
-                return false;
+                PersistentUpdateables.Add(updateable);
             }
+            else
+            {
+                if (RoomListUpdateables[CurrentRoom].Contains(updateable))
+                {
+                    return false;
+                }
 
-            RoomListDrawables[CurrentRoom].Remove(drawable);
+                RoomListUpdateables[CurrentRoom].Add(updateable);
+            }
             return true;
         }
-        public static bool RemoveUpdateable(IUpdateable updateable)
+        public static bool RegisterCollider(IRectCollider collider, bool persistent = false)
         {
-            if (!RoomListUpdateables[CurrentRoom].Contains(updateable))
+            if (persistent)
             {
-                return false;
+                if (PersistentColliders == null || PersistentColliders.Contains(collider))
+                {
+                    return false;
+                }
+
+                PersistentColliders.Add(collider);
             }
-            RoomListUpdateables[CurrentRoom].Remove(updateable);
+            else
+            {
+                if (RoomListColliders == null || RoomListColliders[CurrentRoom].Contains(collider))
+                {
+                    return false;
+                }
+
+                RoomListColliders[CurrentRoom].Add(collider);
+            }
             return true;
         }
-        public static bool RemoveCollider(IRectCollider collider)
+        public static bool RemoveDrawable(IDrawable drawable, bool persistent = false)
         {
-            if (!RoomListColliders[CurrentRoom].Contains(collider))
+            if (persistent)
             {
-                return false;
+                if (!PersistentDrawables.Contains(drawable))
+                {
+                    return false;
+                }
+                PersistentDrawables.Remove(drawable);
             }
-            RoomListColliders[CurrentRoom].Remove(collider);
+            else
+            {
+                if (!RoomListDrawables[CurrentRoom].Contains(drawable))
+                {
+                    return false;
+                }
+
+                RoomListDrawables[CurrentRoom].Remove(drawable);
+            }
+            return true;
+        }
+        public static bool RemoveUpdateable(IUpdateable updateable, bool persistent = false)
+        {
+            if (persistent)
+            {
+                if (!PersistentUpdateables.Contains(updateable))
+                {
+                    return false;
+                }
+
+                PersistentUpdateables.Remove(updateable);
+            }
+            else
+            {
+                if (!RoomListUpdateables[CurrentRoom].Contains(updateable))
+                {
+                    return false;
+                }
+
+                RoomListUpdateables[CurrentRoom].Remove(updateable);
+            }
+            return true;
+        }
+        public static bool RemoveCollider(IRectCollider collider, bool persistent = false)
+        {
+            if (persistent)
+            {
+                if (!PersistentColliders.Contains(collider))
+                {
+                    return false;
+                }
+                PersistentColliders.Remove(collider);
+            }
+            else
+            {
+                if (!RoomListColliders[CurrentRoom].Contains(collider))
+                {
+                    return false;
+                }
+
+                RoomListColliders[CurrentRoom].Remove(collider);
+            }
             return true;
         }
     }

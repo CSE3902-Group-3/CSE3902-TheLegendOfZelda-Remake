@@ -47,9 +47,12 @@ namespace LegendOfZelda
             collider = new RectCollider(
                 new Rectangle((int)this.stateMachine.position.X, (int)+this.stateMachine.position.Y, 16 * SpriteFactory.getInstance().scale, 16 * SpriteFactory.getInstance().scale),
                 CollisionLayer.Player,
-                this
+                this,
+                true
             );
             LinkUtilities.UpdatePositions(this, this.sprite.pos);
+
+            LevelMaster.RegisterUpdateable(this, true);
         }
 
         public void TakeDamage(float damage)
