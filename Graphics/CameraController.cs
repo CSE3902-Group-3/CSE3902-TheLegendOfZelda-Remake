@@ -114,16 +114,16 @@ namespace LegendOfZelda
             switch (directionMoving)
             {
                 case Direction.right:
-                    targetLocation = movingCam.worldPos + new Vector2(LevelMaster.roomWidth, 0);
+                    targetLocation = movingCam.worldPos + new Vector2(LevelMaster.RoomWidth, 0);
                     break;
                 case Direction.left:
-                    targetLocation = movingCam.worldPos + new Vector2(-LevelMaster.roomWidth, 0);
+                    targetLocation = movingCam.worldPos + new Vector2(-LevelMaster.RoomWidth, 0);
                     break;
                 case Direction.down:
-                    targetLocation = movingCam.worldPos + new Vector2(0, LevelMaster.roomHeight);
+                    targetLocation = movingCam.worldPos + new Vector2(0, LevelMaster.RoomHeight);
                     break;
                 case Direction.up:
-                    targetLocation = movingCam.worldPos + new Vector2(0, -LevelMaster.roomHeight);
+                    targetLocation = movingCam.worldPos + new Vector2(0, -LevelMaster.RoomHeight);
                     break;
                 default:
                     targetLocation = Vector2.Zero;

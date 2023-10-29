@@ -21,7 +21,7 @@ namespace LegendOfZelda
         private static Vector2 SouthDoorPosition = new Vector2(448, 896);
         private static Vector2 WestDoorPosition = new Vector2(0, 608);
 
-        private BlockLamda() 
+        private BlockLamda()
         {
             SpriteFactory = SpriteFactory.getInstance();
             BlockFunctionArray = new Lamda[]

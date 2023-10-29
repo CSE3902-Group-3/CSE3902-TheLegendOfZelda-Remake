@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Enemies",
+    "\\Level",
+    "\\Player"
   ],
-  "SelectedNode": "\\LegendOfZelda.sln",
+  "SelectedNode": "\\Level\\LevelMaster.cs",
   "PreviewInSolutionExplorer": false
 }
