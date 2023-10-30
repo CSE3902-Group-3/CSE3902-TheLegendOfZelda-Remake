@@ -25,7 +25,7 @@ namespace LegendOfZelda
             {
                 index = 0;
             }
-            lm.NavigateInDirection(Direction.right);
+            lm.NavigateToRoom(index);
             Console.WriteLine("Navigate to room " + index);
         }
 

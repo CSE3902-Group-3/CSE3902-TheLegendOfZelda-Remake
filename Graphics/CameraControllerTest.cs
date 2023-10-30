@@ -10,6 +10,7 @@ namespace LegendOfZelda.Graphics
     public class CameraControllerTest
     {
         private CameraController controller;
+        private LevelMaster levelMaster;
         private Timer timer;
         private const float wait = 1f;
         private int i = 0;
@@ -17,6 +18,7 @@ namespace LegendOfZelda.Graphics
         public CameraControllerTest()
         {
             controller = CameraController.GetInstance();
+            levelMaster = LevelMaster.GetInstance();
             timer = new Timer(wait, OnTimer);
         }
 
@@ -29,28 +31,28 @@ namespace LegendOfZelda.Graphics
             switch (i)
             {
                 case 0:
-                    controller.PanCamToRoom(1, Direction.right, NewTimer);
+                    levelMaster.NavigateInDirection(Direction.right, NewTimer);
                     break;
                 case 1:
-                    controller.PanCamToRoom(0, Direction.left, NewTimer);
+                    levelMaster.NavigateInDirection(Direction.right, NewTimer);
                     break;
                 case 2:
-                    controller.PanCamToRoom(2, Direction.up, NewTimer);
+                    levelMaster.NavigateInDirection(Direction.left, NewTimer);
                     break;
                 case 3:
-                    controller.PanCamToRoom(0, Direction.down, NewTimer);
+                    levelMaster.NavigateInDirection(Direction.up, NewTimer);
                     break;
                 case 4:
-                    controller.PanCamToRoom(3, Direction.left, NewTimer);
+                    levelMaster.NavigateInDirection(Direction.down, NewTimer);
                     break;
                 case 5:
-                    controller.PanCamToRoom(0, Direction.right, NewTimer);
+                    levelMaster.NavigateInDirection(Direction.right, NewTimer);
                     break;
                 case 6:
-                    controller.PanCamToRoom(4, Direction.down, NewTimer);
+                    levelMaster.NavigateInDirection(Direction.left, NewTimer);
                     break;
                 case 7:
-                    controller.PanCamToRoom(0, Direction.up, NewTimer);
+                    levelMaster.NavigateInDirection(Direction.left, NewTimer);
                     break;
                 case 8:
                     controller.OpenItemMenu(NewTimer);

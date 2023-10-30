@@ -37,7 +37,7 @@ namespace LegendOfZelda
             this.game = Game1.getInstance();
 
             this.sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
-            this.sprite.UpdatePos(new Vector2(448, 864));
+            this.sprite.UpdatePos(new Vector2(1448, 864));
 
             this.stateMachine = new LinkStateMachine();
             this.stateMachine.ChangeState(new InititalLinkState(this.sprite));

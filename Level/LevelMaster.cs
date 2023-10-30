@@ -39,6 +39,7 @@ namespace LegendOfZelda
             }
             return Instance;
         }
+
         public bool NavigateToRoom(int roomNumber)
         {
             if (roomNumber >= 0 || roomNumber < NumberOfRooms)
@@ -52,7 +53,7 @@ namespace LegendOfZelda
             return false;
         }
 
-        public bool NavigateInDirection(Direction direction)
+        public bool NavigateInDirection(Direction direction, Action onNavComplete = null)
         {
             int targetRoom = DetermineRoomInDirection(CurrentRoom, direction);
             if(targetRoom == CurrentRoom)
@@ -64,7 +65,7 @@ namespace LegendOfZelda
             CurrentRoomUpdateables = RoomListUpdateables[targetRoom];
             SwapColliders(targetRoom);
 
-            CameraController.GetInstance().PanCamToRoom(targetRoom, direction);
+            CameraController.GetInstance().PanCamToRoom(targetRoom, direction, onNavComplete);
             return true;
         }
 
