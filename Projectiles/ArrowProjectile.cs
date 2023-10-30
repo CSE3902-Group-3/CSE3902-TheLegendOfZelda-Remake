@@ -71,6 +71,7 @@ namespace LegendOfZelda
                     collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, 16 * scale, 5 * scale), CollisionLayer.PlayerWeapon, this);
                     break;
             }
+            SoundFactory.PlaySound(SoundFactory.getInstance().ArrowBoomerang, 1.0f, 0.0f, 0.0f);
         }
 
         public void Update(GameTime gameTime)
