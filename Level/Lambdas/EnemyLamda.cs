@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
     internal class EnemyLamda
     {
-        public delegate void Lamda(MapElement mapElement);
+        public delegate void Lamda(Room room, MapElement mapElement);
         public Lamda[] EnemyFunctionArray { get; }
         private static EnemyLamda Instance;
         private EnemyLamda()
@@ -34,59 +29,59 @@ namespace LegendOfZelda
                 Instance = new EnemyLamda();
             return Instance;
         }
-        static void Aquamentus(MapElement mapElement)
+        static void Aquamentus(Room room, MapElement mapElement)
         {
-            IEnemy enemy = new Aquamentus(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IEnemy enemy = new Aquamentus(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation+ mapElement.YLocation));
             enemy.Spawn();
         }
-        static void Bat(MapElement mapElement)
+        static void Bat(Room room, MapElement mapElement)
         {
-            IEnemy enemy = new Bat(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IEnemy enemy = new Bat(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation+ mapElement.YLocation));
             enemy.Spawn();
         }
-        static void BladeTrap(MapElement mapElement)
+        static void BladeTrap(Room room, MapElement mapElement)
         {
-            IEnemy enemy = new BladeTrap(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IEnemy enemy = new BladeTrap(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation+ mapElement.YLocation));
             enemy.Spawn();
         }
-        static void Dodongo(MapElement mapElement)
+        static void Dodongo(Room room, MapElement mapElement)
         {
-            IEnemy enemy = new Dodongo(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IEnemy enemy = new Dodongo(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation+ mapElement.YLocation));
             enemy.Spawn();
         }
-        static void GelSmall(MapElement mapElement)
+        static void GelSmall(Room room, MapElement mapElement)
         {
-            IEnemy enemy = new GelSmall(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IEnemy enemy = new GelSmall(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation+ mapElement.YLocation));
             enemy.Spawn();
         }
-        static void Goriya(MapElement mapElement)
+        static void Goriya(Room room, MapElement mapElement)
         {
-            IEnemy enemy = new Goriya(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IEnemy enemy = new Goriya(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation+ mapElement.YLocation));
             enemy.Spawn();
         }
-        static void Rope(MapElement mapElement)
+        static void Rope(Room room, MapElement mapElement)
         {
-            IEnemy enemy = new Rope(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IEnemy enemy = new Rope(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation+ mapElement.YLocation));
             enemy.Spawn();
         }
-        static void Skeleton(MapElement mapElement)
+        static void Skeleton(Room room, MapElement mapElement)
         {
-            IEnemy enemy = new Skeleton(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IEnemy enemy = new Skeleton(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation+ mapElement.YLocation));
             enemy.Spawn();
         }
-        static void WallMaster(MapElement mapElement)
+        static void WallMaster(Room room, MapElement mapElement)
         {
-            IEnemy enemy = new WallMaster(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IEnemy enemy = new WallMaster(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation+ mapElement.YLocation));
             enemy.Spawn();
         }
-        static void Wizard(MapElement mapElement)
+        static void Wizard(Room room, MapElement mapElement)
         {
-            IEnemy enemy = new Wizard(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IEnemy enemy = new Wizard(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation+ mapElement.YLocation));
             enemy.Spawn();
         }
-        static void ZolBig(MapElement mapElement)
+        static void ZolBig(Room room, MapElement mapElement)
         {
-            IEnemy enemy = new ZolBig(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IEnemy enemy = new ZolBig(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation+ mapElement.YLocation));
             enemy.Spawn();
         }
     }

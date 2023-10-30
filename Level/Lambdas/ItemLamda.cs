@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
     internal class ItemLamda
     {
-        public delegate void Lamda(MapElement mapElement);
+        public delegate void Lamda(Room room, MapElement mapElement);
         public Lamda[] ItemFunctionArray { get; }
         private static ItemLamda Instance;
         private ItemLamda()
@@ -39,79 +34,79 @@ namespace LegendOfZelda
                 Instance = new ItemLamda();
             return Instance;
         }
-        static void Arrow(MapElement mapElement)
+        static void Arrow(Room room, MapElement mapElement)
         {
-            IItem item = new Arrow(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new Arrow(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation+ mapElement.YLocation));
             item.Show();
         }
-        static void Bomb(MapElement mapElement)
+        static void Bomb(Room room, MapElement mapElement)
         {
-            IItem item = new Bomb(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new Bomb(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation + mapElement.YLocation));
             item.Show();
         }
-        static void Boomerang(MapElement mapElement)
+        static void Boomerang(Room room, MapElement mapElement)
         {
-            IItem item = new Boomerang(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new Boomerang(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation + mapElement.YLocation));
             item.Show();
         }
-        static void Bow(MapElement mapElement)
+        static void Bow(Room room, MapElement mapElement)
         {
-            IItem item = new Bow(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new Bow(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation + mapElement.YLocation));
             item.Show();
         }
-        static void Candle(MapElement mapElement)
+        static void Candle(Room room, MapElement mapElement)
         {
-            IItem item = new Candle(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new Candle(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation + mapElement.YLocation));
             item.Show();
         }
-        static void Clock(MapElement mapElement)
+        static void Clock(Room room, MapElement mapElement)
         {
-            IItem item = new Clock(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new Clock(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation + mapElement.YLocation));
             item.Show();
         }
-        static void Compass(MapElement mapElement)
+        static void Compass(Room room, MapElement mapElement)
         {
-            IItem item = new Compass(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new Compass(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation + mapElement.YLocation));
             item.Show();
         }
-        static void Fairy(MapElement mapElement)
+        static void Fairy(Room room, MapElement mapElement)
         {
-            IItem item = new Fairy(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new Fairy(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation + mapElement.YLocation));
             item.Show();
         }
-        static void Heart(MapElement mapElement)
+        static void Heart(Room room, MapElement mapElement)
         {
-            IItem item = new Heart(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new Heart(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation + mapElement.YLocation));
             item.Show();
         }
-        static void HeartContainer(MapElement mapElement)
+        static void HeartContainer(Room room, MapElement mapElement)
         {
-            IItem item = new HeartContainer(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new HeartContainer(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation + mapElement.YLocation));
             item.Show();
         }
-        static void Key(MapElement mapElement)
+        static void Key(Room room, MapElement mapElement)
         {
-            IItem item = new Key(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new Key(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation + mapElement.YLocation));
             item.Show();
         }
-        static void Map(MapElement mapElement)
+        static void Map(Room room, MapElement mapElement)
         {
-            IItem item = new Map(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new Map(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation + mapElement.YLocation));
             item.Show();
         }
-        static void Potion(MapElement mapElement)
+        static void Potion(Room room, MapElement mapElement)
         {
-            IItem item = new Potion(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new Potion(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation + mapElement.YLocation));
             item.Show();
         }
-        static void Rupee(MapElement mapElement)
+        static void Rupee(Room room, MapElement mapElement)
         {
-            IItem item = new FiveRupee(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new FiveRupee(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation + mapElement.YLocation));
             item.Show();
         }
-        static void Triforce(MapElement mapElement)
+        static void Triforce(Room room, MapElement mapElement)
         {
-            IItem item = new Triforce(new Vector2(mapElement.XLocation, mapElement.YLocation));
+            IItem item = new Triforce(new Vector2(room.RoomXLocation + mapElement.XLocation, room.RoomYLocation + mapElement.YLocation));
             item.Show();
         }
     }

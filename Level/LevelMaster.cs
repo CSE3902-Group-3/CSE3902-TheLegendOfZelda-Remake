@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
@@ -11,19 +8,18 @@ namespace LegendOfZelda
     public class LevelMaster
     {
         private static LevelMaster Instance;
-        public static int roomWidth { get; set; }
-        public static int roomHeight { get; set; }
+        public static int RoomWidth { get; set; }
+        public static int RoomHeight { get; set; }
         public static int CurrentRoom { get; set; }
         public static int NumberOfRooms { get; set; }
         public static List<List<IUpdateable>> RoomListUpdateables { get; set; }
-        public static List<List<IDrawable>> RoomListDrawables { get; set; }
+        public static List<IDrawable> Drawables { get; set; }
         public static List<List<IRectCollider>> RoomListColliders { get; set; }
         public static List<IUpdateable> CurrentRoomUpdateables { get; set; }
         public static List<IUpdateable> PersistentUpdateables { get; set; }
-        public static List<IDrawable> CurrentRoomDrawables { get; set; }
-        public static List<IDrawable> PersistentDrawables { get; set; }
         public static List<IRectCollider> CurrentRoomColliders { get; set; }
         public static List<IRectCollider> PersistentColliders { get; set; }
+        public static List<Vector2> RoomPositionList { get; set; }
         public static CollisionManager collisionManager;
         private static BlockLamda BlockLamda = BlockLamda.GetInstance();
         private static ItemLamda ItemLamda = ItemLamda.GetInstance();
@@ -31,14 +27,9 @@ namespace LegendOfZelda
         private static RoomList roomList;
         private LevelMaster()
         {
-            RoomListUpdateables = new List<List<IUpdateable>>();
-            RoomListDrawables = new List<List<IDrawable>>();
-            RoomListColliders = new List<List<IRectCollider>>();
-            CurrentRoom = 0;
             collisionManager = CollisionManager.instance;
-
-            roomWidth = SpriteFactory.getInstance().scale * 256;
-            roomHeight = SpriteFactory.getInstance().scale * 176;
+            RoomWidth = SpriteFactory.getInstance().scale * 256;
+            RoomHeight = SpriteFactory.getInstance().scale * 176;
         }
         public static LevelMaster GetInstance()
         {
@@ -54,11 +45,8 @@ namespace LegendOfZelda
             {
                 CurrentRoom = roomNumber;
                 CurrentRoomUpdateables = RoomListUpdateables[roomNumber];
-                CurrentRoomDrawables = RoomListDrawables[roomNumber];
                 SwapColliders(roomNumber);
-
-                //PLACEHOLDER - Likeley remove this method as the coords of each room is not stored, making this method impossible
-                CameraController.GetInstance().SnapCamToRoom(roomNumber, Vector2.Zero);
+                CameraController.GetInstance().SnapCamToRoom(roomNumber, RoomPositionList[roomNumber]);
                 return true;
             }
             return false;
@@ -74,7 +62,6 @@ namespace LegendOfZelda
 
             CurrentRoom = targetRoom;
             CurrentRoomUpdateables = RoomListUpdateables[targetRoom];
-            CurrentRoomDrawables = RoomListDrawables[targetRoom];
             SwapColliders(targetRoom);
 
             CameraController.GetInstance().PanCamToRoom(targetRoom, direction);
@@ -131,18 +118,19 @@ namespace LegendOfZelda
                 }
             }
         }
-        private static void ProcessMapElement(MapElement mapElement)
+        private static void ProcessMapElement(Room room, MapElement mapElement)
         {
+
             switch (mapElement.ElementType)
             {
                 case "Block":
-                    BlockLamda.BlockFunctionArray[mapElement.ElementValue](mapElement);
+                    BlockLamda.BlockFunctionArray[mapElement.ElementValue](room, mapElement);
                     break;
                 case "Item":
-                    ItemLamda.ItemFunctionArray[mapElement.ElementValue](mapElement);
+                    ItemLamda.ItemFunctionArray[mapElement.ElementValue](room, mapElement);
                     break;
                 case "Enemy":
-                    EnemyLamda.EnemyFunctionArray[mapElement.ElementValue](mapElement);
+                    EnemyLamda.EnemyFunctionArray[mapElement.ElementValue](room, mapElement);
                     break;
                 default:
                     Console.WriteLine("INVALID MAP ELEMENT TYPE: " + mapElement.ElementType);
@@ -153,28 +141,31 @@ namespace LegendOfZelda
         {
             RoomListUpdateables = new List<List<IUpdateable>>();
             PersistentUpdateables = new List<IUpdateable>();
-            RoomListDrawables = new List<List<IDrawable>>();
-            PersistentDrawables = new List<IDrawable>();
+            Drawables = new List<IDrawable>();
             RoomListColliders = new List<List<IRectCollider>>();
             PersistentColliders = new List<IRectCollider>();
+            RoomPositionList = new List<Vector2>();
             roomList = LevelParser.Parse(filename);
             NumberOfRooms = roomList.Rooms.Count;
-            for (int i = 0; i < roomList.Rooms.Count; i++)
+            CurrentRoom = 0;
+            foreach (Room room in roomList.Rooms)
             {
-                CurrentRoom = i;
+                room.RoomXLocation *= RoomWidth;
+                room.RoomYLocation *= RoomHeight * -1;
+                RoomPositionList.Add(new Vector2(room.RoomXLocation, room.RoomYLocation));
                 RoomListUpdateables.Add(new List<IUpdateable>());
-                RoomListDrawables.Add(new List<IDrawable>());
                 RoomListColliders.Add(new List<IRectCollider>());
-                foreach (MapElement mapElement in roomList.Rooms[i].MapElements)
+                foreach (MapElement mapElement in room.MapElements)
                 {
-                    ProcessMapElement(mapElement);
+                    ProcessMapElement(room, mapElement);
                 }
 
                 //Deactivate colliders (since most objects are not in the first room)
-                foreach (IRectCollider rectCollider in RoomListColliders[i])
+                foreach (IRectCollider rectCollider in RoomListColliders[CurrentRoom])
                 {
                     collisionManager.RemoveRectCollider(rectCollider);
                 }
+                CurrentRoom++;
             }
             CurrentRoom = 0;
         }
@@ -201,31 +192,19 @@ namespace LegendOfZelda
         }
         public static void Draw()
         {
-            for (int i = 0; i < CurrentRoomDrawables.Count; i++)
+            for (int i = 0; i < Drawables.Count; i++)
             {
-                CurrentRoomDrawables[i].Draw();
+                Drawables[i].Draw();
             }
         }
         public static bool RegisterDrawable(IDrawable drawable, bool persistent = false)
         {
-            if (persistent)
+            if (Drawables == null || Drawables.Contains(drawable))
             {
-                if (PersistentDrawables == null || PersistentDrawables.Contains(drawable))
-                {
-                    return false;
-                }
-
-                PersistentDrawables.Add(drawable);
+                return false;
             }
-            else
-            {
-                if (RoomListDrawables == null || RoomListDrawables[CurrentRoom].Contains(drawable))
-                {
-                    return false;
-                }
 
-                RoomListDrawables[CurrentRoom].Add(drawable);
-            }
+            Drawables.Add(drawable);
             return true;
         }
         public static bool RegisterUpdateable(IUpdateable updateable, bool persistent = false)
@@ -274,23 +253,12 @@ namespace LegendOfZelda
         }
         public static bool RemoveDrawable(IDrawable drawable, bool persistent = false)
         {
-            if (persistent)
+            if (!Drawables.Contains(drawable))
             {
-                if (!PersistentDrawables.Contains(drawable))
-                {
-                    return false;
-                }
-                PersistentDrawables.Remove(drawable);
+                return false;
             }
-            else
-            {
-                if (!RoomListDrawables[CurrentRoom].Contains(drawable))
-                {
-                    return false;
-                }
 
-                RoomListDrawables[CurrentRoom].Remove(drawable);
-            }
+            Drawables.Remove(drawable);
             return true;
         }
         public static bool RemoveUpdateable(IUpdateable updateable, bool persistent = false)

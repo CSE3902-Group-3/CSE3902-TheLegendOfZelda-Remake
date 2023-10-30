@@ -39,8 +39,7 @@ namespace LegendOfZelda
             mainCameraDrawables = new List<List<IDrawable>>();
 
             roomLookingAt = LevelMaster.CurrentRoom;
-            mainCameraDrawables.Add(LevelMaster.RoomListDrawables[roomLookingAt]);
-            mainCameraDrawables.Add(LevelMaster.PersistentDrawables);
+            mainCameraDrawables.Add(LevelMaster.Drawables);
 
             instance = this;
 
@@ -59,12 +58,10 @@ namespace LegendOfZelda
         public void Draw(SpriteBatch spriteBatch)
         {
             mainCamera.DrawAll(mainCameraDrawables, spriteBatch);
-            activeMenu.DrawAll(LevelMaster.PersistentDrawables, spriteBatch);
         }
 
         public void SnapCamToRoom(int roomId, Vector2 roomPos)
         {
-            mainCameraDrawables.Insert(0, LevelMaster.RoomListDrawables[roomId]);
             mainCamera.worldPos = roomPos;
 
             roomMovingTo = roomId;
@@ -72,8 +69,6 @@ namespace LegendOfZelda
         }
         public void PanCamToRoom(int roomId, Direction directionMoving, Action onPanComplete = null)
         {
-            mainCameraDrawables.Insert(0, LevelMaster.RoomListDrawables[roomId]);
-            mainCameraDrawables.Remove(LevelMaster.RoomListDrawables[roomLookingAt]);
 
             Vector2 newLocation = DetermineRoomLocation(mainCamera, directionMoving);
             mainCamera.PanToLocation(newLocation, camSpeed, OnMainCameraArrival);
@@ -134,7 +129,6 @@ namespace LegendOfZelda
 
         private void OnMainCameraArrival()
         {
-            mainCameraDrawables.Remove(LevelMaster.RoomListDrawables[roomLookingAt]);
             roomLookingAt = roomMovingTo;
 
             if (OnPanComplete != null) OnPanComplete();
