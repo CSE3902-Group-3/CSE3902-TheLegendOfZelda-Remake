@@ -104,7 +104,8 @@ namespace LegendOfZelda
         {
             foreach(CollisionInfo collision in collisions)
             {
-                if(collision.CollidedWith.Layer != CollisionLayer.Wall)
+                CollisionLayer layer = collision.CollidedWith.Layer;
+                if (layer == CollisionLayer.OuterWall || layer == CollisionLayer.Enemy)
                 {
                     Destroy();
                 }
