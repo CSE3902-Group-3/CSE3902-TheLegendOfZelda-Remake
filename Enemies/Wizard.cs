@@ -29,23 +29,28 @@ namespace LegendOfZelda
             Sprite.UpdatePos(Position);
             Collider.Pos = Position;
         }
-        public void ChangePosition() {}
+        public void ChangePosition() { }
         public void Attack()
         {
             // Mechanics of this attack can be changed later
             new FireProjectile(Position, Direction.right);
         }
-        public void UpdateHealth(float damagePoints) {}
+        public void UpdateHealth(float damagePoints)
+        {
+            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+        }
 
-        public void ChangeDirection() {}
+        public void ChangeDirection() { }
         public void Die()
         {
             Sprite.UnregisterSprite();
             Collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
+            new EnemyDeathEffect(Position);
         }
 
-        public void Update(GameTime gameTime) {
+        public void Update(GameTime gameTime)
+        {
             currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
         }
 

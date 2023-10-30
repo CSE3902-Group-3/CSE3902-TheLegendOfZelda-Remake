@@ -36,6 +36,9 @@ namespace LegendOfZelda
         /* Collisions */
         private CollisionManager collisionManager;
 
+        /* Sounds */
+        public SoundFactory SoundFactory { get; private set; }
+
         /* Singleton */
         private static Game1 instance;
 
@@ -60,6 +63,7 @@ namespace LegendOfZelda
             instance = this;
 
             spriteFactory = SpriteFactory.getInstance();
+            SoundFactory = SoundFactory.getInstance();
 
             // Change size of viewport
             _graphics.IsFullScreen = false;
@@ -78,6 +82,7 @@ namespace LegendOfZelda
 
             // TODO: use this.Content to load your game content here
             spriteFactory.LoadTextures();
+            SoundFactory.LoadTextures();
 
             link = Link.getInstance();
 
