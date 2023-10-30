@@ -6,7 +6,7 @@ namespace LegendOfZelda
     public class Skeleton : IEnemy
     {
         private readonly SimpleEnemyStateMachine StateMachine;
-        private int Health { get; set; } = 1;
+        private float Health { get; set; } = 2.0f;
         public Vector2 Position;
         public Vector2 Offset = new Vector2(0, 0);
         public RectCollider Collider { get; private set; }
@@ -28,7 +28,6 @@ namespace LegendOfZelda
         }
         public void Spawn()
         {
-            new EnemySpawnEffect(Position);
             StateMachine.Spawn();
         }
         public void ChangePosition()
@@ -39,7 +38,7 @@ namespace LegendOfZelda
         {
             StateMachine.Attack();
         }
-        public void UpdateHealth(int damagePoints)
+        public void UpdateHealth(float damagePoints)
         {
             StateMachine.UpdateHealth(damagePoints);
         }
@@ -51,8 +50,6 @@ namespace LegendOfZelda
         public void Die()
         {
             StateMachine.Die();
-            Collider.Active = false;
-            new EnemyDeathEffect(Position);
         }
 
         public void Update(GameTime gameTime)
