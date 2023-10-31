@@ -95,10 +95,12 @@ namespace LegendOfZelda
             //itemCycler = new ItemScroll(new Vector2(800, 600));
             roomCycler = new RoomCycler(LevelMaster);
             //new AnimationTester();
-            letterTester = new LetterTester();
+            //letterTester = new LetterTester();
+
+            new MainMenu();
 
             controller = new PlayerController((Link)link);
-            new ProjectileTest();
+            //new ProjectileTest();
         }
 
         protected override void Update(GameTime gameTime)
@@ -127,7 +129,7 @@ namespace LegendOfZelda
 
             LevelMaster.Draw();
             link.sprite.Draw();
-            letterTester.Show();
+            //letterTester.Show();
 
             _spriteBatch.End();
 

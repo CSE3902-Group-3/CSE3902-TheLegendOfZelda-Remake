@@ -27,6 +27,7 @@ namespace LegendOfZelda
         private Texture2D bossesTexture;
         private Texture2D itemsTexture;
         private Texture2D npcTexture;
+        private Texture2D menuTexture;
 
         private Game1 game1;
         private int drawFramesPerAnimFrame;
@@ -58,6 +59,7 @@ namespace LegendOfZelda
             bossesTexture = content.Load<Texture2D>("Bosses");
             itemsTexture = content.Load<Texture2D>("Items");
             npcTexture = content.Load<Texture2D>("NPC");
+            menuTexture = content.Load<Texture2D>("Menu");
         }
     
         public AnimatedSprite CreateLinkWalkDownSprite()
@@ -1403,6 +1405,30 @@ namespace LegendOfZelda
                 new Rectangle(782, 11, 1, 1)
             };
             AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateMainMenuSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(0, 11, 256, 224),
+                //new Rectangle(257, 11, 256, 224),
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(menuTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            //newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateMainMenuOverlaySprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(513, 11, 256, 224)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(menuTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
             return newSprite;
         }
     }
