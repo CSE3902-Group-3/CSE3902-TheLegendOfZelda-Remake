@@ -19,8 +19,6 @@ Remake of NES The Legend of Zelda game
 - When Link places a bomb it is sometimes placed too far away
 - Stalfos sometimes gets stuck in wall
 - Enemies dissappear instead of taking damage and blinking/flashing/taking knockback/exploding when hit with Link's sword
-- Link does not spawn a sword beam when attacking at full health
-- Link's sprite animates too quickly
 - The game crashes if Link attacks the wizard
 - Some rooms have a yellow square instead of the left door
 - Pushable blocks are not yet implemented
