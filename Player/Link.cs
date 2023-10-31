@@ -57,11 +57,13 @@ namespace LegendOfZelda
 
         public void TakeDamage(float damage)
         {
+            SoundFactory.PlaySound(SoundFactory.getInstance().LinkHurt, 1.0f, 0.0f, 0.0f);
             this.stateMachine.isTakingDamage = true;
             this.HP -= damage;
             if (this.HP <= 0)
             {
                 this.Die();
+                SoundFactory.PlaySound(SoundFactory.getInstance().LinkDie, 1.0f, 0.0f, 0.0f);
             }
         }
 

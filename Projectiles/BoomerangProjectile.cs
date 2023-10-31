@@ -38,6 +38,7 @@ namespace LegendOfZelda
             dir.Normalize();
 
             sprite = spriteFactory.CreateBoomerangSprite();
+            SoundFactory.PlaySound(SoundFactory.getInstance().ArrowBoomerang, 1.0f, 0.0f, 0.0f);
             sprite.UpdatePos(position);
 
             int scale = spriteFactory.scale;
