@@ -25,6 +25,9 @@ namespace LegendOfZelda
         private float damageAnimationTimer = 0; // Initialize it to 0
         private float damageAnimationDuration = 1.0f; // Set the duration (in seconds) for the animation
 
+        public float damageCooldownTimer  = 0; // Set the cooldown (in seconds) for damage
+        public float damageCooldownDuration = 1.0f;
+
         private static Link instance;
 
         public static Link getInstance()
@@ -58,14 +61,15 @@ namespace LegendOfZelda
         public void TakeDamage(float damage)
         {
             SoundFactory.PlaySound(SoundFactory.getInstance().LinkHurt, 1.0f, 0.0f, 0.0f);
-            this.stateMachine.isTakingDamage = true;
             this.HP -= damage;
             if (this.HP <= 0)
             {
                 this.Die();
                 SoundFactory.PlaySound(SoundFactory.getInstance().LinkDie, 1.0f, 0.0f, 0.0f);
             }
+            this.stateMachine.isTakingDamage = true;
             this.damageAnimationTimer = this.damageAnimationDuration;
+            this.damageCooldownTimer = this.damageCooldownDuration;
         }
 
         public void StopTakingDamage()
@@ -75,6 +79,7 @@ namespace LegendOfZelda
 
         public void Update (GameTime gameTime)
         {
+            damageCooldownTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (damageAnimationTimer > 0)
             {
