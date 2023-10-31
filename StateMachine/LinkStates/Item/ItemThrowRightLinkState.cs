@@ -25,6 +25,8 @@ namespace LegendOfZelda
             link.sprite = SpriteFactory.getInstance().CreateLinkThrowRightSprite();
 
             link.stateMachine.currentItem = new Bomb(link.stateMachine.position + new Vector2(160, 0));
+            //Added in so I can test bomb usage
+            new BombProjectile(link.stateMachine.position + new Vector2(160, 0));
             link.stateMachine.currentItem.Show();
         }
 

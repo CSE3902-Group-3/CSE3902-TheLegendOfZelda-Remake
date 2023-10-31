@@ -91,7 +91,7 @@ namespace LegendOfZelda
             player.EnterRoomTransition(direction);
         }
 
-        private void OpenDoor()
+        public void OpenDoor()
         {
             openCollider.Active = true;
             openSprite.RegisterSprite();

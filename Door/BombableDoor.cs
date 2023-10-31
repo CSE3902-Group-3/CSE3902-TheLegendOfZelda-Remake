@@ -63,25 +63,31 @@ namespace LegendOfZelda
 
         public void OnCollision(List<CollisionInfo> collisions)
         {
-            if (Closed) return;
-
             bool transitionEntered = false;
             foreach (CollisionInfo collision in collisions)
             {
-                if (collision.CollidedWith.Layer == CollisionLayer.Player && !transitionEntered)
-                {
-                    LevelMaster.GetInstance().NavigateInDirection(direction, OnNavComplete);
-                    player = Game1.getInstance().link;
-                    player.EnterRoomTransition(direction);
-                    transitionEntered = true;
-                } else if (collision.CollidedWith.Collidable is Explosion)
-                {
-                    OpenDoor();
-                }
+                if (Closed) HandleCollisionWhenLocked(collision);
+                else HandleCollisionWhenUnlocked(collision);
+            }
+        }
+        private void HandleCollisionWhenLocked(CollisionInfo collision)
+        {
+            if(collision.CollidedWith.Collidable is Explosion)
+            {
+                OpenDoor();
             }
         }
 
-        private void OpenDoor()
+        private void HandleCollisionWhenUnlocked(CollisionInfo collision)
+        {
+            if (collision.CollidedWith.Layer != CollisionLayer.Player) return;
+
+            LevelMaster.GetInstance().NavigateInDirection(direction, OnNavComplete);
+            player = Game1.getInstance().link;
+            player.EnterRoomTransition(direction);
+        }
+
+        public void OpenDoor()
         {
             openCollider.Active = true;
             openSprite.RegisterSprite();
