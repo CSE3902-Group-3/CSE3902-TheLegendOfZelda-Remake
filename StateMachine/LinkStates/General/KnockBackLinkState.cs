@@ -14,6 +14,8 @@ namespace LegendOfZelda
 
         private Vector2 targetPosition;  // The position Link should move to
 
+        public bool isDone = false;
+
         public KnockBackLinkState()
         {
             this.game = Game1.getInstance();
@@ -64,11 +66,15 @@ namespace LegendOfZelda
                     LinkUtilities.UpdatePositions(link, link.stateMachine.position + (direction * link.velocity));
                 }
             }
-            else
+
+            if (link.stateMachine.position == targetPosition)
             {
+                // Only change the state to IdleLinkState when the target position is reached
                 link.stateMachine.ChangeState(new IdleLinkState());
+                isDone = true;
             }
         }
+
 
         public void Exit()
         {

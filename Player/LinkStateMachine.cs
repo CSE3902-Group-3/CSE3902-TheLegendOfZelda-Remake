@@ -24,6 +24,8 @@ namespace LegendOfZelda
         public void ChangeState(IState newState)
         {
             if (LinkUtilities.IsStateWithIncompleteAnimation(this.CurrentState)) return;
+
+            if (CurrentState is KnockBackLinkState && !((KnockBackLinkState)CurrentState).isDone) return;
             // only change if states are different
             if (CurrentState != null && (newState.GetType() == CurrentState.GetType())) return;
 
