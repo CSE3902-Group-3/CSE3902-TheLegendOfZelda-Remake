@@ -99,7 +99,6 @@ namespace LegendOfZelda
             controller = new PlayerController((Link)link);
             CameraController = CameraController.GetInstance();
             BackgroundGenerator.GenerateMenuBackgrounds();
-            new CameraControllerTest();
         }
 
         protected override void Update(GameTime gameTime)

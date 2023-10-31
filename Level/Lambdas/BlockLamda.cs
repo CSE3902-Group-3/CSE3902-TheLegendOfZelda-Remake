@@ -129,115 +129,83 @@ namespace LegendOfZelda
         }
         static void WallNorth(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWallNorthSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + NorthDoorPosition);
-            block.enabled = true;
-            new RectCollider(new Rectangle(room.RoomXLocation + (int)NorthDoorPosition.X, room.RoomYLocation + (int)NorthDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
+            new Wall(new Vector2(room.RoomXLocation, room.RoomYLocation) + NorthDoorPosition, Direction.up);
         }
         static void WallEast(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWallEastSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + EastDoorPosition);
-            block.enabled = true;
-            new RectCollider(new Rectangle(room.RoomXLocation + (int)EastDoorPosition.X, room.RoomYLocation + (int)EastDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
+            new Wall(new Vector2(room.RoomXLocation, room.RoomYLocation) + EastDoorPosition, Direction.right);
         }
         static void WallSouth(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWallSouthSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + SouthDoorPosition);
-            block.enabled = true;
-            new RectCollider(new Rectangle(room.RoomXLocation + (int)SouthDoorPosition.X, room.RoomYLocation + (int)SouthDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
+            new Wall(new Vector2(room.RoomXLocation, room.RoomYLocation) + SouthDoorPosition, Direction.down);
         }
         static void WallWest(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWallWestSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + WestDoorPosition);
-            block.enabled = true;
-            new RectCollider(new Rectangle(room.RoomXLocation + (int)WestDoorPosition.X, room.RoomYLocation + (int)WestDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
+            new Wall(new Vector2(room.RoomXLocation, room.RoomYLocation) + WestDoorPosition, Direction.left);
         }
         static void NorthOpenDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateNorthOpenDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + NorthDoorPosition);
-            block.enabled = true;
+            new OpenDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + NorthDoorPosition, Direction.up);
         }
         static void EastOpenDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateEastOpenDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + EastDoorPosition);
-            block.enabled = true;
+            new OpenDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + EastDoorPosition, Direction.right);
         }
         static void SouthOpenDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateSouthOpenDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + SouthDoorPosition);
-            block.enabled = true;
+            new OpenDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + SouthDoorPosition, Direction.down);
         }
         static void WestOpenDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWestOpenDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + WestDoorPosition);
-            block.enabled = true;
+            new OpenDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + WestDoorPosition, Direction.left);
         }
         static void NorthLockedDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateNorthLockedDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + NorthDoorPosition);
-            block.enabled = true;
-            new RectCollider(new Rectangle(room.RoomXLocation + (int)NorthDoorPosition.X, room.RoomYLocation + (int)NorthDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
+            new LockedDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + NorthDoorPosition, Direction.up);
         }
         static void EastLockedDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateEastLockedDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + EastDoorPosition);
-            block.enabled = true;
-            new RectCollider(new Rectangle(room.RoomXLocation + (int)EastDoorPosition.X, room.RoomYLocation + (int)EastDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
+            new LockedDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + EastDoorPosition, Direction.right);
         }
         static void SouthLockedDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateSouthLockedDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + SouthDoorPosition);
-            block.enabled = true;
-            new RectCollider(new Rectangle(room.RoomXLocation + (int)SouthDoorPosition.X, room.RoomYLocation + (int)SouthDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
+            new LockedDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + SouthDoorPosition, Direction.down);
         }
         static void WestLockedDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWestLockedDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + WestDoorPosition);
-            block.enabled = true;
-            new RectCollider(new Rectangle(room.RoomXLocation + (int)WestDoorPosition.X, room.RoomYLocation + (int)WestDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
+            new LockedDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + WestDoorPosition, Direction.left);
         }
         static void NorthClosedDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateNorthClosedDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + NorthDoorPosition);
-            block.enabled = true;
-            new RectCollider(new Rectangle(room.RoomXLocation + (int)NorthDoorPosition.X, room.RoomYLocation + (int)NorthDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
+            new CloseableDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + NorthDoorPosition, Direction.up);
         }
         static void EastClosedDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateEastClosedDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + EastDoorPosition);
-            block.enabled = true;
-            new RectCollider(new Rectangle(room.RoomXLocation + (int)EastDoorPosition.X, room.RoomYLocation + (int)EastDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
+            new CloseableDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + EastDoorPosition, Direction.right);
         }
         static void SouthClosedDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateSouthClosedDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + SouthDoorPosition);
-            block.enabled = true;
-            new RectCollider(new Rectangle(room.RoomXLocation + (int)SouthDoorPosition.X, room.RoomYLocation + (int)SouthDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
+            new CloseableDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + SouthDoorPosition, Direction.down);
         }
         static void WestClosedDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWestClosedDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + WestDoorPosition);
-            block.enabled = true;
-            new RectCollider(new Rectangle(room.RoomXLocation + (int)WestDoorPosition.X, room.RoomYLocation + (int)WestDoorPosition.Y, 128, 128), CollisionLayer.OuterWall, block);
+            new CloseableDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + WestDoorPosition, Direction.left);
         }
         static void NorthHoleDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateNorthHoleDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + NorthDoorPosition);
-            block.enabled = true;
+            new BombableDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + NorthDoorPosition, Direction.up);
         }
         static void EastHoleDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateEastHoleDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + EastDoorPosition);
-            block.enabled = true;
+            new BombableDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + EastDoorPosition, Direction.right);
         }
         static void SouthHoleDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateSouthHoleDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + SouthDoorPosition);
-            block.enabled = true;
+            new BombableDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + SouthDoorPosition, Direction.down);
         }
         static void WestHoleDoor(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWestHoleDoorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation) + WestDoorPosition);
-            block.enabled = true;
+            new BombableDoor(new Vector2(room.RoomXLocation, room.RoomYLocation) + WestDoorPosition, Direction.left);
         }
         static void WallExterior(Room room, MapElement mapElement)
         {

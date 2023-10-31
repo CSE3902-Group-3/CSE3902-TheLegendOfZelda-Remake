@@ -12,20 +12,16 @@ namespace LegendOfZelda
         public Vector2 ItemMenuLocation { get; private set; } = new Vector2(10000, 0);
         public Vector2 StartLocation { get; private set; } = new Vector2(20000, 0);
         public Vector2 EndLocation { get; private set; } = new Vector2(30000, 0);
-        private float camSpeed = 4;
+        private float camSpeed = 8;
 
         public Camera mainCamera;
         public Camera itemMenuCamera;
         public Camera startCamera;
         public Camera endCamera;
 
-        public int roomLookingAt = 0;
-        public int roomMovingTo = 0;
-        private Action OnPanComplete;
-
         private static CameraController instance;
 
-        private List<List<IDrawable>> mainCameraDrawables;
+        private List<IDrawable> mainCameraDrawables;
 
         private Camera activeMenu;
         
@@ -36,10 +32,9 @@ namespace LegendOfZelda
             startCamera = new Camera(StartLocation);
             endCamera = new Camera(EndLocation);
 
-            mainCameraDrawables = new List<List<IDrawable>>();
+            mainCameraDrawables = new List<IDrawable>();
 
-            roomLookingAt = LevelMaster.CurrentRoom;
-            mainCameraDrawables.Add(LevelMaster.Drawables);
+            mainCameraDrawables = LevelMaster.Drawables;
 
             instance = this;
 
@@ -61,21 +56,13 @@ namespace LegendOfZelda
             activeMenu.DrawAll(LevelMaster.Drawables, spriteBatch);
         }
 
-        public void SnapCamToRoom(int roomId, Vector2 roomPos)
+        public void SnapCamToRoom(Vector2 roomPos)
         {
             mainCamera.worldPos = roomPos;
-
-            roomMovingTo = roomId;
-            roomLookingAt = roomId;
         }
-        public void PanCamToRoom(int roomId, Direction directionMoving, Action onPanComplete = null)
+        public void PanCamToRoom(Vector2 roomPos, Action onPanComplete = null)
         {
-
-            Vector2 newLocation = DetermineRoomLocation(mainCamera, directionMoving);
-            mainCamera.PanToLocation(newLocation, camSpeed, OnMainCameraArrival);
-
-            roomMovingTo = roomId;
-            OnPanComplete = onPanComplete;
+            mainCamera.PanToLocation(roomPos, camSpeed, onPanComplete);
         }
 
         public void OpenItemMenu(Action onPanComplete = null)
@@ -102,37 +89,6 @@ namespace LegendOfZelda
                     activeMenu = itemMenuCamera;
                     break;
             }
-        }
-
-        private Vector2 DetermineRoomLocation(Camera movingCam, Direction directionMoving)
-        {
-            Vector2 targetLocation;
-            switch (directionMoving)
-            {
-                case Direction.right:
-                    targetLocation = movingCam.worldPos + new Vector2(LevelMaster.RoomWidth, 0);
-                    break;
-                case Direction.left:
-                    targetLocation = movingCam.worldPos + new Vector2(-LevelMaster.RoomWidth, 0);
-                    break;
-                case Direction.down:
-                    targetLocation = movingCam.worldPos + new Vector2(0, LevelMaster.RoomHeight);
-                    break;
-                case Direction.up:
-                    targetLocation = movingCam.worldPos + new Vector2(0, -LevelMaster.RoomHeight);
-                    break;
-                default:
-                    targetLocation = Vector2.Zero;
-                    break;
-            }
-            return targetLocation;
-        }
-
-        private void OnMainCameraArrival()
-        {
-            roomLookingAt = roomMovingTo;
-
-            if (OnPanComplete != null) OnPanComplete();
         }
     }
 }

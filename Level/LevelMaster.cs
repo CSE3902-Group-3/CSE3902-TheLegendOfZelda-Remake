@@ -47,7 +47,7 @@ namespace LegendOfZelda
                 CurrentRoom = roomNumber;
                 CurrentRoomUpdateables = RoomListUpdateables[roomNumber];
                 SwapColliders(roomNumber);
-                CameraController.GetInstance().SnapCamToRoom(roomNumber, RoomPositionList[roomNumber]);
+                CameraController.GetInstance().SnapCamToRoom(RoomPositionList[roomNumber]);
                 return true;
             }
             return false;
@@ -65,7 +65,7 @@ namespace LegendOfZelda
             CurrentRoomUpdateables = RoomListUpdateables[targetRoom];
             SwapColliders(targetRoom);
 
-            CameraController.GetInstance().PanCamToRoom(targetRoom, direction, onNavComplete);
+            CameraController.GetInstance().PanCamToRoom(RoomPositionList[targetRoom], onNavComplete);
             return true;
         }
 

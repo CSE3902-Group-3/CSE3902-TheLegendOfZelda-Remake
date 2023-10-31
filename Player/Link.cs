@@ -106,5 +106,32 @@ namespace LegendOfZelda
             LinkCollisionHandler.OnCollision(collisions);
         }
 
+        public void EnterRoomTransition(Direction direction)
+        {
+            //Temporary implementation
+            Vector2 newPos = Vector2.Zero;
+            switch (direction)
+            {
+                case Direction.up:
+                    newPos = pos + new Vector2(0, -194);
+                    break;
+                case Direction.down:
+                    newPos = pos + new Vector2(0, 194);
+                    break;
+                case Direction.right:
+                    newPos = pos + new Vector2(194, 0);
+                    break;
+                case Direction.left:
+                    newPos = pos + new Vector2(-194, 0);
+                    break;
+            }
+
+            velocity = 5;
+            stateMachine.position = newPos;
+            sprite.UpdatePos(newPos);
+            collider.Pos = newPos;
+        }
+
+        public void ExitRoomTransition() { }
     }
 }

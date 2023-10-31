@@ -3076,12 +3076,16 @@
             "RoomYLocation": 2,
             "AdjacentRooms": [
                 {
-                    "RoomNumber": 1,
+                    "RoomNumber": 4,
                     "Direction": "West"
                 },
                 {
-                    "RoomNumber": 1,
-                    "Direction": "West"
+                    "RoomNumber": 6,
+                    "Direction": "East"
+                },
+                {
+                    "RoomNumber": 11,
+                    "Direction": "North"
                 }
             ],
             "MapElements": [
