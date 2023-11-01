@@ -22,7 +22,7 @@ namespace LegendOfZelda
         private const int fastDrawFramesPerAnimFrame = 2;
         public int scale { get; private set; }
 
-        private const int letterWidth = 7;
+        public const int letterWidth = 7;
         private int XPos;
         private int YPos;
 

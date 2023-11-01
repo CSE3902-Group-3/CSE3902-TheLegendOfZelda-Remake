@@ -97,7 +97,8 @@ namespace LegendOfZelda
             //new AnimationTester();
             //letterTester = new LetterTester();
 
-            new MainMenu();
+            //new MainMenuScreen();
+            new GameOverScreen(1024, 1024);
 
             controller = new PlayerController((Link)link);
             //new ProjectileTest();
