@@ -11,10 +11,12 @@ namespace LegendOfZelda
     {
         private static GameState Instance;
         private static IGameState State;
-        private static LevelMaster LevelMaster;
         public static CollisionManager CollisionManager;
         public static Link Link;
         public static RoomCycler RoomCycler;
+
+        // testing
+        private static bool AlreadySwitched = false;
         //public enum GameStates { normalState, winState, loseState, pauseState, menuState, roomTransitionState }
         public static GameState GetInstance()
         {
@@ -24,18 +26,15 @@ namespace LegendOfZelda
         }
         private GameState()
         {
-            State = new NormalState();
             CollisionManager = new CollisionManager();
             Link = Link.getInstance();
-            LevelMaster = LevelMaster.GetInstance();
-            LevelMaster.StartLevel("level1.json");
-            RoomCycler = new RoomCycler(LevelMaster);
+            State = new NormalState();
         }
-        public void SwitchState(GameState state)
+        public void SwitchState(IGameState state)
         {
             State = state;
         }
-        public void ResetState(GameState state)
+        public void ResetState()
         {
             Instance = new GameState();
             // need a way to reset link
@@ -43,6 +42,13 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             State.Update(gameTime);
+
+            // this portion solely for testing with winning state
+            if (gameTime.TotalGameTime.TotalMilliseconds > 1000 && !AlreadySwitched)
+            {
+                SwitchState(new WinningState());
+                AlreadySwitched = true;
+            }
         }
         public void Draw()
         {

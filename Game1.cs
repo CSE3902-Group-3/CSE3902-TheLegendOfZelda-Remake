@@ -1,11 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Threading;
-using LegendOfZelda;
-
 namespace LegendOfZelda
 {
     public enum Direction { down, right, up, left, upLeft, upRight, downLeft, downRight };
@@ -19,6 +14,9 @@ namespace LegendOfZelda
         /* Game State */
         private GameState GameState;
         public Link link;
+
+        /* Level */
+        public LevelMaster LevelMaster;
 
         /* Cylers */
         public BlockCycler blockCycler { get; private set; }
@@ -63,13 +61,6 @@ namespace LegendOfZelda
             _graphics.PreferredBackBufferHeight = 1024;
             _graphics.ApplyChanges();
 
-            // Game state
-            GameState = GameState.GetInstance();
-            SoundFactory.getInstance();
-
-            // Will have to change this later
-            link = GameState.Link;
-
             base.Initialize();
         }
 
@@ -80,6 +71,17 @@ namespace LegendOfZelda
             // TODO: use this.Content to load your game content here
             spriteFactory.LoadTextures();
             SoundFactory.LoadTextures();
+
+            // Game state
+            GameState = GameState.GetInstance();
+
+            // Level
+            LevelMaster = LevelMaster.GetInstance();
+            LevelMaster.StartLevel("level1.json");
+            roomCycler = new RoomCycler(LevelMaster);
+
+            // Will have to change this later
+            link = GameState.Link;
         }
 
         protected override void Update(GameTime gameTime)
