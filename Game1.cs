@@ -16,11 +16,9 @@ namespace LegendOfZelda
         public SpriteBatch _spriteBatch { get; private set; }
         public SpriteFactory spriteFactory { get; private set; }
 
-        /* Link */
-        public IPlayer link { get; private set; }
-
-        /* Controller */
-        private IController controller;
+        /* Game State */
+        private GameState GameState;
+        public Link link;
 
         /* Cylers */
         public BlockCycler blockCycler { get; private set; }
@@ -29,12 +27,6 @@ namespace LegendOfZelda
         public RoomCycler roomCycler { get; private set; }
 
         public LetterTester letterTester { get; private set; }
-
-        /* Level */
-        private LevelMaster LevelMaster;
-
-        /* Collisions */
-        private CollisionManager collisionManager;
 
         /* Sounds */
         public SoundFactory SoundFactory { get; private set; }
@@ -71,7 +63,12 @@ namespace LegendOfZelda
             _graphics.PreferredBackBufferHeight = 1024;
             _graphics.ApplyChanges();
 
-            collisionManager = new CollisionManager();
+            // Game state
+            GameState = GameState.GetInstance();
+            SoundFactory.getInstance();
+
+            // Will have to change this later
+            link = GameState.Link;
 
             base.Initialize();
         }
@@ -83,37 +80,12 @@ namespace LegendOfZelda
             // TODO: use this.Content to load your game content here
             spriteFactory.LoadTextures();
             SoundFactory.LoadTextures();
-
-            link = Link.getInstance();
-
-            // Level 1
-            LevelMaster = LevelMaster.GetInstance();
-            LevelMaster.StartLevel("level1.json");
-
-            //blockCycler = new BlockCycler(new Vector2(300, 200));
-            //enemyCycler = new EnemyCycler(new Vector2(500, 500));
-            //itemCycler = new ItemScroll(new Vector2(800, 600));
-            roomCycler = new RoomCycler(LevelMaster);
-            //new AnimationTester();
-            letterTester = new LetterTester();
-
-            controller = new PlayerController((Link)link);
-            new ProjectileTest();
         }
 
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) Exit();
-
-            // TODO: Add your update logic here
-            
-            LevelMaster.Update(gameTime);
-            link.Update(gameTime);
-
-            controller.Update();
-            //CollisionManager always updates last
-            collisionManager.Update(gameTime);
-
+            GameState.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -125,9 +97,7 @@ namespace LegendOfZelda
 
             _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp);
 
-            LevelMaster.Draw();
-            link.sprite.Draw();
-            letterTester.Show();
+            GameState.Draw();
 
             _spriteBatch.End();
 
