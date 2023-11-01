@@ -11,6 +11,7 @@ namespace LegendOfZelda
     {
         private static GameState Instance;
         private static IGameState State;
+        private static LevelMaster LevelMaster;
         public static CollisionManager CollisionManager;
         public static Link Link;
         public static RoomCycler RoomCycler;
@@ -28,6 +29,8 @@ namespace LegendOfZelda
         {
             CollisionManager = new CollisionManager();
             Link = Link.getInstance();
+            LevelMaster = LevelMaster.GetInstance();
+            LevelMaster.StartLevel("level1.json");
             State = new NormalState();
         }
         public void SwitchState(IGameState state)
@@ -44,7 +47,7 @@ namespace LegendOfZelda
             State.Update(gameTime);
 
             // this portion solely for testing with winning state
-            if (gameTime.TotalGameTime.TotalMilliseconds > 1000 && !AlreadySwitched)
+            if (gameTime.TotalGameTime.TotalMilliseconds > 2000 && !AlreadySwitched)
             {
                 SwitchState(new WinningState());
                 AlreadySwitched = true;

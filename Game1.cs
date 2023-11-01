@@ -77,7 +77,6 @@ namespace LegendOfZelda
 
             // Level
             LevelMaster = LevelMaster.GetInstance();
-            LevelMaster.StartLevel("level1.json");
             roomCycler = new RoomCycler(LevelMaster);
 
             // Will have to change this later
