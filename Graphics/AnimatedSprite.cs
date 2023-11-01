@@ -59,6 +59,8 @@ namespace LegendOfZelda
 
         private int flashCounter = 0;
         private bool _flashing = false;
+
+        private bool persistent;
         public bool flashing
         {
             get { return _flashing; }
@@ -97,7 +99,7 @@ namespace LegendOfZelda
 
         protected List<IAnimatedSpriteEffect> effectList;
 
-        public AnimatedSprite(Texture2D texture, Rectangle[] frames, SpriteEffects effect, int drawFramesPerAnimFrame, int scale)
+        public AnimatedSprite(Texture2D texture, Rectangle[] frames, SpriteEffects effect, int drawFramesPerAnimFrame, int scale, bool persistent = false)
         {
             drawInfo = new DrawInfo(texture, frames, scale, effect);
 
@@ -108,6 +110,7 @@ namespace LegendOfZelda
 
             effectList = new List<IAnimatedSpriteEffect>();
 
+            this.persistent = persistent;
             RegisterSprite();
         }
 
@@ -187,12 +190,12 @@ namespace LegendOfZelda
 
         public void RegisterSprite()
         {
-            LevelMaster.RegisterDrawable(this);
+            LevelMaster.RegisterDrawable(this, persistent);
         }
 
         public void UnregisterSprite()
         {
-            LevelMaster.RemoveDrawable(this);
+            LevelMaster.RemoveDrawable(this, persistent);
         }
     }  
 }

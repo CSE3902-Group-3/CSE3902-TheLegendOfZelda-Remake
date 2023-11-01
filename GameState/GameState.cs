@@ -48,12 +48,12 @@ namespace LegendOfZelda
         {
             State.Update(gameTime);
 
-            //// this portion solely for testing with winning state
-            //if (gameTime.TotalGameTime.TotalMilliseconds > 2000 && !AlreadySwitched)
-            //{
-            //    SwitchState(new PauseState());
-            //    AlreadySwitched = true;
-            //}
+            // this portion solely for testing with winning state
+            if (gameTime.TotalGameTime.TotalMilliseconds > 3000 && !AlreadySwitched)
+            {
+                SwitchState(new WinningState());
+                AlreadySwitched = true;
+            }
         }
         public void Draw()
         {

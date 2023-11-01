@@ -1,6 +1,12 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Threading;
+using LegendOfZelda;
+using LegendOfZelda.Graphics;
+
 namespace LegendOfZelda
 {
     public enum Direction { down, right, up, left, upLeft, upRight, downLeft, downRight };
@@ -16,16 +22,14 @@ namespace LegendOfZelda
         public Link link;
 
         /* Cylers */
-        public BlockCycler blockCycler { get; private set; }
-        public EnemyCycler enemyCycler { get; private set; }
-        public ItemScroll itemCycler { get; private set; }
         public RoomCycler roomCycler { get; private set; }
-
-        public LetterTester letterTester { get; private set; }
 
         /* Level */
         private LevelMaster LevelMaster;
 
+        /* Camera Controller */
+        private CameraController CameraController;
+        
         /* Sounds */
         public SoundFactory SoundFactory { get; private set; }
 
@@ -49,7 +53,6 @@ namespace LegendOfZelda
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             instance = this;
 
             spriteFactory = SpriteFactory.getInstance();
@@ -68,7 +71,6 @@ namespace LegendOfZelda
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
             spriteFactory.LoadTextures();
             SoundFactory.LoadTextures();
 
@@ -85,7 +87,6 @@ namespace LegendOfZelda
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) Exit();
             GameState.Update(gameTime);
             base.Update(gameTime);
         }
@@ -101,6 +102,7 @@ namespace LegendOfZelda
             GameState.Draw();
 
             _spriteBatch.End();
+            CameraController.Draw(_spriteBatch);
 
             base.Draw(gameTime);
         }
