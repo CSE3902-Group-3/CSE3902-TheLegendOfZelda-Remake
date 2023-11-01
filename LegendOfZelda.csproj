@@ -18,7 +18,6 @@
     <None Remove="Code Review\**" />
     <None Remove="LegendOfZelda\**" />
     <Compile Remove="LinkCommand.cs" />
-    <None Remove="Utility\WinningScreen\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
@@ -39,8 +38,6 @@
     <Folder Include="GameInterface\" />
     <Folder Include="LegendOfZelda\obj\Release\" />
     <Folder Include="ItemClasses\" />
-    <Folder Include="StateMachine\LinkStates\" />
-    <Folder Include="Utility\WinningScreen\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Level\Levels\level1.json">

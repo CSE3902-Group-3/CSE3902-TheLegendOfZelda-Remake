@@ -35,8 +35,6 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
-
             if (((AnimatedSprite)link.sprite).complete)
             {
                 link.stateMachine.ChangeState(new IdleLinkState());
