@@ -23,12 +23,7 @@ namespace LegendOfZelda
         private IController controller;
 
         /* Cylers */
-        public BlockCycler blockCycler { get; private set; }
-        public EnemyCycler enemyCycler { get; private set; }
-        public ItemScroll itemCycler { get; private set; }
         public RoomCycler roomCycler { get; private set; }
-
-        public LetterTester letterTester { get; private set; }
 
         /* Level */
         private LevelMaster LevelMaster;
@@ -90,15 +85,10 @@ namespace LegendOfZelda
             LevelMaster = LevelMaster.GetInstance();
             LevelMaster.StartLevel("level1.json");
 
-            //blockCycler = new BlockCycler(new Vector2(300, 200));
-            //enemyCycler = new EnemyCycler(new Vector2(500, 500));
-            //itemCycler = new ItemScroll(new Vector2(800, 600));
             roomCycler = new RoomCycler(LevelMaster);
-            //new AnimationTester();
-            letterTester = new LetterTester();
+
 
             controller = new PlayerController((Link)link);
-            new ProjectileTest();
         }
 
         protected override void Update(GameTime gameTime)
@@ -127,7 +117,6 @@ namespace LegendOfZelda
 
             LevelMaster.Draw();
             link.sprite.Draw();
-            letterTester.Show();
 
             _spriteBatch.End();
 
