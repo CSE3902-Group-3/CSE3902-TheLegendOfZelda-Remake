@@ -23,12 +23,7 @@ namespace LegendOfZelda
         private IController controller;
 
         /* Cylers */
-        public BlockCycler blockCycler { get; private set; }
-        public EnemyCycler enemyCycler { get; private set; }
-        public ItemScroll itemCycler { get; private set; }
         public RoomCycler roomCycler { get; private set; }
-
-        public LetterTester letterTester { get; private set; }
 
         /* Level */
         private LevelMaster LevelMaster;
@@ -59,7 +54,6 @@ namespace LegendOfZelda
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             instance = this;
 
             spriteFactory = SpriteFactory.getInstance();
@@ -80,7 +74,6 @@ namespace LegendOfZelda
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
             spriteFactory.LoadTextures();
             SoundFactory.LoadTextures();
 
@@ -90,22 +83,13 @@ namespace LegendOfZelda
             LevelMaster = LevelMaster.GetInstance();
             LevelMaster.StartLevel("level1.json");
 
-            //blockCycler = new BlockCycler(new Vector2(300, 200));
-            //enemyCycler = new EnemyCycler(new Vector2(500, 500));
-            //itemCycler = new ItemScroll(new Vector2(800, 600));
             roomCycler = new RoomCycler(LevelMaster);
-            //new AnimationTester();
-            letterTester = new LetterTester();
 
             controller = new PlayerController((Link)link);
         }
 
         protected override void Update(GameTime gameTime)
-        {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) Exit();
-
-            // TODO: Add your update logic here
-            
+        {          
             LevelMaster.Update(gameTime);
             link.Update(gameTime);
 
@@ -120,13 +104,10 @@ namespace LegendOfZelda
         {
             GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
-
             _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp);
 
             LevelMaster.Draw();
             link.sprite.Draw();
-            letterTester.Show();
 
             _spriteBatch.End();
 
