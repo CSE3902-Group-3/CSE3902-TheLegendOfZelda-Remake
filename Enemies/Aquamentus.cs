@@ -6,13 +6,13 @@ namespace LegendOfZelda
     public class Aquamentus : IEnemy
     {
         private readonly AnimatedSprite Sprite;
-        private int Health { get; set; } = 1;
+        private float Health = 6.0f;
         private Vector2 Position;
         private int CycleCount = 0;
         private readonly int MaxCycles = 50;
         private int PosIncrement = 2;
+        private float currentCooldown = 0.0f;
         public RectCollider Collider { get; private set; }
-
         public Aquamentus(Vector2 pos)
         {
             Position = pos;
@@ -26,7 +26,7 @@ namespace LegendOfZelda
                this
            );
         }
-        public void Spawn ()
+        public void Spawn()
         {
             new EnemySpawnEffect(Position);
             LevelMaster.RegisterUpdateable(this);
@@ -39,7 +39,7 @@ namespace LegendOfZelda
             if (CycleCount > MaxCycles)
             {
                 CycleCount = 0;
-                PosIncrement *= -1;
+                PosIncrement = (int)(PosIncrement * -0.5);
             }
             Position.X += PosIncrement;
             CycleCount++;
@@ -49,13 +49,25 @@ namespace LegendOfZelda
         }
         public void Attack()
         {
+            SoundFactory.PlaySound(SoundFactory.getInstance().BossScream1, 1.0f, 0.0f, 0.0f);
             new AquamentusBall(Position, new Vector2(-10, 0));
             new AquamentusBall(Position, new Vector2(-10, 10));
             new AquamentusBall(Position, new Vector2(-10, -10));
         }
-        public void UpdateHealth(int damagePoints)
+        public void UpdateHealth(float damagePoints)
         {
-            // Not needed
+            SoundFactory.PlaySound(SoundFactory.getInstance().BossHit, 1.0f, 0.0f, 0.0f);
+            Health -= damagePoints;
+
+            // Indicate damage, or if health has reached 0, die
+            if (Health < 0)
+            {
+                Die();
+            }
+            else
+            {
+                Sprite.blinking = true;
+            }
         }
 
         public void ChangeDirection()
@@ -67,6 +79,7 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
+            currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
             ChangePosition();
             if (CycleCount == MaxCycles)
             {
@@ -93,7 +106,11 @@ namespace LegendOfZelda
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
-                    UpdateHealth(1); // Choose different values for each type of player weapon
+                    if (currentCooldown <= 0)
+                    {
+                        UpdateHealth(1.0f); // Choose different values for each type of player weapon
+                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                    }
                 }
             }
         }

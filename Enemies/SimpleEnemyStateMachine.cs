@@ -10,11 +10,12 @@ namespace LegendOfZelda
         public enum Speed { slow, medium, fast };
         public Speed EnemySpeed { get; set; }
         public int SpeedMultiplier;
-        public int Health { get; set; }
+        public float Health { get; set; }
         private Vector2 Position;
         private Vector2 Offset;
         private Vector2 Direction;
         private double LastSwitch = 0;
+        private float currentCooldown = 0.0f;
         public RectCollider Collider { get; set; }
 
         public SimpleEnemyStateMachine(Vector2 pos, Vector2 offset, RectCollider collider)
@@ -36,13 +37,7 @@ namespace LegendOfZelda
             }
             Collider = collider;
         }
-        public void Attack()
-        {
-            /* 
-            * This isn't needed for Sprint 2,
-            * however it will be needed later.
-            */
-        }
+        public void Attack() {}
 
         public void ChangeDirection()
         {
@@ -81,12 +76,14 @@ namespace LegendOfZelda
         {
             Sprite.UpdatePos(Position);
             Collider.Active = false;
+            new EnemyDeathEffect(Position);
             Sprite.UnregisterSprite();
             LevelMaster.RemoveUpdateable(this);
         }
 
         public void Spawn()
         {
+            new EnemySpawnEffect(Position);
             LevelMaster.RegisterUpdateable(this);
             Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
@@ -95,7 +92,7 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
-
+            currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
             {
                 LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
@@ -105,7 +102,7 @@ namespace LegendOfZelda
             Collider.Pos = Position + Offset;
         }
 
-        public void UpdateHealth(int damagePoints)
+        public void UpdateHealth(float damagePoints)
         {
             Health -= damagePoints;
 
@@ -116,8 +113,8 @@ namespace LegendOfZelda
             } else
             {
                 Sprite.blinking = true;
+                SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
             }
-            Sprite.blinking = false;
         }
 
         public void OnCollision(List<CollisionInfo> collisions) {
@@ -131,7 +128,11 @@ namespace LegendOfZelda
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
-                    UpdateHealth(1); // Choose different values for each type of player weapon
+                    if (currentCooldown <= 0)
+                    {
+                        UpdateHealth(1.0f); // Choose different values for each type of player weapon
+                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                    }
                 }
             }
         }
