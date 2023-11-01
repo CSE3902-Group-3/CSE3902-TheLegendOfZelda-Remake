@@ -5,26 +5,21 @@ namespace LegendOfZelda
 {
 	public class PauseController : IController
 	{
-        private ICommands pauseCommand;
-        private bool isPPressed;
-        private PauseManager pauseManager;
+        private PauseManager PauseManager;
+        private ICommands UnpauseCommand;
 
-        public PauseController()
+        public PauseController(PauseManager pauseManager)
 		{
-            pauseManager = Game1.getInstance().pauseManager;
-            pauseCommand = new PauseCommand(pauseManager);
-            isPPressed = false;
+            UnpauseCommand = new UnpauseCommand(pauseManager);
+            PauseManager = pauseManager;
         }
 
         public void Update()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Space) && !isPPressed)
+            if (Keyboard.GetState().IsKeyUp(Keys.Space) && PauseManager.isPaused())
             {
-                pauseCommand.Execute();
-                isPPressed = true;
+                UnpauseCommand.Execute();
             }
-
-            isPPressed = !Keyboard.GetState().IsKeyUp(Keys.Space);
         }
     }
 }

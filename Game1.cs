@@ -15,10 +15,6 @@ namespace LegendOfZelda
         private GameState GameState;
         public Link link;
 
-        /* Controller */
-        private IController playerController;
-        private IController pauseController;
-
         /* Cylers */
         public BlockCycler blockCycler { get; private set; }
         public EnemyCycler enemyCycler { get; private set; }
@@ -29,12 +25,6 @@ namespace LegendOfZelda
 
         /* Level */
         private LevelMaster LevelMaster;
-
-        /* Collisions */
-        private CollisionManager collisionManager;
-
-        /* Pausing */
-        public PauseManager pauseManager;
 
         /* Sounds */
         public SoundFactory SoundFactory { get; private set; }

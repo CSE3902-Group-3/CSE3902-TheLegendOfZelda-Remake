@@ -38,14 +38,18 @@ namespace LegendOfZelda
             }
         }
 
-        private void Pause()
+        public void Pause()
         {
+            paused = true;
+            GameState.GetInstance().SwitchState(new PauseState());
             LevelMaster.RegisterDrawable(this);
         }
 
-        private void Resume()
+        public void Resume()
         {
+            paused = false;
             LevelMaster.RemoveDrawable(this);
+            GameState.GetInstance().SwitchState(new NormalState());
         }
 
         public bool isPaused()

@@ -1,5 +1,4 @@
-﻿using System;
-namespace LegendOfZelda
+﻿namespace LegendOfZelda
 {
 	public class PauseCommand : ICommands
 	{
@@ -12,7 +11,7 @@ namespace LegendOfZelda
 
 		public void Execute()
 		{
-			pauseHandler.TogglePause();
+			pauseHandler.Pause();
 		}
 	}
 }

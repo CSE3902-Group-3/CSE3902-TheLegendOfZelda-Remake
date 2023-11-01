@@ -46,8 +46,8 @@ namespace LegendOfZelda
             KeyDownMapping.Add(Keys.U, new PreviousItemCommand(game.itemCycler));
             KeyDownMapping.Add(Keys.I, new NextItemCommand(game.itemCycler));
             KeyDownMapping.Add(Keys.O, new PreviousEnemyCommand(game.enemyCycler));
-            KeyDownMapping.Add(Keys.P, new NextEnemyCommand(game.enemyCycler));
-
+            KeyDownMapping.Add(Keys.L, new NextEnemyCommand(game.enemyCycler));
+            KeyDownMapping.Add(Keys.Space, new PauseCommand(GameState.PauseManager));
         }
 
         public ICommands KeyDownCommand(Keys key)
