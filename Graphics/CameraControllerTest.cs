@@ -69,12 +69,16 @@ namespace LegendOfZelda.Graphics
                     NewTimer();
                     break;
                 case 12:
+                    controller.ChangeMenu(Menu.GameOver);
+                    NewTimer();
+                    break;
+                case 13:
                     controller.ChangeMenu(Menu.Item);
                     NewTimer();
                     break;
             }
 
-            i = (i + 1) % 13;
+            i = (i + 1) % 14;
         }
     }
 }

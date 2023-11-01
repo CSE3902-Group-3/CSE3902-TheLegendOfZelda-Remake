@@ -5,19 +5,22 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-    public enum Menu { Start, Item, End};
+    public enum Menu { Start, Item, End, GameOver};
     public class CameraController
     {
         public Vector2 HUDLocation { get; private set; } = new Vector2(10000, 1024);
         public Vector2 ItemMenuLocation { get; private set; } = new Vector2(10000, 0);
         public Vector2 StartLocation { get; private set; } = new Vector2(20000, 0);
         public Vector2 EndLocation { get; private set; } = new Vector2(30000, 0);
+        public Vector2 GameOverLocation { get; private set; } = new Vector2(40000, 0);
+
         private float camSpeed = 8;
 
         public Camera mainCamera;
         public Camera itemMenuCamera;
         public Camera startCamera;
         public Camera endCamera;
+        public Camera gameOverCamera;
 
         private static CameraController instance;
 
@@ -31,6 +34,7 @@ namespace LegendOfZelda
             itemMenuCamera = new Camera(HUDLocation);
             startCamera = new Camera(StartLocation);
             endCamera = new Camera(EndLocation);
+            gameOverCamera = new Camera(GameOverLocation);
 
             mainCameraDrawables = new List<IDrawable>();
 
@@ -87,6 +91,9 @@ namespace LegendOfZelda
                     break;
                 case Menu.Item:
                     activeMenu = itemMenuCamera;
+                    break;
+                case Menu.GameOver:
+                    activeMenu = gameOverCamera;
                     break;
             }
         }

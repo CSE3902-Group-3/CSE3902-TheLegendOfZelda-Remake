@@ -19,6 +19,8 @@ namespace LegendOfZelda.Graphics
             new Background((int)pos.X, (int)pos.Y);
             pos = cameraController.EndLocation;
             new Background((int)pos.X, (int)pos.Y);
+            pos = cameraController.GameOverLocation;
+            new Background((int)pos.X, (int)pos.Y);
         }
     }
 }
