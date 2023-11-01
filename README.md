@@ -75,6 +75,7 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 
 #### Sprint 4
 - Michael Herring reviewed Zhengyi Hu's code for quality in pull request #257
+- Michael Herring reviewed Matt Curie's code for readability in pull request #260
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections

@@ -49,8 +49,10 @@ namespace LegendOfZelda
             Sprite.UpdatePos(Position);
             Collider.Pos = Position;
         }
-        public void Attack() {}
-        public void UpdateHealth(float damagePoints) {
+        public void Attack() { }
+        public void UpdateHealth(float damagePoints)
+        {
+            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
             Health -= damagePoints;
 
             // Indicate damage, or if health has reached 0, die
