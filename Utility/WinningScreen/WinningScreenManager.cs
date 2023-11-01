@@ -28,11 +28,13 @@ namespace LegendOfZelda
             if (!flashingWhite)
             {
                 LevelMaster.RegisterDrawable(whiteFlash);
-                flashAmt++;
+                flashingWhite = true;
             }
             else if (flashingWhite)
             {
                 LevelMaster.RemoveDrawable(whiteFlash);
+                flashingWhite = false;
+                flashAmt++;
             }
         }
 
