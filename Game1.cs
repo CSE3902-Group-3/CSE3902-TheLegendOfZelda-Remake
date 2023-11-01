@@ -95,7 +95,7 @@ namespace LegendOfZelda
 
             CameraController = CameraController.GetInstance();
             BackgroundGenerator.GenerateMenuBackgrounds();
-            new CameraControllerTest();
+            //new CameraControllerTest();
 
         }
 
