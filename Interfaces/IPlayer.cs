@@ -12,5 +12,8 @@ namespace LegendOfZelda
         Vector2 pos { get; }
 
         public void Reset();
+
+        public void EnterRoomTransition(Direction direction);
+        public void ExitRoomTransition();
     }
 }
