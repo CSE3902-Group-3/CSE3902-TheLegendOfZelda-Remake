@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,6 +28,7 @@ namespace LegendOfZelda
         private Texture2D bossesTexture;
         private Texture2D itemsTexture;
         private Texture2D npcTexture;
+        public SpriteFont pauseWord;
 
         private Game1 game1;
         private int drawFramesPerAnimFrame;
@@ -58,6 +60,7 @@ namespace LegendOfZelda
             bossesTexture = content.Load<Texture2D>("Bosses");
             itemsTexture = content.Load<Texture2D>("Items");
             npcTexture = content.Load<Texture2D>("NPC");
+            pauseWord = content.Load<SpriteFont>("Pause");
         }
     
         public AnimatedSprite CreateLinkWalkDownSprite()
