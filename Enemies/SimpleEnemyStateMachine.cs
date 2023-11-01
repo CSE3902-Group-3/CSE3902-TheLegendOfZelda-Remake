@@ -136,7 +136,7 @@ namespace LegendOfZelda
                     if (currentCooldown <= 0)
                     {
                         UpdateHealth(1.0f); // Choose different values for each type of player weapon
-                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        currentCooldown = EnemyConstants.damageCooldown; // Reset the cooldown timer
                     }
                 }
             }

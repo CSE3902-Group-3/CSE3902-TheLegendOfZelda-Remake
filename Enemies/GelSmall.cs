@@ -24,6 +24,7 @@ namespace LegendOfZelda
             {
                 Sprite = SpriteFactory.getInstance().CreateGelSprite(),
                 Health = Health,
+                Classification = EnemyItemDrop.EnemyClass.X
             };
         }
         public void Spawn()
