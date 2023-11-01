@@ -54,7 +54,6 @@ namespace LegendOfZelda
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             instance = this;
 
             spriteFactory = SpriteFactory.getInstance();
@@ -75,7 +74,6 @@ namespace LegendOfZelda
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
             spriteFactory.LoadTextures();
             SoundFactory.LoadTextures();
 
@@ -87,16 +85,11 @@ namespace LegendOfZelda
 
             roomCycler = new RoomCycler(LevelMaster);
 
-
             controller = new PlayerController((Link)link);
         }
 
         protected override void Update(GameTime gameTime)
-        {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) Exit();
-
-            // TODO: Add your update logic here
-            
+        {          
             LevelMaster.Update(gameTime);
             link.Update(gameTime);
 
@@ -110,8 +103,6 @@ namespace LegendOfZelda
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-
-            // TODO: Add your drawing code here
 
             _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp);
 
