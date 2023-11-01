@@ -32,7 +32,7 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
+
         }
 
         public void Exit()

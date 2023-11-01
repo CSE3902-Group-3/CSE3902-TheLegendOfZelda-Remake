@@ -36,8 +36,6 @@ namespace LegendOfZelda
                 currPos.Y += LinkUtilities.SnapToGrid((int)currPos.Y);
                 LinkUtilities.UpdatePositions(link, currPos);
             }
-
-            ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
         }
 
         public void Exit()
