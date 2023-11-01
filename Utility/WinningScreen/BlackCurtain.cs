@@ -24,8 +24,8 @@ namespace LegendOfZelda
             screenWidth = graphicsDevice.Viewport.Width;
             screenHeight = graphicsDevice.Viewport.Height;
             curtainWidth = screenWidth / 32; // The black curtain fully closes after 16 updates, so each piece should be 1/32 of screen width
-            int leftPos = updateAmt * curtainWidth;
-            int rightPos = screenWidth - leftPos - curtainWidth;
+            leftPos = updateAmt * curtainWidth;
+            rightPos = screenWidth - leftPos - curtainWidth;
         }
 
         public void Draw()

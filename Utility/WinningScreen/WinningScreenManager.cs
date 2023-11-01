@@ -28,11 +28,13 @@ namespace LegendOfZelda
             if (!flashingWhite)
             {
                 LevelMaster.RegisterDrawable(whiteFlash);
-                flashAmt++;
+                flashingWhite = true;
             }
             else if (flashingWhite)
             {
                 LevelMaster.RemoveDrawable(whiteFlash);
+                flashingWhite = false;
+                flashAmt++;
             }
         }
 
@@ -56,11 +58,13 @@ namespace LegendOfZelda
                 DrawWhiteFlash();
             }
 
+
             /* This block is to ensure there are some time before curtain starts to close after flashing ends. */
-            if ((flashAmt == 6) && (curtainUpdateAmt == 0) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
-            {
+            if ((flashAmt == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
+            { 
                 DrawBlackCurtain();
                 curtainUpdateAmt++;
+                flashAmt++; // This is to make sure this block won't run again, not indicating actual flash
             }
 
             /* Screen will be all black after 16 updates */
