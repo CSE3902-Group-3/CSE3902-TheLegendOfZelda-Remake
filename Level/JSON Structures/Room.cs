@@ -13,6 +13,8 @@ namespace LegendOfZelda
     internal class Room
     {
         public int RoomNumber { get; set; }
+        public int RoomXLocation { get; set; }
+        public int RoomYLocation { get; set; }
         public List<AdjacentRoom> AdjacentRooms { get; set; }
         public List<MapElement> MapElements { get; set; }
     }

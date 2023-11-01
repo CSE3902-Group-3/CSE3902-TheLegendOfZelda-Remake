@@ -63,7 +63,7 @@ namespace LegendOfZelda
 
         private CollisionManager collisionManager;
 
-        public RectCollider(Rectangle rect, CollisionLayer layer, ICollidable collidable)
+        public RectCollider(Rectangle rect, CollisionLayer layer, ICollidable collidable, bool persistent = false)
         {
             this.Rect = rect;
             this.Layer = layer;
@@ -73,7 +73,7 @@ namespace LegendOfZelda
             _active = true;
             collisionManager.AddRectCollider(this);
 
-            LevelMaster.RegisterCollider(this);
+            LevelMaster.RegisterCollider(this, persistent);
 
             spriteBatch = Game1.getInstance()._spriteBatch;
             textureWithWhitePixel = SpriteFactory.getInstance().linkTexture;
@@ -83,7 +83,7 @@ namespace LegendOfZelda
 
             if (drawColliders)
             {
-                LevelMaster.RegisterDrawable(this);
+                LevelMaster.RegisterDrawable(this, persistent);
             }
         }
 
