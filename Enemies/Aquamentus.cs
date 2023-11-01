@@ -27,7 +27,7 @@ namespace LegendOfZelda
                this
            );
         }
-        public void Spawn ()
+        public void Spawn()
         {
             new EnemySpawnEffect(Position);
             LevelMaster.RegisterUpdateable(this);
@@ -50,12 +50,14 @@ namespace LegendOfZelda
         }
         public void Attack()
         {
+            SoundFactory.PlaySound(SoundFactory.getInstance().BossScream1, 1.0f, 0.0f, 0.0f);
             new AquamentusBall(Position, new Vector2(-10, 0));
             new AquamentusBall(Position, new Vector2(-10, 10));
             new AquamentusBall(Position, new Vector2(-10, -10));
         }
         public void UpdateHealth(float damagePoints)
         {
+            SoundFactory.PlaySound(SoundFactory.getInstance().BossHit, 1.0f, 0.0f, 0.0f);
             Health -= damagePoints;
 
             // Indicate damage, or if health has reached 0, die

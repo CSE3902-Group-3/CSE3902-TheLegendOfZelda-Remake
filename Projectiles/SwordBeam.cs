@@ -36,6 +36,7 @@ namespace LegendOfZelda.Projectiles
                     collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, 16 * scale, 7 * scale), CollisionLayer.PlayerWeapon, this);
                     break;
             }
+            SoundFactory.PlaySound(SoundFactory.getInstance().SwordShoot , 1.0f, 0.0f, 0.0f);
         }
 
         protected override void SpawnBurst()

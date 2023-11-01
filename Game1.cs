@@ -28,11 +28,16 @@ namespace LegendOfZelda
         public ItemScroll itemCycler { get; private set; }
         public RoomCycler roomCycler { get; private set; }
 
+        public LetterTester letterTester { get; private set; }
+
         /* Level */
         private LevelMaster LevelMaster;
 
         /* Collisions */
         private CollisionManager collisionManager;
+
+        /* Sounds */
+        public SoundFactory SoundFactory { get; private set; }
 
         /* Singleton */
         private static Game1 instance;
@@ -58,6 +63,7 @@ namespace LegendOfZelda
             instance = this;
 
             spriteFactory = SpriteFactory.getInstance();
+            SoundFactory = SoundFactory.getInstance();
 
             // Change size of viewport
             _graphics.IsFullScreen = false;
@@ -76,6 +82,7 @@ namespace LegendOfZelda
 
             // TODO: use this.Content to load your game content here
             spriteFactory.LoadTextures();
+            SoundFactory.LoadTextures();
 
             link = Link.getInstance();
 
@@ -88,6 +95,7 @@ namespace LegendOfZelda
             //itemCycler = new ItemScroll(new Vector2(800, 600));
             roomCycler = new RoomCycler(LevelMaster);
             //new AnimationTester();
+            letterTester = new LetterTester();
 
             controller = new PlayerController((Link)link);
             new ProjectileTest();
@@ -111,7 +119,7 @@ namespace LegendOfZelda
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
 
@@ -119,6 +127,7 @@ namespace LegendOfZelda
 
             LevelMaster.Draw();
             link.sprite.Draw();
+            letterTester.Show();
 
             _spriteBatch.End();
 

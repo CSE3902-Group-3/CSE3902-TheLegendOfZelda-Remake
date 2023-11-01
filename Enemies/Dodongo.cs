@@ -57,6 +57,7 @@ namespace LegendOfZelda
         }
         public void Spawn()
         {
+            SoundFactory.PlaySound(SoundFactory.getInstance().BossScream2, 1.0f, 0.0f, 0.0f);
             new EnemySpawnEffect(Position);
             LevelMaster.RegisterUpdateable(this);
             Sprites[CurrentSprite].RegisterSprite();
@@ -74,14 +75,16 @@ namespace LegendOfZelda
             Sprites[CurrentSprite].UpdatePos(Position);
             Collider.Pos = Position;
         }
-        public void Attack() {}
+        public void Attack() { }
         public void UpdateHealth(float damagePoints)
         {
+            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
             Health -= damagePoints;
 
             // Indicate damage, or if health has reached 0, die
             if (Health < 0)
             {
+                Sprites[CurrentSprite] = HurtSprites[CurrentSprite];
                 Die();
             }
             else
