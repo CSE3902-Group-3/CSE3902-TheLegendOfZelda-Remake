@@ -23,7 +23,9 @@ namespace LegendOfZelda
 
         public void ChangeState(IState newState)
         {
-            if (LinkUtilities.IsAttackingStateWithIncompleteAnimation(this.CurrentState)) return;
+            if (LinkUtilities.IsStateWithIncompleteAnimation(this.CurrentState)) return;
+
+            if (CurrentState is KnockBackLinkState && !((KnockBackLinkState)CurrentState).isDone) return;
             // only change if states are different
             if (CurrentState != null && (newState.GetType() == CurrentState.GetType())) return;
 
@@ -44,7 +46,7 @@ namespace LegendOfZelda
 
             if(link != null)
             {
-                link.sprite.UpdatePos(position);
+                LinkUtilities.UpdatePositions(link, position);
             }
         }
 

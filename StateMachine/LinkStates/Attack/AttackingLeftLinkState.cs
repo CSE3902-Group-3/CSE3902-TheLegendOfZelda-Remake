@@ -14,6 +14,7 @@ namespace LegendOfZelda
         private Link link;
 
         private Sword sword;
+        private SwordBeam swordBeam;
 
         public AttackingLeftLinkState()
         {
@@ -33,7 +34,14 @@ namespace LegendOfZelda
 
             link.sprite = SpriteFactory.getInstance().CreateLinkWoodStabLeftSprite();
 
-            sword = new Sword(link.stateMachine.currentDirection, link.stateMachine.position);
+            if (link.HP == link.maxHP)
+            {
+                swordBeam = new SwordBeam(link.stateMachine.position, link.stateMachine.currentDirection);
+            }
+            else
+            {
+                sword = new Sword(link.stateMachine.currentDirection, link.stateMachine.position);
+            }
         }
 
         public void Execute()
@@ -42,13 +50,13 @@ namespace LegendOfZelda
             {
                 link.stateMachine.ChangeState(new IdleLinkState());
             }
-            ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
         }
 
         public void Exit()
         {
             link.stateMachine.canMove = true;
-            sword.Destroy();
+            swordBeam?.Destroy();
+            sword?.Destroy();
         }
 
     }

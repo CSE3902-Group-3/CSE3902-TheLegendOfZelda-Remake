@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using LegendOfZelda;
+using LegendOfZelda.Graphics;
 
 namespace LegendOfZelda
 {
@@ -23,15 +24,13 @@ namespace LegendOfZelda
         private IController controller;
 
         /* Cylers */
-        public BlockCycler blockCycler { get; private set; }
-        public EnemyCycler enemyCycler { get; private set; }
-        public ItemScroll itemCycler { get; private set; }
         public RoomCycler roomCycler { get; private set; }
-
-        public LetterTester letterTester { get; private set; }
 
         /* Level */
         private LevelMaster LevelMaster;
+
+        /* Camera Controller */
+        private CameraController CameraController;
 
         /* Collisions */
         private CollisionManager collisionManager;
@@ -59,7 +58,6 @@ namespace LegendOfZelda
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             instance = this;
 
             spriteFactory = SpriteFactory.getInstance();
@@ -80,30 +78,30 @@ namespace LegendOfZelda
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
             spriteFactory.LoadTextures();
             SoundFactory.LoadTextures();
 
-            link = Link.getInstance();
-
             // Level 1
             LevelMaster = LevelMaster.GetInstance();
+
             LevelMaster.StartLevel("level1.json");
+
+            link = Link.getInstance();
+
 
             roomCycler = new RoomCycler(LevelMaster);
 
             controller = new PlayerController((Link)link);
-            new ProjectileTest();
+
+            CameraController = CameraController.GetInstance();
+            BackgroundGenerator.GenerateMenuBackgrounds();
+            new CameraControllerTest();
+
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) Exit();
-
-            // TODO: Add your update logic here
-            
             LevelMaster.Update(gameTime);
-            link.Update(gameTime);
 
             controller.Update();
             //CollisionManager always updates last
@@ -125,6 +123,7 @@ namespace LegendOfZelda
             // letterTester.Show();
 
             _spriteBatch.End();
+            CameraController.Draw(_spriteBatch);
 
             base.Draw(gameTime);
         }

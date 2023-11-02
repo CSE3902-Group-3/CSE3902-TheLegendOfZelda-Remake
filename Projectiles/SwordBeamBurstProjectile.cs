@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda.Projectiles
+namespace LegendOfZelda
 {
     public class SwordBeamBurstProjectile : IPlayerProjectile
     {

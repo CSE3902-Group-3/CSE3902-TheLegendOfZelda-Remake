@@ -6,6 +6,9 @@ namespace LegendOfZelda
 {
     public class LinkCollisionWithEnemy
     {
+
+        private static float cooldown = Link.getInstance().damageCooldownTimer; // Set the cooldown (in seconds) for damage
+
         public static void HandleCollisionWithEnemy(CollisionInfo collision)
         {
             IEnemy enemyCollidedWith = collision.CollidedWith.Collidable as IEnemy;
@@ -22,20 +25,15 @@ namespace LegendOfZelda
             };
 
             Type enemyType = enemyCollidedWith.GetType();
-            if (enemyDamageMap.ContainsKey(enemyType))
+            if (enemyDamageMap.ContainsKey(enemyType) && cooldown <= 0)
             {
                 float damage = enemyDamageMap[enemyType];
                 ((Link)Game1.getInstance().link).TakeDamage(damage);
+
+                Link.getInstance().damageCooldownTimer = Link.getInstance().damageCooldownDuration;
             }
-            // bat half heart damage
-            // Aquamentus half heart damage (fireball 1/2)
-            // Goriya 1 heart (boomerang 1)
-            // Dodongo fire 1 heart / tail 1/2 heart
-            // gel 1/2 heart
-            // rope half heart
-            // stalfos 1/2 heart
-            // blade trap 1/4 heart
-            ((Link)Game1.getInstance().link).StopTakingDamage();
+
+            Link.getInstance().stateMachine.ChangeState(new KnockBackLinkState());
         }
     }
 }

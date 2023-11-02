@@ -1,5 +1,4 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    public class AttackingDownLinkState : IState
+    public class CollectItemLinkState : IState
     {
         private Game1 game;
         private Link link;
 
-        private Sword sword;
-        private SwordBeam swordBeam;
+        private IItem item;
 
-        public AttackingDownLinkState()
+        public CollectItemLinkState(IItem item)
         {
             this.game = Game1.getInstance();
-            link = (Link)game.link;
+            this.link = (Link)game.link;
+            this.item = item;
         }
 
         public void Enter()
@@ -30,20 +29,13 @@ namespace LegendOfZelda
                 ((AnimatedSprite)link.sprite).UnregisterSprite();
             }
             link.stateMachine.canMove = false;
-
-            link.sprite = SpriteFactory.getInstance().CreateLinkWoodStabDownSprite();
-            
-            if (link.HP == link.maxHP)
-            {
-                swordBeam = new SwordBeam(link.stateMachine.position, link.stateMachine.currentDirection);
-            }
-            else
-            {
-                sword = new Sword(link.stateMachine.currentDirection, link.stateMachine.position);
-            }
+            link.sprite = SpriteFactory.getInstance().CreateLinkGetItemSprite();
         }
+
         public void Execute()
         {
+            item.Use((link.stateMachine.position - new Vector2(-5, 60)));
+
             if (((AnimatedSprite)link.sprite).complete)
             {
                 link.stateMachine.ChangeState(new IdleLinkState());
@@ -53,10 +45,9 @@ namespace LegendOfZelda
         public void Exit()
         {
             link.stateMachine.canMove = true;
-
-            swordBeam?.Destroy();
-            sword?.Destroy();
+            ((AnimatedSprite)link.sprite).UnregisterSprite();
+            // this should be done in the Item class I think? link shouldn't be responsible for this
+            item.Remove();        
         }
-
     }
 }
