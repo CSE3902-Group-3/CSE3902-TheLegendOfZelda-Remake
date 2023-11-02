@@ -13,6 +13,7 @@ namespace LegendOfZelda
         public Lamda[] BlockFunctionArray { get; }
         private static SpriteFactory SpriteFactory;
         private static BlockLamda Instance;
+        private static int YMenuOffset = 320; // y offset for menu
         private static int XOffset = 128; // x position starts at the edge of the wall
         private static int YOffset = 448; // y position starts at top menu height + edge of the wall, i.e. 320 + 128
         private static int Scale = 64; // size of a block
@@ -123,7 +124,7 @@ namespace LegendOfZelda
         }
         static void Brick(Room room, MapElement mapElement)
         {
-            Vector2 pos = new Vector2(room.RoomXLocation + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Vector2 pos = new Vector2(room.RoomXLocation + Scale * mapElement.XLocation, room.RoomYLocation + YMenuOffset + Scale * mapElement.YLocation);
             Block block = new Block(SpriteFactory.CreateBrickSprite(), pos);
             block.enabled = true;
             new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, Scale, Scale), CollisionLayer.Wall, block);
@@ -231,7 +232,7 @@ namespace LegendOfZelda
         }
         static void Ladder(Room room, MapElement mapElement)
         {
-            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Vector2 pos = new Vector2(room.RoomXLocation + Scale * mapElement.XLocation, room.RoomYLocation + YMenuOffset + Scale * mapElement.YLocation);
             Block block = new Block(SpriteFactory.CreateLadderSprite(), pos);
             block.enabled = true;
         }
