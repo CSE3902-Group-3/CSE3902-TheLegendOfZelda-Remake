@@ -14,6 +14,8 @@ namespace LegendOfZelda
         private int curtainWidth;
         private int leftPos;
         private int rightPos;
+        private int cameraXPos;
+        private int cameraYPos;
 
         public BlackCurtain(int updateAmt)
 		{
@@ -24,14 +26,16 @@ namespace LegendOfZelda
             screenWidth = graphicsDevice.Viewport.Width;
             screenHeight = graphicsDevice.Viewport.Height;
             curtainWidth = screenWidth / 32; // The black curtain fully closes after 16 updates, so each piece should be 1/32 of screen width
-            leftPos = updateAmt * curtainWidth;
-            rightPos = screenWidth - leftPos - curtainWidth;
+            cameraXPos = (int)GameState.CameraController.mainCamera.worldPos.X;
+            cameraYPos = (int)GameState.CameraController.mainCamera.worldPos.Y;
+            leftPos = cameraXPos + updateAmt * curtainWidth;
+            rightPos = cameraXPos + screenWidth - (curtainWidth * (updateAmt + 1));
         }
 
         public void Draw()
         {
-            game._spriteBatch.Draw(overlay, new Rectangle(leftPos, 0, curtainWidth, screenHeight), overlayTexture, Color.Black);
-            game._spriteBatch.Draw(overlay, new Rectangle(rightPos, 0, curtainWidth,screenHeight), overlayTexture, Color.Black);
+            game._spriteBatch.Draw(overlay, new Rectangle(leftPos, cameraYPos, curtainWidth, screenHeight), overlayTexture, Color.Black);
+            game._spriteBatch.Draw(overlay, new Rectangle(rightPos, cameraYPos, curtainWidth,screenHeight), overlayTexture, Color.Black);
         }
 
 	}
