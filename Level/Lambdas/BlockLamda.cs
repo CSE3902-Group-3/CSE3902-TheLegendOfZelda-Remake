@@ -59,7 +59,8 @@ namespace LegendOfZelda
                 EastHoleDoor,
                 SouthHoleDoor,
                 WestHoleDoor,
-                WallExterior
+                WallExterior,
+                Ladder
             };
         }
         public static BlockLamda GetInstance()
@@ -227,6 +228,12 @@ namespace LegendOfZelda
             // East wall collisions
             new RectCollider(new Rectangle(room.RoomXLocation + 896, room.RoomYLocation + 448, 128, 160), CollisionLayer.OuterWall, block);
             new RectCollider(new Rectangle(room.RoomXLocation + 896, room.RoomYLocation + 736, 128, 160), CollisionLayer.OuterWall, block);
+        }
+        static void Ladder(Room room, MapElement mapElement)
+        {
+            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Block block = new Block(SpriteFactory.CreateLadderSprite(), pos);
+            block.enabled = true;
         }
     }
 }
