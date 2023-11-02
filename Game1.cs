@@ -1,11 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Threading;
-using LegendOfZelda;
-using LegendOfZelda.Graphics;
 
 namespace LegendOfZelda
 {
@@ -17,24 +11,16 @@ namespace LegendOfZelda
         public SpriteBatch _spriteBatch { get; private set; }
         public SpriteFactory spriteFactory { get; private set; }
 
-        /* Link */
-        public IPlayer link { get; private set; }
-
-        /* Controller */
-        private IController controller;
+        /* Game State */
+        private GameState GameState;
+        public Link link;
 
         /* Cylers */
         public RoomCycler roomCycler { get; private set; }
 
         /* Level */
         private LevelMaster LevelMaster;
-
-        /* Camera Controller */
-        private CameraController CameraController;
-
-        /* Collisions */
-        private CollisionManager collisionManager;
-
+        
         /* Sounds */
         public SoundFactory SoundFactory { get; private set; }
 
@@ -69,8 +55,6 @@ namespace LegendOfZelda
             _graphics.PreferredBackBufferHeight = 1024;
             _graphics.ApplyChanges();
 
-            collisionManager = new CollisionManager();
-
             base.Initialize();
         }
 
@@ -81,32 +65,20 @@ namespace LegendOfZelda
             spriteFactory.LoadTextures();
             SoundFactory.LoadTextures();
 
-            // Level 1
+            // Game state
+            GameState = GameState.GetInstance();
+
+            // Level
             LevelMaster = LevelMaster.GetInstance();
-
-            LevelMaster.StartLevel("level1.json");
-
-            link = Link.getInstance();
-
-
             roomCycler = new RoomCycler(LevelMaster);
 
-            controller = new PlayerController((Link)link);
-
-            CameraController = CameraController.GetInstance();
-            BackgroundGenerator.GenerateMenuBackgrounds();
-            new CameraControllerTest();
-
+            // Will have to change this later
+            link = GameState.Link;
         }
 
         protected override void Update(GameTime gameTime)
-        {          
-            LevelMaster.Update(gameTime);
-
-            controller.Update();
-            //CollisionManager always updates last
-            collisionManager.Update(gameTime);
-
+        {
+            GameState.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -114,10 +86,12 @@ namespace LegendOfZelda
         {
             GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
-
-            CameraController.Draw(_spriteBatch);
-
+            // this is scuffed I know, but its the only way I know how to get this to work
+            // problem is the pause manager drawing something separate from camera
+            Matrix transformMatrix = Matrix.CreateTranslation(-GameState.CameraController.mainCamera.worldPos.X, -GameState.CameraController.mainCamera.worldPos.Y, 0);
+            _spriteBatch.Begin(SpriteSortMode.Immediate, samplerState: SamplerState.PointClamp, transformMatrix: transformMatrix);
+            GameState.Draw(_spriteBatch);
+            _spriteBatch.End();
             base.Draw(gameTime);
         }
     }
