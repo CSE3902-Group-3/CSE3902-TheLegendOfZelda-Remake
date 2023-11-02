@@ -7,6 +7,7 @@ namespace LegendOfZelda
     public class SimpleEnemyStateMachine : IEnemy
     {
         public AnimatedSprite Sprite { get; set; }
+        public Type EnemyType { get; set; }
         public enum Speed { slow, medium, fast };
         public Speed EnemySpeed { get; set; }
         public int SpeedMultiplier;
@@ -116,7 +117,6 @@ namespace LegendOfZelda
                 Die();
             } else
             {
-                Sprite.blinking = true;
                 SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
             }
         }
@@ -134,22 +134,26 @@ namespace LegendOfZelda
                 {
                     if (currentCooldown <= 0)
                     {
-                        EnemyUtilities.HandleWeaponCollision(this, collision);
+                        EnemyUtilities.HandleWeaponCollision(this, EnemyType, collision);
                         currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        Sprite.flashing = true;
+                        new Timer(1.0f, StopFlashing);
                     }
                 }
             }
         }
         public void Stun() {
-            Sprite.blinking = true;
             allowedToMove = false;
             SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
-            new Timer(1.0f, CompleteStun);
+            new Timer(2.0f, CompleteStun);
         }
         public void CompleteStun()
         {
-            Sprite.blinking = false;
             allowedToMove = true;
+        }
+        public void StopFlashing()
+        {
+            Sprite.flashing = false;
         }
     }
 }

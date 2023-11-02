@@ -95,7 +95,7 @@ namespace LegendOfZelda
 
             CameraController = CameraController.GetInstance();
             BackgroundGenerator.GenerateMenuBackgrounds();
-            new CameraControllerTest();
+            // new CameraControllerTest();
 
         }
 
@@ -115,14 +115,6 @@ namespace LegendOfZelda
             GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
-
-            _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp);
-
-            LevelMaster.Draw();
-            link.sprite.Draw();
-            // letterTester.Show();
-
-            _spriteBatch.End();
             CameraController.Draw(_spriteBatch);
 
             base.Draw(gameTime);

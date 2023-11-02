@@ -48,7 +48,7 @@ namespace LegendOfZelda
 
                 if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
-                    EnemyUtilities.HandleWeaponCollision(this, collision);
+                    EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
                 }
             }
         }

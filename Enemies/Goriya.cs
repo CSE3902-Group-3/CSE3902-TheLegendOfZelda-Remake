@@ -6,7 +6,7 @@ namespace LegendOfZelda
 {
     public class Goriya : IEnemy
     {
-        private readonly List<AnimatedSprite> GoriyaSprites;
+        private readonly List<AnimatedSprite> Sprites;
         private int CurrentSprite;
         private float Health { get; set; } = 3.0f;
         public Vector2 Position;
@@ -14,11 +14,12 @@ namespace LegendOfZelda
         private double LastSwitch = 0;
         private int UpdateCount = 0;
         private float currentCooldown = 0.0f;
+        private bool allowedToMove = true;
         public RectCollider Collider { get; private set; }
         public Goriya(Vector2 pos)
         {
             Position = pos;
-            GoriyaSprites = new List<AnimatedSprite>
+            Sprites = new List<AnimatedSprite>
             {
                 SpriteFactory.getInstance().CreateGoriyaRightSprite(),
                 SpriteFactory.getInstance().CreateGoriyaLeftSprite(),
@@ -26,7 +27,7 @@ namespace LegendOfZelda
                 SpriteFactory.getInstance().CreateGoriyaUpSprite()
             };
 
-            foreach (AnimatedSprite goriya in GoriyaSprites)
+            foreach (AnimatedSprite goriya in Sprites)
             {
                 goriya.UnregisterSprite();
             }
@@ -43,19 +44,22 @@ namespace LegendOfZelda
         {
             new EnemySpawnEffect(Position);
             LevelMaster.RegisterUpdateable(this);           
-            GoriyaSprites[CurrentSprite].RegisterSprite();
-            GoriyaSprites[CurrentSprite].UpdatePos(Position);
+            Sprites[CurrentSprite].RegisterSprite();
+            Sprites[CurrentSprite].UpdatePos(Position);
         }
         public void ChangePosition()
         {
-            Position += Direction;
-            if (Position.X < 0 || Position.Y < 0)
+            if (allowedToMove)
             {
-                Position -= Direction;
-            }
+                Position += Direction;
+                if (Position.X < 0 || Position.Y < 0)
+                {
+                    Position -= Direction;
+                }
 
-            GoriyaSprites[CurrentSprite].UpdatePos(Position);
-            Collider.Pos = Position;
+                Sprites[CurrentSprite].UpdatePos(Position);
+                Collider.Pos = Position;
+            }
         }
         public void Attack()
         {
@@ -72,7 +76,7 @@ namespace LegendOfZelda
             }
             else
             {
-                GoriyaSprites[CurrentSprite].blinking = true;
+                SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
             }
         }
 
@@ -80,7 +84,7 @@ namespace LegendOfZelda
         {
             Random rand = new();
             int random = rand.Next(0, 4);
-            GoriyaSprites[CurrentSprite].UnregisterSprite();
+            Sprites[CurrentSprite].UnregisterSprite();
             CurrentSprite = random;
 
             if (random == 0)
@@ -99,12 +103,12 @@ namespace LegendOfZelda
             {
                 Direction = new Vector2(0, -1);
             }
-            GoriyaSprites[CurrentSprite].RegisterSprite();
+            Sprites[CurrentSprite].RegisterSprite();
             Collider.Pos = Position;
         }
         public void Die()
         {
-            GoriyaSprites[CurrentSprite].UnregisterSprite();
+            Sprites[CurrentSprite].UnregisterSprite();
             Collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
@@ -141,12 +145,27 @@ namespace LegendOfZelda
                 {
                     if (currentCooldown <= 0)
                     {
-                        EnemyUtilities.HandleWeaponCollision(this, collision);
+                        EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
                         currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        Sprites[CurrentSprite].flashing = true;
+                        new Timer(1.0f, StopFlashing);
                     }
                 }
             }
         }
-        public void Stun() { }
+        public void Stun()
+        {
+            allowedToMove = false;
+            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+            new Timer(2.0f, CompleteStun);
+        }
+        public void CompleteStun()
+        {
+            allowedToMove = true;
+        }
+        public void StopFlashing()
+        {
+            Sprites[CurrentSprite].flashing = false;
+        }
     }
 }

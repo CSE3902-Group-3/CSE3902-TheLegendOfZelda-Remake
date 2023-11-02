@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System;
-using LegendOfZelda.Projectiles;
 
 namespace LegendOfZelda
 {
     public class EnemyUtilities
     {
         public static readonly float DAMAGE_COOLDOWN = 1.0f; // Adjust the delay duration as needed
-        public static void HandleWeaponCollision(IEnemy enemy, CollisionInfo collision)
+        public static void HandleWeaponCollision(IEnemy enemy, Type enemyType, CollisionInfo collision)
         {
             ICollidable projectileCollidedWith = collision.CollidedWith.Collidable;
 
@@ -19,6 +18,7 @@ namespace LegendOfZelda
                 { typeof(BlueArrowProjectile), 1.0f },
                 { typeof(Explosion), 4.0f },
                 { typeof(SwordBeam), 1.0f },
+                { typeof(SwordBeamBurstProjectile), 1.0f },
                 { typeof(FireProjectile), 1.0f },
             };
 
@@ -29,14 +29,15 @@ namespace LegendOfZelda
                 { typeof(Skeleton) },
             };
 
-            List<Type> minorEnemies = new()
+            List<Type> noBoomerangEffect = new()
             {
-                { typeof(Bat) },
-                { typeof(GelSmall) },
+                { typeof(Aquamentus) },
+                { typeof(Dodongo) },
+                { typeof(WallMaster) },
+                { typeof(ZolBig) },
             };
 
             Type weaponType = projectileCollidedWith.GetType();
-            Type enemyType = enemy.GetType();
             float damage = damageMap[weaponType];
 
             if (damageMap.ContainsKey(weaponType))
@@ -47,19 +48,11 @@ namespace LegendOfZelda
                 * Damage: Bat, Gel Small
                 * No Effect: Aquamentus, Dodongo, Wallmaster, Zol Big
                 */
-                if (weaponType == typeof(Sword))
+                if (weaponType == typeof(BoomerangProjectile) && stunnableEnemies.Contains(enemyType))
                 {
-                    if (stunnableEnemies.Contains(enemyType))
-                    {
-
-                        enemy.Stun();
-                    }
-                    else if (minorEnemies.Contains(enemyType))
-                    {
-                        enemy.UpdateHealth(damage);
-                    }
+                    enemy.Stun();
                 }
-                else
+                else if (!(weaponType == typeof(BoomerangProjectile)) && !noBoomerangEffect.Contains(enemyType))
                 {
                     enemy.UpdateHealth(damage);
                 }

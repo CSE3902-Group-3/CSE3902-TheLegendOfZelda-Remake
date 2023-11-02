@@ -24,6 +24,7 @@ namespace LegendOfZelda
             {
                 Sprite = SpriteFactory.getInstance().CreateWallmasterSprite(),
                 Health = Health,
+                EnemyType = GetType(),
             };
         }
         public void Spawn()

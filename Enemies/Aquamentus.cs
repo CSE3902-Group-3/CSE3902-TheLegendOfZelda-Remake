@@ -56,7 +56,6 @@ namespace LegendOfZelda
         }
         public void UpdateHealth(float damagePoints)
         {
-            SoundFactory.PlaySound(SoundFactory.getInstance().BossHit, 1.0f, 0.0f, 0.0f);
             Health -= damagePoints;
 
             // Indicate damage, or if health has reached 0, die
@@ -66,7 +65,7 @@ namespace LegendOfZelda
             }
             else
             {
-                Sprite.blinking = true;
+                SoundFactory.PlaySound(SoundFactory.getInstance().BossHit, 1.0f, 0.0f, 0.0f);
             }
         }
 
@@ -108,12 +107,18 @@ namespace LegendOfZelda
                 {
                     if (currentCooldown <= 0)
                     {
-                        EnemyUtilities.HandleWeaponCollision(this, collision);
+                        EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
                         currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        Sprite.flashing = true;
+                        new Timer(1.0f, StopFlashing);
                     }
                 }
             }
         }
         public void Stun() { }
+        public void StopFlashing()
+        {
+            Sprite.flashing = false;
+        }
     }
 }

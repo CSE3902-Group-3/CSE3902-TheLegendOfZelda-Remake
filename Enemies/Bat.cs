@@ -23,6 +23,7 @@ namespace LegendOfZelda
             {
                 Sprite = SpriteFactory.getInstance().CreateKeeseSprite(),
                 Health = Health,
+                EnemyType = GetType(),
             };
         }
         public void Spawn()

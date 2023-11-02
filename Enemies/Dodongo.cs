@@ -77,7 +77,7 @@ namespace LegendOfZelda
         public void Attack() { }
         public void UpdateHealth(float damagePoints)
         {
-            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+            SoundFactory.PlaySound(SoundFactory.getInstance().BossHit, 1.0f, 0.0f, 0.0f);
             Health -= damagePoints;
 
             // Indicate damage, or if health has reached 0, die
@@ -91,7 +91,6 @@ namespace LegendOfZelda
                 if (!Injured)
                 {
                     Sprites[CurrentSprite] = HurtSprites[CurrentSprite];
-                    Sprites[CurrentSprite].blinking = true;
                 }
                 else
                 {
@@ -161,13 +160,19 @@ namespace LegendOfZelda
                 {
                     if (currentCooldown <= 0)
                     {
-                        EnemyUtilities.HandleWeaponCollision(this, collision);
+                        EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
                         currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        Sprites[CurrentSprite].flashing = true;
+                        new Timer(1.0f, StopFlashing);
                     }
                 }
             }
         }
 
         public void Stun() { }
+        public void StopFlashing()
+        {
+            Sprites[CurrentSprite].flashing = false;
+        }
     }
 }

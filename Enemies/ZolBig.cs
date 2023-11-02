@@ -20,10 +20,12 @@ namespace LegendOfZelda
                CollisionLayer.Enemy,
                this
            );
+
             StateMachine = new SimpleEnemyStateMachine(Position, Offset, Collider)
             {
                 Sprite = SpriteFactory.getInstance().CreateZolSprite(),
                 Health = Health,
+                EnemyType = GetType(),
             };
         }
         public void Spawn()
