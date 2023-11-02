@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
@@ -12,6 +13,7 @@ namespace LegendOfZelda
         private static GameState Instance;
         private static IGameState State;
         private static LevelMaster LevelMaster;
+        public static CameraController CameraController;
         public static PauseManager PauseManager;
         public static CollisionManager CollisionManager;
         public static Link Link;
@@ -29,10 +31,11 @@ namespace LegendOfZelda
         private GameState()
         {
             CollisionManager = new CollisionManager();
-            Link = Link.getInstance();
             LevelMaster = LevelMaster.GetInstance();
             LevelMaster.StartLevel("level1.json");
+            Link = Link.getInstance();
             PauseManager = new PauseManager();
+            CameraController = CameraController.GetInstance();
             State = new NormalState();
         }
         public void SwitchState(IGameState state)
@@ -49,15 +52,15 @@ namespace LegendOfZelda
             State.Update(gameTime);
 
             // this portion solely for testing with winning state
-            if (gameTime.TotalGameTime.TotalMilliseconds > 3000 && !AlreadySwitched)
-            {
-                SwitchState(new WinningState());
-                AlreadySwitched = true;
-            }
+            //if (gameTime.TotalGameTime.TotalMilliseconds > 3000 && !AlreadySwitched)
+            //{
+            //    SwitchState(new WinningState());
+            //    AlreadySwitched = true;
+            //}
         }
-        public void Draw()
+        public void Draw(SpriteBatch _spriteBatch)
         {
-            State.Draw();
+            State.Draw(_spriteBatch);
         }
     }
 }

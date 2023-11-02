@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
@@ -12,14 +13,12 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             LevelMaster.Update(gameTime);
-            GameState.Link.Update(gameTime);
             Controller.Update();
             GameState.CollisionManager.Update(gameTime);
         }
-        public void Draw()
+        public void Draw(SpriteBatch _spriteBatch)
         {
-            LevelMaster.Draw();
-            GameState.Link.sprite.Draw();
+            GameState.CameraController.Draw(_spriteBatch);
         }
     }
 }

@@ -62,7 +62,6 @@ namespace LegendOfZelda
             overlay = SpriteFactory.getInstance().linkTexture;
             game._spriteBatch.Draw(overlay, new Rectangle(0,0,graphicsDevice.Viewport.Height, graphicsDevice.Viewport.Width), overlayTexture, color);
             game._spriteBatch.DrawString(SpriteFactory.getInstance().pauseWord, "PAUSED", new Vector2((graphicsDevice.Viewport.Height / 2) - 70, (graphicsDevice.Viewport.Width / 2) - 20), Color.Red);
-            
         }
 
     }

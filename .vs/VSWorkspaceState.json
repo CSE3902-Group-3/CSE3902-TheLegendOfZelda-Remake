@@ -2,17 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\Enemies",
-<<<<<<< HEAD
     "\\GameState",
     "\\Level",
     "\\Player"
   ],
   "SelectedNode": "\\GameState\\GameState.cs",
-=======
-    "\\Level",
-    "\\Player"
-  ],
-  "SelectedNode": "\\Level\\LevelParser.cs",
->>>>>>> main
   "PreviewInSolutionExplorer": false
 }

@@ -1,11 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Threading;
-using LegendOfZelda;
-using LegendOfZelda.Graphics;
 
 namespace LegendOfZelda
 {
@@ -26,9 +20,6 @@ namespace LegendOfZelda
 
         /* Level */
         private LevelMaster LevelMaster;
-
-        /* Camera Controller */
-        private CameraController CameraController;
         
         /* Sounds */
         public SoundFactory SoundFactory { get; private set; }
@@ -95,15 +86,12 @@ namespace LegendOfZelda
         {
             GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
-
-            _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp);
-
-            GameState.Draw();
-
+            // this is scuffed I know, but its the only way I know how to get this to work
+            // problem is the pause manager drawing something separate from camera
+            Matrix transformMatrix = Matrix.CreateTranslation(-GameState.CameraController.mainCamera.worldPos.X, -GameState.CameraController.mainCamera.worldPos.Y, 0);
+            _spriteBatch.Begin(SpriteSortMode.Immediate, samplerState: SamplerState.PointClamp, transformMatrix: transformMatrix);
+            GameState.Draw(_spriteBatch);
             _spriteBatch.End();
-            CameraController.Draw(_spriteBatch);
-
             base.Draw(gameTime);
         }
     }

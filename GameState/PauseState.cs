@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
@@ -18,10 +14,9 @@ namespace LegendOfZelda
         {
             Controller.Update();
         }
-        public void Draw()
+        public void Draw(SpriteBatch _spriteBatch)
         {
-            LevelMaster.Draw();
-            GameState.Link.sprite.Draw();
+            GameState.CameraController.Draw(_spriteBatch);
             GameState.PauseManager.Draw();
         }
     }
