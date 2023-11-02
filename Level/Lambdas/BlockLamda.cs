@@ -111,7 +111,7 @@ namespace LegendOfZelda
         }
         static void BlueTile(Room room, MapElement mapElement)
         {
-            Vector2 pos = new Vector2(XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
             Block block = new Block(SpriteFactory.CreateBlueTileSprite(), pos);
             block.enabled = true;
             new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, Scale, Scale), CollisionLayer.Wall, block);
