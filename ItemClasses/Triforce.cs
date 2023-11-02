@@ -36,6 +36,7 @@ namespace LegendOfZelda
         {
             triforce.UnregisterSprite();
             collider.Active = false;
+            GameState.GetInstance().SwitchState(new WinningState());
             return this;
         }
 
