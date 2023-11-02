@@ -16,6 +16,7 @@ namespace LegendOfZelda
         private Vector2 Direction;
         private double LastSwitch = 0;
         private float currentCooldown = 0.0f;
+        private bool allowedToMove = true;
         public RectCollider Collider { get; set; }
 
         public SimpleEnemyStateMachine(Vector2 pos, Vector2 offset, RectCollider collider)
@@ -64,12 +65,15 @@ namespace LegendOfZelda
 
         public void ChangePosition()
         {
-            Position += Direction * SpeedMultiplier;
-            if (Position.X < 0 || Position.Y < 0)
+            if (allowedToMove)
             {
-                Position -= Direction;
+                Position += Direction * SpeedMultiplier;
+                if (Position.X < 0 || Position.Y < 0)
+                {
+                    Position -= Direction;
+                }
+                Sprite.UpdatePos(Position);
             }
-            Sprite.UpdatePos(Position);
         }
 
         public void Die()
@@ -130,11 +134,22 @@ namespace LegendOfZelda
                 {
                     if (currentCooldown <= 0)
                     {
-                        UpdateHealth(1.0f); // Choose different values for each type of player weapon
+                        EnemyUtilities.HandleWeaponCollision(this, collision);
                         currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
                     }
                 }
             }
+        }
+        public void Stun() {
+            Sprite.blinking = true;
+            allowedToMove = false;
+            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+            new Timer(1.0f, CompleteStun);
+        }
+        public void CompleteStun()
+        {
+            Sprite.blinking = false;
+            allowedToMove = true;
         }
     }
 }

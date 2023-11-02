@@ -61,5 +61,6 @@ namespace LegendOfZelda
         {
             StateMachine.OnCollision(collisions);
         }
+        public void Stun() { }
     }
 }

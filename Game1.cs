@@ -122,7 +122,7 @@ namespace LegendOfZelda
 
             LevelMaster.Draw();
             link.sprite.Draw();
-            letterTester.Show();
+            // letterTester.Show();
 
             _spriteBatch.End();
 

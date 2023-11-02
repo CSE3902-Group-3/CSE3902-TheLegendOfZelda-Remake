@@ -48,9 +48,10 @@ namespace LegendOfZelda
 
                 if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
-                    UpdateHealth(1); // Choose different values for each type of player weapon
+                    EnemyUtilities.HandleWeaponCollision(this, collision);
                 }
             }
         }
+        public void Stun() { }
     }
 }
