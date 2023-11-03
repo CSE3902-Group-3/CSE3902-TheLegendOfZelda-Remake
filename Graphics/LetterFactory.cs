@@ -26,7 +26,7 @@ namespace LegendOfZelda
         private int XPos;
         private int YPos;
 
-        private LetterFactory(int scale )
+        private LetterFactory(int scale)
         {
             game1 = Game1.getInstance();
             letterTexture = game1.Content.Load<Texture2D>("Dungeon");
@@ -66,35 +66,53 @@ namespace LegendOfZelda
             return letterSprite;
         }
 
-        public AnimatedSprite GetLetterSprite(char character)
+        public AnimatedSprite GetLetterSprite(char character, int color)
         {
             int number = character - 'A';
+            int colorOffset;
+
+            if (color == 0)
+            {
+                colorOffset = 0;
+            }
+            else if (color == 1)
+            {
+                colorOffset = 129;
+            }
+            else if (color == 2)
+            {
+                colorOffset = 258;
+            }
+            else
+            {
+                colorOffset = 387;
+            }
 
             if (number % 2 != 0 && number < 22)
             {
                 number = number / 2;
-                XPos = 41 + number * letterWidth + number;
+                XPos = 41 + colorOffset + number * letterWidth + number;
                 YPos = 19;
             }
             else if (number % 2 == 0 && number < 22)
             {
                 number = number / 2;
-                XPos = 41 + number * letterWidth + number;
+                XPos = 41 + colorOffset + number * letterWidth + number;
                 YPos = 11;
             }
             else if ((number - 22) % 2 == 0)
             {
                 number = (number - 22) / 2;
-                XPos = 1 + number * letterWidth + number;
+                XPos = 1 + colorOffset + number * letterWidth + number;
                 YPos = 27;
             }
             else if ((number - 22) % 2 != 0)
             {
                 number = (number - 22) / 2;
-                XPos = 1 + number * letterWidth + number;
+                XPos = 1 + colorOffset + number * letterWidth + number;
                 YPos = 35;
             }
-            
+
 
             Rectangle[] frames = new Rectangle[1]
             {
@@ -104,5 +122,6 @@ namespace LegendOfZelda
 
             return letterSprite;
         }
+
     }
 }

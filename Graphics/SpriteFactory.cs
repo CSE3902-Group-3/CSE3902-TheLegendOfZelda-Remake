@@ -28,6 +28,7 @@ namespace LegendOfZelda
         private Texture2D bossesTexture;
         private Texture2D itemsTexture;
         private Texture2D npcTexture;
+        private Texture2D HUDTexture;
         public SpriteFont pauseWord;
 
         private Game1 game1;
@@ -60,6 +61,7 @@ namespace LegendOfZelda
             bossesTexture = content.Load<Texture2D>("Bosses");
             itemsTexture = content.Load<Texture2D>("Items");
             npcTexture = content.Load<Texture2D>("NPC");
+            HUDTexture = content.Load<Texture2D>("HUD");
             pauseWord = content.Load<SpriteFont>("Pause");
         }
     
@@ -1406,6 +1408,36 @@ namespace LegendOfZelda
                 new Rectangle(782, 11, 1, 1)
             };
             AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateLowerHUDSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(258, 11, 255, 55)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateMapHUDSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(258, 112, 255, 87)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateInventoryHUDSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(1, 11, 255, 87)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
             return newSprite;
         }
     }

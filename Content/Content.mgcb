@@ -73,6 +73,18 @@
 /processorParam:TextureFormat=Color
 /build:EnemyDeath.png
 
+#begin HUD.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:HUD.png
+
 #begin Items.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -313,5 +325,4 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:SoundEffects/vine-boom-sound-effect.wav
-
 
