@@ -2,10 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Enemies",
-    "\\GameState",
     "\\Level",
     "\\Player"
   ],
-  "SelectedNode": "\\GameState\\GameState.cs",
+  "SelectedNode": "\\Game1.cs",
   "PreviewInSolutionExplorer": false
 }
