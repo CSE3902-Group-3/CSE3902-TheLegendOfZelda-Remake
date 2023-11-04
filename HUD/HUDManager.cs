@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZeld
+namespace LegendOfZelda
 {
     public class HUDManager
     {
@@ -14,6 +14,7 @@ namespace LegendOfZeld
         private LowerHUD lowerHUD;
         private InventoryHUD inventoryHUD;
         private MapHUD mapHUD;
+        private HUDManager instance;
 
         public HUDManager(Game1 game)
         {
@@ -33,7 +34,7 @@ namespace LegendOfZeld
 
         public void Show()
         {
-
+            lowerHUD.Show();
         }  
     }
 }

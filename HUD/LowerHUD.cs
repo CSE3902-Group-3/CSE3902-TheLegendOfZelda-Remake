@@ -25,7 +25,7 @@ namespace LegendOfZelda
 
         public void LoadContent()
         {
-            LowerHUDBase = spriteFactory.CreateLowerHUDSprite();
+            spriteFactory.LoadTextures();
         }
 
         public void Update()
@@ -35,7 +35,10 @@ namespace LegendOfZelda
 
         public void Show()
         {
-            LowerHUDBase.Draw();
+            LowerHUDBase = spriteFactory.CreateLowerHUDSprite();
+            LowerHUDBase.RegisterSprite();
+            // The below position is for test now, should be changed to GameState.CameraController.HUDLocation later
+            LowerHUDBase.UpdatePos(GameState.CameraController.mainCamera.worldPos);
         }
     }
 }

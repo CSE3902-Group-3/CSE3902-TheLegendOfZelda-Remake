@@ -24,6 +24,9 @@ namespace LegendOfZelda
         /* Sounds */
         public SoundFactory SoundFactory { get; private set; }
 
+        /* HUD */
+        public HUDManager HUD;
+
         /* Singleton */
         private static Game1 instance;
 
@@ -48,6 +51,7 @@ namespace LegendOfZelda
 
             spriteFactory = SpriteFactory.getInstance();
             SoundFactory = SoundFactory.getInstance();
+            HUD = new HUDManager(this); // Should be changed when getInstance is implemented
 
             // Change size of viewport
             _graphics.IsFullScreen = false;
@@ -91,6 +95,7 @@ namespace LegendOfZelda
             Matrix transformMatrix = Matrix.CreateTranslation(-GameState.CameraController.mainCamera.worldPos.X, -GameState.CameraController.mainCamera.worldPos.Y, 0);
             _spriteBatch.Begin(SpriteSortMode.Immediate, samplerState: SamplerState.PointClamp, transformMatrix: transformMatrix);
             GameState.Draw(_spriteBatch);
+            HUD.Show();
             _spriteBatch.End();
             base.Draw(gameTime);
         }
