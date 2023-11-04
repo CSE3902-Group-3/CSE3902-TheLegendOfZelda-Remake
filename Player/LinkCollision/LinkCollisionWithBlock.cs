@@ -38,7 +38,7 @@ namespace LegendOfZelda
             }
 
             LinkUtilities.UpdatePositions((Link)Game1.getInstance().link, newPosition);
-            ((Link)Game1.getInstance().link).velocity = 0;
+            Link.getInstance().velocity = 0;
         }
     }
 }
