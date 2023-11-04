@@ -22,7 +22,7 @@ namespace LegendOfZelda
         private const int fastDrawFramesPerAnimFrame = 2;
         public int scale { get; private set; }
 
-        private const int letterWidth = 7;
+        private const int letterWidth = 8;
         private int XPos;
         private int YPos;
 
@@ -34,7 +34,7 @@ namespace LegendOfZelda
             this.scale = scale;
         }
 
-        public static LetterFactory getInstance()
+        public static LetterFactory GetInstance()
         {
             if (instance == null)
                 instance = new LetterFactory(4);
@@ -47,13 +47,13 @@ namespace LegendOfZelda
             if (number % 2 != 0)
             {
                 number = number / 2;
-                XPos = 1 + number * letterWidth + number;
+                XPos = 1 + number * letterWidth;
                 YPos = 19;
             }
             else
             {
                 number = number / 2;
-                XPos = 1 + number * letterWidth + number;
+                XPos = 1 + number * letterWidth;
                 YPos = 11;
             }
 
@@ -91,25 +91,25 @@ namespace LegendOfZelda
             if (number % 2 != 0 && number < 22)
             {
                 number = number / 2;
-                XPos = 41 + colorOffset + number * letterWidth + number;
+                XPos = 41 + colorOffset + number * letterWidth;
                 YPos = 19;
             }
             else if (number % 2 == 0 && number < 22)
             {
                 number = number / 2;
-                XPos = 41 + colorOffset + number * letterWidth + number;
+                XPos = 41 + colorOffset + number * letterWidth;
                 YPos = 11;
             }
             else if ((number - 22) % 2 == 0)
             {
                 number = (number - 22) / 2;
-                XPos = 1 + colorOffset + number * letterWidth + number;
+                XPos = 1 + colorOffset + number * letterWidth;
                 YPos = 27;
             }
             else if ((number - 22) % 2 != 0)
             {
                 number = (number - 22) / 2;
-                XPos = 1 + colorOffset + number * letterWidth + number;
+                XPos = 1 + colorOffset + number * letterWidth;
                 YPos = 35;
             }
 
@@ -117,6 +117,17 @@ namespace LegendOfZelda
             Rectangle[] frames = new Rectangle[1]
             {
                 new Rectangle(XPos, YPos, letterWidth, letterWidth)
+            };
+            letterSprite = new AnimatedSprite(letterTexture, frames, SpriteEffects.None, 1, scale);
+
+            return letterSprite;
+        }
+
+        public AnimatedSprite GetBlankSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(17, 27, letterWidth, letterWidth)
             };
             letterSprite = new AnimatedSprite(letterTexture, frames, SpriteEffects.None, 1, scale);
 

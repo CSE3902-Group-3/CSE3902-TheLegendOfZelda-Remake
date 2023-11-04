@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace LegendOfZelda
             this.game = game;
 
             spriteFactory = SpriteFactory.getInstance();
-            letterFactory = LetterFactory.getInstance();
+            letterFactory = LetterFactory.GetInstance();
         }
 
         public void LoadContent()
@@ -27,7 +28,7 @@ namespace LegendOfZelda
             InventoryHUDBase = spriteFactory.CreateInventoryHUDSprite();
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
 
         }

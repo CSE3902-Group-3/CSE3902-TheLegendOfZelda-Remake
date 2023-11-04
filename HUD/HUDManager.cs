@@ -9,13 +9,14 @@ namespace LegendOfZelda
 {
     public class HUDManager
     {
+        private static HUDManager instance;
+
         Game1 game;
 
         private LowerHUD lowerHUD;
         private InventoryHUD inventoryHUD;
         private MapHUD mapHUD;
-        private HUDManager instance;
-
+        
         public HUDManager(Game1 game)
         {
             this.game = game;
@@ -23,7 +24,16 @@ namespace LegendOfZelda
             lowerHUD = new LowerHUD(game);
             inventoryHUD = new InventoryHUD(game);
             mapHUD = new MapHUD(game);
+
         }
+
+        public static HUDManager GetInstance(Game1 game)
+        {
+            if (instance == null)
+                instance = new HUDManager(game);
+
+            return instance;
+        }   
 
         public void LoadContent()
         {

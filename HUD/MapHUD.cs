@@ -1,4 +1,5 @@
 ﻿using LegendOfZelda.Graphics;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace LegendOfZelda
             this.game = game;
 
             spriteFactory = SpriteFactory.getInstance();
-            letterFactory = LetterFactory.getInstance();
+            letterFactory = LetterFactory.GetInstance();
         }
 
         public void LoadContent()
@@ -28,7 +29,7 @@ namespace LegendOfZelda
             MapHUDBase = spriteFactory.CreateMapHUDSprite();
         }
 
-        public void Update()
+        public void Update(GameTime gametime)
         {
 
         }

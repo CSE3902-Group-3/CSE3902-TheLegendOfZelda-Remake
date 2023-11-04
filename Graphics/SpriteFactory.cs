@@ -1411,11 +1411,13 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        //HUD Sprites
+
         public AnimatedSprite CreateLowerHUDSprite()
         {
             Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(258, 11, 255, 55)
+                new Rectangle(258, 11, 256, 56)
             };
             AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
             return newSprite;
@@ -1425,7 +1427,7 @@ namespace LegendOfZelda
         {
             Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(258, 112, 255, 87)
+                new Rectangle(258, 112, 256, 88)
             };
             AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
             return newSprite;
@@ -1435,7 +1437,27 @@ namespace LegendOfZelda
         {
             Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(1, 11, 255, 87)
+                new Rectangle(1, 11, 256, 88)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateLevelHUDSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(584, 1, 64, 40)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateWoodenSwoardSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(555, 137, 8, 16)
             };
             AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
             return newSprite;

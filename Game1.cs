@@ -51,7 +51,7 @@ namespace LegendOfZelda
 
             spriteFactory = SpriteFactory.getInstance();
             SoundFactory = SoundFactory.getInstance();
-            HUD = new HUDManager(this); // Should be changed when getInstance is implemented
+            HUD = HUDManager.GetInstance(this);
 
             // Change size of viewport
             _graphics.IsFullScreen = false;
