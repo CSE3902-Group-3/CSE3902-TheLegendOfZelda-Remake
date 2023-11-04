@@ -71,21 +71,23 @@ namespace LegendOfZelda
             int number = character - 'A';
             int colorOffset;
 
-            if (color == 0)
+            switch(color)
             {
-                colorOffset = 0;
-            }
-            else if (color == 1)
-            {
-                colorOffset = 129;
-            }
-            else if (color == 2)
-            {
-                colorOffset = 258;
-            }
-            else
-            {
-                colorOffset = 387;
+                case 0:
+                    colorOffset = 0;
+                    break;
+                case 1:
+                    colorOffset = 129;
+                    break;
+                case 2:
+                    colorOffset = 258;
+                    break;
+                case 3:
+                    colorOffset = 387;
+                    break;
+                default:
+                    colorOffset = 0;
+                    break;
             }
 
             if (number % 2 != 0 && number < 22)

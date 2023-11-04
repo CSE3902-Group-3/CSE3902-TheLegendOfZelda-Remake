@@ -23,15 +23,27 @@ namespace LegendOfZelda
         private AnimatedSprite WeponA;
         private AnimatedSprite WeponB;
         private List<AnimatedSprite> Rubies;
+        private List<AnimatedSprite> Keys;
+        private List<AnimatedSprite> Boombs;
+        private List<AnimatedSprite> Life;
 
+        private Vector2 TempPos;
         private Vector2 LowerHUDBasePos;
         private Vector2 LevelIndicatorPos;
         private Vector2 LevelNumberPos;
         private Vector2 WeponAPos;
+        private Vector2 WeponBPos;
         private Vector2 RubiesPos;
+        private Vector2 KeysPos;
+        private Vector2 BoombsPos;
+        private Vector2 LifePos;
 
         private int Level;
         private int RubiesCount;
+        private int KeysCount;
+        private int BoombsCount;
+        private int CurrentHealth;
+        private int MaxHealth;
 
         public LowerHUD(Game1 game)
         {
@@ -43,21 +55,35 @@ namespace LegendOfZelda
 
         public void LoadContent()
         {
+            // The below values are for test now, should be changed later
             Level = 2;
             RubiesCount = 24;
+            KeysCount = 8;
+            BoombsCount = 24;
+            CurrentHealth = 17;
+            MaxHealth = 32;
 
             LowerHUDBase = spriteFactory.CreateLowerHUDSprite();
             LevelIndicator = spriteFactory.CreateLevelHUDSprite();
             LevelNumber = letterFactory.GetLetterSprite(Level);
+            // The wepons below should be able to change later. These are test only.
             WeponA = spriteFactory.CreateWoodenSwoardSprite();
+            WeponB = spriteFactory.CreateWoodenBoomerangSprite();
             Rubies = QuantityToSprite(RubiesCount);
+            Keys = QuantityToSprite(KeysCount);
+            Boombs = QuantityToSprite(BoombsCount);
+            GetHealthSprite(CurrentHealth, MaxHealth);
 
             // The below position is for test now, should be changed to GameState.CameraController.HUDLocation later
             LowerHUDBasePos = GameState.CameraController.mainCamera.worldPos;
             LevelIndicatorPos = new Vector2(LowerHUDBasePos.X + 16 * scale, LowerHUDBasePos.Y + 8 * scale);
             LevelNumberPos = new Vector2(LevelIndicatorPos.X + 48 * scale, LevelIndicatorPos.Y);
             WeponAPos = new Vector2(LowerHUDBasePos.X + 152 * scale, LowerHUDBasePos.Y + 24 * scale);
+            WeponBPos = new Vector2(LowerHUDBasePos.X + 128 * scale, LowerHUDBasePos.Y + 24 * scale);
             RubiesPos = new Vector2(LowerHUDBasePos.X + 96 * scale, LowerHUDBasePos.Y + 16 * scale);
+            KeysPos = new Vector2(LowerHUDBasePos.X + 96 * scale, LowerHUDBasePos.Y + 32 * scale);
+            BoombsPos = new Vector2(LowerHUDBasePos.X + 96 * scale, LowerHUDBasePos.Y + 40 * scale);
+            LifePos = new Vector2(LowerHUDBasePos.X + 176 * scale, LowerHUDBasePos.Y + 32 * scale);
 
         }
 
@@ -80,12 +106,45 @@ namespace LegendOfZelda
             
             WeponA.RegisterSprite();
             WeponA.UpdatePos(WeponAPos);
+            WeponB.RegisterSprite();
+            WeponB.UpdatePos(WeponBPos);
 
+            TempPos = RubiesPos;
             foreach (AnimatedSprite sprite in Rubies)
             {
                 sprite.RegisterSprite();
-                sprite.UpdatePos(RubiesPos);
-                RubiesPos.X += 8 * scale;
+                sprite.UpdatePos(TempPos);
+                TempPos.X += 8 * scale;
+            }
+
+            TempPos = KeysPos;
+            foreach (AnimatedSprite sprite in Keys)
+            {
+                sprite.RegisterSprite();
+                sprite.UpdatePos(TempPos);
+                TempPos.X += 8 * scale;
+            }
+
+            TempPos = BoombsPos;
+            foreach (AnimatedSprite sprite in Boombs)
+            {
+                sprite.RegisterSprite();
+                sprite.UpdatePos(TempPos);
+                TempPos.X += 8 * scale;
+            }
+
+            TempPos = LifePos;
+            int index = 0;
+            foreach (AnimatedSprite sprite in Life)
+            {
+                sprite.RegisterSprite();
+                if (index == 8)
+                {
+                   TempPos = new Vector2(LifePos.X, LifePos.Y + 8 * scale);
+                }
+                sprite.UpdatePos(TempPos);
+                TempPos.X += 8 * scale;
+                index++;
             }
         }
 
@@ -106,6 +165,39 @@ namespace LegendOfZelda
             }
 
             return spriteList;
+        }
+
+        // My current thought on the health is the health of link will be an integer. Since the max health is 16 hearts, the MaxHealth will be 32 and must be divisible by 2.
+        // The CurrentHealth will be range in 0 to MaxHealth. If the CurrentHealth cannot be divisible by 2. That's mean there is a half heart. 
+
+        public void GetHealthSprite(int currentHealth, int maxHealth)
+        {
+            Life = new List<AnimatedSprite>();
+            for (int i = 0; i < 16; i++)
+            {
+                Life.Add(letterFactory.GetBlankSprite());
+            }
+
+            for (int i = 0; i < maxHealth / 2; i++)
+            {
+                Life[i] = spriteFactory.CreateHeartSprite(0);
+            }
+
+            if (currentHealth % 2 != 0)
+            {
+                for (int i = 0; i < currentHealth / 2; i++)
+                {
+                    Life[i] = spriteFactory.CreateHeartSprite(2);
+                }
+                Life[currentHealth / 2] = spriteFactory.CreateHeartSprite(1);
+            }
+            else
+            {
+                for (int i = 0; i < currentHealth / 2; i++)
+                {
+                    Life[i] = spriteFactory.CreateHeartSprite(2);
+                }
+            }
         }
     }
 }

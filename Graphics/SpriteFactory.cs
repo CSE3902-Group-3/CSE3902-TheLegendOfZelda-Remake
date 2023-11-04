@@ -1462,5 +1462,47 @@ namespace LegendOfZelda
             AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
             return newSprite;
         }
+
+        public AnimatedSprite CreateWoodenBoomerangSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(584, 137, 8, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateHeartSprite(int slector)
+        {
+            Rectangle[] frames;
+            AnimatedSprite newSprite;
+            switch (slector)
+            {
+                case 0:
+                    frames = new Rectangle[1]
+                    {
+                        new Rectangle(627, 117, 8, 8)
+                    };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+                    return newSprite;
+                case 1:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(636, 117, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+                    return newSprite;
+                case 2:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(645, 117, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+                    return newSprite;
+                
+            }
+            return null;
+        }
     }
 }
