@@ -60,5 +60,10 @@ namespace LegendOfZelda
 
             return targetPosition;
         }
+
+        public static bool LinkChangedDirection()
+        {
+            return Link.getInstance().stateMachine.prevDirection != Link.getInstance().stateMachine.currentDirection;
+        }
     }
 }

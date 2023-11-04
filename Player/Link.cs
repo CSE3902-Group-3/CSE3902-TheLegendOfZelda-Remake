@@ -96,7 +96,7 @@ namespace LegendOfZelda
                 }
             }
 
-            if (ChangedDirection())
+            if (LinkUtilities.LinkChangedDirection())
             {
                 this.velocity = 5;
             }
@@ -120,11 +120,6 @@ namespace LegendOfZelda
         {
             // just call Reset for now
             this.Reset();
-        }
-
-        private bool ChangedDirection()
-        {
-            return stateMachine.prevDirection != stateMachine.currentDirection;
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

@@ -18,6 +18,8 @@ namespace LegendOfZelda
         {
             this.game = Game1.getInstance();
             link = (Link)game.link;
+
+            targetPosition = link.stateMachine.position;
         }
 
         public void Enter()
@@ -34,20 +36,20 @@ namespace LegendOfZelda
             {
                 case Direction.up:
                     link.sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
-                    targetPosition = link.pos + new Vector2(0, -194);
+                    targetPosition += new Vector2(0, -194);
                     break;
                 case Direction.down:
                     link.sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
-                    targetPosition = link.pos + new Vector2(0, 194);
+                    targetPosition += new Vector2(0, 194);
                     break;
                 case Direction.left:
                     link.sprite = SpriteFactory.getInstance().CreateLinkWalkLeftSprite();
-                    targetPosition = link.pos + new Vector2(-194, 0);
+                    targetPosition += new Vector2(-194, 0);
 
                     break;
                 case Direction.right:
                     link.sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
-                    targetPosition = link.pos + new Vector2(194, 0);
+                    targetPosition += new Vector2(194, 0);
                     break;
             }
         }
