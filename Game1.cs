@@ -68,18 +68,12 @@ namespace LegendOfZelda
             // Game state
             GameState = GameState.GetInstance();
 
-            // Will have to change this later
-            link = GameState.Link;
-
             // Level
             LevelMaster = LevelMaster.GetInstance();
             roomCycler = new RoomCycler(LevelMaster);
 
-            controller = new PlayerController((Link)link);
-
-            CameraController = CameraController.GetInstance();
-            BackgroundGenerator.GenerateMenuBackgrounds();
-            //new CameraControllerTest();
+            // Will have to change this later
+            link = GameState.Link;
         }
 
         protected override void Update(GameTime gameTime)
