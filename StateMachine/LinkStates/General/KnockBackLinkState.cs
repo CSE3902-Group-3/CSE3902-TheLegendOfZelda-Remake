@@ -14,8 +14,6 @@ namespace LegendOfZelda
 
         private Vector2 targetPosition;  // The position Link should move to
 
-        public bool isDone = false;
-
         public KnockBackLinkState()
         {
             this.game = Game1.getInstance();
@@ -25,6 +23,7 @@ namespace LegendOfZelda
         public void Enter()
         {
             link.stateMachine.canMove = false;
+            link.stateMachine.isKnockedBack = true;
             if (link.sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
@@ -71,7 +70,6 @@ namespace LegendOfZelda
             {
                 // Only change the state to IdleLinkState when the target position is reached
                 link.stateMachine.ChangeState(new IdleLinkState());
-                isDone = true;
             }
         }
 
@@ -79,6 +77,7 @@ namespace LegendOfZelda
         public void Exit()
         {
             link.stateMachine.canMove = true;
+            link.stateMachine.isKnockedBack = false;
         }
     }
 }
