@@ -17,7 +17,7 @@ namespace LegendOfZelda
             keyUpMappings = new Dictionary<Keys, ICommands>();
 
             keyUpMappings.Add(Keys.Q, new QuitCommand());
-            keyUpMappings.Add(Keys.R, new ResetCommand(game.itemCycler, game.enemyCycler, game.blockCycler, link));
+            keyUpMappings.Add(Keys.R, new ResetCommand(link));
 
             KeyDownMapping.Add(Keys.W, new MovingUpCommand(link));
             KeyDownMapping.Add(Keys.Up, new MovingUpCommand(link));
@@ -40,14 +40,7 @@ namespace LegendOfZelda
             keyUpMappings.Add(Keys.Right, new ToIdleCommand(link));
             KeyDownMapping.Add(Keys.Z, new PrimaryAttackCommand(link));
             KeyDownMapping.Add(Keys.N, new PrimaryAttackCommand(link));
-
-            KeyDownMapping.Add(Keys.T, new PreviousBlockCommand(game.blockCycler));
-            KeyDownMapping.Add(Keys.Y, new NextBlockCommand(game.blockCycler));
-            KeyDownMapping.Add(Keys.U, new PreviousItemCommand(game.itemCycler));
-            KeyDownMapping.Add(Keys.I, new NextItemCommand(game.itemCycler));
-            KeyDownMapping.Add(Keys.O, new PreviousEnemyCommand(game.enemyCycler));
-            KeyDownMapping.Add(Keys.P, new NextEnemyCommand(game.enemyCycler));
-
+            KeyDownMapping.Add(Keys.M, new WinningCommand());
         }
 
         public ICommands KeyDownCommand(Keys key)

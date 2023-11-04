@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,6 +29,7 @@ namespace LegendOfZelda
         private Texture2D itemsTexture;
         private Texture2D npcTexture;
         private Texture2D menuTexture;
+        public SpriteFont pauseWord;
 
         private Game1 game1;
         private int drawFramesPerAnimFrame;
@@ -60,6 +62,7 @@ namespace LegendOfZelda
             itemsTexture = content.Load<Texture2D>("Items");
             npcTexture = content.Load<Texture2D>("NPC");
             menuTexture = content.Load<Texture2D>("Menu");
+            pauseWord = content.Load<SpriteFont>("Pause");
         }
     
         public AnimatedSprite CreateLinkWalkDownSprite()
@@ -70,7 +73,7 @@ namespace LegendOfZelda
                 new Rectangle(18, 11, 16, 16)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new NormalAnimateEffect(newSprite));
             return newSprite;
         }
@@ -83,7 +86,7 @@ namespace LegendOfZelda
                 new Rectangle(52, 11, 16, 16)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new NormalAnimateEffect(newSprite));
             return newSprite;
         }
@@ -96,7 +99,7 @@ namespace LegendOfZelda
                 new Rectangle(52, 11, 16, 16)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new NormalAnimateEffect(newSprite));
             return newSprite;
         }
@@ -109,7 +112,7 @@ namespace LegendOfZelda
                 new Rectangle(86, 11, 16, 16)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new NormalAnimateEffect(newSprite));
             return newSprite;
         }
@@ -121,7 +124,7 @@ namespace LegendOfZelda
                 new Rectangle(107, 11, 16, 16)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
@@ -133,7 +136,7 @@ namespace LegendOfZelda
                 new Rectangle(124, 11, 16, 16)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
@@ -144,7 +147,7 @@ namespace LegendOfZelda
                 new Rectangle(124, 11, 16, 16)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
@@ -156,7 +159,7 @@ namespace LegendOfZelda
                 new Rectangle(141, 11, 16, 16)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
@@ -169,7 +172,7 @@ namespace LegendOfZelda
                 new Rectangle(231, 11, 16, 16)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
@@ -184,7 +187,7 @@ namespace LegendOfZelda
                 new Rectangle(52, 47, 16, 28)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
@@ -199,7 +202,7 @@ namespace LegendOfZelda
                 new Rectangle(52, 97, 16, 28)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             newSprite.AddEffect(new StabUpAdjustmentEffect());
             return newSprite;
@@ -215,7 +218,7 @@ namespace LegendOfZelda
                 new Rectangle(70, 77, 19, 16)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             return newSprite;
         }
@@ -230,7 +233,7 @@ namespace LegendOfZelda
                 new Rectangle(70, 77, 19, 16)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new AnimateOnlyOnceEffect(newSprite));
             newSprite.AddEffect(new StabLeftAdjustmentEffect());
             return newSprite;

@@ -1,10 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Threading;
-using LegendOfZelda;
 
 namespace LegendOfZelda
 {
@@ -16,26 +11,16 @@ namespace LegendOfZelda
         public SpriteBatch _spriteBatch { get; private set; }
         public SpriteFactory spriteFactory { get; private set; }
 
-        /* Link */
-        public IPlayer link { get; private set; }
-
-        /* Controller */
-        private IController controller;
+        /* Game State */
+        private GameState GameState;
+        public Link link;
 
         /* Cylers */
-        public BlockCycler blockCycler { get; private set; }
-        public EnemyCycler enemyCycler { get; private set; }
-        public ItemScroll itemCycler { get; private set; }
         public RoomCycler roomCycler { get; private set; }
-
-        public LetterTester letterTester { get; private set; }
 
         /* Level */
         private LevelMaster LevelMaster;
-
-        /* Collisions */
-        private CollisionManager collisionManager;
-
+        
         /* Sounds */
         public SoundFactory SoundFactory { get; private set; }
 
@@ -59,7 +44,6 @@ namespace LegendOfZelda
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             instance = this;
 
             spriteFactory = SpriteFactory.getInstance();
@@ -71,8 +55,6 @@ namespace LegendOfZelda
             _graphics.PreferredBackBufferHeight = 1024;
             _graphics.ApplyChanges();
 
-            collisionManager = new CollisionManager();
-
             base.Initialize();
         }
 
@@ -80,43 +62,23 @@ namespace LegendOfZelda
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
             spriteFactory.LoadTextures();
             SoundFactory.LoadTextures();
 
-            link = Link.getInstance();
+            // Game state
+            GameState = GameState.GetInstance();
 
-            // Level 1
+            // Level
             LevelMaster = LevelMaster.GetInstance();
-            LevelMaster.StartLevel("level1.json");
-
-            //blockCycler = new BlockCycler(new Vector2(300, 200));
-            //enemyCycler = new EnemyCycler(new Vector2(500, 500));
-            //itemCycler = new ItemScroll(new Vector2(800, 600));
             roomCycler = new RoomCycler(LevelMaster);
-            //new AnimationTester();
-            //letterTester = new LetterTester();
 
-            //new MainMenuScreen();
-            new GameOverScreen(1024, 1024);
-
-            controller = new PlayerController((Link)link);
-            //new ProjectileTest();
+            // Will have to change this later
+            link = GameState.Link;
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) Exit();
-
-            // TODO: Add your update logic here
-            
-            LevelMaster.Update(gameTime);
-            link.Update(gameTime);
-
-            controller.Update();
-            //CollisionManager always updates last
-            collisionManager.Update(gameTime);
-
+            GameState.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -124,16 +86,12 @@ namespace LegendOfZelda
         {
             GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
-
-            _spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp);
-
-            LevelMaster.Draw();
-            link.sprite.Draw();
-            //letterTester.Show();
-
+            // this is scuffed I know, but its the only way I know how to get this to work
+            // problem is the pause manager drawing something separate from camera
+            Matrix transformMatrix = Matrix.CreateTranslation(-GameState.CameraController.mainCamera.worldPos.X, -GameState.CameraController.mainCamera.worldPos.Y, 0);
+            _spriteBatch.Begin(SpriteSortMode.Immediate, samplerState: SamplerState.PointClamp, transformMatrix: transformMatrix);
+            GameState.Draw(_spriteBatch);
             _spriteBatch.End();
-
             base.Draw(gameTime);
         }
     }

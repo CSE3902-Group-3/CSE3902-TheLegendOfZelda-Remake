@@ -14,16 +14,11 @@ Remake of NES The Legend of Zelda game
 - Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
 - Link should be able to walk in front of a wall as long as his bottom half is below it, but right now his top half blocks him from walking in front
 - Link sprite sometimes lingers in previous room when switching rooms.
-- Link does not flash after getting hit by an enemy
-- Link teleports to the bottom middle after getting hit by an emeny instead of taking knockback or staying still
 - Link can only place bombs with 1 key and cannot use any other items
 - Bombs dissappear instead of exploding when placed by Link
 - When Link places a bomb it is sometimes placed too far away
 - Stalfos sometimes gets stuck in wall
 - Enemies dissappear instead of taking damage and blinking/flashing/taking knockback/exploding when hit with Link's sword
-- Link's collect item animation does not play when he collects the Triforce piece
-- Link does not spawn a sword beam when attacking at full health
-- Link's sprite animates too quickly
 - The game crashes if Link attacks the wizard
 - Some rooms have a yellow square instead of the left door
 - Pushable blocks are not yet implemented
@@ -76,6 +71,7 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 #### Sprint 4
 - Michael Herring reviewed Zhengyi Hu's code for quality in pull request #257
 - Michael Herring reviewed Matt Curie's code for readability in pull request #260
+- Ethan Glenwright reviewed MengQi Lei's code for quality in pull request #280
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections

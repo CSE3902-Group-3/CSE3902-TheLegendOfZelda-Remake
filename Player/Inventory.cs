@@ -34,6 +34,7 @@ namespace LegendOfZelda
         // Return a boolean letting player know if item exists in inventory
         public bool RemoveItem(IItem item)
         {
+            //return true;
             bool contain = false;
             IItem inventoryItem = item.GenerateInventoryItem();
             if (inventory.ContainsKey(inventoryItem))

@@ -25,20 +25,20 @@ namespace LegendOfZelda
             link.sprite = SpriteFactory.getInstance().CreateLinkThrowLeftSprite();
 
             link.stateMachine.currentItem = new Bomb(link.stateMachine.position - new Vector2(90, 0));
+            //Added in so I can test bomb usage
+            new BombProjectile(link.stateMachine.position - new Vector2(90, 0));
             link.stateMachine.currentItem.Show();
         }
 
         public void Execute()
         {
-            ((AnimatedSprite)link.sprite).flashing = link.stateMachine.isTakingDamage;
+
         }
 
         public void Exit()
         {
             link.stateMachine.canMove = true;
             ((AnimatedSprite)link.sprite).UnregisterSprite();
-            // this should be done in the Item class I think? link shouldn't be responsible for this
-            link.stateMachine.currentItem.Remove();
             link.stateMachine.currentItem = null;
         }
 

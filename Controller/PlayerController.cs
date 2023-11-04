@@ -13,6 +13,8 @@ namespace LegendOfZelda
         private Keys[] prevKeys;
         private MouseState mouseState;
         private MouseState previousMouseState;
+        private bool ReleasedPause;
+        private PauseCommand PauseCommand;
 
         public PlayerController(Link Link)
         {
@@ -20,7 +22,9 @@ namespace LegendOfZelda
             controllerMappings = new KeyboardMapping(link);
             prevKeys = Array.Empty<Keys>();
             currKeys = Array.Empty<Keys>();
-            
+            ReleasedPause = false;
+            PauseCommand = new PauseCommand(GameState.PauseManager);
+
             //keyState = new Dictionary<Keys, bool>();
         }
 
@@ -32,6 +36,7 @@ namespace LegendOfZelda
             KeyDownEvents();
             KeyUpEvents();
             MouseEvents();
+            PauseEvents();
         }
 
         private void KeyDownEvents()
@@ -103,15 +108,25 @@ namespace LegendOfZelda
 
             previousMouseState = mouseState;
         }
-
+        private void PauseEvents()
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && ReleasedPause)
+            {
+                PauseCommand.Execute();
+                ReleasedPause = false;
+            } 
+            else if (Keyboard.GetState().IsKeyUp(Keys.Space) && !ReleasedPause)
+            {
+                ReleasedPause = true;
+            }
+        }
         private Boolean isHorizontal(Keys key)
         {
             return key == Keys.A || key == Keys.Left || key == Keys.D || key == Keys.Right;
         }
-
         private Boolean isVertical(Keys key)
         {
             return key == Keys.W || key == Keys.Up || key == Keys.S || key == Keys.Down;
-        } 
+        }
     }
 }
