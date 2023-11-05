@@ -28,7 +28,7 @@ namespace LegendOfZelda
             if (enemyDamageMap.ContainsKey(enemyType) && cooldown <= 0)
             {
                 float damage = enemyDamageMap[enemyType];
-                ((Link)Game1.getInstance().link).TakeDamage(damage);
+                Link.getInstance().TakeDamage(damage);
 
                 Link.getInstance().damageCooldownTimer = Link.getInstance().damageCooldownDuration;
             }

@@ -57,12 +57,13 @@ namespace LegendOfZelda
             {
                 targetPosition.X -= 100;
             }
-            
-            // move back 2 blocks UNLESS a wall is in the way
-            targetPosition.X = MathHelper.Clamp(targetPosition.X, 130, 900);
-            targetPosition.Y = MathHelper.Clamp(targetPosition.Y, 450, 825);
 
             return targetPosition;
+        }
+
+        public static bool LinkChangedDirection()
+        {
+            return Link.getInstance().stateMachine.prevDirection != Link.getInstance().stateMachine.currentDirection;
         }
     }
 }
