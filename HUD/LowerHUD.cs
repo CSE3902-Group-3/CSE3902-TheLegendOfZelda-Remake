@@ -68,7 +68,7 @@ namespace LegendOfZelda
             LevelNumber = letterFactory.GetLetterSprite(Level);
             // The wepons below should be able to change later. These are test only.
             WeponA = spriteFactory.CreateWoodenSwoardSprite();
-            WeponB = spriteFactory.CreateWoodenBoomerangSprite();
+            WeponB = spriteFactory.CreateWoodenBoomerangHUDSprite();
             Rubies = QuantityToSprite(RubiesCount);
             Keys = QuantityToSprite(KeysCount);
             Boombs = QuantityToSprite(BoombsCount);
@@ -198,6 +198,16 @@ namespace LegendOfZelda
                     Life[i] = spriteFactory.CreateHeartSprite(2);
                 }
             }
+        }
+
+        public void UpdateMaxHealth(int maxHealth)
+        {
+            MaxHealth = maxHealth;
+        }
+
+        public void UpdateCurrentHealth(int currentHealth)
+        {
+            CurrentHealth = currentHealth;
         }
     }
 }
