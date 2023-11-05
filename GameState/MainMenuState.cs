@@ -1,14 +1,19 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    public class PauseState : IGameState
+    public class MainMenuState
     {
         private IController Controller;
-        public PauseState()
+        public MainMenuState()
         {
-            Controller = new PauseController(GameState.PauseManager);
+            Controller = new MainMenuController(GameState.MainMenuState);
         }
         public void Update(GameTime gameTime)
         {

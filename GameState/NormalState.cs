@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    internal class NormalState: IGameState
+    public class NormalState: IGameState
     {
         private IController Controller;
         public NormalState()
