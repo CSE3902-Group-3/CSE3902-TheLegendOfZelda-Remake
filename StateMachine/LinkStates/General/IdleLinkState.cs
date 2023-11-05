@@ -17,6 +17,7 @@ namespace LegendOfZelda
 
         public void Enter()
         {
+            link.stateMachine.canMove = true;
             // if we were not just walking, change sprite
             if (link.stateMachine.PrevState.GetType() != typeof(WalkDownLinkState) &&
                 link.stateMachine.PrevState.GetType() != typeof(WalkUpLinkState) &&

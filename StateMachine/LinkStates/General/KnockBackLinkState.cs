@@ -76,7 +76,6 @@ namespace LegendOfZelda
 
         public void Exit()
         {
-            link.stateMachine.canMove = true;
             link.stateMachine.isKnockedBack = false;
         }
     }
