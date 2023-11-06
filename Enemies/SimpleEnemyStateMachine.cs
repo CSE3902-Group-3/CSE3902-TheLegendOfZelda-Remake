@@ -1,11 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using static LegendOfZelda.EnemyItemDrop;
 
 namespace LegendOfZelda
 {
     public class SimpleEnemyStateMachine : IEnemy
     {
+        public EnemyClass Classification { get; set; }
         public AnimatedSprite Sprite { get; set; }
         public Type EnemyType { get; set; }
         public enum Speed { slow, medium, fast };
@@ -13,11 +15,14 @@ namespace LegendOfZelda
         public int SpeedMultiplier;
         public float Health { get; set; }
         private Vector2 Position;
+        private Vector2 Center;
         private Vector2 Offset;
         private Vector2 Direction;
         private double LastSwitch = 0;
         private float currentCooldown = 0.0f;
         private bool allowedToMove = true;
+        public int Width;
+        public int Height;
         public RectCollider Collider { get; set; }
 
         public SimpleEnemyStateMachine(Vector2 pos, Vector2 offset, RectCollider collider)
@@ -39,7 +44,7 @@ namespace LegendOfZelda
             }
             Collider = collider;
         }
-        public void Attack() {}
+        public void Attack() { }
 
         public void ChangeDirection()
         {
@@ -82,6 +87,7 @@ namespace LegendOfZelda
             Sprite.UpdatePos(Position);
             Collider.Active = false;
             new EnemyDeathEffect(Position);
+            DropItem();
             Sprite.UnregisterSprite();
             LevelMaster.RemoveUpdateable(this);
         }
@@ -115,13 +121,15 @@ namespace LegendOfZelda
             if (Health < 0)
             {
                 Die();
-            } else
+            }
+            else
             {
                 SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
             }
         }
 
-        public void OnCollision(List<CollisionInfo> collisions) {
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
             foreach (CollisionInfo collision in collisions)
             {
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
@@ -142,7 +150,8 @@ namespace LegendOfZelda
                 }
             }
         }
-        public void Stun() {
+        public void Stun()
+        {
             allowedToMove = false;
             SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
             new Timer(2.0f, CompleteStun);
@@ -154,6 +163,27 @@ namespace LegendOfZelda
         public void StopFlashing()
         {
             Sprite.flashing = false;
+            public void DropItem()
+            {
+                Center = EnemyUtilities.GetCenter(Position, Width, Height);
+
+                switch (Classification)
+                {
+                    case EnemyClass.A:
+                        DropClassAItem(Center);
+                        break;
+                    case EnemyClass.B:
+                        DropClassBItem(Center);
+                        break;
+                    case EnemyClass.C:
+                        DropClassCItem(Center);
+                        break;
+                    case EnemyClass.D:
+                        DropClassBItem(Center);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
-}

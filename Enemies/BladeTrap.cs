@@ -21,7 +21,8 @@ namespace LegendOfZelda
                this
            );
         }
-        public void Spawn() {
+        public void Spawn()
+        {
             Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
             Collider.Pos = Position;
@@ -31,14 +32,14 @@ namespace LegendOfZelda
             Sprite.UnregisterSprite();
             Collider.Active = false;
         }
-        public void UpdateHealth(float damagePoints) {}
+        public void UpdateHealth(float damagePoints) { }
 
-        public void Attack() {}
+        public void Attack() { }
 
-        public void ChangePosition() {}
+        public void ChangePosition() { }
 
-        public void ChangeDirection() {}
-        public void Update(GameTime gameTime) {}
+        public void ChangeDirection() { }
+        public void Update(GameTime gameTime) { }
 
         public void OnCollision(List<CollisionInfo> collisions)
         {
@@ -53,5 +54,6 @@ namespace LegendOfZelda
             }
         }
         public void Stun() { }
+        public void DropItem() { }
     }
 }

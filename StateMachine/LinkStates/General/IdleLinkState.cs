@@ -3,7 +3,6 @@ using System.Runtime.CompilerServices;
 
 namespace LegendOfZelda
 {
-    //Modified last minute by Michael to meet functionality deadline. Original author still needs to come back and finish
     public class IdleLinkState : IState
     {
         private Game1 game;
@@ -18,6 +17,7 @@ namespace LegendOfZelda
 
         public void Enter()
         {
+            link.stateMachine.canMove = true;
             // if we were not just walking, change sprite
             if (link.stateMachine.PrevState.GetType() != typeof(WalkDownLinkState) &&
                 link.stateMachine.PrevState.GetType() != typeof(WalkUpLinkState) &&

@@ -10,6 +10,7 @@ namespace LegendOfZelda
         private int CurrentSprite;
         private float Health { get; set; } = 3.0f;
         public Vector2 Position;
+        private Vector2 Center;
         private Vector2 Direction;
         private double LastSwitch = 0;
         private int UpdateCount = 0;
@@ -43,7 +44,7 @@ namespace LegendOfZelda
         public void Spawn()
         {
             new EnemySpawnEffect(Position);
-            LevelMaster.RegisterUpdateable(this);           
+            LevelMaster.RegisterUpdateable(this);
             Sprites[CurrentSprite].RegisterSprite();
             Sprites[CurrentSprite].UpdatePos(Position);
         }
@@ -77,6 +78,7 @@ namespace LegendOfZelda
             else
             {
                 SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+                Sprites[CurrentSprite].blinking = true;
             }
         }
 
@@ -108,10 +110,12 @@ namespace LegendOfZelda
         }
         public void Die()
         {
+            Sprites[CurrentSprite].UpdatePos(Position);
             Sprites[CurrentSprite].UnregisterSprite();
             Collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
+            DropItem();
         }
 
         public void Update(GameTime gameTime)
@@ -166,6 +170,10 @@ namespace LegendOfZelda
         public void StopFlashing()
         {
             Sprites[CurrentSprite].flashing = false;
+            public void DropItem()
+            {
+                Center = EnemyUtilities.GetCenter(Position, 16, 16);
+                EnemyItemDrop.DropClassBItem(Center);
+            }
         }
     }
-}

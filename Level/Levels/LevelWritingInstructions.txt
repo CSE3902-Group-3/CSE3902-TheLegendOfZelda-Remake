@@ -4,6 +4,8 @@
     "Rooms": [
         {
             "RoomNumber": 0,
+            "RoomXLocation": 1,
+            "RoomYLocation":  0,
             "AdjacentRooms": [
                 {
                     "RoomNumber": 1,
@@ -63,6 +65,7 @@
          * SouthHoleDoor, 31
          * WestHoleDoor, 32
          * WallExterior, 33
+         * Ladder, 34
     */
 
     - Item dictionary:
@@ -106,7 +109,7 @@
 3) Put bottom layer elements at the start of "MapElements" array:
     - for example put the wall exterior, the doors, then the floor tiles, then the other blocks, then the items / enemies on top
 
-4) Door location in MapElements does not matter, a northern door will always be placed in the same spot, only the type of door and existance of a door matter
+4) Door location in MapElements now does matter and all doors must be placed at (0,0) so that the lamda can place them correctly.
 
 5) Blocks are placed in a grid with x values of (0 - 11) and y values of (0 - 6), values less than or greater than these are out of bounds
 
@@ -115,3 +118,7 @@
     - room view size: (1024 x 704) spanning y vales 320 - 1024
     - thickness of exterior wall: 128
     - block size: 64
+
+7) Latest change is the addition of RoomXLocation and RoomYLocation, these values work similar to the mapElement block grid placements. Looking at the overview picture of the level, think of a grid starting at (0,0) and place the rooms accordingly.
+
+8) 0 index everything!

@@ -26,6 +26,9 @@ namespace LegendOfZelda
                 Sprite = SpriteFactory.getInstance().CreateZolSprite(),
                 Health = Health,
                 EnemyType = GetType(),
+                Classification = EnemyItemDrop.EnemyClass.C,
+                Width = 16,
+                Height = 16,
             };
         }
         public void Spawn()
@@ -64,5 +67,9 @@ namespace LegendOfZelda
             StateMachine.OnCollision(collisions);
         }
         public void Stun() { }
+        public void DropItem()
+        {
+            StateMachine.DropItem();
+        }
     }
 }

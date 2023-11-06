@@ -8,7 +8,7 @@ namespace LegendOfZelda
         private readonly SimpleEnemyStateMachine StateMachine;
         private float Health { get; set; } = 0.5f;
         public Vector2 Position;
-        public Vector2 Offset = new Vector2(0,0);
+        public Vector2 Offset = new Vector2(0, 0);
         public RectCollider Collider { get; private set; }
         public GelSmall(Vector2 pos)
         {
@@ -25,6 +25,7 @@ namespace LegendOfZelda
                 Sprite = SpriteFactory.getInstance().CreateGelSprite(),
                 Health = Health,
                 EnemyType = GetType(),
+                Classification = EnemyItemDrop.EnemyClass.X
             };
         }
         public void Spawn()
@@ -62,8 +63,10 @@ namespace LegendOfZelda
         {
             StateMachine.OnCollision(collisions);
         }
-        public void Stun() {
+        public void Stun()
+        {
             StateMachine.Stun();
         }
+        public void DropItem() { }
     }
 }

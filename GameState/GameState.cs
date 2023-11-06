@@ -51,12 +51,12 @@ namespace LegendOfZelda
         {
             State.Update(gameTime);
 
-            // this portion solely for testing with winning state
-            //if (gameTime.TotalGameTime.TotalMilliseconds > 3000 && !AlreadySwitched)
-            //{
-            //    SwitchState(new WinningState());
-            //    AlreadySwitched = true;
-            //}
+            // Uncomment the part below to test game over screen
+            /*if (gameTime.TotalGameTime.TotalMilliseconds > 3000 && !AlreadySwitched)
+            {
+                SwitchState(new GameOverState());
+                AlreadySwitched = true;
+            }*/
         }
         public void Draw(SpriteBatch _spriteBatch)
         {

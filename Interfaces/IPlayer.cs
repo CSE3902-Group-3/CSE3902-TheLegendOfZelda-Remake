@@ -13,7 +13,7 @@ namespace LegendOfZelda
 
         public void Reset();
 
-        public void EnterRoomTransition(Direction direction);
+        public void EnterRoomTransition();
         public void ExitRoomTransition();
     }
 }
