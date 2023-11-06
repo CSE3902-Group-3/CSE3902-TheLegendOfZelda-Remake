@@ -4,6 +4,7 @@
     {
         void Spawn();
         void UpdateHealth(float damagePoints);
+        void Stun();
         void Attack();
         void ChangePosition();
         void ChangeDirection();

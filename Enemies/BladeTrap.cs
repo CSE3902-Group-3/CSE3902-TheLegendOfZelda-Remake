@@ -21,7 +21,8 @@ namespace LegendOfZelda
                this
            );
         }
-        public void Spawn() {
+        public void Spawn()
+        {
             Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
             Collider.Pos = Position;
@@ -31,14 +32,14 @@ namespace LegendOfZelda
             Sprite.UnregisterSprite();
             Collider.Active = false;
         }
-        public void UpdateHealth(float damagePoints) {}
+        public void UpdateHealth(float damagePoints) { }
 
-        public void Attack() {}
+        public void Attack() { }
 
-        public void ChangePosition() {}
+        public void ChangePosition() { }
 
-        public void ChangeDirection() {}
-        public void Update(GameTime gameTime) {}
+        public void ChangeDirection() { }
+        public void Update(GameTime gameTime) { }
 
         public void OnCollision(List<CollisionInfo> collisions)
         {
@@ -48,10 +49,11 @@ namespace LegendOfZelda
 
                 if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
-                    UpdateHealth(1); // Choose different values for each type of player weapon
+                    EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
                 }
             }
         }
-        public void DropItem() {}
+        public void Stun() { }
+        public void DropItem() { }
     }
 }

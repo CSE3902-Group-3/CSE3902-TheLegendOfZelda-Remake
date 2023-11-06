@@ -23,6 +23,7 @@ namespace LegendOfZelda
             {
                 Sprite = SpriteFactory.getInstance().CreateKeeseSprite(),
                 Health = Health,
+                EnemyType = GetType(),
                 Classification = EnemyItemDrop.EnemyClass.X
             };
         }
@@ -62,6 +63,10 @@ namespace LegendOfZelda
         {
             StateMachine.OnCollision(collisions);
         }
-        public void DropItem() {}
+        public void Stun()
+        {
+            StateMachine.Stun();
+        }
+        public void DropItem() { }
     }
 }

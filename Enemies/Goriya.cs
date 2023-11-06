@@ -15,6 +15,7 @@ namespace LegendOfZelda
         private double LastSwitch = 0;
         private int UpdateCount = 0;
         private float currentCooldown = 0.0f;
+        private bool allowedToMove = true;
         public RectCollider Collider { get; private set; }
         public Goriya(Vector2 pos)
         {
@@ -43,20 +44,23 @@ namespace LegendOfZelda
         public void Spawn()
         {
             new EnemySpawnEffect(Position);
-            LevelMaster.RegisterUpdateable(this);           
+            LevelMaster.RegisterUpdateable(this);
             Sprites[CurrentSprite].RegisterSprite();
             Sprites[CurrentSprite].UpdatePos(Position);
         }
         public void ChangePosition()
         {
-            Position += Direction;
-            if (Position.X < 0 || Position.Y < 0)
+            if (allowedToMove)
             {
-                Position -= Direction;
-            }
+                Position += Direction;
+                if (Position.X < 0 || Position.Y < 0)
+                {
+                    Position -= Direction;
+                }
 
-            Sprites[CurrentSprite].UpdatePos(Position);
-            Collider.Pos = Position;
+                Sprites[CurrentSprite].UpdatePos(Position);
+                Collider.Pos = Position;
+            }
         }
         public void Attack()
         {
@@ -73,6 +77,7 @@ namespace LegendOfZelda
             }
             else
             {
+                SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
                 Sprites[CurrentSprite].blinking = true;
             }
         }
@@ -144,11 +149,27 @@ namespace LegendOfZelda
                 {
                     if (currentCooldown <= 0)
                     {
-                        UpdateHealth(1.0f); // Choose different values for each type of player weapon
-                        currentCooldown = EnemyConstants.damageCooldown; // Reset the cooldown timer
+                        EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
+                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        Sprites[CurrentSprite].flashing = true;
+                        new Timer(1.0f, StopFlashing);
                     }
                 }
             }
+        }
+        public void Stun()
+        {
+            allowedToMove = false;
+            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+            new Timer(2.0f, CompleteStun);
+        }
+        public void CompleteStun()
+        {
+            allowedToMove = true;
+        }
+        public void StopFlashing()
+        {
+            Sprites[CurrentSprite].flashing = false;
         }
         public void DropItem()
         {

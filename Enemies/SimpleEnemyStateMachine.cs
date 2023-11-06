@@ -9,6 +9,7 @@ namespace LegendOfZelda
     {
         public EnemyClass Classification { get; set; }
         public AnimatedSprite Sprite { get; set; }
+        public Type EnemyType { get; set; }
         public enum Speed { slow, medium, fast };
         public Speed EnemySpeed { get; set; }
         public int SpeedMultiplier;
@@ -19,6 +20,7 @@ namespace LegendOfZelda
         private Vector2 Direction;
         private double LastSwitch = 0;
         private float currentCooldown = 0.0f;
+        private bool allowedToMove = true;
         public int Width;
         public int Height;
         public RectCollider Collider { get; set; }
@@ -42,7 +44,7 @@ namespace LegendOfZelda
             }
             Collider = collider;
         }
-        public void Attack() {}
+        public void Attack() { }
 
         public void ChangeDirection()
         {
@@ -69,12 +71,15 @@ namespace LegendOfZelda
 
         public void ChangePosition()
         {
-            Position += Direction * SpeedMultiplier;
-            if (Position.X < 0 || Position.Y < 0)
+            if (allowedToMove)
             {
-                Position -= Direction;
+                Position += Direction * SpeedMultiplier;
+                if (Position.X < 0 || Position.Y < 0)
+                {
+                    Position -= Direction;
+                }
+                Sprite.UpdatePos(Position);
             }
-            Sprite.UpdatePos(Position);
         }
 
         public void Die()
@@ -116,14 +121,15 @@ namespace LegendOfZelda
             if (Health < 0)
             {
                 Die();
-            } else
+            }
+            else
             {
-                Sprite.blinking = true;
                 SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
             }
         }
 
-        public void OnCollision(List<CollisionInfo> collisions) {
+        public void OnCollision(List<CollisionInfo> collisions)
+        {
             foreach (CollisionInfo collision in collisions)
             {
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
@@ -136,11 +142,27 @@ namespace LegendOfZelda
                 {
                     if (currentCooldown <= 0)
                     {
-                        UpdateHealth(1.0f); // Choose different values for each type of player weapon
-                        currentCooldown = EnemyConstants.damageCooldown; // Reset the cooldown timer
+                        EnemyUtilities.HandleWeaponCollision(this, EnemyType, collision);
+                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        Sprite.flashing = true;
+                        new Timer(1.0f, StopFlashing);
                     }
                 }
             }
+        }
+        public void Stun()
+        {
+            allowedToMove = false;
+            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+            new Timer(2.0f, CompleteStun);
+        }
+        public void CompleteStun()
+        {
+            allowedToMove = true;
+        }
+        public void StopFlashing()
+        {
+            Sprite.flashing = false;
         }
         public void DropItem()
         {

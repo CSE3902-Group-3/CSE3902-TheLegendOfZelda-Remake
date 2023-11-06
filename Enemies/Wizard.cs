@@ -39,6 +39,7 @@ namespace LegendOfZelda
         public void UpdateHealth(float damagePoints)
         {
             SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+            Sprite.flashing = true;
         }
 
         public void ChangeDirection() { }
@@ -64,12 +65,13 @@ namespace LegendOfZelda
                 {
                     if (currentCooldown <= 0)
                     {
-                        UpdateHealth(1.0f); // Choose different values for each type of player weapon
-                        currentCooldown = EnemyConstants.damageCooldown; // Reset the cooldown timer
+                        EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
+                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
                     }
                 }
             }
         }
-        public void DropItem() {}
+        public void Stun() { }
+        public void DropItem() { }
     }
 }

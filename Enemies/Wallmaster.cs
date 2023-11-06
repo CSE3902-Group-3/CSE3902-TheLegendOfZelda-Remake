@@ -24,6 +24,7 @@ namespace LegendOfZelda
             {
                 Sprite = SpriteFactory.getInstance().CreateWallmasterSprite(),
                 Health = Health,
+                EnemyType = GetType(),
                 Classification = EnemyItemDrop.EnemyClass.C,
                 Width = 16,
                 Height = 16,
@@ -62,8 +63,9 @@ namespace LegendOfZelda
 
         public void OnCollision(List<CollisionInfo> collisions)
         {
-           StateMachine.OnCollision(collisions);
+            StateMachine.OnCollision(collisions);
         }
+        public void Stun() { }
         public void DropItem()
         {
             StateMachine.DropItem();
