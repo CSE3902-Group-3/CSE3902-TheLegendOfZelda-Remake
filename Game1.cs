@@ -74,6 +74,8 @@ namespace LegendOfZelda
 
             // Will have to change this later
             link = GameState.Link;
+            new Room8PushableBlock(link.pos + new Vector2(160, -160));
+            new Room16PushableBlock(link.pos + new Vector2(-160, -160));
         }
 
         protected override void Update(GameTime gameTime)
