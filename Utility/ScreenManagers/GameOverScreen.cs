@@ -12,6 +12,7 @@ namespace LegendOfZelda
 		private GameOverText text;
 		private double lastUpdate;
 		private int counter;
+		private GameOverMenu menu;
 
 		public GameOverScreen()
 		{
@@ -23,6 +24,7 @@ namespace LegendOfZelda
 			text = new GameOverText();
 			lastUpdate = 0;
 			counter = 0;
+			menu = new GameOverMenu();
         }
 
 		public void ActivateGameOver()
@@ -109,9 +111,16 @@ namespace LegendOfZelda
 			if ((counter == 5) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
 				WriteWord();
-				counter++;
+                lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
+                counter++;
 			}
 
+            if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
+            {
+				//Go to gameover screen drawing location here
+				menu.Draw();
+                counter++;
+            }
         }
 	}
 }
