@@ -176,10 +176,11 @@ namespace LegendOfZelda
         public void StopFlashing()
         {
             Sprites[CurrentSprite].flashing = false;
-            public void DropItem()
-            {
-                Center = EnemyUtilities.GetCenter(Position, 16, 16);
-                EnemyItemDrop.DropClassDItem(Center);
-            }
+        }
+        public void DropItem()
+        {
+            Center = EnemyUtilities.GetCenter(Position, 16, 16);
+            EnemyItemDrop.DropClassDItem(Center);
         }
     }
+}

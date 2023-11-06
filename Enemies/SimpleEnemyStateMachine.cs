@@ -163,27 +163,28 @@ namespace LegendOfZelda
         public void StopFlashing()
         {
             Sprite.flashing = false;
-            public void DropItem()
-            {
-                Center = EnemyUtilities.GetCenter(Position, Width, Height);
+        }
+        public void DropItem()
+        {
+            Center = EnemyUtilities.GetCenter(Position, Width, Height);
 
-                switch (Classification)
-                {
-                    case EnemyClass.A:
-                        DropClassAItem(Center);
-                        break;
-                    case EnemyClass.B:
-                        DropClassBItem(Center);
-                        break;
-                    case EnemyClass.C:
-                        DropClassCItem(Center);
-                        break;
-                    case EnemyClass.D:
-                        DropClassBItem(Center);
-                        break;
-                    default:
-                        break;
-                }
+            switch (Classification)
+            {
+                case EnemyClass.A:
+                    DropClassAItem(Center);
+                    break;
+                case EnemyClass.B:
+                    DropClassBItem(Center);
+                    break;
+                case EnemyClass.C:
+                    DropClassCItem(Center);
+                    break;
+                case EnemyClass.D:
+                    DropClassBItem(Center);
+                    break;
+                default:
+                    break;
             }
         }
     }
+}
