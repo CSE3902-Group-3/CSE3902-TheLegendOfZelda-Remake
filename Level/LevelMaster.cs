@@ -12,6 +12,8 @@ namespace LegendOfZelda
         public static int RoomHeight { get; set; }
         public static int CurrentRoom { get; set; }
         public static int NumberOfRooms { get; set; }
+        public static int brickRoom = 12;
+        public static int brickRoomEntrance = 16;
         public static List<List<IUpdateable>> RoomListUpdateables { get; set; }
         public static List<IDrawable> Drawables { get; set; }
         public static List<List<IRectCollider>> RoomListColliders { get; set; }

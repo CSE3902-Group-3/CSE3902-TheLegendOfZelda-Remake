@@ -1,3 +1,4 @@
+using LegendOfZelda.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -74,6 +75,10 @@ namespace LegendOfZelda
 
             // Will have to change this later
             link = GameState.Link;
+
+            BackgroundGenerator.GenerateMenuBackgrounds();
+            new Staircase(new Vector2(1500, 600));
+            new LadderDoor(new Vector2(1700, 600));
         }
 
         protected override void Update(GameTime gameTime)

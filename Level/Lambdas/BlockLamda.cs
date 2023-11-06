@@ -119,8 +119,7 @@ namespace LegendOfZelda
         static void Stairs(Room room, MapElement mapElement)
         {
             Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
-            Block block = new Block(SpriteFactory.CreateStairsSprite(), pos);
-            block.enabled = true;
+            new Staircase(pos);
         }
         static void Brick(Room room, MapElement mapElement)
         {
