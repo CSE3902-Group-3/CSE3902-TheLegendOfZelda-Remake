@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Reflection.Emit;
 
 namespace LegendOfZelda
 {
@@ -9,6 +8,7 @@ namespace LegendOfZelda
         private AnimatedSprite Sprite;
         private float Health { get; set; } = 0.5f;
         public Vector2 Position;
+        private Vector2 Center;
         private readonly int PosIncrement = 5;
         private bool FacingLeft = false;
         private double LastSwitch = 0;
@@ -100,6 +100,7 @@ namespace LegendOfZelda
             Collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
+            DropItem();
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
@@ -117,10 +118,15 @@ namespace LegendOfZelda
                     if (currentCooldown <= 0)
                     {
                         UpdateHealth(1.0f); // Choose different values for each type of player weapon
-                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        currentCooldown = EnemyConstants.damageCooldown; // Reset the cooldown timer
                     }
                 }
             }
+        }
+        public void DropItem()
+        {
+            Center = EnemyUtilities.GetCenter(Position, 16, 16);
+            EnemyItemDrop.DropClassBItem(Center);
         }
     }
 }

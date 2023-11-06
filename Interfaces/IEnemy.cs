@@ -1,8 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
-
-namespace LegendOfZelda
+﻿namespace LegendOfZelda
 {
     public interface IEnemy: IUpdateable, ICollidable
     {
@@ -12,5 +8,6 @@ namespace LegendOfZelda
         void ChangePosition();
         void ChangeDirection();
         void Die();
+        void DropItem();
     }
 }

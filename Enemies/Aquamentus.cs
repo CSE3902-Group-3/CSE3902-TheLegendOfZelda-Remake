@@ -8,6 +8,7 @@ namespace LegendOfZelda
         private readonly AnimatedSprite Sprite;
         private float Health = 6.0f;
         private Vector2 Position;
+        private Vector2 Center;
         private int CycleCount = 0;
         private readonly int MaxCycles = 50;
         private int PosIncrement = 2;
@@ -93,6 +94,7 @@ namespace LegendOfZelda
             Collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
+            DropItem();
         }
         public void OnCollision(List<CollisionInfo> collisions)
         {
@@ -109,10 +111,16 @@ namespace LegendOfZelda
                     if (currentCooldown <= 0)
                     {
                         UpdateHealth(1.0f); // Choose different values for each type of player weapon
-                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        currentCooldown = EnemyConstants.damageCooldown; // Reset the cooldown timer
                     }
                 }
             }
+        }
+
+        public void DropItem()
+        {
+            Center = EnemyUtilities.GetCenter(Position, 24, 32);
+            EnemyItemDrop.DropClassDItem(Center);
         }
     }
 }

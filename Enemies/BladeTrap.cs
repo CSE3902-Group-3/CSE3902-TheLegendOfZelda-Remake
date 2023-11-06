@@ -52,5 +52,6 @@ namespace LegendOfZelda
                 }
             }
         }
+        public void DropItem() {}
     }
 }

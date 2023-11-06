@@ -6,10 +6,11 @@ namespace LegendOfZelda
 {
     public class Goriya : IEnemy
     {
-        private readonly List<AnimatedSprite> GoriyaSprites;
+        private readonly List<AnimatedSprite> Sprites;
         private int CurrentSprite;
         private float Health { get; set; } = 3.0f;
         public Vector2 Position;
+        private Vector2 Center;
         private Vector2 Direction;
         private double LastSwitch = 0;
         private int UpdateCount = 0;
@@ -18,7 +19,7 @@ namespace LegendOfZelda
         public Goriya(Vector2 pos)
         {
             Position = pos;
-            GoriyaSprites = new List<AnimatedSprite>
+            Sprites = new List<AnimatedSprite>
             {
                 SpriteFactory.getInstance().CreateGoriyaRightSprite(),
                 SpriteFactory.getInstance().CreateGoriyaLeftSprite(),
@@ -26,7 +27,7 @@ namespace LegendOfZelda
                 SpriteFactory.getInstance().CreateGoriyaUpSprite()
             };
 
-            foreach (AnimatedSprite goriya in GoriyaSprites)
+            foreach (AnimatedSprite goriya in Sprites)
             {
                 goriya.UnregisterSprite();
             }
@@ -43,8 +44,8 @@ namespace LegendOfZelda
         {
             new EnemySpawnEffect(Position);
             LevelMaster.RegisterUpdateable(this);           
-            GoriyaSprites[CurrentSprite].RegisterSprite();
-            GoriyaSprites[CurrentSprite].UpdatePos(Position);
+            Sprites[CurrentSprite].RegisterSprite();
+            Sprites[CurrentSprite].UpdatePos(Position);
         }
         public void ChangePosition()
         {
@@ -54,7 +55,7 @@ namespace LegendOfZelda
                 Position -= Direction;
             }
 
-            GoriyaSprites[CurrentSprite].UpdatePos(Position);
+            Sprites[CurrentSprite].UpdatePos(Position);
             Collider.Pos = Position;
         }
         public void Attack()
@@ -72,7 +73,7 @@ namespace LegendOfZelda
             }
             else
             {
-                GoriyaSprites[CurrentSprite].blinking = true;
+                Sprites[CurrentSprite].blinking = true;
             }
         }
 
@@ -80,7 +81,7 @@ namespace LegendOfZelda
         {
             Random rand = new();
             int random = rand.Next(0, 4);
-            GoriyaSprites[CurrentSprite].UnregisterSprite();
+            Sprites[CurrentSprite].UnregisterSprite();
             CurrentSprite = random;
 
             if (random == 0)
@@ -99,15 +100,17 @@ namespace LegendOfZelda
             {
                 Direction = new Vector2(0, -1);
             }
-            GoriyaSprites[CurrentSprite].RegisterSprite();
+            Sprites[CurrentSprite].RegisterSprite();
             Collider.Pos = Position;
         }
         public void Die()
         {
-            GoriyaSprites[CurrentSprite].UnregisterSprite();
+            Sprites[CurrentSprite].UpdatePos(Position);
+            Sprites[CurrentSprite].UnregisterSprite();
             Collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
+            DropItem();
         }
 
         public void Update(GameTime gameTime)
@@ -142,10 +145,15 @@ namespace LegendOfZelda
                     if (currentCooldown <= 0)
                     {
                         UpdateHealth(1.0f); // Choose different values for each type of player weapon
-                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        currentCooldown = EnemyConstants.damageCooldown; // Reset the cooldown timer
                     }
                 }
             }
+        }
+        public void DropItem()
+        {
+            Center = EnemyUtilities.GetCenter(Position, 16, 16);
+            EnemyItemDrop.DropClassBItem(Center);
         }
     }
 }

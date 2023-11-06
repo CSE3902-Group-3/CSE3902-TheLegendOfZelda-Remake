@@ -24,6 +24,7 @@ namespace LegendOfZelda
             {
                 Sprite = SpriteFactory.getInstance().CreateGelSprite(),
                 Health = Health,
+                Classification = EnemyItemDrop.EnemyClass.X
             };
         }
         public void Spawn()
@@ -61,5 +62,6 @@ namespace LegendOfZelda
         {
             StateMachine.OnCollision(collisions);
         }
+        public void DropItem() {}
     }
 }
