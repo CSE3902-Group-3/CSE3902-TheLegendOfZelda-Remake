@@ -36,6 +36,7 @@ Remake of NES The Legend of Zelda game
 -   10/15: 84, 1127, 2, 187, 7443, 2032
 -   10/20: 83, 1277, 2, 186, 8167, 2317
 -   10/23: 83, 1318, 2, 196, 8402, 2391
+-   11/6: 82, 1664, 2, 221, 9975, 2805
 
 ## Code Reviews:
 When possible, we tried to do our code reviews as part of pull requests, which are listed below. In cases where that was impossible (no PR's ready for review), we wrote them in text files.
