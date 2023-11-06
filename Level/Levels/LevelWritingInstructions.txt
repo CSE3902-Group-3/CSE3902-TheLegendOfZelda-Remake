@@ -66,6 +66,7 @@
          * WestHoleDoor, 32
          * WallExterior, 33
          * Ladder, 34
+         * LadderDoor, 35
     */
 
     - Item dictionary:
