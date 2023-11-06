@@ -96,56 +96,22 @@ namespace LegendOfZelda
         {
             LoadContent();
 
-            LowerHUDBase.RegisterSprite();
-            LowerHUDBase.UpdatePos(LowerHUDBasePos);
+            RegisterSprite(LowerHUDBase, LowerHUDBasePos);
 
-            LevelIndicator.RegisterSprite();
-            LevelIndicator.UpdatePos(LevelIndicatorPos);
-            LevelNumber.RegisterSprite();
-            LevelNumber.UpdatePos(LevelNumberPos);
+            RegisterSprite(LevelIndicator, LevelIndicatorPos);
+            RegisterSprite(LevelNumber, LevelNumberPos);
             
-            WeponA.RegisterSprite();
-            WeponA.UpdatePos(WeponAPos);
-            WeponB.RegisterSprite();
-            WeponB.UpdatePos(WeponBPos);
+            RegisterSprite(WeponA, WeponAPos);
+            RegisterSprite(WeponB, WeponBPos);
 
-            TempPos = RubiesPos;
-            foreach (AnimatedSprite sprite in Rubies)
-            {
-                sprite.RegisterSprite();
-                sprite.UpdatePos(TempPos);
-                TempPos.X += 8 * scale;
-            }
+            RegisterListSprite(Rubies, RubiesPos);
 
-            TempPos = KeysPos;
-            foreach (AnimatedSprite sprite in Keys)
-            {
-                sprite.RegisterSprite();
-                sprite.UpdatePos(TempPos);
-                TempPos.X += 8 * scale;
-            }
+            RegisterListSprite(Keys, KeysPos);
 
-            TempPos = BoombsPos;
-            foreach (AnimatedSprite sprite in Boombs)
-            {
-                sprite.RegisterSprite();
-                sprite.UpdatePos(TempPos);
-                TempPos.X += 8 * scale;
-            }
+            RegisterListSprite(Boombs, BoombsPos);
 
-            TempPos = LifePos;
-            int index = 0;
-            foreach (AnimatedSprite sprite in Life)
-            {
-                sprite.RegisterSprite();
-                if (index == 8)
-                {
-                   TempPos = new Vector2(LifePos.X, LifePos.Y + 8 * scale);
-                }
-                sprite.UpdatePos(TempPos);
-                TempPos.X += 8 * scale;
-                index++;
-            }
+            RegisterLifeSprite(Life, LifePos);
+            
         }
 
         public List<AnimatedSprite> QuantityToSprite(int quantitiy)
@@ -203,11 +169,91 @@ namespace LegendOfZelda
         public void UpdateMaxHealth(int maxHealth)
         {
             MaxHealth = maxHealth;
+            for (int i = 0; i < maxHealth / 2; i++)
+            {
+                Life[i] = spriteFactory.CreateHeartSprite(0);
+            }
         }
 
         public void UpdateCurrentHealth(int currentHealth)
         {
             CurrentHealth = currentHealth;
+            if (currentHealth % 2 != 0)
+            {
+                for (int i = 0; i < currentHealth / 2; i++)
+                {
+                    Life[i] = spriteFactory.CreateHeartSprite(2);
+                }
+                Life[currentHealth / 2] = spriteFactory.CreateHeartSprite(1);
+            }
+            else
+            {
+                for (int i = 0; i < currentHealth / 2; i++)
+                {
+                    Life[i] = spriteFactory.CreateHeartSprite(2);
+                }
+            }
+        }
+
+        public void RegisterSprite(AnimatedSprite sprite, Vector2 pos)
+        {
+            sprite.RegisterSprite();
+            sprite.UpdatePos(pos);
+        }
+
+        public void RegisterListSprite(List<AnimatedSprite> spriteList, Vector2 pos)
+        {
+            Vector2 tempPos = pos;
+            foreach (AnimatedSprite sprite in spriteList)
+            {
+                sprite.RegisterSprite();
+                sprite.UpdatePos(TempPos);
+                TempPos.X += 8 * scale;
+            }
+        }
+
+        public void RegisterLifeSprite(List<AnimatedSprite> spriteList, Vector2 pos)
+        {
+            Vector2 tempPos = pos;
+            int index = 0;
+            foreach (AnimatedSprite sprite in spriteList)
+            {
+                sprite.RegisterSprite();
+                if (index == 8)
+                {
+                    tempPos = new Vector2(pos.X, pos.Y + 8 * scale);
+                }
+                sprite.UpdatePos(tempPos);
+                tempPos.X += 8 * scale;
+                index++;
+            }
+        }
+
+        public void UnregisterListSprite(List<AnimatedSprite> spriteList)
+        {
+            foreach (AnimatedSprite sprite in spriteList)
+            {
+                sprite.UnregisterSprite();
+            }
+        }
+
+        public void UpdateRubies(int rubies)
+        {
+            UnregisterListSprite(Rubies);
+            RubiesCount = rubies;
+            Rubies = QuantityToSprite(RubiesCount);
+        }
+
+        public void UpdateKeys(int keys)
+        {
+            KeysCount = keys;
+            Keys = QuantityToSprite(KeysCount);
+        }
+
+        public void UpdateBoombs(int boombs)
+        {
+            BoombsCount = boombs;
+            Boombs = QuantityToSprite(BoombsCount);
         }
     }
 }

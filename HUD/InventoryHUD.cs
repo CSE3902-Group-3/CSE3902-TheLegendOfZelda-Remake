@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,9 +29,11 @@ namespace LegendOfZelda
         private Dictionary<string, Vector2> InventoryItemsAbovePosDict;
         private Vector2 SelectorInitPos;
         private Vector2 SelectorPos;
+        private Dictionary<string, bool> SelectorPosDic;
 
         private Dictionary<string, bool> InventoryInFrameUnlock;
         private Dictionary<string, bool> InventoryAboveFrameUnlock;
+
 
 
         public InventoryHUD(Game1 game)
@@ -70,29 +73,13 @@ namespace LegendOfZelda
         {
             LoadContent();
 
-            InventoryHUDBase.RegisterSprite();
-            InventoryHUDBase.UpdatePos(InventoryHUDBasePos);
+            RegisterSprite(InventoryHUDBase, InventoryHUDBasePos);
 
-            SelectedItem.RegisterSprite();
-            SelectedItem.UpdatePos(SelectedItemPos);
+            RegisterSprite(SelectedItem, SelectedItemPos);
 
-            foreach (KeyValuePair<string, AnimatedSprite> item in ItemsInFrame)
-            {
-                if (InventoryInFrameUnlock[item.Key])
-                {
-                    item.Value.RegisterSprite();
-                    item.Value.UpdatePos(InventoryItemsPosDict[item.Key]);
-                }
-            }
+            RegisterDictionarySprite(ItemsInFrame, InventoryInFrameUnlock, InventoryItemsPosDict);
 
-            foreach (KeyValuePair<string, AnimatedSprite> item in ItemsAboveFrame)
-            {
-                if (InventoryAboveFrameUnlock[item.Key])
-                {
-                    item.Value.RegisterSprite();
-                    item.Value.UpdatePos(InventoryItemsAbovePosDict[item.Key]);
-                }
-            }
+            RegisterDictionarySprite(ItemsAboveFrame, InventoryAboveFrameUnlock, InventoryItemsAbovePosDict);
 
             Selector.RegisterSprite();
             Selector.UpdatePos(SelectorPos);
@@ -186,6 +173,35 @@ namespace LegendOfZelda
                 { "dragonKey", true },
                 { "bread", true }
             };
+        }
+
+        public void RegisterSprite(AnimatedSprite sprite, Vector2 pos)
+        {
+            sprite.RegisterSprite();
+            sprite.UpdatePos(pos);
+        }
+
+        public void RegisterDictionarySprite(Dictionary<string, AnimatedSprite> spriteList, Dictionary<string, bool> unlock, Dictionary<string, Vector2> posList)
+        {
+            foreach (KeyValuePair<string, AnimatedSprite> sprite in spriteList)
+            {
+                if (unlock[sprite.Key])
+                {
+                    sprite.Value.RegisterSprite();
+                    sprite.Value.UpdatePos(posList[sprite.Key]);
+                }
+            }
+        }
+
+        public void UnRegisterDictionarySprite(Dictionary<string, AnimatedSprite> spriteList, Dictionary<string, bool> unlock)
+        {
+            foreach (KeyValuePair<string, AnimatedSprite> sprite in spriteList)
+            {
+                if (!unlock[sprite.Key])
+                {
+                    sprite.Value.UnregisterSprite();
+                }
+            }
         }
 
         public void UpdateInventoryInUnlock(string item)

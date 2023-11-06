@@ -60,30 +60,11 @@ namespace LegendOfZelda
         {
             LoadContent();
 
-            MapHUDBase.RegisterSprite();
-            MapHUDBase.UpdatePos(MapHUDBasePos);
+            RegisterSprite(MapHUDBase, MapHUDBasePos);
 
-            switch (MapUnlock)
-            {
-                case true:
-                    Map.RegisterSprite();
-                    Map.UpdatePos(MapPos);
-                    break;
-                case false:
-                    Map.UnregisterSprite();
-                    break;
-            }
+            RegisterMapCompassSprite(Map, MapPos, MapUnlock);
 
-            switch (CompassUnlock)
-            {
-                case true:
-                    Compass.RegisterSprite();
-                    Compass.UpdatePos(CompassPos);
-                    break;
-                case false:
-                    Compass.UnregisterSprite();
-                    break;
-            }
+            RegisterMapCompassSprite(Compass, CompassPos, CompassUnlock);
         }
 
         public void UpdateMapUnlock(bool unlock)
@@ -95,5 +76,25 @@ namespace LegendOfZelda
         {
             CompassUnlock = unlock;
         }
+
+        public void RegisterSprite(AnimatedSprite sprite, Vector2 pos)
+        {
+            sprite.RegisterSprite();
+            sprite.UpdatePos(pos);
+        }
+
+        public void RegisterMapCompassSprite(AnimatedSprite sprite, Vector2 pos, bool unlock)
+        {
+            if (unlock)
+            {
+                sprite.RegisterSprite();
+                sprite.UpdatePos(pos);
+            }
+            else
+            {
+                sprite.UnregisterSprite();
+            }
+        }
+
     }
 }
