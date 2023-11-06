@@ -12,10 +12,7 @@ Remake of NES The Legend of Zelda game
 
 ## Known Bugs:
 - Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
-- Link should be able to walk in front of a wall as long as his bottom half is below it, but right now his top half blocks him from walking in front
-- Link sprite sometimes lingers in previous room when switching rooms.
 - Link can only place bombs with 1 key and cannot use any other items
-- Bombs dissappear instead of exploding when placed by Link
 - When Link places a bomb it is sometimes placed too far away
 - Stalfos sometimes gets stuck in wall
 - Enemies dissappear instead of taking damage and blinking/flashing/taking knockback/exploding when hit with Link's sword
