@@ -9695,7 +9695,7 @@
         },
         {
           "ElementType": "Block",
-          "ElementValue": 2,
+          "ElementValue": 3,
           "XLocation": 7,
           "YLocation": 2
         },
@@ -9773,7 +9773,7 @@
         },
         {
           "ElementType": "Block",
-          "ElementValue": 2,
+          "ElementValue": 3,
           "XLocation": 8,
           "YLocation": 3
         },
@@ -10030,7 +10030,7 @@
       "RoomYLocation": 5,
       "AdjacentRooms": [
         {
-          "RoomNumber": 16,
+          "RoomNumber": 17,
           "Direction": "East"
         }
       ],
@@ -11171,10 +11171,10 @@
           "YLocation": 570
         },
         {
-          "ElementType": "Item",
+          "ElementType": "Enemy",
           "ElementValue": 5,
-          "XLocation": 480,
-          "YLocation": 500
+          "XLocation": 680,
+          "YLocation": 700
         }
       ]
     }
