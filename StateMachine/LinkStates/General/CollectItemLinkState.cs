@@ -30,6 +30,8 @@ namespace LegendOfZelda
             }
             link.stateMachine.canMove = false;
             link.sprite = SpriteFactory.getInstance().CreateLinkGetItemSprite();
+
+            Inventory.getInstance().AddItem(item);
         }
 
         public void Execute()

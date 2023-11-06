@@ -14,7 +14,6 @@ namespace LegendOfZelda
         private Link link;
 
         private Sword sword;
-        private SwordBeam swordBeam;
 
         public AttackingRightLinkState()
         {
@@ -35,7 +34,7 @@ namespace LegendOfZelda
 
             if (link.HP == link.maxHP)
             {
-                swordBeam = new SwordBeam(link.stateMachine.position, link.stateMachine.currentDirection);
+                new SwordBeam(link.stateMachine.position, link.stateMachine.currentDirection);
             }
             
             sword = new Sword(link.stateMachine.currentDirection, link.stateMachine.position);
@@ -51,7 +50,6 @@ namespace LegendOfZelda
         public void Exit()
         {
             link.stateMachine.canMove = true;
-            swordBeam?.Destroy();
             sword.Destroy();
         }
 
