@@ -6,6 +6,8 @@
         {
             IItem itemCollidedWith = collision.CollidedWith.Collidable as IItem;
 
+            Inventory.getInstance().AddItem(itemCollidedWith);
+
             if (itemCollidedWith is Bow || itemCollidedWith is Triforce)
                 Link.getInstance().stateMachine.ChangeState(new CollectItemLinkState(itemCollidedWith));
 
