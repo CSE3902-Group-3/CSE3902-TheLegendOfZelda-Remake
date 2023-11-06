@@ -48,8 +48,6 @@ namespace LegendOfZelda
             this.stateMachine = new LinkStateMachine();
             this.stateMachine.ChangeState(new InititalLinkState(this.sprite));
 
-            this.stateMachine.linkInventory = new Inventory();
-
             collider = new RectCollider(
                 new Rectangle((int)this.stateMachine.position.X, (int)+this.stateMachine.position.Y, 16 * SpriteFactory.getInstance().scale, 16 * SpriteFactory.getInstance().scale),
                 CollisionLayer.Player,

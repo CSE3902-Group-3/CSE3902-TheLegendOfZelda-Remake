@@ -8,7 +8,17 @@ namespace LegendOfZelda
 	{
         private Dictionary<IItem, int> inventory;
 
-        public Inventory()
+        private static Inventory instance;
+
+        public static Inventory getInstance()
+        {
+            if (instance == null)
+                instance = new Inventory();
+
+            return instance;
+        }
+
+        private Inventory()
         {
             /* All items in inventory will have a position of (0, 0),
              * their position can be changed when being used.

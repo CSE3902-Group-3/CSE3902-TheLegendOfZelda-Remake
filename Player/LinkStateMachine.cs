@@ -13,7 +13,7 @@ namespace LegendOfZelda
 
         public Vector2 position = new Vector2(0,0);
 
-        public Inventory linkInventory { get; set; }
+        public Inventory linkInventory { get; } = Inventory.getInstance();
         public bool canMove { get; set; } = true;
         public bool isWalking { get; set; } = false;
 
