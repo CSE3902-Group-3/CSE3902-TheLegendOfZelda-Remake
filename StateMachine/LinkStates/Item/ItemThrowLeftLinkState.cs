@@ -23,6 +23,16 @@ namespace LegendOfZelda
             }
             link.stateMachine.canMove = false;
             link.sprite = SpriteFactory.getInstance().CreateLinkThrowLeftSprite();
+
+            // Throw item
+            if (Inventory.getInstance().SecondaryItem is Bomb)
+            {
+                new BombProjectile(link.stateMachine.position + new Vector2(90, 0));
+            }
+            else if (Inventory.getInstance().SecondaryItem is Boomerang)
+            {
+                new BoomerangProjectile(link.stateMachine.position + new Vector2(90, 0), new Vector2(-1, 0), link);
+            }
         }
 
         public void Execute()

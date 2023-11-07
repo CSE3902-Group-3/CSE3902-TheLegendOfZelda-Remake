@@ -1,18 +1,17 @@
 ﻿
 namespace LegendOfZelda
 {
-    public class UseItem2Command : ICommands
+    public class UseSecondaryItemCommand : ICommands
     {
         private Link player;
 
-        public UseItem2Command(Link player)
+        public UseSecondaryItemCommand(Link player)
         {
             this.player = player;
         }
 
         public void Execute()
         {
-            /*
             switch (player.stateMachine.currentDirection)
             {
                 case Direction.left:
@@ -28,7 +27,6 @@ namespace LegendOfZelda
                     player.stateMachine.ChangeState(new ItemThrowDownLinkState());
                     break;
             }
-            */
         }
     }
 }
