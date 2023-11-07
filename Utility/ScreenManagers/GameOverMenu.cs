@@ -36,7 +36,7 @@ namespace LegendOfZelda
 		public GameOverMenu()
 		{
 			letterFactory = LetterFactory.getInstance();
-			letterWidth = 7;
+			letterWidth = 30;
 			cameraXPos = (int)GameState.CameraController.mainCamera.worldPos.X;
 			cameraYPos = (int)GameState.CameraController.mainCamera.worldPos.Y;
 			graphicsDevice = Game1.getInstance().GraphicsDevice;
@@ -80,12 +80,12 @@ namespace LegendOfZelda
 			{
 				Continue[i].UpdatePos(new Vector2((startXPos + letterWidth * i), startYPos));
 			}
-		}
+        }
 
 		private void DrawSaveWord()
 		{
-            int startXPos = cameraXPos + graphicsDevice.Viewport.Width / 2;
-            int startYPos = cameraYPos + graphicsDevice.Viewport.Height / 3;
+            int startXPos = cameraXPos + graphicsDevice.Viewport.Width / 3;
+            int startYPos = cameraYPos + graphicsDevice.Viewport.Height / 2;
             for (int i = 0; i < Save.Count; i++)
             {
                 Save[i].UpdatePos(new Vector2((startXPos + letterWidth * i), startYPos));
@@ -94,8 +94,8 @@ namespace LegendOfZelda
 
 		private void DrawRetryWord()
 		{
-            int startXPos = (cameraXPos + graphicsDevice.Viewport.Width) * 2 / 3;
-            int startYPos = cameraYPos + graphicsDevice.Viewport.Height / 3;
+            int startXPos = cameraXPos + graphicsDevice.Viewport.Width / 3;
+            int startYPos = (cameraYPos + graphicsDevice.Viewport.Height) * 2 / 3;
             for (int i = 0; i < Retry.Count; i++)
             {
                 Retry[i].UpdatePos(new Vector2((startXPos + letterWidth * i), startYPos));
