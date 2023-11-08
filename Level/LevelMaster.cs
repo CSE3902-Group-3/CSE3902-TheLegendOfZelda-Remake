@@ -46,7 +46,7 @@ namespace LegendOfZelda
         {
             if (roomNumber >= 0 || roomNumber < NumberOfRooms)
             {
-                CurrentRoom = roomNumber;
+                LinkUtilities.LinkChangePosToRoom(RoomPositionList[CurrentRoom], RoomPositionList[roomNumber]);
                 CurrentRoomUpdateables = RoomListUpdateables[roomNumber];
                 SwapColliders(roomNumber);
                 CameraController.GetInstance().SnapCamToRoom(RoomPositionList[roomNumber]);

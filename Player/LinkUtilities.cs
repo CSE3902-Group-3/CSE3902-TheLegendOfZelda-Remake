@@ -65,5 +65,12 @@ namespace LegendOfZelda
         {
             return Link.getInstance().stateMachine.prevDirection != Link.getInstance().stateMachine.currentDirection;
         }
+
+        public static void LinkChangePosToRoom(Vector2 fromRoom, Vector2 toRoom)
+        {
+            Link link = Link.getInstance();
+            Vector2 linkRoomPos = toRoom + link.pos - fromRoom;
+            UpdatePositions(link, linkRoomPos);
+        }
     }
 }
