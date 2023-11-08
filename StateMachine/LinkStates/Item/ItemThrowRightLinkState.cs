@@ -1,28 +1,23 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
-
-namespace LegendOfZelda
+﻿namespace LegendOfZelda
 {
     public class ItemThrowRightLinkState : IState
     {
-        private Game1 game;
-        private Link link;
+        private Link Link;
 
         public ItemThrowRightLinkState()
         {
-            this.game = Game1.getInstance();
-            this.link = (Link)game.link;
+            this.Link = GameState.Link;
         }
 
         public void Enter()
         {
-            if (link.sprite != null)
+            if (Link.Sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)link.sprite).UnregisterSprite();
+                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
             }
-            link.stateMachine.canMove = false;
-            link.sprite = SpriteFactory.getInstance().CreateLinkThrowRightSprite();
+            Link.StateMachine.canMove = false;
+            Link.Sprite = SpriteFactory.getInstance().CreateLinkThrowRightSprite();
         }
 
         public void Execute()
@@ -32,8 +27,8 @@ namespace LegendOfZelda
 
         public void Exit()
         {
-            link.stateMachine.canMove = true;
-            ((AnimatedSprite)link.sprite).UnregisterSprite();
+            Link.StateMachine.canMove = true;
+            ((AnimatedSprite)Link.Sprite).UnregisterSprite();
         }
 
     }

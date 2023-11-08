@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LegendOfZelda
+﻿namespace LegendOfZelda
 {
     public class RoomCycler
     {
-        private LevelMaster lm;
-        private int index = 0;
-        public RoomCycler(LevelMaster lm)
+        private static RoomCycler Instance;
+        private static int index = 0;
+        private RoomCycler()
         {
-            this.lm = lm;
             index = LevelMaster.CurrentRoom;
-            lm.NavigateToRoom(index);
+            LevelMaster.GetInstance().NavigateToRoom(index);
+        }
+        public static RoomCycler GetInstance()
+        {
+            if (Instance == null)
+                Instance = new RoomCycler();
+            return Instance;
         }
 
         public void NextRoom()
@@ -25,8 +23,7 @@ namespace LegendOfZelda
             {
                 index = 0;
             }
-            lm.NavigateToRoom(index);
-            Console.WriteLine("Navigate to room " + index);
+            LevelMaster.GetInstance().NavigateToRoom(index);
         }
 
         public void PrevRoom()
@@ -36,8 +33,7 @@ namespace LegendOfZelda
             {
                 index = LevelMaster.NumberOfRooms - 1;
             }
-            lm.NavigateToRoom(index);
-            Console.WriteLine("Navigate to room " + index);
+            LevelMaster.GetInstance().NavigateToRoom(index);
         }
     }
 }

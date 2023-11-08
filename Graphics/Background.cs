@@ -25,7 +25,7 @@ namespace LegendOfZelda.Graphics
         public Background(int xPos, int yPos)
         {
             linkTexture = SpriteFactory.getInstance().linkTexture;
-            spriteBatch = Game1.getInstance()._spriteBatch;
+            spriteBatch = Game1.getInstance().SpriteBatch;
             dest = new Rectangle(xPos, yPos, backgroundWidth, backgroundHeight);
             src = new Rectangle(whitePixelX, whitePixelY, 1, 1);
             pos = new Vector2(xPos, yPos);

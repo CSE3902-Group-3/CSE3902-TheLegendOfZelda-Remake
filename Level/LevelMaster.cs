@@ -8,8 +8,8 @@ namespace LegendOfZelda
     public class LevelMaster
     {
         private static LevelMaster Instance;
-        public static int RoomWidth { get; set; }
-        public static int RoomHeight { get; set; }
+        public static int RoomWidth = 1024;
+        public static int RoomHeight = 704;
         public static int CurrentRoom { get; set; }
         public static int NumberOfRooms { get; set; }
         public static List<List<IUpdateable>> RoomListUpdateables { get; set; }
@@ -20,16 +20,14 @@ namespace LegendOfZelda
         public static List<IRectCollider> CurrentRoomColliders { get; set; }
         public static List<IRectCollider> PersistentColliders { get; set; }
         public static List<Vector2> RoomPositionList { get; set; }
-        public static CollisionManager collisionManager;
+        public static CollisionManager CollisionManager;
         private static BlockLamda BlockLamda = BlockLamda.GetInstance();
         private static ItemLamda ItemLamda = ItemLamda.GetInstance();
         private static EnemyLamda EnemyLamda = EnemyLamda.GetInstance();
         private static RoomList roomList;
         private LevelMaster()
         {
-            collisionManager = CollisionManager.instance;
-            RoomWidth = SpriteFactory.getInstance().scale * 256;
-            RoomHeight = SpriteFactory.getInstance().scale * 176;
+            CollisionManager = CollisionManager.instance;
         }
         public static LevelMaster GetInstance()
         {
@@ -107,7 +105,7 @@ namespace LegendOfZelda
             {
                 foreach (IRectCollider collider in CurrentRoomColliders)
                 {
-                    collisionManager.RemoveRectCollider(collider);
+                    CollisionManager.RemoveRectCollider(collider);
                 }
             }
             CurrentRoomColliders = RoomListColliders[roomNumber];
@@ -115,7 +113,7 @@ namespace LegendOfZelda
             {
                 if (collider.Active)
                 {
-                    collisionManager.AddRectCollider(collider);
+                    CollisionManager.AddRectCollider(collider);
                 }
             }
         }
@@ -164,7 +162,7 @@ namespace LegendOfZelda
                 //Deactivate colliders (since most objects are not in the first room)
                 foreach (IRectCollider rectCollider in RoomListColliders[CurrentRoom])
                 {
-                    collisionManager.RemoveRectCollider(rectCollider);
+                    CollisionManager.RemoveRectCollider(rectCollider);
                 }
                 CurrentRoom++;
             }

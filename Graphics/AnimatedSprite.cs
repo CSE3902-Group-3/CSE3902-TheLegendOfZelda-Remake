@@ -1,10 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
@@ -106,7 +102,7 @@ namespace LegendOfZelda
             this.drawFramesPerAnimFrame = drawFramesPerAnimFrame;
 
             game1 = Game1.getInstance();
-            spriteBatch = game1._spriteBatch;
+            spriteBatch = game1.SpriteBatch;
 
             effectList = new List<IAnimatedSpriteEffect>();
 

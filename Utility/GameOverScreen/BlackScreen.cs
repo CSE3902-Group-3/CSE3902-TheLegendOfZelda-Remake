@@ -19,7 +19,7 @@ namespace LegendOfZelda
             graphicsDevice = game.GraphicsDevice;
             overlay = SpriteFactory.getInstance().linkTexture;
             overlayTexture = new Rectangle(118, 64, 1, 1);
-            spriteBatch = game._spriteBatch;
+            spriteBatch = game.SpriteBatch;
             CameraXPos = (int)GameState.CameraController.mainCamera.worldPos.X;
             CameraYPos = (int)GameState.CameraController.mainCamera.worldPos.Y;
         }
