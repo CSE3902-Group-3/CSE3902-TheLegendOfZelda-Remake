@@ -17,7 +17,7 @@ namespace LegendOfZelda
         {
             heart = SpriteFactory.getInstance().CreateBlinkingHeartSprite();
             position = pos;
-            collider = new RectCollider(new Rectangle((int)position.X, (int)position.Y, 8 * scale, 8 * scale), CollisionLayer.Item, this);
+            collider = new RectCollider(new Rectangle((int)position.X, (int)position.Y, 7 * scale, 8 * scale), CollisionLayer.Item, this);
             collider.Pos = pos;
         }
 
@@ -48,7 +48,7 @@ namespace LegendOfZelda
         public IItem GenerateInventoryItem()
         {
             //All item in inventory will have a zero position
-            return new Arrow(Vector2.Zero);
+            return new Heart(Vector2.Zero);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
