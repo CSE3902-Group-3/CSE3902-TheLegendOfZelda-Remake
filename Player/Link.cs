@@ -120,6 +120,7 @@ namespace LegendOfZelda
             this.stateMachine.ChangeState(new IdleLinkState());
 
             this.HP = this.maxHP;
+            this.velocity = 5;
         }
 
         public void Die()
