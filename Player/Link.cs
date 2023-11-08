@@ -107,6 +107,7 @@ namespace LegendOfZelda
 
         public void Reset()
         {
+            LevelMaster.GetInstance().NavigateToRoom(0);
             LinkUtilities.UpdatePositions(this, LinkUtilities.originalLinkPosition);
             this.stateMachine.ChangeState(new WalkRightLinkState());
             this.stateMachine.ChangeState(new IdleLinkState());

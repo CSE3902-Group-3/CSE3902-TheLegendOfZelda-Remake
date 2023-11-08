@@ -68,9 +68,8 @@ namespace LegendOfZelda
 
         public static void LinkChangePosToRoom(Vector2 fromRoom, Vector2 toRoom)
         {
-            Link link = Link.getInstance();
-            Vector2 linkRoomPos = toRoom + link.pos - fromRoom;
-            UpdatePositions(link, linkRoomPos);
+            Vector2 linkRoomPos = toRoom + GameState.Link.pos - fromRoom;
+            UpdatePositions(GameState.Link, linkRoomPos);
         }
     }
 }
