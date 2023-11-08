@@ -67,11 +67,6 @@ namespace LegendOfZelda
         public void ChangePosition()
         {
             Position += Direction;
-            if (Position.X < 0 || Position.Y < 0)
-            {
-                Position -= Direction;
-            }
-
             Sprites[CurrentSprite].UpdatePos(Position);
             Collider.Pos = Position;
         }

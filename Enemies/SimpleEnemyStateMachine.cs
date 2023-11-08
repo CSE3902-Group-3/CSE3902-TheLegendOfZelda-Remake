@@ -29,6 +29,7 @@ namespace LegendOfZelda
         {
             Position = pos;
             Offset = offset;
+            Direction = new Vector2(1, 0);
 
             switch (EnemySpeed)
             {
@@ -74,10 +75,6 @@ namespace LegendOfZelda
             if (allowedToMove)
             {
                 Position += Direction * SpeedMultiplier;
-                if (Position.X < 0 || Position.Y < 0)
-                {
-                    Position -= Direction;
-                }
                 Sprite.UpdatePos(Position);
             }
         }

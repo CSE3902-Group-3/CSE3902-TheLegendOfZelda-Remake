@@ -184,7 +184,7 @@ namespace LegendOfZelda
                 }
             }
 
-            List<IUpdateable> thisFrameUpdates = CurrentRoomUpdateables.ToList();
+            List<IUpdateable> thisFrameUpdates = CurrentRoomUpdateables;
             for (int i = thisFrameUpdates.Count - 1; i >= 0; i--)
             {
                 if (thisFrameUpdates[i] != null)

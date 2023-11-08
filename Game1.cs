@@ -77,10 +77,6 @@ namespace LegendOfZelda
             link = GameState.Link;
 
             BackgroundGenerator.GenerateMenuBackgrounds();
-            new Staircase(new Vector2(1500, 600));
-            new LadderDoor(new Vector2(1700, 600));
-            new Room8PushableBlock(link.pos + new Vector2(160, -160));
-            new Room16PushableBlock(link.pos + new Vector2(-160, -160));
         }
 
         protected override void Update(GameTime gameTime)

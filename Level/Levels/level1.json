@@ -5138,7 +5138,7 @@
         },
         {
           "ElementType": "Block",
-          "ElementValue": 1,
+          "ElementValue": 36,
           "XLocation": 5,
           "YLocation": 3
         },
@@ -6588,7 +6588,7 @@
           "ElementType": "Enemy",
           "ElementValue": 5,
           "XLocation": 580,
-          "YLocation": 440
+          "YLocation": 448
         },
         {
           "ElementType": "Enemy",
@@ -7243,7 +7243,7 @@
         },
         {
           "ElementType": "Block",
-          "ElementValue": 34,
+          "ElementValue": 35,
           "XLocation": 3,
           "YLocation": 0
         },
@@ -10307,7 +10307,7 @@
         },
         {
           "ElementType": "Block",
-          "ElementValue": 1,
+          "ElementValue": 37,
           "XLocation": 4,
           "YLocation": 3
         },

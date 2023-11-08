@@ -67,6 +67,8 @@
          * WallExterior, 33
          * Ladder, 34
          * LadderDoor, 35
+         * Room8PushableBlock, 36
+         * Room16PushableBlock, 37
     */
 
     - Item dictionary:

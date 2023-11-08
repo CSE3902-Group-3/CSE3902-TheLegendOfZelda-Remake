@@ -62,7 +62,9 @@ namespace LegendOfZelda
                 WestHoleDoor,
                 WallExterior,
                 Ladder,
-                LadderDoor
+                LadderDoor,
+                Room8PushableBlock,
+                Room16PushableBlock
             };
         }
         public static BlockLamda GetInstance()
@@ -240,6 +242,16 @@ namespace LegendOfZelda
         {
             Vector2 pos = new Vector2(room.RoomXLocation + Scale * mapElement.XLocation, room.RoomYLocation + YMenuOffset + Scale * mapElement.YLocation);
             new LadderDoor(pos);
+        }
+        static void Room8PushableBlock(Room room, MapElement mapElement)
+        {
+            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            new Room8PushableBlock(pos);
+        }
+        static void Room16PushableBlock(Room room, MapElement mapElement)
+        {
+            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            new Room16PushableBlock(pos);
         }
     }
 }
