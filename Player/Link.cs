@@ -59,6 +59,14 @@ namespace LegendOfZelda
             LevelMaster.RegisterUpdateable(this, true);
         }
 
+        public void Heal(float health)
+        {
+            if (this.HP + health > this.maxHP)
+                this.HP = this.maxHP;
+            else
+                this.HP += health;
+        }
+
         public void TakeDamage(float damage)
         {
             SoundFactory.PlaySound(SoundFactory.getInstance().LinkHurt, 1.0f, 0.0f, 0.0f);
