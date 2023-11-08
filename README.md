@@ -73,3 +73,6 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
+
+#### Sprint 5 Topic Ideas:
+- Michael Herring: Reinvestigate HLSL shaders from sprint 2
