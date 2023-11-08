@@ -27,21 +27,22 @@ namespace LegendOfZelda
         }
         private GameState()
         {
-            ResetState();
+            CollisionManager = new CollisionManager();
+            LevelMaster = LevelMaster.GetInstance();
+            ResetGameState();
+            RoomCycler.GetInstance();
+            PauseManager = new PauseManager();
+            CameraController = CameraController.GetInstance();
         }
         public void SwitchState(IGameState state)
         {
             State = state;
         }
-        public void ResetState()
+        public void ResetGameState()
         {
-            CollisionManager = new CollisionManager();
-            LevelMaster = LevelMaster.GetInstance();
             LevelMaster.StartLevel("level1.json");
-            RoomCycler.GetInstance();
+            LevelMaster.NavigateToRoom(0);
             Link = new Link();
-            PauseManager = new PauseManager();
-            CameraController = CameraController.GetInstance();
             State = new NormalState();
         }
         public void Update(GameTime gameTime)

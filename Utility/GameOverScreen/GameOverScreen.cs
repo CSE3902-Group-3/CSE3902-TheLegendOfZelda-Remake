@@ -112,6 +112,12 @@ namespace LegendOfZelda
 				counter++;
 			}
 
+            if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 1000))
+            {
+				GameState.GetInstance().ResetGameState();
+                counter++;
+            }
+
         }
 	}
 }

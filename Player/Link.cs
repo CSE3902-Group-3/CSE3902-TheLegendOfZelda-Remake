@@ -83,11 +83,7 @@ namespace LegendOfZelda
 
         public void Reset()
         {
-            LinkUtilities.UpdatePositions(this, LinkUtilities.originalLinkPosition);
-            this.StateMachine.ChangeState(new WalkRightLinkState());
-            this.StateMachine.ChangeState(new IdleLinkState());
-
-            this.HP = this.MaxHP;
+            GameState.GetInstance().SwitchState(new GameOverState());
         }
 
         public void Die()
