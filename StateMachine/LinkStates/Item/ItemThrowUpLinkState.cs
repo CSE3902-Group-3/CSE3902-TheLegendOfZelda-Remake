@@ -1,28 +1,23 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
-
-namespace LegendOfZelda
+﻿namespace LegendOfZelda
 {
     public class ItemThrowUpLinkState : IState
     {
-        private Game1 game;
-        private Link link;
+        private Link Link;
 
         public ItemThrowUpLinkState()
         {
-            this.game = Game1.getInstance();
-            this.link = (Link)game.link;
+            Link = GameState.Link;
         }
 
         public void Enter()
         {
-            if (link.sprite != null)
+            if (Link.Sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)link.sprite).UnregisterSprite();
+                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
             }
             link.stateMachine.canMove = false;
-            link.sprite = SpriteFactory.getInstance().CreateLinkThrowUpSprite();
+            Link.Sprite = SpriteFactory.getInstance().CreateLinkThrowUpSprite();
 
             // Throw item
             if (Inventory.getInstance().SecondaryItem is Bomb)
@@ -42,8 +37,8 @@ namespace LegendOfZelda
 
         public void Exit()
         {
-            link.stateMachine.canMove = true;
-            ((AnimatedSprite)link.sprite).UnregisterSprite();
+            Link.StateMachine.canMove = true;
+            ((AnimatedSprite)Link.Sprite).UnregisterSprite();
         }
 
     }

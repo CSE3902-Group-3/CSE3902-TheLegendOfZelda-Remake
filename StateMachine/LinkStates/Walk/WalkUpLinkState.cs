@@ -11,28 +11,28 @@ namespace LegendOfZelda
         public WalkUpLinkState()
         {
             this.game = Game1.getInstance();
-            link = (Link)game.link;
-            link.stateMachine.prevDirection = link.stateMachine.currentDirection;
-            link.stateMachine.currentDirection = Direction.up;
+            link = GameState.Link;
+            link.StateMachine.prevDirection = link.StateMachine.currentDirection;
+            link.StateMachine.currentDirection = Direction.up;
         }
 
         public void Enter()
         {
-            link.stateMachine.isWalking = true;
-            if (link.sprite != null)
+            link.StateMachine.isWalking = true;
+            if (link.Sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)link.sprite).UnregisterSprite();
+                ((AnimatedSprite)link.Sprite).UnregisterSprite();
             }
-            link.sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
+            link.Sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
         }
 
         public void Execute()
         {
-            if (link.stateMachine.canMove)
+            if (link.StateMachine.canMove)
             {
-                Vector2 currPos = link.sprite.pos;
-                currPos.Y -= link.velocity;
+                Vector2 currPos = link.Sprite.pos;
+                currPos.Y -= link.Velocity;
                 currPos.X += LinkUtilities.SnapToGrid((int)currPos.X);
                 LinkUtilities.UpdatePositions(link, currPos);
             }
@@ -40,7 +40,7 @@ namespace LegendOfZelda
 
         public void Exit()
         {
-            link.stateMachine.isWalking = false;
+            link.StateMachine.isWalking = false;
         }
     }
 }
