@@ -8,14 +8,10 @@ namespace LegendOfZelda
     {
         /* Graphics */
         private GraphicsDeviceManager _graphics;
-        public SpriteBatch SpriteBatch { get; private set; }
-        public SpriteFactory SpriteFactory { get; private set; }
+        public SpriteBatch _spriteBatch { get; private set; }
 
         /* Game State */
         private GameState GameState;
-
-        /* Sounds */
-        public SoundFactory SoundFactory { get; private set; }
 
         /* Singleton */
         private static Game1 instance;
@@ -43,8 +39,8 @@ namespace LegendOfZelda
         {
             instance = this;
 
-            SpriteFactory = SpriteFactory.getInstance();
-            SoundFactory = SoundFactory.getInstance();
+            SpriteFactory.getInstance();
+            SoundFactory.getInstance();
 
             // Change size of viewport
             _graphics.IsFullScreen = false;
@@ -57,10 +53,10 @@ namespace LegendOfZelda
 
         protected override void LoadContent()
         {
-            SpriteBatch = new SpriteBatch(GraphicsDevice);
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            SpriteFactory.LoadTextures();
-            SoundFactory.LoadTextures();
+            SpriteFactory.getInstance().LoadTextures();
+            SoundFactory.getInstance().LoadTextures();
 
             // Game state
             GameState = GameState.GetInstance();
@@ -76,9 +72,9 @@ namespace LegendOfZelda
         {
             GraphicsDevice.Clear(Color.Black);
             Matrix transformMatrix = Matrix.CreateTranslation(-GameState.CameraController.mainCamera.worldPos.X, -GameState.CameraController.mainCamera.worldPos.Y, 0);
-            SpriteBatch.Begin(SpriteSortMode.Immediate, samplerState: SamplerState.PointClamp, transformMatrix: transformMatrix);
-            GameState.Draw(SpriteBatch);
-            SpriteBatch.End();
+            _spriteBatch.Begin(SpriteSortMode.Immediate, samplerState: SamplerState.PointClamp, transformMatrix: transformMatrix);
+            GameState.Draw(_spriteBatch);
+            _spriteBatch.End();
             base.Draw(gameTime);
         }
     }

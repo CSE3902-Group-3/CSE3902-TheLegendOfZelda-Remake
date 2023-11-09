@@ -27,7 +27,7 @@ namespace LegendOfZelda
 
 		public void Draw()
 		{
-            game.SpriteBatch.Draw(overlay, new Rectangle((int)GameState.CameraController.mainCamera.worldPos.X, (int)GameState.CameraController.mainCamera.worldPos.Y, screenWidth, screenHeight), overlayTexture, Color.White);
+            game._spriteBatch.Draw(overlay, new Rectangle((int)GameState.CameraController.mainCamera.worldPos.X, (int)GameState.CameraController.mainCamera.worldPos.Y, screenWidth, screenHeight), overlayTexture, Color.White);
         }
 	}
 }

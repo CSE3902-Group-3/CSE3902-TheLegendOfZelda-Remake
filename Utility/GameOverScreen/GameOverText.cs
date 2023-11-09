@@ -15,7 +15,7 @@ namespace LegendOfZelda
 		{
             game = Game1.getInstance();
             graphicsDevice = game.GraphicsDevice;
-            spriteBatch = game.SpriteBatch;
+            spriteBatch = game._spriteBatch;
             CameraXPos = (int)GameState.CameraController.mainCamera.worldPos.X;
             CameraYPos = (int)GameState.CameraController.mainCamera.worldPos.Y;
         }

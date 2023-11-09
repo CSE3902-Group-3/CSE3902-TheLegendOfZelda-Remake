@@ -34,8 +34,8 @@ namespace LegendOfZelda
 
         public void Draw()
         {
-            game.SpriteBatch.Draw(overlay, new Rectangle(leftPos, cameraYPos, curtainWidth, screenHeight), overlayTexture, Color.Black);
-            game.SpriteBatch.Draw(overlay, new Rectangle(rightPos, cameraYPos, curtainWidth,screenHeight), overlayTexture, Color.Black);
+            game._spriteBatch.Draw(overlay, new Rectangle(leftPos, cameraYPos, curtainWidth, screenHeight), overlayTexture, Color.Black);
+            game._spriteBatch.Draw(overlay, new Rectangle(rightPos, cameraYPos, curtainWidth,screenHeight), overlayTexture, Color.Black);
         }
 
 	}

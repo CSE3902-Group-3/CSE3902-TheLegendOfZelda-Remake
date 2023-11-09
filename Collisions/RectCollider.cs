@@ -75,7 +75,7 @@ namespace LegendOfZelda
 
             LevelMaster.RegisterCollider(this, persistent);
 
-            spriteBatch = Game1.getInstance().SpriteBatch;
+            spriteBatch = Game1.getInstance()._spriteBatch;
             textureWithWhitePixel = SpriteFactory.getInstance().linkTexture;
             locationOfWhitePixel = new Rectangle(118, 64, 1, 1);
 

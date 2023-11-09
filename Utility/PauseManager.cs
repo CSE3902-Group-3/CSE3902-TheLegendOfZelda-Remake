@@ -63,8 +63,8 @@ namespace LegendOfZelda
             int CameraYPos = (int)GameState.CameraController.mainCamera.worldPos.Y;
 
             overlay = SpriteFactory.getInstance().linkTexture;
-            game.SpriteBatch.Draw(overlay, new Rectangle(CameraXPos,CameraYPos,graphicsDevice.Viewport.Height, graphicsDevice.Viewport.Width), overlayTexture, color);
-            game.SpriteBatch.DrawString(SpriteFactory.getInstance().pauseWord, "PAUSED", new Vector2(CameraXPos + (graphicsDevice.Viewport.Width / 2) - 70, CameraYPos + (graphicsDevice.Viewport.Height / 2) - 20), Color.Red);
+            game._spriteBatch.Draw(overlay, new Rectangle(CameraXPos,CameraYPos,graphicsDevice.Viewport.Height, graphicsDevice.Viewport.Width), overlayTexture, color);
+            game._spriteBatch.DrawString(SpriteFactory.getInstance().pauseWord, "PAUSED", new Vector2(CameraXPos + (graphicsDevice.Viewport.Width / 2) - 70, CameraYPos + (graphicsDevice.Viewport.Height / 2) - 20), Color.Red);
         }
 
     }
