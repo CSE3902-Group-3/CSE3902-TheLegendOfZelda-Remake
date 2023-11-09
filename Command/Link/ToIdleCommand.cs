@@ -14,7 +14,7 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            player.stateMachine.ChangeState(new IdleLinkState());
+            player.StateMachine.ChangeState(new IdleLinkState());
         }
     }
 }

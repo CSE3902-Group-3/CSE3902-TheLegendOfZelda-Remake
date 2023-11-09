@@ -1,48 +1,43 @@
-﻿using LegendOfZelda;
-using System.Runtime.CompilerServices;
-
-namespace LegendOfZelda
+﻿namespace LegendOfZelda
 {
     public class IdleLinkState : IState
     {
-        private Game1 game;
-        private Link link;
+        private Link Link;
 
         // can pause animation in any direction, no need for separate states
         public IdleLinkState()
         {
-            this.game = Game1.getInstance();
-            link = (Link)game.link;
+            Link = GameState.Link;
         }
 
         public void Enter()
         {
-            link.stateMachine.canMove = true;
+            Link.StateMachine.canMove = true;
             // if we were not just walking, change sprite
-            if (link.stateMachine.PrevState.GetType() != typeof(WalkDownLinkState) &&
-                link.stateMachine.PrevState.GetType() != typeof(WalkUpLinkState) &&
-                link.stateMachine.PrevState.GetType() != typeof(WalkLeftLinkState) &&
-                link.stateMachine.PrevState.GetType() != typeof(WalkRightLinkState))
+            if (Link.StateMachine.PrevState.GetType() != typeof(WalkDownLinkState) &&
+                Link.StateMachine.PrevState.GetType() != typeof(WalkUpLinkState) &&
+                Link.StateMachine.PrevState.GetType() != typeof(WalkLeftLinkState) &&
+                Link.StateMachine.PrevState.GetType() != typeof(WalkRightLinkState))
             {
-                ((AnimatedSprite)link.sprite).UnregisterSprite();
-                switch (link.stateMachine.currentDirection)
+                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
+                switch (Link.StateMachine.currentDirection)
                 {
                     case Direction.left:
-                        link.sprite = SpriteFactory.getInstance().CreateLinkWalkLeftSprite();
+                        Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkLeftSprite();
                         break;
                     case Direction.up:
-                        link.sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
+                        Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
                         break;
                     case Direction.right:
-                        link.sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
+                        Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
                         break;
                     case Direction.down:
-                        link.sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
+                        Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
                         break;
                 }
             }
             // cast then pause animation of sprite
-            ((AnimatedSprite)link.sprite).paused = true;
+            ((AnimatedSprite)Link.Sprite).paused = true;
         }
 
         public void Execute()
@@ -53,7 +48,7 @@ namespace LegendOfZelda
         public void Exit()
         {
             // cast then pause animation of sprite
-            ((AnimatedSprite)link.sprite).paused = false;
+            ((AnimatedSprite)Link.Sprite).paused = false;
         }
     }
 }

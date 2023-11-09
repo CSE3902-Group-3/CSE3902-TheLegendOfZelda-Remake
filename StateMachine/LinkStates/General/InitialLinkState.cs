@@ -4,14 +4,10 @@ namespace LegendOfZelda
 {
     public class InititalLinkState : IState
     {
-        private Game1 game;
-        private IPlayer link;
         private ISprite sprite;
 
         public InititalLinkState(ISprite sprite)
         {
-            this.game = Game1.getInstance();
-            this.link = game.link;
             // really really hacky solution to an initialization problem
             // basically, the sprite is null when the state is created (bc it is initied in the link constructor)
             // so we alias the sprite to the sprite passed in which is the sprite in the (currently nulL) link initialization

@@ -115,12 +115,12 @@ namespace LegendOfZelda
                 counter++;
 			}
 
-            if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
+            if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 1000))
             {
-				//Go to gameover screen drawing location here
-				menu.Draw();
+				GameState.GetInstance().ResetGameState();
                 counter++;
             }
+
         }
 	}
 }
