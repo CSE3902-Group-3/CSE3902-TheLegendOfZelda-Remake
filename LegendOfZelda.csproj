@@ -41,7 +41,6 @@
     <Folder Include="LegendOfZelda\obj\Release\" />
     <Folder Include="ItemClasses\" />
     <Folder Include="Utility\GameOverScreenDrawables\" />
-    <Folder Include="Utility\ScreenManagers\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Level\Levels\level1.json">
