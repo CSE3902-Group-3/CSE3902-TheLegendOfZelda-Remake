@@ -76,9 +76,9 @@ namespace LegendOfZelda
 
         private void HandlePlayerCollisionWhenLocked()
         {
-            player = Game1.getInstance().link;
+            player = GameState.Link;
             //This call is long because Link's inventory is deeply nested in Link and because the RemoveItem method requires an actual IItem object
-            if(player.stateMachine.linkInventory.RemoveItem(new Key(Vector2.Zero)) == true)
+            if(player.StateMachine.linkInventory.RemoveItem(new Key(Vector2.Zero)) == true)
             {
                 OpenDoor();
             }
@@ -87,7 +87,7 @@ namespace LegendOfZelda
         private void HandlePlayerCollisionWhenUnlocked()
         {
             LevelMaster.GetInstance().NavigateInDirection(direction, OnNavComplete);
-            player = Game1.getInstance().link;
+            player = GameState.Link;
             player.EnterRoomTransition();
         }
 

@@ -1,47 +1,44 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
     public class WalkDownLinkState : IState
     {
-        private Game1 game;
-        private Link link;
+        private Link Link;
 
         public WalkDownLinkState()
         {
-            this.game = Game1.getInstance();
-            link = (Link)game.link;
-            link.stateMachine.prevDirection = link.stateMachine.currentDirection;
-            link.stateMachine.currentDirection = Direction.down;
+            Link = GameState.Link;
+            Link.StateMachine.prevDirection = Link.StateMachine.currentDirection;
+            Link.StateMachine.currentDirection = Direction.down;
         }
 
         public void Enter()
         {
-            link.stateMachine.isWalking = true;
-            if (link.sprite != null)
+            Link.StateMachine.isWalking = true;
+            if (Link.Sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)link.sprite).UnregisterSprite();
+                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
             }
-            link.sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
+            Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
         }
 
         public void Execute()
         {
-            if (link.stateMachine.canMove)
+            if (Link.StateMachine.canMove)
             {
-                Vector2 currPos = link.sprite.pos;
-                currPos.Y += link.velocity;
+                Vector2 currPos = Link.Sprite.pos;
+                currPos.Y += Link.Velocity;
                 currPos.X += LinkUtilities.SnapToGrid((int)currPos.X);
 
-                LinkUtilities.UpdatePositions(link, currPos);
+                LinkUtilities.UpdatePositions(Link, currPos);
             }
         }
 
         public void Exit()
         {
-            link.stateMachine.isWalking = false;
+            Link.StateMachine.isWalking = false;
         }
     }
 }

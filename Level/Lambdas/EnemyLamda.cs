@@ -20,7 +20,8 @@ namespace LegendOfZelda
                 Rope,
                 Skeleton,
                 WallMaster,
-                Wizard
+                Wizard,
+                ZolBig
             };
         }
         public static EnemyLamda GetInstance()
