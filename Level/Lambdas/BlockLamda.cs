@@ -127,7 +127,7 @@ namespace LegendOfZelda
         }
         static void Stairs(Room room, MapElement mapElement)
         {
-            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
             new Staircase(pos);
         }
         static void Brick(Room room, MapElement mapElement)
@@ -251,12 +251,12 @@ namespace LegendOfZelda
         }
         static void Room8PushableBlock(Room room, MapElement mapElement)
         {
-            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
             new Room8PushableBlock(pos);
         }
         static void Room16PushableBlock(Room room, MapElement mapElement)
         {
-            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
             new Room16PushableBlock(pos);
         }
     }

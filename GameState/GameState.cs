@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
@@ -40,8 +35,8 @@ namespace LegendOfZelda
         {
             CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
-            LevelMaster.NavigateToRoom(0);
             Link = new Link();
+            LevelMaster.NavigateToRoom(0);
             PauseManager = new PauseManager();
             State = new NormalState();
         }

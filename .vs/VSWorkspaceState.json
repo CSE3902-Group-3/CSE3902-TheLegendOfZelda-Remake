@@ -3,8 +3,11 @@
     "",
     "\\Enemies",
     "\\Level",
-    "\\Player"
+    "\\Level\\Lambdas",
+    "\\Player",
+    "\\Utility",
+    "\\Utility\\GameOverScreen"
   ],
-  "SelectedNode": "\\Game1.cs",
+  "SelectedNode": "\\Utility\\GameOverScreen\\GameOverScreen.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -33,7 +33,7 @@ namespace LegendOfZelda
                 {
                     LevelMaster.GetInstance().NavigateToRoom(LevelMaster.brickRoomEntrance);
 
-                    player = Game1.getInstance().link;
+                    player = GameState.Link;
                     if (player is Link)
                     {
                         LinkUtilities.UpdatePositions(player as Link, exitPos);

@@ -109,7 +109,7 @@ namespace LegendOfZelda
 
         private bool IsLinkStillPushing()
         {
-            IState linkBlockState = Link.getInstance().stateMachine.CurrentState;
+            IState linkBlockState = GameState.Link.StateMachine.CurrentState;
 
             switch (OppositeDirection(dirPushing))
             {

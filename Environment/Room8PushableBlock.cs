@@ -74,7 +74,7 @@ namespace LegendOfZelda
             switch (state)
             {
                 case BlockState.Pushing:
-                    if (!(Link.getInstance().stateMachine.CurrentState is WalkRightLinkState))
+                    if (!(GameState.Link.StateMachine.CurrentState is WalkRightLinkState))
                     {
                         state = BlockState.Idle;
                         timer.Destroy();
