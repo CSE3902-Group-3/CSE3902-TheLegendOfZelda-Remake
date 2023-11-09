@@ -27,11 +27,9 @@ namespace LegendOfZelda
         }
         private GameState()
         {
-            CollisionManager = new CollisionManager();
             LevelMaster = LevelMaster.GetInstance();
             ResetGameState();
             RoomCycler.GetInstance();
-            PauseManager = new PauseManager();
             CameraController = CameraController.GetInstance();
         }
         public void SwitchState(IGameState state)
@@ -40,9 +38,11 @@ namespace LegendOfZelda
         }
         public void ResetGameState()
         {
+            CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
             LevelMaster.NavigateToRoom(0);
             Link = new Link();
+            PauseManager = new PauseManager();
             State = new NormalState();
         }
         public void Update(GameTime gameTime)

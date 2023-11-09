@@ -20,15 +20,11 @@ namespace LegendOfZelda
         public static List<IRectCollider> CurrentRoomColliders { get; set; }
         public static List<IRectCollider> PersistentColliders { get; set; }
         public static List<Vector2> RoomPositionList { get; set; }
-        public static CollisionManager CollisionManager;
         private static BlockLamda BlockLamda = BlockLamda.GetInstance();
         private static ItemLamda ItemLamda = ItemLamda.GetInstance();
         private static EnemyLamda EnemyLamda = EnemyLamda.GetInstance();
         private static RoomList roomList;
-        private LevelMaster()
-        {
-            CollisionManager = CollisionManager.instance;
-        }
+        private LevelMaster(){}
         public static LevelMaster GetInstance()
         {
             if (Instance == null)
@@ -105,7 +101,7 @@ namespace LegendOfZelda
             {
                 foreach (IRectCollider collider in CurrentRoomColliders)
                 {
-                    CollisionManager.RemoveRectCollider(collider);
+                    GameState.CollisionManager.RemoveRectCollider(collider);
                 }
             }
             CurrentRoomColliders = RoomListColliders[roomNumber];
@@ -113,7 +109,7 @@ namespace LegendOfZelda
             {
                 if (collider.Active)
                 {
-                    CollisionManager.AddRectCollider(collider);
+                    GameState.CollisionManager.AddRectCollider(collider);
                 }
             }
         }
@@ -162,7 +158,7 @@ namespace LegendOfZelda
                 //Deactivate colliders (since most objects are not in the first room)
                 foreach (IRectCollider rectCollider in RoomListColliders[CurrentRoom])
                 {
-                    CollisionManager.RemoveRectCollider(rectCollider);
+                    GameState.CollisionManager.RemoveRectCollider(rectCollider);
                 }
                 CurrentRoom++;
             }
