@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    internal class GameState : IGameState
+    public class GameState : IGameState
     {
         private static GameState Instance;
         private static IGameState State;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    internal class MapElement
+    public class MapElement
     {
         public string ElementType { get; set; }
         public int ElementValue { get; set; }

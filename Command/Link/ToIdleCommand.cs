@@ -2,7 +2,7 @@
 namespace LegendOfZelda
 {
     //Class completed last minute in order to meet functionality check. Original author still needs to come back and finish the class.
-    internal class ToIdleCommand : ICommands
+    public class ToIdleCommand : ICommands
     {
         private IPlayer player;
 

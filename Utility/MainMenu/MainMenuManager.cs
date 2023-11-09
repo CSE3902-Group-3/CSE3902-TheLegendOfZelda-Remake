@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegendOfZelda.Utility.ScreenManagers
+namespace LegendOfZelda
 {
-    internal class MainMenuManager
+    public class MainMenuManager
     {
     }
 }

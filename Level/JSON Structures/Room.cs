@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    internal class RoomList
+    public class RoomList
     {
         public List<Room> Rooms { get; set; }
     }
-    internal class Room
+    public class Room
     {
         public int RoomNumber { get; set; }
         public int RoomXLocation { get; set; }
@@ -18,7 +18,7 @@ namespace LegendOfZelda
         public List<AdjacentRoom> AdjacentRooms { get; set; }
         public List<MapElement> MapElements { get; set; }
     }
-    internal class AdjacentRoom
+    public class AdjacentRoom
     {
         public int RoomNumber { get; set; }
         public string Direction { get; set; }
