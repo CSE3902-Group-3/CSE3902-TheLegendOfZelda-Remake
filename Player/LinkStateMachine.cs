@@ -27,10 +27,10 @@ namespace LegendOfZelda
             // only change if states are different
             if (CurrentState != null && (newState.GetType() == CurrentState.GetType())) return;
 
-            Link link = GameState.Link;
+            Link link = (Link)Game1.getInstance().link;
             if(link != null)
             {
-                position = link.Sprite.pos;
+                position = link.sprite.pos;
             }
 
             if (CurrentState != null)

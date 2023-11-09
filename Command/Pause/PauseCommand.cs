@@ -1,4 +1,6 @@
-﻿namespace LegendOfZelda
+﻿using Microsoft.Xna.Framework.Input;
+
+namespace LegendOfZelda
 {
 	public class PauseCommand : ICommands
 	{

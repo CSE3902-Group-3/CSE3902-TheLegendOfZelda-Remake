@@ -1,23 +1,31 @@
-﻿namespace LegendOfZelda
+﻿using LegendOfZelda;
+using Microsoft.Xna.Framework;
+using System;
+
+using System.Diagnostics;
+
+namespace LegendOfZelda
 {
     public class ItemThrowDownLinkState : IState
     {
-        private Link Link;
+        private Game1 game;
+        private Link link;
 
         public ItemThrowDownLinkState()
         {
-            this.Link = GameState.Link;
+            this.game = Game1.getInstance();
+            this.link = (Link)game.link;
         }
 
         public void Enter()
         {
-            if (Link.Sprite != null)
+            if (link.sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
+                ((AnimatedSprite)link.sprite).UnregisterSprite();
             }
             link.stateMachine.canMove = false;
-            Link.Sprite = SpriteFactory.getInstance().CreateLinkThrowDownSprite();
+            link.sprite = SpriteFactory.getInstance().CreateLinkThrowDownSprite();
 
             // Throw item
             if (Inventory.getInstance().SecondaryItem is Bomb)
@@ -32,16 +40,16 @@
 
         public void Execute()
         {
-            if (((AnimatedSprite)Link.Sprite).complete)
+            if (((AnimatedSprite)link.sprite).complete)
             {
-                Link.StateMachine.ChangeState(new IdleLinkState());
+                link.stateMachine.ChangeState(new IdleLinkState());
             }
         }
 
         public void Exit()
         {
-            Link.StateMachine.canMove = true;
-            ((AnimatedSprite)Link.Sprite).UnregisterSprite();
+            link.stateMachine.canMove = true;
+            ((AnimatedSprite)link.sprite).UnregisterSprite();
         }
 
     }

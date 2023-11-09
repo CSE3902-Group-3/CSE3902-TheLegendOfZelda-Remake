@@ -7,7 +7,7 @@ namespace LegendOfZelda
     public class LinkCollisionWithEnemy
     {
 
-        private static float cooldown = GameState.Link.damageCooldownTimer; // Set the cooldown (in seconds) for damage
+        private static float cooldown = Link.getInstance().damageCooldownTimer; // Set the cooldown (in seconds) for damage
 
         public static void HandleCollisionWithEnemy(CollisionInfo collision)
         {
@@ -28,12 +28,12 @@ namespace LegendOfZelda
             if (enemyDamageMap.ContainsKey(enemyType) && cooldown <= 0)
             {
                 float damage = enemyDamageMap[enemyType];
-                GameState.Link.TakeDamage(damage);
+                Link.getInstance().TakeDamage(damage);
 
-                GameState.Link.damageCooldownTimer = GameState.Link.damageCooldownDuration;
+                Link.getInstance().damageCooldownTimer = Link.getInstance().damageCooldownDuration;
             }
 
-            GameState.Link.StateMachine.ChangeState(new KnockBackLinkState());
+            Link.getInstance().stateMachine.ChangeState(new KnockBackLinkState());
         }
     }
 }

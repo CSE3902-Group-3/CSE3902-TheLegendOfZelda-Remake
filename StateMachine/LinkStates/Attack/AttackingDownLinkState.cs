@@ -18,38 +18,38 @@ namespace LegendOfZelda
         public AttackingDownLinkState()
         {
             this.game = Game1.getInstance();
-            link = GameState.Link;
+            link = (Link)game.link;
         }
 
         public void Enter()
         {
-            if (link.Sprite != null)
+            if (link.sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)link.Sprite).UnregisterSprite();
+                ((AnimatedSprite)link.sprite).UnregisterSprite();
             }
-            link.StateMachine.canMove = false;
+            link.stateMachine.canMove = false;
 
-            link.Sprite = SpriteFactory.getInstance().CreateLinkWoodStabDownSprite();
+            link.sprite = SpriteFactory.getInstance().CreateLinkWoodStabDownSprite();
             
-            if (link.HP == link.MaxHP)
+            if (link.HP == link.maxHP)
             {
-                new SwordBeam(link.StateMachine.position, link.StateMachine.currentDirection);
+                new SwordBeam(link.stateMachine.position, link.stateMachine.currentDirection);
             }
             
-            sword = new Sword(link.StateMachine.currentDirection, link.StateMachine.position);
+            sword = new Sword(link.stateMachine.currentDirection, link.stateMachine.position);
         }
         public void Execute()
         {
-            if (((AnimatedSprite)link.Sprite).complete)
+            if (((AnimatedSprite)link.sprite).complete)
             {
-                link.StateMachine.ChangeState(new IdleLinkState());
+                link.stateMachine.ChangeState(new IdleLinkState());
             }
         }
 
         public void Exit()
         {
-            link.StateMachine.canMove = true;
+            link.stateMachine.canMove = true;
 
             sword.Destroy();
         }

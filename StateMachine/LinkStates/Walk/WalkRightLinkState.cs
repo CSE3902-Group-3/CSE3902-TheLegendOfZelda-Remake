@@ -5,40 +5,42 @@ namespace LegendOfZelda
 {
     public class WalkRightLinkState : IState
     {
-        private Link Link;
+        private Game1 game;
+        private Link link;
 
         public WalkRightLinkState()
         {
-            Link = GameState.Link;
-            Link.StateMachine.prevDirection = Link.StateMachine.currentDirection;
-            Link.StateMachine.currentDirection = Direction.right;
+            this.game = Game1.getInstance();
+            link = (Link)game.link;
+            link.stateMachine.prevDirection = link.stateMachine.currentDirection;
+            link.stateMachine.currentDirection = Direction.right;
         }
 
         public void Enter()
         {
-            Link.StateMachine.isWalking = true;
-            if (Link.Sprite != null)
+            link.stateMachine.isWalking = true;
+            if (link.sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
+                ((AnimatedSprite)link.sprite).UnregisterSprite();
             }
-            Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
+            link.sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
         }
 
         public void Execute()
         {
-            if (Link.StateMachine.canMove)
+            if (link.stateMachine.canMove)
             {
-                Vector2 currPos = Link.Sprite.pos;
-                currPos.X += Link.Velocity;
+                Vector2 currPos = link.sprite.pos;
+                currPos.X += link.velocity;
                 currPos.Y += LinkUtilities.SnapToGrid((int)currPos.Y);
-                LinkUtilities.UpdatePositions(Link, currPos);
+                LinkUtilities.UpdatePositions(link, currPos);
             }
         }
 
         public void Exit()
         {
-            Link.StateMachine.isWalking = false;
+            link.stateMachine.isWalking = false;
         }
     }
 }

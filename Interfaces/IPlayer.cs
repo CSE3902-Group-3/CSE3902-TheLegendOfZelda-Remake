@@ -5,11 +5,11 @@ namespace LegendOfZelda
 {
     public interface IPlayer : IUpdateable
     {
-        ISprite Sprite { get; }
-        public RectCollider Collider { get; set; }
-        LinkStateMachine StateMachine { get; }
+        ISprite sprite { get; }
+        public RectCollider collider { get; set; }
+        LinkStateMachine stateMachine { get; }
 
-        Vector2 Pos { get; }
+        Vector2 pos { get; }
 
         public void Reset();
 

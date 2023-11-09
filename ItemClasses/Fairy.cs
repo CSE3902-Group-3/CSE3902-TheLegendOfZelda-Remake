@@ -62,7 +62,7 @@ namespace LegendOfZelda
         public IItem GenerateInventoryItem()
         {
             //All item in inventory will have a zero position
-            return new Fairy(Vector2.Zero);
+            return new Arrow(Vector2.Zero);
         }
 
         public void Update(GameTime gameTime)

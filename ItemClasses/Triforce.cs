@@ -48,7 +48,7 @@ namespace LegendOfZelda
         public IItem GenerateInventoryItem()
         {
             //All item in inventory will have a zero position
-            return new Triforce(Vector2.Zero);
+            return new Arrow(Vector2.Zero);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

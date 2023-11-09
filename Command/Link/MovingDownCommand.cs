@@ -13,7 +13,7 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            player.StateMachine.ChangeState(new WalkDownLinkState());
+            player.stateMachine.ChangeState(new WalkDownLinkState());
         }
     }
 }

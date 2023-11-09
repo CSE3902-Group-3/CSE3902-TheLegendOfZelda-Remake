@@ -9,72 +9,74 @@ namespace LegendOfZelda
 {
     public class KnockBackLinkState : IState
     {
-        private Link Link;
+        private Game1 game;
+        private Link link;
 
         private Vector2 targetPosition;  // The position Link should move to
 
         public KnockBackLinkState()
         {
-            Link = GameState.Link;
+            this.game = Game1.getInstance();
+            link = (Link)game.link;
         }
 
         public void Enter()
         {
-            Link.StateMachine.canMove = false;
-            Link.StateMachine.isKnockedBack = true;
-            if (Link.Sprite != null)
+            link.stateMachine.canMove = false;
+            link.stateMachine.isKnockedBack = true;
+            if (link.sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
+                ((AnimatedSprite)link.sprite).UnregisterSprite();
             }
-            switch (Link.StateMachine.currentDirection)
+            switch (link.stateMachine.currentDirection)
             {
                 case Direction.up:
-                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
+                    link.sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
                     break;
                 case Direction.down:
-                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
+                    link.sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
                     break;
                 case Direction.left:
-                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkLeftSprite();
+                    link.sprite = SpriteFactory.getInstance().CreateLinkWalkLeftSprite();
                     break;
                 case Direction.right:
-                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
+                    link.sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
                     break;
             }
 
-            targetPosition = LinkUtilities.CalcKnockback(Link);
+            targetPosition = LinkUtilities.CalcKnockback(link);
         }
 
         public void Execute()
         {
-            if (Link.StateMachine.position != targetPosition)
+            if (link.stateMachine.position != targetPosition)
             {
-                Vector2 direction = Vector2.Normalize(targetPosition - Link.StateMachine.position);
+                Vector2 direction = Vector2.Normalize(targetPosition - link.stateMachine.position);
 
-                if (Vector2.Distance(Link.StateMachine.position, targetPosition) <= Link.Velocity)
+                if (Vector2.Distance(link.stateMachine.position, targetPosition) <= link.velocity)
                 {
                     // If Link is very close to the target, snap to the target
-                    LinkUtilities.UpdatePositions(Link, targetPosition);
+                    LinkUtilities.UpdatePositions(link, targetPosition);
                 }
                 else
                 {
                     // Move Link towards the target position
-                    LinkUtilities.UpdatePositions(Link, Link.StateMachine.position + (direction * Link.Velocity));
+                    LinkUtilities.UpdatePositions(link, link.stateMachine.position + (direction * link.velocity));
                 }
             }
 
-            if (Link.StateMachine.position == targetPosition)
+            if (link.stateMachine.position == targetPosition)
             {
                 // Only change the state to IdleLinkState when the target position is reached
-                Link.StateMachine.ChangeState(new IdleLinkState());
+                link.stateMachine.ChangeState(new IdleLinkState());
             }
         }
 
 
         public void Exit()
         {
-            Link.StateMachine.isKnockedBack = false;
+            link.stateMachine.isKnockedBack = false;
         }
     }
 }

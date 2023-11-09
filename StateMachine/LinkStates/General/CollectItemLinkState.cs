@@ -9,43 +9,45 @@ namespace LegendOfZelda
 {
     public class CollectItemLinkState : IState
     {
-        private Link Link;
+        private Game1 game;
+        private Link link;
 
-        private IItem Item;
+        private IItem item;
 
         public CollectItemLinkState(IItem item)
         {
-            this.Link = GameState.Link;
-            this.Item = item;
+            this.game = Game1.getInstance();
+            this.link = (Link)game.link;
+            this.item = item;
         }
 
         public void Enter()
         {
-            if (Link.Sprite != null)
+            if (link.sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
+                ((AnimatedSprite)link.sprite).UnregisterSprite();
             }
-            Link.StateMachine.canMove = false;
-            Link.Sprite = SpriteFactory.getInstance().CreateLinkGetItemSprite();
+            link.stateMachine.canMove = false;
+            link.sprite = SpriteFactory.getInstance().CreateLinkGetItemSprite();
         }
 
         public void Execute()
         {
-            Item.Use((Link.StateMachine.position - new Vector2(-5, 60)));
+            item.Use((link.stateMachine.position - new Vector2(-5, 60)));
 
-            if (((AnimatedSprite)Link.Sprite).complete)
+            if (((AnimatedSprite)link.sprite).complete)
             {
-                Link.StateMachine.ChangeState(new IdleLinkState());
+                link.stateMachine.ChangeState(new IdleLinkState());
             }
         }
 
         public void Exit()
         {
-            Link.StateMachine.canMove = true;
-            ((AnimatedSprite)Link.Sprite).UnregisterSprite();
+            link.stateMachine.canMove = true;
+            ((AnimatedSprite)link.sprite).UnregisterSprite();
             // this should be done in the Item class I think? link shouldn't be responsible for this
-            Item.Remove();        
+            item.Remove();        
         }
     }
 }

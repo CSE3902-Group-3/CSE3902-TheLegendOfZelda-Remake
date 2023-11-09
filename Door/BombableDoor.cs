@@ -83,7 +83,7 @@ namespace LegendOfZelda
             if (collision.CollidedWith.Layer != CollisionLayer.Player) return;
 
             LevelMaster.GetInstance().NavigateInDirection(direction, OnNavComplete);
-            player = GameState.Link;
+            player = Game1.getInstance().link;
             player.EnterRoomTransition();
         }
 

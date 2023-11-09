@@ -14,19 +14,19 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            switch (player.StateMachine.currentDirection)
+            switch (player.stateMachine.currentDirection)
             {
                 case Direction.left:
-                    player.StateMachine.ChangeState(new AttackingLeftLinkState());
+                    player.stateMachine.ChangeState(new AttackingLeftLinkState());
                     break;
                 case Direction.up:
-                    player.StateMachine.ChangeState(new AttackingUpLinkState());
+                    player.stateMachine.ChangeState(new AttackingUpLinkState());
                     break;
                 case Direction.right:
-                    player.StateMachine.ChangeState(new AttackingRightLinkState());
+                    player.stateMachine.ChangeState(new AttackingRightLinkState());
                     break;
                 case Direction.down:
-                    player.StateMachine.ChangeState(new AttackingDownLinkState());
+                    player.stateMachine.ChangeState(new AttackingDownLinkState());
                     break;
             }
         }

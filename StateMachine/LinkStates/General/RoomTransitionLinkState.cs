@@ -1,50 +1,58 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace LegendOfZelda
 {
     public class RoomTransitionLinkState : IState
     {
-        private Link Link;
+        private Game1 game;
+        private Link link;
 
         private Vector2 targetPosition;
 
         public RoomTransitionLinkState()
         {
-            Link = GameState.Link;
+            this.game = Game1.getInstance();
+            link = (Link)game.link;
 
-            targetPosition = Link.StateMachine.position;
+            targetPosition = link.stateMachine.position;
         }
 
         public void Enter()
         {
-            Link.StateMachine.canMove = false;
+            link.stateMachine.canMove = false;
 
-            if (Link.Sprite != null)
+            if (link.sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
+                ((AnimatedSprite)link.sprite).UnregisterSprite();
             }
-            switch (Link.StateMachine.currentDirection)
+            switch (link.stateMachine.currentDirection)
             {
                 case Direction.up:
-                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
+                    link.sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
                     targetPosition += new Vector2(0, -196);
                     break;
                 case Direction.down:
-                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
+                    link.sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
                     targetPosition += new Vector2(0, 196);
                     break;
                 case Direction.left:
-                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkLeftSprite();
+                    link.sprite = SpriteFactory.getInstance().CreateLinkWalkLeftSprite();
                     targetPosition += new Vector2(-196, 0);
 
                     break;
                 case Direction.right:
-                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
+                    link.sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
                     targetPosition += new Vector2(196, 0);
                     break;
             }
 
-            LinkUtilities.UpdatePositions(Link, targetPosition);
+            LinkUtilities.UpdatePositions(link, targetPosition);
         }
 
         public void Execute()
@@ -55,8 +63,8 @@ namespace LegendOfZelda
 
         public void Exit()
         {
-            Link.StateMachine.canMove = true;
-            Link.Velocity = 5;
+            link.stateMachine.canMove = true;
+            link.velocity = 5;
         }
     }
 }

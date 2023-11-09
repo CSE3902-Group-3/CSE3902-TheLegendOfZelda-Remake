@@ -20,9 +20,9 @@ namespace LegendOfZelda
 
         public static void UpdatePositions(Link link, Vector2 newPositon)
         {
-            link.Sprite.UpdatePos(newPositon);
-            link.StateMachine.position = newPositon;
-            link.Collider.Pos = newPositon;
+            link.sprite.UpdatePos(newPositon);
+            link.stateMachine.position = newPositon;
+            link.collider.Pos = newPositon;
         }
 
         public static bool IsStateWithIncompleteAnimation(IState state)
@@ -31,25 +31,25 @@ namespace LegendOfZelda
                 state is AttackingLeftLinkState || state is AttackingRightLinkState ||
                 state is CollectItemLinkState)
             {
-                return !((AnimatedSprite)GameState.Link.Sprite).complete;
+                return !((AnimatedSprite)Game1.getInstance().link.sprite).complete;
             }
             return false;
         }
 
         public static Vector2 CalcKnockback(Link link)
         {
-            Vector2 targetPosition = link.StateMachine.position;
+            Vector2 targetPosition = link.stateMachine.position;
 
             // Calculate the knockback direction based on Link's current direction
-            if (link.StateMachine.currentDirection == Direction.down)
+            if (link.stateMachine.currentDirection == Direction.down)
             {
                 targetPosition.Y -= 100;
             }
-            else if (link.StateMachine.currentDirection == Direction.up)
+            else if (link.stateMachine.currentDirection == Direction.up)
             {
                 targetPosition.Y += 100;
             }
-            else if (link.StateMachine.currentDirection == Direction.left)
+            else if (link.stateMachine.currentDirection == Direction.left)
             {
                 targetPosition.X += 100;
             }
@@ -63,7 +63,7 @@ namespace LegendOfZelda
 
         public static bool LinkChangedDirection()
         {
-            return GameState.Link.StateMachine.prevDirection != GameState.Link.StateMachine.currentDirection;
+            return Link.getInstance().stateMachine.prevDirection != Link.getInstance().stateMachine.currentDirection;
         }
     }
 }
