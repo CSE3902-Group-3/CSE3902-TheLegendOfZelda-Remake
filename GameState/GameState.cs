@@ -17,10 +17,7 @@ namespace LegendOfZelda
         public static PauseManager PauseManager;
         public static CollisionManager CollisionManager;
         public static Link Link;
-        public static RoomCycler RoomCycler;
 
-        // testing
-        private static bool AlreadySwitched = false;
         //public enum GameStates { normalState, winState, loseState, pauseState, menuState, roomTransitionState }
         public static GameState GetInstance()
         {
@@ -30,33 +27,27 @@ namespace LegendOfZelda
         }
         private GameState()
         {
-            CollisionManager = new CollisionManager();
             LevelMaster = LevelMaster.GetInstance();
-            LevelMaster.StartLevel("level1.json");
-            Link = Link.getInstance();
-            PauseManager = new PauseManager();
+            ResetGameState();
+            RoomCycler.GetInstance();
             CameraController = CameraController.GetInstance();
-            State = new NormalState();
         }
         public void SwitchState(IGameState state)
         {
             State = state;
         }
-        public void ResetState()
+        public void ResetGameState()
         {
-            Instance = new GameState();
-            // need a way to reset link
+            CollisionManager = new CollisionManager();
+            LevelMaster.StartLevel("level1.json");
+            LevelMaster.NavigateToRoom(0);
+            Link = new Link();
+            PauseManager = new PauseManager();
+            State = new NormalState();
         }
         public void Update(GameTime gameTime)
         {
             State.Update(gameTime);
-
-            // Uncomment the part below to test game over screen
-            /*if (gameTime.TotalGameTime.TotalMilliseconds > 3000 && !AlreadySwitched)
-            {
-                SwitchState(new GameOverState());
-                AlreadySwitched = true;
-            }*/
         }
         public void Draw(SpriteBatch _spriteBatch)
         {

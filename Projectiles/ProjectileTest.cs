@@ -33,11 +33,11 @@ namespace LegendOfZelda
                     new BlueArrowProjectile(pos, Direction.down);
                     break;
                 case 4:
-                    new BoomerangProjectile(pos, new Vector2(0, -1), Game1.getInstance().link);
+                    new BoomerangProjectile(pos, new Vector2(0, -1), GameState.Link);
                     new BombProjectile(pos);
                     break;
                 case 5:
-                    new BoomerangProjectile(pos, new Vector2(-1, -1), Game1.getInstance().link);
+                    new BoomerangProjectile(pos, new Vector2(-1, -1), GameState.Link);
                     break;
                 case 6:
                     new SwordBeam(pos, Direction.up);
