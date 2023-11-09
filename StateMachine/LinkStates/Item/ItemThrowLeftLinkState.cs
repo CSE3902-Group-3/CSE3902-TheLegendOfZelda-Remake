@@ -23,11 +23,6 @@ namespace LegendOfZelda
             }
             link.stateMachine.canMove = false;
             link.sprite = SpriteFactory.getInstance().CreateLinkThrowLeftSprite();
-
-            link.stateMachine.currentItem = new Bomb(link.stateMachine.position - new Vector2(90, 0));
-            //Added in so I can test bomb usage
-            new BombProjectile(link.stateMachine.position - new Vector2(90, 0));
-            link.stateMachine.currentItem.Show();
         }
 
         public void Execute()
@@ -39,7 +34,6 @@ namespace LegendOfZelda
         {
             link.stateMachine.canMove = true;
             ((AnimatedSprite)link.sprite).UnregisterSprite();
-            link.stateMachine.currentItem = null;
         }
 
     }

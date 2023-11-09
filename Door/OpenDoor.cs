@@ -51,7 +51,7 @@ namespace LegendOfZelda
                 {
                     LevelMaster.GetInstance().NavigateInDirection(direction, OnNavComplete);
                     player = Game1.getInstance().link;
-                    player.EnterRoomTransition(direction);
+                    player.EnterRoomTransition();
                     break;
                 }
             }

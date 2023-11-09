@@ -5,17 +5,14 @@ Remake of NES The Legend of Zelda game
 ### Player controls
 - Arrow and `wasd` keys should move Link and change his facing direction.
 - The `z` and `n` key should cause Link to attack using his sword.
-- Number keys (1, 2, 3, etc.) should be used to have Link use a different item (later this will be replaced with a menu system and `x` and `m` for the secondary item.
+- `b` for Link to use his secondary item
 
 ### Other controls
 - Use `q` to quit and `r` to reset the program back to its initial state.
 
 ## Known Bugs:
 - Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
-- Link should be able to walk in front of a wall as long as his bottom half is below it, but right now his top half blocks him from walking in front
-- Link sprite sometimes lingers in previous room when switching rooms.
 - Link can only place bombs with 1 key and cannot use any other items
-- Bombs dissappear instead of exploding when placed by Link
 - When Link places a bomb it is sometimes placed too far away
 - Stalfos sometimes gets stuck in wall
 - Enemies dissappear instead of taking damage and blinking/flashing/taking knockback/exploding when hit with Link's sword
@@ -36,6 +33,7 @@ Remake of NES The Legend of Zelda game
 -   10/15: 84, 1127, 2, 187, 7443, 2032
 -   10/20: 83, 1277, 2, 186, 8167, 2317
 -   10/23: 83, 1318, 2, 196, 8402, 2391
+-   11/6: 82, 1664, 2, 221, 9975, 2805
 
 ## Code Reviews:
 When possible, we tried to do our code reviews as part of pull requests, which are listed below. In cases where that was impossible (no PR's ready for review), we wrote them in text files.
@@ -75,3 +73,6 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
+
+#### Sprint 5 Topic Ideas:
+- Michael Herring: Reinvestigate HLSL shaders from sprint 2

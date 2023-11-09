@@ -20,7 +20,7 @@ namespace LegendOfZelda
 
         /* Level */
         private LevelMaster LevelMaster;
-        
+
         /* Sounds */
         public SoundFactory SoundFactory { get; private set; }
 
