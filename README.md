@@ -5,7 +5,7 @@ Remake of NES The Legend of Zelda game
 ### Player controls
 - Arrow and `wasd` keys should move Link and change his facing direction.
 - The `z` and `n` key should cause Link to attack using his sword.
-- Number keys (1, 2, 3, etc.) should be used to have Link use a different item (later this will be replaced with a menu system and `x` and `m` for the secondary item.
+- `b` for Link to use his secondary item
 
 ### Other controls
 - Use `q` to quit and `r` to reset the program back to its initial state.
@@ -70,6 +70,10 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - Michael Herring reviewed Zhengyi Hu's code for quality in pull request #257
 - Michael Herring reviewed Matt Curie's code for readability in pull request #260
 - Ethan Glenwright reviewed MengQi Lei's code for quality in pull request #280
+- MengQi Lei reviewed Ethan Glenwright's code for readability in pull request #301
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
+
+#### Sprint 5 Topic Ideas:
+- Michael Herring: Reinvestigate HLSL shaders from sprint 2

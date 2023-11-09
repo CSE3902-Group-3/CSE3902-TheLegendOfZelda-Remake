@@ -106,7 +106,8 @@
          * Rope, 6
          * Skeleton, 7
          * WallMaster, 8
-         * Wizard 9
+         * Wizard, 9
+         * ZolBig, 10
     */
 
 3) Put bottom layer elements at the start of "MapElements" array:

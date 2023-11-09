@@ -14,14 +14,20 @@ namespace LegendOfZelda
         private static SpriteFactory SpriteFactory;
         private static BlockLamda Instance;
         private static int YMenuOffset = 320; // y offset for menu
-        private static int XOffset = 128; // x position starts at the edge of the wall
-        private static int YOffset = 448; // y position starts at top menu height + edge of the wall, i.e. 320 + 128
+        private static int WallThickness = 128; // x position starts at the edge of the wall
+        private static int YOffset = YMenuOffset + WallThickness; // y position starts at top menu height + edge of the wall, i.e. 320 + 128
+        private static int XRightWallOffset = 576;
         private static int Scale = 64; // size of a block
         private static Vector2 NorthDoorPosition = new Vector2(448, 320);
         private static Vector2 EastDoorPosition = new Vector2(896, 608);
         private static Vector2 SouthDoorPosition = new Vector2(448, 896);
         private static Vector2 WestDoorPosition = new Vector2(0, 608);
-
+        private static int NorthSouthWallHeight = 128;
+        private static int NorthSouthWallWidth = 320;
+        private static int EastWestWallHeight = 160;
+        private static int EastWestWallWidth = 128;
+        private static int EastWestSouthWallOffset = 736;
+        private static int ViewportSideLength = 1024;
         private BlockLamda()
         {
             SpriteFactory = SpriteFactory.getInstance();
@@ -75,46 +81,46 @@ namespace LegendOfZelda
         }
         static void FloorTile(Room room, MapElement mapElement)
         {
-            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
             Block block = new Block(SpriteFactory.CreateFloorTileSprite(), pos);
             block.enabled = true;
         }
         static void Wall(Room room, MapElement mapElement)
         {
-            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
             Block block = new Block(SpriteFactory.CreateWallSprite(), pos);
             block.enabled = true;
             new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, Scale, Scale), CollisionLayer.Wall, block);
         }
         static void FishSculpture(Room room, MapElement mapElement)
         {
-            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
             Block block = new Block(SpriteFactory.CreateFishSculptureSprite(), pos);
             block.enabled = true;
             new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, Scale, Scale), CollisionLayer.Wall, block);
         }
         static void DragonSculpture(Room room, MapElement mapElement)
         {
-            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
             Block block = new Block(SpriteFactory.CreateDragonSculptureSprite(), pos);
             block.enabled = true;
             new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, Scale, Scale), CollisionLayer.Wall, block);
         }
         static void BlackTile(Room room, MapElement mapElement)
         {
-            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
             Block block = new Block(SpriteFactory.CreateBlackTileSprite(), pos);
             block.enabled = true;
         }
         static void SandTile(Room room, MapElement mapElement)
         {
-            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
             Block block = new Block(SpriteFactory.CreateSandTileSprite(), pos);
             block.enabled = true;
         }
         static void BlueTile(Room room, MapElement mapElement)
         {
-            Vector2 pos = new Vector2(room.RoomXLocation + XOffset + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
             Block block = new Block(SpriteFactory.CreateBlueTileSprite(), pos);
             block.enabled = true;
             new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, Scale, Scale), CollisionLayer.Wall, block);
@@ -213,24 +219,24 @@ namespace LegendOfZelda
         }
         static void WallExterior(Room room, MapElement mapElement)
         {
-            Block block = new Block(SpriteFactory.CreateWallExteriorSprite(), new Vector2(room.RoomXLocation + 0, room.RoomYLocation + 320));
+            Block block = new Block(SpriteFactory.CreateWallExteriorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation + YMenuOffset));
             block.enabled = true;
 
             // North wall collisions
-            new RectCollider(new Rectangle(room.RoomXLocation + 128, room.RoomYLocation + 320, 320, 128), CollisionLayer.OuterWall, block);
-            new RectCollider(new Rectangle(room.RoomXLocation + 576, room.RoomYLocation + 320, 320, 128), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(room.RoomXLocation + WallThickness, room.RoomYLocation + YMenuOffset, NorthSouthWallWidth, NorthSouthWallHeight), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(room.RoomXLocation + XRightWallOffset, room.RoomYLocation + YMenuOffset, NorthSouthWallWidth, NorthSouthWallHeight), CollisionLayer.OuterWall, block);
 
             // South wall collisions
-            new RectCollider(new Rectangle(room.RoomXLocation + 128, room.RoomYLocation + 896, 320, 128), CollisionLayer.OuterWall, block);
-            new RectCollider(new Rectangle(room.RoomXLocation + 576, room.RoomYLocation + 896, 320, 128), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(room.RoomXLocation + WallThickness, room.RoomYLocation + ViewportSideLength - WallThickness, NorthSouthWallWidth, NorthSouthWallHeight), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(room.RoomXLocation + XRightWallOffset, room.RoomYLocation + ViewportSideLength - WallThickness, NorthSouthWallWidth, NorthSouthWallHeight), CollisionLayer.OuterWall, block);
 
             // West wall collisions
-            new RectCollider(new Rectangle(room.RoomXLocation + 0, room.RoomYLocation + 448, 128, 160), CollisionLayer.OuterWall, block);
-            new RectCollider(new Rectangle(room.RoomXLocation + 0, room.RoomYLocation + 736, 128, 160), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(room.RoomXLocation, room.RoomYLocation + YOffset, EastWestWallWidth, EastWestWallHeight), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(room.RoomXLocation, room.RoomYLocation + EastWestSouthWallOffset, EastWestWallWidth, EastWestWallHeight), CollisionLayer.OuterWall, block);
 
             // East wall collisions
-            new RectCollider(new Rectangle(room.RoomXLocation + 896, room.RoomYLocation + 448, 128, 160), CollisionLayer.OuterWall, block);
-            new RectCollider(new Rectangle(room.RoomXLocation + 896, room.RoomYLocation + 736, 128, 160), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(room.RoomXLocation + ViewportSideLength - WallThickness, room.RoomYLocation + YOffset, EastWestWallWidth, EastWestWallHeight), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(room.RoomXLocation + ViewportSideLength - WallThickness, room.RoomYLocation + EastWestSouthWallOffset, EastWestWallWidth, EastWestWallHeight), CollisionLayer.OuterWall, block);
         }
         static void Ladder(Room room, MapElement mapElement)
         {
