@@ -109,7 +109,8 @@ namespace LegendOfZelda
 			if ((counter == 5) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
 				WriteWord();
-				counter++;
+                lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
+                counter++;
 			}
 
             if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 1000))
