@@ -21,10 +21,14 @@ namespace LegendOfZelda
         }
         public void DrawAll(List<IDrawable> drawables, SpriteBatch spriteBatch)
         {
-            foreach(IDrawable drawable in drawables)
+            Matrix transformMatrix = Matrix.CreateTranslation(-worldPos.X, -worldPos.Y, 0);
+
+            spriteBatch.Begin(SpriteSortMode.Immediate, samplerState: SamplerState.PointClamp, transformMatrix: transformMatrix);
+            foreach (IDrawable drawable in drawables)
             {
                 drawable.Draw();
             }
+            spriteBatch.End();
         }
         public void PanToLocation(Vector2 newWorldPos, float speed, Action OnComplete = null)
         {
