@@ -1,60 +1,46 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LegendOfZelda
+﻿namespace LegendOfZelda
 {
     public class AttackingRightLinkState : IState
     {
-        private Game1 game;
-        private Link link;
+        private Link Link;
 
         private Sword sword;
-        private SwordBeam swordBeam;
 
         public AttackingRightLinkState()
         {
-            this.game = Game1.getInstance();
-            link = (Link)game.link;
+            Link = GameState.Link;
         }
 
         public void Enter()
         {
-            if (link.sprite != null)
+            if (Link.Sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)link.sprite).UnregisterSprite();
+                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
             }
-            link.stateMachine.canMove = false;
+            Link.StateMachine.canMove = false;
 
-            link.sprite = SpriteFactory.getInstance().CreateLinkWoodStabRightSprite();
+            Link.Sprite = SpriteFactory.getInstance().CreateLinkWoodStabRightSprite();
 
-            if (link.HP == link.maxHP)
+            if (Link.HP == Link.MaxHP)
             {
-                swordBeam = new SwordBeam(link.stateMachine.position, link.stateMachine.currentDirection);
+                new SwordBeam(Link.StateMachine.position, Link.StateMachine.currentDirection);
             }
-            else
-            {
-                sword = new Sword(link.stateMachine.currentDirection, link.stateMachine.position);
-            }
+            
+            sword = new Sword(Link.StateMachine.currentDirection, Link.StateMachine.position);
         }
         public void Execute()
         {
-            if (((AnimatedSprite)link.sprite).complete)
+            if (((AnimatedSprite)Link.Sprite).complete)
             {
-                link.stateMachine.ChangeState(new IdleLinkState());
+                Link.StateMachine.ChangeState(new IdleLinkState());
             }
         }
 
         public void Exit()
         {
-            link.stateMachine.canMove = true;
-            swordBeam?.Destroy();
-            sword?.Destroy();
+            Link.StateMachine.canMove = true;
+            sword.Destroy();
         }
 
     }

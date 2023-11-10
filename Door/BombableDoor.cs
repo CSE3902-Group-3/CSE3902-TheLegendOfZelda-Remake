@@ -83,8 +83,8 @@ namespace LegendOfZelda
             if (collision.CollidedWith.Layer != CollisionLayer.Player) return;
 
             LevelMaster.GetInstance().NavigateInDirection(direction, OnNavComplete);
-            player = Game1.getInstance().link;
-            player.EnterRoomTransition(direction);
+            player = GameState.Link;
+            player.EnterRoomTransition();
         }
 
         public void OpenDoor()

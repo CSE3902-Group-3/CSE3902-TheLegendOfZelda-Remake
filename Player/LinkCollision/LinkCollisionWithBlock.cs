@@ -11,7 +11,15 @@ namespace LegendOfZelda
     {
         public static void HandleCollisionWithWall(Direction direction, Rectangle overlapRectangle)
         {
-            Vector2 newPosition = Game1.getInstance().link.sprite.pos;
+
+            if (GameState.Link.StateMachine.CurrentState is KnockBackLinkState)
+            {
+                GameState.Link.StateMachine.ChangeState(new IdleLinkState());
+                GameState.Link.StateMachine.isKnockedBack = false;
+                return;
+            }
+
+            Vector2 newPosition = GameState.Link.Sprite.pos;
 
             switch (direction)
             {
@@ -29,8 +37,8 @@ namespace LegendOfZelda
                     break;
             }
 
-            LinkUtilities.UpdatePositions((Link)Game1.getInstance().link, newPosition);
-            ((Link)Game1.getInstance().link).velocity = 0;
+            LinkUtilities.UpdatePositions(GameState.Link, newPosition);
+            GameState.Link.Velocity = 0;
         }
     }
 }

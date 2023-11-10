@@ -5,29 +5,22 @@ namespace LegendOfZelda
 {
     public class ItemThrowLeftLinkState : IState
     {
-        private Game1 game;
-        private Link link;
+        private Link Link;
 
         public ItemThrowLeftLinkState()
         {
-            this.game = Game1.getInstance();
-            this.link = (Link)game.link;
+            this.Link = GameState.Link;
         }
 
         public void Enter()
         {
-            if (link.sprite != null)
+            if (Link.Sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)link.sprite).UnregisterSprite();
+                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
             }
-            link.stateMachine.canMove = false;
-            link.sprite = SpriteFactory.getInstance().CreateLinkThrowLeftSprite();
-
-            link.stateMachine.currentItem = new Bomb(link.stateMachine.position - new Vector2(90, 0));
-            //Added in so I can test bomb usage
-            new BombProjectile(link.stateMachine.position - new Vector2(90, 0));
-            link.stateMachine.currentItem.Show();
+            Link.StateMachine.canMove = false;
+            Link.Sprite = SpriteFactory.getInstance().CreateLinkThrowLeftSprite();
         }
 
         public void Execute()
@@ -37,9 +30,8 @@ namespace LegendOfZelda
 
         public void Exit()
         {
-            link.stateMachine.canMove = true;
-            ((AnimatedSprite)link.sprite).UnregisterSprite();
-            link.stateMachine.currentItem = null;
+            Link.StateMachine.canMove = true;
+            ((AnimatedSprite)Link.Sprite).UnregisterSprite();
         }
 
     }

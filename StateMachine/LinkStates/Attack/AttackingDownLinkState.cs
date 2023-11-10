@@ -14,48 +14,44 @@ namespace LegendOfZelda
         private Link link;
 
         private Sword sword;
-        private SwordBeam swordBeam;
 
         public AttackingDownLinkState()
         {
             this.game = Game1.getInstance();
-            link = (Link)game.link;
+            link = GameState.Link;
         }
 
         public void Enter()
         {
-            if (link.sprite != null)
+            if (link.Sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)link.sprite).UnregisterSprite();
+                ((AnimatedSprite)link.Sprite).UnregisterSprite();
             }
-            link.stateMachine.canMove = false;
+            link.StateMachine.canMove = false;
 
-            link.sprite = SpriteFactory.getInstance().CreateLinkWoodStabDownSprite();
+            link.Sprite = SpriteFactory.getInstance().CreateLinkWoodStabDownSprite();
             
-            if (link.HP == link.maxHP)
+            if (link.HP == link.MaxHP)
             {
-                swordBeam = new SwordBeam(link.stateMachine.position, link.stateMachine.currentDirection);
+                new SwordBeam(link.StateMachine.position, link.StateMachine.currentDirection);
             }
-            else
-            {
-                sword = new Sword(link.stateMachine.currentDirection, link.stateMachine.position);
-            }
+            
+            sword = new Sword(link.StateMachine.currentDirection, link.StateMachine.position);
         }
         public void Execute()
         {
-            if (((AnimatedSprite)link.sprite).complete)
+            if (((AnimatedSprite)link.Sprite).complete)
             {
-                link.stateMachine.ChangeState(new IdleLinkState());
+                link.StateMachine.ChangeState(new IdleLinkState());
             }
         }
 
         public void Exit()
         {
-            link.stateMachine.canMove = true;
+            link.StateMachine.canMove = true;
 
-            swordBeam?.Destroy();
-            sword?.Destroy();
+            sword.Destroy();
         }
 
     }

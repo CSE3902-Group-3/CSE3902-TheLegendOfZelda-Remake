@@ -1,51 +1,37 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
-using System;
-
-using System.Diagnostics;
-
-namespace LegendOfZelda
+﻿namespace LegendOfZelda
 {
     public class ItemThrowDownLinkState : IState
     {
-        private Game1 game;
-        private Link link;
+        private Link Link;
 
         public ItemThrowDownLinkState()
         {
-            this.game = Game1.getInstance();
-            this.link = (Link)game.link;
+            this.Link = GameState.Link;
         }
 
         public void Enter()
         {
-            if (link.sprite != null)
+            if (Link.Sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)link.sprite).UnregisterSprite();
+                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
             }
-            link.stateMachine.canMove = false;
-            link.sprite = SpriteFactory.getInstance().CreateLinkThrowDownSprite();
-
-            link.stateMachine.currentItem = new Bomb(link.stateMachine.position + new Vector2(30, 150));
-            //Added in so I can test bomb usage
-            new BombProjectile(link.stateMachine.position + new Vector2(30, 150));
-            link.stateMachine.currentItem.Show();
+            Link.StateMachine.canMove = false;
+            Link.Sprite = SpriteFactory.getInstance().CreateLinkThrowDownSprite();
         }
 
         public void Execute()
         {
-            if (((AnimatedSprite)link.sprite).complete)
+            if (((AnimatedSprite)Link.Sprite).complete)
             {
-                link.stateMachine.ChangeState(new IdleLinkState());
+                Link.StateMachine.ChangeState(new IdleLinkState());
             }
         }
 
         public void Exit()
         {
-            link.stateMachine.canMove = true;
-            ((AnimatedSprite)link.sprite).UnregisterSprite();
-            link.stateMachine.currentItem = null;
+            Link.StateMachine.canMove = true;
+            ((AnimatedSprite)Link.Sprite).UnregisterSprite();
         }
 
     }

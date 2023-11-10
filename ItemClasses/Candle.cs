@@ -49,7 +49,7 @@ namespace LegendOfZelda
         public IItem GenerateInventoryItem()
         {
             //All item in inventory will have a zero position
-            return new Arrow(Vector2.Zero);
+            return new Candle(Vector2.Zero);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

@@ -5,7 +5,7 @@ namespace LegendOfZelda
 {
     public class LinkCollisionWithEnemyWeapon
     {
-        private static bool isTakingDamage = false; // Flag to track if Link is taking damage
+        private static float cooldown = GameState.Link.damageCooldownTimer; // Set the cooldown (in seconds) for damage
 
         public static void HandleCollisionWithEnemyWeapon(CollisionInfo collision)
         {
@@ -19,14 +19,15 @@ namespace LegendOfZelda
             };
 
             Type enemyType = enemyProjectileCollidedWith.GetType();
-            if (enemyDamageMap.ContainsKey(enemyType) && !isTakingDamage)
+            if (enemyDamageMap.ContainsKey(enemyType) && cooldown <= 0)
             {
                 float damage = enemyDamageMap[enemyType];
-                ((Link)Game1.getInstance().link).TakeDamage(damage);
-                isTakingDamage = true; // Set the flag to true to indicate Link is taking damage
+                GameState.Link.TakeDamage(damage);
+
+                GameState.Link.damageCooldownTimer = GameState.Link.damageCooldownDuration;
             }
 
-            Link.getInstance().stateMachine.ChangeState(new KnockBackLinkState());
+            GameState.Link.StateMachine.ChangeState(new KnockBackLinkState());
         }
     }
 }

@@ -87,7 +87,7 @@ namespace LegendOfZelda
         private void MouseEvents()
         {
             mouseState = Mouse.GetState();
-            RoomCycler roomCycler = Game1.getInstance().roomCycler;
+            RoomCycler roomCycler = RoomCycler.GetInstance();
 
             if (mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Released && roomCycler != null)
             {

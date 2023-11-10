@@ -20,9 +20,9 @@ namespace LegendOfZelda
 
         public static void UpdatePositions(Link link, Vector2 newPositon)
         {
-            link.sprite.UpdatePos(newPositon);
-            link.stateMachine.position = newPositon;
-            link.collider.Pos = newPositon;
+            link.Sprite.UpdatePos(newPositon);
+            link.StateMachine.position = newPositon;
+            link.Collider.Pos = newPositon;
         }
 
         public static bool IsStateWithIncompleteAnimation(IState state)
@@ -31,25 +31,25 @@ namespace LegendOfZelda
                 state is AttackingLeftLinkState || state is AttackingRightLinkState ||
                 state is CollectItemLinkState)
             {
-                return !((AnimatedSprite)Game1.getInstance().link.sprite).complete;
+                return !((AnimatedSprite)GameState.Link.Sprite).complete;
             }
             return false;
         }
 
         public static Vector2 CalcKnockback(Link link)
         {
-            Vector2 targetPosition = link.stateMachine.position;
+            Vector2 targetPosition = link.StateMachine.position;
 
             // Calculate the knockback direction based on Link's current direction
-            if (link.stateMachine.currentDirection == Direction.down)
+            if (link.StateMachine.currentDirection == Direction.down)
             {
                 targetPosition.Y -= 100;
             }
-            else if (link.stateMachine.currentDirection == Direction.up)
+            else if (link.StateMachine.currentDirection == Direction.up)
             {
                 targetPosition.Y += 100;
             }
-            else if (link.stateMachine.currentDirection == Direction.left)
+            else if (link.StateMachine.currentDirection == Direction.left)
             {
                 targetPosition.X += 100;
             }
@@ -57,12 +57,13 @@ namespace LegendOfZelda
             {
                 targetPosition.X -= 100;
             }
-            
-            // move back 2 blocks UNLESS a wall is in the way
-            targetPosition.X = MathHelper.Clamp(targetPosition.X, 130, 900);
-            targetPosition.Y = MathHelper.Clamp(targetPosition.Y, 450, 825);
 
             return targetPosition;
+        }
+
+        public static bool LinkChangedDirection()
+        {
+            return GameState.Link.StateMachine.prevDirection != GameState.Link.StateMachine.currentDirection;
         }
     }
 }
