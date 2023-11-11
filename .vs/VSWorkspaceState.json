@@ -2,6 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\Enemies",
+    "\\Enemies\\Utilities",
     "\\Level",
     "\\Level\\Lambdas",
     "\\Player",
