@@ -79,6 +79,16 @@ namespace LegendOfZelda
             }
         }
 
+        public void Spawn()
+        {
+            new EnemySpawnEffect(Position);
+            LevelMaster.RegisterUpdateable(this);
+            Sprite.RegisterSprite();
+            Sprite.UpdatePos(Position);
+            Collider.Pos = Position + Offset;
+            Collider.Active = true;
+        }
+
         public void Die()
         {
             Sprite.UpdatePos(Position);
@@ -87,15 +97,6 @@ namespace LegendOfZelda
             DropItem();
             Sprite.UnregisterSprite();
             LevelMaster.RemoveUpdateable(this);
-        }
-
-        public void Spawn()
-        {
-            new EnemySpawnEffect(Position);
-            LevelMaster.RegisterUpdateable(this);
-            Sprite.RegisterSprite();
-            Sprite.UpdatePos(Position);
-            Collider.Pos = Position + Offset;
         }
 
         public void Update(GameTime gameTime)

@@ -5,15 +5,15 @@ namespace LegendOfZelda
 {
     internal class GameOverState : IGameState
     {
-        private GameOverScreen gameOver;
+        private GameOverScreen GameOver;
 
         public GameOverState()
         {
-            gameOver = new GameOverScreen();
+            GameOver = new GameOverScreen();
         }
         public void Update(GameTime gameTime)
         {
-            gameOver.Update(gameTime);
+            GameOver.Update(gameTime);
         }
         public void Draw(SpriteBatch _spriteBatch)
         {

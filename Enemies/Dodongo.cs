@@ -63,6 +63,7 @@ namespace LegendOfZelda
             Sprites[CurrentSprite].RegisterSprite();
             Sprites[CurrentSprite].UpdatePos(Position);
             Collider.Pos = Position;
+            Collider.Active = true;
         }
         public void ChangePosition()
         {
