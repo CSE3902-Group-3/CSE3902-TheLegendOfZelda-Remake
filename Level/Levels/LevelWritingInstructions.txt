@@ -69,6 +69,8 @@
          * LadderDoor, 35
          * Room8PushableBlock, 36
          * Room16PushableBlock, 37
+         * ImpassibleBlackTile, 38
+         * Room12ExteriorCollider, 39
     */
 
     - Item dictionary:

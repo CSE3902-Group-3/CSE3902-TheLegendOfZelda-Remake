@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
@@ -15,6 +10,7 @@ namespace LegendOfZelda
         private static BlockLamda Instance;
         private static int YMenuOffset = 320; // y offset for menu
         private static int WallThickness = 128; // x position starts at the edge of the wall
+        private static int Room12ColliderThickness = 10;
         private static int YOffset = YMenuOffset + WallThickness; // y position starts at top menu height + edge of the wall, i.e. 320 + 128
         private static int XRightWallOffset = 576;
         private static int Scale = 64; // size of a block
@@ -70,7 +66,9 @@ namespace LegendOfZelda
                 Ladder,
                 LadderDoor,
                 Room8PushableBlock,
-                Room16PushableBlock
+                Room16PushableBlock,
+                ImpassibleBlackTile,
+                Room12ExteriorCollider
             };
         }
         public static BlockLamda GetInstance()
@@ -258,6 +256,33 @@ namespace LegendOfZelda
         {
             Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
             new Room16PushableBlock(pos);
+        }
+        static void ImpassibleBlackTile(Room room, MapElement mapElement)
+        {
+            Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Block block = new Block(SpriteFactory.CreateBlackTileSprite(), pos);
+            block.enabled = true;
+            new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, Scale, Scale), CollisionLayer.Wall, block);
+        }
+        static void Room12ExteriorCollider(Room room, MapElement mapElement)
+        {
+            Block block = new Block(SpriteFactory.CreateWallExteriorSprite(), new Vector2(room.RoomXLocation, room.RoomYLocation + YMenuOffset));
+
+            // North wall collisions
+            new RectCollider(new Rectangle(room.RoomXLocation + WallThickness, room.RoomYLocation + YMenuOffset, NorthSouthWallWidth, Room12ColliderThickness), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(room.RoomXLocation + XRightWallOffset, room.RoomYLocation + YMenuOffset, NorthSouthWallWidth, Room12ColliderThickness), CollisionLayer.OuterWall, block);
+
+            // South wall collisions
+            new RectCollider(new Rectangle(room.RoomXLocation + WallThickness, room.RoomYLocation + ViewportSideLength - WallThickness, NorthSouthWallWidth, Room12ColliderThickness), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(room.RoomXLocation + XRightWallOffset, room.RoomYLocation + ViewportSideLength - WallThickness, NorthSouthWallWidth, Room12ColliderThickness), CollisionLayer.OuterWall, block);
+
+            // West wall collisions
+            new RectCollider(new Rectangle(room.RoomXLocation, room.RoomYLocation + YOffset, Room12ColliderThickness, EastWestWallHeight), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(room.RoomXLocation, room.RoomYLocation + EastWestSouthWallOffset, Room12ColliderThickness, EastWestWallHeight), CollisionLayer.OuterWall, block);
+
+            // East wall collisions
+            new RectCollider(new Rectangle(room.RoomXLocation + ViewportSideLength - WallThickness, room.RoomYLocation + YOffset, Room12ColliderThickness, EastWestWallHeight), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle(room.RoomXLocation + ViewportSideLength - WallThickness, room.RoomYLocation + EastWestSouthWallOffset, Room12ColliderThickness, EastWestWallHeight), CollisionLayer.OuterWall, block);
         }
     }
 }
