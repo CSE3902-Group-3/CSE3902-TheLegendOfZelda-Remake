@@ -33,6 +33,7 @@ namespace LegendOfZelda
             LevelMaster.RegisterUpdateable(this);
             Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
+            Collider.Active = true;
         }
         public void ChangePosition()
         {
