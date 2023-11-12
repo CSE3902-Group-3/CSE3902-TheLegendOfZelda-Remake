@@ -29,7 +29,7 @@ namespace LegendOfZelda
             Link = new Link();
             LevelMaster.NavigateToRoom(0);
             PauseManager = new PauseManager();
-            State = new NormalState();
+            State = new StartState();
             RoomCycler.GetInstance();
             CameraController = CameraController.GetInstance();
             PlayerController = new PlayerController(Link);
