@@ -115,9 +115,12 @@ namespace LegendOfZelda
                 counter++;
 			}
 
-            if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 1000))
+            if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
             {
 				GameState.GetInstance().ResetGameState();
+
+				/* Uncomment the line below, and comment out the line above to go to gameover menu */
+				//GameState.CameraController.ChangeMenu(Menu.GameOver);
                 counter++;
             }
 
