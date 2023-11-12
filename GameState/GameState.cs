@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
@@ -17,6 +12,7 @@ namespace LegendOfZelda
         public static PauseManager PauseManager;
         public static CollisionManager CollisionManager;
         public static Link Link;
+        public static IController PlayerController;
 
         //public enum GameStates { normalState, winState, loseState, pauseState, menuState, roomTransitionState }
         public static GameState GetInstance()
@@ -28,9 +24,15 @@ namespace LegendOfZelda
         private GameState()
         {
             LevelMaster = LevelMaster.GetInstance();
-            ResetGameState();
+            CollisionManager = new CollisionManager();
+            LevelMaster.StartLevel("level1.json");
+            Link = new Link();
+            LevelMaster.NavigateToRoom(0);
+            PauseManager = new PauseManager();
+            State = new NormalState();
             RoomCycler.GetInstance();
             CameraController = CameraController.GetInstance();
+            PlayerController = new PlayerController(Link);
         }
         public void SwitchState(IGameState state)
         {
@@ -40,10 +42,12 @@ namespace LegendOfZelda
         {
             CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
-            LevelMaster.NavigateToRoom(0);
             Link = new Link();
+            LevelMaster.NavigateToRoom(0);
             PauseManager = new PauseManager();
             State = new NormalState();
+            CameraController.Reset();
+            PlayerController = new PlayerController(Link);
         }
         public void Update(GameTime gameTime)
         {

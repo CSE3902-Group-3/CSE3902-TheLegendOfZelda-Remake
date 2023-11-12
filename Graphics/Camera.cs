@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Net;
 
 namespace LegendOfZelda
 {
@@ -27,6 +26,20 @@ namespace LegendOfZelda
             foreach (IDrawable drawable in drawables)
             {
                 drawable.Draw();
+            }
+            spriteBatch.End();
+        }
+        public void DrawAll(List<List<IDrawable>> drawables, SpriteBatch spriteBatch)
+        {
+            Matrix transformMatrix = Matrix.CreateTranslation(-worldPos.X, -worldPos.Y, 0);
+
+            spriteBatch.Begin(SpriteSortMode.Immediate, samplerState: SamplerState.PointClamp, transformMatrix: transformMatrix);
+            foreach (List<IDrawable> drawableList in drawables)
+            {
+                foreach (IDrawable drawable in drawableList)
+                {
+                    drawable.Draw();
+                }
             }
             spriteBatch.End();
         }
@@ -63,4 +76,6 @@ namespace LegendOfZelda
             Move();
         }
     }
+
+
 }
