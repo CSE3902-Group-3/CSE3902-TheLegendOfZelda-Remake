@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
-    internal interface IController
+    public interface IController
     {
         void Update();
     }
