@@ -17,7 +17,7 @@ Remake of NES The Legend of Zelda game
 - The inventory system is not currently functional at all
 -   Link can not use any items
 -   Picking up items does nothing (collision response is incomplete)
-- Wizard takes damage
+
 - Dodongo takes damage from sword and player, does not eat bombs
 - Closed doors which open based on triggers (as opposed to locked doors) can never be opened
 
@@ -33,7 +33,8 @@ Remake of NES The Legend of Zelda game
 - The starting room is not the entrance of the dungeon
 - The pause overlay does not affect Link's sprite
 - Sprites still animate when the game is paused
-- - Fireballs are missing from the wizard room
+- Fireballs are missing from the wizard room
+- Wizard takes damage
 
 ## Intentional Differences From Source Game:
 - Interaction with Wizard and spawning text is not implemented
