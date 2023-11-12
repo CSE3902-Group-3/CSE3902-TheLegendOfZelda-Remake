@@ -27,7 +27,7 @@ namespace LegendOfZelda
             CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
             Link = new Link();
-            LevelMaster.NavigateToRoom(0);
+            LevelMaster.NavigateToRoom(1);
             PauseManager = new PauseManager();
             State = new StartState();
             RoomCycler.GetInstance();
@@ -43,7 +43,7 @@ namespace LegendOfZelda
             CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
             Link = new Link();
-            LevelMaster.NavigateToRoom(0);
+            LevelMaster.NavigateToRoom(1);
             PauseManager = new PauseManager();
             State = new NormalState();
             CameraController.Reset();
