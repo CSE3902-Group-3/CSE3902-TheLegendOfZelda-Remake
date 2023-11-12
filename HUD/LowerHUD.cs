@@ -166,40 +166,11 @@ namespace LegendOfZelda
             }
         }
 
-        public void UpdateMaxHealth(int maxHealth)
-        {
-            MaxHealth = maxHealth;
-            for (int i = 0; i < maxHealth / 2; i++)
-            {
-                Life[i] = spriteFactory.CreateHeartSprite(0);
-            }
-        }
-
-        public void UpdateCurrentHealth(int currentHealth)
-        {
-            CurrentHealth = currentHealth;
-            if (currentHealth % 2 != 0)
-            {
-                for (int i = 0; i < currentHealth / 2; i++)
-                {
-                    Life[i] = spriteFactory.CreateHeartSprite(2);
-                }
-                Life[currentHealth / 2] = spriteFactory.CreateHeartSprite(1);
-            }
-            else
-            {
-                for (int i = 0; i < currentHealth / 2; i++)
-                {
-                    Life[i] = spriteFactory.CreateHeartSprite(2);
-                }
-            }
-        }
-
         public void RegisterSprite(AnimatedSprite sprite, Vector2 pos)
         {
             sprite.RegisterSprite();
             sprite.UpdatePos(pos);
-        }
+        } 
 
         public void RegisterListSprite(List<AnimatedSprite> spriteList, Vector2 pos)
         {
@@ -237,6 +208,8 @@ namespace LegendOfZelda
             }
         }
 
+        // Update Methods
+
         public void UpdateRubies(int rubies)
         {
             UnregisterListSprite(Rubies);
@@ -254,6 +227,35 @@ namespace LegendOfZelda
         {
             BoombsCount = boombs;
             Boombs = QuantityToSprite(BoombsCount);
+        }
+
+        public void UpdateMaxHealth(int maxHealth)
+        {
+            MaxHealth = maxHealth;
+            for (int i = 0; i < maxHealth / 2; i++)
+            {
+                Life[i] = spriteFactory.CreateHeartSprite(0);
+            }
+        }
+
+        public void UpdateCurrentHealth(int currentHealth)
+        {
+            CurrentHealth = currentHealth;
+            if (currentHealth % 2 != 0)
+            {
+                for (int i = 0; i < currentHealth / 2; i++)
+                {
+                    Life[i] = spriteFactory.CreateHeartSprite(2);
+                }
+                Life[currentHealth / 2] = spriteFactory.CreateHeartSprite(1);
+            }
+            else
+            {
+                for (int i = 0; i < currentHealth / 2; i++)
+                {
+                    Life[i] = spriteFactory.CreateHeartSprite(2);
+                }
+            }
         }
     }
 }

@@ -21,15 +21,14 @@ namespace LegendOfZelda
         private AnimatedSprite SelectedItem;
         private Dictionary<string, AnimatedSprite> ItemsInFrame;
         private Dictionary<string, AnimatedSprite> ItemsAboveFrame;
-        private AnimatedSprite Selector;
+
+        private Selector Selector;
 
         private Vector2 InventoryHUDBasePos;
         private Vector2 SelectedItemPos;
+        private Vector2 SelectorInitPos;
         private Dictionary<string, Vector2> InventoryItemsPosDict;
         private Dictionary<string, Vector2> InventoryItemsAbovePosDict;
-        private Vector2 SelectorInitPos;
-        private Vector2 SelectorPos;
-        private Dictionary<string, bool> SelectorPosDic;
 
         private Dictionary<string, bool> InventoryInFrameUnlock;
         private Dictionary<string, bool> InventoryAboveFrameUnlock;
@@ -51,17 +50,18 @@ namespace LegendOfZelda
             SelectedItem = spriteFactory.CreateWoodenBoomerangHUDSprite();
             CreateItemInFramesSprites();
             CreateItemAboveFramesSprites();
-            Selector = spriteFactory.CreateSelectorSprite();
+            Selector = Selector.GetInstance(this);
 
             InventoryHUDBasePos = GameState.CameraController.mainCamera.worldPos;
             SelectedItemPos = new Vector2(InventoryHUDBasePos.X + 68 * scale, InventoryHUDBasePos.Y + 48 * scale);
+            SelectorInitPos = new Vector2(InventoryHUDBasePos.X + 128 * scale, InventoryHUDBasePos.Y + 48 * scale);
             CreateItemInFramesPos();
             CreateItemAboveFramesPos();
-            SelectorInitPos = new Vector2(InventoryHUDBasePos.X + 128 * scale, InventoryHUDBasePos.Y + 48 * scale);
-            SelectorPos = SelectorInitPos; // SelectorPos will change when player select different item, this is only for test now
 
             CreateInventoryInUnlock();
             CreateInventoryAboveUnlock();
+
+            Selector.LoadContent();
         }
 
         public void Update(GameTime gameTime)
@@ -81,8 +81,7 @@ namespace LegendOfZelda
 
             RegisterDictionarySprite(ItemsAboveFrame, InventoryAboveFrameUnlock, InventoryItemsAbovePosDict);
 
-            Selector.RegisterSprite();
-            Selector.UpdatePos(SelectorPos);
+            Selector.Show();
         }
 
         public void CreateItemInFramesSprites()
@@ -203,6 +202,22 @@ namespace LegendOfZelda
                 }
             }
         }
+        public Vector2 GetSelectorPos()
+        {
+            return SelectorInitPos;
+        }
+
+        public List<bool> GetUnlockList()
+        {
+            List<bool> unlockList = new List<bool>();
+            foreach (bool unlock in InventoryInFrameUnlock.Values)
+            {
+                unlockList.Add(unlock);
+            }
+            return unlockList;
+        }
+
+        // Update Methods
 
         public void UpdateInventoryInUnlock(string item)
         {
