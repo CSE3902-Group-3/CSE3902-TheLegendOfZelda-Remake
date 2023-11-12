@@ -60,7 +60,7 @@ namespace LegendOfZelda
         public void Draw(SpriteBatch spriteBatch)
         {
             mainCamera.DrawAll(mainCameraDrawables, spriteBatch);
-            activeMenu.DrawAll(LevelMaster.CurrentRoomDrawables, spriteBatch);
+            activeMenu.DrawAll(LevelMaster.PersistentDrawables, spriteBatch);
         }
 
         public void SnapCamToRoom(int fromRoomId, int toRoomId, Vector2 roomPos)
