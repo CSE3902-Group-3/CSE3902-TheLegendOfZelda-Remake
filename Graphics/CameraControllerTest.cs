@@ -31,54 +31,30 @@ namespace LegendOfZelda.Graphics
             switch (i)
             {
                 case 0:
-                    levelMaster.NavigateInDirection(Direction.right, NewTimer);
-                    break;
-                case 1:
-                    levelMaster.NavigateInDirection(Direction.right, NewTimer);
-                    break;
-                case 2:
-                    levelMaster.NavigateInDirection(Direction.left, NewTimer);
-                    break;
-                case 3:
-                    levelMaster.NavigateInDirection(Direction.up, NewTimer);
-                    break;
-                case 4:
-                    levelMaster.NavigateInDirection(Direction.down, NewTimer);
-                    break;
-                case 5:
-                    levelMaster.NavigateInDirection(Direction.right, NewTimer);
-                    break;
-                case 6:
-                    levelMaster.NavigateInDirection(Direction.left, NewTimer);
-                    break;
-                case 7:
-                    levelMaster.NavigateInDirection(Direction.left, NewTimer);
-                    break;
-                case 8:
                     controller.OpenItemMenu(NewTimer);
                     break;
-                case 9:
+                case 1:
                     controller.CloseItemMenu(NewTimer);
                     break;
-                case 10:
+                case 2:
                     controller.ChangeMenu(Menu.Start);
                     NewTimer();
                     break;
-                case 11:
+                case 3:
                     controller.ChangeMenu(Menu.End);
                     NewTimer();
                     break;
-                case 12:
+                case 4:
                     controller.ChangeMenu(Menu.GameOver);
                     NewTimer();
                     break;
-                case 13:
+                case 5:
                     controller.ChangeMenu(Menu.Item);
                     NewTimer();
                     break;
             }
 
-            i = (i + 1) % 14;
+            i = (i + 1) % 6;
         }
     }
 }

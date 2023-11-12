@@ -1,3 +1,4 @@
+using LegendOfZelda.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -60,6 +61,8 @@ namespace LegendOfZelda
 
             // Game state
             GameState = GameState.GetInstance();
+            BackgroundGenerator.GenerateMenuBackgrounds();
+            //new CameraControllerTest();
         }
 
         protected override void Update(GameTime gameTime)
@@ -71,10 +74,7 @@ namespace LegendOfZelda
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            Matrix transformMatrix = Matrix.CreateTranslation(-GameState.CameraController.mainCamera.worldPos.X, -GameState.CameraController.mainCamera.worldPos.Y, 0);
-            _spriteBatch.Begin(SpriteSortMode.Immediate, samplerState: SamplerState.PointClamp, transformMatrix: transformMatrix);
             GameState.Draw(_spriteBatch);
-            _spriteBatch.End();
             base.Draw(gameTime);
         }
     }
