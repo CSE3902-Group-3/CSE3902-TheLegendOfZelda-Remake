@@ -22,7 +22,7 @@ namespace LegendOfZelda
             graphicsDevice = game.GraphicsDevice;
             overlay = SpriteFactory.getInstance().linkTexture;
             overlayTexture = new Rectangle(118, 64, 1, 1);
-            color = new Color(120, 120, 120, 120);
+            color = new Color(120, 120, 120, 200);
         }
 
         public void TogglePause()
@@ -64,7 +64,7 @@ namespace LegendOfZelda
 
             overlay = SpriteFactory.getInstance().linkTexture;
             game._spriteBatch.Draw(overlay, new Rectangle(CameraXPos,CameraYPos,graphicsDevice.Viewport.Height, graphicsDevice.Viewport.Width), overlayTexture, color);
-            game._spriteBatch.DrawString(SpriteFactory.getInstance().pauseWord, "PAUSED", new Vector2(CameraXPos + (graphicsDevice.Viewport.Width / 2) - 70, CameraYPos + (graphicsDevice.Viewport.Height / 2) - 20), Color.Red);
+            game._spriteBatch.DrawString(SpriteFactory.getInstance().pauseWord, "PAUSED", new Vector2(CameraXPos + (graphicsDevice.Viewport.Width / 2) - 70, CameraYPos + (graphicsDevice.Viewport.Height / 2) - 20), Color.White);
         }
 
     }

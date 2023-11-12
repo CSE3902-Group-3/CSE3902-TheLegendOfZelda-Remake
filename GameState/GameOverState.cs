@@ -5,11 +5,13 @@ namespace LegendOfZelda
 {
     internal class GameOverState : IGameState
     {
-        private GameOverScreen GameOver;
+        private GameOverScreen gameOver;
+        private GameOverMenu menu;
 
         public GameOverState()
         {
-            GameOver = new GameOverScreen();
+            gameOver = new GameOverScreen();
+            menu = new GameOverMenu();
         }
         public void Update(GameTime gameTime)
         {
@@ -18,6 +20,7 @@ namespace LegendOfZelda
         public void Draw(SpriteBatch _spriteBatch)
         {
             GameState.CameraController.Draw(_spriteBatch);
+            menu.Draw();
         }
     }
 }
