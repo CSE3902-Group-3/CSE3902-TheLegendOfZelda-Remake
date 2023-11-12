@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using LegendOfZelda.Graphics;
 
 namespace LegendOfZelda
 {
@@ -8,6 +9,7 @@ namespace LegendOfZelda
         private IController StartStateController;
         public StartState() 
         {
+            BackgroundGenerator.GenerateMenuBackgrounds();
             new MainMenu();
             CameraController.GetInstance().ChangeMenu(Menu.Start);
             StartStateController = new MainMenuController();
