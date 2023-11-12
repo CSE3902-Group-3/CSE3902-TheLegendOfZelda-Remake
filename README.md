@@ -9,6 +9,7 @@ Remake of NES The Legend of Zelda game
 
 ### Other controls
 - Use `q` to quit and `r` to reset the program back to its initial state.
+- Use `space` to pause and resume the game.
 
 ## Known Bugs:
 - Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
