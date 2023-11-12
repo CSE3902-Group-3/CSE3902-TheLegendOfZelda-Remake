@@ -15,7 +15,7 @@ namespace LegendOfZelda
         }
         public void Update(GameTime gameTime)
         {
-            GameOver.Update(gameTime);
+            gameOver.Update(gameTime);
         }
         public void Draw(SpriteBatch _spriteBatch)
         {
