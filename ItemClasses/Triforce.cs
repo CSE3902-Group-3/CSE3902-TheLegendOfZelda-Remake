@@ -34,8 +34,10 @@ namespace LegendOfZelda
 
         public IItem Collect()
         {
-            triforce.UnregisterSprite();
+            position = GameState.Link.Pos + new Vector2(0, -64);
+            triforce.UpdatePos(position);
             collider.Active = false;
+            GameState.GetInstance().SwitchState(new WinningState());
             return this;
         }
 

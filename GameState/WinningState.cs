@@ -8,7 +8,6 @@ namespace LegendOfZelda
         private WinningScreenManager ScreenManager;
         public WinningState()
         {
-            // There should be a controller for the winning state
             ScreenManager = new WinningScreenManager();
         }
         public void Update(GameTime gameTime)
