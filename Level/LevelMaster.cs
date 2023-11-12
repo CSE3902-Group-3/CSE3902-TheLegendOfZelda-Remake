@@ -76,11 +76,16 @@ namespace LegendOfZelda
 
             GameState.GetInstance().SwitchState(new RoomTransitionState());
             DespawnEnemiesFromCurrentRoom();
-            CameraController.GetInstance().PanCamToRoom(CurrentRoom, targetRoom, RoomPositionList[targetRoom], onNavComplete);
+            CameraController.GetInstance().PanCamToRoom(CurrentRoom, targetRoom, RoomPositionList[targetRoom], AfterPan);
             CurrentRoom = targetRoom;
             return true;
         }
-
+        public void AfterPan ()
+        {
+            CameraController.GetInstance().RemovePreviousRoomDrawables();
+            GameState.GetInstance().SwitchState(new NormalState());
+            SpawnEnemiesToCurrentRoom();
+        }
         private static int DetermineRoomInDirection(int startingRoom, Direction direction)
         {
             List<AdjacentRoom> adjacentRooms = roomList.Rooms[startingRoom].AdjacentRooms;

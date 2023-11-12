@@ -61,9 +61,6 @@ namespace LegendOfZelda
                     worldPos = targetPos;
                     speed = 0;
                     panning = false;
-                    CameraController.GetInstance().RemovePreviousRoomDrawables();
-                    GameState.GetInstance().SwitchState(new NormalState());
-                    LevelMaster.GetInstance().SpawnEnemiesToCurrentRoom();
 
                     if(callback != null)
                     {
