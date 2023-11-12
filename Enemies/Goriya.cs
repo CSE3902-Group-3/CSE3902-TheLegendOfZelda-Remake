@@ -9,7 +9,7 @@ namespace LegendOfZelda
         private readonly List<AnimatedSprite> Sprites;
         private int CurrentSprite;
         private float Health { get; set; } = 3.0f;
-        public Vector2 Position;
+        public Vector2 Position { get; set; }
         private Vector2 Center;
         private Vector2 Direction;
         private double LastSwitch = 0;

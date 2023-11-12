@@ -4,8 +4,6 @@ using System;
 
 namespace LegendOfZelda
 {
-    // This class will soon be expanded to encapsulate commonly used code / constants for enemies
-    // It is a primitive start for now, but I thought I'd establish it now. - MDC 10/25/23
     public class EnemyUtilities
     {
         public static readonly float DAMAGE_COOLDOWN = 1.0f; // Adjust the delay duration as needed
@@ -56,6 +54,9 @@ namespace LegendOfZelda
                     enemy.Stun();
                 }
                 else if (!(weaponType == typeof(BoomerangProjectile)) && !noBoomerangEffect.Contains(enemyType))
+                {
+                    enemy.UpdateHealth(damage);
+                } else if (weaponType == typeof(BombProjectile) && enemyType == typeof(Dodongo)) // Dodongo is only affected by bombs
                 {
                     enemy.UpdateHealth(damage);
                 }

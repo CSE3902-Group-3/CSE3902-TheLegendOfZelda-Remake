@@ -7,7 +7,7 @@ namespace LegendOfZelda
     {
         private AnimatedSprite Sprite;
         private float Health { get; set; } = 0.5f;
-        public Vector2 Position;
+        public Vector2 Position { get; set; }
         private Vector2 Center;
         private readonly int PosIncrement = 5;
         private bool FacingLeft = false;
@@ -37,18 +37,21 @@ namespace LegendOfZelda
         }
         public void ChangePosition()
         {
+            Vector2 newPosition = new(Position.X, Position.Y);
+
             if (allowedToMove)
             {
                 // Cycle left and right movement
                 if (FacingLeft)
                 {
-                    Position.X -= PosIncrement;
+                    newPosition.X -= PosIncrement;
                 }
                 else
                 {
-                    Position.X += PosIncrement;
+                    newPosition.X += PosIncrement;
                 }
 
+                Position = newPosition;
                 Sprite.UpdatePos(Position);
                 Collider.Pos = Position;
             }

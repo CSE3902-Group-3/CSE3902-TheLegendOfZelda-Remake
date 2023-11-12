@@ -1,7 +1,10 @@
-﻿namespace LegendOfZelda
+﻿using Microsoft.Xna.Framework;
+
+namespace LegendOfZelda
 {
     public interface IEnemy: IUpdateable, ICollidable
     {
+        Vector2 Position { get; }
         void Spawn();
         void UpdateHealth(float damagePoints);
         void Stun();

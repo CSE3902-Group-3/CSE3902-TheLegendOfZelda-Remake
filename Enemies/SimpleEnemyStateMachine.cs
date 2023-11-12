@@ -14,13 +14,14 @@ namespace LegendOfZelda
         public Speed EnemySpeed { get; set; }
         public int SpeedMultiplier;
         public float Health { get; set; }
-        private Vector2 Position;
+        public Vector2 Position { get; set; }
         private Vector2 Center;
         private Vector2 Offset;
-        private Vector2 Direction;
+        public Vector2 Direction;
         private double LastSwitch = 0;
         private float currentCooldown = 0.0f;
         private bool allowedToMove = true;
+        public bool isColliding = false;
         public int Width;
         public int Height;
         public RectCollider Collider { get; set; }
@@ -79,6 +80,7 @@ namespace LegendOfZelda
                     Position -= Direction;
                 }
                 Sprite.UpdatePos(Position);
+                Collider.Pos = Position + Offset;
             }
         }
 
@@ -104,7 +106,7 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000 && isColliding == false)
             {
                 LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 ChangeDirection();
@@ -136,6 +138,12 @@ namespace LegendOfZelda
 
                 if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Wall)
                 {
+                    isColliding = true;
+                    Direction *= -1;
+                    Sprite.UpdatePos(Position);
+                    Collider.Pos = Position + Offset;
+                    ChangePosition();
+                    isColliding = false;
                     ChangeDirection();
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)
