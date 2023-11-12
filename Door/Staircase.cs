@@ -24,7 +24,7 @@ namespace LegendOfZelda
             sprite.UpdatePos(pos);
             collider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, doorSize, doorSize), CollisionLayer.Wall, this);
 
-            entrancePosition = new Vector2(320 * scale, -512 * scale);
+            entrancePosition = new Vector2(304 * scale, -608 * scale);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
