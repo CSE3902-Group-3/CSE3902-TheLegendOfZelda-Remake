@@ -8,6 +8,7 @@ namespace LegendOfZelda
         private IController StartStateController;
         public StartState() 
         {
+            new MainMenu();
             CameraController.GetInstance().ChangeMenu(Menu.Start);
             StartStateController = new MainMenuController();
         }
