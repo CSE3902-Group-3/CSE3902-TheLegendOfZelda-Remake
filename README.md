@@ -34,6 +34,8 @@ Remake of NES The Legend of Zelda game
 - Sprites still animate when the game is paused
 - Fireballs are missing from the wizard room
 - Wizard takes damage
+- Main menu has green line on the left
+- Screen size is incorrect
 
 ## Intentional Differences From Source Game:
 - Interaction with Wizard and spawning text is not implemented
