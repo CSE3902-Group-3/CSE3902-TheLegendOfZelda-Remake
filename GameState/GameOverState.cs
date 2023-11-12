@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    internal class GameOverState : IGameState
+    public class GameOverState : IGameState
     {
         private GameOverScreen GameOver;
 

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    internal class NormalState: IGameState
+    public class NormalState: IGameState
     {
         public NormalState(){}
         public void Update(GameTime gameTime)

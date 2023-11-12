@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace LegendOfZelda
 {
-    internal class PlayerController : IController
+    public class PlayerController : IController
     {
         private KeyboardMapping controllerMappings;
         private Link link;

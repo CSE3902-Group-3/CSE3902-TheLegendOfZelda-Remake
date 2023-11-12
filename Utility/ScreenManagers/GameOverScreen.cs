@@ -12,6 +12,7 @@ namespace LegendOfZelda
 		private GameOverText text;
 		private double lastUpdate;
 		private int counter;
+		private GameOverMenu menu;
 
 		public GameOverScreen()
 		{
@@ -23,6 +24,7 @@ namespace LegendOfZelda
 			text = new GameOverText();
 			lastUpdate = 0;
 			counter = 0;
+			menu = new GameOverMenu();
         }
 
 		public void ActivateGameOver()
