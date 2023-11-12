@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
-    internal class BlockLamda
+    public class BlockLamda
     {
         public delegate void Lamda(Room room, MapElement mapElement);
         public Lamda[] BlockFunctionArray { get; }
