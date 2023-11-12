@@ -44,7 +44,6 @@
     <Folder Include="GameInterface\" />
     <Folder Include="LegendOfZelda\obj\Release\" />
     <Folder Include="ItemClasses\" />
-    <Folder Include="Utility\GameOverScreenDrawables\" />
     <Folder Include="SpecialScreens\" />
     <Folder Include="SpecialScreens\GameOverScreenDrawables\" />
     <Folder Include="SpecialScreens\ScreenManagers\" />
