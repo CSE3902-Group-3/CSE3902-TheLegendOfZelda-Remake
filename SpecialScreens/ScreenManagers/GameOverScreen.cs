@@ -12,6 +12,7 @@ namespace LegendOfZelda
 		private GameOverText text;
 		private double lastUpdate;
 		private int counter;
+		private GameOverMenu menu;
 
 		public GameOverScreen()
 		{
@@ -23,6 +24,7 @@ namespace LegendOfZelda
 			text = new GameOverText();
 			lastUpdate = 0;
 			counter = 0;
+			menu = new GameOverMenu();
         }
 
 		public void ActivateGameOver()
@@ -113,9 +115,12 @@ namespace LegendOfZelda
                 counter++;
 			}
 
-            if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 1000))
+            if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
             {
 				GameState.GetInstance().ResetGameState();
+
+				/* Uncomment the line below, and comment out the line above to go to gameover menu */
+				//GameState.CameraController.ChangeMenu(Menu.GameOver);
                 counter++;
             }
 
