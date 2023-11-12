@@ -43,6 +43,7 @@ Remake of NES The Legend of Zelda game
 - There is an extra room with no doors to house Dodongo
 - Item spawn rates are drastically increased
 - Shader related effects look different from the original game
+- Game over menu is simplified since options like saving are not available in this game
 
 ## Tools:
 - We had an implementation which used HLSL shaders to color sprites more accurately, but due to bugs in Monogame on Mac, we were forced to remove this
