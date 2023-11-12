@@ -42,8 +42,8 @@ namespace LegendOfZelda
 		{
 			letterFactory = LetterFactory.getInstance();
 			letterWidth = 30;
-			cameraXPos = (int)GameState.CameraController.mainCamera.worldPos.X;
-			cameraYPos = (int)GameState.CameraController.mainCamera.worldPos.Y;
+			cameraXPos = (int)GameState.CameraController.gameOverCamera.worldPos.X;
+			cameraYPos = (int)GameState.CameraController.gameOverCamera.worldPos.Y;
 			graphicsDevice = Game1.getInstance().GraphicsDevice;
 
 			C = letterFactory.GetLetterSprite('C');

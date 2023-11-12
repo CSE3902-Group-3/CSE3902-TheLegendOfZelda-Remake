@@ -18,8 +18,10 @@
     <None Remove="Code Review\**" />
     <None Remove="LegendOfZelda\**" />
     <Compile Remove="LinkCommand.cs" />
-    <None Remove="Utility\GameOverScreenDrawables\" />
-    <None Remove="Utility\ScreenManagers\" />
+    <None Remove="SpecialScreens\" />
+    <None Remove="SpecialScreens\GameOverScreenDrawables\" />
+    <None Remove="SpecialScreens\ScreenManagers\" />
+    <None Remove="SpecialScreens\WinningScreenDrawables\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
@@ -40,7 +42,10 @@
     <Folder Include="GameInterface\" />
     <Folder Include="LegendOfZelda\obj\Release\" />
     <Folder Include="ItemClasses\" />
-    <Folder Include="Utility\GameOverScreenDrawables\" />
+    <Folder Include="SpecialScreens\" />
+    <Folder Include="SpecialScreens\GameOverScreenDrawables\" />
+    <Folder Include="SpecialScreens\ScreenManagers\" />
+    <Folder Include="SpecialScreens\WinningScreenDrawables\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Level\Levels\level1.json">
