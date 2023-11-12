@@ -25,7 +25,6 @@ Remake of NES The Legend of Zelda game
 - Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
 - Link teleports when traveling through a door instead of walking through
 - Link does not receive invincibility frames when he collides with a slime
-- HUD dissappears briefly when travelling up and down through rooms
 - Enemies drop items when exiting a room
 - Goriya sometimes walks through certain walls
 - Link does not spin when he dies
