@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Graphics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
@@ -55,6 +56,7 @@ namespace LegendOfZelda
             CameraController.Reset();
             PlayerController = new PlayerController(Link);
             ItemMenuController = new ItemMenuController();
+            BackgroundGenerator.GenerateMenuBackgrounds();
         }
         public void Update(GameTime gameTime)
         {

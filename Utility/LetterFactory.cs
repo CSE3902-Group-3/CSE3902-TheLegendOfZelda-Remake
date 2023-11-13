@@ -100,7 +100,7 @@ namespace LegendOfZelda
             {
                 new Rectangle(XPos, YPos, letterWidth, letterWidth)
             };
-            letterSprite = new AnimatedSprite(letterTexture, frames, SpriteEffects.None, 1, scale);
+            letterSprite = new AnimatedSprite(letterTexture, frames, SpriteEffects.None, 1, scale, true);
 
             return letterSprite;
         }

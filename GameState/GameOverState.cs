@@ -5,17 +5,22 @@ namespace LegendOfZelda
 {
     public class GameOverState : IGameState
     {
-        private GameOverScreen GameOver;
-        private GameOverMenu Menu;
+        private GameOverScreen gameOver;
+        private GameOverMenu menu;
+        private GameOverMenuSelector selector;
+        private GameOverMenuController controller;
 
         public GameOverState()
         {
-            GameOver = new GameOverScreen();
-            Menu = new GameOverMenu();
+            gameOver = new GameOverScreen();
+            menu = new GameOverMenu();
+            selector = new GameOverMenuSelector();
+            controller = new GameOverMenuController();
         }
         public void Update(GameTime gameTime)
         {
-            GameOver.Update(gameTime);
+            gameOver.Update(gameTime);
+            controller.Update();
         }
         public void Draw(SpriteBatch _spriteBatch)
         {

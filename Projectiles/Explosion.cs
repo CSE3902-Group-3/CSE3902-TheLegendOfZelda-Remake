@@ -34,6 +34,8 @@ namespace LegendOfZelda
             pos = position;
 
             int scale = spriteFactory.scale;
+
+            //Leaving magic numbers here because these are 12 actually different values, and these Vectors are being treated as constants, but cant be since they are vectors
             halfAPositions = new List<Vector2>
             {
                 Vector2.Zero,

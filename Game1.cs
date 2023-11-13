@@ -61,7 +61,7 @@ namespace LegendOfZelda
 
             // Game state
             GameState = GameState.GetInstance();
-            //new CameraControllerTest();
+            BackgroundGenerator.GenerateMenuBackgrounds();
         }
 
         protected override void Update(GameTime gameTime)

@@ -29,6 +29,8 @@ namespace LegendOfZelda
             }
             spriteBatch.End();
         }
+
+        //This method is offered as an alternative in case a list of lists is wanted to be drawn
         public void DrawAll(List<List<IDrawable>> drawables, SpriteBatch spriteBatch)
         {
             Matrix transformMatrix = Matrix.CreateTranslation(-worldPos.X, -worldPos.Y, 0);

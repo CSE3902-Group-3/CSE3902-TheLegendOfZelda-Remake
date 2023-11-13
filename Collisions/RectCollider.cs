@@ -12,9 +12,6 @@ namespace LegendOfZelda
         public CollisionLayer Layer { get; }
         public ICollidable Collidable { get; }
 
-        //The drawing functionality is added in this class because we want all RectColliders to have this capability
-        //If we extended RectCollider we would have to change all RectColliders to the extended class and enforce it
-        //This could be refactored in the future to use preprocessor directives with a debug mode instead
         public static bool drawColliders = false;
         private SpriteBatch spriteBatch;
         private Texture2D textureWithWhitePixel;

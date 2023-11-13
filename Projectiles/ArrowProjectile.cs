@@ -13,6 +13,13 @@ namespace LegendOfZelda
         private Vector2 horizontalArrowBurstOffset;
         private Vector2 verticalArrowBurstOffset;
 
+        private const int horizontalArrowBurstOffsetX = 4;
+        private const int horizontalArrowBurstOffsetY = -2;
+        private const int verticalArrowBurstOffsetX = -2;
+        private const int verticalArrowBurstOffsetY = 4;
+        protected const int arrowWidth = 16;
+        protected const int arrowHeight = 5;
+
         private Vector2 _pos;
         protected Vector2 Pos
         {
@@ -35,8 +42,8 @@ namespace LegendOfZelda
 
             int scale = spriteFactory.scale;
 
-            horizontalArrowBurstOffset = new Vector2(4 * scale, -2 * scale);
-            verticalArrowBurstOffset = new Vector2(-2 * scale, 4 * scale);
+            horizontalArrowBurstOffset = new Vector2(horizontalArrowBurstOffsetX * scale, horizontalArrowBurstOffsetY * scale);
+            verticalArrowBurstOffset = new Vector2(verticalArrowBurstOffsetX * scale, verticalArrowBurstOffsetY * scale);
 
             CreateSpriteAndCollider(direction, scale);
 
@@ -53,22 +60,22 @@ namespace LegendOfZelda
                 case Direction.up:
                     sprite = spriteFactory.CreateArrowUpSprite();
                     dir = new Vector2(0, -1);
-                    collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, 5 * scale, 16 * scale), CollisionLayer.PlayerWeapon, this);
+                    collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, arrowHeight * scale, arrowWidth * scale), CollisionLayer.PlayerWeapon, this);
                     break;
                 case Direction.down:
                     sprite = spriteFactory.CreateArrowDownSprite();
                     dir = new Vector2(0, 1);
-                    collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, 5 * scale, 16 * scale), CollisionLayer.PlayerWeapon, this);
+                    collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, arrowHeight * scale, arrowWidth * scale), CollisionLayer.PlayerWeapon, this);
                     break;
                 case Direction.right:
                     sprite = spriteFactory.CreateArrowRightSprite();
                     dir = new Vector2(1, 0);
-                    collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, 16 * scale, 5 * scale), CollisionLayer.PlayerWeapon, this);
+                    collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, arrowWidth * scale, arrowHeight * scale), CollisionLayer.PlayerWeapon, this);
                     break;
                 case Direction.left:
                     sprite = spriteFactory.CreateArrowLeftSprite();
                     dir = new Vector2(-1, 0);
-                    collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, 16 * scale, 5 * scale), CollisionLayer.PlayerWeapon, this);
+                    collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, arrowWidth * scale, arrowHeight * scale), CollisionLayer.PlayerWeapon, this);
                     break;
             }
             SoundFactory.PlaySound(SoundFactory.getInstance().ArrowBoomerang, 1.0f, 0.0f, 0.0f);

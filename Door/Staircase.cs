@@ -13,6 +13,8 @@ namespace LegendOfZelda
         private IPlayer player;
 
         private int doorSize = 16;
+        private const int entrancePosX = 304;
+        private const int entrancePosY = -608;
         public Staircase(Vector2 pos)
         {
             SpriteFactory spriteFactory = SpriteFactory.getInstance();
@@ -24,7 +26,7 @@ namespace LegendOfZelda
             sprite.UpdatePos(pos);
             collider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, doorSize, doorSize), CollisionLayer.Wall, this);
 
-            entrancePosition = new Vector2(304 * scale, -608 * scale);
+            entrancePosition = new Vector2(entrancePosX * scale, entrancePosY * scale);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

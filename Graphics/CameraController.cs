@@ -8,6 +8,7 @@ namespace LegendOfZelda
     public enum Menu { Start, Item, End, GameOver};
     public class CameraController
     {
+        //Menu's are positioned in world coordinates
         public Vector2 HUDLocation { get; private set; } = new Vector2(10000, 1024);
         public Vector2 ItemMenuLocation { get; private set; } = new Vector2(10000, 0);
         public Vector2 StartLocation { get; private set; } = new Vector2(20000, 0);
