@@ -11,6 +11,7 @@ namespace LegendOfZelda
     public class LowerHUD : IHUD
     {
         private const int scale = 4;
+        private const int mapSize = 32;
 
         private SpriteFactory spriteFactory;
         private LetterFactory letterFactory;
@@ -38,12 +39,23 @@ namespace LegendOfZelda
         private Vector2 BombsPos;
         private Vector2 LifePos;
 
+        private Dictionary<AnimatedSprite, Vector2> MiniMap;
+
         private int Level;
         private int RubiesCount;
         private int KeysCount;
         private int BombsCount;
         private int CurrentHealth;
         private int MaxHealth;
+
+        private List<int> ElementList = new List<int>()
+        {
+            -1, -1, -1, -1, -1, -1, -1, -1,
+            -1, -1,  0,  2, -1,  1,  1, -1,
+            -1,  0,  2,  2,  2,  0, -1, -1,
+            -1, -1,  1,  2,  1, -1, -1, -1
+        };
+
 
         public LowerHUD()
         {
@@ -87,6 +99,7 @@ namespace LegendOfZelda
             BombsPos = new Vector2(LowerHUDBasePos.X + 96 * scale, LowerHUDBasePos.Y + 40 * scale);
             LifePos = new Vector2(LowerHUDBasePos.X + 176 * scale, LowerHUDBasePos.Y + 32 * scale);
 
+            CreateMiniMap();
         }
 
         public void Update(GameTime gameTime)
@@ -117,6 +130,31 @@ namespace LegendOfZelda
 
             RegisterLifeSprite(Life, LifePos);
             
+        }
+
+        public void CreateMiniMap()
+        {
+            Vector2 basePos = new Vector2(LevelIndicatorPos.X, LevelIndicatorPos.Y + 8 * scale);
+            
+            MiniMap = new Dictionary<AnimatedSprite, Vector2>();
+            for (int i = 0; i < mapSize; i++)
+            {
+                AnimatedSprite tempSprite;
+                Vector2 tempPos;
+                int element = ElementList[i];
+                if (element == -1)
+                {
+                    tempSprite = letterFactory.GetBlankSprite();
+                }
+                else
+                {
+                    tempSprite = spriteFactory.CreateMiniMapElement(element);
+                }
+
+                tempPos = new Vector2(basePos.X + (i % 8) * 8 * scale, basePos.Y + (i / 8) * 8 * scale);
+
+                MiniMap.Add(tempSprite, tempPos);
+            }
         }
 
         public List<AnimatedSprite> QuantityToSprite(int quantitiy)
@@ -199,6 +237,15 @@ namespace LegendOfZelda
                 sprite.UpdatePos(tempPos);
                 tempPos.X += 8 * scale;
                 index++;
+            }
+        }
+
+        public void RegisterMiniMapSprite()
+        {
+            foreach (KeyValuePair<AnimatedSprite, Vector2> element in MiniMap)
+            {
+                element.Key.RegisterSprite();
+                element.Key.UpdatePos(element.Value);
             }
         }
 
