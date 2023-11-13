@@ -31,6 +31,7 @@ namespace LegendOfZelda
             Link = new Link();
             LevelMaster.NavigateToRoom(1);
             PauseManager = new PauseManager();
+            BackgroundGenerator.GenerateMenuBackgrounds();
             State = new StartState();
             RoomCycler.GetInstance();
             CameraController = CameraController.GetInstance();
@@ -52,11 +53,11 @@ namespace LegendOfZelda
             Link = new Link();
             LevelMaster.NavigateToRoom(1);
             PauseManager = new PauseManager();
+            BackgroundGenerator.GenerateMenuBackgrounds();
             State = new NormalState();
             CameraController.Reset();
             PlayerController = new PlayerController(Link);
             ItemMenuController = new ItemMenuController();
-            BackgroundGenerator.GenerateMenuBackgrounds();
         }
         public void Update(GameTime gameTime)
         {

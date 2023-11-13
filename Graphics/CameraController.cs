@@ -40,7 +40,6 @@ namespace LegendOfZelda
 
             mainCameraDrawables = new List<List<IDrawable>>
             {
-                LevelMaster.CurrentRoomDrawables,
                 LevelMaster.PersistentDrawables
             };
 
@@ -116,6 +115,7 @@ namespace LegendOfZelda
         public void Reset()
         {
             mainCamera.worldPos = LevelMaster.RoomPositionList[LevelMaster.CurrentRoom];
+            activeMenu = itemMenuCamera;
             //mainCamera = new Camera(LevelMaster.RoomPositionList[LevelMaster.CurrentRoom]);
             //itemMenuCamera = new Camera(HUDLocation);
             //startCamera = new Camera(StartLocation);
