@@ -1,14 +1,15 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Door",
     "\\Enemies",
     "\\Enemies\\Utilities",
+    "\\Graphics",
     "\\Level",
     "\\Level\\Lambdas",
     "\\Player",
-    "\\Utility",
-    "\\Utility\\GameOverScreen"
+    "\\Utility"
   ],
-  "SelectedNode": "\\LegendOfZelda.sln",
+  "SelectedNode": "\\Door\\CloseableDoor.cs",
   "PreviewInSolutionExplorer": false
 }
