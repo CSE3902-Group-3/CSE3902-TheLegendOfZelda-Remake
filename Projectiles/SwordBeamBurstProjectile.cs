@@ -32,6 +32,9 @@ namespace LegendOfZelda
 
         private Timer timer;
         private const double delay = .5;
+        private const int colliderWidth = 8;
+        private const int colliderHeight = 10;
+
         public SwordBeamBurstProjectile(Vector2 position, Direction direction)
         {
             game = Game1.getInstance();
@@ -64,7 +67,7 @@ namespace LegendOfZelda
             sprite.UpdatePos(position);
 
             int scale = spriteFactory.scale;
-            collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, 8 * scale, 10 * scale), CollisionLayer.PlayerWeapon, this);
+            collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, colliderWidth * scale, colliderHeight * scale), CollisionLayer.PlayerWeapon, this);
 
             LevelMaster.RegisterUpdateable(this);
 

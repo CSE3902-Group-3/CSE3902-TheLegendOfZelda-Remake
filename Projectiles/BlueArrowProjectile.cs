@@ -18,22 +18,22 @@ namespace LegendOfZelda
                 case Direction.up:
                     sprite = spriteFactory.CreateBlueArrowUpSprite();
                     dir = new Vector2(0, -1);
-                    collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, 5 * scale, 16 * scale), CollisionLayer.PlayerWeapon, this);
+                    collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, arrowHeight * scale, arrowWidth * scale), CollisionLayer.PlayerWeapon, this);
                     break;
                 case Direction.down:
                     sprite = spriteFactory.CreateBlueArrowDownSprite();
                     dir = new Vector2(0, 1);
-                    collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, 5 * scale, 16 * scale), CollisionLayer.PlayerWeapon, this);
+                    collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, arrowHeight * scale, arrowWidth * scale), CollisionLayer.PlayerWeapon, this);
                     break;
                 case Direction.right:
                     sprite = spriteFactory.CreateBlueArrowRightSprite();
                     dir = new Vector2(1, 0);
-                    collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, 16 * scale, 5 * scale), CollisionLayer.PlayerWeapon, this);
+                    collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, arrowWidth * scale, arrowHeight * scale), CollisionLayer.PlayerWeapon, this);
                     break;
                 case Direction.left:
                     sprite = spriteFactory.CreateBlueArrowLeftSprite();
                     dir = new Vector2(-1, 0);
-                    collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, 16 * scale, 5 * scale), CollisionLayer.PlayerWeapon, this);
+                    collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, arrowWidth * scale, arrowHeight * scale), CollisionLayer.PlayerWeapon, this);
                     break;
             }
         }

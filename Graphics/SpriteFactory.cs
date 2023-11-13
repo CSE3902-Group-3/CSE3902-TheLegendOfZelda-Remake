@@ -16,6 +16,8 @@ namespace LegendOfZelda
     /*
      * This class is left very long intentionally. The sprite factory is intended to be completely decoupled from the functionality of the games,
      * so to split it up based on what the sprites are used for would break this principle. Even though it is long it only serves one purpose.
+     * 
+     * Also: removing magic numbers from this class would require hundreds of const statements, so they are left here.
      */
     public class SpriteFactory
     {
