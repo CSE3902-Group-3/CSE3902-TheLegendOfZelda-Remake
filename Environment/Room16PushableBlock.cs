@@ -15,7 +15,7 @@ namespace LegendOfZelda
         private Vector2 _pos;
         private Timer timer;
         private bool collidedLastFrame = false;
-        private const float pushDelay = 2;
+        private const float pushDelay = 1;
         public BlockState state { get; private set; } = BlockState.Idle;
         private Vector2 startingPos;
 
