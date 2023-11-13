@@ -28,7 +28,6 @@ namespace LegendOfZelda
         private List<AnimatedSprite> Bombs;
         private List<AnimatedSprite> Life;
 
-        private Vector2 TempPos;
         private Vector2 LowerHUDBasePos;
         private Vector2 LevelIndicatorPos;
         private Vector2 LevelNumberPos;
@@ -59,15 +58,9 @@ namespace LegendOfZelda
         {
             // The below values are for test now, should be changed later
             Level = 1;
-            /*
             RubiesCount = inventory.GetQuantity(new OneRupee(Vector2.Zero));
             KeysCount = inventory.GetQuantity(new Key(Vector2.Zero));
             BombsCount = inventory.GetQuantity(new Bomb(Vector2.Zero));
-            */
-
-            RubiesCount = 10;
-            KeysCount = 10;
-            BombsCount = 10;
 
             CurrentHealth = (int)(link.GetCurrentHP() * 2);
             MaxHealth = (int)(link.GetMaxHP() * 2);
@@ -98,9 +91,9 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
-            //UpdateRubies();
-            //UpdateKeys();
-            //UpdateBoombs();
+            UpdateRubies();
+            UpdateKeys();
+            UpdateBoombs();
             UpdateHealth();
         }
 
@@ -187,8 +180,8 @@ namespace LegendOfZelda
             foreach (AnimatedSprite sprite in spriteList)
             {
                 sprite.RegisterSprite();
-                sprite.UpdatePos(TempPos);
-                TempPos.X += 8 * scale;
+                sprite.UpdatePos(tempPos);
+                tempPos.X += 8 * scale;
             }
         }
 
