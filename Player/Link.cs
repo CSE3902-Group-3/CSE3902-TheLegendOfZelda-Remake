@@ -37,8 +37,8 @@ namespace LegendOfZelda
 
         public void Heal(float health)
         {
-            if (this.HP + health > this.maxHP)
-                this.HP = this.maxHP;
+            if (this.HP + health > this.MaxHP)
+                this.HP = this.MaxHP;
             else
                 this.HP += health;
         }

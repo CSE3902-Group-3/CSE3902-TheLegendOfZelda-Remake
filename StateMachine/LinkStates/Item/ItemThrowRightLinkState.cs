@@ -1,4 +1,6 @@
-﻿namespace LegendOfZelda
+﻿using Microsoft.Xna.Framework;
+
+namespace LegendOfZelda
 {
     public class ItemThrowRightLinkState : IState
     {
@@ -26,7 +28,7 @@
             }
             else if (Inventory.getInstance().SecondaryItem is Boomerang)
             {
-                new BoomerangProjectile(Link.StateMachine.position + new Vector2(160, 0), new Vector2(1, 0), link);
+                new BoomerangProjectile(Link.StateMachine.position + new Vector2(160, 0), new Vector2(1, 0), Link);
             }
         }
 

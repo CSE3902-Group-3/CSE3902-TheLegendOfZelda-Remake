@@ -9,9 +9,9 @@ namespace LegendOfZelda
     {
         private Link player;
 
-        public UseSecondaryItemCommand(Link player)
+        public UseSecondaryItemCommand()
         {
-            this.player = player;
+            this.player = GameState.Link;
         }
 
         public void Execute()
@@ -19,19 +19,19 @@ namespace LegendOfZelda
             IItem secondaryItem = Inventory.getInstance().SecondaryItem;
             if (secondaryItem is Bomb || secondaryItem is Boomerang)
             {
-                switch (player.stateMachine.currentDirection)
+                switch (player.StateMachine.currentDirection)
                 {
                     case Direction.left:
-                        player.stateMachine.ChangeState(new ItemThrowLeftLinkState());
+                        player.StateMachine.ChangeState(new ItemThrowLeftLinkState());
                         break;
                     case Direction.up:
-                        player.stateMachine.ChangeState(new ItemThrowUpLinkState());
+                        player.StateMachine.ChangeState(new ItemThrowUpLinkState());
                         break;
                     case Direction.right:
-                        player.stateMachine.ChangeState(new ItemThrowRightLinkState());
+                        player.StateMachine.ChangeState(new ItemThrowRightLinkState());
                         break;
                     case Direction.down:
-                        player.stateMachine.ChangeState(new ItemThrowDownLinkState());
+                        player.StateMachine.ChangeState(new ItemThrowDownLinkState());
                         break;
                 }
             }
@@ -41,14 +41,14 @@ namespace LegendOfZelda
                 {
                     if (Inventory.getInstance().SpendRupee(1))
                     {
-                        new ArrowProjectile(Link.getInstance().stateMachine.position, Link.getInstance().stateMachine.currentDirection);
+                        new ArrowProjectile(GameState.Link.StateMachine.position, GameState.Link.StateMachine.currentDirection);
                     }
 
                 }
             }
             else if (secondaryItem is Fairy || secondaryItem is Potion)
             {
-                Link.getInstance().Heal(Link.getInstance().maxHP);
+                GameState.Link.Heal(GameState.Link.MaxHP);
             }
         }
     }
