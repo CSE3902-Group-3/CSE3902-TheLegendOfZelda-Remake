@@ -839,7 +839,7 @@ namespace LegendOfZelda
                 new Rectangle(0, 0, 8, 8)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             return newSprite;
         }
 
