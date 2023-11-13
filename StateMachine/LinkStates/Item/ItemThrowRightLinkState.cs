@@ -24,11 +24,11 @@ namespace LegendOfZelda
             // Throw item
             if (Inventory.getInstance().SecondaryItem is Bomb)
             {
-                new BombProjectile(Link.StateMachine.position + new Vector2(160, 0));
+                new BombProjectile(Link.StateMachine.position + LinkUtilities.rightItemOffset);
             }
             else if (Inventory.getInstance().SecondaryItem is Boomerang)
             {
-                new BoomerangProjectile(Link.StateMachine.position + new Vector2(160, 0), new Vector2(1, 0), Link);
+                new BoomerangProjectile(Link.StateMachine.position + LinkUtilities.rightItemOffset, LinkUtilities.rightDirVector, Link);
             }
         }
 

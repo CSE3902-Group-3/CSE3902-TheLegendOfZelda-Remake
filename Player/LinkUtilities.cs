@@ -6,6 +6,17 @@ namespace LegendOfZelda
     {
 
         public static Vector2 originalLinkPosition = new Vector2(1504, 832);
+
+        public static Vector2 upDirVector = new Vector2(0, 1);
+        public static Vector2 leftDirVector = new Vector2(-1, 0);
+        public static Vector2 rightDirVector = new Vector2(1, 0);
+        public static Vector2 downDirVector = new Vector2(0, -1);
+
+        public static Vector2 upItemOffet = new Vector2(-30, 150);
+        public static Vector2 rightItemOffset = new Vector2(160, 0);
+        public static Vector2 leftItemOffset = new Vector2(90, 0);
+        public static Vector2 downItemOffset = new Vector2(30, 150);
+
         public static int SnapToGrid(int position)
         {
             int alignTo = 8 * SpriteFactory.getInstance().scale;
