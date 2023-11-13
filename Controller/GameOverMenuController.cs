@@ -8,6 +8,7 @@ namespace LegendOfZelda
         private PreviousSelectionCommand previousSelectionCommand;
         private ExecuteSelectionCommand selectionCommand;
         private bool ReleasedKey;
+        private bool initialized;
 
         public GameOverMenuController()
         {
@@ -15,10 +16,17 @@ namespace LegendOfZelda
             previousSelectionCommand = new PreviousSelectionCommand();
             selectionCommand = new ExecuteSelectionCommand();
             ReleasedKey = false;
+            initialized = false;
         }
 
         public void Update()
         {
+            if (!initialized)
+            {
+                nextSelectionCommand.Execute();
+                initialized = true;
+            }
+
             if (Keyboard.GetState().IsKeyDown(Keys.U) && ReleasedKey)
             {
                 nextSelectionCommand.Execute();
