@@ -134,7 +134,7 @@ namespace LegendOfZelda
             {
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
 
-                if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Wall)
+                if (collidedWith == CollisionLayer.OuterWall || (EnemyType != typeof(Bat) && collidedWith == CollisionLayer.Wall)) // Bat should be able to float over inner walls
                 {
                     isColliding = true;
                     Direction *= -1;

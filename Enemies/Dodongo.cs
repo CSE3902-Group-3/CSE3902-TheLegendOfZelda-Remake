@@ -17,6 +17,7 @@ namespace LegendOfZelda
         private int UpdateCount = 0;
         private bool Injured = false;
         private float currentCooldown = 0.0f;
+        public bool isColliding = false;
         public RectCollider Collider { get; private set; }
         public Dodongo(Vector2 pos)
         {
@@ -136,7 +137,7 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000 && isColliding == false)
             {
                 LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 UpdateCount++;
@@ -153,6 +154,12 @@ namespace LegendOfZelda
 
                 if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Wall)
                 {
+                    isColliding = true;
+                    Direction *= -1;
+                    Sprites[CurrentSprite].UpdatePos(Position);
+                    Collider.Pos = Position;
+                    ChangePosition();
+                    isColliding = false;
                     ChangeDirection();
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)

@@ -14,6 +14,7 @@ namespace LegendOfZelda
         private double LastSwitch = 0;
         private float currentCooldown = 0.0f;
         private bool allowedToMove = true;
+        public bool isColliding = false;
         public RectCollider Collider { get; private set; }
         public Rope(Vector2 pos)
         {
@@ -93,7 +94,7 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
-            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000 && isColliding == false)
             {
                 LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 ChangeDirection();
@@ -118,7 +119,12 @@ namespace LegendOfZelda
 
                 if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Wall)
                 {
+                    isColliding = true;
                     ChangeDirection();
+                    Sprite.UpdatePos(Position);
+                    Collider.Pos = Position;
+                    ChangePosition();
+                    isColliding = false;
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
