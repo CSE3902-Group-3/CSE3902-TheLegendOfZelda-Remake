@@ -86,6 +86,8 @@ namespace LegendOfZelda
         {
             if (selection == 0) GameState.GetInstance().SwitchState(new NormalState());
             if (selection == 2) GameState.GetInstance().ResetGameState();
+
+            GameState.CameraController.ChangeMenu(Menu.Start);
         }
     }
 }
