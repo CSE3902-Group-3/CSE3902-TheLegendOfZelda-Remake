@@ -143,6 +143,7 @@ namespace LegendOfZelda
             if ((counter == 7) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 50))
             {
 				GameState.CameraController.ChangeMenu(Menu.GameOver);
+				GameState.GetInstance().ResetGameState();
                 counter++;
             }
 

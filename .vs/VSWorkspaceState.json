@@ -1,13 +1,14 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Door",
     "\\Enemies",
     "\\Enemies\\Utilities",
+    "\\Graphics",
     "\\Level",
     "\\Level\\Lambdas",
     "\\Player",
-    "\\Utility",
-    "\\Utility\\GameOverScreen"
+    "\\Utility"
   ],
   "SelectedNode": "\\LegendOfZelda.sln",
   "PreviewInSolutionExplorer": false
