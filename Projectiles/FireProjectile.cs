@@ -30,6 +30,9 @@ namespace LegendOfZelda
         private const double haltDelay = 1;
         private Timer timer;
         private RectCollider collider;
+
+        private const int fireWidth = 16;
+
         public FireProjectile(Vector2 position, Direction direction)
         {
             SpriteFactory spriteFactory = SpriteFactory.getInstance();
@@ -55,7 +58,7 @@ namespace LegendOfZelda
             sprite.UpdatePos(position);
 
             int scale = spriteFactory.scale;
-            collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, 16 * scale, 16 * scale), CollisionLayer.PlayerWeapon, this);
+            collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, fireWidth * scale, fireWidth * scale), CollisionLayer.PlayerWeapon, this);
 
             timer = new Timer(moveDelay, StopMoving);
 

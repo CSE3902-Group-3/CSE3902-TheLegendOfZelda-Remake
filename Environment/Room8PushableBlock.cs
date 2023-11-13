@@ -12,7 +12,6 @@ namespace LegendOfZelda
         private int wallSize = 16;
         private Vector2 _pos;
         private Timer timer;
-        private bool collidedLastFrame = false;
         private const float pushDelay = 1;
         public BlockState state = BlockState.Idle;
         private Vector2 startingPos;

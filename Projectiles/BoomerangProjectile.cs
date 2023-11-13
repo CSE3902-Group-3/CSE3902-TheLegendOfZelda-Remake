@@ -28,6 +28,9 @@ namespace LegendOfZelda
         private Vector2 dir;
         private bool returning = false;
         private IPlayer player;
+
+        private const int boomerangWidth = 8;
+
         public BoomerangProjectile(Vector2 position, Vector2 direction, IPlayer player)
         {
             SpriteFactory spriteFactory = SpriteFactory.getInstance();
@@ -42,7 +45,7 @@ namespace LegendOfZelda
             sprite.UpdatePos(position);
 
             int scale = spriteFactory.scale;
-            collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, 8 * scale, 8 * scale), CollisionLayer.PlayerWeapon, this);
+            collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, boomerangWidth * scale, boomerangWidth * scale), CollisionLayer.PlayerWeapon, this);
 
             LevelMaster.RegisterUpdateable(this);
         }

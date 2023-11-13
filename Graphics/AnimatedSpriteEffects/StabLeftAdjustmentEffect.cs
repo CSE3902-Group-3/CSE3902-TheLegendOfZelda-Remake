@@ -13,11 +13,13 @@ namespace LegendOfZelda
         public static readonly string name = "StabLeft";
         public string Name { get { return name; } }
 
+        private const int linkWidth = 16;
+
         public DrawInfo ApplyEffect(DrawInfo drawInfo)
         {
             DrawInfo returnInfo = drawInfo;
             Vector2 oldPos = drawInfo.pos;
-            returnInfo.pos = new Vector2(oldPos.X + (16 - drawInfo.frames[drawInfo.frame].Width) * drawInfo.scale, oldPos.Y);
+            returnInfo.pos = new Vector2(oldPos.X + (linkWidth - drawInfo.frames[drawInfo.frame].Width) * drawInfo.scale, oldPos.Y);
             return returnInfo;
         }
     }
