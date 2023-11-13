@@ -35,7 +35,8 @@ Remake of NES The Legend of Zelda game
 - Fireballs are missing from the wizard room
 - Wizard takes damage
 - Main menu has green line on the left
-- Screen size is incorrect
+- Screen size is a square as opposed to a rectangle in the original
+- Pushable blocks do not reset upon reentry to a room
 
 ## Intentional Differences From Source Game:
 - Interaction with Wizard and spawning text is not implemented
@@ -46,6 +47,8 @@ Remake of NES The Legend of Zelda game
 - Item spawn rates are drastically increased
 - Shader related effects look different from the original game
 - Game over menu is simplified since options like saving are not available in this game
+- Enemy movement patterns may vary slightly
+- The time it takes to push the pushable blocks may vary slightly
 
 ## Tools:
 - We had an implementation which used HLSL shaders to color sprites more accurately, but due to bugs in Monogame on Mac, we were forced to remove this
