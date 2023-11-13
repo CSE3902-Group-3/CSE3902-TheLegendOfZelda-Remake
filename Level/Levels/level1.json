@@ -1,14 +1,4 @@
 {
-    "Events": [
-        {
-            "EventType": "ItemDrop",
-            "Reward": 0,
-            "RoomNumber": 0,
-            "Condition": 0,
-            "XLocation": 0,
-            "YLocation": 0
-        }
-    ],
     "Rooms": [
         {
             "RoomNumber": 0,
@@ -18,6 +8,13 @@
                 {
                     "RoomNumber": 1,
                     "Direction": "East"
+                }
+            ],
+            "Events": [
+                {
+                    "EventNumber": 0,
+                    "XLocation": 2,
+                    "YLocation": 2
                 }
             ],
             "MapElements": [

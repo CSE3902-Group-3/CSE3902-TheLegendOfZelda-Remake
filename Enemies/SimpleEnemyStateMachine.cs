@@ -7,6 +7,7 @@ namespace LegendOfZelda
 {
     public class SimpleEnemyStateMachine : IEnemy
     {
+        private IEnemy Enemy;
         public EnemyClass Classification { get; set; }
         public AnimatedSprite Sprite { get; set; }
         public Type EnemyType { get; set; }
@@ -25,8 +26,9 @@ namespace LegendOfZelda
         public int Height;
         public RectCollider Collider { get; set; }
 
-        public SimpleEnemyStateMachine(Vector2 pos, Vector2 offset, RectCollider collider)
+        public SimpleEnemyStateMachine(Vector2 pos, Vector2 offset, RectCollider collider, IEnemy enemy = null)
         {
+            Enemy = enemy;
             Position = pos;
             Offset = offset;
             Direction = new Vector2(1, 0);
@@ -119,6 +121,7 @@ namespace LegendOfZelda
             if (Health < 0)
             {
                 Die();
+                LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(Enemy);
             }
             else
             {

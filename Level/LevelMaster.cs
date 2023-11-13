@@ -32,6 +32,7 @@ namespace LegendOfZelda
         private static BlockLamda BlockLamda = BlockLamda.GetInstance();
         private static ItemLamda ItemLamda = ItemLamda.GetInstance();
         private static EnemyLamda EnemyLamda = EnemyLamda.GetInstance();
+        private static EventLamda EventLamda = EventLamda.GetInstance();
         
         private static RoomList roomList;
         private LevelMaster(){}
@@ -176,6 +177,13 @@ namespace LegendOfZelda
                 RoomListUpdateables.Add(new List<IUpdateable>());
                 RoomListDrawables.Add(new List<IDrawable>());
                 RoomListColliders.Add(new List<IRectCollider>());
+                if (room.Events != null)
+                {
+                    foreach (LevelEvent levelEvent in room.Events)
+                    {
+                        EventLamda.EventFunctionArray[levelEvent.EventNumber](room, levelEvent);
+                    }
+                }
                 foreach (MapElement mapElement in room.MapElements)
                 {
                     ProcessMapElement(room, mapElement);
