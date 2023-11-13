@@ -13,7 +13,7 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            link.Reset(); 
+            GameState.GetInstance().ResetGameState();
         }
 
     }

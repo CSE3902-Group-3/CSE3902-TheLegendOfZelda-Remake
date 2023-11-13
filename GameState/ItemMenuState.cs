@@ -1,19 +1,17 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
-    public class NormalState: IGameState
+    public class ItemMenuState : IGameState
     {
-        public NormalState()
+        public ItemMenuState()
         {
             CameraController.GetInstance().ChangeMenu(Menu.Item);
         }
         public void Update(GameTime gameTime)
         {
-            LevelMaster.Update(gameTime);
-            GameState.PlayerController.Update();
-            GameState.CollisionManager.Update(gameTime);
+            GameState.ItemMenuController.Update();
         }
         public void Draw(SpriteBatch _spriteBatch)
         {
