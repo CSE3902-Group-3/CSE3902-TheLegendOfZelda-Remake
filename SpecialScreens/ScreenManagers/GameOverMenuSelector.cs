@@ -20,7 +20,7 @@ namespace LegendOfZelda
         {
             cameraXPos = 40000;
             cameraYPos = 0;
-            selection = 0;
+            selection = 1;
             graphicsDevice = Game1.getInstance().GraphicsDevice;
             ContinuePos = new Vector2((cameraXPos + graphicsDevice.Viewport.Width / 3) - 40, cameraYPos + graphicsDevice.Viewport.Height / 3);
             SavePos = new Vector2((cameraXPos + graphicsDevice.Viewport.Width / 3) - 40, cameraYPos + graphicsDevice.Viewport.Height / 2);
@@ -29,9 +29,9 @@ namespace LegendOfZelda
 
             IndicationHearts = new List<IItem>()
             {
-                new Heart(ContinuePos),
+                new SelectionHeart(ContinuePos),
                 //new Heart(SavePos),
-                new Heart(RetryPos)
+                new SelectionHeart(RetryPos)
             };
 
             foreach (IItem item in IndicationHearts)
@@ -59,7 +59,7 @@ namespace LegendOfZelda
             IndicationHearts[selection].Show();
         }
 
-        public void previousOption()
+        /*public void previousOption()
         {
             IndicationHearts[selection].Remove();
 
@@ -73,7 +73,7 @@ namespace LegendOfZelda
             }
 
             IndicationHearts[selection].Show();
-        }
+        }*/
 
         public void Reset()
         {
@@ -85,7 +85,7 @@ namespace LegendOfZelda
         public void ExecuteSelection()
         {
             if (selection == 0) GameState.GetInstance().SwitchState(new NormalState());
-            if (selection == 2) GameState.GetInstance().ResetGameState();
+            if (selection == 1) GameState.GetInstance().ResetGameState();
 
             GameState.CameraController.ChangeMenu(Menu.Start);
         }

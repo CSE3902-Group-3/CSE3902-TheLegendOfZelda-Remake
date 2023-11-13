@@ -11,7 +11,8 @@
 
 		public void Execute()
 		{
-			selector.previousOption();
+			/* This command is not needed for now */
+			//selector.previousOption();
 		}
 	}
 }
