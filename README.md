@@ -102,9 +102,11 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - Michael Herring reviewed Matt Curie's code for readability in pull request #260
 - Ethan Glenwright reviewed MengQi Lei's code for quality in pull request #280
 - MengQi Lei reviewed Ethan Glenwright's code for readability in pull request #301
+- MengQi Lei reviewed ZhengYi Hu's code for quality in pull request #284
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
 
 #### Sprint 5 Topic Ideas:
 - Michael Herring: Reinvestigate HLSL shaders from sprint 2
+- Gabriel DiFiore: Config game with `.ini` file, load in custom Link health, enemy damage/difficulty, etc

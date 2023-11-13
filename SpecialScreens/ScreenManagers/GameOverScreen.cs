@@ -13,6 +13,7 @@ namespace LegendOfZelda
 		private double lastUpdate;
 		private int counter;
 		private GameOverMenu menu;
+		private bool activated;
 
 		public GameOverScreen()
 		{
@@ -25,11 +26,13 @@ namespace LegendOfZelda
 			lastUpdate = 0;
 			counter = 0;
 			menu = new GameOverMenu();
+			activated = false;
         }
 
 		public void ActivateGameOver()
 		{
 			LevelMaster.RegisterUpdateable(this);
+			activated = true;
 		}
 
 		private void DrawLinkSpinningOverlay()
@@ -61,6 +64,21 @@ namespace LegendOfZelda
 		{
 			LevelMaster.RegisterDrawable(text);
         }
+
+		public void UnactivateGameOverScreen()
+		{
+			if (activated)
+			{
+				LevelMaster.RemoveDrawable(linkSpinningOverlay);
+				LevelMaster.RemoveDrawable(lightRed);
+				LevelMaster.RemoveDrawable(red);
+				LevelMaster.RemoveDrawable(darkRed);
+				LevelMaster.RemoveDrawable(blackScreen);
+				LevelMaster.RemoveDrawable(text);
+                LevelMaster.RemoveUpdateable(this);
+                activated = false;
+			}
+		}
 
 		public void Update(GameTime gameTime)
 		{
@@ -117,11 +135,14 @@ namespace LegendOfZelda
 			}
 
             if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
-            {
-				GameState.GetInstance().ResetGameState();
+			{
+				LevelMaster.RemoveDrawable(text);
+				counter++;
+			}
 
-				/* Uncomment the line below, and comment out the line above to go to gameover menu */
-				//GameState.CameraController.ChangeMenu(Menu.GameOver);
+            if ((counter == 7) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 50))
+            {
+				GameState.CameraController.ChangeMenu(Menu.GameOver);
                 counter++;
             }
 
