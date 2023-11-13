@@ -5,7 +5,7 @@ namespace LegendOfZelda
     public static class LinkUtilities
     {
 
-        public static Vector2 originalLinkPosition = new Vector2(1448, 864);
+        public static Vector2 originalLinkPosition = new Vector2(1504, 832);
         public static int SnapToGrid(int position)
         {
             int alignTo = 8 * SpriteFactory.getInstance().scale;
@@ -64,6 +64,12 @@ namespace LegendOfZelda
         public static bool LinkChangedDirection()
         {
             return GameState.Link.StateMachine.prevDirection != GameState.Link.StateMachine.currentDirection;
+        }
+
+        public static void LinkChangePosToRoom(Vector2 fromRoom, Vector2 toRoom)
+        {
+            Vector2 linkRoomPos = toRoom + GameState.Link.Pos - fromRoom;
+            UpdatePositions(GameState.Link, linkRoomPos);
         }
     }
 }

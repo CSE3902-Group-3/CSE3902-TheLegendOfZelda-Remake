@@ -29,6 +29,7 @@ namespace LegendOfZelda
         {
             Position = pos;
             Offset = offset;
+            Direction = new Vector2(1, 0);
 
             switch (EnemySpeed)
             {
@@ -74,12 +75,18 @@ namespace LegendOfZelda
             if (allowedToMove)
             {
                 Position += Direction * SpeedMultiplier;
-                if (Position.X < 0 || Position.Y < 0)
-                {
-                    Position -= Direction;
-                }
                 Sprite.UpdatePos(Position);
             }
+        }
+
+        public void Spawn()
+        {
+            new EnemySpawnEffect(Position);
+            LevelMaster.RegisterUpdateable(this);
+            Sprite.RegisterSprite();
+            Sprite.UpdatePos(Position);
+            Collider.Pos = Position + Offset;
+            Collider.Active = true;
         }
 
         public void Die()
@@ -90,15 +97,6 @@ namespace LegendOfZelda
             DropItem();
             Sprite.UnregisterSprite();
             LevelMaster.RemoveUpdateable(this);
-        }
-
-        public void Spawn()
-        {
-            new EnemySpawnEffect(Position);
-            LevelMaster.RegisterUpdateable(this);
-            Sprite.RegisterSprite();
-            Sprite.UpdatePos(Position);
-            Collider.Pos = Position + Offset;
         }
 
         public void Update(GameTime gameTime)

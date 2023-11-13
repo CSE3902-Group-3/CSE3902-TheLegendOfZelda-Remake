@@ -119,6 +119,7 @@ namespace LegendOfZelda
 			if ((counter == 4) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
 			{
 				DrawBlackScreen();
+				GameState.CameraController.RemovePersistentDrawables();
 				lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
 				counter++;
 			}

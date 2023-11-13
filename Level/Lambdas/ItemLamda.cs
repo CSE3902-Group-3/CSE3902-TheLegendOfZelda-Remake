@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda
 {
-    internal class ItemLamda
+    public class ItemLamda
     {
         public delegate void Lamda(Room room, MapElement mapElement);
         public Lamda[] ItemFunctionArray { get; }

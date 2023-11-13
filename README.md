@@ -8,20 +8,44 @@ Remake of NES The Legend of Zelda game
 - `b` for Link to use his secondary item
 
 ### Other controls
-- Use `q` to quit and `r` to reset the program back to its initial state.
+- Use `q` to quit and `r` to gameover and reset the program back to its initial state.
 - Use `space` to pause and resume the game.
+- Use right/left click to cycle rooms
 
-## Known Bugs:
+## Major Known Bugs:
+- All menus (including HUD) exept game over are not currently functional at all
+- The inventory system is not currently functional at all
+-   Link can not use any items
+-   Picking up items does nothing (collision response is incomplete)
+
+- Dodongo takes damage from sword and player, does not eat bombs
+- Closed doors which open based on triggers (as opposed to locked doors) can never be opened
+
+## Minor Known Bugs:
 - Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
-- Link can only place bombs with 1 key and cannot use any other items
-- When Link places a bomb it is sometimes placed too far away
-- Stalfos sometimes gets stuck in wall
-- Enemies dissappear instead of taking damage and blinking/flashing/taking knockback/exploding when hit with Link's sword
-- The game crashes if Link attacks the wizard
-- Some rooms have a yellow square instead of the left door
-- Pushable blocks are not yet implemented
-- Explodeable walls are not yet implemented
-- Dodongo does not yet eat bombs
+- Link teleports when traveling through a door instead of walking through
+- Link does not receive invincibility frames when he collides with a slime
+- Enemies drop items when exiting a room
+- Goriya sometimes walks through certain walls
+- Link does not spin when he dies
+- Sword beam does not spawn in the correct position
+- The starting room is not the entrance of the dungeon
+- The pause overlay does not affect Link's sprite
+- Sprites still animate when the game is paused
+- Fireballs are missing from the wizard room
+- Wizard takes damage
+- Main menu has green line on the left
+- Screen size is incorrect
+
+## Intentional Differences From Source Game:
+- Interaction with Wizard and spawning text is not implemented
+- The exit of the dungeon is closed
+- Right and left clicking to switch between rooms
+- One room contains an instance of every item
+- There is an extra room with no doors to house Dodongo
+- Item spawn rates are drastically increased
+- Shader related effects look different from the original game
+- Game over menu is simplified since options like saving are not available in this game
 
 ## Tools:
 - We had an implementation which used HLSL shaders to color sprites more accurately, but due to bugs in Monogame on Mac, we were forced to remove this

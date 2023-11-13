@@ -26,6 +26,7 @@ namespace LegendOfZelda
             Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
             Collider.Pos = Position;
+            Collider.Active = true;
         }
         public void Die()
         {

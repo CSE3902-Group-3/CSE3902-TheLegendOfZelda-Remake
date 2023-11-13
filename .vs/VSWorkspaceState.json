@@ -2,9 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\Enemies",
+    "\\Enemies\\Utilities",
     "\\Level",
-    "\\Player"
+    "\\Level\\Lambdas",
+    "\\Player",
+    "\\Utility",
+    "\\Utility\\GameOverScreen"
   ],
-  "SelectedNode": "\\Game1.cs",
+  "SelectedNode": "\\LegendOfZelda.sln",
   "PreviewInSolutionExplorer": false
 }
