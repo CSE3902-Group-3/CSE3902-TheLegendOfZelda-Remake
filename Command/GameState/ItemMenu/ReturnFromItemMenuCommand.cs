@@ -1,11 +1,13 @@
-﻿namespace LegendOfZelda
+﻿using System;
+
+namespace LegendOfZelda
 {
     internal class ReturnFromItemMenuCommand : ICommands
     {
         public ReturnFromItemMenuCommand(){}
         public void Execute()
         {
-            GameState.GetInstance().SwitchState(new NormalState());
+            GameState.GetInstance().SetToNormal();
             CameraController.GetInstance().CloseItemMenu();
         }
     }

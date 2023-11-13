@@ -40,6 +40,10 @@ namespace LegendOfZelda
         {
             State = state;
         }
+        public void SetToNormal()
+        {
+            State = new NormalState();
+        }
         public void ResetGameState()
         {
             CollisionManager = new CollisionManager();
