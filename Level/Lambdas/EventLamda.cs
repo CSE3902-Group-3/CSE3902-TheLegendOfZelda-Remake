@@ -16,7 +16,8 @@ namespace LegendOfZelda
         {
             EventFunctionArray = new Lamda[]
             {
-                AllEnemiesDeadKeyDrop
+                AllEnemiesDeadKeyDrop,
+                AllEnemiesDeadBoomerangDrop
             };
         }
         public static EventLamda GetInstance()
@@ -30,6 +31,10 @@ namespace LegendOfZelda
             Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * levelEvent.XLocation, room.RoomYLocation + YOffset + Scale * levelEvent.YLocation);
             new AllEnemiesDeadKeyDropEvent(room.RoomNumber, pos);
         }
-
+        public static void AllEnemiesDeadBoomerangDrop(Room room, LevelEvent levelEvent)
+        {
+            Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * levelEvent.XLocation, room.RoomYLocation + YOffset + Scale * levelEvent.YLocation);
+            new AllEnemiesDeadKeyDropEvent(room.RoomNumber, pos);
+        }
     }
 }

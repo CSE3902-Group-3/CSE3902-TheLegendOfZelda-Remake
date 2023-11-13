@@ -69,6 +69,7 @@ namespace LegendOfZelda
             // Indicate damage, or if health has reached 0, die
             if (Health < 0)
             {
+                LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(this);
                 Die();
             }
             else

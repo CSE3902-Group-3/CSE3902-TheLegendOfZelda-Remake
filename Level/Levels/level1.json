@@ -4709,9 +4709,6 @@
                     "XLocation": 0,
                     "YLocation": 0
                 },
-
-
-
                 {
                     "ElementType": "Block",
                     "ElementValue": 0,
@@ -10444,6 +10441,13 @@
             "RoomNumber": 17,
             "RoomXLocation": 2,
             "RoomYLocation": 5,
+            "Events": [
+                {
+                    "EventNumber": 0,
+                    "XLocation": 6,
+                    "YLocation": 1
+                }
+            ],
             "AdjacentRooms": [
                 {
                     "RoomNumber": 16,
@@ -10485,9 +10489,6 @@
                     "XLocation": 0,
                     "YLocation": 0
                 },
-
-
-
                 {
                     "ElementType": "Block",
                     "ElementValue": 0,

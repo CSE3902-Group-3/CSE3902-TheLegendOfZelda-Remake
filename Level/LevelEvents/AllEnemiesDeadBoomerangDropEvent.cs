@@ -3,11 +3,11 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
-    internal class AllEnemiesDeadKeyDropEvent : ILevelEvent
+    internal class AllEnemiesDeadBoomerangDropEvent : ILevelEvent
     {
         private int RoomNumber;
         private Vector2 Position;
-        public AllEnemiesDeadKeyDropEvent(int roomNumber, Vector2 position)
+        public AllEnemiesDeadBoomerangDropEvent(int roomNumber, Vector2 position)
         {
             RoomNumber = roomNumber;
             Position = position;
@@ -15,13 +15,13 @@ namespace LegendOfZelda
         }
         private void ConditionSuccess()
         {
-            IItem key = new Key(Position);
-            key.Show();
+            IItem boomerang = new Boomerang(Position);
+            boomerang.Show();
             LevelMaster.RemoveUpdateable(this);
         }
         public void CheckCondition()
         {
-            if (LevelMaster.EnemiesList[RoomNumber].Count == 0) 
+            if (LevelMaster.EnemiesList[RoomNumber].Count == 0)
             {
                 ConditionSuccess();
             }
