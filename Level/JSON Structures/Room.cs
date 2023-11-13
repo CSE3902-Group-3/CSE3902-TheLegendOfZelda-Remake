@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.Generic;
 namespace LegendOfZelda
 {
     public class RoomList
     {
         public List<Room> Rooms { get; set; }
+        public List<LevelEvent> Events { get; set; }
     }
     public class Room
     {
