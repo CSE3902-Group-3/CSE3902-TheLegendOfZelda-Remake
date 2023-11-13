@@ -40,7 +40,6 @@ namespace LegendOfZelda
             keyUpMappings.Add(Keys.Right, new ToIdleCommand(link));
             KeyDownMapping.Add(Keys.Z, new PrimaryAttackCommand(link));
             KeyDownMapping.Add(Keys.N, new PrimaryAttackCommand(link));
-            KeyDownMapping.Add(Keys.M, new WinningCommand());
         }
 
         public ICommands KeyDownCommand(Keys key)
