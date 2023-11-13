@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LegendOfZelda.Graphics
+﻿namespace LegendOfZelda.Graphics
 {
     //The only purpose of this class is to test the camera controller. Remove from final build
     public class CameraControllerTest

@@ -114,11 +114,12 @@ namespace LegendOfZelda
         }
         public void Reset()
         {
-            mainCamera = new Camera(LevelMaster.RoomPositionList[LevelMaster.CurrentRoom]);
-            itemMenuCamera = new Camera(HUDLocation);
-            startCamera = new Camera(StartLocation);
-            endCamera = new Camera(EndLocation);
-            gameOverCamera = new Camera(GameOverLocation);
+            mainCamera.worldPos = LevelMaster.RoomPositionList[LevelMaster.CurrentRoom];
+            //mainCamera = new Camera(LevelMaster.RoomPositionList[LevelMaster.CurrentRoom]);
+            //itemMenuCamera = new Camera(HUDLocation);
+            //startCamera = new Camera(StartLocation);
+            //endCamera = new Camera(EndLocation);
+            //gameOverCamera = new Camera(GameOverLocation);
 
             mainCameraDrawables = new List<List<IDrawable>>
             {
