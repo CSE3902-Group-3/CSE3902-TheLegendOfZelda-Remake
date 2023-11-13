@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
 
 namespace LegendOfZelda
 {
@@ -30,7 +29,7 @@ namespace LegendOfZelda
                 previousSelectionCommand.Execute();
                 ReleasedKey = false;
             }*/
-            if (Keyboard.GetState().IsKeyUp(Keys.U) && Keyboard.GetState().IsKeyUp(Keys.I) && !ReleasedKey)
+            if (Keyboard.GetState().IsKeyUp(Keys.U) && /*Keyboard.GetState().IsKeyUp(Keys.I) && */!ReleasedKey)
             {
                 ReleasedKey = true;
             }
