@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    internal class PauseState : IGameState
+    public class PauseState : IGameState
     {
         private IController Controller;
         public PauseState()
@@ -17,7 +17,6 @@ namespace LegendOfZelda
         public void Draw(SpriteBatch _spriteBatch)
         {
             GameState.CameraController.Draw(_spriteBatch);
-            GameState.PauseManager.Draw();
         }
     }
 }

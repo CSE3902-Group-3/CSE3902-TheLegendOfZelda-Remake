@@ -11,7 +11,7 @@ namespace LegendOfZelda
         private Vector2 Center;
         private int CycleCount = 0;
         private readonly int MaxCycles = 50;
-        private int PosIncrement = 2;
+        private int PosIncrement = 1;
         private float currentCooldown = 0.0f;
         public RectCollider Collider { get; private set; }
         public Aquamentus(Vector2 pos)
@@ -33,6 +33,7 @@ namespace LegendOfZelda
             LevelMaster.RegisterUpdateable(this);
             Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
+            Collider.Active = true;
         }
         public void ChangePosition()
         {
@@ -42,7 +43,7 @@ namespace LegendOfZelda
             if (CycleCount > MaxCycles)
             {
                 CycleCount = 0;
-                PosIncrement = (int)(PosIncrement * -0.5);
+                PosIncrement *= -1;
             }
 
             newPosition.X += PosIncrement;
@@ -55,9 +56,9 @@ namespace LegendOfZelda
         public void Attack()
         {
             SoundFactory.PlaySound(SoundFactory.getInstance().BossScream1, 1.0f, 0.0f, 0.0f);
-            new AquamentusBall(Position, new Vector2(-10, 0));
-            new AquamentusBall(Position, new Vector2(-10, 10));
-            new AquamentusBall(Position, new Vector2(-10, -10));
+            new AquamentusBall(Position, new Vector2(-5, 0));
+            new AquamentusBall(Position, new Vector2(-5, 5));
+            new AquamentusBall(Position, new Vector2(-5, -5));
         }
         public void UpdateHealth(float damagePoints)
         {

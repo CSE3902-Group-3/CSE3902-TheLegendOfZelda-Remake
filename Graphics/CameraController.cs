@@ -24,7 +24,8 @@ namespace LegendOfZelda
 
         private static CameraController instance;
 
-        private List<IDrawable> mainCameraDrawables;
+        private List<List<IDrawable>> mainCameraDrawables;
+        private List<IDrawable> previousRoomDrawables;
 
         private Camera activeMenu;
         
@@ -36,9 +37,11 @@ namespace LegendOfZelda
             endCamera = new Camera(EndLocation);
             gameOverCamera = new Camera(GameOverLocation);
 
-            mainCameraDrawables = new List<IDrawable>();
-
-            mainCameraDrawables = LevelMaster.Drawables;
+            mainCameraDrawables = new List<List<IDrawable>>
+            {
+                LevelMaster.CurrentRoomDrawables,
+                LevelMaster.PersistentDrawables
+            };
 
             instance = this;
 
@@ -57,15 +60,19 @@ namespace LegendOfZelda
         public void Draw(SpriteBatch spriteBatch)
         {
             mainCamera.DrawAll(mainCameraDrawables, spriteBatch);
-            activeMenu.DrawAll(LevelMaster.Drawables, spriteBatch);
+            activeMenu.DrawAll(LevelMaster.PersistentDrawables, spriteBatch);
         }
 
-        public void SnapCamToRoom(Vector2 roomPos)
+        public void SnapCamToRoom(int fromRoomId, int toRoomId, Vector2 roomPos)
         {
+            mainCameraDrawables.Remove(LevelMaster.RoomListDrawables[fromRoomId]);
+            mainCameraDrawables.Insert(0, LevelMaster.RoomListDrawables[toRoomId]);
             mainCamera.worldPos = roomPos;
         }
-        public void PanCamToRoom(Vector2 roomPos, Action onPanComplete = null)
+        public void PanCamToRoom(int fromRoomId, int toRoomId, Vector2 roomPos, Action onPanComplete = null)
         {
+            previousRoomDrawables = LevelMaster.RoomListDrawables[fromRoomId];
+            mainCameraDrawables.Insert(0, LevelMaster.RoomListDrawables[toRoomId]);
             mainCamera.PanToLocation(roomPos, camSpeed, onPanComplete);
         }
 
@@ -96,6 +103,30 @@ namespace LegendOfZelda
                     activeMenu = gameOverCamera;
                     break;
             }
+        }
+        public void RemovePreviousRoomDrawables()
+        {
+            mainCameraDrawables.Remove(previousRoomDrawables);
+        }
+        public void RemovePersistentDrawables()
+        {
+            mainCameraDrawables.Remove(LevelMaster.PersistentDrawables);
+        }
+        public void Reset()
+        {
+            mainCamera = new Camera(LevelMaster.RoomPositionList[LevelMaster.CurrentRoom]);
+            itemMenuCamera = new Camera(HUDLocation);
+            startCamera = new Camera(StartLocation);
+            endCamera = new Camera(EndLocation);
+            gameOverCamera = new Camera(GameOverLocation);
+
+            mainCameraDrawables = new List<List<IDrawable>>
+            {
+                LevelMaster.CurrentRoomDrawables,
+                LevelMaster.PersistentDrawables
+            };
+
+            activeMenu = itemMenuCamera;
         }
     }
 }

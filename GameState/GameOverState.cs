@@ -3,13 +3,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    internal class GameOverState : IGameState
+    public class GameOverState : IGameState
     {
         private GameOverScreen gameOver;
+        private GameOverMenu menu;
 
         public GameOverState()
         {
             gameOver = new GameOverScreen();
+            menu = new GameOverMenu();
         }
         public void Update(GameTime gameTime)
         {
@@ -18,6 +20,7 @@ namespace LegendOfZelda
         public void Draw(SpriteBatch _spriteBatch)
         {
             GameState.CameraController.Draw(_spriteBatch);
+            menu.Draw();
         }
     }
 }
