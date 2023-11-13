@@ -5851,6 +5851,13 @@
             "RoomNumber": 10,
             "RoomXLocation": 3,
             "RoomYLocation": 3,
+            "Events": [
+                {
+                    "EventNumber": 1,
+                    "XLocation": 6,
+                    "YLocation": 1
+                }
+            ],
             "AdjacentRooms": [
                 {
                     "RoomNumber": 11,
@@ -6402,12 +6409,6 @@
                     "ElementValue": 0,
                     "XLocation": 11,
                     "YLocation": 6
-                },
-                {
-                    "ElementType": "Item",
-                    "ElementValue": 2,
-                    "XLocation": 530,
-                    "YLocation": 530
                 },
                 {
                     "ElementType": "Enemy",
