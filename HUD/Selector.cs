@@ -86,34 +86,53 @@ namespace LegendOfZelda
 
         public void SelectRight()
         {
-            if (SelectorIndex < 7)
-                SelectorIndex++;
-            else
+            if (SelectorIndex == 7)
                 SelectorIndex = 0;
+            while (!PosDictionary[SelectorIndex].unlock)
+            {
+                if (SelectorIndex == 7)
+                    SelectorIndex = 0;
+                else
+                    SelectorIndex++;
+            }
         }
 
         public void SelectLeft()
         {
-            if (SelectorIndex > 0)
-                SelectorIndex--;
-            else
+            if (SelectorIndex == 0)
                 SelectorIndex = 7;
+            while (!PosDictionary[SelectorIndex].unlock)
+            {
+                if (SelectorIndex == 0)
+                    SelectorIndex = 7;
+                else
+                    SelectorIndex--;
+            }
         }
 
         public void SelectUp()
         {
-            if (SelectorIndex > 3)
-                SelectorIndex -= 4;
+            if (SelectorIndex < 4)
+                if (PosDictionary[SelectorIndex += 4].unlock)
+                    SelectorIndex += 4;
             else
-                SelectorIndex += 4;
+                if (PosDictionary[SelectorIndex -= 4].unlock)
+                    SelectorIndex -= 4;
         }
 
         public void SelectDown()
         {
             if (SelectorIndex < 4)
-                SelectorIndex += 4;
+                if (PosDictionary[SelectorIndex += 4].unlock)
+                    SelectorIndex += 4;
             else
-                SelectorIndex -= 4;
+                if (PosDictionary[SelectorIndex -= 4].unlock)
+                    SelectorIndex -= 4;
+        }
+
+        public int SelectCurrentItem()
+        {
+            return SelectorIndex;
         }
     }
 }

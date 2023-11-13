@@ -11,26 +11,23 @@ namespace LegendOfZelda
     {
         private static HUDManager instance;
 
-        Game1 game;
-
         private LowerHUD lowerHUD;
         private InventoryHUD inventoryHUD;
         private MapHUD mapHUD;
         
-        public HUDManager(Game1 game)
+        public HUDManager()
         {
-            this.game = game;
 
-            lowerHUD = new LowerHUD(game);
-            inventoryHUD = new InventoryHUD(game);
-            mapHUD = new MapHUD(game);
+            lowerHUD = new LowerHUD();
+            inventoryHUD = new InventoryHUD();
+            mapHUD = new MapHUD();
 
         }
 
-        public static HUDManager GetInstance(Game1 game)
+        public static HUDManager GetInstance()
         {
             if (instance == null)
-                instance = new HUDManager(game);
+                instance = new HUDManager();
 
             return instance;
         }   
@@ -46,8 +43,8 @@ namespace LegendOfZelda
         {
 
             // Uncomment one for test
-            //lowerHUD.Show();
-            inventoryHUD.Show();
+            lowerHUD.Show();
+            //inventoryHUD.Show();
             //mapHUD.Show();
         }  
     }

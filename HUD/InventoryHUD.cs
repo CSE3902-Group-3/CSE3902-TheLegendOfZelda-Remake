@@ -12,8 +12,6 @@ namespace LegendOfZelda
     {
         private const int scale = 4;
 
-        Game1 game;
-
         private SpriteFactory spriteFactory;
         private LetterFactory letterFactory;
 
@@ -35,9 +33,8 @@ namespace LegendOfZelda
 
 
 
-        public InventoryHUD(Game1 game)
+        public InventoryHUD()
         {
-            this.game = game;
 
             spriteFactory = SpriteFactory.getInstance();
             letterFactory = LetterFactory.GetInstance();

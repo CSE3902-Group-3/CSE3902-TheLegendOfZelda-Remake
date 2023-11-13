@@ -17,6 +17,7 @@ namespace LegendOfZelda
         public static PauseManager PauseManager;
         public static CollisionManager CollisionManager;
         public static Link Link;
+        public static HUDManager HUD;
 
         //public enum GameStates { normalState, winState, loseState, pauseState, menuState, roomTransitionState }
         public static GameState GetInstance()
@@ -31,6 +32,7 @@ namespace LegendOfZelda
             ResetGameState();
             RoomCycler.GetInstance();
             CameraController = CameraController.GetInstance();
+            HUD = HUDManager.GetInstance();
         }
         public void SwitchState(IGameState state)
         {
@@ -52,6 +54,7 @@ namespace LegendOfZelda
         public void Draw(SpriteBatch _spriteBatch)
         {
             State.Draw(_spriteBatch);
+            HUD.Show();
         }
     }
 }

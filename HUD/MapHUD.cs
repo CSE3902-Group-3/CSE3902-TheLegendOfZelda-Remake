@@ -12,8 +12,6 @@ namespace LegendOfZelda
     {
         private const int scale = 4;
 
-        Game1 game;
-
         private SpriteFactory spriteFactory;
         private LetterFactory letterFactory;
 
@@ -28,10 +26,8 @@ namespace LegendOfZelda
         private bool MapUnlock;
         private bool CompassUnlock;
 
-        public MapHUD(Game1 game)
+        public MapHUD()
         {
-            this.game = game;
-
             spriteFactory = SpriteFactory.getInstance();
             letterFactory = LetterFactory.GetInstance();
         }

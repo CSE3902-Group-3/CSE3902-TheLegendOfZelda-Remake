@@ -12,10 +12,11 @@ namespace LegendOfZelda
     {
         private const int scale = 4;
 
-        Game1 game;
-
         private SpriteFactory spriteFactory;
         private LetterFactory letterFactory;
+
+        private Inventory inventory;
+        private Link link;
 
         private AnimatedSprite LowerHUDBase;
         private AnimatedSprite LevelIndicator;
@@ -24,7 +25,7 @@ namespace LegendOfZelda
         private AnimatedSprite WeponB;
         private List<AnimatedSprite> Rubies;
         private List<AnimatedSprite> Keys;
-        private List<AnimatedSprite> Boombs;
+        private List<AnimatedSprite> Bombs;
         private List<AnimatedSprite> Life;
 
         private Vector2 TempPos;
@@ -35,33 +36,41 @@ namespace LegendOfZelda
         private Vector2 WeponBPos;
         private Vector2 RubiesPos;
         private Vector2 KeysPos;
-        private Vector2 BoombsPos;
+        private Vector2 BombsPos;
         private Vector2 LifePos;
 
         private int Level;
         private int RubiesCount;
         private int KeysCount;
-        private int BoombsCount;
+        private int BombsCount;
         private int CurrentHealth;
         private int MaxHealth;
 
-        public LowerHUD(Game1 game)
+        public LowerHUD()
         {
-            this.game = game;
-
             letterFactory = LetterFactory.GetInstance();
             spriteFactory = SpriteFactory.getInstance();
+
+            inventory = Inventory.getInstance();
+            link = GameState.Link;
         }
 
         public void LoadContent()
         {
             // The below values are for test now, should be changed later
-            Level = 2;
-            RubiesCount = 24;
-            KeysCount = 8;
-            BoombsCount = 24;
-            CurrentHealth = 17;
-            MaxHealth = 32;
+            Level = 1;
+            /*
+            RubiesCount = inventory.GetQuantity(new OneRupee(Vector2.Zero));
+            KeysCount = inventory.GetQuantity(new Key(Vector2.Zero));
+            BombsCount = inventory.GetQuantity(new Bomb(Vector2.Zero));
+            */
+
+            RubiesCount = 10;
+            KeysCount = 10;
+            BombsCount = 10;
+
+            CurrentHealth = (int)(link.GetCurrentHP() * 2);
+            MaxHealth = (int)(link.GetMaxHP() * 2);
 
             LowerHUDBase = spriteFactory.CreateLowerHUDSprite();
             LevelIndicator = spriteFactory.CreateLevelHUDSprite();
@@ -71,7 +80,7 @@ namespace LegendOfZelda
             WeponB = spriteFactory.CreateWoodenBoomerangHUDSprite();
             Rubies = QuantityToSprite(RubiesCount);
             Keys = QuantityToSprite(KeysCount);
-            Boombs = QuantityToSprite(BoombsCount);
+            Bombs = QuantityToSprite(BombsCount);
             GetHealthSprite(CurrentHealth, MaxHealth);
 
             // The below position is for test now, should be changed to GameState.CameraController.HUDLocation later
@@ -82,14 +91,17 @@ namespace LegendOfZelda
             WeponBPos = new Vector2(LowerHUDBasePos.X + 128 * scale, LowerHUDBasePos.Y + 24 * scale);
             RubiesPos = new Vector2(LowerHUDBasePos.X + 96 * scale, LowerHUDBasePos.Y + 16 * scale);
             KeysPos = new Vector2(LowerHUDBasePos.X + 96 * scale, LowerHUDBasePos.Y + 32 * scale);
-            BoombsPos = new Vector2(LowerHUDBasePos.X + 96 * scale, LowerHUDBasePos.Y + 40 * scale);
+            BombsPos = new Vector2(LowerHUDBasePos.X + 96 * scale, LowerHUDBasePos.Y + 40 * scale);
             LifePos = new Vector2(LowerHUDBasePos.X + 176 * scale, LowerHUDBasePos.Y + 32 * scale);
 
         }
 
         public void Update(GameTime gameTime)
         {
-
+            //UpdateRubies();
+            //UpdateKeys();
+            //UpdateBoombs();
+            UpdateHealth();
         }
 
         public void Show()
@@ -108,7 +120,7 @@ namespace LegendOfZelda
 
             RegisterListSprite(Keys, KeysPos);
 
-            RegisterListSprite(Boombs, BoombsPos);
+            RegisterListSprite(Bombs, BombsPos);
 
             RegisterLifeSprite(Life, LifePos);
             
@@ -132,9 +144,6 @@ namespace LegendOfZelda
 
             return spriteList;
         }
-
-        // My current thought on the health is the health of link will be an integer. Since the max health is 16 hearts, the MaxHealth will be 32 and must be divisible by 2.
-        // The CurrentHealth will be range in 0 to MaxHealth. If the CurrentHealth cannot be divisible by 2. That's mean there is a half heart. 
 
         public void GetHealthSprite(int currentHealth, int maxHealth)
         {
@@ -200,7 +209,7 @@ namespace LegendOfZelda
             }
         }
 
-        public void UnregisterListSprite(List<AnimatedSprite> spriteList)
+        public void UnRegisterListSprite(List<AnimatedSprite> spriteList)
         {
             foreach (AnimatedSprite sprite in spriteList)
             {
@@ -210,52 +219,36 @@ namespace LegendOfZelda
 
         // Update Methods
 
-        public void UpdateRubies(int rubies)
+        public void UpdateRubies()
         {
-            UnregisterListSprite(Rubies);
-            RubiesCount = rubies;
+            RubiesCount = inventory.GetQuantity(new OneRupee(Vector2.Zero));
+            UnRegisterListSprite(Rubies);
             Rubies = QuantityToSprite(RubiesCount);
+            RegisterListSprite(Rubies, RubiesPos);
         }
 
-        public void UpdateKeys(int keys)
+        public void UpdateKeys()
         {
-            KeysCount = keys;
+            KeysCount = inventory.GetQuantity(new Key(Vector2.Zero));
+            UnRegisterListSprite(Keys);
             Keys = QuantityToSprite(KeysCount);
+            RegisterListSprite(Keys, KeysPos);
         }
 
-        public void UpdateBoombs(int boombs)
+        public void UpdateBoombs()
         {
-            BoombsCount = boombs;
-            Boombs = QuantityToSprite(BoombsCount);
+            BombsCount = inventory.GetQuantity(new Bomb(Vector2.Zero));
+            UnRegisterListSprite(Bombs);
+            Bombs = QuantityToSprite(BombsCount);
+            RegisterListSprite(Bombs, BombsPos);
         }
 
-        public void UpdateMaxHealth(int maxHealth)
+        public void UpdateHealth()
         {
-            MaxHealth = maxHealth;
-            for (int i = 0; i < maxHealth / 2; i++)
-            {
-                Life[i] = spriteFactory.CreateHeartSprite(0);
-            }
-        }
-
-        public void UpdateCurrentHealth(int currentHealth)
-        {
-            CurrentHealth = currentHealth;
-            if (currentHealth % 2 != 0)
-            {
-                for (int i = 0; i < currentHealth / 2; i++)
-                {
-                    Life[i] = spriteFactory.CreateHeartSprite(2);
-                }
-                Life[currentHealth / 2] = spriteFactory.CreateHeartSprite(1);
-            }
-            else
-            {
-                for (int i = 0; i < currentHealth / 2; i++)
-                {
-                    Life[i] = spriteFactory.CreateHeartSprite(2);
-                }
-            }
+            CurrentHealth = (int)(link.GetCurrentHP() * 2);
+            MaxHealth = (int)(link.GetMaxHP() * 2);
+            UnRegisterListSprite(Life);
+            GetHealthSprite(CurrentHealth, MaxHealth);
         }
     }
 }
