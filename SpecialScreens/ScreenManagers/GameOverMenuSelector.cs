@@ -30,7 +30,7 @@ namespace LegendOfZelda
             IndicationHearts = new List<IItem>()
             {
                 new Heart(ContinuePos),
-                new Heart(SavePos),
+                //new Heart(SavePos),
                 new Heart(RetryPos)
             };
 
