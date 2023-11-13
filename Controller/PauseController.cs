@@ -15,7 +15,6 @@ namespace LegendOfZelda
             PauseManager = pauseManager;
             ReleasedKey = false;
         }
-
         public void Update()
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && PauseManager.isPaused() && ReleasedKey)

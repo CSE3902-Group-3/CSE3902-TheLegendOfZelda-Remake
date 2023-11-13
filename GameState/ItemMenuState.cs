@@ -3,12 +3,13 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
-    internal class RoomTransitionState : IGameState
+    public class ItemMenuState : IGameState
     {
-        public RoomTransitionState(){}
+        public ItemMenuState(){}
         public void Update(GameTime gameTime)
         {
-            CameraController.GetInstance().mainCamera.Update(gameTime);
+            GameState.ItemMenuController.Update();
+            CameraController.GetInstance().itemMenuCamera.Update(gameTime);
         }
         public void Draw(SpriteBatch _spriteBatch)
         {
