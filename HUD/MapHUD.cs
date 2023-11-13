@@ -54,7 +54,8 @@ namespace LegendOfZelda
             Map = spriteFactory.CreateMapSprite();
             Compass = spriteFactory.CreateCompassSprite();
 
-            MapHUDBasePos = GameState.CameraController.mainCamera.worldPos;
+            // Only for the test
+            MapHUDBasePos = GameState.CameraController.HUDLocation;
             MapSpritePos = new Vector2(MapHUDBasePos.X + 48 * scale, MapHUDBasePos.Y + 24 * scale);
             CompassPos = new Vector2(MapHUDBasePos.X + 44 * scale, MapHUDBasePos.Y + 64 * scale);
             MapBasePos = new Vector2(MapHUDBasePos.X + 128 * scale, MapHUDBasePos.Y + 8 * scale);
@@ -87,10 +88,10 @@ namespace LegendOfZelda
         public void CreateMapElement()
         {
             MapElement = new Dictionary<AnimatedSprite, Vector2>();
-            for (int i = 0; i < ElementList.Count; i++)
+            for (int i = 0; i < mapSize; i++)
             {
                 AnimatedSprite element = spriteFactory.CreateMapElement(ElementList[i]);
-                Vector2 pos = new Vector2(MapBasePos.X + (i % 8) * mapSize * scale, MapBasePos.Y + (i / 8) * mapSize * scale);
+                Vector2 pos = new Vector2(MapBasePos.X + (i % 8) * 8 * scale, MapBasePos.Y + (i / 8) * 8 * scale);
 
                 MapElement.Add(element, pos);
             }

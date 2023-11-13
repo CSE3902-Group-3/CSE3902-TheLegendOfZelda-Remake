@@ -41,7 +41,6 @@
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Command\HUD\" />
     <Folder Include="LegendOfZelda\obj\Release\" />
     <Folder Include="ItemClasses\" />
     <Folder Include="SpecialScreens\" />

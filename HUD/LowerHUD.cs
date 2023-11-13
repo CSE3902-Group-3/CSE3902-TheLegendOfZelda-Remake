@@ -129,6 +129,8 @@ namespace LegendOfZelda
             RegisterListSprite(Bombs, BombsPos);
 
             RegisterLifeSprite(Life, LifePos);
+
+            RegisterMiniMapSprite();
             
         }
 

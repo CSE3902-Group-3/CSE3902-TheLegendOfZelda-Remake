@@ -13,6 +13,8 @@ namespace LegendOfZelda
         public KeyboardMapping(Link link)
         {
             this.game = Game1.getInstance();
+            Selector selector = Selector.GetInstance(HUDManager.GetInstance().inventoryHUD);
+
             KeyDownMapping = new Dictionary<Keys, ICommands>();
             keyUpMappings = new Dictionary<Keys, ICommands>();
 
@@ -41,6 +43,11 @@ namespace LegendOfZelda
             KeyDownMapping.Add(Keys.Z, new PrimaryAttackCommand(link));
             KeyDownMapping.Add(Keys.N, new PrimaryAttackCommand(link));
             KeyDownMapping.Add(Keys.M, new WinningCommand());
+
+            keyUpMappings.Add(Keys.U, new SelectUpCommand(selector));
+            keyUpMappings.Add(Keys.J, new SelectDownCommand(selector));
+            keyUpMappings.Add(Keys.H, new SelectLeftCommand(selector));
+            keyUpMappings.Add(Keys.K, new SelectRightCommand(selector));
         }
 
         public ICommands KeyDownCommand(Keys key)

@@ -49,7 +49,7 @@ namespace LegendOfZelda
             CreateItemAboveFramesSprites();
             Selector = Selector.GetInstance(this);
 
-            InventoryHUDBasePos = GameState.CameraController.mainCamera.worldPos;
+            InventoryHUDBasePos = GameState.CameraController.HUDLocation;
             SelectedItemPos = new Vector2(InventoryHUDBasePos.X + 68 * scale, InventoryHUDBasePos.Y + 48 * scale);
             SelectorInitPos = new Vector2(InventoryHUDBasePos.X + 128 * scale, InventoryHUDBasePos.Y + 48 * scale);
             CreateItemInFramesPos();
@@ -63,7 +63,7 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
-
+            Selector.Update();
         }
 
         public void Show()

@@ -11,9 +11,9 @@ namespace LegendOfZelda
     {
         private static HUDManager instance;
 
-        private LowerHUD lowerHUD;
-        private InventoryHUD inventoryHUD;
-        private MapHUD mapHUD;
+        public LowerHUD lowerHUD;
+        public InventoryHUD inventoryHUD;
+        public MapHUD mapHUD;
         
         public HUDManager()
         {
