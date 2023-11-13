@@ -56,6 +56,7 @@ namespace LegendOfZelda
             if (speed != 0)
             {
                 worldPos += speed * Vector2.Normalize(targetPos - worldPos);
+                if (float.IsNaN(worldPos.X) &&  float.IsNaN(worldPos.Y)) { worldPos = targetPos; }
                 if(Vector2.Distance(targetPos, worldPos) <= speed)
                 {
                     worldPos = targetPos;

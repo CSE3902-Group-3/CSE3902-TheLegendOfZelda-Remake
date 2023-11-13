@@ -10,6 +10,7 @@
 
         public void Execute()
         {
+            CameraController.GetInstance().ChangeMenu(Menu.Item);
             GameState.GetInstance().SwitchState(new NormalState());
         }
     }

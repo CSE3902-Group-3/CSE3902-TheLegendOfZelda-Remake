@@ -5,10 +5,7 @@ namespace LegendOfZelda
 {
     public class ItemMenuState : IGameState
     {
-        public ItemMenuState()
-        {
-            CameraController.GetInstance().ChangeMenu(Menu.Item);
-        }
+        public ItemMenuState(){}
         public void Update(GameTime gameTime)
         {
             GameState.ItemMenuController.Update();

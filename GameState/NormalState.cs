@@ -5,10 +5,7 @@ namespace LegendOfZelda
 {
     public class NormalState: IGameState
     {
-        public NormalState()
-        {
-            CameraController.GetInstance().ChangeMenu(Menu.Item);
-        }
+        public NormalState(){}
         public void Update(GameTime gameTime)
         {
             LevelMaster.Update(gameTime);

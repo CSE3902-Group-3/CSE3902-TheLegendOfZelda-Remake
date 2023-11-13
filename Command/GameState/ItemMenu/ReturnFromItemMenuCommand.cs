@@ -7,8 +7,7 @@ namespace LegendOfZelda
         public ReturnFromItemMenuCommand(){}
         public void Execute()
         {
-            GameState.GetInstance().SetToNormal();
-            CameraController.GetInstance().CloseItemMenu();
+            CameraController.GetInstance().CloseItemMenu(GameState.GetInstance().SetToNormal);
         }
     }
 }
