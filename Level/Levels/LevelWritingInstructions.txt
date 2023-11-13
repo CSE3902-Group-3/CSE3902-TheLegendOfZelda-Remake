@@ -71,6 +71,7 @@
          * Room16PushableBlock, 37
          * ImpassibleBlackTile, 38
          * Room12ExteriorCollider, 39
+         * Fire, 40
     */
 
     - Item dictionary:

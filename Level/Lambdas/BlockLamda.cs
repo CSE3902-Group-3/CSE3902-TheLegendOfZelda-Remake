@@ -68,7 +68,8 @@ namespace LegendOfZelda
                 Room8PushableBlock,
                 Room16PushableBlock,
                 ImpassibleBlackTile,
-                Room12ExteriorCollider
+                Room12ExteriorCollider,
+                Fire
             };
         }
         public static BlockLamda GetInstance()
@@ -283,6 +284,13 @@ namespace LegendOfZelda
             // East wall collisions
             new RectCollider(new Rectangle(room.RoomXLocation + ViewportSideLength - WallThickness, room.RoomYLocation + YOffset, Room12ColliderThickness, EastWestWallHeight), CollisionLayer.OuterWall, block);
             new RectCollider(new Rectangle(room.RoomXLocation + ViewportSideLength - WallThickness, room.RoomYLocation + EastWestSouthWallOffset, Room12ColliderThickness, EastWestWallHeight), CollisionLayer.OuterWall, block);
+        }
+        static void Fire(Room room, MapElement mapElement)
+        {
+            Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * mapElement.XLocation, room.RoomYLocation + YOffset + Scale * mapElement.YLocation);
+            Block block = new Block(SpriteFactory.CreateFireSprite(), pos);
+            block.enabled = true;
+            new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, Scale, Scale), CollisionLayer.Wall, block);
         }
     }
 }
