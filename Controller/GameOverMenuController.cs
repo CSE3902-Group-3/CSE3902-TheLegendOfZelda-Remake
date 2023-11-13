@@ -27,7 +27,7 @@ namespace LegendOfZelda
                 initialized = true;
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.U) && ReleasedKey)
+            if ((Keyboard.GetState().IsKeyDown(Keys.RightShift) || Keyboard.GetState().IsKeyDown(Keys.LeftShift)) && ReleasedKey)
             {
                 nextSelectionCommand.Execute();
                 ReleasedKey = false;
@@ -37,7 +37,7 @@ namespace LegendOfZelda
                 previousSelectionCommand.Execute();
                 ReleasedKey = false;
             }*/
-            if (Keyboard.GetState().IsKeyUp(Keys.U) && /*Keyboard.GetState().IsKeyUp(Keys.I) && */!ReleasedKey)
+            if (Keyboard.GetState().IsKeyUp(Keys.RightShift) && Keyboard.GetState().IsKeyUp(Keys.LeftShift) && !ReleasedKey)
             {
                 ReleasedKey = true;
             }
