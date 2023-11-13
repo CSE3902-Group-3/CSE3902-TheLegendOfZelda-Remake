@@ -66,6 +66,45 @@ namespace LegendOfZelda
             return letterSprite;
         }
 
+        public AnimatedSprite GetLetterSprite(char character)
+        {
+            int number = character - 'A';
+
+            if (number % 2 != 0 && number < 22)
+            {
+                number = number / 2;
+                XPos = 41 + number * letterWidth;
+                YPos = 19;
+            }
+            else if (number % 2 == 0 && number < 22)
+            {
+                number = number / 2;
+                XPos = 41 + number * letterWidth;
+                YPos = 11;
+            }
+            else if ((number - 22) % 2 == 0)
+            {
+                number = (number - 22) / 2;
+                XPos = 1 + number * letterWidth;
+                YPos = 27;
+            }
+            else if ((number - 22) % 2 != 0)
+            {
+                number = (number - 22) / 2;
+                XPos = 1 + number * letterWidth;
+                YPos = 35;
+            }
+
+
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(XPos, YPos, letterWidth, letterWidth)
+            };
+            letterSprite = new AnimatedSprite(letterTexture, frames, SpriteEffects.None, 1, scale);
+
+            return letterSprite;
+        }
+
         public AnimatedSprite GetLetterSprite(char character, int color)
         {
             int number = character - 'A';

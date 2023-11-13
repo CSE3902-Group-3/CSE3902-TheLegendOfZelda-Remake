@@ -40,7 +40,7 @@ namespace LegendOfZelda
 
 		public GameOverMenu()
 		{
-			letterFactory = LetterFactory.getInstance();
+			letterFactory = LetterFactory.GetInstance();
 			letterWidth = 30;
 			cameraXPos = (int)GameState.CameraController.GameOverLocation.X;
 			cameraYPos = (int)GameState.CameraController.GameOverLocation.Y;

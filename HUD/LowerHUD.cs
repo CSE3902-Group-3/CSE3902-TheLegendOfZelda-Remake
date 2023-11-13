@@ -77,7 +77,7 @@ namespace LegendOfZelda
             GetHealthSprite(CurrentHealth, MaxHealth);
 
             // The below position is for test now, should be changed to GameState.CameraController.HUDLocation later
-            LowerHUDBasePos = GameState.CameraController.mainCamera.worldPos;
+            LowerHUDBasePos = GameState.CameraController.HUDLocation;
             LevelIndicatorPos = new Vector2(LowerHUDBasePos.X + 16 * scale, LowerHUDBasePos.Y + 8 * scale);
             LevelNumberPos = new Vector2(LevelIndicatorPos.X + 48 * scale, LevelIndicatorPos.Y);
             WeponAPos = new Vector2(LowerHUDBasePos.X + 152 * scale, LowerHUDBasePos.Y + 24 * scale);
@@ -214,34 +214,46 @@ namespace LegendOfZelda
 
         public void UpdateRubies()
         {
-            RubiesCount = inventory.GetQuantity(new OneRupee(Vector2.Zero));
-            UnRegisterListSprite(Rubies);
-            Rubies = QuantityToSprite(RubiesCount);
-            RegisterListSprite(Rubies, RubiesPos);
+            if (RubiesCount != inventory.GetQuantity(new OneRupee(Vector2.Zero)))
+            {
+                RubiesCount = inventory.GetQuantity(new OneRupee(Vector2.Zero));
+                UnRegisterListSprite(Rubies);
+                Rubies = QuantityToSprite(RubiesCount);
+                RegisterListSprite(Rubies, RubiesPos);
+            }
         }
 
         public void UpdateKeys()
         {
-            KeysCount = inventory.GetQuantity(new Key(Vector2.Zero));
-            UnRegisterListSprite(Keys);
-            Keys = QuantityToSprite(KeysCount);
-            RegisterListSprite(Keys, KeysPos);
+            if (KeysCount != inventory.GetQuantity(new Key(Vector2.Zero)))
+            {
+                KeysCount = inventory.GetQuantity(new Key(Vector2.Zero));
+                UnRegisterListSprite(Keys);
+                Keys = QuantityToSprite(KeysCount);
+                RegisterListSprite(Keys, KeysPos);
+            }
         }
 
         public void UpdateBoombs()
         {
-            BombsCount = inventory.GetQuantity(new Bomb(Vector2.Zero));
-            UnRegisterListSprite(Bombs);
-            Bombs = QuantityToSprite(BombsCount);
-            RegisterListSprite(Bombs, BombsPos);
+            if (BombsCount != inventory.GetQuantity(new Bomb(Vector2.Zero)))
+            {
+                BombsCount = inventory.GetQuantity(new Bomb(Vector2.Zero));
+                UnRegisterListSprite(Bombs);
+                Bombs = QuantityToSprite(BombsCount);
+                RegisterListSprite(Bombs, BombsPos);
+            }
         }
 
         public void UpdateHealth()
         {
-            CurrentHealth = (int)(link.GetCurrentHP() * 2);
-            MaxHealth = (int)(link.GetMaxHP() * 2);
-            UnRegisterListSprite(Life);
-            GetHealthSprite(CurrentHealth, MaxHealth);
+            if (CurrentHealth != (int)(link.GetCurrentHP() * 2) || MaxHealth != (int)(link.GetMaxHP() * 2))
+            {
+                CurrentHealth = (int)(link.GetCurrentHP() * 2);
+                MaxHealth = (int)(link.GetMaxHP() * 2);
+                UnRegisterListSprite(Life);
+                GetHealthSprite(CurrentHealth, MaxHealth);
+            }
         }
     }
 }
