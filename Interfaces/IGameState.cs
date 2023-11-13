@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    internal interface IGameState: IUpdateable
+    public interface IGameState: IUpdateable
     {
         public void Draw(SpriteBatch _spriteBatch);
     }

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    internal class WinningState : IGameState
+    public class WinningState : IGameState
     {
         private WinningScreenManager ScreenManager;
         public WinningState()

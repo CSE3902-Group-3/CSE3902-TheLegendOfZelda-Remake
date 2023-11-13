@@ -29,6 +29,7 @@ namespace LegendOfZelda
         private Texture2D itemsTexture;
         private Texture2D npcTexture;
         private Texture2D HUDTexture;
+        private Texture2D menuTexture;
         public SpriteFont pauseWord;
 
         private Game1 game1;
@@ -62,6 +63,7 @@ namespace LegendOfZelda
             itemsTexture = content.Load<Texture2D>("Items");
             npcTexture = content.Load<Texture2D>("NPC");
             HUDTexture = content.Load<Texture2D>("HUD");
+            menuTexture = content.Load<Texture2D>("Menu");
             pauseWord = content.Load<SpriteFont>("Pause");
         }
     
@@ -1411,6 +1413,7 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+
         //HUD Sprites
 
         public AnimatedSprite CreateLowerHUDSprite()
@@ -1625,5 +1628,17 @@ namespace LegendOfZelda
             return newSprite;
 
         }
+
+        public AnimatedSprite CreateMainMenuSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(0, 11, 256, 224),
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(menuTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
     }
 }

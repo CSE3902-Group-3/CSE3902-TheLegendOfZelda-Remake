@@ -3,17 +3,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    internal class NormalState: IGameState
+    public class NormalState: IGameState
     {
-        private IController Controller;
-        public NormalState()
-        {
-            Controller = new PlayerController(GameState.Link);
-        }
+        public NormalState(){}
         public void Update(GameTime gameTime)
         {
             LevelMaster.Update(gameTime);
-            Controller.Update();
+            GameState.PlayerController.Update();
             GameState.CollisionManager.Update(gameTime);
         }
         public void Draw(SpriteBatch _spriteBatch)
