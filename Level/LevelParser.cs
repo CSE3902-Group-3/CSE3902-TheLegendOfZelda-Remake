@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace LegendOfZelda
 {
     // Level class with the functionality of reading the level file and processing its contents
-    internal class LevelParser
+    public class LevelParser
     {
         public static RoomList Parse(string levelFileName)
         {

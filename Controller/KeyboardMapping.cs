@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-    internal class KeyboardMapping
+    public class KeyboardMapping
     {
         private Dictionary<Keys, ICommands> KeyDownMapping;
         private Dictionary<Keys, ICommands> keyUpMappings;

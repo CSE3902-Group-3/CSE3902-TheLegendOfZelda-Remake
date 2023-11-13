@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
 {
-    internal class GameState : IGameState
+    public class GameState : IGameState
     {
         private static GameState Instance;
         private static IGameState State;
@@ -17,10 +12,8 @@ namespace LegendOfZelda
         public static PauseManager PauseManager;
         public static CollisionManager CollisionManager;
         public static Link Link;
-        public static RoomCycler RoomCycler;
+        public static IController PlayerController;
 
-        // testing
-        private static bool AlreadySwitched = false;
         //public enum GameStates { normalState, winState, loseState, pauseState, menuState, roomTransitionState }
         public static GameState GetInstance()
         {
@@ -30,33 +23,35 @@ namespace LegendOfZelda
         }
         private GameState()
         {
-            CollisionManager = new CollisionManager();
             LevelMaster = LevelMaster.GetInstance();
+            CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
-            Link = Link.getInstance();
+            Link = new Link();
+            LevelMaster.NavigateToRoom(0);
             PauseManager = new PauseManager();
-            CameraController = CameraController.GetInstance();
             State = new NormalState();
+            RoomCycler.GetInstance();
+            CameraController = CameraController.GetInstance();
+            PlayerController = new PlayerController(Link);
         }
         public void SwitchState(IGameState state)
         {
             State = state;
         }
-        public void ResetState()
+        public void ResetGameState()
         {
-            Instance = new GameState();
-            // need a way to reset link
+            CollisionManager = new CollisionManager();
+            LevelMaster.StartLevel("level1.json");
+            Link = new Link();
+            LevelMaster.NavigateToRoom(0);
+            PauseManager = new PauseManager();
+            State = new NormalState();
+            CameraController.Reset();
+            PlayerController = new PlayerController(Link);
         }
         public void Update(GameTime gameTime)
         {
             State.Update(gameTime);
-
-            // Uncomment the part below to test game over screen
-            /*if (gameTime.TotalGameTime.TotalMilliseconds > 3000 && !AlreadySwitched)
-            {
-                SwitchState(new GameOverState());
-                AlreadySwitched = true;
-            }*/
         }
         public void Draw(SpriteBatch _spriteBatch)
         {

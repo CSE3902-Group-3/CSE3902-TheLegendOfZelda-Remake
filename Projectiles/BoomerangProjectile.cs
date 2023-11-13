@@ -52,7 +52,7 @@ namespace LegendOfZelda
             //State pattern would work better here but would be overkill for such a small class
             if (returning)
             {
-                dir = player.pos - Pos;
+                dir = player.Pos - Pos;
                 if(dir.Length() < speed)
                 {
                     Destroy();

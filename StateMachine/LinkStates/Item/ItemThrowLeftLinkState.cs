@@ -5,33 +5,31 @@ namespace LegendOfZelda
 {
     public class ItemThrowLeftLinkState : IState
     {
-        private Game1 game;
-        private Link link;
+        private Link Link;
 
         public ItemThrowLeftLinkState()
         {
-            this.game = Game1.getInstance();
-            this.link = (Link)game.link;
+            this.Link = GameState.Link;
         }
 
         public void Enter()
         {
-            if (link.sprite != null)
+            if (Link.Sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)link.sprite).UnregisterSprite();
+                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
             }
-            link.stateMachine.canMove = false;
-            link.sprite = SpriteFactory.getInstance().CreateLinkThrowLeftSprite();
+            Link.StateMachine.canMove = false;
+            Link.Sprite = SpriteFactory.getInstance().CreateLinkThrowLeftSprite();
 
             // Throw item
             if (Inventory.getInstance().SecondaryItem is Bomb)
             {
-                new BombProjectile(link.stateMachine.position + new Vector2(90, 0));
+                new BombProjectile(Link.StateMachine.position + new Vector2(90, 0));
             }
             else if (Inventory.getInstance().SecondaryItem is Boomerang)
             {
-                new BoomerangProjectile(link.stateMachine.position + new Vector2(90, 0), new Vector2(-1, 0), link);
+                new BoomerangProjectile(Link.StateMachine.position + new Vector2(90, 0), new Vector2(-1, 0), link);
             }
         }
 
@@ -42,8 +40,8 @@ namespace LegendOfZelda
 
         public void Exit()
         {
-            link.stateMachine.canMove = true;
-            ((AnimatedSprite)link.sprite).UnregisterSprite();
+            Link.StateMachine.canMove = true;
+            ((AnimatedSprite)Link.Sprite).UnregisterSprite();
         }
 
     }

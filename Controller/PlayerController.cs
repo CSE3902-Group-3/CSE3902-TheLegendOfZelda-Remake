@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace LegendOfZelda
 {
-    internal class PlayerController : IController
+    public class PlayerController : IController
     {
         private KeyboardMapping controllerMappings;
         private Link link;
@@ -87,7 +87,7 @@ namespace LegendOfZelda
         private void MouseEvents()
         {
             mouseState = Mouse.GetState();
-            RoomCycler roomCycler = Game1.getInstance().roomCycler;
+            RoomCycler roomCycler = RoomCycler.GetInstance();
 
             if (mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Released && roomCycler != null)
             {

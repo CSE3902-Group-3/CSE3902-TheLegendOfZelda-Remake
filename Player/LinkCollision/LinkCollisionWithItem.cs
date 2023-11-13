@@ -9,10 +9,10 @@
             if (itemCollidedWith is Bow || itemCollidedWith is Triforce)
             {
                 Inventory.getInstance().AddItem(itemCollidedWith);
-                Link.getInstance().stateMachine.ChangeState(new CollectItemLinkState(itemCollidedWith));
+                GameState.Link.StateMachine.ChangeState(new CollectItemLinkState(itemCollidedWith));
             }
             else if (itemCollidedWith is Heart)
-                Link.getInstance().Heal(1.0f);
+                GameState.Link.Heal(1.0f);
             else
                 Inventory.getInstance().AddItem(itemCollidedWith);
 

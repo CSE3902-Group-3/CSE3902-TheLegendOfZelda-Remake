@@ -66,6 +66,11 @@
          * WestHoleDoor, 32
          * WallExterior, 33
          * Ladder, 34
+         * LadderDoor, 35
+         * Room8PushableBlock, 36
+         * Room16PushableBlock, 37
+         * ImpassibleBlackTile, 38
+         * Room12ExteriorCollider, 39
     */
 
     - Item dictionary:
@@ -103,7 +108,8 @@
          * Rope, 6
          * Skeleton, 7
          * WallMaster, 8
-         * Wizard 9
+         * Wizard, 9
+         * ZolBig, 10
     */
 
 3) Put bottom layer elements at the start of "MapElements" array:
