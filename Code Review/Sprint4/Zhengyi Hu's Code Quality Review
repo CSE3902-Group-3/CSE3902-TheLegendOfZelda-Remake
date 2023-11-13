@@ -1,0 +1,8 @@
+Author of the code review: Zhengyi Hu
+Date of the code review: Dec.11th.2023
+Sprint number: 4
+Name of the .cs file being reviewed: SoundFactory.cs
+Author of the .cs file being reviewed: Matt Curie
+Specific comments on code quality:
+The SoundFactory.cs does a good job of using the factory pattern. It has high cohesion and low coupling. It is easy to maintain. 
+Future changes can be made easily.
