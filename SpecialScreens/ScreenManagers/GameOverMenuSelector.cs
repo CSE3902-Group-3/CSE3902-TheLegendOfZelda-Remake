@@ -47,13 +47,12 @@ namespace LegendOfZelda
         {
             IndicationHearts[selection].Remove();
 
-            if (selection == IndicationHearts.Count - 1)
+            if (selection == 1)
             {
                 selection = 0;
-            }
-            else
+            } else
             {
-                selection++;
+                selection = 1;
             }
 
             IndicationHearts[selection].Show();
