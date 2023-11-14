@@ -8,7 +8,7 @@ namespace LegendOfZelda
         private readonly AnimatedSprite Sprite;
         private int Width = 16;
         private int Height = 16;
-        public Vector2 Position;
+        public Vector2 Position { get; set; }
         public RectCollider Collider { get; private set; }
         public BladeTrap(Vector2 pos)
         {

@@ -9,13 +9,14 @@ namespace LegendOfZelda
         private readonly List<AnimatedSprite> Sprites;
         private int CurrentSprite;
         private float Health { get; set; } = 3.0f;
-        public Vector2 Position;
+        public Vector2 Position { get; set; }
         private Vector2 Center;
-        private Vector2 Direction = new Vector2(1, 0);
+        private Vector2 Direction = new(1, 0);
         private double LastSwitch = 0;
         private int UpdateCount = 0;
         private float currentCooldown = 0.0f;
         private bool allowedToMove = true;
+        public bool isColliding = false;
         public RectCollider Collider { get; private set; }
         public Goriya(Vector2 pos)
         {
@@ -113,7 +114,6 @@ namespace LegendOfZelda
                 Direction = new Vector2(0, -1);
             }
             Sprites[CurrentSprite].RegisterSprite();
-            Collider.Pos = Position;
         }
         public void Update(GameTime gameTime)
         {
@@ -131,6 +131,7 @@ namespace LegendOfZelda
                 }
             }
             ChangePosition();
+            Collider.Pos = Position;
         }
         public void OnCollision(List<CollisionInfo> collisions)
         {
@@ -140,7 +141,11 @@ namespace LegendOfZelda
 
                 if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Wall)
                 {
-                    Direction = -Direction;
+                    Direction *= -1;
+                    Sprites[CurrentSprite].UpdatePos(Position);
+                    Collider.Pos = Position;
+                    ChangePosition();
+                    Direction *= -1;
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)
                 {

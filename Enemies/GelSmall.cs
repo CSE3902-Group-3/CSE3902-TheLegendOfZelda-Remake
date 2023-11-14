@@ -7,8 +7,8 @@ namespace LegendOfZelda
     {
         private readonly SimpleEnemyStateMachine StateMachine;
         private float Health { get; set; } = 0.5f;
-        public Vector2 Position;
-        public Vector2 Offset = new Vector2(0, 0);
+        public Vector2 Position { get; set; }
+        public Vector2 Offset = new(0, 16);
         public RectCollider Collider { get; private set; }
         public GelSmall(Vector2 pos)
         {
@@ -16,7 +16,7 @@ namespace LegendOfZelda
             int scale = SpriteFactory.getInstance().scale;
 
             Collider = new RectCollider(
-               new Rectangle((int)Position.X, (int)Position.Y, 4 * scale, 4 * scale),
+               new Rectangle((int)Position.X, (int)Position.Y, 8 * scale, 9 * scale),
                CollisionLayer.Enemy,
                this
            );

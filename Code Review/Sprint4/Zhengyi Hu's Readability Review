@@ -1,0 +1,9 @@
+Author of the code review: MengQi Lei
+Date of the code review: Dec.11th.2023
+Sprint number: 4
+Name of the .cs file being reviewed: GameOverScreen.cs
+Author of the .cs file being reviewed: Mengqi Lei
+Number of minutes taken to complete the review: 10
+Specific comments on what is readable and what is not:
+  The class is well formatted. All the methods' names are descriptive which makes the class easy to understand. 
+  If long syntaxes like gameTime.TotalGameTime.TotalMilliseconds can be a variable of the class it will look better.

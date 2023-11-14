@@ -7,8 +7,8 @@ namespace LegendOfZelda
     {
         private readonly SimpleEnemyStateMachine StateMachine;
         private float Health { get; set; } = 0.5f;
-        public Vector2 Position;
-        public Vector2 Offset = new Vector2(0, 16);
+        public Vector2 Position { get; set; }
+        public Vector2 Offset = new(0, 16);
         public RectCollider Collider { get; private set; }
         public Bat(Vector2 pos)
         {
