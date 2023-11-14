@@ -49,6 +49,8 @@ namespace LegendOfZelda
             }
 
             int scale = SpriteFactory.getInstance().scale;
+            CurrentSprite = 0;
+            LevelMaster.RegisterUpdateable(this);
 
             Collider = new RectCollider(
                new Rectangle((int)Position.X, (int)Position.Y, Width * scale, Height * scale),

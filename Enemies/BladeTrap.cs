@@ -16,7 +16,7 @@ namespace LegendOfZelda
             Sprite = SpriteFactory.getInstance().CreateBladeTrapSprite();
             Sprite.UnregisterSprite();
             LevelMaster.RegisterUpdateable(this);
-
+            Sprite.UpdatePos(pos);
             int scale = SpriteFactory.getInstance().scale;
 
             Collider = new RectCollider(
@@ -49,7 +49,7 @@ namespace LegendOfZelda
         public void ChangePosition() { }
 
         public void ChangeDirection() { }
-        public void Update(GameTime gameTime) { }
+        public void Update(GameTime gameTime) {}
 
         public void OnCollision(List<CollisionInfo> collisions)
         {

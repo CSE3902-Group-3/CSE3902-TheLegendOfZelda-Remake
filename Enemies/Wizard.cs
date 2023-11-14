@@ -18,6 +18,7 @@ namespace LegendOfZelda
         {
             Position = pos;
             Sprite = SpriteFactory.getInstance().CreateOldManSprite();
+            Sprite.UpdatePos(pos);
             Sprite.UnregisterSprite();
             LevelMaster.RegisterUpdateable(this);
             int scale = SpriteFactory.getInstance().scale;
