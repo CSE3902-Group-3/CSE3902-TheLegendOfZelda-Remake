@@ -1,21 +1,13 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace LegendOfZelda
 {
-
     /*
      * This class is left very long intentionally. The sprite factory is intended to be completely decoupled from the functionality of the games,
      * so to split it up based on what the sprites are used for would break this principle. Even though it is long it only serves one purpose.
+     * 
+     * Also: removing magic numbers from this class would require hundreds of const statements, so they are left here.
      */
     public class SpriteFactory
     {
@@ -837,7 +829,7 @@ namespace LegendOfZelda
                 new Rectangle(0, 0, 8, 8)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             return newSprite;
         }
 
@@ -1030,7 +1022,7 @@ namespace LegendOfZelda
                 new Rectangle(274, 16, 12, 16)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame * slowAnimateFactor, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame * slowAnimateFactor, scale, true);
             newSprite.AddEffect(new NormalAnimateEffect(newSprite));
             return newSprite;
         }
@@ -1418,7 +1410,7 @@ namespace LegendOfZelda
                 new Rectangle(0, 11, 256, 224),
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(menuTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            AnimatedSprite newSprite = new AnimatedSprite(menuTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             return newSprite;
         }
     }

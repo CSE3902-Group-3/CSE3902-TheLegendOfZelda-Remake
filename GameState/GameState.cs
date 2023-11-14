@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Graphics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LegendOfZelda
@@ -13,6 +14,7 @@ namespace LegendOfZelda
         public static CollisionManager CollisionManager;
         public static Link Link;
         public static IController PlayerController;
+        public static IController ItemMenuController;
 
         //public enum GameStates { normalState, winState, loseState, pauseState, menuState, roomTransitionState }
         public static GameState GetInstance()
@@ -27,27 +29,35 @@ namespace LegendOfZelda
             CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
             Link = new Link();
-            LevelMaster.NavigateToRoom(0);
+            LevelMaster.NavigateToRoom(1);
             PauseManager = new PauseManager();
-            State = new NormalState();
+            BackgroundGenerator.GenerateMenuBackgrounds();
+            State = new StartState();
             RoomCycler.GetInstance();
             CameraController = CameraController.GetInstance();
             PlayerController = new PlayerController(Link);
+            ItemMenuController = new ItemMenuController();
         }
         public void SwitchState(IGameState state)
         {
             State = state;
+        }
+        public void SetToNormal()
+        {
+            State = new NormalState();
         }
         public void ResetGameState()
         {
             CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
             Link = new Link();
-            LevelMaster.NavigateToRoom(0);
+            LevelMaster.NavigateToRoom(1);
             PauseManager = new PauseManager();
+            BackgroundGenerator.GenerateMenuBackgrounds();
             State = new NormalState();
             CameraController.Reset();
             PlayerController = new PlayerController(Link);
+            ItemMenuController = new ItemMenuController();
         }
         public void Update(GameTime gameTime)
         {

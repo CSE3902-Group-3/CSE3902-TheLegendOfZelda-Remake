@@ -16,8 +16,8 @@ Remake of NES The Legend of Zelda game
 - All menus (including HUD) exept game over are not currently functional at all
 - The inventory system is not currently functional at all
 -   Link can not use any items
--   Picking up items does nothing (collision response is incomplete)
-
+-   All items do nothing
+- Blade trap does nothing
 - Dodongo takes damage from sword and player, does not eat bombs
 - Closed doors which open based on triggers (as opposed to locked doors) can never be opened
 
@@ -37,6 +37,8 @@ Remake of NES The Legend of Zelda game
 - Main menu has green line on the left
 - Screen size is a square as opposed to a rectangle in the original
 - Pushable blocks do not reset upon reentry to a room
+- On some computers blocks sometimes cannot be pushed (we believe this is due to interruptions in key inputs)
+- Link sometimes takes more damage than expected when colliding with enemies
 
 ## Intentional Differences From Source Game:
 - Interaction with Wizard and spawning text is not implemented
@@ -62,6 +64,7 @@ Remake of NES The Legend of Zelda game
 -   10/20: 83, 1277, 2, 186, 8167, 2317
 -   10/23: 83, 1318, 2, 196, 8402, 2391
 -   11/6: 82, 1664, 2, 221, 9975, 2805
+-   11/13: 82, 1831, 2, 231, 11001, 3103
 
 ## Code Reviews:
 When possible, we tried to do our code reviews as part of pull requests, which are listed below. In cases where that was impossible (no PR's ready for review), we wrote them in text files.
@@ -99,9 +102,11 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - Michael Herring reviewed Matt Curie's code for readability in pull request #260
 - Ethan Glenwright reviewed MengQi Lei's code for quality in pull request #280
 - MengQi Lei reviewed Ethan Glenwright's code for readability in pull request #301
+- MengQi Lei reviewed ZhengYi Hu's code for quality in pull request #284
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
 
 #### Sprint 5 Topic Ideas:
 - Michael Herring: Reinvestigate HLSL shaders from sprint 2
+- Gabriel DiFiore: Config game with `.ini` file, load in custom Link health, enemy damage/difficulty, etc

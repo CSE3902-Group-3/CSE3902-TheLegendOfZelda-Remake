@@ -12,6 +12,10 @@ namespace LegendOfZelda
         private Vector2 exitPos;
 
         private int doorSize = 16;
+
+        private const int exitPosX = 320;
+        private const int exitPosY = -704;
+
         public LadderDoor(Vector2 pos)
         {
             SpriteFactory spriteFactory = SpriteFactory.getInstance();
@@ -22,7 +26,7 @@ namespace LegendOfZelda
             sprite.UpdatePos(pos);
             collider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, doorSize, doorSize), CollisionLayer.Wall, this);
 
-            exitPos = new Vector2(320 * scale, -704 * scale);
+            exitPos = new Vector2(exitPosX * scale, exitPosY * scale);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
