@@ -24,6 +24,7 @@ namespace LegendOfZelda
         private AnimatedSprite LevelNumber;
         private AnimatedSprite WeponA;
         private AnimatedSprite WeponB;
+        private AnimatedSprite LocationIndicator;
         private List<AnimatedSprite> Rubies;
         private List<AnimatedSprite> Keys;
         private List<AnimatedSprite> Bombs;
@@ -64,6 +65,38 @@ namespace LegendOfZelda
 
             inventory = Inventory.getInstance();
             link = GameState.Link;
+
+            Level = 1;
+            RubiesCount = inventory.GetQuantity(new OneRupee(Vector2.Zero));
+            KeysCount = inventory.GetQuantity(new Key(Vector2.Zero));
+            BombsCount = inventory.GetQuantity(new Bomb(Vector2.Zero));
+
+            CurrentHealth = (int)(link.GetCurrentHP() * 2);
+            MaxHealth = (int)(link.GetMaxHP() * 2);
+
+            LowerHUDBase = spriteFactory.CreateLowerHUDSprite();
+            LevelIndicator = spriteFactory.CreateLevelHUDSprite();
+            LevelNumber = letterFactory.GetLetterSprite(Level);
+            // The wepons below should be able to change later. These are test only.
+            WeponA = spriteFactory.CreateWoodenSwoardSprite();
+            WeponB = spriteFactory.CreateWoodenBoomerangHUDSprite();
+            Rubies = QuantityToSprite(RubiesCount);
+            Keys = QuantityToSprite(KeysCount);
+            Bombs = QuantityToSprite(BombsCount);
+            GetHealthSprite(CurrentHealth, MaxHealth);
+
+            // The below position is for test now, should be changed to GameState.CameraController.HUDLocation later
+            LowerHUDBasePos = GameState.CameraController.HUDLocation;
+            LevelIndicatorPos = new Vector2(LowerHUDBasePos.X + 16 * scale, LowerHUDBasePos.Y + 8 * scale);
+            LevelNumberPos = new Vector2(LevelIndicatorPos.X + 48 * scale, LevelIndicatorPos.Y);
+            WeponAPos = new Vector2(LowerHUDBasePos.X + 152 * scale, LowerHUDBasePos.Y + 24 * scale);
+            WeponBPos = new Vector2(LowerHUDBasePos.X + 128 * scale, LowerHUDBasePos.Y + 24 * scale);
+            RubiesPos = new Vector2(LowerHUDBasePos.X + 96 * scale, LowerHUDBasePos.Y + 16 * scale);
+            KeysPos = new Vector2(LowerHUDBasePos.X + 96 * scale, LowerHUDBasePos.Y + 32 * scale);
+            BombsPos = new Vector2(LowerHUDBasePos.X + 96 * scale, LowerHUDBasePos.Y + 40 * scale);
+            LifePos = new Vector2(LowerHUDBasePos.X + 176 * scale, LowerHUDBasePos.Y + 32 * scale);
+
+            CreateMiniMap();
         }
 
         public void LoadContent()
@@ -112,7 +145,7 @@ namespace LegendOfZelda
 
         public void Show()
         {
-            LoadContent();
+            //LoadContent();
 
             RegisterSprite(LowerHUDBase, LowerHUDBasePos);
 

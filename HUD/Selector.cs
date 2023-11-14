@@ -13,16 +13,18 @@ namespace LegendOfZelda
         private static Selector instance;
 
         private const int scale = 4;
+        private const int selectorInitialIndex = 0;
 
         InventoryHUD inventoryHUD;
 
-        private int SelectorIndex;
+        private int SelectorIndex = 0;
 
         private SpriteFactory spriteFactory;
 
         private AnimatedSprite SelectorSprite;
 
         private Vector2 BasePos;
+        private Vector2 SelectorCurrPos;
 
         private struct SelectorPos
         {
@@ -50,7 +52,6 @@ namespace LegendOfZelda
 
         public void LoadContent()
         {
-            SelectorIndex = 0;
             SelectorSprite = spriteFactory.CreateSelectorSprite();
 
             BasePos = inventoryHUD.GetSelectorPos();
@@ -65,20 +66,23 @@ namespace LegendOfZelda
         public void Show()
         {
             SelectorSprite.RegisterSprite();
-            SelectorSprite.UpdatePos(PosDictionary[SelectorIndex].pos);
+            SelectorCurrPos = PosDictionary[SelectorIndex].pos;
+            SelectorSprite.UpdatePos(SelectorCurrPos);
         }
 
         public void CreatePosDict()
         {
             PosDictionary = new Dictionary<int, SelectorPos>();
             List<bool> unLockList = inventoryHUD.GetUnlockList();
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 9; i++)
             {
                 SelectorPos temp = new SelectorPos();
-                if (i < 4)
+                if (i < 3)
                     temp.pos = new Vector2(BasePos.X + i * 24 * scale, BasePos.Y);
+                else if (i < 5)
+                    temp.pos = new Vector2(BasePos.X + (i - 1) * 24 * scale, BasePos.Y);
                 else
-                    temp.pos = new Vector2(BasePos.X + (i - 4) * 24 * scale, BasePos.Y + 24 * scale);
+                    temp.pos = new Vector2(BasePos.X + (i - 5) * 24 * scale, BasePos.Y + 16 * scale);
                 temp.unlock = unLockList[i];
                 PosDictionary.Add(i, temp);
             }
@@ -88,6 +92,7 @@ namespace LegendOfZelda
         {
             if (SelectorIndex == 7)
                 SelectorIndex = 0;
+            else SelectorIndex++;
             while (!PosDictionary[SelectorIndex].unlock)
             {
                 if (SelectorIndex == 7)
@@ -95,12 +100,15 @@ namespace LegendOfZelda
                 else
                     SelectorIndex++;
             }
+            SelectorCurrPos = PosDictionary[SelectorIndex].pos;
+            SelectorSprite.UpdatePos(SelectorCurrPos);
         }
 
         public void SelectLeft()
         {
             if (SelectorIndex == 0)
                 SelectorIndex = 7;
+            else SelectorIndex--;
             while (!PosDictionary[SelectorIndex].unlock)
             {
                 if (SelectorIndex == 0)
@@ -108,27 +116,36 @@ namespace LegendOfZelda
                 else
                     SelectorIndex--;
             }
+            SelectorCurrPos = PosDictionary[SelectorIndex].pos;
+            SelectorSprite.UpdatePos(SelectorCurrPos);
         }
 
         public void SelectUp()
         {
-            if (SelectorIndex < 4)
-                if (PosDictionary[SelectorIndex += 4].unlock)
-                    SelectorIndex += 4;
+            int tempIndex = SelectorIndex;
+            if (tempIndex < 5)
+                if (PosDictionary[tempIndex += 5].unlock)
+                    SelectorIndex = tempIndex;
             else
-                if (PosDictionary[SelectorIndex -= 4].unlock)
-                    SelectorIndex -= 4;
+                if (PosDictionary[tempIndex -= 4].unlock)
+                    SelectorIndex = tempIndex;
+            SelectorCurrPos = PosDictionary[SelectorIndex].pos;
+            SelectorSprite.UpdatePos(SelectorCurrPos);
         }
 
         public void SelectDown()
         {
-            if (SelectorIndex < 4)
-                if (PosDictionary[SelectorIndex += 4].unlock)
-                    SelectorIndex += 4;
+            int tempIndex = SelectorIndex;
+            if (tempIndex < 4)
+                if (PosDictionary[tempIndex += 5].unlock)
+                    SelectorIndex = tempIndex;
             else
-                if (PosDictionary[SelectorIndex -= 4].unlock)
-                    SelectorIndex -= 4;
+                if (PosDictionary[tempIndex -= 4].unlock)
+                    SelectorIndex = tempIndex;
+            SelectorCurrPos = PosDictionary[SelectorIndex].pos;
+            SelectorSprite.UpdatePos(SelectorCurrPos);
         }
+       
 
         public int SelectCurrentItem()
         {

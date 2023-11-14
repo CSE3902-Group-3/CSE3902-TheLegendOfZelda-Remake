@@ -9,11 +9,12 @@ namespace LegendOfZelda
         private Dictionary<Keys, ICommands> keyUpMappings;
 
         private Game1 game;
+        private Selector selector;
 
         public KeyboardMapping(Link link)
         {
             this.game = Game1.getInstance();
-            Selector selector = Selector.GetInstance(HUDManager.GetInstance().inventoryHUD);
+            selector = Selector.GetInstance(HUDManager.GetInstance().inventoryHUD);
 
             KeyDownMapping = new Dictionary<Keys, ICommands>();
             keyUpMappings = new Dictionary<Keys, ICommands>();

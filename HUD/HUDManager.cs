@@ -43,8 +43,8 @@ namespace LegendOfZelda
         {
 
             // Uncomment one for test
-            lowerHUD.Show();
-            //inventoryHUD.Show();
+            //lowerHUD.Show();
+            inventoryHUD.Show();
             //mapHUD.Show();
         }  
     }

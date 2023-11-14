@@ -1797,6 +1797,39 @@ namespace LegendOfZelda
             return null;
         }
 
+        public AnimatedSprite CreateHUDBombSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(129, 185, 8, 14)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateHUDBlueCandleSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(160, 16, 8, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateHUDBluePotionSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(80, 16, 8, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
         public AnimatedSprite CreateMainMenuSprite()
         {
             Rectangle[] frames = new Rectangle[1]

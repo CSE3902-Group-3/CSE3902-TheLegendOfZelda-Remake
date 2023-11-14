@@ -20,11 +20,11 @@ namespace LegendOfZelda
         private Dictionary<string, AnimatedSprite> ItemsInFrame;
         private Dictionary<string, AnimatedSprite> ItemsAboveFrame;
 
-        private Selector Selector;
+        public Selector Selector;
 
         private Vector2 InventoryHUDBasePos;
         private Vector2 SelectedItemPos;
-        private Vector2 SelectorInitPos;
+        public Vector2 SelectorInitPos;
         private Dictionary<string, Vector2> InventoryItemsPosDict;
         private Dictionary<string, Vector2> InventoryItemsAbovePosDict;
 
@@ -86,13 +86,13 @@ namespace LegendOfZelda
             ItemsInFrame = new Dictionary<string, AnimatedSprite>
             {
                 { "boomerang", spriteFactory.CreateWoodenBoomerangHUDSprite() },
-                { "bomb", spriteFactory.CreateBombSprite() },
+                { "bomb", spriteFactory.CreateHUDBombSprite() },
                 { "arrow", spriteFactory.CreateWoodenArrowSprtie() },
                 { "bow", spriteFactory.CreateWoodenBowSprite() },
-                { "candle", spriteFactory.CreateBlueCandleSprite() },
+                { "candle", spriteFactory.CreateHUDBlueCandleSprite() },
                 { "rod", spriteFactory.CreateRodSprite() },
                 { "food", spriteFactory.CreateFoodSprite() },
-                { "potion", spriteFactory.CreateBluePotionSprite() },
+                { "potion", spriteFactory.CreateHUDBluePotionSprite() },
                 { "wand", spriteFactory.CreateWandSprite() }
             };
         }
