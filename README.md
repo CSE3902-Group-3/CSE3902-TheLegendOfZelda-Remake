@@ -9,8 +9,9 @@ Remake of NES The Legend of Zelda game
 
 ### Other controls
 - Use `q` to quit and `r` to gameover and reset the program back to its initial state.
-- Use `space` to pause and resume the game.
+- Use `space` to pause or resume the game.
 - Use right/left click to cycle rooms
+- After Link dies, use `Shift` to switch between options in game over menu. Use `Enter` to select the option.
 
 ## Major Known Bugs:
 - All menus (including HUD) exept game over are not currently functional at all
