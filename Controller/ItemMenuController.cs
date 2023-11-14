@@ -1,28 +1,49 @@
 ﻿using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LegendOfZelda
 {
     public class ItemMenuController : IController
     {
-        private ICommands ReturnFromItemMenuCommand;
-        private bool ReleasedKey;
+        private Dictionary<Keys, ICommands> KeyCommands;
+
+        private Keys[] currKeys;
+        private Keys[] prevKeys;
 
         public ItemMenuController()
         {
-            ReleasedKey = false;
-            ReturnFromItemMenuCommand = new ReturnFromItemMenuCommand();
+            prevKeys = Array.Empty<Keys>();
+            currKeys = Array.Empty<Keys>();
+
+            KeyCommands = new Dictionary<Keys, ICommands>();
+            KeyCommands.Add(Keys.M, new ReturnFromItemMenuCommand());
+            KeyCommands.Add(Keys.Up, new SelectUpCommand());
+            KeyCommands.Add(Keys.W, new SelectUpCommand());
+            KeyCommands.Add(Keys.Down, new SelectDownCommand());
+            KeyCommands.Add(Keys.S, new SelectDownCommand());
+            KeyCommands.Add(Keys.Left, new SelectLeftCommand());
+            KeyCommands.Add(Keys.A, new SelectDownCommand());
+            KeyCommands.Add(Keys.Right, new SelectRightCommand());
+            KeyCommands.Add(Keys.D, new SelectRightCommand());
         }
 
         public void Update()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.M) && ReleasedKey)
+            prevKeys = currKeys;
+            currKeys = Keyboard.GetState().GetPressedKeys();
+
+            foreach (Keys key in currKeys)
             {
-                ReturnFromItemMenuCommand.Execute();
-                ReleasedKey = false;
-            }
-            else if (Keyboard.GetState().IsKeyUp(Keys.M) && !ReleasedKey)
-            {
-                ReleasedKey = true;
+                if (!prevKeys.Contains(key))
+                {
+                    ICommands command = null;
+                    if (KeyCommands.ContainsKey(key))
+                        command = KeyCommands[key];
+                    if (command != null)
+                        command.Execute();
+                }
             }
         }
     }

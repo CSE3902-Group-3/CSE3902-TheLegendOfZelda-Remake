@@ -13,8 +13,12 @@ namespace LegendOfZelda
         public static PauseManager PauseManager;
         public static CollisionManager CollisionManager;
         public static Link Link;
+        public static LowerHUD lowerHUD;
+        public static InventoryHUD inventoryHUD;
+        public static MapHUD mapHUD;
         public static IController PlayerController;
         public static IController ItemMenuController;
+
 
         //public enum GameStates { normalState, winState, loseState, pauseState, menuState, roomTransitionState }
         public static GameState GetInstance()
@@ -35,6 +39,7 @@ namespace LegendOfZelda
             State = new StartState();
             RoomCycler.GetInstance();
             CameraController = CameraController.GetInstance();
+            lowerHUD = LowerHUD.GetInstance();
             PlayerController = new PlayerController(Link);
             ItemMenuController = new ItemMenuController();
         }

@@ -8,6 +8,10 @@ namespace LegendOfZelda
         public ItemMenuState(){}
         public void Update(GameTime gameTime)
         {
+            InventoryHUD.GetInstance().Show();
+            InventoryHUD.GetInstance().Update(gameTime);
+            MapHUD.GetInstance().Show();
+            MapHUD.GetInstance().Update(gameTime);
             GameState.ItemMenuController.Update();
             CameraController.GetInstance().itemMenuCamera.Update(gameTime);
         }

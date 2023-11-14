@@ -113,5 +113,15 @@ namespace LegendOfZelda
         {
             // i don't think we need this??
         }
+
+        public float GetCurrentHP()
+        {
+            return HP;
+        }
+
+        public float GetMaxHP()
+        {
+            return MaxHP;
+        }
     }
 }

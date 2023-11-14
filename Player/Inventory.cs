@@ -120,6 +120,7 @@ namespace LegendOfZelda
 
             return itemAmount;
         }
+
     }
 }
 

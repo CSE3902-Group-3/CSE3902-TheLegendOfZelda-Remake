@@ -20,6 +20,7 @@ namespace LegendOfZelda
         private Texture2D bossesTexture;
         private Texture2D itemsTexture;
         private Texture2D npcTexture;
+        private Texture2D HUDTexture;
         private Texture2D menuTexture;
         public SpriteFont pauseWord;
 
@@ -53,6 +54,7 @@ namespace LegendOfZelda
             bossesTexture = content.Load<Texture2D>("Bosses");
             itemsTexture = content.Load<Texture2D>("Items");
             npcTexture = content.Load<Texture2D>("NPC");
+            HUDTexture = content.Load<Texture2D>("HUD");
             menuTexture = content.Load<Texture2D>("Menu");
             pauseWord = content.Load<SpriteFont>("Pause");
         }
@@ -1403,6 +1405,423 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+
+        //HUD Sprites
+
+        public AnimatedSprite CreateLowerHUDSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(258, 11, 256, 56)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateMapHUDSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(258, 112, 256, 88)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale,true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateInventoryHUDSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(1, 11, 256, 88)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateLevelHUDSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(584, 1, 64, 40)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateWoodenSwoardSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(555, 137, 8, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateWoodenBoomerangHUDSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(584, 137, 8, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateHeartSprite(int selector)
+        {
+            Rectangle[] frames;
+            AnimatedSprite newSprite;
+            switch (selector)
+            {
+                case 0:
+                    frames = new Rectangle[1]
+                    {
+                        new Rectangle(627, 117, 8, 8)
+                    };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 1:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(636, 117, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 2:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(645, 117, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                
+            }
+            return null;
+        }
+
+        public AnimatedSprite CreateWoodenArrowSprtie()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(615, 137, 8, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateWoodenBowSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(633, 137, 8, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateRodSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(664, 137, 8, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateFoodSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(675, 137, 8, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateWandSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(715, 137, 8, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBridgeSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(519, 156, 16, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBookSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(538, 156, 8, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateRingSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(549, 156, 8, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateDargonKeySprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(579, 156, 8, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBreadSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(590, 156, 8, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateSelectorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(519, 137, 16, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateHUDLadderSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(560, 156, 16, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+
+        }
+
+        public AnimatedSprite CreateMiniMapElement(int selector)
+        {
+            Rectangle[] frames;
+            AnimatedSprite newSprite;
+            switch (selector)
+            {
+                case 0:
+                    frames = new Rectangle[1]
+                    {
+                        new Rectangle(663, 108, 8, 8)
+                    };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 1:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(672, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 2:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(681, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+
+            }
+            return null;
+        }
+
+        public AnimatedSprite CreateMapElement(int selector)
+        {
+            Rectangle[] frames;
+            AnimatedSprite newSprite;
+            switch (selector)
+            {
+                case -1:
+                    frames = new Rectangle[1]
+                    {
+                        new Rectangle(587, 91, 8, 8)
+                    };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 0:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(519, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 1:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(528, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 2:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(537, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 3:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(546, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 4:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(555, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 5:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(564, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 6:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(573, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 7:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(582, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 8:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(591, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 9:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(600, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+                    return newSprite;
+                case 10:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(609, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+                    return newSprite;
+                case 11:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(618, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+                    return newSprite;
+                case 12:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(627, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+                    return newSprite;
+                case 13:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(636, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+                    return newSprite;
+                case 14:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(645, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+                    return newSprite;
+                case 15:
+                    frames = new Rectangle[1]
+                    {
+                            new Rectangle(654, 108, 8, 8)
+                        };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+
+                    return newSprite;
+            }
+            return null;
+        }
+
+        public AnimatedSprite CreateHUDBombSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(129, 185, 8, 14)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateHUDBlueCandleSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(160, 16, 8, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateHUDBluePotionSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(80, 16, 8, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
         public AnimatedSprite CreateMainMenuSprite()
         {
             Rectangle[] frames = new Rectangle[1]
@@ -1413,5 +1832,6 @@ namespace LegendOfZelda
             AnimatedSprite newSprite = new AnimatedSprite(menuTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             return newSprite;
         }
+
     }
 }

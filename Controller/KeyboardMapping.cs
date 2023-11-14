@@ -13,6 +13,7 @@ namespace LegendOfZelda
         public KeyboardMapping(Link link)
         {
             this.game = Game1.getInstance();
+
             KeyDownMapping = new Dictionary<Keys, ICommands>();
             keyUpMappings = new Dictionary<Keys, ICommands>();
 
@@ -40,6 +41,9 @@ namespace LegendOfZelda
             keyUpMappings.Add(Keys.Right, new ToIdleCommand(link));
             KeyDownMapping.Add(Keys.Z, new PrimaryAttackCommand(link));
             KeyDownMapping.Add(Keys.N, new PrimaryAttackCommand(link));
+
+            //KeyDownMapping.Add(Keys.M, new WinningCommand());
+
         }
 
         public ICommands KeyDownCommand(Keys key)
