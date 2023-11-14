@@ -10,9 +10,9 @@ namespace LegendOfZelda
     {
         private Selector selector;
 
-        public SelectLeftCommand(Selector selector)
+        public SelectLeftCommand()
         {
-            this.selector = selector;
+            selector = Selector.GetInstance();
         }
 
         public void Execute()

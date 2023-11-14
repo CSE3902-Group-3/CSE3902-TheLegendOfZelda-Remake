@@ -68,12 +68,13 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             //UpdatePos();
-            //Selector.Update();
+            Selector.Update();
         }
 
         public void Show()
         {
             //LoadContent();
+            Selector = Selector.GetInstance();
 
             RegisterSprite(InventoryHUDBase, InventoryHUDBasePos);
 
@@ -83,7 +84,7 @@ namespace LegendOfZelda
 
             RegisterDictionarySprite(ItemsAboveFrame, InventoryAboveFrameUnlock, InventoryItemsAbovePosDict);
 
-            //Selector.Show();
+            Selector.Show();
         }
 
         public void CreateItemInFramesSprites()
