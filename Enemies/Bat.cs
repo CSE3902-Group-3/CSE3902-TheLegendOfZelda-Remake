@@ -31,6 +31,10 @@ namespace LegendOfZelda
         {
             StateMachine.Spawn();
         }
+        public void Despawn()
+        {
+            StateMachine.Despawn();
+        }
         public void ChangePosition()
         {
             StateMachine.ChangePosition();

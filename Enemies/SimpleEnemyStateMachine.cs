@@ -32,6 +32,8 @@ namespace LegendOfZelda
             Position = pos;
             Offset = offset;
             Direction = new Vector2(1, 0);
+            LevelMaster.RegisterUpdateable(this);
+            Sprite.UnregisterSprite();
 
             switch (EnemySpeed)
             {
@@ -80,27 +82,23 @@ namespace LegendOfZelda
                 Sprite.UpdatePos(Position);
             }
         }
-
         public void Spawn()
         {
             new EnemySpawnEffect(Position);
-            LevelMaster.RegisterUpdateable(this);
             Sprite.RegisterSprite();
-            Sprite.UpdatePos(Position);
-            Collider.Pos = Position + Offset;
-            Collider.Active = true;
         }
-
+        public void Despawn()
+        {
+            Sprite.UnregisterSprite();
+        }
         public void Die()
         {
-            Sprite.UpdatePos(Position);
+            Sprite.UnregisterSprite();
             Collider.Active = false;
+            LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
             DropItem();
-            Sprite.UnregisterSprite();
-            LevelMaster.RemoveUpdateable(this);
         }
-
         public void Update(GameTime gameTime)
         {
             currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
