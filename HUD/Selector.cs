@@ -13,7 +13,6 @@ namespace LegendOfZelda
         private static Selector instance;
 
         private const int scale = 4;
-        private const int selectorInitialIndex = 0;
 
         InventoryHUD inventoryHUD;
 
@@ -34,22 +33,27 @@ namespace LegendOfZelda
 
         private Dictionary<int, SelectorPos> PosDictionary;
 
-        public Selector(InventoryHUD inventoryHUD)
+        public Selector()
         {
-            this.inventoryHUD = inventoryHUD;
+            inventoryHUD = InventoryHUD.GetInstance();
 
             spriteFactory = SpriteFactory.getInstance();
-            this.inventoryHUD = inventoryHUD;
+            Vector2 InventoryHUDBasePos = GameState.CameraController.ItemMenuLocation;
+            BasePos = new Vector2(InventoryHUDBasePos.X + 128 * scale, InventoryHUDBasePos.Y + 48 * scale);
+
+            SelectorSprite = spriteFactory.CreateSelectorSprite();
+            CreatePosDict();
         }
 
-        public static Selector GetInstance(InventoryHUD inventoryHUD)
+        public static Selector GetInstance()
         {
             if (instance == null)
-                instance = new Selector(inventoryHUD);
+                instance = new Selector();
 
             return instance;
         }
 
+        /*
         public void LoadContent()
         {
             SelectorSprite = spriteFactory.CreateSelectorSprite();
@@ -57,6 +61,7 @@ namespace LegendOfZelda
             BasePos = inventoryHUD.GetSelectorPos();
             CreatePosDict();
         }
+        */
 
         public void Update()
         {
@@ -74,16 +79,17 @@ namespace LegendOfZelda
         {
             PosDictionary = new Dictionary<int, SelectorPos>();
             List<bool> unLockList = inventoryHUD.GetUnlockList();
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 8; i++)
             {
                 SelectorPos temp = new SelectorPos();
-                if (i < 3)
+                if (i < 4)
                     temp.pos = new Vector2(BasePos.X + i * 24 * scale, BasePos.Y);
-                else if (i < 5)
-                    temp.pos = new Vector2(BasePos.X + (i - 1) * 24 * scale, BasePos.Y);
                 else
-                    temp.pos = new Vector2(BasePos.X + (i - 5) * 24 * scale, BasePos.Y + 16 * scale);
-                temp.unlock = unLockList[i];
+                    temp.pos = new Vector2(BasePos.X + (i - 4) * 24 * scale, BasePos.Y + 16 * scale);
+                if (i < 3)
+                    temp.unlock = unLockList[i];
+                else
+                    temp.unlock = unLockList[i + 1];
                 PosDictionary.Add(i, temp);
             }
         }
@@ -123,8 +129,8 @@ namespace LegendOfZelda
         public void SelectUp()
         {
             int tempIndex = SelectorIndex;
-            if (tempIndex < 5)
-                if (PosDictionary[tempIndex += 5].unlock)
+            if (tempIndex < 4)
+                if (PosDictionary[tempIndex += 4].unlock)
                     SelectorIndex = tempIndex;
             else
                 if (PosDictionary[tempIndex -= 4].unlock)
@@ -137,7 +143,7 @@ namespace LegendOfZelda
         {
             int tempIndex = SelectorIndex;
             if (tempIndex < 4)
-                if (PosDictionary[tempIndex += 5].unlock)
+                if (PosDictionary[tempIndex += 4].unlock)
                     SelectorIndex = tempIndex;
             else
                 if (PosDictionary[tempIndex -= 4].unlock)

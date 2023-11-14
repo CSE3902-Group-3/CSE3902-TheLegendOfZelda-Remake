@@ -13,7 +13,9 @@ namespace LegendOfZelda
         public static PauseManager PauseManager;
         public static CollisionManager CollisionManager;
         public static Link Link;
-        public static HUDManager HUD;
+        public static LowerHUD lowerHUD;
+        public static InventoryHUD inventoryHUD;
+        public static MapHUD mapHUD;
         public static IController PlayerController;
         public static IController ItemMenuController;
 
@@ -37,7 +39,7 @@ namespace LegendOfZelda
             State = new StartState();
             RoomCycler.GetInstance();
             CameraController = CameraController.GetInstance();
-            HUD = HUDManager.GetInstance();
+            lowerHUD = LowerHUD.GetInstance();
             PlayerController = new PlayerController(Link);
             ItemMenuController = new ItemMenuController();
         }
@@ -77,7 +79,6 @@ namespace LegendOfZelda
         public void Draw(SpriteBatch _spriteBatch)
         {
             State.Draw(_spriteBatch);
-            HUD.Show();
         }
     }
 }

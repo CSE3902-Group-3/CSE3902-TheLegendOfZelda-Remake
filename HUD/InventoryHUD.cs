@@ -10,6 +10,8 @@ namespace LegendOfZelda
 {
     public class InventoryHUD : IHUD
     {
+        private static InventoryHUD instance;
+
         private const int scale = 4;
 
         private SpriteFactory spriteFactory;
@@ -35,21 +37,16 @@ namespace LegendOfZelda
 
         public InventoryHUD()
         {
-
             spriteFactory = SpriteFactory.getInstance();
             letterFactory = LetterFactory.GetInstance();
-        }
 
-        public void LoadContent()
-        {
             InventoryHUDBase = spriteFactory.CreateInventoryHUDSprite();
             // Should be able to change to the selected item, this is only for test now
             SelectedItem = spriteFactory.CreateWoodenBoomerangHUDSprite();
             CreateItemInFramesSprites();
             CreateItemAboveFramesSprites();
-            Selector = Selector.GetInstance(this);
 
-            InventoryHUDBasePos = GameState.CameraController.HUDLocation;
+            InventoryHUDBasePos = GameState.CameraController.ItemMenuLocation;
             SelectedItemPos = new Vector2(InventoryHUDBasePos.X + 68 * scale, InventoryHUDBasePos.Y + 48 * scale);
             SelectorInitPos = new Vector2(InventoryHUDBasePos.X + 128 * scale, InventoryHUDBasePos.Y + 48 * scale);
             CreateItemInFramesPos();
@@ -58,17 +55,25 @@ namespace LegendOfZelda
             CreateInventoryInUnlock();
             CreateInventoryAboveUnlock();
 
-            Selector.LoadContent();
+            //Selector = Selector.GetInstance();
+        }
+
+        public static InventoryHUD GetInstance()
+        {
+            if (instance == null)
+                instance = new InventoryHUD();
+            return instance;
         }
 
         public void Update(GameTime gameTime)
         {
-            Selector.Update();
+            //UpdatePos();
+            //Selector.Update();
         }
 
         public void Show()
         {
-            LoadContent();
+            //LoadContent();
 
             RegisterSprite(InventoryHUDBase, InventoryHUDBasePos);
 
@@ -78,7 +83,7 @@ namespace LegendOfZelda
 
             RegisterDictionarySprite(ItemsAboveFrame, InventoryAboveFrameUnlock, InventoryItemsAbovePosDict);
 
-            Selector.Show();
+            //Selector.Show();
         }
 
         public void CreateItemInFramesSprites()
@@ -224,6 +229,7 @@ namespace LegendOfZelda
         public void UpdateInventoryAboveUnlock(string item)
         {
             InventoryAboveFrameUnlock[item] = true;
-        }   
+        }
+        
     }
 }

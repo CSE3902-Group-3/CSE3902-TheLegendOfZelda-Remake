@@ -10,11 +10,12 @@ namespace LegendOfZelda
 {
     public class MapHUD : IHUD
     {
+        private static MapHUD instance;
+
         private const int scale = 4;
         private const int mapSize = 64;
 
         private SpriteFactory spriteFactory;
-        private LetterFactory letterFactory;
 
         private AnimatedSprite MapHUDBase;
         private AnimatedSprite Map;
@@ -45,17 +46,13 @@ namespace LegendOfZelda
         public MapHUD()
         {
             spriteFactory = SpriteFactory.getInstance();
-            letterFactory = LetterFactory.GetInstance();
-        }
 
-        public void LoadContent()
-        {
             MapHUDBase = spriteFactory.CreateMapHUDSprite();
             Map = spriteFactory.CreateMapSprite();
             Compass = spriteFactory.CreateCompassSprite();
 
             // Only for the test
-            MapHUDBasePos = GameState.CameraController.HUDLocation;
+            MapHUDBasePos = new Vector2(GameState.CameraController.ItemMenuLocation.X, GameState.CameraController.ItemMenuLocation.Y + 87 * scale);
             MapSpritePos = new Vector2(MapHUDBasePos.X + 48 * scale, MapHUDBasePos.Y + 24 * scale);
             CompassPos = new Vector2(MapHUDBasePos.X + 44 * scale, MapHUDBasePos.Y + 64 * scale);
             MapBasePos = new Vector2(MapHUDBasePos.X + 128 * scale, MapHUDBasePos.Y + 8 * scale);
@@ -67,6 +64,14 @@ namespace LegendOfZelda
             CompassUnlock = true;
         }
 
+        public static MapHUD GetInstance()
+        {
+            if (instance == null)
+                instance = new MapHUD();
+
+            return instance;
+        }
+
         public void Update(GameTime gametime)
         {
 
@@ -74,8 +79,6 @@ namespace LegendOfZelda
 
         public void Show()
         {
-            LoadContent();
-
             RegisterSprite(MapHUDBase, MapHUDBasePos);
 
             RegisterMapCompassSprite(Map, MapSpritePos, MapUnlock);

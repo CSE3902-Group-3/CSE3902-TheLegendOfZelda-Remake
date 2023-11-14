@@ -34,9 +34,9 @@ namespace LegendOfZelda
 
         public void LoadContent()
         {
-            lowerHUD.LoadContent();
-            inventoryHUD.LoadContent();
-            mapHUD.LoadContent();
+            //lowerHUD.LoadContent();
+            //inventoryHUD.LoadContent();
+            //mapHUD.LoadContent();
         }
 
         public void Show()
@@ -44,7 +44,7 @@ namespace LegendOfZelda
 
             // Uncomment one for test
             //lowerHUD.Show();
-            inventoryHUD.Show();
+            //inventoryHUD.Show();
             //mapHUD.Show();
         }  
     }
