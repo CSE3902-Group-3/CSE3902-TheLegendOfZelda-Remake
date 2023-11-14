@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.Generic;
 namespace LegendOfZelda
 {
     public class RoomList
@@ -15,6 +10,7 @@ namespace LegendOfZelda
         public int RoomNumber { get; set; }
         public int RoomXLocation { get; set; }
         public int RoomYLocation { get; set; }
+        public List<LevelEvent> Events { get; set; } = null;
         public List<AdjacentRoom> AdjacentRooms { get; set; }
         public List<MapElement> MapElements { get; set; }
     }

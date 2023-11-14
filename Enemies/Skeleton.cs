@@ -20,7 +20,7 @@ namespace LegendOfZelda
                CollisionLayer.Enemy,
                this
            );
-            StateMachine = new SimpleEnemyStateMachine(Position, Offset, Collider)
+            StateMachine = new SimpleEnemyStateMachine(Position, Offset, Collider, this)
             {
                 Sprite = SpriteFactory.getInstance().CreateStalfosSprite(),
                 Health = Health,

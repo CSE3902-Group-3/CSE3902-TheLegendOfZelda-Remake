@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
@@ -12,5 +8,6 @@ namespace LegendOfZelda
         public int ElementValue { get; set; }
         public int XLocation { get; set; }
         public int YLocation { get; set; }
+        public string ItemDrop { get; set; } = null;
     }
 }
