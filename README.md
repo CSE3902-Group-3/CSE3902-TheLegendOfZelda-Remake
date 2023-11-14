@@ -8,13 +8,15 @@ Remake of NES The Legend of Zelda game
 - `b` for Link to use his secondary item
 
 ### Other controls
-- Use `q` to quit and `r` to gameover and reset the program back to its initial state.
+- Use `Enter` to start the game from the starting menu
+- Use `q` to quit
+- Use `r` to gameover and reset the program back to its initial state.
 - Use `space` to pause or resume the game.
 - Use right/left click to cycle rooms
 - After Link dies, use `Shift` to switch between options in game over menu. Use `Enter` to select the option.
 
 ## Major Known Bugs:
-- All menus (including HUD) exept game over are not currently functional at all
+- Interface HUD is not functional, does not update
 - The inventory system is not currently functional at all
 -   Link can not use any items
 -   All items do nothing
@@ -24,13 +26,12 @@ Remake of NES The Legend of Zelda game
 
 ## Minor Known Bugs:
 - Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
-- Link teleports when traveling through a door instead of walking through
+- Link teleports and then walks in place when traveling through a door instead of walking through
 - Link does not receive invincibility frames when he collides with a slime
 - Enemies drop items when exiting a room
 - Goriya sometimes walks through certain walls
 - Link does not spin when he dies
 - Sword beam does not spawn in the correct position
-- The starting room is not the entrance of the dungeon
 - The pause overlay does not affect Link's sprite
 - Sprites still animate when the game is paused
 - Fireballs are missing from the wizard room
@@ -45,7 +46,8 @@ Remake of NES The Legend of Zelda game
 - Interaction with Wizard and spawning text is not implemented
 - The exit of the dungeon is closed
 - Right and left clicking to switch between rooms
-- One room contains an instance of every item
+- One room contains an instance of every item (room 19)
+- One room contains enemies not in any other room (room 20)
 - There is an extra room with no doors to house Dodongo
 - Item spawn rates are drastically increased
 - Shader related effects look different from the original game
