@@ -55,7 +55,6 @@ namespace LegendOfZelda
 
         public void OnCollision(List<CollisionInfo> collisions)
         {
-            //The body of OnCollision is to meet requirement of sprint3 and will be refactored in sprint4
             foreach (CollisionInfo collision in collisions)
             {
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
