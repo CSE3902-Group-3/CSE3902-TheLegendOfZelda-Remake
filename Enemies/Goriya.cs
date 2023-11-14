@@ -58,6 +58,7 @@ namespace LegendOfZelda
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
             DropItem();
+            LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(this);
         }
         public void ChangePosition()
         {
@@ -79,7 +80,6 @@ namespace LegendOfZelda
             // Indicate damage, or if health has reached 0, die
             if (Health < 0)
             {
-                LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(this);
                 Die();
             }
             else

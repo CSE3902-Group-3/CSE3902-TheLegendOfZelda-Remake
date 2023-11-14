@@ -209,7 +209,7 @@ namespace LegendOfZelda
         {
             foreach (IEnemy enemy in EnemiesList[CurrentRoom])
             {
-                enemy.Die();
+                enemy.Despawn();
             }
         }
         public static void Update(GameTime gameTime)

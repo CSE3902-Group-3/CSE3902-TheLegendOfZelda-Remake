@@ -20,10 +20,11 @@ namespace LegendOfZelda
                CollisionLayer.Enemy,
                this
            );
-
+            AnimatedSprite sprite = SpriteFactory.getInstance().CreateZolSprite();
+            sprite.UnregisterSprite();
             StateMachine = new SimpleEnemyStateMachine(Position, Offset, Collider)
             {
-                Sprite = SpriteFactory.getInstance().CreateZolSprite(),
+                Sprite = sprite,
                 Health = Health,
                 EnemyType = GetType(),
                 Classification = EnemyItemDrop.EnemyClass.C,

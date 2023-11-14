@@ -33,7 +33,6 @@ namespace LegendOfZelda
             Offset = offset;
             Direction = new Vector2(1, 0);
             LevelMaster.RegisterUpdateable(this);
-            Sprite.UnregisterSprite();
 
             switch (EnemySpeed)
             {
@@ -98,6 +97,7 @@ namespace LegendOfZelda
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
             DropItem();
+            LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(Enemy);
         }
         public void Update(GameTime gameTime)
         {
@@ -119,7 +119,6 @@ namespace LegendOfZelda
             if (Health < 0)
             {
                 Die();
-                LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(Enemy);
             }
             else
             {

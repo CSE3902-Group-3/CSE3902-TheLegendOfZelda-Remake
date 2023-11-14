@@ -19,13 +19,15 @@ namespace LegendOfZelda
                CollisionLayer.Enemy,
                this
            );
-            StateMachine = new SimpleEnemyStateMachine(Position, Offset, Collider, this)
-            {
-                Sprite = SpriteFactory.getInstance().CreateKeeseSprite(),
-                Health = Health,
-                EnemyType = GetType(),
-                Classification = EnemyItemDrop.EnemyClass.X
-            };
+           AnimatedSprite sprite = SpriteFactory.getInstance().CreateKeeseSprite();
+           sprite.UnregisterSprite();
+           StateMachine = new SimpleEnemyStateMachine(Position, Offset, Collider, this)
+           {
+               Sprite = sprite,
+               Health = Health,
+               EnemyType = GetType(),
+               Classification = EnemyItemDrop.EnemyClass.X
+           };
         }
         public void Spawn()
         {

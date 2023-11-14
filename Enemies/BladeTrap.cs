@@ -40,6 +40,7 @@ namespace LegendOfZelda
             Collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
+            LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(this);
         }
         public void UpdateHealth(float damagePoints) { }
 
