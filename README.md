@@ -103,6 +103,8 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - Ethan Glenwright reviewed MengQi Lei's code for quality in pull request #280
 - MengQi Lei reviewed Ethan Glenwright's code for readability in pull request #301
 - MengQi Lei reviewed ZhengYi Hu's code for quality in pull request #284
+- Gabriel DiFiore reviewed Ethan Glenwright's code for readability in PR #295
+- 
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
