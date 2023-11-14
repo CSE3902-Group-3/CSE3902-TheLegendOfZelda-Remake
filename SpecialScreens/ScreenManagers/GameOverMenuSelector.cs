@@ -20,7 +20,7 @@ namespace LegendOfZelda
         {
             cameraXPos = 40000;
             cameraYPos = 0;
-            selection = 1;
+            selection = 0;
             graphicsDevice = Game1.getInstance().GraphicsDevice;
             ContinuePos = new Vector2((cameraXPos + graphicsDevice.Viewport.Width / 3) - 40, cameraYPos + graphicsDevice.Viewport.Height / 3);
             SavePos = new Vector2((cameraXPos + graphicsDevice.Viewport.Width / 3) - 40, cameraYPos + graphicsDevice.Viewport.Height / 2);
@@ -84,10 +84,8 @@ namespace LegendOfZelda
 
         public void ExecuteSelection()
         {
-            if (selection == 0) GameState.GetInstance().GameOverContinue();
-            if (selection == 1) GameState.GetInstance().ResetGameState();
-
-            //GameState.CameraController.ChangeMenu(Menu.Start);
+            if (IndicationHearts[0].Shown() == true) GameState.GetInstance().GameOverContinue();
+            if (IndicationHearts[1].Shown() == true) GameState.GetInstance().ResetGameState();
         }
     }
 }
