@@ -33,6 +33,7 @@ namespace LegendOfZelda
             {
                 goriya.UnregisterSprite();
             }
+            LevelMaster.RegisterUpdateable(this);
 
             int scale = SpriteFactory.getInstance().scale;
 
@@ -45,11 +46,20 @@ namespace LegendOfZelda
         public void Spawn()
         {
             new EnemySpawnEffect(Position);
-            LevelMaster.RegisterUpdateable(this);
             Sprites[CurrentSprite].RegisterSprite();
-            Sprites[CurrentSprite].UpdatePos(Position);
-            Collider.Pos = Position;
-            Collider.Active = true;
+        }
+        public void Despawn()
+        {
+            Sprites[CurrentSprite].UnregisterSprite();
+        }
+        public void Die()
+        {
+            Sprites[CurrentSprite].UnregisterSprite();
+            Collider.Active = false;
+            LevelMaster.RemoveUpdateable(this);
+            new EnemyDeathEffect(Position);
+            DropItem();
+            LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(this);
         }
         public void ChangePosition()
         {
@@ -71,7 +81,6 @@ namespace LegendOfZelda
             // Indicate damage, or if health has reached 0, die
             if (Health < 0)
             {
-                LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(this);
                 Die();
             }
             else
@@ -106,16 +115,6 @@ namespace LegendOfZelda
             }
             Sprites[CurrentSprite].RegisterSprite();
         }
-        public void Die()
-        {
-            Sprites[CurrentSprite].UpdatePos(Position);
-            Sprites[CurrentSprite].UnregisterSprite();
-            Collider.Active = false;
-            LevelMaster.RemoveUpdateable(this);
-            new EnemyDeathEffect(Position);
-            DropItem();
-        }
-
         public void Update(GameTime gameTime)
         {
             currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer

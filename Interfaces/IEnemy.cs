@@ -6,6 +6,7 @@ namespace LegendOfZelda
     {
         Vector2 Position { get; }
         void Spawn();
+        void Despawn();
         void UpdateHealth(float damagePoints);
         void Stun();
         void Attack();

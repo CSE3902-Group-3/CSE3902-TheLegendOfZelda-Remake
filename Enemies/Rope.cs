@@ -6,6 +6,8 @@ namespace LegendOfZelda
     public class Rope : IEnemy
     {
         private AnimatedSprite Sprite;
+        private int Width = 16;
+        private int Height = 16;
         private float Health { get; set; } = 0.5f;
         public Vector2 Position { get; set; }
         private Vector2 Center;
@@ -20,11 +22,12 @@ namespace LegendOfZelda
         {
             Position = pos;
             Sprite = SpriteFactory.getInstance().CreateRopeRightSprite();
-
+            Sprite.UnregisterSprite();
+            LevelMaster.RegisterUpdateable(this);
             int scale = SpriteFactory.getInstance().scale;
 
             Collider = new RectCollider(
-               new Rectangle((int)Position.X, (int)Position.Y, 16 * scale, 16 * scale),
+               new Rectangle((int)Position.X, (int)Position.Y, Width * scale, Height * scale),
                CollisionLayer.Enemy,
                this
            );
@@ -32,10 +35,20 @@ namespace LegendOfZelda
         public void Spawn()
         {
             new EnemySpawnEffect(Position);
-            LevelMaster.RegisterUpdateable(this);
             Sprite.RegisterSprite();
-            Sprite.UpdatePos(Position);
-            Collider.Active = true;
+        }
+        public void Despawn()
+        {
+            Sprite.UnregisterSprite();
+        }
+        public void Die()
+        {
+            Sprite.UnregisterSprite();
+            Collider.Active = false;
+            LevelMaster.RemoveUpdateable(this);
+            new EnemyDeathEffect(Position);
+            DropItem();
+            LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(this);
         }
         public void ChangePosition()
         {
@@ -86,7 +99,6 @@ namespace LegendOfZelda
                 Sprite = SpriteFactory.getInstance().CreateRopeLeftSprite();
             }
             FacingLeft = !FacingLeft;
-            Sprite.RegisterSprite();
             Sprite.UpdatePos(Position);
             Collider.Pos = Position;
         }
@@ -101,16 +113,6 @@ namespace LegendOfZelda
             }
             ChangePosition();
         }
-        public void Die()
-        {
-            Sprite.UpdatePos(Position);
-            Sprite.UnregisterSprite();
-            Collider.Active = false;
-            LevelMaster.RemoveUpdateable(this);
-            new EnemyDeathEffect(Position);
-            DropItem();
-        }
-
         public void OnCollision(List<CollisionInfo> collisions)
         {
             foreach (CollisionInfo collision in collisions)

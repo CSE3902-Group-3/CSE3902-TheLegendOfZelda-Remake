@@ -9,12 +9,13 @@ namespace LegendOfZelda
         private readonly List<AnimatedSprite> Sprites;
         private readonly List<AnimatedSprite> HurtSprites;
         private int CurrentSprite;
+        private int Width = 16;
+        private int Height = 16;
         private float Health { get; set; } = 8.0f;
         public Vector2 Position { get; set; }
         private Vector2 Center;
         private Vector2 Direction;
         private double LastSwitch = 0;
-        private int UpdateCount = 0;
         private bool Injured = false;
         private float currentCooldown = 0.0f;
         public bool isColliding = false;
@@ -49,9 +50,11 @@ namespace LegendOfZelda
             }
 
             int scale = SpriteFactory.getInstance().scale;
+            CurrentSprite = 0;
+            LevelMaster.RegisterUpdateable(this);
 
             Collider = new RectCollider(
-               new Rectangle((int)Position.X, (int)Position.Y, 16 * scale, 16 * scale),
+               new Rectangle((int)Position.X, (int)Position.Y, Width * scale, Height * scale),
                CollisionLayer.Enemy,
                this
            );
@@ -60,11 +63,20 @@ namespace LegendOfZelda
         {
             SoundFactory.PlaySound(SoundFactory.getInstance().BossScream2, 1.0f, 0.0f, 0.0f);
             new EnemySpawnEffect(Position);
-            LevelMaster.RegisterUpdateable(this);
             Sprites[CurrentSprite].RegisterSprite();
-            Sprites[CurrentSprite].UpdatePos(Position);
-            Collider.Pos = Position;
-            Collider.Active = true;
+        }
+        public void Despawn()
+        {
+            Sprites[CurrentSprite].UnregisterSprite();
+        }
+        public void Die()
+        {
+            Sprites[CurrentSprite].UnregisterSprite();
+            Collider.Active = false;
+            LevelMaster.RemoveUpdateable(this);
+            new EnemyDeathEffect(Position);
+            DropItem();
+            LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(this);
         }
         public void ChangePosition()
         {
@@ -125,22 +137,11 @@ namespace LegendOfZelda
             Sprites[CurrentSprite].RegisterSprite();
             Collider.Pos = Position;
         }
-        public void Die()
-        {
-            Sprites[CurrentSprite].UpdatePos(Position);
-            Sprites[CurrentSprite].UnregisterSprite();
-            Collider.Active = false;
-            LevelMaster.RemoveUpdateable(this);
-            new EnemyDeathEffect(Position);
-            DropItem();
-        }
-
         public void Update(GameTime gameTime)
         {
             if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000 && isColliding == false)
             {
                 LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
-                UpdateCount++;
 
                 ChangeDirection();
             }
@@ -182,7 +183,7 @@ namespace LegendOfZelda
         }
         public void DropItem()
         {
-            Center = EnemyUtilities.GetCenter(Position, 16, 16);
+            Center = EnemyUtilities.GetCenter(Position, Width, Height);
             EnemyItemDrop.DropClassDItem(Center);
         }
     }

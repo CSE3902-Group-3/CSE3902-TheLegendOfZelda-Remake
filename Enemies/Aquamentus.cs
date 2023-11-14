@@ -6,6 +6,9 @@ namespace LegendOfZelda
     public class Aquamentus : IEnemy
     {
         private readonly AnimatedSprite Sprite;
+        private int Width = 24;
+        private int Height = 32;
+        private int FireballSpeed = 5;
         private float Health = 6.0f;
         public Vector2 Position { get; set; }
         private Vector2 Center;
@@ -18,11 +21,12 @@ namespace LegendOfZelda
         {
             Position = pos;
             Sprite = SpriteFactory.getInstance().CreateAquamentusSprite();
-
+            Sprite.UnregisterSprite();
+            LevelMaster.RegisterUpdateable(this);
             int scale = SpriteFactory.getInstance().scale;
 
             Collider = new RectCollider(
-               new Rectangle((int)Position.X, (int)Position.Y, 24 * scale, 32 * scale),
+               new Rectangle((int)Position.X, (int)Position.Y, Width * scale, Height * scale),
                CollisionLayer.Enemy,
                this
            );
@@ -30,10 +34,20 @@ namespace LegendOfZelda
         public void Spawn()
         {
             new EnemySpawnEffect(Position);
-            LevelMaster.RegisterUpdateable(this);
             Sprite.RegisterSprite();
-            Sprite.UpdatePos(Position);
-            Collider.Active = true;
+        }
+        public void Despawn()
+        {
+            Sprite.UnregisterSprite();
+        }
+        public void Die()
+        {
+            Sprite.UnregisterSprite();
+            Collider.Active = false;
+            LevelMaster.RemoveUpdateable(this);
+            new EnemyDeathEffect(Position);
+            DropItem();
+            LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(this);
         }
         public void ChangePosition()
         {
@@ -56,9 +70,9 @@ namespace LegendOfZelda
         public void Attack()
         {
             SoundFactory.PlaySound(SoundFactory.getInstance().BossScream1, 1.0f, 0.0f, 0.0f);
-            new AquamentusBall(Position, new Vector2(-5, 0));
-            new AquamentusBall(Position, new Vector2(-5, 5));
-            new AquamentusBall(Position, new Vector2(-5, -5));
+            new AquamentusBall(Position, new Vector2(-FireballSpeed, 0));
+            new AquamentusBall(Position, new Vector2(-FireballSpeed, FireballSpeed));
+            new AquamentusBall(Position, new Vector2(-FireballSpeed, -FireballSpeed));
         }
         public void UpdateHealth(float damagePoints)
         {
@@ -91,15 +105,6 @@ namespace LegendOfZelda
                 Attack();
             }
         }
-        public void Die()
-        {
-            Sprite.UpdatePos(Position);
-            Sprite.UnregisterSprite();
-            Collider.Active = false;
-            LevelMaster.RemoveUpdateable(this);
-            new EnemyDeathEffect(Position);
-            DropItem();
-        }
         public void OnCollision(List<CollisionInfo> collisions)
         {
             foreach (CollisionInfo collision in collisions)
@@ -129,7 +134,7 @@ namespace LegendOfZelda
         }
         public void DropItem()
         {
-            Center = EnemyUtilities.GetCenter(Position, 24, 32);
+            Center = EnemyUtilities.GetCenter(Position, Width, Height);
             EnemyItemDrop.DropClassDItem(Center);
         }
     }

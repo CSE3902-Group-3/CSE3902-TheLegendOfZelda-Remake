@@ -6,6 +6,8 @@ namespace LegendOfZelda
 {
     public class Wizard : IEnemy
     {
+        private int Width = 18;
+        private int Height = 18;
         private readonly AnimatedSprite Sprite;
         private float Health { get; set; } = 1.0f;
         public Vector2 Position { get; set; }
@@ -16,21 +18,26 @@ namespace LegendOfZelda
         {
             Position = pos;
             Sprite = SpriteFactory.getInstance().CreateOldManSprite();
+            Sprite.UpdatePos(pos);
+            Sprite.UnregisterSprite();
+            LevelMaster.RegisterUpdateable(this);
             int scale = SpriteFactory.getInstance().scale;
             Collider = new RectCollider(
-               new Rectangle((int)Position.X, (int)Position.Y, 18 * scale, 18 * scale),
+               new Rectangle((int)Position.X, (int)Position.Y, Width * scale, Height * scale),
                CollisionLayer.Enemy,
                this
            );
         }
         public void Spawn()
         {
-            LevelMaster.RegisterUpdateable(this);
+            new EnemySpawnEffect(Position);
             Sprite.RegisterSprite();
-            Sprite.UpdatePos(Position);
-            Collider.Pos = Position;
-            Collider.Active = true;
         }
+        public void Despawn()
+        {
+            Sprite.UnregisterSprite();
+        }
+        public void Die() { }
         public void ChangePosition() { }
         public void Attack()
         {
@@ -44,13 +51,6 @@ namespace LegendOfZelda
         }
 
         public void ChangeDirection() { }
-        public void Die()
-        {
-            Sprite.UnregisterSprite();
-            Collider.Active = false;
-            LevelMaster.RemoveUpdateable(this);
-            new EnemyDeathEffect(Position);
-        }
 
         public void Update(GameTime gameTime)
         {
