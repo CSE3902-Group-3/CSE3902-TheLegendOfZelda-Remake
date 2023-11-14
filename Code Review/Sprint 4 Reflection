@@ -1,0 +1,9 @@
+ Sprint 4 Reflection
+
+This sprint, on the whole, went well for our team. Our camera and camera controller classes
+are very strong and support the game state changes and room transitions very nicely. Our 
+GameState classes are also solid and they added the necessary functionality for the state 
+changes. The failure point for this sprint was the interface or HUD classes, as we simply 
+ran out of time before we could meet the finish line. This sprint was another mad dash to 
+the finish and we look to hopefully break the trend of us running out of time at the 
+deadline for each sprint.
