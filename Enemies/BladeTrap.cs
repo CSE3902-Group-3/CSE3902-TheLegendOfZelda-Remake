@@ -6,7 +6,7 @@ namespace LegendOfZelda
     public class BladeTrap : IEnemy
     {
         private readonly AnimatedSprite Sprite;
-        public Vector2 Position;
+        public Vector2 Position { get; set; }
         public RectCollider Collider { get; private set; }
         public BladeTrap(Vector2 pos)
         {
