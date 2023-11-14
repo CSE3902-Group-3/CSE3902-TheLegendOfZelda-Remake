@@ -116,3 +116,4 @@ See `Code Review/Sprint# Reflections.txt` for sprint reflections
 #### Sprint 5 Topic Ideas:
 - Michael Herring: Reinvestigate HLSL shaders from sprint 2
 - Gabriel DiFiore: Config game with `.ini` file, load in custom Link health, enemy damage/difficulty, etc
+- Ethan Glenwright: Create the second dungeon / level
