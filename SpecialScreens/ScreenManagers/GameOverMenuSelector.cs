@@ -84,8 +84,8 @@ namespace LegendOfZelda
 
         public void ExecuteSelection()
         {
-            if (selection == 0/*IndicationHearts[0].Shown() == true*/) GameState.GetInstance().GameOverContinue();
-            if (selection == 1/*IndicationHearts[1].Shown() == true*/) GameState.GetInstance().ResetGameState();
+            if (IndicationHearts[0].Shown() == false) GameState.GetInstance().GameOverContinue();
+            if (IndicationHearts[1].Shown() == true) GameState.GetInstance().ResetGameState();
         }
     }
 }

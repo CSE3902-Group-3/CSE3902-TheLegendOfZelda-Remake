@@ -14,5 +14,6 @@ namespace LegendOfZelda
         IItem Collect();
         void Use(Vector2 newPos);
         IItem GenerateInventoryItem();
+        bool Shown();
     }
 }

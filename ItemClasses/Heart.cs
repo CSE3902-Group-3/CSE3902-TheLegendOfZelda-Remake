@@ -63,6 +63,11 @@ namespace LegendOfZelda
                 }
             }
         }
+
+        public bool Shown()
+        {
+            return false;
+        }
     }
 }
 
