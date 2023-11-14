@@ -102,6 +102,7 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - Michael Herring reviewed Zhengyi Hu's code for quality in pull request #257
 - Michael Herring reviewed Matt Curie's code for readability in pull request #260
 - Ethan Glenwright reviewed MengQi Lei's code for quality in pull request #280
+- Ethan Glenwright reviewd MenQi Lei's code for readability in pull request #335
 - MengQi Lei reviewed Ethan Glenwright's code for readability in pull request #301
 - MengQi Lei reviewed ZhengYi Hu's code for quality in pull request #284
 - Gabriel DiFiore reviewed Ethan Glenwright's code for readability in PR #295
