@@ -14,7 +14,6 @@ namespace LegendOfZelda
         private double LastSwitch = 0;
         private RectCollider collider;
         private int scale = SpriteFactory.getInstance().scale;
-        private Timer timer;
 
         public Fairy(Vector2 pos)
         {
