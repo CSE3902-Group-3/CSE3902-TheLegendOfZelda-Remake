@@ -14,7 +14,6 @@ namespace LegendOfZelda
         private Vector2 SavePos;
         private Vector2 RetryPos;
         private GraphicsDevice graphicsDevice;
-        private int lastCommand;
 
         public GameOverMenuSelector()
         {
