@@ -6,10 +6,16 @@
         {
             IItem itemCollidedWith = collision.CollidedWith.Collidable as IItem;
 
-            Inventory.getInstance().AddItem(itemCollidedWith);
-
             if (itemCollidedWith is Bow || itemCollidedWith is Triforce)
+            {
+                Inventory.getInstance().AddItem(itemCollidedWith);
                 GameState.Link.StateMachine.ChangeState(new CollectItemLinkState(itemCollidedWith));
+            }
+            else if (itemCollidedWith is Heart)
+                GameState.Link.Heal(1.0f);
+            else
+                Inventory.getInstance().AddItem(itemCollidedWith);
+
 
             SoundFactory.PlaySound(SoundFactory.getInstance().GetItem, 1.0f, 0.0f, 0.0f);
         }

@@ -8,6 +8,7 @@ namespace LegendOfZelda
     public enum Menu { Start, Item, End, GameOver};
     public class CameraController
     {
+        //Menu's are positioned in world coordinates
         public Vector2 HUDLocation { get; private set; } = new Vector2(10000, 1024);
         public Vector2 ItemMenuLocation { get; private set; } = new Vector2(10000, 0);
         public Vector2 StartLocation { get; private set; } = new Vector2(20000, 0);
@@ -39,7 +40,6 @@ namespace LegendOfZelda
 
             mainCameraDrawables = new List<List<IDrawable>>
             {
-                LevelMaster.CurrentRoomDrawables,
                 LevelMaster.PersistentDrawables
             };
 
@@ -114,11 +114,13 @@ namespace LegendOfZelda
         }
         public void Reset()
         {
-            mainCamera = new Camera(LevelMaster.RoomPositionList[LevelMaster.CurrentRoom]);
-            itemMenuCamera = new Camera(HUDLocation);
-            startCamera = new Camera(StartLocation);
-            endCamera = new Camera(EndLocation);
-            gameOverCamera = new Camera(GameOverLocation);
+            mainCamera.worldPos = LevelMaster.RoomPositionList[LevelMaster.CurrentRoom];
+            activeMenu = itemMenuCamera;
+            //mainCamera = new Camera(LevelMaster.RoomPositionList[LevelMaster.CurrentRoom]);
+            //itemMenuCamera = new Camera(HUDLocation);
+            //startCamera = new Camera(StartLocation);
+            //endCamera = new Camera(EndLocation);
+            //gameOverCamera = new Camera(GameOverLocation);
 
             mainCameraDrawables = new List<List<IDrawable>>
             {

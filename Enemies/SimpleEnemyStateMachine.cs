@@ -7,6 +7,7 @@ namespace LegendOfZelda
 {
     public class SimpleEnemyStateMachine : IEnemy
     {
+        private IEnemy Enemy;
         public EnemyClass Classification { get; set; }
         public AnimatedSprite Sprite { get; set; }
         public Type EnemyType { get; set; }
@@ -14,19 +15,21 @@ namespace LegendOfZelda
         public Speed EnemySpeed { get; set; }
         public int SpeedMultiplier;
         public float Health { get; set; }
-        private Vector2 Position;
+        public Vector2 Position { get; set; }
         private Vector2 Center;
         private Vector2 Offset;
-        private Vector2 Direction;
+        public Vector2 Direction;
         private double LastSwitch = 0;
         private float currentCooldown = 0.0f;
         private bool allowedToMove = true;
+        public bool isColliding = false;
         public int Width;
         public int Height;
         public RectCollider Collider { get; set; }
 
-        public SimpleEnemyStateMachine(Vector2 pos, Vector2 offset, RectCollider collider)
+        public SimpleEnemyStateMachine(Vector2 pos, Vector2 offset, RectCollider collider, IEnemy enemy = null)
         {
+            Enemy = enemy;
             Position = pos;
             Offset = offset;
             Direction = new Vector2(1, 0);
@@ -76,6 +79,7 @@ namespace LegendOfZelda
             {
                 Position += Direction * SpeedMultiplier;
                 Sprite.UpdatePos(Position);
+                Collider.Pos = Position + Offset;
             }
         }
 
@@ -102,7 +106,7 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000 && isColliding == false)
             {
                 LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 ChangeDirection();
@@ -119,6 +123,7 @@ namespace LegendOfZelda
             if (Health < 0)
             {
                 Die();
+                LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(Enemy);
             }
             else
             {
@@ -132,8 +137,14 @@ namespace LegendOfZelda
             {
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
 
-                if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Wall)
+                if (collidedWith == CollisionLayer.OuterWall || (EnemyType != typeof(Bat) && collidedWith == CollisionLayer.Wall)) // Bat should be able to float over inner walls
                 {
+                    isColliding = true;
+                    Direction *= -1;
+                    Sprite.UpdatePos(Position);
+                    Collider.Pos = Position + Offset;
+                    ChangePosition();
+                    isColliding = false;
                     ChangeDirection();
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)

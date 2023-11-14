@@ -1,4 +1,6 @@
-﻿namespace LegendOfZelda
+﻿using Microsoft.Xna.Framework;
+
+namespace LegendOfZelda
 {
     public class ItemThrowRightLinkState : IState
     {
@@ -18,6 +20,16 @@
             }
             Link.StateMachine.canMove = false;
             Link.Sprite = SpriteFactory.getInstance().CreateLinkThrowRightSprite();
+
+            // Throw item
+            if (Inventory.getInstance().SecondaryItem is Bomb)
+            {
+                new BombProjectile(Link.StateMachine.position + LinkUtilities.rightItemOffset);
+            }
+            else if (Inventory.getInstance().SecondaryItem is Boomerang)
+            {
+                new BoomerangProjectile(Link.StateMachine.position + LinkUtilities.rightItemOffset, LinkUtilities.rightDirVector, Link);
+            }
         }
 
         public void Execute()

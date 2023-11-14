@@ -7,8 +7,8 @@ namespace LegendOfZelda
     {
         private readonly SimpleEnemyStateMachine StateMachine;
         private float Health { get; set; } = 2.0f;
-        public Vector2 Position;
-        public Vector2 Offset = new Vector2(0, 0);
+        public Vector2 Position { get; set; }
+        public Vector2 Offset = new(0, 0);
         public RectCollider Collider { get; private set; }
         public Skeleton(Vector2 pos)
         {
@@ -20,7 +20,7 @@ namespace LegendOfZelda
                CollisionLayer.Enemy,
                this
            );
-            StateMachine = new SimpleEnemyStateMachine(Position, Offset, Collider)
+            StateMachine = new SimpleEnemyStateMachine(Position, Offset, Collider, this)
             {
                 Sprite = SpriteFactory.getInstance().CreateStalfosSprite(),
                 Health = Health,

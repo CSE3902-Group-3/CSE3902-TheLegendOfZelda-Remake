@@ -8,7 +8,7 @@ namespace LegendOfZelda
     {
         private readonly AnimatedSprite Sprite;
         private float Health { get; set; } = 1.0f;
-        public Vector2 Position;
+        public Vector2 Position { get; set; }
         private float currentCooldown = 0.0f;
         public RectCollider Collider { get; private set; }
 

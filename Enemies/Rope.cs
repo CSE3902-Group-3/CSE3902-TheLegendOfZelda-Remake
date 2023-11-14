@@ -7,13 +7,14 @@ namespace LegendOfZelda
     {
         private AnimatedSprite Sprite;
         private float Health { get; set; } = 0.5f;
-        public Vector2 Position;
+        public Vector2 Position { get; set; }
         private Vector2 Center;
         private readonly int PosIncrement = 5;
         private bool FacingLeft = false;
         private double LastSwitch = 0;
         private float currentCooldown = 0.0f;
         private bool allowedToMove = true;
+        public bool isColliding = false;
         public RectCollider Collider { get; private set; }
         public Rope(Vector2 pos)
         {
@@ -38,18 +39,21 @@ namespace LegendOfZelda
         }
         public void ChangePosition()
         {
+            Vector2 newPosition = new(Position.X, Position.Y);
+
             if (allowedToMove)
             {
                 // Cycle left and right movement
                 if (FacingLeft)
                 {
-                    Position.X -= PosIncrement;
+                    newPosition.X -= PosIncrement;
                 }
                 else
                 {
-                    Position.X += PosIncrement;
+                    newPosition.X += PosIncrement;
                 }
 
+                Position = newPosition;
                 Sprite.UpdatePos(Position);
                 Collider.Pos = Position;
             }
@@ -90,7 +94,7 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
-            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000 && isColliding == false)
             {
                 LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 ChangeDirection();
@@ -115,7 +119,12 @@ namespace LegendOfZelda
 
                 if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Wall)
                 {
+                    isColliding = true;
                     ChangeDirection();
+                    Sprite.UpdatePos(Position);
+                    Collider.Pos = Position;
+                    ChangePosition();
+                    isColliding = false;
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)
                 {

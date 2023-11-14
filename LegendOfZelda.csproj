@@ -24,6 +24,7 @@
     <None Remove="SpecialScreens\GameOverScreenDrawables\" />
     <None Remove="SpecialScreens\ScreenManagers\" />
     <None Remove="SpecialScreens\WinningScreenDrawables\" />
+    <None Remove="Command\GameOverMenu\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
@@ -47,6 +48,7 @@
     <Folder Include="SpecialScreens\GameOverScreenDrawables\" />
     <Folder Include="SpecialScreens\ScreenManagers\" />
     <Folder Include="SpecialScreens\WinningScreenDrawables\" />
+    <Folder Include="Command\GameOverMenu\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Level\Levels\level1.json">

@@ -8,6 +8,22 @@ namespace LegendOfZelda
 	{
         private Dictionary<IItem, int> inventory;
 
+        // HUD should use this
+        private IItem _secondaryItem;
+
+        public IItem SecondaryItem
+        {
+            get { return _secondaryItem; }
+            set
+            {
+                if (GetQuantity(value) > 0)
+                {
+                    _secondaryItem = value;
+                }
+            }
+        }
+
+
         private static Inventory instance;
 
         public static Inventory getInstance()

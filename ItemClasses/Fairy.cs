@@ -118,10 +118,6 @@ namespace LegendOfZelda
         public void ChangePosition()
         {
             position += Direction * 2;
-            if (position.X < 0 || position.Y < 0)
-            {
-                position -= Direction * 2;
-            }
             fairy.UpdatePos(position);
         }
 

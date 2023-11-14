@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LegendOfZelda
+﻿namespace LegendOfZelda
 {
     public class StartGameCommand : ICommands
     {
@@ -16,6 +10,7 @@ namespace LegendOfZelda
 
         public void Execute()
         {
+            CameraController.GetInstance().ChangeMenu(Menu.Item);
             GameState.GetInstance().SwitchState(new NormalState());
         }
     }

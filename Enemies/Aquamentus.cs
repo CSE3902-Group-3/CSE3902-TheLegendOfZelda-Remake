@@ -7,7 +7,7 @@ namespace LegendOfZelda
     {
         private readonly AnimatedSprite Sprite;
         private float Health = 6.0f;
-        private Vector2 Position;
+        public Vector2 Position { get; set; }
         private Vector2 Center;
         private int CycleCount = 0;
         private readonly int MaxCycles = 50;
@@ -37,15 +37,19 @@ namespace LegendOfZelda
         }
         public void ChangePosition()
         {
+            Vector2 newPosition = new(Position.X, Position.Y);
+            
             // Cycle left and right movement
             if (CycleCount > MaxCycles)
             {
                 CycleCount = 0;
                 PosIncrement *= -1;
             }
-            Position.X += PosIncrement;
+
+            newPosition.X += PosIncrement;
             CycleCount++;
 
+            Position = newPosition;
             Sprite.UpdatePos(Position);
             Collider.Pos = Position;
         }

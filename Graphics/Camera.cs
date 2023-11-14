@@ -29,6 +29,8 @@ namespace LegendOfZelda
             }
             spriteBatch.End();
         }
+
+        //This method is offered as an alternative in case a list of lists is wanted to be drawn
         public void DrawAll(List<List<IDrawable>> drawables, SpriteBatch spriteBatch)
         {
             Matrix transformMatrix = Matrix.CreateTranslation(-worldPos.X, -worldPos.Y, 0);
@@ -56,6 +58,7 @@ namespace LegendOfZelda
             if (speed != 0)
             {
                 worldPos += speed * Vector2.Normalize(targetPos - worldPos);
+                if (float.IsNaN(worldPos.X) &&  float.IsNaN(worldPos.Y)) { worldPos = targetPos; }
                 if(Vector2.Distance(targetPos, worldPos) <= speed)
                 {
                     worldPos = targetPos;
