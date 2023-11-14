@@ -59,6 +59,14 @@ namespace LegendOfZelda
             PlayerController = new PlayerController(Link);
             ItemMenuController = new ItemMenuController();
         }
+        public void GameOverContinue()
+        {
+            CollisionManager = new CollisionManager();
+            Link = new Link();
+            LevelMaster.NavigateToRoom(1);
+            PlayerController = new PlayerController(Link);
+            SwitchState(new NormalState());
+        }
         public void Update(GameTime gameTime)
         {
             State.Update(gameTime);

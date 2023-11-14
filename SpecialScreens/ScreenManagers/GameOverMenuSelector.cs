@@ -84,7 +84,7 @@ namespace LegendOfZelda
 
         public void ExecuteSelection()
         {
-            if (selection == 0) GameState.GetInstance().SwitchState(new NormalState());
+            if (selection == 0) GameState.GetInstance().GameOverContinue();
             if (selection == 1) GameState.GetInstance().ResetGameState();
 
             //GameState.CameraController.ChangeMenu(Menu.Start);
