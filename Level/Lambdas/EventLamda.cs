@@ -34,7 +34,7 @@ namespace LegendOfZelda
         public static void AllEnemiesDeadBoomerangDrop(Room room, LevelEvent levelEvent)
         {
             Vector2 pos = new Vector2(room.RoomXLocation + WallThickness + Scale * levelEvent.XLocation, room.RoomYLocation + YOffset + Scale * levelEvent.YLocation);
-            new AllEnemiesDeadKeyDropEvent(room.RoomNumber, pos);
+            new AllEnemiesDeadBoomerangDropEvent(room.RoomNumber, pos);
         }
     }
 }
