@@ -8,6 +8,7 @@ namespace LegendOfZelda
         private PreviousSelectionCommand previousSelectionCommand;
         private ExecuteSelectionCommand selectionCommand;
         private bool ReleasedKey;
+        private bool initialized;
 
         public GameOverMenuController()
         {
@@ -15,11 +16,18 @@ namespace LegendOfZelda
             previousSelectionCommand = new PreviousSelectionCommand();
             selectionCommand = new ExecuteSelectionCommand();
             ReleasedKey = false;
+            initialized = false;
         }
 
         public void Update()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.U) && ReleasedKey)
+            if (!initialized)
+            {
+                nextSelectionCommand.Execute();
+                initialized = true;
+            }
+
+            if ((Keyboard.GetState().IsKeyDown(Keys.RightShift) || Keyboard.GetState().IsKeyDown(Keys.LeftShift)) && ReleasedKey)
             {
                 nextSelectionCommand.Execute();
                 ReleasedKey = false;
@@ -29,7 +37,7 @@ namespace LegendOfZelda
                 previousSelectionCommand.Execute();
                 ReleasedKey = false;
             }*/
-            if (Keyboard.GetState().IsKeyUp(Keys.U) && /*Keyboard.GetState().IsKeyUp(Keys.I) && */!ReleasedKey)
+            if (Keyboard.GetState().IsKeyUp(Keys.RightShift) && Keyboard.GetState().IsKeyUp(Keys.LeftShift) && !ReleasedKey)
             {
                 ReleasedKey = true;
             }
