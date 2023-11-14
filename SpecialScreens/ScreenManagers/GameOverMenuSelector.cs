@@ -38,9 +38,6 @@ namespace LegendOfZelda
             {
                 item.Remove();
             }
-
-            //IndicationHearts[selection].Show();
-
         }
 
         public void nextOption()
@@ -85,8 +82,6 @@ namespace LegendOfZelda
         {
             if (selection == 0) GameState.GetInstance().GameOverContinue();
             if (selection == 1) GameState.GetInstance().ResetGameState();
-
-            //GameState.CameraController.ChangeMenu(Menu.Start);
         }
     }
 }
