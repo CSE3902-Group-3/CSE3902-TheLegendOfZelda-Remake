@@ -1,8 +1,4 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
@@ -39,12 +35,6 @@ namespace LegendOfZelda
         {
             heart.RegisterSprite();
             heart.UpdatePos(newPos);
-        }
-
-        public IItem GenerateInventoryItem()
-        {
-            // Not needed for this item
-            return null;
         }
     }
 }
