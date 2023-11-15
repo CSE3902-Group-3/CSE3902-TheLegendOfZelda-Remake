@@ -19,7 +19,7 @@ namespace LegendOfZelda
             // Create the collider based on the direction
             CreateCollider(linkDirection);
 
-            LevelMaster.RegisterUpdateable(this);
+            LevelMaster.AddUpdateable(this);
         }
 
         private void CreateCollider(Direction direction)

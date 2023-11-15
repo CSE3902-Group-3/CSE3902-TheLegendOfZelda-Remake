@@ -84,7 +84,40 @@ namespace LegendOfZelda
             colliderList.Remove(collider);
             return true;
         }
-
+        public void ResetColliders(List<IRectCollider> newColliders)
+        {
+            rectColliders.TryGetValue(CollisionLayer.OuterWall, out List<IRectCollider> outerWallColliderList);
+            rectColliders.TryGetValue(CollisionLayer.Player, out List<IRectCollider> playerColliderList);
+            rectColliders.TryGetValue(CollisionLayer.Item, out List<IRectCollider> itemColliderList);
+            rectColliders.TryGetValue(CollisionLayer.Wall, out List<IRectCollider> wallColliderList);
+            rectColliders.TryGetValue(CollisionLayer.Enemy, out List<IRectCollider> enemyColliderList);
+            outerWallColliderList.Clear();
+            playerColliderList.Clear();
+            itemColliderList.Clear();
+            wallColliderList.Clear();
+            enemyColliderList.Clear();
+            foreach (IRectCollider collider in newColliders)
+            {
+                switch (collider.Layer)
+                {
+                    case CollisionLayer.OuterWall:
+                        outerWallColliderList.Add(collider);
+                        break;
+                    case CollisionLayer.Player:
+                        playerColliderList.Add(collider);
+                        break;
+                    case CollisionLayer.Item:
+                        itemColliderList.Add(collider);
+                        break;
+                    case CollisionLayer.Wall:
+                        wallColliderList.Add(collider);
+                        break;
+                    case CollisionLayer.Enemy:
+                        enemyColliderList.Add(collider);
+                        break;
+                }
+            }
+        }
         public void Update(GameTime gameTime)
         {
             /*

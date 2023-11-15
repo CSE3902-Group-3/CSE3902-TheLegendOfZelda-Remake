@@ -33,7 +33,7 @@ namespace LegendOfZelda
             Position = pos;
             Offset = offset;
             Direction = new Vector2(1, 0);
-            LevelMaster.RegisterUpdateable(this);
+            LevelMaster.AddUpdateable(this);
 
             switch (EnemySpeed)
             {
@@ -99,7 +99,7 @@ namespace LegendOfZelda
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
             DropItem();
-            LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(Enemy);
+            LevelMaster.CurrentLevelRoom.RemoveEnemy(this);
         }
         public void Update(GameTime gameTime)
         {

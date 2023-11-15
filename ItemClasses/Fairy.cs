@@ -26,7 +26,7 @@ namespace LegendOfZelda
 
         public void Show()
         {
-            LevelMaster.RegisterUpdateable(this);
+            LevelMaster.AddUpdateable(this);
             fairy.RegisterSprite();
             fairy.UpdatePos(position);
             collider.Pos = position;

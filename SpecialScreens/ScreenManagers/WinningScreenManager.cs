@@ -27,7 +27,7 @@ namespace LegendOfZelda
         {
             if (!flashingWhite)
             {
-                LevelMaster.RegisterDrawable(whiteFlash);
+                LevelMaster.AddDrawable(whiteFlash);
                 flashingWhite = true;
             }
             else if (flashingWhite)
@@ -41,12 +41,12 @@ namespace LegendOfZelda
         public void DrawBlackCurtain()
         {
             curtain = new BlackCurtain(curtainUpdateAmt);
-            LevelMaster.RegisterDrawable(curtain);
+            LevelMaster.AddDrawable(curtain);
         }
 
         public void ActivateWinningScreen()
         {
-            LevelMaster.RegisterUpdateable(this);
+            LevelMaster.AddUpdateable(this);
         }
 
 

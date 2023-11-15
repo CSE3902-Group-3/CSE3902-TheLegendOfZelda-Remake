@@ -42,7 +42,7 @@ namespace LegendOfZelda
         {
             paused = true;
             GameState.GetInstance().SwitchState(new PauseState());
-            LevelMaster.RegisterDrawable(this);
+            LevelMaster.AddDrawable(this);
         }
 
         public void Resume()

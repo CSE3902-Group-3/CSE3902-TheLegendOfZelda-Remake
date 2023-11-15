@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace LegendOfZelda
 {
@@ -44,7 +43,7 @@ namespace LegendOfZelda
                     collisionManager.AddRectCollider(this);
                     if (drawColliders)
                     {
-                        LevelMaster.RegisterDrawable(this);
+                        LevelMaster.AddDrawable(this);
                     }
                 } else if(_active == true && value == false)
                 {
@@ -70,7 +69,7 @@ namespace LegendOfZelda
             _active = true;
             collisionManager.AddRectCollider(this);
 
-            LevelMaster.RegisterCollider(this, persistent);
+            LevelMaster.AddCollider(this, persistent);
 
             spriteBatch = Game1.getInstance()._spriteBatch;
             textureWithWhitePixel = SpriteFactory.getInstance().linkTexture;
@@ -80,7 +79,7 @@ namespace LegendOfZelda
 
             if (drawColliders)
             {
-                LevelMaster.RegisterDrawable(this, persistent);
+                LevelMaster.AddDrawable(this, persistent);
             }
         }
 

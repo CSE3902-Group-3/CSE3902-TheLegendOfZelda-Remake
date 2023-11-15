@@ -18,11 +18,11 @@ namespace LegendOfZelda
         {
             if (LevelMaster.CurrentRoom == LevelMaster.NumberOfRooms - 1)
             {
-                LevelMaster.GetInstance().NavigateToRoom(0);
+                LevelMaster.GetInstance().SnapToRoom(0);
             }
             else
             {
-                LevelMaster.GetInstance().NavigateToRoom(LevelMaster.CurrentRoom + 1);
+                LevelMaster.GetInstance().SnapToRoom(LevelMaster.CurrentRoom + 1);
             }
         }
 
@@ -30,11 +30,11 @@ namespace LegendOfZelda
         {
             if (LevelMaster.CurrentRoom == 0)
             {
-                LevelMaster.GetInstance().NavigateToRoom(LevelMaster.NumberOfRooms - 1);
+                LevelMaster.GetInstance().SnapToRoom(LevelMaster.NumberOfRooms - 1);
             }
             else
             {
-                LevelMaster.GetInstance().NavigateToRoom(LevelMaster.CurrentRoom - 1);
+                LevelMaster.GetInstance().SnapToRoom(LevelMaster.CurrentRoom - 1);
             }
         }
     }

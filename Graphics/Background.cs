@@ -34,7 +34,7 @@ namespace LegendOfZelda.Graphics
 
         public void RegisterSprite()
         {
-            LevelMaster.RegisterDrawable(this, true);
+            LevelMaster.AddDrawable(this, true);
         }
 
         public void UnregisterSprite()

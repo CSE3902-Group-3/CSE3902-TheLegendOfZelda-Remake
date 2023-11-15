@@ -47,7 +47,7 @@ namespace LegendOfZelda
             int scale = spriteFactory.scale;
             collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, boomerangWidth * scale, boomerangWidth * scale), CollisionLayer.PlayerWeapon, this);
 
-            LevelMaster.RegisterUpdateable(this);
+            LevelMaster.AddUpdateable(this);
         }
 
         public void Update(GameTime gameTime)

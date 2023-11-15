@@ -32,7 +32,7 @@ namespace LegendOfZelda
                 true
             );
             LinkUtilities.UpdatePositions(this, this.Sprite.pos);
-            LevelMaster.RegisterUpdateable(this, true);
+            LevelMaster.AddUpdateable(this, true);
         }
 
         public void Heal(float health)

@@ -41,7 +41,7 @@ namespace LegendOfZelda
             targetPos = pos + new Vector2(wallSize, 0);
 
             collider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, wallSize, wallSize), CollisionLayer.Wall, this);
-            LevelMaster.RegisterUpdateable(this);
+            LevelMaster.AddUpdateable(this);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

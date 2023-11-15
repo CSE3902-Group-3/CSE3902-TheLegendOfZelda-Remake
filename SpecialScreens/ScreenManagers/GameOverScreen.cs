@@ -31,38 +31,38 @@ namespace LegendOfZelda
 
 		public void ActivateGameOver()
 		{
-			LevelMaster.RegisterUpdateable(this);
+			LevelMaster.AddUpdateable(this);
 			activated = true;
 		}
 
 		private void DrawLinkSpinningOverlay()
 		{
-			LevelMaster.RegisterDrawable(linkSpinningOverlay);
+			LevelMaster.AddDrawable(linkSpinningOverlay);
         }
 
 		private void DrawLightRed()
 		{
-			LevelMaster.RegisterDrawable(lightRed);
+			LevelMaster.AddDrawable(lightRed);
         }
 
 		private void DrawNormalRed()
 		{
-			LevelMaster.RegisterDrawable(red);
+			LevelMaster.AddDrawable(red);
         }
 
 		private void DrawDarkRed()
 		{
-			LevelMaster.RegisterDrawable(darkRed);
+			LevelMaster.AddDrawable(darkRed);
         }
 
 		private void DrawBlackScreen()
 		{
-			LevelMaster.RegisterDrawable(blackScreen);
+			LevelMaster.AddDrawable(blackScreen);
         }
 
 		private void WriteWord()
 		{
-			LevelMaster.RegisterDrawable(text);
+			LevelMaster.AddDrawable(text);
         }
 
 		public void UnactivateGameOverScreen()
@@ -119,7 +119,6 @@ namespace LegendOfZelda
 			if ((counter == 4) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
 			{
 				DrawBlackScreen();
-				GameState.CameraController.RemovePersistentDrawables();
 				lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
 				counter++;
 			}

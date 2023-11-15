@@ -18,9 +18,6 @@ namespace LegendOfZelda
         public static MapHUD mapHUD;
         public static IController PlayerController;
         public static IController ItemMenuController;
-
-
-        //public enum GameStates { normalState, winState, loseState, pauseState, menuState, roomTransitionState }
         public static GameState GetInstance()
         {
             if (Instance == null)
@@ -33,7 +30,7 @@ namespace LegendOfZelda
             CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
             Link = new Link();
-            LevelMaster.NavigateToRoom(1);
+            LevelMaster.SnapToRoom(1);
             PauseManager = new PauseManager();
             BackgroundGenerator.GenerateMenuBackgrounds();
             State = new StartState();
@@ -42,6 +39,7 @@ namespace LegendOfZelda
             lowerHUD = LowerHUD.GetInstance();
             PlayerController = new PlayerController(Link);
             ItemMenuController = new ItemMenuController();
+            LinkUtilities.UpdatePositions(Link, LinkUtilities.originalLinkPosition);
         }
         public void SwitchState(IGameState state)
         {
@@ -56,19 +54,20 @@ namespace LegendOfZelda
             CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
             Link = new Link();
-            LevelMaster.NavigateToRoom(1);
+            LevelMaster.SnapToRoom(1);
             PauseManager = new PauseManager();
             BackgroundGenerator.GenerateMenuBackgrounds();
             State = new NormalState();
             CameraController.Reset();
             PlayerController = new PlayerController(Link);
             ItemMenuController = new ItemMenuController();
+            LinkUtilities.UpdatePositions(Link, LinkUtilities.originalLinkPosition);
         }
         public void GameOverContinue()
         {
             CollisionManager = new CollisionManager();
             Link = new Link();
-            LevelMaster.NavigateToRoom(1);
+            LevelMaster.SnapToRoom(1);
             PlayerController = new PlayerController(Link);
             SwitchState(new NormalState());
         }

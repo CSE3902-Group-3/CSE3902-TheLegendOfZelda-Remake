@@ -15,7 +15,7 @@ namespace LegendOfZelda
             Position = pos;
             Sprite = SpriteFactory.getInstance().CreateBladeTrapSprite();
             Sprite.UnregisterSprite();
-            LevelMaster.RegisterUpdateable(this);
+            LevelMaster.AddUpdateable(this);
             Sprite.UpdatePos(pos);
             int scale = SpriteFactory.getInstance().scale;
 
@@ -40,7 +40,7 @@ namespace LegendOfZelda
             Collider.Active = false;
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
-            LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(this);
+            LevelMaster.CurrentLevelRoom.RemoveEnemy(this);
         }
         public void UpdateHealth(float damagePoints) { }
 

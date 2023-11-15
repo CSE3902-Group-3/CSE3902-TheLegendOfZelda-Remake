@@ -86,7 +86,7 @@ namespace LegendOfZelda
 
         private void HandlePlayerCollisionWhenUnlocked()
         {
-            LevelMaster.GetInstance().NavigateInDirection(direction, OnNavComplete);
+            LevelMaster.GetInstance().TransitionToRoom(direction);
             player = GameState.Link;
             player.EnterRoomTransition();
         }
@@ -100,11 +100,6 @@ namespace LegendOfZelda
             closedSprite.UnregisterSprite();
 
             Closed = false;
-        }
-
-        private void OnNavComplete()
-        {
-            player.ExitRoomTransition();
         }
     }
 }

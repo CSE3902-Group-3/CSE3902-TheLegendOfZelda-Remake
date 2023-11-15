@@ -49,7 +49,7 @@ namespace LegendOfZelda
 
             sprite.UpdatePos(position);
 
-            LevelMaster.RegisterUpdateable(this);
+            LevelMaster.AddUpdateable(this);
         }
 
         //This method is overridden in the Blue Arrow and Sword Beam

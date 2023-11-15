@@ -62,7 +62,7 @@ namespace LegendOfZelda
 
             timer = new Timer(moveDelay, StopMoving);
 
-            LevelMaster.RegisterUpdateable(this);
+            LevelMaster.AddUpdateable(this);
         }
 
         //Could benefit from a state machine, but it would be overkill

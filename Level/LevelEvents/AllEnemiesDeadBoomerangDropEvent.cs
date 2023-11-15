@@ -11,7 +11,7 @@ namespace LegendOfZelda
         {
             RoomNumber = roomNumber;
             Position = position;
-            LevelMaster.RegisterUpdateable(this);
+            LevelMaster.AddUpdateable(this);
         }
         private void ConditionSuccess()
         {
@@ -21,7 +21,7 @@ namespace LegendOfZelda
         }
         public void CheckCondition()
         {
-            if (LevelMaster.EnemiesList[RoomNumber].Count == 0)
+            if (!LevelMaster.CurrentLevelRoom.EnemiesInRoom())
             {
                 ConditionSuccess();
             }

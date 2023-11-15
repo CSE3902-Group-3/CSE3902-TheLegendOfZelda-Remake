@@ -186,7 +186,7 @@ namespace LegendOfZelda
 
         public void RegisterSprite()
         {
-            LevelMaster.RegisterDrawable(this, persistent);
+            LevelMaster.AddDrawable(this, persistent);
         }
 
         public void UnregisterSprite()

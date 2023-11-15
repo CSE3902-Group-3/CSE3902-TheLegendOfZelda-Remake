@@ -1,21 +1,22 @@
-﻿
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 
 namespace LegendOfZelda
 {
-    public class Timer : IUpdateable
+    internal class ConditionTimer : IUpdateable
     {
         private double startTime;
         private double length;
         Action callback;
+        Func<bool> condition;
         bool init = false;
-        
-        public Timer(double length, Action callback)
+
+        public ConditionTimer(double length, Action callback, Func<bool> condition)
         {
             this.length = length;
             this.callback = callback;
-            LevelMaster.AddUpdateable(this, true);
+            LevelMaster.AddUpdateable(this, false);
+            this.condition = condition;
         }
 
         public void Update(GameTime gameTime)
@@ -25,7 +26,7 @@ namespace LegendOfZelda
                 startTime = gameTime.TotalGameTime.TotalSeconds;
                 init = true;
             }
-            else if(gameTime.TotalGameTime.TotalSeconds >= startTime + length)
+            else if (condition() && gameTime.TotalGameTime.TotalSeconds >= startTime + length)
             {
                 callback();
                 Destroy();

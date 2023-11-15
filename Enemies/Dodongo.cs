@@ -51,7 +51,7 @@ namespace LegendOfZelda
 
             int scale = SpriteFactory.getInstance().scale;
             CurrentSprite = 0;
-            LevelMaster.RegisterUpdateable(this);
+            LevelMaster.AddUpdateable(this);
 
             Collider = new RectCollider(
                new Rectangle((int)Position.X, (int)Position.Y, Width * scale, Height * scale),
@@ -76,7 +76,7 @@ namespace LegendOfZelda
             LevelMaster.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
             DropItem();
-            LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(this);
+            LevelMaster.CurrentLevelRoom.RemoveEnemy(this);
         }
         public void ChangePosition()
         {

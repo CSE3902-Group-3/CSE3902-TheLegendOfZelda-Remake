@@ -29,7 +29,7 @@ namespace LegendOfZelda
         public Explosion(Vector2 position)
         {
             spriteFactory = SpriteFactory.getInstance();
-            LevelMaster.RegisterUpdateable(this);
+            LevelMaster.AddUpdateable(this);
 
             pos = position;
 
