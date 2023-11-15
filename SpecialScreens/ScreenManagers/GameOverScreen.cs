@@ -135,6 +135,7 @@ namespace LegendOfZelda
 
             if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
+				CameraController.GetInstance().RemovePersistentDrawablesFromMainCamera();
                 GameState.CameraController.ChangeMenu(Menu.GameOver);
 				counter++;
 			}

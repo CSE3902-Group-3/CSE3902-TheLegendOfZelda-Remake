@@ -123,12 +123,22 @@ namespace LegendOfZelda
             }
             return false;
         }
-        public void SwitchIn()
+        public void SpawnEnemies()
         {
             foreach (IEnemy enemy in RoomEnemies)
             {
                 enemy.Spawn();
             }
+        }
+        public void DespawnEnemies()
+        {
+            foreach (IEnemy enemy in RoomEnemies)
+            {
+                enemy.Despawn();
+            }
+        }
+        public void SwitchIn()
+        {
             foreach (IRectCollider collider in RoomColliders)
             {
                 GameState.CollisionManager.AddRectCollider(collider);
@@ -137,10 +147,6 @@ namespace LegendOfZelda
         }
         public void SwitchOut()
         {
-            foreach (IEnemy enemy in RoomEnemies)
-            {
-                enemy.Despawn();
-            }
             foreach (IRectCollider collider in RoomColliders)
             {
                 GameState.CollisionManager.RemoveRectCollider(collider);

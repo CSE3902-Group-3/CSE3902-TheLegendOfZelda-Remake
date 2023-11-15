@@ -39,7 +39,6 @@ namespace LegendOfZelda
             lowerHUD = LowerHUD.GetInstance();
             PlayerController = new PlayerController(Link);
             ItemMenuController = new ItemMenuController();
-            LinkUtilities.UpdatePositions(Link, LinkUtilities.originalLinkPosition);
         }
         public void SwitchState(IGameState state)
         {
@@ -51,6 +50,7 @@ namespace LegendOfZelda
         }
         public void ResetGameState()
         {
+            CameraController.Reset();
             CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
             Link = new Link();
@@ -58,7 +58,6 @@ namespace LegendOfZelda
             PauseManager = new PauseManager();
             BackgroundGenerator.GenerateMenuBackgrounds();
             State = new NormalState();
-            CameraController.Reset();
             PlayerController = new PlayerController(Link);
             ItemMenuController = new ItemMenuController();
             LinkUtilities.UpdatePositions(Link, LinkUtilities.originalLinkPosition);

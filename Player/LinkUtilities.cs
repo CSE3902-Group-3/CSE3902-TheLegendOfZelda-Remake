@@ -5,7 +5,7 @@ namespace LegendOfZelda
     public static class LinkUtilities
     {
 
-        public static Vector2 originalLinkPosition = new Vector2(1504, 832);
+        public static Vector2 originalLinkPosition = new Vector2(2528, 832);
 
         public static Vector2 upDirVector = new Vector2(0, 1);
         public static Vector2 leftDirVector = new Vector2(-1, 0);
