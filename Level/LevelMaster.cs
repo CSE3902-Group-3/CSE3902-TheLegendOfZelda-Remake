@@ -56,7 +56,7 @@ namespace LegendOfZelda
             if (targetRoom >= 0 || targetRoom < NumberOfRooms)
             {
                 LinkUtilities.LinkChangePosToRoom(LevelRooms[currentRoom].RoomPosition, LevelRooms[targetRoom].RoomPosition);
-                CameraController.GetInstance().SnapCamToRoom(currentRoom, targetRoom, LevelRooms[targetRoom].RoomPosition);
+                CameraController.GetInstance().SnapCamToRoom(LevelRooms[targetRoom].RoomPosition);
                 LevelRooms[currentRoom].DespawnEnemies();
                 LevelRooms[currentRoom].SwitchOut();
                 currentRoom = targetRoom;
@@ -71,7 +71,7 @@ namespace LegendOfZelda
             int targetRoom = DetermineRoomInDirection(CurrentRoom, direction);
             if (targetRoom == CurrentRoom) { return false; }
             GameState.GetInstance().SwitchState(new RoomTransitionState());
-            CameraController.GetInstance().PanCamToRoom(currentRoom, targetRoom, LevelRooms[targetRoom].RoomPosition, AfterRoomTransition);
+            CameraController.GetInstance().PanCamToRoom(LevelRooms[targetRoom].RoomPosition, AfterRoomTransition);
             LevelRooms[currentRoom].DespawnEnemies();
             previousRoom = currentRoom;
             currentRoom = targetRoom;

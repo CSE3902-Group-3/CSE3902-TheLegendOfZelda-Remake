@@ -102,10 +102,10 @@ namespace LegendOfZelda
         public void Destroy()
         {
             SpawnBurst();
-
             sprite.UnregisterSprite();
             LevelMaster.RemoveUpdateable(this);
             collider.Active = false;
+            LevelMaster.RemoveCollider(collider);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

@@ -16,7 +16,6 @@ namespace LegendOfZelda
         private MouseState previousMouseState;
         private bool ReleasedPause;
         private PauseCommand PauseCommand;
-        private bool ReleasedItemMenuKey;
         private GoToItemMenuCommand GoToItemMenuCommand;
 
         public PlayerController(Link Link)
@@ -27,7 +26,6 @@ namespace LegendOfZelda
             currKeys = Array.Empty<Keys>();
             ReleasedPause = false;
             PauseCommand = new PauseCommand(GameState.PauseManager);
-            ReleasedItemMenuKey = false;
             GoToItemMenuCommand = new GoToItemMenuCommand();
         }
 
@@ -126,14 +124,9 @@ namespace LegendOfZelda
         }
         private void ItemMenuEvents()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.M) && ReleasedItemMenuKey)
+            if (Keyboard.GetState().IsKeyDown(Keys.M))
             {
                 GoToItemMenuCommand.Execute();
-                ReleasedItemMenuKey = false;
-            }
-            else if (Keyboard.GetState().IsKeyUp(Keys.M) && !ReleasedItemMenuKey)
-            {
-                ReleasedItemMenuKey = true;
             }
         }
         private Boolean isHorizontal(Keys key)

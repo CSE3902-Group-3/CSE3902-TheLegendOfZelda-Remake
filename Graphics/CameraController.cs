@@ -61,11 +61,11 @@ namespace LegendOfZelda
             activeMenu.DrawAll(activeMenuDrawables, spriteBatch);
         }
 
-        public void SnapCamToRoom(int fromRoomId, int toRoomId, Vector2 roomPos)
+        public void SnapCamToRoom(Vector2 roomPos)
         {
             mainCamera.worldPos = roomPos;
         }
-        public void PanCamToRoom(int fromRoomId, int toRoomId, Vector2 roomPos, Action onPanComplete = null)
+        public void PanCamToRoom(Vector2 roomPos, Action onPanComplete = null)
         {
             mainCamera.PanToLocation(roomPos, camSpeed, onPanComplete);
         }

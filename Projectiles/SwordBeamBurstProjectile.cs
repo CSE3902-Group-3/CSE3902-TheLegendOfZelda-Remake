@@ -81,6 +81,7 @@ namespace LegendOfZelda
 
         public void Destroy()
         {
+            LevelMaster.RemoveUpdateable(this);
             sprite.UnregisterSprite();
             LevelMaster.RemoveCollider(collider);
             collider.Active = false;
