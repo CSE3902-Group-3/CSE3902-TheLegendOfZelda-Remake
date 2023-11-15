@@ -100,7 +100,6 @@ namespace LegendOfZelda
             foreach(IRectCollider rectCollider in colliders)
             {
                 rectCollider.Active = false;
-                LevelManager.RemoveCollider(rectCollider);
             }
             LevelManager.RemoveUpdateable(this);
         }

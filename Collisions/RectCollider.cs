@@ -11,7 +11,7 @@ namespace LegendOfZelda
         public CollisionLayer Layer { get; }
         public ICollidable Collidable { get; }
 
-        public static bool drawColliders = true;
+        public static bool drawColliders = false;
         private SpriteBatch spriteBatch;
         private Texture2D textureWithWhitePixel;
         private Rectangle locationOfWhitePixel;
@@ -41,6 +41,7 @@ namespace LegendOfZelda
                 if(_active == false && value == true)
                 {
                     collisionManager.AddRectCollider(this);
+                    LevelManager.AddCollider(this);
                     if (drawColliders)
                     {
                         LevelManager.AddDrawable(this);
@@ -48,6 +49,7 @@ namespace LegendOfZelda
                 } else if(_active == true && value == false)
                 {
                     collisionManager.RemoveRectCollider(this);
+                    LevelManager.RemoveCollider(this);
                     if (drawColliders)
                     {
                         LevelManager.RemoveDrawable(this);

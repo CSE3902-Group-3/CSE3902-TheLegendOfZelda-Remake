@@ -84,7 +84,6 @@ namespace LegendOfZelda
             sprite.UnregisterSprite();
             collider.Active = false;
             LevelManager.RemoveUpdateable(this);
-            LevelManager.RemoveCollider(collider);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

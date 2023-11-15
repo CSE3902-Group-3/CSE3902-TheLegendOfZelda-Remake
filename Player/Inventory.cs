@@ -61,7 +61,7 @@ namespace LegendOfZelda
         public bool RemoveItem(IItem item)
         {
             //return true;
-            bool contain = true;
+            bool contain = false;
             IItem inventoryItem = item.GenerateInventoryItem();
             if (inventory.ContainsKey(inventoryItem))
             {

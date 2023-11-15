@@ -68,7 +68,6 @@ namespace LegendOfZelda
         public void Destroy()
         {
             collider.Active = false;
-            LevelManager.RemoveCollider(collider);
             LevelManager.RemoveUpdateable(this);
         }
 

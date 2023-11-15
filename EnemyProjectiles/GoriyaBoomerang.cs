@@ -39,7 +39,6 @@ namespace LegendOfZelda
             Collider.Active = false;
             LevelManager.RemoveUpdateable(this);
             LevelManager.RemoveDrawable(Sprite);
-            LevelManager.RemoveCollider(Collider);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

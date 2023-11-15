@@ -93,10 +93,9 @@ namespace LegendOfZelda
 
         public void OpenDoor()
         {
-            LevelManager.RemoveCollider(closedCollider);
             openSprite.RegisterSprite();
             closedCollider.Active = false;
-            LevelManager.RemoveCollider(openCollider);
+            openCollider.Active = true;
 
             Closed = false;
         }
