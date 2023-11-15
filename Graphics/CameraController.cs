@@ -125,7 +125,7 @@ namespace LegendOfZelda
 
         public void Reset()
         {
-            mainCamera.worldPos = LevelMaster.CurrentRoomPosition;
+            mainCamera.worldPos = LevelManager.CurrentRoomPosition;
             mainCameraDrawables = new List<List<IDrawable>>();
             activeMenu = itemMenuCamera;
         }

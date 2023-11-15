@@ -86,7 +86,7 @@ namespace LegendOfZelda
 
         private void HandlePlayerCollisionWhenUnlocked()
         {
-            LevelMaster.GetInstance().TransitionToRoom(direction);
+            LevelManager.GetInstance().TransitionToRoom(direction);
             player = GameState.Link;
             player.EnterRoomTransition();
         }

@@ -186,12 +186,12 @@ namespace LegendOfZelda
 
         public void RegisterSprite()
         {
-            LevelMaster.AddDrawable(this, persistent);
+            LevelManager.AddDrawable(this, persistent);
         }
 
         public void UnregisterSprite()
         {
-            LevelMaster.RemoveDrawable(this, persistent);
+            LevelManager.RemoveDrawable(this, persistent);
         }
     }  
 }

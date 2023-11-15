@@ -23,7 +23,7 @@ namespace LegendOfZelda
             Position = pos;
             Sprite = SpriteFactory.getInstance().CreateRopeRightSprite();
             Sprite.UnregisterSprite();
-            LevelMaster.AddUpdateable(this);
+            LevelManager.AddUpdateable(this);
             int scale = SpriteFactory.getInstance().scale;
 
             Collider = new RectCollider(
@@ -45,10 +45,10 @@ namespace LegendOfZelda
         {
             Sprite.UnregisterSprite();
             Collider.Active = false;
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
             DropItem();
-            LevelMaster.CurrentLevelRoom.RemoveEnemy(this);
+            LevelManager.CurrentLevelRoom.RemoveEnemy(this);
         }
         public void ChangePosition()
         {

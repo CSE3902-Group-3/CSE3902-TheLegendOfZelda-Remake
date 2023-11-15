@@ -8,7 +8,7 @@ namespace LegendOfZelda
     {
         private static GameState Instance;
         private static IGameState State;
-        private static LevelMaster LevelMaster;
+        private static LevelManager LevelMaster;
         public static CameraController CameraController;
         public static PauseManager PauseManager;
         public static CollisionManager CollisionManager;
@@ -26,7 +26,7 @@ namespace LegendOfZelda
         }
         private GameState()
         {
-            LevelMaster = LevelMaster.GetInstance();
+            LevelMaster = LevelManager.GetInstance();
             CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
             Link = new Link();

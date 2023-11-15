@@ -43,14 +43,14 @@ namespace LegendOfZelda
                     collisionManager.AddRectCollider(this);
                     if (drawColliders)
                     {
-                        LevelMaster.AddDrawable(this);
+                        LevelManager.AddDrawable(this);
                     }
                 } else if(_active == true && value == false)
                 {
                     collisionManager.RemoveRectCollider(this);
                     if (drawColliders)
                     {
-                        LevelMaster.RemoveDrawable(this);
+                        LevelManager.RemoveDrawable(this);
                     }
                 }
                 _active = value;
@@ -69,7 +69,7 @@ namespace LegendOfZelda
             _active = true;
             collisionManager.AddRectCollider(this);
 
-            LevelMaster.AddCollider(this, persistent);
+            LevelManager.AddCollider(this, persistent);
 
             spriteBatch = Game1.getInstance()._spriteBatch;
             textureWithWhitePixel = SpriteFactory.getInstance().linkTexture;
@@ -79,7 +79,7 @@ namespace LegendOfZelda
 
             if (drawColliders)
             {
-                LevelMaster.AddDrawable(this, persistent);
+                LevelManager.AddDrawable(this, persistent);
             }
         }
 

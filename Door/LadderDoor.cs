@@ -36,7 +36,7 @@ namespace LegendOfZelda
             {
                 if (collision.CollidedWith.Layer == CollisionLayer.Player)
                 {
-                    LevelMaster.GetInstance().SnapToRoom(brickRoomEntrance);
+                    LevelManager.GetInstance().SnapToRoom(brickRoomEntrance);
 
                     player = GameState.Link;
                     if (player is Link)

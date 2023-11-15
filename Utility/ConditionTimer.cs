@@ -15,7 +15,7 @@ namespace LegendOfZelda
         {
             this.length = length;
             this.callback = callback;
-            LevelMaster.AddUpdateable(this, false);
+            LevelManager.AddUpdateable(this, false);
             this.condition = condition;
         }
 
@@ -35,7 +35,7 @@ namespace LegendOfZelda
 
         public void Destroy()
         {
-            LevelMaster.RemoveUpdateable(this, true);
+            LevelManager.RemoveUpdateable(this, true);
         }
     }
 }

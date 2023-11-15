@@ -84,7 +84,7 @@ namespace LegendOfZelda
 
             player = GameState.Link;
             player.EnterRoomTransition();
-            LevelMaster.GetInstance().TransitionToRoom(direction);
+            LevelManager.GetInstance().TransitionToRoom(direction);
         }
 
         public void OpenDoor()

@@ -47,7 +47,7 @@ namespace LegendOfZelda
             int scale = spriteFactory.scale;
             collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, boomerangWidth * scale, boomerangWidth * scale), CollisionLayer.PlayerWeapon, this);
 
-            LevelMaster.AddUpdateable(this);
+            LevelManager.AddUpdateable(this);
         }
 
         public void Update(GameTime gameTime)
@@ -83,7 +83,7 @@ namespace LegendOfZelda
         {
             sprite.UnregisterSprite();
             collider.Active = false;
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

@@ -33,7 +33,7 @@ namespace LegendOfZelda
             {
                 goriya.UnregisterSprite();
             }
-            LevelMaster.AddUpdateable(this);
+            LevelManager.AddUpdateable(this);
 
             int scale = SpriteFactory.getInstance().scale;
 
@@ -56,10 +56,10 @@ namespace LegendOfZelda
         {
             Sprites[CurrentSprite].UnregisterSprite();
             Collider.Active = false;
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
             DropItem();
-            LevelMaster.CurrentLevelRoom.RemoveEnemy(this);
+            LevelManager.CurrentLevelRoom.RemoveEnemy(this);
         }
         public void ChangePosition()
         {

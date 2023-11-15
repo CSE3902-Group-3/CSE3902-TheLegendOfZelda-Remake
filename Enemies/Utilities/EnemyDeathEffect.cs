@@ -13,8 +13,8 @@ namespace LegendOfZelda
             Sprite = SpriteFactory.getInstance().CreateEnemyDeathSprite();
             SoundFactory.PlaySound(SoundFactory.getInstance().EnemyDie, 1.0f, 0.0f, 0.0f);
             Sprite.UpdatePos(position);
-            createdInRoom = LevelMaster.CurrentRoom;
-            CheckRoom = () => createdInRoom == LevelMaster.CurrentRoom;
+            createdInRoom = LevelManager.CurrentRoom;
+            CheckRoom = () => createdInRoom == LevelManager.CurrentRoom;
             new ConditionTimer(0.5, Dissipate, CheckRoom);
         }
 

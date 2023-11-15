@@ -34,12 +34,12 @@ namespace LegendOfZelda.Graphics
 
         public void RegisterSprite()
         {
-            LevelMaster.AddDrawable(this, true);
+            LevelManager.AddDrawable(this, true);
         }
 
         public void UnregisterSprite()
         {
-            LevelMaster.RemoveDrawable(this, true);
+            LevelManager.RemoveDrawable(this, true);
         }
 
         public void UpdatePos(Vector2 pos)

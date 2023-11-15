@@ -27,13 +27,13 @@ namespace LegendOfZelda
         public int Height;
         public RectCollider Collider { get; set; }
 
-        public SimpleEnemyStateMachine(Vector2 pos, Vector2 offset, RectCollider collider, IEnemy enemy = null)
+        public SimpleEnemyStateMachine(Vector2 pos, Vector2 offset, RectCollider collider, IEnemy enemy)
         {
             Enemy = enemy;
             Position = pos;
             Offset = offset;
             Direction = new Vector2(1, 0);
-            LevelMaster.AddUpdateable(this);
+            LevelManager.AddUpdateable(this);
 
             switch (EnemySpeed)
             {
@@ -96,10 +96,10 @@ namespace LegendOfZelda
         {
             Sprite.UnregisterSprite();
             Collider.Active = false;
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
             DropItem();
-            LevelMaster.CurrentLevelRoom.RemoveEnemy(this);
+            LevelManager.CurrentLevelRoom.RemoveEnemy(Enemy);
         }
         public void Update(GameTime gameTime)
         {

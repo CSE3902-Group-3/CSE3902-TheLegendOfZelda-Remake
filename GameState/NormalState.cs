@@ -8,7 +8,7 @@ namespace LegendOfZelda
         public NormalState(){}
         public void Update(GameTime gameTime)
         {
-            LevelMaster.Update(gameTime);
+            LevelManager.Update(gameTime);
             LowerHUD.GetInstance().Show();
             LowerHUD.GetInstance().Update(gameTime);
             GameState.PlayerController.Update();

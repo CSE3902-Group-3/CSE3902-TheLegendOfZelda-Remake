@@ -15,7 +15,7 @@ namespace LegendOfZelda
         {
             this.length = length;
             this.callback = callback;
-            LevelMaster.AddUpdateable(this, true);
+            LevelManager.AddUpdateable(this, true);
         }
 
         public void Update(GameTime gameTime)
@@ -34,7 +34,7 @@ namespace LegendOfZelda
 
         public void Destroy()
         {
-            LevelMaster.RemoveUpdateable(this, true);
+            LevelManager.RemoveUpdateable(this, true);
         }
     }
 }

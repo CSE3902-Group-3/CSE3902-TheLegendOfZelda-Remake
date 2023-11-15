@@ -69,7 +69,7 @@ namespace LegendOfZelda
             int scale = spriteFactory.scale;
             collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, colliderWidth * scale, colliderHeight * scale), CollisionLayer.PlayerWeapon, this);
 
-            LevelMaster.AddUpdateable(this);
+            LevelManager.AddUpdateable(this);
 
             timer = new Timer(delay, Destroy);
         }
@@ -81,9 +81,9 @@ namespace LegendOfZelda
 
         public void Destroy()
         {
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
             sprite.UnregisterSprite();
-            LevelMaster.RemoveCollider(collider);
+            LevelManager.RemoveCollider(collider);
             collider.Active = false;
         }
 

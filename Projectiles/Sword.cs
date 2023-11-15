@@ -9,7 +9,7 @@ namespace LegendOfZelda
         public RectCollider collider;
         public Vector2 spawnPos;
 
-        private LevelMaster level;
+        private LevelManager level;
 
         public Sword(Direction linkDirection, Vector2 linkPos)
         {
@@ -19,7 +19,7 @@ namespace LegendOfZelda
             // Create the collider based on the direction
             CreateCollider(linkDirection);
 
-            LevelMaster.AddUpdateable(this);
+            LevelManager.AddUpdateable(this);
         }
 
         private void CreateCollider(Direction direction)
@@ -68,7 +68,7 @@ namespace LegendOfZelda
         public void Destroy()
         {
             collider.Active = false;
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
         }
 
         public void Update(GameTime gameTime)

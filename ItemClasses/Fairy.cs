@@ -26,7 +26,7 @@ namespace LegendOfZelda
 
         public void Show()
         {
-            LevelMaster.AddUpdateable(this);
+            LevelManager.AddUpdateable(this);
             fairy.RegisterSprite();
             fairy.UpdatePos(position);
             collider.Pos = position;
@@ -42,13 +42,13 @@ namespace LegendOfZelda
         public void Remove()
         {
             fairy.UnregisterSprite();
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
         }
 
         public IItem Collect()
         {
             fairy.UnregisterSprite();
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
             collider.Active = false;
             return this;
         }

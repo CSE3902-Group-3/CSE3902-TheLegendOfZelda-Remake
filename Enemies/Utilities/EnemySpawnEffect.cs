@@ -12,8 +12,8 @@ namespace LegendOfZelda
         {
             Sprite = SpriteFactory.getInstance().CreateExplosionSprite();
             Sprite.UpdatePos(position);
-            createdInRoom = LevelMaster.CurrentRoom;
-            CheckRoom = () => createdInRoom == LevelMaster.CurrentRoom;
+            createdInRoom = LevelManager.CurrentRoom;
+            CheckRoom = () => createdInRoom == LevelManager.CurrentRoom;
             new Timer(0.5, Dissipate);
         }
 

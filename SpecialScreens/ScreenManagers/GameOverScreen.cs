@@ -31,51 +31,51 @@ namespace LegendOfZelda
 
 		public void ActivateGameOver()
 		{
-			LevelMaster.AddUpdateable(this);
+			LevelManager.AddUpdateable(this);
 			activated = true;
 		}
 
 		private void DrawLinkSpinningOverlay()
 		{
-			LevelMaster.AddDrawable(linkSpinningOverlay);
+			LevelManager.AddDrawable(linkSpinningOverlay);
         }
 
 		private void DrawLightRed()
 		{
-			LevelMaster.AddDrawable(lightRed);
+			LevelManager.AddDrawable(lightRed);
         }
 
 		private void DrawNormalRed()
 		{
-			LevelMaster.AddDrawable(red);
+			LevelManager.AddDrawable(red);
         }
 
 		private void DrawDarkRed()
 		{
-			LevelMaster.AddDrawable(darkRed);
+			LevelManager.AddDrawable(darkRed);
         }
 
 		private void DrawBlackScreen()
 		{
-			LevelMaster.AddDrawable(blackScreen);
+			LevelManager.AddDrawable(blackScreen);
         }
 
 		private void WriteWord()
 		{
-			LevelMaster.AddDrawable(text);
+			LevelManager.AddDrawable(text);
         }
 
 		public void UnactivateGameOverScreen()
 		{
 			if (activated)
 			{
-				LevelMaster.RemoveDrawable(linkSpinningOverlay);
-				LevelMaster.RemoveDrawable(lightRed);
-				LevelMaster.RemoveDrawable(red);
-				LevelMaster.RemoveDrawable(darkRed);
-				LevelMaster.RemoveDrawable(blackScreen);
-				LevelMaster.RemoveDrawable(text);
-                LevelMaster.RemoveUpdateable(this);
+				LevelManager.RemoveDrawable(linkSpinningOverlay);
+				LevelManager.RemoveDrawable(lightRed);
+				LevelManager.RemoveDrawable(red);
+				LevelManager.RemoveDrawable(darkRed);
+				LevelManager.RemoveDrawable(blackScreen);
+				LevelManager.RemoveDrawable(text);
+                LevelManager.RemoveUpdateable(this);
                 activated = false;
 			}
 		}

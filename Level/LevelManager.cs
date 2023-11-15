@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
-    public class LevelMaster
+    public class LevelManager
     {
-        private static LevelMaster Instance;
+        private static LevelManager Instance;
 
         public static int CurrentRoom { get { return currentRoom; } }
         private static int currentRoom;
@@ -20,12 +20,12 @@ namespace LegendOfZelda
         private static List<IDrawable> PersistentDrawables;
         private static List<IRectCollider> PersistentColliders;
         private static List<List<AdjacentRoom>> RoomListAdjacentRooms;
-        private LevelMaster(){}
-        public static LevelMaster GetInstance()
+        private LevelManager(){}
+        public static LevelManager GetInstance()
         {
             if (Instance == null)
             {
-                Instance = new LevelMaster();
+                Instance = new LevelManager();
             }
             return Instance;
         }
