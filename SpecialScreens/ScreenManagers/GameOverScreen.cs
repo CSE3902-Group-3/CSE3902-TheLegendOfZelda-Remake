@@ -62,7 +62,7 @@ namespace LegendOfZelda
 
 		private void WriteWord()
 		{
-			LevelMaster.RegisterDrawable(text);
+			text.Draw();
         }
 
 		public void UnactivateGameOverScreen()
@@ -76,6 +76,7 @@ namespace LegendOfZelda
 				LevelMaster.RemoveDrawable(blackScreen);
 				LevelMaster.RemoveDrawable(text);
                 LevelMaster.RemoveUpdateable(this);
+				text.Remove();
                 activated = false;
 			}
 		}
@@ -119,7 +120,6 @@ namespace LegendOfZelda
 			if ((counter == 4) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
 			{
 				DrawBlackScreen();
-				GameState.CameraController.RemovePersistentDrawables();
 				lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
 				counter++;
 			}
@@ -129,15 +129,18 @@ namespace LegendOfZelda
 			 */
 			if ((counter == 5) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
-				WriteWord();
+                GameState.CameraController.RemovePersistentDrawables();
+				GameState.CameraController.ChangeMenu(Menu.GameOver);
+                WriteWord();
                 lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
                 counter++;
 			}
 
             if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
-                UnactivateGameOverScreen();
-                GameState.CameraController.ChangeMenu(Menu.GameOver);
+				text.Remove();
+				menu.Draw();
+                //GameState.CameraController.ChangeMenu(Menu.GameOver);
 				counter++;
 			}
         }
