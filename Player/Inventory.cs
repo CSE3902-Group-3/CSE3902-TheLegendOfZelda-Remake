@@ -88,65 +88,67 @@ namespace LegendOfZelda
 
         public void AddItem(IItem item)
         {
-            if (item is Arrow)
+            switch (item)
             {
-                inventory[arrow]++;
-            }
-            if (item is Bomb)
-            {
-                inventory[bomb]++;
-            }
-            if (item is Boomerang)
-            {
-                inventory[boomerang]++;
-            }
-            if (item is Bow)
-            {
-                inventory[bow]++;
-            }
-            if (item is Candle)
-            {
-                inventory[candle]++;
-            }
-            if (item is Clock)
-            {
-                inventory[clock]++;
-            }
-            if (item is Compass)
-            {
-                inventory[compass]++;
-            }
-            if (item is Fairy)
-            {
-                inventory[fairy]++;
-            }
-            if (item is OneRupee)
-            {
-                AddRupee(item);
-            }
-            if (item is FiveRupee)
-            {
-                AddRupee(item);
-            }
-            if (item is HeartContainer)
-            {
-                inventory[heartContainer]++;
-            }
-            if (item is Key)
-            {
-                inventory[key]++;
-            }
-            if (item is Map)
-            {
-                inventory[map]++;
-            }
-            if (item is Potion)
-            {
-                inventory[potion]++;
-            }
-            if (item is Triforce)
-            {
-                inventory[triforce]++;
+                case Arrow:
+                    inventory[arrow]++;
+                    break;
+
+                case Bomb:
+                    inventory[bomb]++;
+                    break;
+
+                case Boomerang:
+                    inventory[boomerang]++;
+                    break;
+
+                case Bow:
+                    inventory[bow]++;
+                    break;
+
+                case Candle:
+                    inventory[candle]++;
+                    break;
+
+                case Clock:
+                    inventory[clock]++;
+                    break;
+
+                case Compass:
+                    inventory[compass]++;
+                    break;
+
+                case Fairy:
+                    inventory[fairy]++;
+                    break;
+
+                case OneRupee:
+                    AddRupee(item);
+                    break;
+
+                case FiveRupee:
+                    AddRupee(item);
+                    break;
+
+                case HeartContainer:
+                    inventory[heartContainer]++;
+                    break;
+
+                case Key:
+                    inventory[key]++;
+                    break;
+
+                case Map:
+                    inventory[map]++;
+                    break;
+
+                case Potion:
+                    inventory[potion]++;
+                    break;
+
+                case Triforce:
+                    inventory[triforce]++;
+                    break;
             }
         }
 
@@ -156,109 +158,111 @@ namespace LegendOfZelda
         {
             bool contain = false;
 
-            if (item is Arrow)
+            switch (item)
             {
-                if (inventory[arrow] != 0)
-                {
-                    inventory[arrow]--;
-                    contain = true;
-                }
-            }
-            if (item is Bomb)
-            {
-                if (inventory[bomb] != 0)
-                {
-                    inventory[bomb]--;
-                    contain = true;
-                }
-            }
-            if (item is Boomerang)
-            {
-                if (inventory[boomerang] != 0)
-                {
-                    inventory[boomerang]--;
-                    contain = true;
-                }
-            }
-            if (item is Bow)
-            {
-                if (inventory[bow] != 0)
-                {
-                    inventory[bow]--;
-                    contain = true;
-                }
-            }
-            if (item is Candle)
-            {
-                if (inventory[candle] != 0)
-                {
-                    inventory[candle]--;
-                    contain = true;
-                }
-            }
-            if (item is Clock)
-            {
-                if(inventory[clock] != 0)
-                {
-                    inventory[clock]--;
-                    contain = true;
-                }
-            }
-            if (item is Compass)
-            {
-                if (inventory[compass] != 0)
-                {
-                    inventory[compass]--;
-                    contain = true;
-                }
-            }
-            if (item is Fairy)
-            {
-                if (inventory[fairy] != 0)
-                {
-                    inventory[fairy]--;
-                    contain = true;
-                }
-            }
-            if (item is HeartContainer)
-            {
-                if (inventory[heartContainer] != 0)
-                {
-                    inventory[heartContainer]--;
-                    contain = true;
-                }
-            }
-            if (item is Key)
-            {
-                if (inventory[key] != 0)
-                {
-                    inventory[key]--;
-                    contain = true;
-                }
-            }
-            if (item is Map)
-            {
-                if (inventory[map] != 0)
-                {
-                    inventory[map]--;
-                    contain = true;
-                }
-            }
-            if (item is Potion)
-            {
-                if (inventory[potion] != 0)
-                {
-                    inventory[potion]--;
-                    contain = true;
-                }
-            }
-            if (item is Triforce)
-            {
-                if (inventory[triforce] != 0)
-                {
-                    inventory[triforce]--;
-                    contain = true;
-                }
+                case Arrow:
+                    if (inventory[arrow] != 0)
+                    {
+                        inventory[arrow]--;
+                        contain = true;
+                    }
+                    break;
+
+                case Bomb:
+                    if (inventory[bomb] != 0)
+                    {
+                        inventory[bomb]--;
+                        contain = true;
+                    }
+                    break;
+
+                case Boomerang:
+                    if (inventory[boomerang] != 0)
+                    {
+                        inventory[boomerang]--;
+                        contain = true;
+                    }
+                    break;
+
+                case Bow:
+                    if (inventory[bow] != 0)
+                    {
+                        inventory[bow]--;
+                        contain = true;
+                    }
+                    break;
+
+                case Candle:
+                    if (inventory[candle] != 0)
+                    {
+                        inventory[candle]--;
+                        contain = true;
+                    }
+                    break;
+
+                case Clock:
+                    if (inventory[clock] != 0)
+                    {
+                        inventory[clock]--;
+                        contain = true;
+                    }
+                    break;
+
+                case Compass:
+                    if (inventory[compass] != 0)
+                    {
+                        inventory[compass]--;
+                        contain = true;
+                    }
+                    break;
+
+                case Fairy:
+                    if (inventory[fairy] != 0)
+                    {
+                        inventory[fairy]--;
+                        contain = true;
+                    }
+                    break;
+
+                case HeartContainer:
+                    if (inventory[heartContainer] != 0)
+                    {
+                        inventory[heartContainer]--;
+                        contain = true;
+                    }
+                    break;
+
+                case Key:
+                    if (inventory[key] != 0)
+                    {
+                        inventory[key]--;
+                        contain = true;
+                    }
+                    break;
+
+                case Map:
+                    if (inventory[map] != 0)
+                    {
+                        inventory[map]--;
+                        contain = true;
+                    }
+                    break;
+
+                case Potion:
+                    if (inventory[potion] != 0)
+                    {
+                        inventory[potion]--;
+                        contain = true;
+                    }
+                    break;
+
+                case Triforce:
+                    if (inventory[triforce] != 0)
+                    {
+                        inventory[triforce]--;
+                        contain = true;
+                    }
+                    break;
             }
 
             return contain;
@@ -270,7 +274,7 @@ namespace LegendOfZelda
             {
                 inventory[rupee] += 5;
             }
-            if (incomingRupee is OneRupee)
+            else if (incomingRupee is OneRupee)
             {
                 inventory[rupee]++;
             }
@@ -297,65 +301,67 @@ namespace LegendOfZelda
         {
             int itemAmount = 0;
 
-            if (item is Arrow)
+            switch (item)
             {
-                itemAmount = inventory[arrow];
-            }
-            if (item is Bomb)
-            {
-                itemAmount = inventory[bomb];
-            }
-            if (item is Boomerang)
-            {
-                itemAmount = inventory[boomerang];
-            }
-            if (item is Bow)
-            {
-                itemAmount = inventory[bow];
-            }
-            if (item is Candle)
-            {
-                itemAmount = inventory[candle];
-            }
-            if (item is Clock)
-            {
-                itemAmount = inventory[clock];
-            }
-            if (item is Compass)
-            {
-                itemAmount = inventory[compass];
-            }
-            if (item is Fairy)
-            {
-                itemAmount = inventory[fairy];
-            }
-            if (item is OneRupee)
-            {
-                itemAmount = inventory[rupee];
-            }
-            if (item is FiveRupee)
-            {
-                itemAmount = inventory[rupee];
-            }
-            if (item is HeartContainer)
-            {
-                itemAmount = inventory[heartContainer];
-            }
-            if (item is Key)
-            {
-                itemAmount = inventory[key];
-            }
-            if (item is Map)
-            {
-                itemAmount = inventory[map];
-            }
-            if (item is Potion)
-            {
-                itemAmount = inventory[potion];
-            }
-            if (item is Triforce)
-            {
-                itemAmount = inventory[triforce];
+                case Arrow:
+                    itemAmount = inventory[arrow];
+                    break;
+
+                case Bomb:
+                    itemAmount = inventory[bomb];
+                    break;
+
+                case Boomerang:
+                    itemAmount = inventory[boomerang];
+                    break;
+
+                case Bow:
+                    itemAmount = inventory[bow];
+                    break;
+
+                case Candle:
+                    itemAmount = inventory[candle];
+                    break;
+
+                case Clock:
+                    itemAmount = inventory[clock];
+                    break;
+
+                case Compass:
+                    itemAmount = inventory[compass];
+                    break;
+
+                case Fairy:
+                    itemAmount = inventory[fairy];
+                    break;
+
+                case OneRupee:
+                    itemAmount = inventory[rupee];
+                    break;
+
+                case FiveRupee:
+                    itemAmount = inventory[rupee];
+                    break;
+
+                case HeartContainer:
+                    itemAmount = inventory[heartContainer];
+                    break;
+
+                case Key:
+                    itemAmount = inventory[key];
+                    break;
+
+                case Map:
+                    itemAmount = inventory[map];
+                    break;
+
+                case Potion:
+                    itemAmount = inventory[potion];
+                    break;
+
+                case Triforce:
+                    itemAmount = inventory[triforce];
+                    break;
             }
 
             return itemAmount;
