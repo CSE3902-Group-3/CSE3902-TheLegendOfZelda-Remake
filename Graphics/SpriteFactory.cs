@@ -111,6 +111,21 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        public AnimatedSprite CreateLinkDeathSprite()
+        {
+            Rectangle[] frames = new Rectangle[4]
+            {
+                new Rectangle(35, 11, 16, 16),
+                new Rectangle(69, 11, 16, 16),
+                new Rectangle(35, 11, 16, 16),
+                new Rectangle(1, 11, 16, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, 16, scale, true);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            return newSprite;
+        }
+
         public AnimatedSprite CreateLinkThrowDownSprite()
         {
             Rectangle[] frames = new Rectangle[1]

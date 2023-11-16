@@ -96,7 +96,7 @@ namespace LegendOfZelda
 
         public void Die()
         {
-            // just call Reset for now
+            this.StateMachine.ChangeState(new DeathLinkState());
             this.Reset();
         }
 
