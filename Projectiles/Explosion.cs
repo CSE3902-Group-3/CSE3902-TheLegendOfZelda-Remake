@@ -29,7 +29,7 @@ namespace LegendOfZelda
         public Explosion(Vector2 position)
         {
             spriteFactory = SpriteFactory.getInstance();
-            LevelMaster.RegisterUpdateable(this);
+            LevelManager.AddUpdateable(this);
 
             pos = position;
 
@@ -101,7 +101,7 @@ namespace LegendOfZelda
             {
                 rectCollider.Active = false;
             }
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

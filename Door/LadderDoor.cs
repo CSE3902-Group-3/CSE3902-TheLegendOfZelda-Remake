@@ -13,6 +13,7 @@ namespace LegendOfZelda
 
         private int doorSize = 16;
 
+        private const int brickRoomEntrance = 16;
         private const int exitPosX = 320;
         private const int exitPosY = -704;
 
@@ -35,7 +36,7 @@ namespace LegendOfZelda
             {
                 if (collision.CollidedWith.Layer == CollisionLayer.Player)
                 {
-                    LevelMaster.GetInstance().NavigateToRoom(LevelMaster.brickRoomEntrance);
+                    LevelManager.GetInstance().SnapToRoom(brickRoomEntrance);
 
                     player = GameState.Link;
                     if (player is Link)

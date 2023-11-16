@@ -16,7 +16,7 @@ namespace LegendOfZelda
         public Camera(Vector2 worldPos)
         {
             this.worldPos = worldPos;
-            LevelMaster.RegisterUpdateable(this, true);
+            LevelManager.AddUpdateable(this, true);
         }
         public void DrawAll(List<IDrawable> drawables, SpriteBatch spriteBatch)
         {

@@ -65,13 +65,13 @@ namespace LegendOfZelda
         {
             paused = true;
             GameState.GetInstance().SwitchState(new PauseState());
-            LevelMaster.RegisterDrawable(this);
+            LevelManager.AddDrawable(this);
         }
 
         public void Resume()
         {
             paused = false;
-            LevelMaster.RemoveDrawable(this);
+            LevelManager.RemoveDrawable(this);
             GameState.GetInstance().SwitchState(new NormalState());
             for (int i = 0; i < text.Count; i++)
             {
