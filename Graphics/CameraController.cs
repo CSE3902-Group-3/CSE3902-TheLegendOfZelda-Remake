@@ -114,7 +114,7 @@ namespace LegendOfZelda
         }
         public void Reset()
         {
-            mainCamera.worldPos = LevelMaster.RoomPositionList[LevelMaster.CurrentRoom];
+            mainCamera.worldPos = LevelMaster.RoomPositionList[1];
             activeMenu = itemMenuCamera;
             //mainCamera = new Camera(LevelMaster.RoomPositionList[LevelMaster.CurrentRoom]);
             //itemMenuCamera = new Camera(HUDLocation);
@@ -127,8 +127,6 @@ namespace LegendOfZelda
                 LevelMaster.CurrentRoomDrawables,
                 LevelMaster.PersistentDrawables
             };
-
-            activeMenu = itemMenuCamera;
         }
     }
 }
