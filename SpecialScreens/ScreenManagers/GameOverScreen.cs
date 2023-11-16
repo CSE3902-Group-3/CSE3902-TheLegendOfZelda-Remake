@@ -33,33 +33,33 @@ namespace LegendOfZelda
 
 		public void ActivateGameOver()
 		{
-			LevelMaster.RegisterUpdateable(this);
+			LevelManager.AddUpdateable(this);
 			activated = true;
 		}
 
 		private void DrawLinkSpinningOverlay()
 		{
-			LevelMaster.RegisterDrawable(linkSpinningOverlay);
+			LevelManager.AddDrawable(linkSpinningOverlay);
         }
 
 		private void DrawLightRed()
 		{
-			LevelMaster.RegisterDrawable(lightRed);
+			LevelManager.AddDrawable(lightRed);
         }
 
 		private void DrawNormalRed()
 		{
-			LevelMaster.RegisterDrawable(red);
+			LevelManager.AddDrawable(red);
         }
 
 		private void DrawDarkRed()
 		{
-			LevelMaster.RegisterDrawable(darkRed);
+			LevelManager.AddDrawable(darkRed);
         }
 
 		private void DrawBlackScreen()
 		{
-			LevelMaster.RegisterDrawable(blackScreen);
+			LevelManager.AddDrawable(blackScreen);
         }
 
 		private void WriteWord()

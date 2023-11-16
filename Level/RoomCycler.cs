@@ -16,25 +16,25 @@ namespace LegendOfZelda
 
         public void NextRoom()
         {
-            if (LevelMaster.CurrentRoom == LevelMaster.NumberOfRooms - 1)
+            if (LevelManager.CurrentRoom == LevelManager.NumberOfRooms - 1)
             {
-                LevelMaster.GetInstance().NavigateToRoom(0);
+                LevelManager.GetInstance().SnapToRoom(0);
             }
             else
             {
-                LevelMaster.GetInstance().NavigateToRoom(LevelMaster.CurrentRoom + 1);
+                LevelManager.GetInstance().SnapToRoom(LevelManager.CurrentRoom + 1);
             }
         }
 
         public void PrevRoom()
         {
-            if (LevelMaster.CurrentRoom == 0)
+            if (LevelManager.CurrentRoom == 0)
             {
-                LevelMaster.GetInstance().NavigateToRoom(LevelMaster.NumberOfRooms - 1);
+                LevelManager.GetInstance().SnapToRoom(LevelManager.NumberOfRooms - 1);
             }
             else
             {
-                LevelMaster.GetInstance().NavigateToRoom(LevelMaster.CurrentRoom - 1);
+                LevelManager.GetInstance().SnapToRoom(LevelManager.CurrentRoom - 1);
             }
         }
     }

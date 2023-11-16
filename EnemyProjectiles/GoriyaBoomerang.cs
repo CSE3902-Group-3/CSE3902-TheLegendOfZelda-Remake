@@ -11,7 +11,7 @@ namespace LegendOfZelda
         public RectCollider Collider { get; private set; }
         public GoriyaBoomerang(Vector2 pos, Vector2 dir)
         {
-            LevelMaster.RegisterUpdateable(this);
+            LevelManager.AddUpdateable(this);
             SoundFactory.PlaySound(SoundFactory.getInstance().ArrowBoomerang, 1.0f, 0.0f, 0.0f);
             Sprite = SpriteFactory.getInstance().CreateBoomerangSprite();
             Position = pos;
@@ -37,9 +37,8 @@ namespace LegendOfZelda
             new Burst(Position);
             SoundFactory.PlaySound(SoundFactory.getInstance().SwordSlash, 1.0f, 0.0f, 0.0f);
             Collider.Active = false;
-            LevelMaster.RemoveUpdateable(this);
-            LevelMaster.RemoveDrawable(Sprite);
-            Collider.Active = false;
+            LevelManager.RemoveUpdateable(this);
+            LevelManager.RemoveDrawable(Sprite);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

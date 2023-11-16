@@ -62,7 +62,7 @@ namespace LegendOfZelda
 
             timer = new Timer(moveDelay, StopMoving);
 
-            LevelMaster.RegisterUpdateable(this);
+            LevelManager.AddUpdateable(this);
         }
 
         //Could benefit from a state machine, but it would be overkill
@@ -78,7 +78,7 @@ namespace LegendOfZelda
         {
             sprite.UnregisterSprite();
             collider.Active = false;
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

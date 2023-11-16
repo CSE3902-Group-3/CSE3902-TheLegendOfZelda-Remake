@@ -1,6 +1,4 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -25,7 +23,7 @@ namespace LegendOfZelda
 
         public void Show()
         {
-            LevelMaster.RegisterUpdateable(this);
+            LevelManager.AddUpdateable(this);
             fairy.RegisterSprite();
             fairy.UpdatePos(position);
             collider.Pos = position;
@@ -41,13 +39,13 @@ namespace LegendOfZelda
         public void Remove()
         {
             fairy.UnregisterSprite();
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
         }
 
         public IItem Collect()
         {
             fairy.UnregisterSprite();
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
             collider.Active = false;
             return this;
         }
@@ -56,12 +54,6 @@ namespace LegendOfZelda
         {
             fairy.RegisterSprite();
             fairy.UpdatePos(newPos);
-        }
-
-        public IItem GenerateInventoryItem()
-        {
-            //All item in inventory will have a zero position
-            return new Fairy(Vector2.Zero);
         }
 
         public void Update(GameTime gameTime)

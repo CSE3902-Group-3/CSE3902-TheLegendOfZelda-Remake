@@ -110,10 +110,10 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
-            UpdateRubies();
-            UpdateKeys();
-            UpdateBoombs();
-            UpdateHealth();
+            //UpdateRubies();
+            //UpdateKeys();
+            //UpdateBoombs();
+            //UpdateHealth();
         }
 
         public void Show()
