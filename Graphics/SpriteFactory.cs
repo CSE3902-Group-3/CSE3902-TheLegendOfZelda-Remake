@@ -1610,6 +1610,30 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        public AnimatedSprite CreateSelectorSprites(int selector)
+        {
+            Rectangle[] frames;
+            AnimatedSprite newSprite;
+            switch (selector)
+            {
+                case 0:
+                    frames = new Rectangle[1]
+                    {
+                        new Rectangle(519, 137, 16, 16)
+                    };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 1:
+                    frames = new Rectangle[1]
+                    {
+                        new Rectangle(536, 137, 16, 16)
+                    };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+            }
+            return null;
+        }
+
         public AnimatedSprite CreateHUDLadderSprite()
         {
             Rectangle[] frames = new Rectangle[1]

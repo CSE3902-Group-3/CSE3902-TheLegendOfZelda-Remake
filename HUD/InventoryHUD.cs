@@ -157,7 +157,7 @@ namespace LegendOfZelda
                 { "arrow", true },
                 { "bow", true },
                 { "candle", true },
-                { "rod", true },
+                { "rod", false },
                 { "food", true },
                 { "potion", true },
                 { "wand", true }
