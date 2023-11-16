@@ -20,7 +20,10 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             gameOver.Update(gameTime);
-            controller.Update();
+            if (gameOver.done == true)
+            {
+                controller.Update();
+            }
         }
         public void Draw(SpriteBatch _spriteBatch)
         {

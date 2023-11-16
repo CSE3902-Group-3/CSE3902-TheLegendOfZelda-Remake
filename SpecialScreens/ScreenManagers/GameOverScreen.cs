@@ -14,6 +14,7 @@ namespace LegendOfZelda
 		private int counter;
 		private GameOverMenu menu;
 		private bool activated;
+		public bool done;
 
 		public GameOverScreen()
 		{
@@ -27,6 +28,7 @@ namespace LegendOfZelda
 			counter = 0;
 			menu = new GameOverMenu();
 			activated = false;
+			done = false;
         }
 
 		public void ActivateGameOver()
@@ -140,7 +142,7 @@ namespace LegendOfZelda
 			{
 				text.Remove();
 				menu.Draw();
-                //GameState.CameraController.ChangeMenu(Menu.GameOver);
+				done = true;
 				counter++;
 			}
         }
