@@ -30,6 +30,10 @@ namespace LegendOfZelda
             {
                 new BoomerangProjectile(Link.StateMachine.position + LinkUtilities.upItemOffet, LinkUtilities.upDirVector, Link);
             }
+            else if (Inventory.getInstance().SecondaryItem is Candle)
+            {
+                new FireProjectile(Link.StateMachine.position + LinkUtilities.upItemOffet, Direction.up);
+            }
         }
 
         public void Execute()

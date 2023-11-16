@@ -13,6 +13,10 @@
             }
             else if (itemCollidedWith is Heart)
                 GameState.Link.Heal(1.0f);
+            else if (itemCollidedWith is Fairy)
+                GameState.Link.Heal(GameState.Link.MaxHP);
+            else if (itemCollidedWith is FiveRupee || itemCollidedWith is OneRupee)
+                Inventory.getInstance().AddRupee(itemCollidedWith);
             else
                 Inventory.getInstance().AddItem(itemCollidedWith);
 
