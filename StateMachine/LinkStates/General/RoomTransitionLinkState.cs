@@ -43,6 +43,7 @@ namespace LegendOfZelda
                     targetPosition += new Vector2(196, 0);
                     break;
             }
+            Link.Sprite.paused = true;
 
             LinkUtilities.UpdatePositions(Link, targetPosition);
         }
@@ -56,6 +57,7 @@ namespace LegendOfZelda
         public void Exit()
         {
             Link.StateMachine.canMove = true;
+            Link.Sprite.paused = false;
             Link.Velocity = 5;
         }
     }

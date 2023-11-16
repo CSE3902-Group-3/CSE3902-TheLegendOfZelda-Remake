@@ -5,7 +5,7 @@ namespace LegendOfZelda
 {
     public class Link : IPlayer, ICollidable, IUpdateable
     {
-        public ISprite Sprite { get; set; }
+        public IAnimatedSprite Sprite { get; set; }
         public Vector2 Pos { get { return Sprite.pos; } }
         public RectCollider Collider { get; set; }
         public LinkStateMachine StateMachine{ get; private set; }
@@ -107,6 +107,7 @@ namespace LegendOfZelda
 
         public void EnterRoomTransition()
         {
+            this.StateMachine.ChangeState(new IdleLinkState());
             this.StateMachine.ChangeState(new RoomTransitionLinkState());
         }
         public void ExitRoomTransition()
