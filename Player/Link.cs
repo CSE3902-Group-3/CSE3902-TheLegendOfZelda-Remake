@@ -17,7 +17,7 @@ namespace LegendOfZelda
         private float damageAnimationDuration = 1.0f; // Set the duration (in seconds) for the animation
 
         public float damageCooldownTimer  = 0; // Set the cooldown (in seconds) for damage
-        public float damageCooldownDuration = 1.0f;
+        public float damageCooldownDuration = 3.5f;
 
         public Link()
         {
