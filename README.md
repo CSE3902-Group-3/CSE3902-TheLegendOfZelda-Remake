@@ -5,7 +5,7 @@ Remake of NES The Legend of Zelda game
 ### Player controls
 - Arrow and `wasd` keys should move Link and change his facing direction.
 - The `z` and `n` key should cause Link to attack using his sword.
-- `b` for Link to use his secondary item
+- `x` for Link to use his secondary item
 
 ### Other controls
 - Use `Enter` to start the game from the starting menu

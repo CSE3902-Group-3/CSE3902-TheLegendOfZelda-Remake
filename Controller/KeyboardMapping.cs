@@ -29,7 +29,7 @@ namespace LegendOfZelda
             KeyDownMapping.Add(Keys.D, new MovingRightCommand(link));
             KeyDownMapping.Add(Keys.Right, new MovingRightCommand(link));
 
-            KeyDownMapping.Add(Keys.B, new UseSecondaryItemCommand());
+            KeyDownMapping.Add(Keys.X, new UseSecondaryItemCommand());
 
             keyUpMappings.Add(Keys.W, new ToIdleCommand(link));
             keyUpMappings.Add(Keys.A, new ToIdleCommand(link));
