@@ -16,6 +16,7 @@ namespace LegendOfZelda
 
         private SpriteFactory spriteFactory;
         private LetterFactory letterFactory;
+        private Inventory inventory;
 
         private AnimatedSprite InventoryHUDBase;
         private AnimatedSprite SelectedItem;
@@ -33,12 +34,13 @@ namespace LegendOfZelda
         private Dictionary<string, bool> InventoryInFrameUnlock;
         private Dictionary<string, bool> InventoryAboveFrameUnlock;
 
-
+        private Dictionary<IItem, string> IItemToString;
 
         public InventoryHUD()
         {
             spriteFactory = SpriteFactory.getInstance();
             letterFactory = LetterFactory.GetInstance();
+            inventory = Inventory.getInstance();
 
             InventoryHUDBase = spriteFactory.CreateInventoryHUDSprite();
             // Should be able to change to the selected item, this is only for test now
@@ -55,6 +57,8 @@ namespace LegendOfZelda
             CreateInventoryInUnlock();
             CreateInventoryAboveUnlock();
 
+            CreateIItemToString();
+
             //Selector = Selector.GetInstance();
         }
 
@@ -69,6 +73,7 @@ namespace LegendOfZelda
         {
             //UpdatePos();
             Selector.Update();
+            UpdateInventoryInUnlock();
         }
 
         public void Show()
@@ -84,7 +89,7 @@ namespace LegendOfZelda
 
             RegisterDictionarySprite(ItemsAboveFrame, InventoryAboveFrameUnlock, InventoryItemsAbovePosDict);
 
-            Selector.Show();
+            //Selector.Show();
         }
 
         public void CreateItemInFramesSprites()
@@ -152,15 +157,15 @@ namespace LegendOfZelda
         {
             InventoryInFrameUnlock = new Dictionary<string, bool>
             {
-                { "boomerang", true },
-                { "bomb", true },
-                { "arrow", true },
-                { "bow", true },
-                { "candle", true },
+                { "boomerang", false },
+                { "bomb", false },
+                { "arrow", false },
+                { "bow", false },
+                { "candle", false },
                 { "rod", false },
-                { "food", true },
-                { "potion", true },
-                { "wand", true }
+                { "food", false },
+                { "potion", false },
+                { "wand", false }
             };
         }
 
@@ -174,6 +179,19 @@ namespace LegendOfZelda
                 { "ladder", true },
                 { "dragonKey", true },
                 { "bread", true }
+            };
+        }
+
+        public void CreateIItemToString()
+        {
+            IItemToString = new Dictionary<IItem, string>
+            {
+                {new Boomerang(Vector2.Zero), "boomerang" },
+                {new Bomb(Vector2.Zero), "bomb" },
+                {new Arrow(Vector2.Zero), "arrow" },
+                {new Bow(Vector2.Zero), "bow" },
+                {new Candle(Vector2.Zero), "candle" },
+                {new Potion(Vector2.Zero), "potion" },
             };
         }
 
@@ -220,11 +238,32 @@ namespace LegendOfZelda
             return unlockList;
         }
 
+        public int GetUnlockCount()
+        {
+            int count = 0;
+            foreach (bool unlock in InventoryInFrameUnlock.Values)
+            {
+                if (unlock)
+                    count++;
+            }
+            return count;
+        }
+
         // Update Methods
 
-        public void UpdateInventoryInUnlock(string item)
+        public void UpdateInventoryInUnlock()
         {
-            InventoryInFrameUnlock[item] = true;
+            foreach (KeyValuePair<IItem, string> item in IItemToString)
+            {
+                if (inventory.GetQuantity(item.Key) > 0)
+                {
+                    InventoryInFrameUnlock[item.Value] = true;
+                }
+                else if (inventory.GetQuantity(item.Key) == 0)
+                {
+                    InventoryInFrameUnlock[item.Value] = false;
+                }
+            }
         }
 
         public void UpdateInventoryAboveUnlock(string item)

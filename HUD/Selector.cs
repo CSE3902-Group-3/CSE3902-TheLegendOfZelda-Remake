@@ -17,7 +17,7 @@ namespace LegendOfZelda
         InventoryHUD inventoryHUD;
 
         private int SelectorIndex = 0;
-        private int SelectorColorIndex = 0;
+        private int SelectorColorIndex = -1;
 
         private SpriteFactory spriteFactory;
 
@@ -59,7 +59,16 @@ namespace LegendOfZelda
         public void Update()
         {
             //UpdateColor();
-            SelectorSprite.UpdatePos(PosDictionary[SelectorIndex].pos);
+            UpdateUnlock();
+            if (inventoryHUD.GetUnlockCount() == 0)
+                SelectorSprite.UnregisterSprite();
+            else if (inventoryHUD.GetUnlockCount() == 1)
+            {
+                SelectorSprite.RegisterSprite();
+                SelectorSprite.UpdatePos(PosDictionary[FindFirstUnlock()].pos);
+            }
+            else
+                SelectorSprite.UpdatePos(PosDictionary[SelectorIndex].pos);
         }
 
         public void Show()
@@ -97,6 +106,19 @@ namespace LegendOfZelda
             }
         }
 
+        private int FindFirstUnlock()
+        {
+            foreach (KeyValuePair<int, SelectorPos> entry in PosDictionary)
+            {
+                if (entry.Value.unlock)
+                {
+                    return entry.Key;
+                }
+            }
+
+            return -1;
+        }
+
         public void UpdateColor()
         {
             switch (SelectorColorIndex)
@@ -112,8 +134,33 @@ namespace LegendOfZelda
             }
         }
 
+
+        public void UpdateUnlock()
+        {
+            SelectorPos temp = new SelectorPos();
+            for (int i = 0; i < 8; i++)
+            {
+                if (i < 3)
+                {
+                    temp = PosDictionary[i];
+                    temp.unlock = inventoryHUD.GetUnlockList()[i];
+                    PosDictionary[i] = temp;
+                }
+                else
+                {
+                    temp = PosDictionary[i];
+                    temp.unlock = inventoryHUD.GetUnlockList()[i + 1];
+                    PosDictionary[i] = temp;
+                }
+            }
+        }
+
         public void SelectRight()
         {
+            if (inventoryHUD.GetUnlockCount() < 2)
+            {
+                return;
+            }
             if (SelectorIndex == 7)
                 SelectorIndex = 0;
             else SelectorIndex++;
@@ -130,6 +177,10 @@ namespace LegendOfZelda
 
         public void SelectLeft()
         {
+            if (inventoryHUD.GetUnlockCount() < 2)
+            {
+                return;
+            }
             if (SelectorIndex == 0)
                 SelectorIndex = 7;
             else SelectorIndex--;
