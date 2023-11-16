@@ -27,14 +27,14 @@ namespace LegendOfZelda
         }
         public void LoadRoom (Room room)
         {
-            roomPosition = new Vector2(LevelConstants.RoomWidth * room.RoomXLocation, LevelConstants.RoomHeight * room.RoomYLocation * -1);
+            roomPosition = new Vector2(LevelUtilities.RoomWidth * room.RoomXLocation, LevelUtilities.RoomHeight * room.RoomYLocation * -1);
             ProcessMapElements(room);
             ProcessEvents(room);
         }
         private void ProcessMapElements(Room room)
         {
-            room.RoomXLocation *= LevelConstants.RoomWidth;
-            room.RoomYLocation *= LevelConstants.RoomHeight * -1;
+            room.RoomXLocation *= LevelUtilities.RoomWidth;
+            room.RoomYLocation *= LevelUtilities.RoomHeight * -1;
             foreach (MapElement mapElement in room.MapElements)
             {
                 switch (mapElement.ElementType)
