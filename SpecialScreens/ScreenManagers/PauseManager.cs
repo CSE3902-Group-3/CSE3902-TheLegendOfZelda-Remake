@@ -73,6 +73,10 @@ namespace LegendOfZelda
             paused = false;
             LevelMaster.RemoveDrawable(this);
             GameState.GetInstance().SwitchState(new NormalState());
+            for (int i = 0; i < text.Count; i++)
+            {
+                text[i].UnregisterSprite();
+            }
         }
 
         public bool isPaused()
@@ -91,6 +95,7 @@ namespace LegendOfZelda
             game._spriteBatch.Draw(overlay, new Rectangle(CameraXPos,CameraYPos,graphicsDevice.Viewport.Height, graphicsDevice.Viewport.Width), overlayTexture, color);
             for (int i = 0; i < text.Count; i++)
             {
+                text[i].RegisterSprite();
                 text[i].UpdatePos(new Vector2((StartXPos + letterWidth * i), StartYPos));
             }
         }
