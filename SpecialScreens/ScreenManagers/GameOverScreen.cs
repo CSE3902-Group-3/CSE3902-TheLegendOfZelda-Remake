@@ -71,13 +71,13 @@ namespace LegendOfZelda
 		{
 			if (activated)
 			{
-				LevelMaster.RemoveDrawable(linkSpinningOverlay);
-				LevelMaster.RemoveDrawable(lightRed);
-				LevelMaster.RemoveDrawable(red);
-				LevelMaster.RemoveDrawable(darkRed);
-				LevelMaster.RemoveDrawable(blackScreen);
-				LevelMaster.RemoveDrawable(text);
-                LevelMaster.RemoveUpdateable(this);
+				LevelManager.RemoveDrawable(linkSpinningOverlay);
+				LevelManager.RemoveDrawable(lightRed);
+				LevelManager.RemoveDrawable(red);
+				LevelManager.RemoveDrawable(darkRed);
+				LevelManager.RemoveDrawable(blackScreen);
+				LevelManager.RemoveDrawable(text);
+                LevelManager.RemoveUpdateable(this);
 				text.Remove();
                 activated = false;
 			}
@@ -131,7 +131,7 @@ namespace LegendOfZelda
 			 */
 			if ((counter == 5) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
-                GameState.CameraController.RemovePersistentDrawables();
+                GameState.CameraController.RemovePersistentDrawablesFromMainCamera();
 				GameState.CameraController.ChangeMenu(Menu.GameOver);
                 WriteWord();
                 lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
