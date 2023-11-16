@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace LegendOfZelda
 {
@@ -14,6 +12,19 @@ namespace LegendOfZelda
         private GraphicsDevice graphicsDevice;
         private Rectangle overlayTexture;
         private Color color;
+        private LetterFactory letterFactory;
+        private AnimatedSprite P;
+        private AnimatedSprite A;
+        private AnimatedSprite U;
+        private AnimatedSprite S;
+        private AnimatedSprite E;
+        private AnimatedSprite D;
+        private List<AnimatedSprite> text;
+        private int letterWidth;
+        private int CameraXPos;
+        private int CameraYPos;
+        private int StartXPos;
+        private int StartYPos;
 
         public PauseManager()
         {
@@ -23,6 +34,18 @@ namespace LegendOfZelda
             overlay = SpriteFactory.getInstance().linkTexture;
             overlayTexture = new Rectangle(118, 64, 1, 1);
             color = new Color(120, 120, 120, 200);
+            letterWidth = 30;
+            letterFactory = LetterFactory.GetInstance();
+            P = letterFactory.GetLetterSprite('P');
+            A = letterFactory.GetLetterSprite('A');
+            U = letterFactory.GetLetterSprite('U');
+            S = letterFactory.GetLetterSprite('S');
+            E = letterFactory.GetLetterSprite('E');
+            D = letterFactory.GetLetterSprite('D');
+            text = new List<AnimatedSprite>()
+            {
+                P, A, U, S, E, D
+            };
         }
 
         public void TogglePause()
@@ -50,6 +73,10 @@ namespace LegendOfZelda
             paused = false;
             LevelMaster.RemoveDrawable(this);
             GameState.GetInstance().SwitchState(new NormalState());
+            for (int i = 0; i < text.Count; i++)
+            {
+                text[i].UnregisterSprite();
+            }
         }
 
         public bool isPaused()
@@ -59,12 +86,18 @@ namespace LegendOfZelda
 
         public void Draw()
         {
-            int CameraXPos = (int)GameState.CameraController.mainCamera.worldPos.X;
-            int CameraYPos = (int)GameState.CameraController.mainCamera.worldPos.Y;
+            CameraXPos = (int)GameState.CameraController.mainCamera.worldPos.X;
+            CameraYPos = (int)GameState.CameraController.mainCamera.worldPos.Y;
+            StartXPos = CameraXPos + (graphicsDevice.Viewport.Width * 2 / 5);
+            StartYPos = CameraYPos + (graphicsDevice.Viewport.Height / 2);
 
             overlay = SpriteFactory.getInstance().linkTexture;
             game._spriteBatch.Draw(overlay, new Rectangle(CameraXPos,CameraYPos,graphicsDevice.Viewport.Height, graphicsDevice.Viewport.Width), overlayTexture, color);
-            game._spriteBatch.DrawString(SpriteFactory.getInstance().pauseWord, "PAUSED", new Vector2(CameraXPos + (graphicsDevice.Viewport.Width / 2) - 70, CameraYPos + (graphicsDevice.Viewport.Height / 2) - 20), Color.White);
+            for (int i = 0; i < text.Count; i++)
+            {
+                text[i].RegisterSprite();
+                text[i].UpdatePos(new Vector2((StartXPos + letterWidth * i), StartYPos));
+            }
         }
 
     }
