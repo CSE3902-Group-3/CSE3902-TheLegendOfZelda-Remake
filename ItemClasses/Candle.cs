@@ -1,7 +1,4 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace LegendOfZelda
@@ -44,12 +41,6 @@ namespace LegendOfZelda
         {
             candle.RegisterSprite();
             candle.UpdatePos(newPos);
-        }
-
-        public IItem GenerateInventoryItem()
-        {
-            //All item in inventory will have a zero position
-            return new Candle(Vector2.Zero);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

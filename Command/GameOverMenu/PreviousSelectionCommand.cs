@@ -6,7 +6,7 @@
 
 		public PreviousSelectionCommand()
 		{
-			selector = new GameOverMenuSelector();
+			selector = GameOverState.selector;
 		}
 
 		public void Execute()

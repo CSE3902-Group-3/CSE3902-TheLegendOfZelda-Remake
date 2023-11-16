@@ -1,6 +1,4 @@
-﻿using LegendOfZelda;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -14,7 +12,6 @@ namespace LegendOfZelda
         private double LastSwitch = 0;
         private RectCollider collider;
         private int scale = SpriteFactory.getInstance().scale;
-        private Timer timer;
 
         public Fairy(Vector2 pos)
         {
@@ -57,12 +54,6 @@ namespace LegendOfZelda
         {
             fairy.RegisterSprite();
             fairy.UpdatePos(newPos);
-        }
-
-        public IItem GenerateInventoryItem()
-        {
-            //All item in inventory will have a zero position
-            return new Fairy(Vector2.Zero);
         }
 
         public void Update(GameTime gameTime)

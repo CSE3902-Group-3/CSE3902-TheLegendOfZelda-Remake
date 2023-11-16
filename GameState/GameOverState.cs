@@ -7,7 +7,7 @@ namespace LegendOfZelda
     {
         private GameOverScreen gameOver;
         private GameOverMenu menu;
-        private GameOverMenuSelector selector;
+        public static GameOverMenuSelector selector;
         private GameOverMenuController controller;
 
         public GameOverState()

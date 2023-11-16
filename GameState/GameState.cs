@@ -68,7 +68,9 @@ namespace LegendOfZelda
             Link = new Link();
             LevelMaster.SnapToRoom(1);
             PlayerController = new PlayerController(Link);
+            CameraController.Reset();
             SwitchState(new NormalState());
+            LinkUtilities.UpdatePositions(Link, LinkUtilities.originalLinkPosition);
         }
         public void Update(GameTime gameTime)
         {
