@@ -16,6 +16,7 @@ namespace LegendOfZelda
         private int flashingClosingFrequency;
         private int totalFlash;
         private int curtainAmt;
+        private bool doneDrawing;
         
         public WinningScreenManager()
 		{
@@ -27,6 +28,7 @@ namespace LegendOfZelda
             flashingClosingFrequency = 100;
             totalFlash = 6;
             curtainAmt = 16;
+            doneDrawing = false;
         }
 
         public void DrawWhiteFlash()
@@ -79,6 +81,13 @@ namespace LegendOfZelda
                 DrawBlackCurtain();
                 curtainUpdateAmt++;
                 lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
+                doneDrawing = true;
+            }
+
+            if (doneDrawing && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 3000))
+            {
+                GameState.CameraController.ChangeMenu(Menu.End);
+                doneDrawing = false;
             }
         }
 	}
