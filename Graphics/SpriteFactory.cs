@@ -12,7 +12,7 @@ namespace LegendOfZelda
     public class SpriteFactory
     {
         private static SpriteFactory instance;
-
+        
         public Texture2D linkTexture { get; private set; }
         private Texture2D enemiesTexture;
         private Texture2D enemyDeathTexture;

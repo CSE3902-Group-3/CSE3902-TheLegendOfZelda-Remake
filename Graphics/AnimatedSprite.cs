@@ -35,7 +35,7 @@ namespace LegendOfZelda
         public SpriteEffects effect;
     }
 
-    public class AnimatedSprite : IAnimatedSprite
+    public class AnimatedSprite : IAnimatedSprite, IHasShader
     {
         
 
@@ -57,6 +57,10 @@ namespace LegendOfZelda
         private bool _flashing = false;
 
         private bool persistent;
+
+        public Effect StandardShader { get; private set; }
+        public Effect ActiveShader { get; set; }
+
         public bool flashing
         {
             get { return _flashing; }
@@ -64,11 +68,13 @@ namespace LegendOfZelda
             {
                 if (value)
                 {
-                    AddEffect(new FlashingEffect(this));
+                    IAnimatedSpriteEffect effect = ShaderHolder.ShadersOn ? new ShaderFlashingEffect(this) : new FlashingEffect(this);
+                    AddEffect(effect);
                 }
                 else
                 {
                     RemoveEffect(FlashingEffect.name);
+                    ActiveShader = StandardShader;
                 }
                 _flashing = value;
             }
@@ -82,11 +88,13 @@ namespace LegendOfZelda
             {
                 if (value)
                 {
-                    AddEffect(new BlinkEffect(this));
+                    IAnimatedSpriteEffect effect = ShaderHolder.ShadersOn ? new ShaderBlinkEffect(this) : new BlinkEffect(this);
+                    AddEffect(effect);
                 }
                 else
                 {
                     RemoveEffect(BlinkEffect.name);
+                    ActiveShader = StandardShader;
                 }
                 _blinking = value;
             }
@@ -107,7 +115,16 @@ namespace LegendOfZelda
             effectList = new List<IAnimatedSpriteEffect>();
 
             this.persistent = persistent;
+            StandardShader = ShaderHolder.normalShader;
+            ActiveShader = StandardShader;
             RegisterSprite();
+        }
+
+        public Effect ChangeBaseShader(Effect newShader)
+        {
+            Effect prevShader = StandardShader;
+            StandardShader = newShader;
+            return prevShader;
         }
 
         public bool AddEffect(IAnimatedSpriteEffect effect)
