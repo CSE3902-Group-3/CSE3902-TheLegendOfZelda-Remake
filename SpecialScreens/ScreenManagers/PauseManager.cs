@@ -85,8 +85,8 @@ namespace LegendOfZelda
         {
             CameraXPos = (int)GameState.CameraController.mainCamera.worldPos.X;
             CameraYPos = (int)GameState.CameraController.mainCamera.worldPos.Y;
-            StartXPos = CameraXPos + (ScreenWidth * 2 / 5);
-            StartYPos = CameraYPos + (ScreenHeight *2 / 3);
+            StartXPos = CameraXPos + (ScreenWidth * 2 / 5) + 12;
+            StartYPos = CameraYPos + (ScreenHeight * 3 / 5);
 
             overlay = SpriteFactory.getInstance().linkTexture;
             game._spriteBatch.Draw(overlay, new Rectangle(CameraXPos, CameraYPos, ScreenWidth, ScreenHeight), overlayTexture, color);
