@@ -9,29 +9,6 @@ namespace LegendOfZelda
 		private List<AnimatedSprite> Save;
 		private List<AnimatedSprite> Retry;
 
-		/* CONTINUE letters */
-		private AnimatedSprite C;
-		private AnimatedSprite O;
-		private AnimatedSprite N;
-        private AnimatedSprite T;
-		private AnimatedSprite I;
-		private AnimatedSprite N2;
-		private AnimatedSprite U;
-		private AnimatedSprite E;
-
-		/* SAVE letters */
-		private AnimatedSprite S;
-		private AnimatedSprite A;
-		private AnimatedSprite V;
-		private AnimatedSprite E2;
-
-        /* RETRY letters */
-        private AnimatedSprite R;
-		private AnimatedSprite E3;
-		private AnimatedSprite T2;
-		private AnimatedSprite R2;
-		private AnimatedSprite Y;
-
 		private LetterFactory letterFactory;
 		private int cameraXPos;
 		private int cameraYPos;
@@ -46,39 +23,33 @@ namespace LegendOfZelda
 			cameraYPos = (int)GameState.CameraController.GameOverLocation.Y;
 			graphicsDevice = Game1.getInstance().GraphicsDevice;
 
-			C = letterFactory.GetLetterSprite('C');
-            O = letterFactory.GetLetterSprite('O');
-            N = letterFactory.GetLetterSprite('N');
-            T = letterFactory.GetLetterSprite('T');
-            I = letterFactory.GetLetterSprite('I');
-			N2 = letterFactory.GetLetterSprite('N');
-            U = letterFactory.GetLetterSprite('U');
-            E = letterFactory.GetLetterSprite('E');
-
-            S = letterFactory.GetLetterSprite('S');
-            A = letterFactory.GetLetterSprite('A');
-            V = letterFactory.GetLetterSprite('V');
-			E2 = letterFactory.GetLetterSprite('E');
-
-            R = letterFactory.GetLetterSprite('R');
-			E3 = letterFactory.GetLetterSprite('E');
-			T2 = letterFactory.GetLetterSprite('T');
-			R2 = letterFactory.GetLetterSprite('R');
-            Y = letterFactory.GetLetterSprite('Y');
-
 			Continue = new List<AnimatedSprite>()
 			{
-				C, O, N, T, I, N2, U, E
+                letterFactory.GetLetterSprite('C'),
+				letterFactory.GetLetterSprite('O'),
+				letterFactory.GetLetterSprite('N'),
+				letterFactory.GetLetterSprite('T'),
+				letterFactory.GetLetterSprite('I'),
+				letterFactory.GetLetterSprite('N'),
+				letterFactory.GetLetterSprite('U'),
+				letterFactory.GetLetterSprite('E')
 			};
 
 			Save = new List<AnimatedSprite>()
 			{
-				S, A, V, E2
+                letterFactory.GetLetterSprite('S'),
+				letterFactory.GetLetterSprite('A'),
+				letterFactory.GetLetterSprite('V'),
+				letterFactory.GetLetterSprite('E')
 			};
 
 			Retry = new List<AnimatedSprite>()
 			{
-				R, E3, T2, R2, Y
+                letterFactory.GetLetterSprite('R'),
+				letterFactory.GetLetterSprite('E'),
+				letterFactory.GetLetterSprite('T'),
+				letterFactory.GetLetterSprite('R'),
+				letterFactory.GetLetterSprite('Y')
 			};
         }
 
