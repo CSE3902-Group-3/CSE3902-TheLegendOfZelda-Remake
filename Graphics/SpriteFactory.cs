@@ -1458,7 +1458,7 @@ namespace LegendOfZelda
             return newSprite;
         }
 
-        public AnimatedSprite CreateWoodenBoomerangHUDSprite()
+        public AnimatedSprite CreateHUDBoomerangSprite()
         {
             Rectangle[] frames = new Rectangle[1]
             {
@@ -1515,6 +1515,16 @@ namespace LegendOfZelda
             Rectangle[] frames = new Rectangle[1]
             {
                 new Rectangle(633, 137, 8, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateArrowBowSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(630, 156, 16, 16)
             };
             AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             return newSprite;

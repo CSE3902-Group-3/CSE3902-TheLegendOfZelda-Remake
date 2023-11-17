@@ -1,10 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
@@ -13,6 +8,7 @@ namespace LegendOfZelda
         private static InventoryHUD instance;
 
         private const int scale = 4;
+        private int selectIndex = -1;
 
         private SpriteFactory spriteFactory;
         private LetterFactory letterFactory;
@@ -35,6 +31,8 @@ namespace LegendOfZelda
         private Dictionary<string, bool> InventoryAboveFrameUnlock;
 
         private Dictionary<IItem, string> IItemToString;
+        private Dictionary<int, AnimatedSprite> IndexSpriteDic;
+        private Dictionary<int, IItem> ItemDictionary;
 
         public InventoryHUD()
         {
@@ -44,7 +42,7 @@ namespace LegendOfZelda
 
             InventoryHUDBase = spriteFactory.CreateInventoryHUDSprite();
             // Should be able to change to the selected item, this is only for test now
-            SelectedItem = spriteFactory.CreateWoodenBoomerangHUDSprite();
+            SelectedItem = letterFactory.GetBlankSprite();
             CreateItemInFramesSprites();
             CreateItemAboveFramesSprites();
 
@@ -58,8 +56,8 @@ namespace LegendOfZelda
             CreateInventoryAboveUnlock();
 
             CreateIItemToString();
-
-            //Selector = Selector.GetInstance();
+            CreateItemStringDict();
+            CreateItemDict();
         }
 
         public static InventoryHUD GetInstance()
@@ -74,6 +72,7 @@ namespace LegendOfZelda
             //UpdatePos();
             Selector.Update();
             UpdateInventoryInUnlock();
+            UpdateSelectedItemSprite();
         }
 
         public void Show()
@@ -96,7 +95,7 @@ namespace LegendOfZelda
         {
             ItemsInFrame = new Dictionary<string, AnimatedSprite>
             {
-                { "boomerang", spriteFactory.CreateWoodenBoomerangHUDSprite() },
+                { "boomerang", spriteFactory.CreateHUDBoomerangSprite() },
                 { "bomb", spriteFactory.CreateHUDBombSprite() },
                 { "arrow", spriteFactory.CreateWoodenArrowSprtie() },
                 { "bow", spriteFactory.CreateWoodenBowSprite() },
@@ -195,6 +194,30 @@ namespace LegendOfZelda
             };
         }
 
+        public void CreateItemDict()
+        {
+            ItemDictionary = new Dictionary<int, IItem>()
+            {
+                { 0, new Boomerang(Vector2.Zero) },
+                { 1, new Bomb(Vector2.Zero)},
+                { 2, new Bow(Vector2.Zero)},
+                { 3, new Candle(Vector2.Zero)},
+                { 6, new Potion(Vector2.Zero)},
+            };
+        }
+
+        public void CreateItemStringDict()
+        {
+            IndexSpriteDic = new Dictionary<int, AnimatedSprite>()
+            {
+                { 0, spriteFactory.CreateHUDBoomerangSprite() },
+                { 1, spriteFactory.CreateHUDBombSprite() },
+                { 2, spriteFactory.CreateWoodenBowSprite() },
+                { 3, spriteFactory.CreateHUDBlueCandleSprite() },
+                { 6, spriteFactory.CreateHUDBluePotionSprite() },
+            };
+        }
+
         public void RegisterSprite(AnimatedSprite sprite, Vector2 pos)
         {
             sprite.RegisterSprite();
@@ -270,6 +293,24 @@ namespace LegendOfZelda
         {
             InventoryAboveFrameUnlock[item] = true;
         }
+
+        public void UpdateSelectedItemSprite()
+        {
+            if (selectIndex != -1)
+            {
+                SelectedItem.UnregisterSprite();
+                SelectedItem = IndexSpriteDic[selectIndex];
+                RegisterSprite(SelectedItem, SelectedItemPos);
+            }
+        }
         
+        public void UpdateSelectedItem(int index)
+        {
+            selectIndex = index;
+            if (selectIndex != -1)
+            {
+                inventory.SecondaryItem = ItemDictionary[selectIndex];
+            }
+        }
     }
 }

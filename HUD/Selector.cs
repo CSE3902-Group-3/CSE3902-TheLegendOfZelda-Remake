@@ -35,6 +35,8 @@ namespace LegendOfZelda
 
         private Dictionary<int, SelectorPos> PosDictionary;
 
+        private Dictionary<int, IItem> ItemDictionary;
+
         public Selector()
         {
             inventoryHUD = InventoryHUD.GetInstance();
@@ -106,12 +108,30 @@ namespace LegendOfZelda
             }
         }
 
+        public void CreateItemDict()
+        {
+            ItemDictionary = new Dictionary<int, IItem>()
+            {
+                { 0, new Boomerang(Vector2.Zero) },
+                { 1, new Bomb(Vector2.Zero)},
+                { 2, new Bow(Vector2.Zero)},
+                { 3, new Candle(Vector2.Zero)},
+                { 6, new Potion(Vector2.Zero)},
+            };
+        }
+
         private int FindFirstUnlock()
         {
+            if (inventoryHUD.GetUnlockList()[3] && inventoryHUD.GetUnlockCount() == 1)
+            {
+                SelectorIndex = 3;
+                return 2;
+            }
             foreach (KeyValuePair<int, SelectorPos> entry in PosDictionary)
             {
                 if (entry.Value.unlock)
                 {
+                    SelectorIndex = entry.Key;
                     return entry.Key;
                 }
             }
