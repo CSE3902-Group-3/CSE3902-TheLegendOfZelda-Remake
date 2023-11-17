@@ -13,12 +13,6 @@ namespace LegendOfZelda
         private Rectangle overlayTexture;
         private Color color;
         private LetterFactory letterFactory;
-        private AnimatedSprite P;
-        private AnimatedSprite A;
-        private AnimatedSprite U;
-        private AnimatedSprite S;
-        private AnimatedSprite E;
-        private AnimatedSprite D;
         private List<AnimatedSprite> text;
         private int letterWidth;
         private int CameraXPos;
