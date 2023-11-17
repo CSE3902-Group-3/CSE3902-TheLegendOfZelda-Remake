@@ -65,7 +65,8 @@ namespace LegendOfZelda
 
         public void ExecuteSelection()
         {
-            if (selection == 0) {
+            if (selection == 0)
+            {
                 //To be added in the future
             }
             else if (selection == 1)
