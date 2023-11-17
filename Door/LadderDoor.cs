@@ -23,7 +23,7 @@ namespace LegendOfZelda
             int scale = spriteFactory.scale;
             doorSize *= scale;
 
-            sprite = spriteFactory.CreateBlackTileSprite();
+            sprite = spriteFactory.CreateLadderSprite();
             sprite.UpdatePos(pos);
             collider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, doorSize, doorSize), CollisionLayer.Wall, this);
 

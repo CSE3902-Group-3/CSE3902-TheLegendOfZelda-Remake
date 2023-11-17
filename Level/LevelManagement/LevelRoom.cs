@@ -33,8 +33,6 @@ namespace LegendOfZelda
         }
         private void ProcessMapElements(Room room)
         {
-            room.RoomXLocation *= LevelUtilities.RoomWidth;
-            room.RoomYLocation *= LevelUtilities.RoomHeight * -1;
             foreach (MapElement mapElement in room.MapElements)
             {
                 switch (mapElement.ElementType)
