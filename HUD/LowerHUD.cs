@@ -14,9 +14,11 @@ namespace LegendOfZelda
 
         private const int scale = 4;
         private const int mapSize = 32;
+        private int selectIndex = -1;
 
         private SpriteFactory spriteFactory;
         private LetterFactory letterFactory;
+        private InventoryHUD inventoryHUD;
 
         private Inventory inventory;
         private Link link;
@@ -43,6 +45,7 @@ namespace LegendOfZelda
         private Vector2 LifePos;
 
         private Dictionary<AnimatedSprite, Vector2> MiniMap;
+        private Dictionary<int, AnimatedSprite> IndexSpriteDic;
 
         private int Level;
         private int RubiesCount;
@@ -64,6 +67,7 @@ namespace LegendOfZelda
         {
             letterFactory = LetterFactory.GetInstance();
             spriteFactory = SpriteFactory.getInstance();
+            inventoryHUD = InventoryHUD.GetInstance();
 
             inventory = Inventory.getInstance();
             link = GameState.Link;
@@ -72,6 +76,7 @@ namespace LegendOfZelda
             RubiesCount = inventory.GetQuantity(new OneRupee(Vector2.Zero));
             KeysCount = inventory.GetQuantity(new Key(Vector2.Zero));
             BombsCount = inventory.GetQuantity(new Bomb(Vector2.Zero));
+            selectIndex = inventoryHUD.selectIndex;
 
             CurrentHealth = (int)(link.GetCurrentHP() * 2);
             MaxHealth = (int)(link.GetMaxHP() * 2);
@@ -81,7 +86,7 @@ namespace LegendOfZelda
             LevelNumber = letterFactory.GetLetterSprite(Level);
             // The wepons below should be able to change later. These are test only.
             WeponA = spriteFactory.CreateWoodenSwoardSprite();
-            WeponB = spriteFactory.CreateHUDBoomerangSprite();
+            WeponB = letterFactory.GetBlankSprite();
             Rubies = QuantityToSprite(RubiesCount);
             Keys = QuantityToSprite(KeysCount);
             Bombs = QuantityToSprite(BombsCount);
@@ -99,6 +104,7 @@ namespace LegendOfZelda
             LifePos = new Vector2(LowerHUDBasePos.X + 176 * scale, LowerHUDBasePos.Y + 32 * scale);
 
             CreateMiniMap();
+            CreateItemStringDict();
         }
 
         public static LowerHUD GetInstance()
@@ -114,6 +120,7 @@ namespace LegendOfZelda
             UpdateKeys();
             UpdateBoombs();
             UpdateHealth();
+            UpdateSelectedItemSprite();
         }
 
         public void Show()
@@ -161,6 +168,18 @@ namespace LegendOfZelda
 
                 MiniMap.Add(tempSprite, tempPos);
             }
+        }
+
+        public void CreateItemStringDict()
+        {
+            IndexSpriteDic = new Dictionary<int, AnimatedSprite>()
+            {
+                { 0, spriteFactory.CreateHUDBoomerangSprite() },
+                { 1, spriteFactory.CreateHUDBombSprite() },
+                { 2, spriteFactory.CreateWoodenBowSprite() },
+                { 3, spriteFactory.CreateHUDBlueCandleSprite() },
+                { 6, spriteFactory.CreateHUDBluePotionSprite() },
+            };
         }
 
         public List<AnimatedSprite> QuantityToSprite(int quantitiy)
@@ -306,6 +325,17 @@ namespace LegendOfZelda
                 MaxHealth = (int)(link.GetMaxHP() * 2);
                 UnRegisterListSprite(Life);
                 GetHealthSprite(CurrentHealth, MaxHealth);
+            }
+        }
+
+        public void UpdateSelectedItemSprite()
+        {
+            selectIndex = inventoryHUD.selectIndex;
+            if (selectIndex != -1)
+            {
+                WeponB.UnregisterSprite();
+                WeponB = IndexSpriteDic[selectIndex];
+                RegisterSprite(WeponB, WeponBPos);
             }
         }
     }

@@ -8,7 +8,7 @@ namespace LegendOfZelda
         private static InventoryHUD instance;
 
         private const int scale = 4;
-        private int selectIndex = -1;
+        public int selectIndex = -1;
 
         private SpriteFactory spriteFactory;
         private LetterFactory letterFactory;
