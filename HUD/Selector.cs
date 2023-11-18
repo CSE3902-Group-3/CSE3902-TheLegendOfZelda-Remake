@@ -14,6 +14,8 @@ namespace LegendOfZelda
 
         private const int scale = 4;
 
+        private bool firstTime = true;
+
         InventoryHUD inventoryHUD;
 
         private int SelectorIndex = 0;
@@ -64,10 +66,11 @@ namespace LegendOfZelda
             UpdateUnlock();
             if (inventoryHUD.GetUnlockCount() == 0)
                 SelectorSprite.UnregisterSprite();
-            else if (inventoryHUD.GetUnlockCount() == 1)
+            else if (inventoryHUD.GetUnlockCount() == 1 || firstTime)
             {
                 SelectorSprite.RegisterSprite();
                 SelectorSprite.UpdatePos(PosDictionary[FindFirstUnlock()].pos);
+                firstTime = false;
             }
             else
                 SelectorSprite.UpdatePos(PosDictionary[SelectorIndex].pos);
