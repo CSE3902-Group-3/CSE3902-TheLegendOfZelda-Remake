@@ -555,20 +555,20 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 192,
-                    "YLocation": 512
+                    "XLocation": 1,
+                    "YLocation": 1
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 320,
-                    "YLocation": 576
+                    "XLocation": 1,
+                    "YLocation": 5
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 192,
-                    "YLocation": 768
+                    "XLocation": 3,
+                    "YLocation": 2
                 }
             ]
         },
@@ -1685,32 +1685,32 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 512,
-                    "YLocation": 512
+                    "XLocation": 5,
+                    "YLocation": 3
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 704,
-                    "YLocation": 512
+                    "XLocation": 6,
+                    "YLocation": 1
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 512,
-                    "YLocation": 768
+                    "XLocation": 7,
+                    "YLocation": 4
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 768,
-                    "YLocation": 768
+                    "XLocation": 9,
+                    "YLocation": 1
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 320,
-                    "YLocation": 768
+                    "XLocation": 10,
+                    "YLocation": 5
                 }
             ]
         },
@@ -2271,20 +2271,20 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 320,
-                    "YLocation": 448
+                    "XLocation": 3,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 384,
-                    "YLocation": 576
+                    "XLocation": 4,
+                    "YLocation": 2
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 320,
-                    "YLocation": 704
+                    "XLocation": 3,
+                    "YLocation": 4
                 }
             ]
         },
@@ -2845,38 +2845,38 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 128,
-                    "YLocation": 640
+                    "XLocation": 0,
+                    "YLocation": 3
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 192,
-                    "YLocation": 768
+                    "XLocation": 1,
+                    "YLocation": 5
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 320,
-                    "YLocation": 576
+                    "XLocation": 3,
+                    "YLocation": 4
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 320,
-                    "YLocation": 704
+                    "XLocation": 3,
+                    "YLocation": 2
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 640,
-                    "YLocation": 448
+                    "XLocation": 8,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 640,
-                    "YLocation": 832
+                    "XLocation": 8,
+                    "YLocation": 6
                 }
             ]
         },
@@ -3452,32 +3452,32 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 640,
-                    "YLocation": 448
+                    "XLocation": 3,
+                    "YLocation": 4
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 576,
-                    "YLocation": 576
+                    "XLocation": 4,
+                    "YLocation": 2
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 384,
-                    "YLocation": 576
+                    "XLocation": 6,
+                    "YLocation": 3
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 512,
-                    "YLocation": 640
+                    "XLocation": 7,
+                    "YLocation": 2
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 320,
-                    "YLocation": 704
+                    "XLocation": 8,
+                    "YLocation": 0
                 }
             ]
         },
@@ -4038,56 +4038,56 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 320,
-                    "YLocation": 448
+                    "XLocation": 3,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 768,
-                    "YLocation": 512
+                    "XLocation": 10,
+                    "YLocation": 1
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 640,
-                    "YLocation": 576
+                    "XLocation": 6,
+                    "YLocation": 3
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 512,
-                    "YLocation": 576
+                    "XLocation": 8,
+                    "YLocation": 3
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 640,
-                    "YLocation": 704
+                    "XLocation": 6,
+                    "YLocation": 5
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 512,
-                    "YLocation": 704
+                    "XLocation": 8,
+                    "YLocation": 5
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 832,
-                    "YLocation": 640
+                    "XLocation": 11,
+                    "YLocation": 3
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 768,
-                    "YLocation": 768
+                    "XLocation": 10,
+                    "YLocation": 5
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 6,
-                    "XLocation": 768,
-                    "YLocation": 640
+                    "XLocation": 10,
+                    "YLocation": 3
                 }
             ]
         },
@@ -4644,8 +4644,20 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 9,
-                    "XLocation": 448,
-                    "YLocation": 576
+                    "XLocation": 0,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 40,
+                    "XLocation": 2,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 40,
+                    "XLocation": 9,
+                    "YLocation": 2
                 }
             ]
         },
@@ -5210,20 +5222,20 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 4,
-                    "XLocation": 460,
-                    "YLocation": 510
+                    "XLocation": 5,
+                    "YLocation": 1
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 4,
-                    "XLocation": 460,
-                    "YLocation": 760
+                    "XLocation": 5,
+                    "YLocation": 5
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 4,
-                    "XLocation": 330,
-                    "YLocation": 630
+                    "XLocation": 3,
+                    "YLocation": 3
                 },
                 {
                     "ElementType": "Block",
@@ -5801,38 +5813,38 @@
                 {
                     "ElementType": "Item",
                     "ElementValue": 11,
-                    "XLocation": 790,
-                    "YLocation": 640
+                    "XLocation": 10,
+                    "YLocation": 3
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 4,
-                    "XLocation": 260,
-                    "YLocation": 450
+                    "XLocation": 2,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 4,
-                    "XLocation": 600,
-                    "YLocation": 450
+                    "XLocation": 8,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 4,
-                    "XLocation": 350,
-                    "YLocation": 585
+                    "XLocation": 3,
+                    "YLocation": 2
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 4,
-                    "XLocation": 350,
-                    "YLocation": 760
+                    "XLocation": 9,
+                    "YLocation": 2
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 4,
-                    "XLocation": 650,
-                    "YLocation": 585
+                    "XLocation": 3,
+                    "YLocation": 5
                 }
             ]
         },
@@ -6407,27 +6419,39 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 5,
-                    "XLocation": 580,
-                    "YLocation": 448
+                    "XLocation": 7,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 5,
-                    "XLocation": 580,
-                    "YLocation": 700
+                    "XLocation": 9,
+                    "YLocation": 1
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 5,
-                    "XLocation": 740,
-                    "YLocation": 510
+                    "XLocation": 7,
+                    "YLocation": 4
                 }
             ]
         },
+
+
+
+
+
         {
             "RoomNumber": 11,
             "RoomXLocation": 4,
             "RoomYLocation": 3,
+            "Events": [
+                {
+                    "EventNumber": 0,
+                    "XLocation": 8,
+                    "YLocation": 6
+                }
+            ],
             "AdjacentRooms": [
                 {
                     "RoomNumber": 14,
@@ -6977,58 +7001,52 @@
                     "YLocation": 6
                 },
                 {
-                    "ElementType": "Item",
-                    "ElementValue": 10,
-                    "XLocation": 650,
-                    "YLocation": 830
+                    "ElementType": "Enemy",
+                    "ElementValue": 8,
+                    "XLocation": 0,
+                    "YLocation": 3
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 8,
-                    "XLocation": 290,
-                    "YLocation": 445
+                    "XLocation": 0,
+                    "YLocation": 4
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 8,
-                    "XLocation": 370,
-                    "YLocation": 445
+                    "XLocation": 2,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 8,
-                    "XLocation": 730,
-                    "YLocation": 445
+                    "XLocation": 3,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 8,
-                    "XLocation": 810,
-                    "YLocation": 445
+                    "XLocation": 9,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 8,
-                    "XLocation": 125,
-                    "YLocation": 650
+                    "XLocation": 10,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 8,
-                    "XLocation": 125,
-                    "YLocation": 750
+                    "XLocation": 11,
+                    "YLocation": 4
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 8,
-                    "XLocation": 830,
-                    "YLocation": 700
-                },
-                {
-                    "ElementType": "Enemy",
-                    "ElementValue": 8,
-                    "XLocation": 830,
-                    "YLocation": 800
+                    "XLocation": 11,
+                    "YLocation": 5
                 }
             ]
         },
@@ -8112,32 +8130,32 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 190,
-                    "YLocation": 560
+                    "XLocation": 1,
+                    "YLocation": 2
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 650,
-                    "YLocation": 560
+                    "XLocation": 9,
+                    "YLocation": 2
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 800,
-                    "YLocation": 700
+                    "XLocation": 10,
+                    "YLocation": 3
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 1,
-                    "XLocation": 600,
-                    "YLocation": 700
+                    "XLocation": 5,
+                    "YLocation": 4
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 3,
-                    "XLocation": 500,
-                    "YLocation": 580
+                    "XLocation": 6,
+                    "YLocation": 2
                 }
             ]
         },
@@ -8701,20 +8719,20 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 260,
-                    "YLocation": 510
+                    "XLocation": 2,
+                    "YLocation": 1
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 320,
-                    "YLocation": 670
+                    "XLocation": 10,
+                    "YLocation": 2
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 7,
-                    "XLocation": 765,
-                    "YLocation": 540
+                    "XLocation": 3,
+                    "YLocation": 4
                 }
             ]
         },
@@ -9273,14 +9291,14 @@
                 {
                     "ElementType": "Item",
                     "ElementValue": 9,
-                    "XLocation": 770,
-                    "YLocation": 640
+                    "XLocation": 10,
+                    "YLocation": 3
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 0,
-                    "XLocation": 570,
-                    "YLocation": 600
+                    "XLocation": 7,
+                    "YLocation": 2
                 }
             ]
         },
@@ -9840,8 +9858,8 @@
                 {
                     "ElementType": "Item",
                     "ElementValue": 14,
-                    "XLocation": 490,
-                    "YLocation": 650
+                    "XLocation": 0,
+                    "YLocation": 3
                 }
             ]
         },
@@ -10398,26 +10416,26 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 2,
-                    "XLocation": 130,
-                    "YLocation": 450
+                    "XLocation": 0,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 2,
-                    "XLocation": 830,
-                    "YLocation": 450
+                    "XLocation": 0,
+                    "YLocation": 6
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 2,
-                    "XLocation": 130,
-                    "YLocation": 830
+                    "XLocation": 11,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 2,
-                    "XLocation": 830,
-                    "YLocation": 830
+                    "XLocation": 11,
+                    "YLocation": 6
                 },
                 {
                     "ElementType": "Block",
@@ -10991,20 +11009,20 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 5,
-                    "XLocation": 700,
-                    "YLocation": 450
+                    "XLocation": 8,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 5,
-                    "XLocation": 550,
-                    "YLocation": 570
+                    "XLocation": 7,
+                    "YLocation": 2
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 5,
-                    "XLocation": 680,
-                    "YLocation": 700
+                    "XLocation": 9,
+                    "YLocation": 4
                 }
             ]
         },
@@ -11556,32 +11574,32 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 3,
-                    "XLocation": 480,
-                    "YLocation": 648
+                    "XLocation": 5,
+                    "YLocation": 3
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 6,
-                    "XLocation": 352,
-                    "YLocation": 648
+                    "XLocation": 5,
+                    "YLocation": 1
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 6,
-                    "XLocation": 608,
-                    "YLocation": 648
+                    "XLocation": 5,
+                    "YLocation": 5
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 10,
-                    "XLocation": 480,
-                    "YLocation": 520
+                    "XLocation": 2,
+                    "YLocation": 3
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 10,
-                    "XLocation": 480,
-                    "YLocation": 776
+                    "XLocation": 9,
+                    "YLocation": 3
                 }
             ]
         },
@@ -12133,188 +12151,188 @@
                 {
                     "ElementType": "Item",
                     "ElementValue": 0,
-                    "XLocation": 832,
-                    "YLocation": 448
+                    "XLocation": 0,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 0,
-                    "XLocation": 832,
-                    "YLocation": 448
+                    "XLocation": 0,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 0,
-                    "XLocation": 832,
-                    "YLocation": 448
+                    "XLocation": 0,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 0,
-                    "XLocation": 832,
-                    "YLocation": 448
+                    "XLocation": 0,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 0,
-                    "XLocation": 832,
-                    "YLocation": 448
+                    "XLocation": 0,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 1,
-                    "XLocation": 768,
-                    "YLocation": 448
+                    "XLocation": 1,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 1,
-                    "XLocation": 768,
-                    "YLocation": 448
+                    "XLocation": 1,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 1,
-                    "XLocation": 768,
-                    "YLocation": 448
+                    "XLocation": 1,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 1,
-                    "XLocation": 768,
-                    "YLocation": 448
+                    "XLocation": 1,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 1,
-                    "XLocation": 768,
-                    "YLocation": 448
+                    "XLocation": 1,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 2,
-                    "XLocation": 704,
-                    "YLocation": 448
+                    "XLocation": 2,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 2,
-                    "XLocation": 704,
-                    "YLocation": 448
+                    "XLocation": 2,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 2,
-                    "XLocation": 704,
-                    "YLocation": 448
+                    "XLocation": 2,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 2,
-                    "XLocation": 704,
-                    "YLocation": 448
+                    "XLocation": 2,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 2,
-                    "XLocation": 704,
-                    "YLocation": 448
+                    "XLocation": 2,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 3,
-                    "XLocation": 640,
-                    "YLocation": 448
+                    "XLocation": 3,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 4,
-                    "XLocation": 576,
-                    "YLocation": 448
+                    "XLocation": 4,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 5,
-                    "XLocation": 512,
-                    "YLocation": 448
+                    "XLocation": 0,
+                    "YLocation": 11
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 6,
-                    "XLocation": 448,
-                    "YLocation": 448
+                    "XLocation": 11,
+                    "YLocation": 6
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 7,
-                    "XLocation": 384,
-                    "YLocation": 448
+                    "XLocation": 7,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 8,
-                    "XLocation": 320,
-                    "YLocation": 448
+                    "XLocation": 8,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 9,
-                    "XLocation": 256,
-                    "YLocation": 448
+                    "XLocation": 9,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 10,
-                    "XLocation": 192,
-                    "YLocation": 448
+                    "XLocation": 10,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 10,
-                    "XLocation": 192,
-                    "YLocation": 448
+                    "XLocation": 10,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 10,
-                    "XLocation": 192,
-                    "YLocation": 448
+                    "XLocation": 10,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 10,
-                    "XLocation": 192,
-                    "YLocation": 448
+                    "XLocation": 10,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 10,
-                    "XLocation": 192,
-                    "YLocation": 448
+                    "XLocation": 10,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 11,
-                    "XLocation": 128,
-                    "YLocation": 448
+                    "XLocation": 11,
+                    "YLocation": 0
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 12,
-                    "XLocation": 832,
-                    "YLocation": 832
+                    "XLocation": 0,
+                    "YLocation": 6
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 13,
-                    "XLocation": 768,
-                    "YLocation": 832
+                    "XLocation": 1,
+                    "YLocation": 6
                 },
                 {
                     "ElementType": "Item",
                     "ElementValue": 14,
-                    "XLocation": 704,
-                    "YLocation": 832
+                    "XLocation": 0,
+                    "YLocation": 0
                 }
             ]
         }

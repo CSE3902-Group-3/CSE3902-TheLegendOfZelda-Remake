@@ -1860,7 +1860,7 @@ namespace LegendOfZelda
         {
             Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(0, 11, 256, 224),
+                new Rectangle(1, 11, 256, 224),
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(menuTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);

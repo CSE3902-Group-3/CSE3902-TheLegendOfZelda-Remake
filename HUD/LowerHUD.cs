@@ -121,6 +121,7 @@ namespace LegendOfZelda
             UpdateBoombs();
             UpdateHealth();
             UpdateSelectedItemSprite();
+
         }
 
         public void Show()

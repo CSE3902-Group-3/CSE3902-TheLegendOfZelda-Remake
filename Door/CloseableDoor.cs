@@ -71,7 +71,7 @@ namespace LegendOfZelda
                 {
                     player = GameState.Link;
                     player.EnterRoomTransition();
-                    LevelMaster.GetInstance().NavigateInDirection(direction, OnNavComplete);
+                    LevelManager.GetInstance().TransitionToRoom(direction);
                     break;
                 }
             }
@@ -97,11 +97,6 @@ namespace LegendOfZelda
             openSprite.UnregisterSprite();
 
             Closed = true;
-        }
-
-        private void OnNavComplete()
-        {
-            player.ExitRoomTransition();
         }
     }
 }

@@ -40,7 +40,7 @@ namespace LegendOfZelda
         public void Destroy()
         {
             sprite.UnregisterSprite();
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

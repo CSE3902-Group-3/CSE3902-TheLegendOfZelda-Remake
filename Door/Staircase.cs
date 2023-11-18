@@ -13,6 +13,7 @@ namespace LegendOfZelda
         private IPlayer player;
 
         private int doorSize = 16;
+        private const int brickeRoom = 12;
         private const int entrancePosX = 304;
         private const int entrancePosY = -608;
         public Staircase(Vector2 pos)
@@ -35,7 +36,7 @@ namespace LegendOfZelda
             {
                 if (collision.CollidedWith.Layer == CollisionLayer.Player)
                 {
-                    LevelMaster.GetInstance().NavigateToRoom(LevelMaster.brickRoom);
+                    LevelManager.GetInstance().SnapToRoom(brickeRoom);
 
                     player = GameState.Link;
                     if(player is Link)

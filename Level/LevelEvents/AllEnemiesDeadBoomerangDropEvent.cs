@@ -11,17 +11,17 @@ namespace LegendOfZelda
         {
             RoomNumber = roomNumber;
             Position = position;
-            LevelMaster.RegisterUpdateable(this);
+            LevelManager.AddUpdateable(this);
         }
         private void ConditionSuccess()
         {
             IItem boomerang = new Boomerang(Position);
             boomerang.Show();
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
         }
         public void CheckCondition()
         {
-            if (LevelMaster.EnemiesList[RoomNumber].Count == 0)
+            if (!LevelManager.CurrentLevelRoom.EnemiesInRoom())
             {
                 ConditionSuccess();
             }
