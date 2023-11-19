@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 namespace LegendOfZelda
 {
 	public class GameOverScreen : IUpdateable
@@ -121,8 +120,6 @@ namespace LegendOfZelda
 			 */
 			if ((counter == 4) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
 			{
-				CameraController.GetInstance().RemovePersistentDrawablesFromMainCamera();
-				CameraController.GetInstance().RemoveDrawablesFromActiveMenuCamera();
                 DrawBlackScreen();
                 new GameOverMenu();
                 new GameOverMenuSelector();
@@ -135,7 +132,6 @@ namespace LegendOfZelda
 			 */
 			if ((counter == 5) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
-				GameState.CameraController.ChangeMenu(Menu.GameOver);
                 WriteWord();
                 lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
                 counter++;
@@ -143,7 +139,8 @@ namespace LegendOfZelda
 
             if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
-				text.Remove();
+                GameState.CameraController.ChangeMenu(Menu.GameOver);
+				UnactivateGameOverScreen();
 				menu.Draw();
 				done = true;
 				counter++;
