@@ -4,15 +4,15 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-    public class LockedDoor : ICollidable
+    public class LockedDoor : ICollidable, IDoor
     {
         private IAnimatedSprite openSprite;
         private IAnimatedSprite closedSprite;
 
         public bool Closed { get; private set; }
 
-        private IRectCollider closedCollider;
-        private IRectCollider openCollider;
+        public IRectCollider ClosedCollider { get; private set; }
+        public IRectCollider OpenCollider { get; private set; }
 
         private int wallSize = 32;
         private IPlayer player;
@@ -23,6 +23,7 @@ namespace LegendOfZelda
             wallSize *= spriteFactory.scale;
             Closed = true;
             this.direction = direction;
+            LevelManager.CurrentLevelRoom.AddDoor(direction, this);
 
             switch (direction)
             {
@@ -31,34 +32,34 @@ namespace LegendOfZelda
                     openSprite.UpdatePos(pos);
                     closedSprite = spriteFactory.CreateNorthLockedDoorSprite();
                     closedSprite.UpdatePos(pos);
-                    openCollider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, wallSize, wallSize / 2), CollisionLayer.OuterWall, this);
+                    OpenCollider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, wallSize, wallSize / 2), CollisionLayer.OuterWall, this);
                     break;
                 case Direction.right:
                     openSprite = spriteFactory.CreateEastOpenDoorSprite();
                     openSprite.UpdatePos(pos);
                     closedSprite = spriteFactory.CreateEastLockedDoorSprite();
                     closedSprite.UpdatePos(pos);
-                    openCollider = new RectCollider(new Rectangle((int)pos.X + wallSize / 2, (int)pos.Y, wallSize / 2, wallSize), CollisionLayer.OuterWall, this);
+                    OpenCollider = new RectCollider(new Rectangle((int)pos.X + wallSize / 2, (int)pos.Y, wallSize / 2, wallSize), CollisionLayer.OuterWall, this);
                     break;
                 case Direction.down:
                     openSprite = spriteFactory.CreateSouthOpenDoorSprite();
                     openSprite.UpdatePos(pos);
                     closedSprite = spriteFactory.CreateSouthLockedDoorSprite();
                     closedSprite.UpdatePos(pos);
-                    openCollider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y + wallSize / 2, wallSize, wallSize / 2), CollisionLayer.OuterWall, this);
+                    OpenCollider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y + wallSize / 2, wallSize, wallSize / 2), CollisionLayer.OuterWall, this);
                     break;
                 case Direction.left:
                     openSprite = spriteFactory.CreateWestOpenDoorSprite();
                     openSprite.UpdatePos(pos);
                     closedSprite = spriteFactory.CreateWestLockedDoorSprite();
                     closedSprite.UpdatePos(pos);
-                    openCollider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, wallSize / 2, wallSize), CollisionLayer.OuterWall, this);
+                    OpenCollider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, wallSize / 2, wallSize), CollisionLayer.OuterWall, this);
                     break;
             }
 
-            closedCollider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, wallSize, wallSize), CollisionLayer.OuterWall, this);
+            ClosedCollider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, wallSize, wallSize), CollisionLayer.OuterWall, this);
             openSprite.UnregisterSprite();
-            openCollider.Active = false;
+            OpenCollider.Active = false;
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
@@ -80,7 +81,7 @@ namespace LegendOfZelda
             //This call is long because Link's inventory is deeply nested in Link and because the RemoveItem method requires an actual IItem object
             if(player.StateMachine.linkInventory.RemoveItem(new Key(Vector2.Zero)) == true)
             {
-                OpenDoor();
+                Open();
             }
         }
 
@@ -91,13 +92,29 @@ namespace LegendOfZelda
             player.EnterRoomTransition();
         }
 
-        public void OpenDoor()
+        public void Open()
         {
-            openSprite.RegisterSprite();
-            closedCollider.Active = false;
-            openCollider.Active = true;
+            if (Closed)
+            {
+                openSprite.RegisterSprite();
+                LevelManager.RemoveDrawable(closedSprite);
+                ClosedCollider.Active = false;
+                OpenCollider.Active = true;
+                Closed = false;
+            }
+        }
+        public void Close()
+        {
+            if (!Closed)
+            {
+                OpenCollider.Active = false;
+                openSprite.UnregisterSprite();
 
-            Closed = false;
+                ClosedCollider.Active = true;
+                closedSprite.RegisterSprite();
+
+                Closed = true;
+            }
         }
     }
 }

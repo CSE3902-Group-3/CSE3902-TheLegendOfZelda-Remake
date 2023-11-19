@@ -74,6 +74,7 @@ namespace LegendOfZelda
             PreviousRoom = CurrentRoom;
             CurrentRoom = targetRoom;
             LevelRooms[CurrentRoom].SwitchIn();
+            LevelRooms[CurrentRoom].OpenDoor(LevelUtilities.GetOppositeDirection(direction));
             return true;
         }
         public void AfterRoomTransition()

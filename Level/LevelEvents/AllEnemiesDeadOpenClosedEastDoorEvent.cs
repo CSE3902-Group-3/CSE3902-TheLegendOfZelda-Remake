@@ -3,25 +3,31 @@ using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
-    internal class AllEnemiesDeadBoomerangDropEvent : ILevelEvent
+    internal class AllEnemiesDeadOpenClosedEastDoorEvent : ILevelEvent
     {
-        private Vector2 Position;
-        public AllEnemiesDeadBoomerangDropEvent(Vector2 position)
+        private IDoor Door;
+        public AllEnemiesDeadOpenClosedEastDoorEvent(Room room)
         {
-            Position = position;
             LevelManager.AddUpdateable(this);
+            Door = new CloseableDoor(LevelUtilities.CalculateEastDoorPosition(room), Direction.right);
         }
         private void ConditionSuccess()
         {
-            IItem boomerang = new Boomerang(Position);
-            boomerang.Show();
+            Door.Open();
             LevelManager.RemoveUpdateable(this);
+        }
+        private void ConditionFailure()
+        {
+            Door.Close();
         }
         public void CheckCondition()
         {
             if (!LevelManager.CurrentLevelRoom.EnemiesInRoom())
             {
                 ConditionSuccess();
+            } else
+            {
+                ConditionFailure();
             }
         }
         public void Update(GameTime gameTime)

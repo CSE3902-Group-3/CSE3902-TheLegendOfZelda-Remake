@@ -121,8 +121,12 @@ namespace LegendOfZelda
 			 */
 			if ((counter == 4) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
 			{
-				DrawBlackScreen();
-				lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
+				CameraController.GetInstance().RemovePersistentDrawablesFromMainCamera();
+				CameraController.GetInstance().RemoveDrawablesFromActiveMenuCamera();
+                DrawBlackScreen();
+                new GameOverMenu();
+                new GameOverMenuSelector();
+                lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
 				counter++;
 			}
 
@@ -131,7 +135,6 @@ namespace LegendOfZelda
 			 */
 			if ((counter == 5) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
-                GameState.CameraController.RemovePersistentDrawablesFromMainCamera();
 				GameState.CameraController.ChangeMenu(Menu.GameOver);
                 WriteWord();
                 lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;

@@ -67,8 +67,8 @@
          * WallExterior, 33
          * Ladder, 34
          * LadderDoor, 35
-         * Room8PushableBlock, 36
-         * Room16PushableBlock, 37
+         * MoveWestPushableBlock, 36
+         * MoveSouthPushableBlock, 37
          * ImpassibleBlackTile, 38
          * Room12ExteriorCollider, 39
          * Fire, 40

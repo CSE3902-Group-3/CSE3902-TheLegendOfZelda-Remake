@@ -2307,6 +2307,13 @@
                     "Direction": "East"
                 }
             ],
+            "Events": [
+                {
+                    "EventNumber": 2,
+                    "XLocation": 0,
+                    "YLocation": 0
+                }
+            ],
             "MapElements": [
                 {
                     "ElementType": "Block",
@@ -2317,12 +2324,6 @@
                 {
                     "ElementType": "Block",
                     "ElementValue": 25,
-                    "XLocation": 0,
-                    "YLocation": 0
-                },
-                {
-                    "ElementType": "Block",
-                    "ElementValue": 22,
                     "XLocation": 0,
                     "YLocation": 0
                 },
@@ -4670,6 +4671,13 @@
             "RoomNumber": 8,
             "RoomXLocation": 1,
             "RoomYLocation": 3,
+            "Events": [
+                {
+                    "EventNumber": 3,
+                    "XLocation": 5,
+                    "YLocation": 3
+                }
+            ],
             "AdjacentRooms": [
                 {
                     "RoomNumber": 7,
@@ -4694,12 +4702,6 @@
                 {
                     "ElementType": "Block",
                     "ElementValue": 9,
-                    "XLocation": 0,
-                    "YLocation": 0
-                },
-                {
-                    "ElementType": "Block",
-                    "ElementValue": 24,
                     "XLocation": 0,
                     "YLocation": 0
                 },
@@ -5235,12 +5237,6 @@
                     "ElementType": "Enemy",
                     "ElementValue": 4,
                     "XLocation": 3,
-                    "YLocation": 3
-                },
-                {
-                    "ElementType": "Block",
-                    "ElementValue": 36,
-                    "XLocation": 5,
                     "YLocation": 3
                 }
             ]
@@ -8750,6 +8746,13 @@
                     "Direction": "South"
                 }
             ],
+            "Events": [
+                {
+                    "EventNumber": 2,
+                    "XLocation": 0,
+                    "YLocation": 0
+                }
+            ],
             "MapElements": [
                 {
                     "ElementType": "Block",
@@ -8760,12 +8763,6 @@
                 {
                     "ElementType": "Block",
                     "ElementValue": 9,
-                    "XLocation": 0,
-                    "YLocation": 0
-                },
-                {
-                    "ElementType": "Block",
-                    "ElementValue": 22,
                     "XLocation": 0,
                     "YLocation": 0
                 },

@@ -119,6 +119,7 @@ namespace LegendOfZelda
                 {
                     if (currentCooldown <= 0)
                     {
+                        Die();
                         EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
                         currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
                         Sprite.flashing = true;

@@ -1,4 +1,6 @@
-﻿namespace LegendOfZelda
+﻿using LegendOfZelda.Level;
+
+namespace LegendOfZelda
 {
     public class EventLamda
     {
@@ -10,7 +12,9 @@
             EventFunctionArray = new Lamda[]
             {
                 AllEnemiesDeadKeyDrop,
-                AllEnemiesDeadBoomerangDrop
+                AllEnemiesDeadBoomerangDrop,
+                AllEnemiesDeadOpenEastDoor,
+                PushBlockWestOpenWestDoor
             };
         }
         public static EventLamda GetInstance()
@@ -19,13 +23,23 @@
                 Instance = new EventLamda();
             return Instance;
         }
+        // There is no ordering to the events, they are just added as needed
+        // Refer to Level/Levels/LevelWritingInstructions.txt for the dictionary
         public static void AllEnemiesDeadKeyDrop(Room room, LevelEvent levelEvent)
         {
-            new AllEnemiesDeadKeyDropEvent(room.RoomNumber, LevelUtilities.CalculatePositionWallOffset(room, levelEvent));
+            new AllEnemiesDeadKeyDropEvent(LevelUtilities.CalculatePositionWallOffset(room, levelEvent));
         }
         public static void AllEnemiesDeadBoomerangDrop(Room room, LevelEvent levelEvent)
         {
-            new AllEnemiesDeadBoomerangDropEvent(room.RoomNumber, LevelUtilities.CalculatePositionWallOffset(room, levelEvent));
+            new AllEnemiesDeadBoomerangDropEvent(LevelUtilities.CalculatePositionWallOffset(room, levelEvent));
+        }
+        public static void AllEnemiesDeadOpenEastDoor(Room room, LevelEvent levelEvent)
+        {
+            new AllEnemiesDeadOpenClosedEastDoorEvent(room);
+        }
+        public static void PushBlockWestOpenWestDoor(Room room, LevelEvent levelEvent)
+        {
+            new PushBlockWestOpenWestClosedDoorEvent(LevelUtilities.CalculatePositionWallOffset(room, levelEvent), room);
         }
     }
 }

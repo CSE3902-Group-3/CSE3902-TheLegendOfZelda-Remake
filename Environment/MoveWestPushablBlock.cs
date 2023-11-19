@@ -1,12 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace LegendOfZelda
 {
-    public class Room8PushableBlock : ICollidable, IUpdateable
+    public class MoveWestPushablBlock : ICollidable, IUpdateable
     {
+        public bool Moved { get; private set; } = false;
         private ISprite sprite;
         private IRectCollider collider;
         private int wallSize = 16;
@@ -18,6 +17,7 @@ namespace LegendOfZelda
 
         private Vector2 targetPos;
         private const float moveSpeed = 1;
+        private int CreatedInRoom;
 
         private Vector2 Pos
         {
@@ -30,7 +30,7 @@ namespace LegendOfZelda
         }
             
 
-        public Room8PushableBlock(Vector2 pos)
+        public MoveWestPushablBlock(Vector2 pos)
         {
             SpriteFactory spriteFactory = SpriteFactory.getInstance();
             sprite = spriteFactory.CreateWallSprite();
@@ -39,9 +39,10 @@ namespace LegendOfZelda
             startingPos = pos;
             _pos = pos;
             targetPos = pos + new Vector2(wallSize, 0);
+            CreatedInRoom = LevelManager.CurrentRoom;
 
             collider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, wallSize, wallSize), CollisionLayer.Wall, this);
-            LevelManager.AddUpdateable(this);
+            LevelManager.AddUpdateable(this, true);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
@@ -70,6 +71,11 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
+            if (CreatedInRoom != LevelManager.CurrentRoom)
+            {
+                Reset();
+                return;
+            }
             switch (state)
             {
                 case BlockState.Pushing:
@@ -93,12 +99,17 @@ namespace LegendOfZelda
         private void StartMoving()
         {
             if (state == BlockState.Pushing) state = BlockState.Moving;
+            Moved = true;
         }
 
         public void Reset()
         {
-            Pos = startingPos;
-            state = BlockState.Idle;
+            if (Moved)
+            {
+                Moved = false;
+                Pos = startingPos;
+                state = BlockState.Idle;
+            }
         }
     }
 }
