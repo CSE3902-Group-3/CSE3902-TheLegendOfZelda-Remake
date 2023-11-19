@@ -85,7 +85,7 @@ namespace LegendOfZelda
             }
             else
             {
-                SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+                SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit);
                 Sprites[CurrentSprite].blinking = true;
             }
         }
@@ -162,7 +162,7 @@ namespace LegendOfZelda
         public void Stun()
         {
             allowedToMove = false;
-            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit);
             new Timer(2.0f, CompleteStun);
         }
         public void CompleteStun()

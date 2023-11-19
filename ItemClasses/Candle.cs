@@ -13,7 +13,7 @@ namespace LegendOfZelda
         public Candle(Vector2 pos)
         {
             candle = SpriteFactory.getInstance().CreateBlueCandleSprite();
-            SoundFactory.PlaySound(SoundFactory.getInstance().Candle, 1.0f, 0.0f, 0.0f);
+            SoundFactory.PlaySound(SoundFactory.getInstance().Candle);
             position = pos;
             collider = new RectCollider(new Rectangle((int)position.X, (int)position.Y, 8 * scale, 16 * scale), CollisionLayer.Item, this);
             collider.Pos = pos;

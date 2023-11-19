@@ -13,7 +13,7 @@ namespace LegendOfZelda
         public AquamentusBall(Vector2 pos, Vector2 dir)
         {
             LevelMaster.RegisterUpdateable(this);
-            SoundFactory.PlaySound(SoundFactory.getInstance().ArrowBoomerang, 1.0f, 0.0f, 0.0f);
+            SoundFactory.PlaySound(SoundFactory.getInstance().ArrowBoomerang);
             Sprite = SpriteFactory.getInstance().CreateAquamentusBallSprite();
             Position = pos;
             Direction = dir;

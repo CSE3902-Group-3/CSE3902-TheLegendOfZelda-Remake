@@ -62,7 +62,7 @@ namespace LegendOfZelda
                     collider = new RectCollider(new Rectangle((int)spawnPos.X-46, (int)spawnPos.Y, colliderWidth, colliderHeight), CollisionLayer.PlayerWeapon, this);
                     break;
             }
-            SoundFactory.PlaySound(SoundFactory.getInstance().SwordSlash, 1.0f, 0.0f, 0.0f);
+            SoundFactory.PlaySound(SoundFactory.getInstance().SwordSlash);
         }
 
         public void Destroy()

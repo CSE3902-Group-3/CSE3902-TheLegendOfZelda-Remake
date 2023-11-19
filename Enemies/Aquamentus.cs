@@ -69,7 +69,7 @@ namespace LegendOfZelda
         }
         public void Attack()
         {
-            SoundFactory.PlaySound(SoundFactory.getInstance().BossScream1, 1.0f, 0.0f, 0.0f);
+            SoundFactory.PlaySound(SoundFactory.getInstance().BossScream1);
             new AquamentusBall(Position, new Vector2(-FireballSpeed, 0));
             new AquamentusBall(Position, new Vector2(-FireballSpeed, FireballSpeed));
             new AquamentusBall(Position, new Vector2(-FireballSpeed, -FireballSpeed));
@@ -85,7 +85,7 @@ namespace LegendOfZelda
             }
             else
             {
-                SoundFactory.PlaySound(SoundFactory.getInstance().BossHit, 1.0f, 0.0f, 0.0f);
+                SoundFactory.PlaySound(SoundFactory.getInstance().BossHit);
             }
         }
 

@@ -22,6 +22,7 @@ namespace LegendOfZelda
         {
             key.RegisterSprite();
             key.UpdatePos(position);
+            SoundFactory.PlaySound(SoundFactory.getInstance().KeyAppear);
         }
 
         public void Remove()

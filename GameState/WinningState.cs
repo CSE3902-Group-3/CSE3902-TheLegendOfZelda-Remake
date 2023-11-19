@@ -17,6 +17,7 @@ namespace LegendOfZelda
         public void Draw(SpriteBatch _spriteBatch)
         {
             GameState.CameraController.Draw(_spriteBatch);
+            SoundFactory.PlaySound(SoundFactory.getInstance().Fanfare);
         }
     }
 }
