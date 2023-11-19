@@ -6999,14 +6999,14 @@
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 8,
-                    "XLocation": 0,
-                    "YLocation": 3
+                    "XLocation": 1,
+                    "YLocation": 6
                 },
                 {
                     "ElementType": "Enemy",
                     "ElementValue": 8,
-                    "XLocation": 0,
-                    "YLocation": 4
+                    "XLocation": 2,
+                    "YLocation": 6
                 },
                 {
                     "ElementType": "Enemy",
