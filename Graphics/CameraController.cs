@@ -9,7 +9,7 @@ namespace LegendOfZelda
     public class CameraController
     {
         //Menu's are positioned in world coordinates
-        public Vector2 HUDLocation { get; private set; } = new Vector2(10000, 1024);
+        public Vector2 HUDLocation { get; private set; } = new Vector2(10000, 1150);
         public Vector2 ItemMenuLocation { get; private set; } = new Vector2(10000, 0);
         public Vector2 StartLocation { get; private set; } = new Vector2(20000, 0);
         public Vector2 EndLocation { get; private set; } = new Vector2(30000, 0);
@@ -26,7 +26,7 @@ namespace LegendOfZelda
         private static CameraController instance;
 
         private List<List<IDrawable>> mainCameraDrawables;
-        private List<IDrawable> previousRoomDrawables;
+        private List<IDrawable> activeMenuDrawables;
 
         private Camera activeMenu;
         
@@ -38,10 +38,8 @@ namespace LegendOfZelda
             endCamera = new Camera(EndLocation);
             gameOverCamera = new Camera(GameOverLocation);
 
-            mainCameraDrawables = new List<List<IDrawable>>
-            {
-                LevelMaster.PersistentDrawables
-            };
+            mainCameraDrawables = new List<List<IDrawable>>();
+            activeMenuDrawables = new List<IDrawable>();
 
             instance = this;
 
@@ -60,19 +58,15 @@ namespace LegendOfZelda
         public void Draw(SpriteBatch spriteBatch)
         {
             mainCamera.DrawAll(mainCameraDrawables, spriteBatch);
-            activeMenu.DrawAll(LevelMaster.PersistentDrawables, spriteBatch);
+            activeMenu.DrawAll(activeMenuDrawables, spriteBatch);
         }
 
-        public void SnapCamToRoom(int fromRoomId, int toRoomId, Vector2 roomPos)
+        public void SnapCamToRoom(Vector2 roomPos)
         {
-            mainCameraDrawables.Remove(LevelMaster.RoomListDrawables[fromRoomId]);
-            mainCameraDrawables.Insert(0, LevelMaster.RoomListDrawables[toRoomId]);
             mainCamera.worldPos = roomPos;
         }
-        public void PanCamToRoom(int fromRoomId, int toRoomId, Vector2 roomPos, Action onPanComplete = null)
+        public void PanCamToRoom(Vector2 roomPos, Action onPanComplete = null)
         {
-            previousRoomDrawables = LevelMaster.RoomListDrawables[fromRoomId];
-            mainCameraDrawables.Insert(0, LevelMaster.RoomListDrawables[toRoomId]);
             mainCamera.PanToLocation(roomPos, camSpeed, onPanComplete);
         }
 
@@ -85,7 +79,6 @@ namespace LegendOfZelda
         {
             itemMenuCamera.PanToLocation(HUDLocation, camSpeed, onPanComplete);
         }
-
         public void ChangeMenu(Menu menu)
         {
             switch (menu)
@@ -104,29 +97,37 @@ namespace LegendOfZelda
                     break;
             }
         }
-        public void RemovePreviousRoomDrawables()
+
+        public void AddDrawablesToMainCamera(List<IDrawable> drawablesList)
         {
-            mainCameraDrawables.Remove(previousRoomDrawables);
+            mainCameraDrawables.Insert(0, drawablesList);
         }
-        public void RemovePersistentDrawables()
+        public void AddPersistentDrawablesToMainCamera(List<IDrawable> drawablesList)
         {
-            mainCameraDrawables.Remove(LevelMaster.PersistentDrawables);
+            mainCameraDrawables.Insert(mainCameraDrawables.Count, drawablesList);
         }
+        public void RemovePersistentDrawablesFromMainCamera()
+        {
+            mainCameraDrawables.Remove(activeMenuDrawables);
+        }
+        public void RemoveDrawablesFromMainCamera(List<IDrawable> drawablesList)
+        {
+            mainCameraDrawables.Remove(drawablesList);
+        }
+        public void AddDrawablesToActiveMenuCamera(List<IDrawable> drawablesList)
+        {
+            activeMenuDrawables = drawablesList;
+        }
+        public void RemoveDrawablesFromActiveMenuCamera()
+        {
+            activeMenuDrawables = new List<IDrawable>();
+        }
+
         public void Reset()
         {
-            mainCamera.worldPos = LevelMaster.RoomPositionList[1];
+            mainCamera.worldPos = LevelManager.CurrentRoomPosition;
+            mainCameraDrawables = new List<List<IDrawable>>();
             activeMenu = itemMenuCamera;
-            //mainCamera = new Camera(LevelMaster.RoomPositionList[LevelMaster.CurrentRoom]);
-            //itemMenuCamera = new Camera(HUDLocation);
-            //startCamera = new Camera(StartLocation);
-            //endCamera = new Camera(EndLocation);
-            //gameOverCamera = new Camera(GameOverLocation);
-
-            mainCameraDrawables = new List<List<IDrawable>>
-            {
-                LevelMaster.CurrentRoomDrawables,
-                LevelMaster.PersistentDrawables
-            };
         }
     }
 }

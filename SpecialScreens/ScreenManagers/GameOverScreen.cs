@@ -14,6 +14,7 @@ namespace LegendOfZelda
 		private int counter;
 		private GameOverMenu menu;
 		private bool activated;
+		public bool done;
 
 		public GameOverScreen()
 		{
@@ -27,55 +28,57 @@ namespace LegendOfZelda
 			counter = 0;
 			menu = new GameOverMenu();
 			activated = false;
+			done = false;
         }
 
 		public void ActivateGameOver()
 		{
-			LevelMaster.RegisterUpdateable(this);
+			LevelManager.AddUpdateable(this);
 			activated = true;
 		}
 
 		private void DrawLinkSpinningOverlay()
 		{
-			LevelMaster.RegisterDrawable(linkSpinningOverlay);
+			LevelManager.AddDrawable(linkSpinningOverlay);
         }
 
 		private void DrawLightRed()
 		{
-			LevelMaster.RegisterDrawable(lightRed);
+			LevelManager.AddDrawable(lightRed);
         }
 
 		private void DrawNormalRed()
 		{
-			LevelMaster.RegisterDrawable(red);
+			LevelManager.AddDrawable(red);
         }
 
 		private void DrawDarkRed()
 		{
-			LevelMaster.RegisterDrawable(darkRed);
+			LevelManager.AddDrawable(darkRed);
         }
 
 		private void DrawBlackScreen()
 		{
-			LevelMaster.RegisterDrawable(blackScreen);
+			LevelManager.AddDrawable(blackScreen);
         }
 
 		private void WriteWord()
 		{
-			LevelMaster.RegisterDrawable(text);
+			text.Draw();
         }
 
 		public void UnactivateGameOverScreen()
 		{
 			if (activated)
 			{
-				LevelMaster.RemoveDrawable(linkSpinningOverlay);
-				LevelMaster.RemoveDrawable(lightRed);
-				LevelMaster.RemoveDrawable(red);
-				LevelMaster.RemoveDrawable(darkRed);
-				LevelMaster.RemoveDrawable(blackScreen);
-				LevelMaster.RemoveDrawable(text);
-                LevelMaster.RemoveUpdateable(this);
+				LevelManager.RemoveDrawable(linkSpinningOverlay);
+				LevelManager.RemoveDrawable(lightRed);
+				LevelManager.RemoveDrawable(red);
+				LevelManager.RemoveDrawable(darkRed);
+				LevelManager.RemoveDrawable(blackScreen);
+				LevelManager.RemoveDrawable(text);
+                LevelManager.RemoveUpdateable(this);
+				text.Remove();
                 activated = false;
 			}
 		}
@@ -119,7 +122,6 @@ namespace LegendOfZelda
 			if ((counter == 4) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
 			{
 				DrawBlackScreen();
-				GameState.CameraController.RemovePersistentDrawables();
 				lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
 				counter++;
 			}
@@ -129,15 +131,18 @@ namespace LegendOfZelda
 			 */
 			if ((counter == 5) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
-				WriteWord();
+                GameState.CameraController.RemovePersistentDrawablesFromMainCamera();
+				GameState.CameraController.ChangeMenu(Menu.GameOver);
+                WriteWord();
                 lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
                 counter++;
 			}
 
             if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
-                UnactivateGameOverScreen();
-                GameState.CameraController.ChangeMenu(Menu.GameOver);
+				text.Remove();
+				menu.Draw();
+				done = true;
 				counter++;
 			}
         }

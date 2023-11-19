@@ -8,7 +8,7 @@ namespace LegendOfZelda
     {
         private static GameState Instance;
         private static IGameState State;
-        private static LevelMaster LevelMaster;
+        private static LevelManager LevelMaster;
         public static CameraController CameraController;
         public static PauseManager PauseManager;
         public static CollisionManager CollisionManager;
@@ -18,9 +18,6 @@ namespace LegendOfZelda
         public static MapHUD mapHUD;
         public static IController PlayerController;
         public static IController ItemMenuController;
-
-
-        //public enum GameStates { normalState, winState, loseState, pauseState, menuState, roomTransitionState }
         public static GameState GetInstance()
         {
             if (Instance == null)
@@ -29,11 +26,11 @@ namespace LegendOfZelda
         }
         private GameState()
         {
-            LevelMaster = LevelMaster.GetInstance();
+            LevelMaster = LevelManager.GetInstance();
             CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
             Link = new Link();
-            LevelMaster.NavigateToRoom(1);
+            LevelMaster.SnapToRoom(1);
             PauseManager = new PauseManager();
             BackgroundGenerator.GenerateMenuBackgrounds();
             State = new StartState();
@@ -53,22 +50,23 @@ namespace LegendOfZelda
         }
         public void ResetGameState()
         {
+            CameraController.Reset();
             CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
             Link = new Link();
-            LevelMaster.NavigateToRoom(1);
+            LevelMaster.SnapToRoom(1);
             PauseManager = new PauseManager();
             BackgroundGenerator.GenerateMenuBackgrounds();
             State = new NormalState();
-            CameraController.Reset();
             PlayerController = new PlayerController(Link);
             ItemMenuController = new ItemMenuController();
+            LinkUtilities.UpdatePositions(Link, LinkUtilities.originalLinkPosition);
         }
         public void GameOverContinue()
         {
             CollisionManager = new CollisionManager();
             Link = new Link();
-            LevelMaster.NavigateToRoom(1);
+            LevelMaster.SnapToRoom(1);
             PlayerController = new PlayerController(Link);
             CameraController.Reset();
             SwitchState(new NormalState());

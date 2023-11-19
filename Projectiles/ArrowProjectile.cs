@@ -49,7 +49,7 @@ namespace LegendOfZelda
 
             sprite.UpdatePos(position);
 
-            LevelMaster.RegisterUpdateable(this);
+            LevelManager.AddUpdateable(this);
         }
 
         //This method is overridden in the Blue Arrow and Sword Beam
@@ -102,9 +102,8 @@ namespace LegendOfZelda
         public void Destroy()
         {
             SpawnBurst();
-
             sprite.UnregisterSprite();
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
             collider.Active = false;
         }
 

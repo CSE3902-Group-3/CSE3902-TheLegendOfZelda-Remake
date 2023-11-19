@@ -20,7 +20,7 @@ namespace LegendOfZelda
             Sprite = SpriteFactory.getInstance().CreateOldManSprite();
             Sprite.UpdatePos(pos);
             Sprite.UnregisterSprite();
-            LevelMaster.RegisterUpdateable(this);
+            LevelManager.AddUpdateable(this);
             int scale = SpriteFactory.getInstance().scale;
             Collider = new RectCollider(
                new Rectangle((int)Position.X, (int)Position.Y, Width * scale, Height * scale),

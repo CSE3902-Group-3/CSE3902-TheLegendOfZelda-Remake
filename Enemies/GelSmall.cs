@@ -22,7 +22,7 @@ namespace LegendOfZelda
            );
             AnimatedSprite sprite = SpriteFactory.getInstance().CreateGelSprite();
             sprite.UnregisterSprite();
-            StateMachine = new SimpleEnemyStateMachine(Position, Offset, Collider)
+            StateMachine = new SimpleEnemyStateMachine(Position, Offset, Collider, this)
             {
                 Sprite = sprite,
                 Health = Health,

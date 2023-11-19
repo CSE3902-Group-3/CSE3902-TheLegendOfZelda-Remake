@@ -1,26 +1,24 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
 {
     public class EnemyDeathEffect: IEnemyEffect
     {
         private readonly AnimatedSprite Sprite;
-        private int createdInRoom;
+        private int CreatedInRoom;
         public EnemyDeathEffect(Vector2 position)
         {
             Sprite = SpriteFactory.getInstance().CreateEnemyDeathSprite();
             SoundFactory.PlaySound(SoundFactory.getInstance().EnemyDie);
             Sprite.UpdatePos(position);
+            CreatedInRoom = LevelManager.CurrentRoom;
             new Timer(0.5, Dissipate);
-            createdInRoom = LevelMaster.CurrentRoom;
         }
 
         public void Dissipate()
         {
-            int thisRoom = LevelMaster.CurrentRoom;
-            LevelMaster.CurrentRoom = createdInRoom;
-            Sprite.UnregisterSprite();
-            LevelMaster.CurrentRoom = thisRoom;
+            LevelManager.RemoveDrawable(Sprite, CreatedInRoom);
         }
     }
 }

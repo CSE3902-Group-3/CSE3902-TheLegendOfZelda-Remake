@@ -4,7 +4,7 @@
     public class CameraControllerTest
     {
         private CameraController controller;
-        private LevelMaster levelMaster;
+        private LevelManager levelMaster;
         private Timer timer;
         private const float wait = 1f;
         private int i = 0;
@@ -12,7 +12,7 @@
         public CameraControllerTest()
         {
             controller = CameraController.GetInstance();
-            levelMaster = LevelMaster.GetInstance();
+            levelMaster = LevelManager.GetInstance();
             timer = new Timer(wait, OnTimer);
         }
 

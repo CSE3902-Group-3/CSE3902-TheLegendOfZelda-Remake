@@ -13,6 +13,7 @@ namespace LegendOfZelda
 
         private int doorSize = 16;
 
+        private const int brickRoomEntrance = 16;
         private const int exitPosX = 320;
         private const int exitPosY = -704;
 
@@ -22,7 +23,7 @@ namespace LegendOfZelda
             int scale = spriteFactory.scale;
             doorSize *= scale;
 
-            sprite = spriteFactory.CreateBlackTileSprite();
+            sprite = spriteFactory.CreateLadderSprite();
             sprite.UpdatePos(pos);
             collider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, doorSize, doorSize), CollisionLayer.Wall, this);
 
@@ -35,7 +36,7 @@ namespace LegendOfZelda
             {
                 if (collision.CollidedWith.Layer == CollisionLayer.Player)
                 {
-                    LevelMaster.GetInstance().NavigateToRoom(LevelMaster.brickRoomEntrance);
+                    LevelManager.GetInstance().SnapToRoom(brickRoomEntrance);
 
                     player = GameState.Link;
                     if (player is Link)

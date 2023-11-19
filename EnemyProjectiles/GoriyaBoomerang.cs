@@ -37,9 +37,8 @@ namespace LegendOfZelda
             new Burst(Position);
             SoundFactory.PlaySound(SoundFactory.getInstance().SwordSlash);
             Collider.Active = false;
-            LevelMaster.RemoveUpdateable(this);
-            LevelMaster.RemoveDrawable(Sprite);
-            Collider.Active = false;
+            LevelManager.RemoveUpdateable(this);
+            LevelManager.RemoveDrawable(Sprite);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

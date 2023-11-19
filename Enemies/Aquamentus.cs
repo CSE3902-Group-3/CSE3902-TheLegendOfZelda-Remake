@@ -22,7 +22,7 @@ namespace LegendOfZelda
             Position = pos;
             Sprite = SpriteFactory.getInstance().CreateAquamentusSprite();
             Sprite.UnregisterSprite();
-            LevelMaster.RegisterUpdateable(this);
+            LevelManager.AddUpdateable(this);
             int scale = SpriteFactory.getInstance().scale;
 
             Collider = new RectCollider(
@@ -44,10 +44,10 @@ namespace LegendOfZelda
         {
             Sprite.UnregisterSprite();
             Collider.Active = false;
-            LevelMaster.RemoveUpdateable(this);
+            LevelManager.RemoveUpdateable(this);
             new EnemyDeathEffect(Position);
             DropItem();
-            LevelMaster.EnemiesList[LevelMaster.CurrentRoom].Remove(this);
+            LevelManager.CurrentLevelRoom.RemoveEnemy(this);
         }
         public void ChangePosition()
         {
