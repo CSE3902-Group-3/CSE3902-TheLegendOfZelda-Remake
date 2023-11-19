@@ -97,6 +97,8 @@ namespace LegendOfZelda
         public void Die()
         {
             // just call Reset for now
+            Sprite.UnregisterSprite();
+            // Pust Link spinning death sprite here
             this.Reset();
         }
 

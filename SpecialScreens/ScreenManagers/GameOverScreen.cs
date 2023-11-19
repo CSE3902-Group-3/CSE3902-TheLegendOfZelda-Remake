@@ -86,6 +86,7 @@ namespace LegendOfZelda
 		{
 			if ((counter == 0) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 100))
             {
+				activated = true;
 				DrawLinkSpinningOverlay();
                 lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
                 counter++;
@@ -148,4 +149,3 @@ namespace LegendOfZelda
         }
 	}
 }
-
