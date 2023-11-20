@@ -25,9 +25,10 @@ namespace LegendOfZelda
 
             Link.Sprite = SpriteFactory.getInstance().CreateLinkWoodStabLeftSprite();
 
-            if (Link.HP == Link.MaxHP)
+            if (Link.HP == Link.MaxHP && Link.swordBeamCooldown <= 0)
             {
                 new SwordBeam(Link.StateMachine.position + LinkUtilities.leftRightSwordBeamOffset, Link.StateMachine.currentDirection);
+                Link.swordBeamCooldown = Link.SwordBeamCooldownDuration;  // Reset the cooldown timer
             }
 
             sword = new Sword(Link.StateMachine.currentDirection, Link.StateMachine.position);

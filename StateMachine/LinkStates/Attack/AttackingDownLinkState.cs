@@ -11,48 +11,49 @@ namespace LegendOfZelda
     public class AttackingDownLinkState : IState
     {
         private Game1 game;
-        private Link link;
+        private Link Link;
 
         private Sword sword;
 
         public AttackingDownLinkState()
         {
             this.game = Game1.getInstance();
-            link = GameState.Link;
+            Link = GameState.Link;
         }
 
         public void Enter()
         {
-            if (link.Sprite != null)
+            if (Link.Sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)link.Sprite).UnregisterSprite();
+                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
             }
-            link.StateMachine.canMove = false;
+            Link.StateMachine.canMove = false;
 
-            link.Sprite = SpriteFactory.getInstance().CreateLinkWoodStabDownSprite();
-            
-            if (link.HP == link.MaxHP)
+            Link.Sprite = SpriteFactory.getInstance().CreateLinkWoodStabDownSprite();
+
+            if (Link.HP == Link.MaxHP && Link.swordBeamCooldown <= 0)
             {
-                new SwordBeam(link.StateMachine.position + LinkUtilities.downSwordBeamOffset, link.StateMachine.currentDirection);
+                new SwordBeam(Link.StateMachine.position + LinkUtilities.downSwordBeamOffset, Link.StateMachine.currentDirection);
+                Link.swordBeamCooldown = Link.SwordBeamCooldownDuration;  // Reset the cooldown timer
             }
-            
-            sword = new Sword(link.StateMachine.currentDirection, link.StateMachine.position);
+
+            sword = new Sword(Link.StateMachine.currentDirection, Link.StateMachine.position);
         }
+
         public void Execute()
         {
-            if (((AnimatedSprite)link.Sprite).complete)
+            if (((AnimatedSprite)Link.Sprite).complete)
             {
-                link.StateMachine.ChangeState(new IdleLinkState());
+                Link.StateMachine.ChangeState(new IdleLinkState());
             }
         }
 
         public void Exit()
         {
-            link.StateMachine.canMove = true;
+            Link.StateMachine.canMove = true;
 
             sword.Destroy();
         }
-
     }
 }
