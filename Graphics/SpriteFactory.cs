@@ -53,12 +53,12 @@ namespace LegendOfZelda
                 linkTexture = content.Load<Texture2D>("Link - Numbered");
                 dungeonTexture = content.Load<Texture2D>("Dungeon - Numbered");
                 enemiesTexture = content.Load<Texture2D>("Enemies - Numbered");
-                enemyDeathTexture = content.Load<Texture2D>("EnemyDeath");
+                enemyDeathTexture = content.Load<Texture2D>("EnemyDeath - Numbered");
                 bossesTexture = content.Load<Texture2D>("Bosses - Numbered");
-                itemsTexture = content.Load<Texture2D>("Items");
-                npcTexture = content.Load<Texture2D>("NPC");
-                HUDTexture = content.Load<Texture2D>("HUD");
-                menuTexture = content.Load<Texture2D>("Menu");
+                itemsTexture = content.Load<Texture2D>("Items - Numbered");
+                npcTexture = content.Load<Texture2D>("NPC - Numbered");
+                HUDTexture = content.Load<Texture2D>("HUD - Numbered");
+                menuTexture = content.Load<Texture2D>("Menu - Numbered");
                 pauseWord = content.Load<SpriteFont>("Pause");
 
             } else

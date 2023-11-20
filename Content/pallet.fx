@@ -10,7 +10,7 @@
 #endif
 
 Texture2D SpriteTexture;
-float4 Pallet[16];
+float4 Pallet[32];
 
 sampler2D SpriteTextureSampler = sampler_state
 {

@@ -28,24 +28,40 @@ namespace LegendOfZelda
             blink = content.Load<Effect>("blink");
             standardPallet = content.Load<Effect>("pallet");
 
-            Vector4[] pallet = new Vector4[16]
+            Vector4[] pallet = new Vector4[32]
             {
                 new Vector4(0, 0, 0, 1),
-                new Vector4(128/252f, 208/252f, 16/252f, 1),
-                new Vector4(200/252f, 76/252f, 12/252f, 1),
-                new Vector4(252/252f, 152/252f, 56/252f, 1),
+                new Vector4(128/255f, 208/255f, 16/255f, 1),
+                new Vector4(200/255f, 76/255f, 12/255f, 1),
+                new Vector4(252/255f, 152/255f, 56/255f, 1),
                 new Vector4(1, 1, 1, 1),
-                new Vector4(92/252f, 148/252f, 1, 1),
-                new Vector4(0, 0, 168/252f, 1),
+                new Vector4(92/255f, 148/255f, 1, 1),
+                new Vector4(0, 0, 168/255f, 1),
                 new Vector4(1, 0, 0, 1),
-                new Vector4(24/252f, 60/252f, 92/252f, 1),
-                new Vector4(0, 232/252f, 216/252f, 1),
-                new Vector4(0, 128/252f, 136/252f, 1),
-                new Vector4(188/252f, 188/252f, 188/252f, 1),
-                new Vector4(116/252f, 116/252f, 116/252f, 1),
-                new Vector4(0, 80/252f, 0, 1),
-                new Vector4(1, 0, 0, 1),
-                new Vector4(1, 0, 0, 1)
+                new Vector4(24/255f, 60/255f, 92/255f, 1),
+                new Vector4(0, 232/255f, 216/255f, 1),
+                new Vector4(0, 128/255f, 136/255f, 1),
+                new Vector4(188/255f, 188/255f, 188/255f, 1),
+                new Vector4(116/255f, 116/255f, 116/255f, 1),
+                new Vector4(72/255f, 205/255f, 222/255f, 1),
+                new Vector4(146/255f, 144/255f, 255/255f, 1),
+                new Vector4(153/255f, 78/255f, 0, 1),
+                new Vector4(252/255f, 188/255f, 176/255f, 1),
+                new Vector4(240/255f, 188/255f, 60/255f, 1),
+                new Vector4(0/255f, 168/255f, 0/255f, 1),
+                new Vector4(64/255f, 44/255f, 0/255f, 1),
+                new Vector4(252/255f, 216/255f, 168/255f, 1),
+                new Vector4(176/255f, 252/255f, 204/255f, 1),
+                new Vector4(196/255f, 212/255f, 252/255f, 1),
+                new Vector4(0/255f, 80/255f, 0/255f, 1),
+                new Vector4(181/255f, 49/255f, 33/255f, 1),
+                new Vector4(254/255f, 205/255f, 196/255f, 1),
+                new Vector4(231/255f, 156/255f, 33/255f, 1),
+                new Vector4(32/255f, 56/255f, 236/255f, 1),
+                new Vector4(0/255f, 0/255f, 0/255f, 1),
+                new Vector4(0/255f, 0/255f, 0/255f, 1),
+                new Vector4(0/255f, 0/255f, 0/255f, 1),
+                new Vector4(0/255f, 0/255f, 0/255f, 1)
             };
 
             standardPallet.Parameters["Pallet"].SetValue(pallet);

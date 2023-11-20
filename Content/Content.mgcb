@@ -103,6 +103,18 @@
 /processorParam:TextureFormat=Color
 /build:EnemyCloud (1).png;EnemyCloud.png
 
+#begin EnemyDeath - Numbered.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:EnemyDeath - Numbered.png
+
 #begin EnemyDeath.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -127,6 +139,18 @@
 /processorParam:DebugMode=Auto
 /build:flash2.fx
 
+#begin HUD - Numbered.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:HUD - Numbered.png
+
 #begin HUD.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -138,6 +162,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:HUD.png
+
+#begin Items - Numbered.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items - Numbered.png
 
 #begin Items.png
 /importer:TextureImporter
@@ -175,6 +211,18 @@
 /processorParam:TextureFormat=Color
 /build:Link.png
 
+#begin Menu - Numbered.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Menu - Numbered.png
+
 #begin Menu.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -192,6 +240,18 @@
 /processor:EffectProcessor
 /processorParam:DebugMode=Auto
 /build:normal.fx
+
+#begin NPC - Numbered.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:NPC - Numbered.png
 
 #begin NPC.png
 /importer:TextureImporter
