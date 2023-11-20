@@ -40,7 +40,7 @@ namespace LegendOfZelda
         {
             if (state is AttackingUpLinkState || state is AttackingDownLinkState ||
                 state is AttackingLeftLinkState || state is AttackingRightLinkState ||
-                state is CollectItemLinkState)
+                state is CollectItemLinkState )
             {
                 return !((AnimatedSprite)GameState.Link.Sprite).complete;
             }

@@ -10,8 +10,8 @@ namespace LegendOfZelda
     public class DeathLinkState : IState
     {
         private Link Link;
-        private int spinBuffer = 0;
-        private int totalSpins = 0;
+        private int counter = 0;
+        private int spins = 0;
 
         public DeathLinkState()
         {
@@ -26,12 +26,36 @@ namespace LegendOfZelda
                 ((AnimatedSprite)Link.Sprite).UnregisterSprite();
             }
             Link.StateMachine.canMove = false;
-            Link.Sprite = SpriteFactory.getInstance().CreateLinkDeathSprite();
         }
 
         public void Execute()
         {
+            if (spins < 3)
+            {
+                counter++;
 
+                if (counter < 10)
+                {
+                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
+                }
+                else if (counter < 20)
+                {
+                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
+                }
+                else if (counter < 30)
+                {
+                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkLeftSprite();
+                }
+                else if (counter < 40)
+                {
+                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
+                }
+                else
+                {
+                    counter = 0;
+                    spins++;
+                }
+            }
         }
 
         public void Exit()

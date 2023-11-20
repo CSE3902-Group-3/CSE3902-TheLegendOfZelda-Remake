@@ -9,6 +9,11 @@ namespace LegendOfZelda
 
         public static void HandleCollisionWithEnemyWeapon(CollisionInfo collision)
         {
+            if (GameState.Link.StateMachine.CurrentState is KnockBackLinkState)
+            {
+                return;
+            }
+
             IEnemyProjectile enemyProjectileCollidedWith = collision.CollidedWith.Collidable as IEnemyProjectile;
 
             var enemyDamageMap = new Dictionary<Type, float>
