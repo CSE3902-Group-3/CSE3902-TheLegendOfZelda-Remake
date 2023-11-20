@@ -33,6 +33,7 @@ namespace LegendOfZelda
         {
             heart.UnregisterSprite();
             collider.Active = false;
+            SoundFactory.PlaySound(SoundFactory.getInstance().GetHeart);
             return this;
         }
 
