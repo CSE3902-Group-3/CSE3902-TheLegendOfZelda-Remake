@@ -11,9 +11,7 @@ namespace LegendOfZelda
         private SpriteFactory spriteFactory;
         private const double delay = 1;
         private const int explosionPixelOffset = 4;
-        private double startTime = 0;
         private Vector2 pos;
-        private Timer timer;
         public BombProjectile(Vector2 position)
         {
             spriteFactory = SpriteFactory.getInstance();
@@ -23,7 +21,7 @@ namespace LegendOfZelda
             SoundFactory.PlaySound(SoundFactory.getInstance().BombDrop, 1.0f, 0.0f, 0.0f);
             sprite.UpdatePos(pos);
 
-            timer = new Timer(delay, SpawnExplosion);
+            new Timer(delay, SpawnExplosion);
         }
 
         public void Update(GameTime gameTime)

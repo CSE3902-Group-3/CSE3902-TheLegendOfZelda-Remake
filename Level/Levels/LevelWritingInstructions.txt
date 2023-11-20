@@ -83,6 +83,8 @@
          * ImpassibleBlackTile, 38
          * Room12ExteriorCollider, 39
          * Fire, 40
+         * FireballFishStatue, 41
+         * FireballDragonStatue, 42
     */
 
     - Item dictionary:
@@ -142,4 +144,6 @@
     AllEnemiesDeadOpenEastDoor, 2
     PushBlockWestOpenWestDoor, 3
     AllEnemiesDeadOpenWestDoor, 4
+    AllEnemiesDeadOpenSouthDoor, 5
+    AllEnemiesDeadOpenNorthDoor, 6
 

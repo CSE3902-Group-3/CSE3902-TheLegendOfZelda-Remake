@@ -551,48 +551,6 @@
                     "ElementValue": 0,
                     "XLocation": 11,
                     "YLocation": 6
-                },
-                {
-                    "ElementType": "Item",
-                    "ElementValue": 10,
-                    "XLocation": 6,
-                    "YLocation": 3
-                },
-                {
-                    "ElementType": "Enemy",
-                    "ElementValue": 6,
-                    "XLocation": 8,
-                    "YLocation": 0
-                },
-                {
-                    "ElementType": "Enemy",
-                    "ElementValue": 6,
-                    "XLocation": 5,
-                    "YLocation": 2
-                },
-                {
-                    "ElementType": "Enemy",
-                    "ElementValue": 6,
-                    "XLocation": 5,
-                    "YLocation": 4
-                },
-                {
-                    "ElementType": "Enemy",
-                    "ElementValue": 6,
-                    "XLocation": 3,
-                    "YLocation": 4
-                },
-                {
-                    "ElementType": "Enemy",
-                    "ElementValue": 6,
-                    "XLocation": 0,
-                    "YLocation": 3
-                },
-                {
-                    "ElementType": "Enemy",
-                    "ElementValue": 6,
-                    "XLocation": 8,
-                    "YLocation": 6
                 }
             ]
         }

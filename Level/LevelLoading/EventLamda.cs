@@ -15,7 +15,9 @@ namespace LegendOfZelda
                 AllEnemiesDeadBoomerangDrop,
                 AllEnemiesDeadOpenEastDoor,
                 PushBlockWestOpenWestDoor,
-                AllEnemiesDeadOpenWestDoor
+                AllEnemiesDeadOpenWestDoor,
+                AllEnemiesDeadOpenSouthDoor,
+                AllEnemiesDeadOpenNorthDoor
             };
         }
         public static EventLamda GetInstance()
@@ -45,6 +47,14 @@ namespace LegendOfZelda
         public static void AllEnemiesDeadOpenWestDoor(Room room, LevelEvent levelEvent)
         {
             new AllEnemiesDeadOpenClosedWestDoorEvent(room);
+        }
+        public static void AllEnemiesDeadOpenSouthDoor(Room room, LevelEvent levelEvent)
+        {
+            new AllEnemiesDeadOpenClosedSouthDoorEvent(room);
+        }
+        public static void AllEnemiesDeadOpenNorthDoor(Room room, LevelEvent levelEvent)
+        {
+            new AllEnemiesDeadOpenClosedNorthDoorEvent(room);
         }
     }
 }

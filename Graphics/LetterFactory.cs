@@ -17,9 +17,6 @@ namespace LegendOfZelda
         public AnimatedSprite letterSprite;
 
         private Game1 game1;
-        private int drawFramesPerAnimFrame;
-        private const int slowAnimateFactor = 2;
-        private const int fastDrawFramesPerAnimFrame = 2;
         public int scale { get; private set; }
 
         private const int letterWidth = 8;
@@ -30,7 +27,6 @@ namespace LegendOfZelda
         {
             game1 = Game1.getInstance();
             letterTexture = game1.Content.Load<Texture2D>("Dungeon");
-            drawFramesPerAnimFrame = 1;
             this.scale = scale;
         }
 

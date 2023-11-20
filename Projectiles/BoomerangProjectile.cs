@@ -8,8 +8,6 @@ namespace LegendOfZelda
     {
         private AnimatedSprite sprite;
         private IRectCollider collider;
-
-        private SpriteFactory spriteFactory;
         private float speed = 15;
         private const float accel = .25f;
 
