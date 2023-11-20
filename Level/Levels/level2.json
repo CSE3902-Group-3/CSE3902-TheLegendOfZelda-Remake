@@ -1,0 +1,4717 @@
+﻿{
+    "Rooms": [
+        {
+            "RoomNumber": 0,
+            "RoomXLocation": 1,
+            "RoomYLocation": 0,
+            "AdjacentRooms": [
+                {
+                    "RoomNumber": 1,
+                    "Direction": "East"
+                },
+                {
+                    "RoomNumber": 3,
+                    "Direction": "North"
+                }
+            ],
+            "MapElements": [
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 33,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 13,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 14,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 23,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 12,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 2,
+                    "XLocation": 1,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 2,
+                    "XLocation": 4,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 3,
+                    "XLocation": 7,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 3,
+                    "XLocation": 10,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 2,
+                    "XLocation": 1,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 2,
+                    "XLocation": 4,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 3,
+                    "XLocation": 7,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 3,
+                    "XLocation": 10,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 5,
+                    "XLocation": 5,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 5,
+                    "XLocation": 6,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 2,
+                    "XLocation": 1,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 5,
+                    "XLocation": 3,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 2,
+                    "XLocation": 4,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 5,
+                    "XLocation": 5,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 5,
+                    "XLocation": 6,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 3,
+                    "XLocation": 7,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 5,
+                    "XLocation": 8,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 3,
+                    "XLocation": 10,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 5,
+                    "XLocation": 3,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 5,
+                    "XLocation": 4,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 5,
+                    "XLocation": 5,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 5,
+                    "XLocation": 6,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 5,
+                    "XLocation": 7,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 5,
+                    "XLocation": 8,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 10,
+                    "XLocation": 4,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 10,
+                    "XLocation": 4,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 10,
+                    "XLocation": 4,
+                    "YLocation": 6
+                }
+            ]
+        },
+
+
+
+
+
+        {
+            "RoomNumber": 1,
+            "RoomXLocation": 2,
+            "RoomYLocation": 0,
+            "AdjacentRooms": [
+                {
+                    "RoomNumber": 0,
+                    "Direction": "West"
+                },
+                {
+                    "RoomNumber": 4,
+                    "Direction": "North"
+                }
+            ],
+            "Events": [
+                {
+                    "EventNumber": 0,
+                    "XLocation": 6,
+                    "YLocation": 3
+                }
+            ],
+            "MapElements": [
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 33,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 13,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 10,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 11,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 16,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 3,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 6,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 6,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 3,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 11,
+                    "YLocation": 3
+                }
+            ]
+        },
+
+
+
+
+
+        {
+            "RoomNumber": 2,
+            "RoomXLocation": 0,
+            "RoomYLocation": 1,
+            "AdjacentRooms": [
+                {
+                    "RoomNumber": 3,
+                    "Direction": "East"
+                }
+            ],
+            "MapElements": [
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 33,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 9,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 14,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 11,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 12,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 10,
+                    "XLocation": 6,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 8,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 5,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 5,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 3,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 0,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 8,
+                    "YLocation": 6
+                }
+            ]
+        },
+
+
+
+
+
+        {
+            "RoomNumber": 3,
+            "RoomXLocation": 1,
+            "RoomYLocation": 1,
+            "AdjacentRooms": [
+                {
+                    "RoomNumber": 4,
+                    "Direction": "East"
+                },
+                {
+                    "RoomNumber": 2,
+                    "Direction": "West"
+                },
+                {
+                    "RoomNumber": 0,
+                    "Direction": "South"
+                }
+            ],
+            "Events": [
+                {
+                    "EventNumber": 4,
+                    "XLocation": 0,
+                    "YLocation": 0
+                }
+            ],
+            "MapElements": [
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 33,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 9,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 14,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 15,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 2,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 9,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 2,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 9,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 8,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 5,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 5,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 3,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 8,
+                    "YLocation": 6
+                }
+            ]
+        },
+
+
+
+
+
+        {
+            "RoomNumber": 4,
+            "RoomXLocation": 2,
+            "RoomYLocation": 1,
+            "AdjacentRooms": [
+                {
+                    "RoomNumber": 6,
+                    "Direction": "North"
+                },
+                {
+                    "RoomNumber": 5,
+                    "Direction": "East"
+                },
+                {
+                    "RoomNumber": 1,
+                    "Direction": "South"
+                },
+                {
+                    "RoomNumber": 3,
+                    "Direction": "West"
+                }
+            ],
+            "MapElements": [
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 33,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 13,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 18,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 15,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 16,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 1,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 3,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 5,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 6,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 8,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 10,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 1,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 3,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 5,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 6,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 8,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 10,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 1,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 3,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 5,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 6,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 8,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 10,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 3,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 4,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 6,
+                    "XLocation": 3,
+                    "YLocation": 2
+                }
+            ]
+        },
+
+
+
+
+
+        {
+            "RoomNumber": 5,
+            "RoomXLocation": 3,
+            "RoomYLocation": 1,
+            "AdjacentRooms": [
+                {
+                    "RoomNumber": 7,
+                    "Direction": "North"
+                },
+                {
+                    "RoomNumber": 4,
+                    "Direction": "West"
+                }
+            ],
+            "MapElements": [
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 33,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 29,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 10,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 11,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 28,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 5,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 6,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 5,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 6,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 5,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 6,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 6,
+                    "XLocation": 11,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 4,
+                    "XLocation": 3,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 4,
+                    "XLocation": 10,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 4,
+                    "XLocation": 8,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 4,
+                    "XLocation": 8,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 4,
+                    "XLocation": 11,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 4,
+                    "XLocation": 10,
+                    "YLocation": 6
+                }
+            ]
+        },
+
+
+
+
+
+        {
+            "RoomNumber": 6,
+            "RoomXLocation": 2,
+            "RoomYLocation": 2,
+            "AdjacentRooms": [
+                {
+                    "RoomNumber": 8,
+                    "Direction": "North"
+                },
+                {
+                    "RoomNumber": 7,
+                    "Direction": "East"
+                },
+                {
+                    "RoomNumber": 4,
+                    "Direction": "South"
+                }
+            ],
+            "MapElements": [
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 33,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 13,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 18,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 15,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 12,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 1,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 2,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 9,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 10,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 5,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 6,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 1,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 2,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 9,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 10,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 5,
+                    "XLocation": 3,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 5,
+                    "XLocation": 8,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 5,
+                    "XLocation": 4,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 5,
+                    "XLocation": 4,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 5,
+                    "XLocation": 8,
+                    "YLocation": 4
+                }
+            ]
+        },
+
+
+
+
+
+        {
+            "RoomNumber": 7,
+            "RoomXLocation": 3,
+            "RoomYLocation": 2,
+            "AdjacentRooms": [
+                {
+                    "RoomNumber": 9,
+                    "Direction": "North"
+                },
+                {
+                    "RoomNumber": 6,
+                    "Direction": "West"
+                },
+                {
+                    "RoomNumber": 5,
+                    "Direction": "South"
+                }
+            ],
+            "MapElements": [
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 33,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 29,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 10,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 31,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 20,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 0
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 2,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 9,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 3
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 2,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 1,
+                    "XLocation": 9,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 5
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 0,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 1,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 2,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 3,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 4,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 5,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 6,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 7,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 8,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 9,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 10,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Block",
+                    "ElementValue": 0,
+                    "XLocation": 11,
+                    "YLocation": 6
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 4,
+                    "XLocation": 6,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 4,
+                    "XLocation": 8,
+                    "YLocation": 2
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 4,
+                    "XLocation": 6,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 4,
+                    "XLocation": 8,
+                    "YLocation": 4
+                },
+                {
+                    "ElementType": "Enemy",
+                    "ElementValue": 4,
+                    "XLocation": 10,
+                    "YLocation": 1
+                },
+                {
+                    "ElementType": "Item",
+                    "ElementValue": 11,
+                    "XLocation": 6,
+                    "YLocation": 3
+                }
+            ]
+        }
+    ]
+}

@@ -14,7 +14,8 @@ namespace LegendOfZelda
                 AllEnemiesDeadKeyDrop,
                 AllEnemiesDeadBoomerangDrop,
                 AllEnemiesDeadOpenEastDoor,
-                PushBlockWestOpenWestDoor
+                PushBlockWestOpenWestDoor,
+                AllEnemiesDeadOpenWestDoor
             };
         }
         public static EventLamda GetInstance()
@@ -40,6 +41,10 @@ namespace LegendOfZelda
         public static void PushBlockWestOpenWestDoor(Room room, LevelEvent levelEvent)
         {
             new PushBlockWestOpenWestClosedDoorEvent(LevelUtilities.CalculatePositionWallOffset(room, levelEvent), room);
+        }
+        public static void AllEnemiesDeadOpenWestDoor(Room room, LevelEvent levelEvent)
+        {
+            new AllEnemiesDeadOpenClosedWestDoorEvent(room);
         }
     }
 }

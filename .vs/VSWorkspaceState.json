@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Level\\LevelLoading"
+    "\\Level",
+    "\\Level\\LevelLoading",
+    "\\Level\\LevelManagement"
   ],
-  "SelectedNode": "\\Game1.cs",
+  "SelectedNode": "\\LegendOfZelda.sln",
   "PreviewInSolutionExplorer": false
 }
