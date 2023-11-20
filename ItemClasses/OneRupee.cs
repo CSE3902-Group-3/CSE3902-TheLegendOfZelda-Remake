@@ -33,6 +33,7 @@ namespace LegendOfZelda
         {
             rupee.UnregisterSprite();
             collider.Active = false;
+            SoundFactory.PlaySound(SoundFactory.getInstance().GetRupee);
             return this;
         }
 

@@ -17,6 +17,7 @@ namespace LegendOfZelda
         {
             IItem key = new Key(Position);
             key.Show();
+            SoundFactory.PlaySound(SoundFactory.getInstance().KeyAppear);
             LevelManager.RemoveUpdateable(this);
         }
         public void CheckCondition()

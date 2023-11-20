@@ -13,6 +13,10 @@ namespace LegendOfZelda
         private int flashAmt;
         private double lastUpdate;
         private bool flashingWhite;
+        private int flashingClosingFrequency;
+        private int totalFlash;
+        private int curtainAmt;
+        private bool doneDrawing;
         
         public WinningScreenManager()
 		{
@@ -21,6 +25,10 @@ namespace LegendOfZelda
             whiteFlash = new WhiteFlash();
             lastUpdate = 0;
             flashingWhite = false;
+            flashingClosingFrequency = 100;
+            totalFlash = 6;
+            curtainAmt = 16;
+            doneDrawing = false;
         }
 
         public void DrawWhiteFlash()
@@ -52,14 +60,14 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
-            if ((flashAmt < 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 100))
+            if ((flashAmt < totalFlash) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + flashingClosingFrequency))
             {
                 lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
                 DrawWhiteFlash();
             }
 
             /* This block is to ensure there are some time before curtain starts to close after flashing ends. */
-            if ((flashAmt == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
+            if ((flashAmt == totalFlash) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
             { 
                 DrawBlackCurtain();
                 curtainUpdateAmt++;
@@ -68,11 +76,18 @@ namespace LegendOfZelda
             }
 
             /* Screen will be all black after 16 updates */
-            if ((curtainUpdateAmt > 0) && (curtainUpdateAmt < 16) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 100))
+            if ((curtainUpdateAmt > 0) && (curtainUpdateAmt < curtainAmt) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + flashingClosingFrequency))
             {
                 DrawBlackCurtain();
                 curtainUpdateAmt++;
                 lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
+                doneDrawing = true;
+            }
+
+            if (doneDrawing && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 3000))
+            {
+                GameState.CameraController.ChangeMenu(Menu.End);
+                doneDrawing = false;
             }
         }
 	}

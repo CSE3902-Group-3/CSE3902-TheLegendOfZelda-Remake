@@ -19,7 +19,7 @@ namespace LegendOfZelda
 
         /* Viewport */
         private readonly int ViewportWidth = 1024;
-        private readonly int ViewportHeight = 1024;
+        private readonly int ViewportHeight = 896;
 
         private Game1()
         {
@@ -60,7 +60,7 @@ namespace LegendOfZelda
 
             SpriteFactory.getInstance().LoadTextures();
             SoundFactory.getInstance().LoadTextures();
-
+            LevelUtilities.SetLevelLoadingValues(SpriteFactory.getInstance().scale);
             // Game state
             GameState = GameState.GetInstance();
         }
