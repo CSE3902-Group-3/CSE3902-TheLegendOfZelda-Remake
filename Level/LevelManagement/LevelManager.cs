@@ -7,13 +7,11 @@ namespace LegendOfZelda
     {
         private static LevelManager Instance;
 
-        public static int CurrentRoom { get { return currentRoom; } }
-        private static int currentRoom;
-        private static int previousRoom;
-        public static int NumberOfRooms { get { return numberOfRooms; } }
-        private static int numberOfRooms;
-        public static Vector2 CurrentRoomPosition { get { return LevelRooms[currentRoom].RoomPosition; } }
-        public static LevelRoom CurrentLevelRoom { get { return LevelRooms[currentRoom]; } }
+        public static int CurrentRoom { get; private set; }
+        private static int PreviousRoom;
+        public static int NumberOfRooms { get; private set; }
+        public static Vector2 CurrentRoomPosition { get { return LevelRooms[CurrentRoom].RoomPosition; } }
+        public static LevelRoom CurrentLevelRoom { get { return LevelRooms[CurrentRoom]; } }
 
         private static List<LevelRoom> LevelRooms;
         private static List<IUpdateable> PersistentUpdateables;
@@ -32,8 +30,8 @@ namespace LegendOfZelda
         public void StartLevel(string filename)
         {
             RoomList roomList = LevelParser.Parse(filename);
-            numberOfRooms = roomList.Rooms.Count;
-            currentRoom = 0;
+            NumberOfRooms = roomList.Rooms.Count;
+            CurrentRoom = 0;
             LevelRooms = new List<LevelRoom>();
             PersistentUpdateables = new List<IUpdateable>();
             PersistentDrawables = new List<IDrawable>();
@@ -44,24 +42,24 @@ namespace LegendOfZelda
             foreach (Room room in roomList.Rooms)
             {
                 LevelRooms.Add(new LevelRoom());
-                LevelRooms[currentRoom].LoadRoom(room);
+                LevelRooms[CurrentRoom].LoadRoom(room);
                 RoomListAdjacentRooms.Add(room.AdjacentRooms);
 
-                currentRoom++;
+                CurrentRoom++;
             }
-            currentRoom = 1;
+            CurrentRoom = 1;
         }
         public bool SnapToRoom(int targetRoom)
         {
             if (targetRoom >= 0 || targetRoom < NumberOfRooms)
             {
-                LinkUtilities.LinkChangePosToRoom(LevelRooms[currentRoom].RoomPosition, LevelRooms[targetRoom].RoomPosition);
+                LinkUtilities.LinkChangePosToRoom(LevelRooms[CurrentRoom].RoomPosition, LevelRooms[targetRoom].RoomPosition);
                 CameraController.GetInstance().SnapCamToRoom(LevelRooms[targetRoom].RoomPosition);
-                LevelRooms[currentRoom].DespawnEnemies();
-                LevelRooms[currentRoom].SwitchOut();
-                currentRoom = targetRoom;
-                LevelRooms[currentRoom].SpawnEnemies();
-                LevelRooms[currentRoom].SwitchIn();
+                LevelRooms[CurrentRoom].DespawnEnemies();
+                LevelRooms[CurrentRoom].SwitchOut();
+                CurrentRoom = targetRoom;
+                LevelRooms[CurrentRoom].SpawnEnemies();
+                LevelRooms[CurrentRoom].SwitchIn();
                 return true;
             }
             return false;
@@ -72,20 +70,20 @@ namespace LegendOfZelda
             if (targetRoom == CurrentRoom) { return false; }
             GameState.GetInstance().SwitchState(new RoomTransitionState());
             CameraController.GetInstance().PanCamToRoom(LevelRooms[targetRoom].RoomPosition, AfterRoomTransition);
-            LevelRooms[currentRoom].DespawnEnemies();
-            previousRoom = currentRoom;
-            currentRoom = targetRoom;
-            LevelRooms[currentRoom].SwitchIn();
+            LevelRooms[CurrentRoom].DespawnEnemies();
+            PreviousRoom = CurrentRoom;
+            CurrentRoom = targetRoom;
+            LevelRooms[CurrentRoom].SwitchIn();
             return true;
         }
         public void AfterRoomTransition()
         {
             GameState.GetInstance().SwitchState(new NormalState());
-            LevelRooms[currentRoom].SpawnEnemies();
-            int temp = currentRoom;
-            currentRoom = previousRoom;
-            LevelRooms[currentRoom].SwitchOut();
-            currentRoom = temp;
+            LevelRooms[CurrentRoom].SpawnEnemies();
+            int temp = CurrentRoom;
+            CurrentRoom = PreviousRoom;
+            LevelRooms[CurrentRoom].SwitchOut();
+            CurrentRoom = temp;
             GameState.Link.ExitRoomTransition();
         }
         private static int DetermineRoomInDirection(int fromRoom, Direction direction)
@@ -122,7 +120,7 @@ namespace LegendOfZelda
             {
                 PersistentUpdateables[i].Update(gameTime);
             }
-            LevelRooms[currentRoom].Update(gameTime);
+            LevelRooms[CurrentRoom].Update(gameTime);
         }
         public static bool AddDrawable(IDrawable drawable, bool persistent = false)
         {
@@ -131,7 +129,7 @@ namespace LegendOfZelda
                 PersistentDrawables.Add(drawable);
                 return true;
             }
-            else if (!persistent && LevelRooms[currentRoom].AddDrawable(drawable))
+            else if (!persistent && LevelRooms[CurrentRoom].AddDrawable(drawable))
             {
                 return true;
             }
@@ -148,6 +146,10 @@ namespace LegendOfZelda
                 return LevelRooms[CurrentRoom].RemoveDrawable(drawable);
             }
         }
+        public static bool RemoveDrawable(IDrawable drawable, int room)
+        {
+            return LevelRooms[room].RemoveDrawable(drawable);
+        }
         public static bool AddUpdateable(IUpdateable updateable, bool persistent = false)
         {
             if (persistent && !PersistentUpdateables.Contains(updateable))
@@ -155,7 +157,7 @@ namespace LegendOfZelda
                 PersistentUpdateables.Add(updateable);
                 return true;
             }
-            else if (!persistent && LevelRooms[currentRoom].AddUpdateable(updateable))
+            else if (!persistent && LevelRooms[CurrentRoom].AddUpdateable(updateable))
             {
                 return true;
             }
@@ -179,7 +181,7 @@ namespace LegendOfZelda
                 PersistentColliders.Add(collider);
                 return true;
             }
-            else if (!persistent && LevelRooms[currentRoom].AddCollider(collider))
+            else if (!persistent && LevelRooms[CurrentRoom].AddCollider(collider))
             {
                 return true;
             }

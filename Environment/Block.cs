@@ -1,10 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace LegendOfZelda
 {
     public class Block : ICollidable
@@ -20,11 +15,9 @@ namespace LegendOfZelda
                 sprite.UpdatePos(value);
             }
         }
-
-        private bool _enabled;
-        public bool enabled
+        public bool Enabled
         {
-            get { return  enabled; }
+            get { return Enabled; }
             set
             {
                 if (value)
@@ -35,7 +28,6 @@ namespace LegendOfZelda
                 {
                     sprite.UnregisterSprite();
                 }
-                _enabled = value;
             }
         }
         public Block(AnimatedSprite sprite, Vector2 pos) {
@@ -43,9 +35,6 @@ namespace LegendOfZelda
             this.pos = pos;
             sprite.UpdatePos(pos);
         }
-        public void OnCollision(List<CollisionInfo> collisions)
-        {
-
-        }
+        public void OnCollision(List<CollisionInfo> collisions){}
     }
 }

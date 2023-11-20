@@ -13,18 +13,14 @@ namespace LegendOfZelda
         private Rectangle overlayTexture;
         private Color color;
         private LetterFactory letterFactory;
-        private AnimatedSprite P;
-        private AnimatedSprite A;
-        private AnimatedSprite U;
-        private AnimatedSprite S;
-        private AnimatedSprite E;
-        private AnimatedSprite D;
         private List<AnimatedSprite> text;
         private int letterWidth;
         private int CameraXPos;
         private int CameraYPos;
         private int StartXPos;
         private int StartYPos;
+        private int ScreenWidth;
+        private int ScreenHeight;
 
         public PauseManager()
         {
@@ -36,15 +32,16 @@ namespace LegendOfZelda
             color = new Color(120, 120, 120, 200);
             letterWidth = 30;
             letterFactory = LetterFactory.GetInstance();
-            P = letterFactory.GetLetterSprite('P');
-            A = letterFactory.GetLetterSprite('A');
-            U = letterFactory.GetLetterSprite('U');
-            S = letterFactory.GetLetterSprite('S');
-            E = letterFactory.GetLetterSprite('E');
-            D = letterFactory.GetLetterSprite('D');
+            ScreenWidth = 1024;
+            ScreenHeight = 896;
             text = new List<AnimatedSprite>()
             {
-                P, A, U, S, E, D
+                letterFactory.GetLetterSprite('P'),
+                letterFactory.GetLetterSprite('A'),
+                letterFactory.GetLetterSprite('U'),
+                letterFactory.GetLetterSprite('S'),
+                letterFactory.GetLetterSprite('E'),
+                letterFactory.GetLetterSprite('D')
             };
         }
 
@@ -88,11 +85,11 @@ namespace LegendOfZelda
         {
             CameraXPos = (int)GameState.CameraController.mainCamera.worldPos.X;
             CameraYPos = (int)GameState.CameraController.mainCamera.worldPos.Y;
-            StartXPos = CameraXPos + (graphicsDevice.Viewport.Width * 2 / 5);
-            StartYPos = CameraYPos + (graphicsDevice.Viewport.Height / 2);
+            StartXPos = CameraXPos + (ScreenWidth * 2 / 5) + 12;
+            StartYPos = CameraYPos + (ScreenHeight * 3 / 5);
 
             overlay = SpriteFactory.getInstance().linkTexture;
-            game._spriteBatch.Draw(overlay, new Rectangle(CameraXPos,CameraYPos,graphicsDevice.Viewport.Height, graphicsDevice.Viewport.Width), overlayTexture, color);
+            game._spriteBatch.Draw(overlay, new Rectangle(CameraXPos, CameraYPos, ScreenWidth, ScreenHeight), overlayTexture, color);
             for (int i = 0; i < text.Count; i++)
             {
                 text[i].RegisterSprite();
