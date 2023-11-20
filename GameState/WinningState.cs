@@ -16,6 +16,7 @@ namespace LegendOfZelda
             menu = new WinningMenu();
             selector = new WinningSelector();
             controller = new WinningSelectorController();
+            SoundFactory.PlaySound(SoundFactory.getInstance().Fanfare);
         }
         public void Update(GameTime gameTime)
         {
@@ -25,7 +26,6 @@ namespace LegendOfZelda
         public void Draw(SpriteBatch _spriteBatch)
         {
             GameState.CameraController.Draw(_spriteBatch);
-            SoundFactory.PlaySound(SoundFactory.getInstance().Fanfare);
             menu.Draw();
         }
     }
