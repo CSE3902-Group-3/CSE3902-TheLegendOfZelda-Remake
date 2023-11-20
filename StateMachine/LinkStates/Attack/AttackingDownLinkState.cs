@@ -34,7 +34,7 @@ namespace LegendOfZelda
             
             if (link.HP == link.MaxHP)
             {
-                new SwordBeam(link.StateMachine.position, link.StateMachine.currentDirection);
+                new SwordBeam(link.StateMachine.position + LinkUtilities.downSwordBeamOffset, link.StateMachine.currentDirection);
             }
             
             sword = new Sword(link.StateMachine.currentDirection, link.StateMachine.position);

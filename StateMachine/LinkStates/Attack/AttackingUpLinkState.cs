@@ -1,4 +1,6 @@
-﻿namespace LegendOfZelda
+﻿using Microsoft.Xna.Framework;
+
+namespace LegendOfZelda
 {
     public class AttackingUpLinkState : IState
     {
@@ -24,7 +26,7 @@
 
             if (Link.HP == Link.MaxHP)
             {
-                new SwordBeam(Link.StateMachine.position, Link.StateMachine.currentDirection);
+                new SwordBeam(Link.StateMachine.position + LinkUtilities.upSwordBeamOffset, Link.StateMachine.currentDirection);
             }
 
             Sword = new Sword(Link.StateMachine.currentDirection, Link.StateMachine.position);
