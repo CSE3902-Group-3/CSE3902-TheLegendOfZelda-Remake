@@ -52,7 +52,7 @@ namespace LegendOfZelda
                 this.Die();
                 SoundFactory.PlaySound(SoundFactory.getInstance().LinkDie);
             }
-            while (this.HP >= 1)
+            if (this.HP >= 1)
             {
                 SoundFactory.PlaySound(SoundFactory.getInstance().LowHealth);
             }
