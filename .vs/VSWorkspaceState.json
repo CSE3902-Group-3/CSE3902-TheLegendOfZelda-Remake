@@ -1,6 +1,7 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Enemies",
     "\\Level",
     "\\Level\\LevelLoading",
     "\\Level\\LevelManagement"

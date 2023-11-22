@@ -7216,25 +7216,25 @@
                 },
                 {
                     "ElementType": "Block",
-                    "ElementValue": 9,
+                    "ElementValue": 13,
                     "XLocation": 0,
                     "YLocation": 0
                 },
                 {
                     "ElementType": "Block",
-                    "ElementValue": 14,
+                    "ElementValue": 10,
                     "XLocation": 0,
                     "YLocation": 0
                 },
                 {
                     "ElementType": "Block",
-                    "ElementValue": 11,
+                    "ElementValue": 31,
                     "XLocation": 0,
                     "YLocation": 0
                 },
                 {
                     "ElementType": "Block",
-                    "ElementValue": 12,
+                    "ElementValue": 20,
                     "XLocation": 0,
                     "YLocation": 0
                 },
@@ -7791,7 +7791,7 @@
             "RoomYLocation": 6,
             "AdjacentRooms": [
                 {
-                    "RoomNumber": 16,
+                    "RoomNumber": 17,
                     "Direction": "North"
                 },
                 {
@@ -8377,19 +8377,15 @@
 
         {
             "RoomNumber": 15,
-            "RoomXLocation": 2,
-            "RoomYLocation": 4,
+            "RoomXLocation": 3,
+            "RoomYLocation": 6,
             "AdjacentRooms": [
                 {
-                    "RoomNumber": 12,
-                    "Direction": "North"
+                    "RoomNumber": 14,
+                    "Direction": "West"
                 },
                 {
-                    "RoomNumber": 11,
-                    "Direction": "East"
-                },
-                {
-                    "RoomNumber": 8,
+                    "RoomNumber": 13,
                     "Direction": "South"
                 }
             ],
@@ -9009,7 +9005,7 @@
 
         {
             "RoomNumber": 17,
-            "RoomXLocation": 1,
+            "RoomXLocation": 2,
             "RoomYLocation": 7,
             "AdjacentRooms": [
                 {
@@ -9565,7 +9561,7 @@
                 },
                 {
                     "ElementType": "Item",
-                    "ElementValue": 8,
+                    "ElementValue": 9,
                     "XLocation": 6,
                     "YLocation": 3
                 }
