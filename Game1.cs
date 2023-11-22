@@ -21,6 +21,8 @@ namespace LegendOfZelda
         private readonly int ViewportWidth = 1024;
         private readonly int ViewportHeight = 896;
 
+        public static int frameNumber { get; private set; } = 0;
+
         private Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -67,6 +69,7 @@ namespace LegendOfZelda
 
         protected override void Update(GameTime gameTime)
         {
+            frameNumber++;
             GameState.Update(gameTime);
             base.Update(gameTime);
         }

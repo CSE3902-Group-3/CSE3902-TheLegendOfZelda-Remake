@@ -61,6 +61,8 @@ namespace LegendOfZelda
         public Effect StandardShader { get; private set; }
         public Effect ActiveShader { get; set; }
 
+        private int lastFrameNumber = -10;
+
         public bool flashing
         {
             get { return _flashing; }
@@ -159,7 +161,11 @@ namespace LegendOfZelda
         {
             DrawSprite();
 
-            UpdateFrameCounter();        
+            if(lastFrameNumber != Game1.frameNumber)
+            {
+                lastFrameNumber = Game1.frameNumber;
+                UpdateFrameCounter();
+            }   
         }
 
         protected virtual void DrawSprite()
