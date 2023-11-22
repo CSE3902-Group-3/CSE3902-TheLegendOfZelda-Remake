@@ -101,6 +101,7 @@ namespace LegendOfZelda
                 ClosedCollider.Active = false;
                 OpenCollider.Active = true;
                 Closed = false;
+                SoundFactory.PlaySound(SoundFactory.getInstance().DoorUnlock);
             }
         }
         public void Close()

@@ -17,7 +17,6 @@
     <EmbeddedResource Remove="LegendOfZelda\**" />
     <None Remove="Code Review\**" />
     <None Remove="LegendOfZelda\**" />
-    <Compile Remove="LinkCommand.cs" />
     <None Remove="Utility\GameOverScreenDrawables\" />
     <None Remove="Utility\ScreenManagers\" />
     <None Remove="SpecialScreens\" />
@@ -25,6 +24,7 @@
     <None Remove="SpecialScreens\ScreenManagers\" />
     <None Remove="SpecialScreens\WinningScreenDrawables\" />
     <None Remove="Command\GameOverMenu\" />
+    <None Remove="Command\GameWinningMenu\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
@@ -50,6 +50,7 @@
     <Folder Include="SpecialScreens\ScreenManagers\" />
     <Folder Include="SpecialScreens\WinningScreenDrawables\" />
     <Folder Include="Command\GameOverMenu\" />
+    <Folder Include="Command\GameWinningMenu\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Level\Levels\level1.json">

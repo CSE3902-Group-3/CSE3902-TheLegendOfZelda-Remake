@@ -18,7 +18,7 @@ namespace LegendOfZelda
             pos = position;
 
             sprite = spriteFactory.CreateBombSprite();
-            SoundFactory.PlaySound(SoundFactory.getInstance().BombDrop, 1.0f, 0.0f, 0.0f);
+            SoundFactory.PlaySound(SoundFactory.getInstance().BombDrop);
             sprite.UpdatePos(pos);
 
             new Timer(delay, SpawnExplosion);
@@ -32,7 +32,7 @@ namespace LegendOfZelda
         public void SpawnExplosion()
         {
             new Explosion(new Vector2(pos.X - explosionPixelOffset * sprite.scale, pos.Y));
-            SoundFactory.PlaySound(SoundFactory.getInstance().BombBlow, 1.0f, 0.0f, 0.0f);
+            SoundFactory.PlaySound(SoundFactory.getInstance().BombBlow);
             Destroy();
         }
         public void Destroy()

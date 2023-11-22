@@ -89,8 +89,9 @@ namespace LegendOfZelda
             MediaPlayer.IsRepeating = true;
             MediaPlayer.MediaStateChanged += MediaPlayer_MediaStateChanged;
         }
-        public static void PlaySound(SoundEffect sound, float volume, float pitch, float pan)
+        public static void PlaySound(SoundEffect sound)
         {
+            float volume = 1.0f, pitch = 0.0f, pan = 0.0f;
             sound.Play(volume, pitch, pan);
         }
         public void MediaPlayer_MediaStateChanged(object sender, System.EventArgs e)
