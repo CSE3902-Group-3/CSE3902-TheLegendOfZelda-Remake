@@ -6,7 +6,7 @@ namespace LegendOfZelda
     public class LinkStateMachine
     {
         // might be useful for one frame states like throwing an item
-        public IState PrevState { get; private set; }
+        public IState PrevState { get; private set; } = new IdleLinkState();
         public IState CurrentState { get; private set; }
         public Direction currentDirection { get; set; } = Direction.right;
         public Direction prevDirection;

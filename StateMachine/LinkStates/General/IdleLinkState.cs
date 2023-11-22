@@ -2,42 +2,38 @@
 {
     public class IdleLinkState : IState
     {
-        private Link Link;
 
         // can pause animation in any direction, no need for separate states
-        public IdleLinkState()
-        {
-            Link = GameState.Link;
-        }
+        public IdleLinkState(){}
 
         public void Enter()
         {
-            Link.StateMachine.canMove = true;
+            GameState.Link.StateMachine.canMove = true;
             // if we were not just walking, change sprite
-            if (Link.StateMachine.PrevState.GetType() != typeof(WalkDownLinkState) &&
-                Link.StateMachine.PrevState.GetType() != typeof(WalkUpLinkState) &&
-                Link.StateMachine.PrevState.GetType() != typeof(WalkLeftLinkState) &&
-                Link.StateMachine.PrevState.GetType() != typeof(WalkRightLinkState))
+            if (GameState.Link.StateMachine.PrevState.GetType() != typeof(WalkDownLinkState) &&
+                GameState.Link.StateMachine.PrevState.GetType() != typeof(WalkUpLinkState) &&
+                GameState.Link.StateMachine.PrevState.GetType() != typeof(WalkLeftLinkState) &&
+                GameState.Link.StateMachine.PrevState.GetType() != typeof(WalkRightLinkState))
             {
-                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
-                switch (Link.StateMachine.currentDirection)
+                ((AnimatedSprite)GameState.Link.Sprite).UnregisterSprite();
+                switch (GameState.Link.StateMachine.currentDirection)
                 {
                     case Direction.left:
-                        Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkLeftSprite();
+                        GameState.Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkLeftSprite();
                         break;
                     case Direction.up:
-                        Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
+                        GameState.Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
                         break;
                     case Direction.right:
-                        Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
+                        GameState.Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
                         break;
                     case Direction.down:
-                        Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
+                        GameState.Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
                         break;
                 }
             }
             // cast then pause animation of sprite
-            ((AnimatedSprite)Link.Sprite).paused = true;
+            ((AnimatedSprite)GameState.Link.Sprite).paused = true;
         }
 
         public void Execute()
@@ -48,7 +44,7 @@
         public void Exit()
         {
             // cast then pause animation of sprite
-            ((AnimatedSprite)Link.Sprite).paused = false;
+            ((AnimatedSprite)GameState.Link.Sprite).paused = false;
         }
     }
 }

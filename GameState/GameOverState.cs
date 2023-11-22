@@ -6,14 +6,12 @@ namespace LegendOfZelda
     public class GameOverState : IGameState
     {
         private GameOverScreen gameOver;
-        private GameOverMenu menu;
         public static GameOverMenuSelector selector;
         private GameOverMenuController controller;
 
         public GameOverState()
         {
             gameOver = new GameOverScreen();
-            menu = new GameOverMenu();
             selector = new GameOverMenuSelector();
             controller = new GameOverMenuController();
         }

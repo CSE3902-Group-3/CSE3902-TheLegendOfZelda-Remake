@@ -5,16 +5,15 @@ using System.Collections.Generic;
 namespace LegendOfZelda
 {
     public enum BlockState { Idle, Pushing, Moving, Pushed };
-    public class Room16PushableBlock : ICollidable, IUpdateable
+    public class MoveSouthPushableBlock : ICollidable, IUpdateable
     {
-        
-
+        public bool Moved { get; private set; } = false;
         private ISprite sprite;
         private IRectCollider collider;
         private int wallSize = 16;
         private Vector2 _pos;
         private Timer timer;
-        private const float pushDelay = 1;
+        private const float pushDelay = (float)0.001;
         public BlockState state { get; private set; } = BlockState.Idle;
         private Vector2 startingPos;
 
@@ -23,6 +22,7 @@ namespace LegendOfZelda
         private const float distThreshold = 2;
         private const float moveSpeed = 1;
         private Direction dirPushing = Direction.down;
+        private int CreatedInRoom;
 
         private Vector2 Pos
         {
@@ -36,7 +36,7 @@ namespace LegendOfZelda
         }
 
 
-        public Room16PushableBlock(Vector2 pos)
+        public MoveSouthPushableBlock(Vector2 pos)
         {
             SpriteFactory spriteFactory = SpriteFactory.getInstance();
             sprite = spriteFactory.CreateWallSprite();
@@ -46,7 +46,8 @@ namespace LegendOfZelda
             _pos = pos;
 
             collider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, wallSize, wallSize), CollisionLayer.Wall, this);
-            LevelManager.AddUpdateable(this);
+            CreatedInRoom = LevelManager.CurrentRoom;
+            LevelManager.AddUpdateable(this, true);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
@@ -86,6 +87,11 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
+            if (LevelManager.CurrentRoom != CreatedInRoom)
+            {
+                Reset();
+                return;
+            }
             switch (state)
             {
                 case BlockState.Pushing:
@@ -127,6 +133,7 @@ namespace LegendOfZelda
         {
             if (state == BlockState.Pushing)
             {
+                Moved = true;
                 state = BlockState.Moving;
                 switch(dirPushing)
                 {
@@ -152,8 +159,12 @@ namespace LegendOfZelda
 
         public void Reset()
         {
-            Pos = startingPos;
-            state = BlockState.Idle;
+            if (Moved)
+            {
+                Moved = false;
+                Pos = startingPos;
+                state = BlockState.Idle;
+            }
         }
     }
 }
