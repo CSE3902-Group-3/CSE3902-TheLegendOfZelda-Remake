@@ -46,7 +46,7 @@ namespace LegendOfZelda
         }
         public void UpdateHealth(float damagePoints)
         {
-            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit, 1.0f, 0.0f, 0.0f);
+            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit);
             Sprite.flashing = true;
         }
 
