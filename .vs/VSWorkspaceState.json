@@ -4,8 +4,9 @@
     "\\Enemies",
     "\\Level",
     "\\Level\\LevelLoading",
-    "\\Level\\LevelManagement"
+    "\\Level\\LevelManagement",
+    "\\Sounds"
   ],
-  "SelectedNode": "\\LegendOfZelda.sln",
+  "SelectedNode": "\\Sounds\\SoundFactory.cs",
   "PreviewInSolutionExplorer": false
 }
