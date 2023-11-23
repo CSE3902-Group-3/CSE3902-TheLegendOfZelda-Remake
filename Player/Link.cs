@@ -45,12 +45,16 @@ namespace LegendOfZelda
 
         public void TakeDamage(float damage)
         {
-            SoundFactory.PlaySound(SoundFactory.getInstance().LinkHurt, 1.0f, 0.0f, 0.0f);
+            SoundFactory.PlaySound(SoundFactory.getInstance().LinkHurt);
             this.HP -= damage;
             if (this.HP <= 0)
             {
                 this.Die();
-                SoundFactory.PlaySound(SoundFactory.getInstance().LinkDie, 1.0f, 0.0f, 0.0f);
+                SoundFactory.PlaySound(SoundFactory.getInstance().LinkDie);
+            }
+            if (this.HP >= 1)
+            {
+                SoundFactory.PlaySound(SoundFactory.getInstance().LowHealth);
             }
             this.StateMachine.isTakingDamage = true;
             this.damageAnimationTimer = this.damageAnimationDuration;
@@ -97,6 +101,8 @@ namespace LegendOfZelda
         public void Die()
         {
             // just call Reset for now
+            Sprite.UnregisterSprite();
+            // Pust Link spinning death sprite here
             this.Reset();
         }
 

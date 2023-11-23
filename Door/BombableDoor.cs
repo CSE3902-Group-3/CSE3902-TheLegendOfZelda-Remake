@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-    public class BombableDoor : ICollidable
+    public class BombableDoor : ICollidable, IDoor
     {
         private IAnimatedSprite openSprite;
         private IAnimatedSprite closedSprite;
@@ -23,6 +23,7 @@ namespace LegendOfZelda
             wallSize *= spriteFactory.scale;
             Closed = true;
             this.direction = direction;
+            LevelManager.CurrentLevelRoom.AddDoor(direction, this);
 
             switch (direction)
             {
@@ -63,7 +64,6 @@ namespace LegendOfZelda
 
         public void OnCollision(List<CollisionInfo> collisions)
         {
-            bool transitionEntered = false;
             foreach (CollisionInfo collision in collisions)
             {
                 if (Closed) HandleCollisionWhenLocked(collision);
@@ -74,7 +74,7 @@ namespace LegendOfZelda
         {
             if(collision.CollidedWith.Collidable is Explosion)
             {
-                OpenDoor();
+                Open();
             }
         }
 
@@ -87,7 +87,7 @@ namespace LegendOfZelda
             LevelManager.GetInstance().TransitionToRoom(direction);
         }
 
-        public void OpenDoor()
+        public void Open()
         {
             openCollider.Active = true;
             openSprite.RegisterSprite();
@@ -96,6 +96,16 @@ namespace LegendOfZelda
             closedSprite.UnregisterSprite();
 
             Closed = false;
+        }
+        public void Close()
+        {
+            openCollider.Active = false;
+            openSprite.UnregisterSprite();
+
+            closedCollider.Active = true;
+            closedSprite.RegisterSprite();
+
+            Closed = true;
         }
     }
 }

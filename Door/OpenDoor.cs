@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-    public class OpenDoor : ICollidable
+    public class OpenDoor : ICollidable, IDoor
     {
         private IAnimatedSprite sprite;
         private IRectCollider collider;
@@ -17,6 +17,7 @@ namespace LegendOfZelda
             this.direction = direction;
             SpriteFactory spriteFactory = SpriteFactory.getInstance();
             wallSize *= spriteFactory.scale;
+            LevelManager.CurrentLevelRoom.AddDoor(direction, this);
 
             switch (direction)
             {
@@ -56,5 +57,7 @@ namespace LegendOfZelda
                 }
             }
         }
+        public void Open(){}
+        public void Close(){}
     }
 }

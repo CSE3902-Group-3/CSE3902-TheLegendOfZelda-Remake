@@ -8,7 +8,7 @@ namespace LegendOfZelda
         public AquamentusBallExplosion(Vector2 position)
         {
             Sprite = SpriteFactory.getInstance().CreateExplosionSprite();
-            SoundFactory.PlaySound(SoundFactory.getInstance().BombBlow, 1.0f, 0.0f, 0.0f);
+            SoundFactory.PlaySound(SoundFactory.getInstance().BombBlow);
             Sprite.UpdatePos(position);
             new Timer(0.5, Dissipate);
         }

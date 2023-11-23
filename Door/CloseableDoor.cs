@@ -1,10 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-    public class CloseableDoor : ICollidable
+    public class CloseableDoor : ICollidable, IDoor
     {
         private IAnimatedSprite openSprite;
         private IAnimatedSprite closedSprite;
@@ -23,6 +22,8 @@ namespace LegendOfZelda
             wallSize *= spriteFactory.scale;
             Closed = true;
             this.direction = direction;
+            LevelManager.CurrentLevelRoom.AddDoor(direction, this);
+
 
             switch (direction)
             {
@@ -77,26 +78,32 @@ namespace LegendOfZelda
             }
         }
 
-        public void OpenDoor()
+        public void Open()
         {
-            openCollider.Active = true;
-            openSprite.RegisterSprite();
+            if (Closed)
+            {
+                openCollider.Active = true;
+                openSprite.RegisterSprite();
 
-            closedCollider.Active = false;
-            closedSprite.UnregisterSprite();
+                closedCollider.Active = false;
+                closedSprite.UnregisterSprite();
 
-            Closed = false;
+                Closed = false;
+            }
         }
 
-        public void CloseDoor()
+        public void Close()
         {
-            closedCollider.Active = true;
-            closedSprite.RegisterSprite();
+            if (!Closed)
+            {
+                closedCollider.Active = true;
+                closedSprite.RegisterSprite();
 
-            openCollider.Active = false;
-            openSprite.UnregisterSprite();
+                openCollider.Active = false;
+                openSprite.UnregisterSprite();
 
-            Closed = true;
+                Closed = true;
+            }
         }
     }
 }

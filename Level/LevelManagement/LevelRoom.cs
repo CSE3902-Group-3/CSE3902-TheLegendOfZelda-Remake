@@ -10,6 +10,7 @@ namespace LegendOfZelda
         private List<IDrawable> RoomDrawables;
         private List<IRectCollider> RoomColliders;
         private List<IEnemy> RoomEnemies;
+        private Dictionary<Direction, IDoor> RoomDoors;
         public Vector2 RoomPosition { get { return roomPosition; } }
         private Vector2 roomPosition;
 
@@ -24,6 +25,7 @@ namespace LegendOfZelda
             RoomDrawables = new List<IDrawable>();
             RoomColliders = new List<IRectCollider>();
             RoomEnemies = new List<IEnemy>();
+            RoomDoors = new Dictionary<Direction, IDoor>();
         }
         public void LoadRoom (Room room)
         {
@@ -134,6 +136,15 @@ namespace LegendOfZelda
             {
                 enemy.Despawn();
             }
+        }
+        public void AddDoor(Direction direction, IDoor door)
+        {
+            RoomDoors.Add(direction, door);
+        }
+        public void OpenDoor(Direction direction)
+        {
+            RoomDoors.TryGetValue(direction, out IDoor door);
+            door.Open();
         }
         public void SwitchIn()
         {

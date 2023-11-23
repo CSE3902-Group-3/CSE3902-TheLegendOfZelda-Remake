@@ -63,7 +63,7 @@ namespace LegendOfZelda
                     Debug.WriteLine("Invalid beam projectile direction");
                     break;
             }
-            SoundFactory.PlaySound(SoundFactory.getInstance().SwordCombined, 1.0f, 0.0f, 0.0f);
+            SoundFactory.PlaySound(SoundFactory.getInstance().SwordCombined);
             sprite.UpdatePos(position);
 
             int scale = spriteFactory.scale;
