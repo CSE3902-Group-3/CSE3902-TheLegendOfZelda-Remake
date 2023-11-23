@@ -54,6 +54,10 @@ namespace LegendOfZelda
         private int CurrentHealth;
         private int MaxHealth;
 
+        private Bomb bomb;
+        private Key key;
+        private OneRupee rupee;
+
         private List<int> ElementList = new List<int>()
         {
             -1, -1, -1, -1, -1, -1, -1, -1,
@@ -68,6 +72,10 @@ namespace LegendOfZelda
             letterFactory = LetterFactory.GetInstance();
             spriteFactory = SpriteFactory.getInstance();
             inventoryHUD = InventoryHUD.GetInstance();
+
+            bomb = new Bomb(Vector2.Zero);
+            key = new Key(Vector2.Zero);
+            rupee = new OneRupee(Vector2.Zero);
 
             inventory = Inventory.getInstance();
             link = GameState.Link;
@@ -84,7 +92,6 @@ namespace LegendOfZelda
             LowerHUDBase = spriteFactory.CreateLowerHUDSprite();
             LevelIndicator = spriteFactory.CreateLevelHUDSprite();
             LevelNumber = letterFactory.GetLetterSprite(Level);
-            // The wepons below should be able to change later. These are test only.
             WeponA = spriteFactory.CreateWoodenSwoardSprite();
             WeponB = letterFactory.GetBlankSprite();
             Rubies = QuantityToSprite(RubiesCount);
@@ -92,7 +99,6 @@ namespace LegendOfZelda
             Bombs = QuantityToSprite(BombsCount);
             GetHealthSprite(CurrentHealth, MaxHealth);
 
-            // The below position is for test now, should be changed to GameState.CameraController.HUDLocation later
             LowerHUDBasePos = GameState.CameraController.HUDLocation;
             LevelIndicatorPos = new Vector2(LowerHUDBasePos.X + 16 * scale, LowerHUDBasePos.Y + 8 * scale);
             LevelNumberPos = new Vector2(LevelIndicatorPos.X + 48 * scale, LevelIndicatorPos.Y);
@@ -287,9 +293,10 @@ namespace LegendOfZelda
 
         public void UpdateRubies()
         {
-            if (RubiesCount != inventory.GetQuantity(new OneRupee(Vector2.Zero)))
+            int newCount = inventory.GetQuantity(rupee);
+            if (RubiesCount != newCount)
             {
-                RubiesCount = inventory.GetQuantity(new OneRupee(Vector2.Zero));
+                RubiesCount = newCount;
                 UnRegisterListSprite(Rubies);
                 Rubies = QuantityToSprite(RubiesCount);
                 RegisterListSprite(Rubies, RubiesPos);
@@ -298,7 +305,8 @@ namespace LegendOfZelda
 
         public void UpdateKeys()
         {
-            if (KeysCount != inventory.GetQuantity(new Key(Vector2.Zero)))
+            int newCount = inventory.GetQuantity(key);
+            if (KeysCount != newCount)
             {
                 KeysCount = inventory.GetQuantity(new Key(Vector2.Zero));
                 UnRegisterListSprite(Keys);
@@ -309,9 +317,10 @@ namespace LegendOfZelda
 
         public void UpdateBoombs()
         {
-            if (BombsCount != inventory.GetQuantity(new Bomb(Vector2.Zero)))
+            int newCount = inventory.GetQuantity(bomb);
+            if (BombsCount != newCount)
             {
-                BombsCount = inventory.GetQuantity(new Bomb(Vector2.Zero));
+                BombsCount = newCount;
                 UnRegisterListSprite(Bombs);
                 Bombs = QuantityToSprite(BombsCount);
                 RegisterListSprite(Bombs, BombsPos);

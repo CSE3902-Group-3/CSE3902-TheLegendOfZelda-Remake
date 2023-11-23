@@ -5,19 +5,26 @@ namespace LegendOfZelda
 {
     public class ItemMenuState : IGameState
     {
-        public ItemMenuState(){}
+        InventoryHUD inventoryHUD;
+        MapHUD mapHUD;
+        public ItemMenuState()
+        {
+            inventoryHUD = InventoryHUD.GetInstance();
+            
+            mapHUD = MapHUD.GetInstance();
+        }
         public void Update(GameTime gameTime)
         {
-            InventoryHUD.GetInstance().Show();
-            InventoryHUD.GetInstance().Update(gameTime);
-            MapHUD.GetInstance().Show();
-            MapHUD.GetInstance().Update(gameTime);
+            inventoryHUD.Update(gameTime);
+            mapHUD.Update(gameTime);
             GameState.ItemMenuController.Update();
             CameraController.GetInstance().itemMenuCamera.Update(gameTime);
         }
         public void Draw(SpriteBatch _spriteBatch)
         {
             GameState.CameraController.Draw(_spriteBatch);
+            inventoryHUD.Show();
+            mapHUD.Show();
         }
     }
 }
