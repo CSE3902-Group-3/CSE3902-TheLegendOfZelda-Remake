@@ -20,8 +20,11 @@
             else
                 Inventory.getInstance().AddItem(itemCollidedWith);
 
-
-            SoundFactory.PlaySound(SoundFactory.getInstance().GetItem, 1.0f, 0.0f, 0.0f);
+            // These specific items have designated sounds upon being collected handled in their own classes
+            if (itemCollidedWith is not Heart && itemCollidedWith is not OneRupee && itemCollidedWith is not FiveRupee)
+            {
+                SoundFactory.PlaySound(SoundFactory.getInstance().GetItem);
+            }
         }
 
     }

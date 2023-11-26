@@ -32,6 +32,7 @@
                 Instance = new ItemLamda();
             return Instance;
         }
+        // Refer to Level/Levels/LevelWritingInstructions.txt for the dictionary
         static void Arrow(Room room, MapElement mapElement)
         {
             IItem item = new Arrow(LevelUtilities.CalculatePositionWallOffset(room, mapElement));

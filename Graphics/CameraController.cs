@@ -29,7 +29,7 @@ namespace LegendOfZelda
         private List<IDrawable> activeMenuDrawables;
 
         private Camera activeMenu;
-        
+
         private CameraController()
         {
             mainCamera = new Camera(Vector2.Zero);

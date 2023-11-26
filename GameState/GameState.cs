@@ -68,7 +68,8 @@ namespace LegendOfZelda
             Link = new Link();
             LevelMaster.SnapToRoom(1);
             PlayerController = new PlayerController(Link);
-            CameraController.Reset();
+            CameraController.mainCamera.worldPos = LevelManager.CurrentRoomPosition;
+            CameraController.ChangeMenu(Menu.Item);
             SwitchState(new NormalState());
             LinkUtilities.UpdatePositions(Link, LinkUtilities.originalLinkPosition);
         }

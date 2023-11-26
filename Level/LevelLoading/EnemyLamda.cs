@@ -30,6 +30,7 @@ namespace LegendOfZelda
                 Instance = new EnemyLamda();
             return Instance;
         }
+        // Refer to Level/Levels/LevelWritingInstructions.txt for the dictionary
         static void Aquamentus(Room room, MapElement mapElement)
         {
             IEnemy enemy = new Aquamentus(LevelUtilities.CalculatePositionWallOffset(room, mapElement));

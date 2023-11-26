@@ -50,8 +50,8 @@ namespace LegendOfZelda
                 WallExterior,
                 Ladder,
                 LadderDoor,
-                Room8PushableBlock,
-                Room16PushableBlock,
+                MoveWestPushableBlock,
+                MoveSouthPushableBlock,
                 ImpassibleBlackTile,
                 SpecialExteriorCollider,
                 Fire
@@ -63,6 +63,7 @@ namespace LegendOfZelda
                 Instance = new BlockLamda();
             return Instance;
         }
+        // Refer to Level/Levels/LevelWritingInstructions.txt for the dictionary
         static void FloorTile(Room room, MapElement mapElement)
         {
             Vector2 pos = LevelUtilities.CalculatePositionWallOffset(room, mapElement);
@@ -209,15 +210,15 @@ namespace LegendOfZelda
             Vector2 pos = LevelUtilities.CalculatePositionNoWallOffset(room, mapElement);
             new LadderDoor(pos);
         }
-        static void Room8PushableBlock(Room room, MapElement mapElement)
+        static void MoveWestPushableBlock(Room room, MapElement mapElement)
         {
             Vector2 pos = LevelUtilities.CalculatePositionWallOffset(room, mapElement);
-            new Room8PushableBlock(pos);
+            new MoveWestPushablBlock(pos);
         }
-        static void Room16PushableBlock(Room room, MapElement mapElement)
+        static void MoveSouthPushableBlock(Room room, MapElement mapElement)
         {
             Vector2 pos = LevelUtilities.CalculatePositionWallOffset(room, mapElement);
-            new Room16PushableBlock(pos);
+            new MoveSouthPushableBlock(pos);
         }
         static void ImpassibleBlackTile(Room room, MapElement mapElement)
         {

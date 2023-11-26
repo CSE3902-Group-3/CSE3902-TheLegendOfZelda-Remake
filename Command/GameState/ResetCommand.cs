@@ -4,16 +4,16 @@ namespace LegendOfZelda
     public class ResetCommand : ICommands
     {
         //Prepare for later use
-        private IPlayer link;
+        private Link link;
 
-        public ResetCommand(IPlayer link)
+        public ResetCommand(Link link)
         {
             this.link = link;
         }
 
         public void Execute()
         {
-            GameState.GetInstance().SwitchState(new GameOverState());
+            link.Die();
         }
 
     }

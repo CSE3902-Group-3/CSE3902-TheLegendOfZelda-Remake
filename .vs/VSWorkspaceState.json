@@ -1,15 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Door",
-    "\\Enemies",
-    "\\Enemies\\Utilities",
-    "\\Graphics",
-    "\\Level",
-    "\\Level\\Lambdas",
-    "\\Player",
-    "\\Utility"
+    "\\Level\\LevelLoading"
   ],
-  "SelectedNode": "\\Player\\Inventory.cs",
+  "SelectedNode": "\\Game1.cs",
   "PreviewInSolutionExplorer": false
 }

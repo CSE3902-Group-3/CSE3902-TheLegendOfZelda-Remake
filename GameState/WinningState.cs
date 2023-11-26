@@ -16,6 +16,7 @@ namespace LegendOfZelda
             menu = new WinningMenu();
             selector = new WinningSelector();
             controller = new WinningSelectorController();
+            SoundFactory.PlaySound(SoundFactory.getInstance().Fanfare);
         }
         public void Update(GameTime gameTime)
         {

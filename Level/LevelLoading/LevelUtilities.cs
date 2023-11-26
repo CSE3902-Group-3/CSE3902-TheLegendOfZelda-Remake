@@ -107,6 +107,16 @@ namespace LegendOfZelda
         {
             return new Vector2(room.RoomXLocation * RoomWidth + TriforceXPosition, room.RoomYLocation * RoomHeight * -1 + YMenuOffset + WallOffset + GridUnitSize * mapElement.YLocation);
         }
+        public static Direction GetOppositeDirection(Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.up: return Direction.down;
+                case Direction.down: return Direction.up;
+                case Direction.left: return Direction.right;
+                case Direction.right: return Direction.left;
+                default: return Direction.up;
+            }
+        }
     }
-
 }
