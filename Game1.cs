@@ -20,6 +20,12 @@ namespace LegendOfZelda
         private readonly int ViewportWidth = 1024;
         private readonly int ViewportHeight = 896;
 
+        /* ini Config Reader */
+        public ReadConfig ReadConfig = new ReadConfig("config.ini");
+
+        /* Game Difficulty */
+        public float Difficulty;
+
         private Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -58,6 +64,8 @@ namespace LegendOfZelda
             SpriteFactory.getInstance().LoadTextures();
             SoundFactory.getInstance().LoadTextures();
             LevelUtilities.SetLevelLoadingValues(SpriteFactory.getInstance().scale);
+
+            Difficulty = ReadConfig.GetDifficulty();
             // Game state
             GameState = GameState.GetInstance();
         }
