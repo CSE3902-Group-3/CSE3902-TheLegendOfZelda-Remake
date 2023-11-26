@@ -23,38 +23,24 @@ namespace LegendOfZelda
             if (Link.Sprite != null)
             {
                 // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
+                Link.Sprite.UnregisterSprite();
             }
+            Link.Sprite = SpriteFactory.getInstance().CreateLinkDeathSprite();
             Link.StateMachine.canMove = false;
         }
 
         public void Execute()
         {
-            if (spins < 3)
-            {
-                counter++;
+            counter++;
 
-                if (counter < 10)
-                {
-                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
-                }
-                else if (counter < 20)
-                {
-                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
-                }
-                else if (counter < 30)
-                {
-                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkLeftSprite();
-                }
-                else if (counter < 40)
-                {
-                    Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
-                }
-                else
-                {
-                    counter = 0;
-                    spins++;
-                }
+            if (counter % 10 == 0)
+            {
+                spins++;
+            }
+
+            if (spins > 3)
+            {
+                Link.Sprite.UnregisterSprite();
             }
         }
 

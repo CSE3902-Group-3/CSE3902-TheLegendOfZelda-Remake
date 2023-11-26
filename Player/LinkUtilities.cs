@@ -43,6 +43,11 @@ namespace LegendOfZelda
             {
                 return !((AnimatedSprite)GameState.Link.Sprite).complete;
             }
+            if (state is DeathLinkState)
+            {
+                return true;
+            }
+
             return false;
         }
 
