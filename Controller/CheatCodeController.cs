@@ -23,16 +23,19 @@ namespace LegendOfZelda
             {
 				restoreHealthCommand.Execute();
                 ReleasedKey = false;
+				SoundFactory.PlaySound(SoundFactory.getInstance().GetItem);
             }
 			else if (Keyboard.GetState().IsKeyDown(Keys.C) && Keyboard.GetState().IsKeyDown(Keys.P) && ReleasedKey)
 			{
 				addRupeeCommand.Execute();
 				ReleasedKey = false;
+				SoundFactory.PlaySound(SoundFactory.getInstance().GetItem);
 			}
 			else if (Keyboard.GetState().IsKeyDown(Keys.C) && Keyboard.GetState().IsKeyDown(Keys.K) && ReleasedKey)
 			{
 				killEnemiesCommand.Execute();
 				ReleasedKey = false;
+				SoundFactory.PlaySound(SoundFactory.getInstance().EnemyDie);
 			}
 
             if (Keyboard.GetState().IsKeyUp(Keys.C) && Keyboard.GetState().IsKeyUp(Keys.H) && Keyboard.GetState().IsKeyUp(Keys.P) && Keyboard.GetState().IsKeyUp(Keys.K) && !ReleasedKey)
