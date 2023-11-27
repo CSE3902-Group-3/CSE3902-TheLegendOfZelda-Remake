@@ -13,6 +13,7 @@ namespace LegendOfZelda
             LowerHUD.GetInstance().Update(gameTime);
             GameState.PlayerController.Update();
             GameState.CollisionManager.Update(gameTime);
+            GameState.cheatCodeController.Update();
         }
         public void Draw(SpriteBatch _spriteBatch)
         {
