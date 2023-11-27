@@ -8,6 +8,7 @@ namespace LegendOfZelda
 		private RestoreHealthCommand restoreHealthCommand;
 		private AddRupeeCommand addRupeeCommand;
 		private KillEnemiesCommand killEnemiesCommand;
+		private AddKeyCommand addKeyCommand;
 
 		public CheatCodeController()
 		{
@@ -15,6 +16,7 @@ namespace LegendOfZelda
 			restoreHealthCommand = new RestoreHealthCommand();
 			addRupeeCommand = new AddRupeeCommand();
 			killEnemiesCommand = new KillEnemiesCommand();
+			addKeyCommand = new AddKeyCommand();
 		}
 
 		public void Update()
@@ -31,12 +33,18 @@ namespace LegendOfZelda
 				ReleasedKey = false;
 				SoundFactory.PlaySound(SoundFactory.getInstance().GetItem);
 			}
-			else if (Keyboard.GetState().IsKeyDown(Keys.C) && Keyboard.GetState().IsKeyDown(Keys.K) && ReleasedKey)
+			else if (Keyboard.GetState().IsKeyDown(Keys.C) && Keyboard.GetState().IsKeyDown(Keys.O) && ReleasedKey)
 			{
 				killEnemiesCommand.Execute();
 				ReleasedKey = false;
 				SoundFactory.PlaySound(SoundFactory.getInstance().EnemyDie);
 			}
+			else if (Keyboard.GetState().IsKeyDown(Keys.C) && Keyboard.GetState().IsKeyDown(Keys.K) && ReleasedKey)
+			{
+				addKeyCommand.Execute();
+				ReleasedKey = false;
+                SoundFactory.PlaySound(SoundFactory.getInstance().GetItem);
+            }
 
             if (Keyboard.GetState().IsKeyUp(Keys.C) && Keyboard.GetState().IsKeyUp(Keys.H) && Keyboard.GetState().IsKeyUp(Keys.P) && Keyboard.GetState().IsKeyUp(Keys.K) && !ReleasedKey)
             {
