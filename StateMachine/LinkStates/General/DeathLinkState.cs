@@ -38,7 +38,7 @@ namespace LegendOfZelda
                 spins++;
             }
 
-            if (spins > 3)
+            if (spins > 16)
             {
                 Link.Sprite.UnregisterSprite();
             }
