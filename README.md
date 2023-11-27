@@ -26,12 +26,8 @@ Remake of NES The Legend of Zelda game
 
 ## Minor Known Bugs:
 - Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
-- Link teleports and then walks in place when traveling through a door instead of walking through
-- Link does not receive invincibility frames when he collides with a slime
 - Enemies drop items when exiting a room
 - Goriya sometimes walks through certain walls
-- Link does not spin when he dies
-- Sword beam does not spawn in the correct position
 - The pause overlay does not affect Link's sprite
 - Sprites still animate when the game is paused
 - Fireballs are missing from the wizard room
