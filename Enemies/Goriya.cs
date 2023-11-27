@@ -86,7 +86,7 @@ namespace LegendOfZelda
             else
             {
                 SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit);
-                Sprites[CurrentSprite].blinking = true;
+                //Sprites[CurrentSprite].blinking = true;
             }
         }
 
