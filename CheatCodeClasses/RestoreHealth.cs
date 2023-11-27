@@ -10,7 +10,7 @@
 
 		public void Execute()
 		{
-			link.Heal(6.0f);
+			link.Heal(link.GetMaxHP());
 		}
 	}
 }
