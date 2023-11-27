@@ -22,7 +22,7 @@ namespace LegendOfZelda
         private const int letterWidth = 8;
         private int XPos;
         private int YPos;
-
+        private int drawFramesPerAnimFrame;
         private LetterFactory(int scale)
         {
             game1 = Game1.getInstance();
