@@ -25,6 +25,7 @@
     <None Remove="SpecialScreens\WinningScreenDrawables\" />
     <None Remove="Command\GameOverMenu\" />
     <None Remove="Command\GameWinningMenu\" />
+    <None Remove="CheatCodeClasses\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
@@ -50,6 +51,7 @@
     <Folder Include="SpecialScreens\WinningScreenDrawables\" />
     <Folder Include="Command\GameOverMenu\" />
     <Folder Include="Command\GameWinningMenu\" />
+    <Folder Include="CheatCodeClasses\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Level\Levels\level1.json">
