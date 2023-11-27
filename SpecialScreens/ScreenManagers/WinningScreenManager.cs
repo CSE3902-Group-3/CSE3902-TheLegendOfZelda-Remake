@@ -1,12 +1,12 @@
-﻿using System;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+
 namespace LegendOfZelda
 {
-	public class WinningScreenManager : IUpdateable
+    public class WinningScreenManager : IUpdateable
 	{
+        private GraphicsDevice graphicsDevice;
         private WhiteFlash whiteFlash;
         private BlackCurtain curtain;
         private int curtainUpdateAmt;
@@ -17,9 +17,18 @@ namespace LegendOfZelda
         private int totalFlash;
         private int curtainAmt;
         private bool doneDrawing;
+        private bool switchCamera;
+        private int CameraXPos;
+        private int CameraYPos;
+        private int StartXPos;
+        private int StartYPos;
+        private int letterWidth;
+        private LetterFactory letterFactory;
+        private List<AnimatedSprite> text;
         
         public WinningScreenManager()
 		{
+            graphicsDevice = Game1.getInstance().GraphicsDevice;
             curtainUpdateAmt = 0;
             flashAmt = 0;
             whiteFlash = new WhiteFlash();
@@ -29,9 +38,27 @@ namespace LegendOfZelda
             totalFlash = 6;
             curtainAmt = 16;
             doneDrawing = false;
+            switchCamera = false;
+            CameraXPos = (int)GameState.CameraController.mainCamera.worldPos.X;
+            CameraYPos = (int)GameState.CameraController.mainCamera.worldPos.Y;
+            StartXPos = CameraXPos + (graphicsDevice.Viewport.Width * 2 / 5);
+            StartYPos = CameraYPos + (graphicsDevice.Viewport.Height / 3);
+            letterWidth = 30;
+            letterFactory = LetterFactory.GetInstance();
+
+            text = new List<AnimatedSprite>()
+            {
+                letterFactory.GetLetterSprite('Y'),
+                letterFactory.GetLetterSprite('O'),
+                letterFactory.GetLetterSprite('U'),
+                letterFactory.GetBlankSprite(),
+                letterFactory.GetLetterSprite('W'),
+                letterFactory.GetLetterSprite('O'),
+                letterFactory.GetLetterSprite('N')
+            };
         }
 
-        public void DrawWhiteFlash()
+        private void DrawWhiteFlash()
         {
             if (!flashingWhite)
             {
@@ -46,17 +73,33 @@ namespace LegendOfZelda
             }
         }
 
-        public void DrawBlackCurtain()
+        private void DrawBlackCurtain()
         {
             curtain = new BlackCurtain(curtainUpdateAmt);
             LevelManager.AddDrawable(curtain);
         }
 
-        public void ActivateWinningScreen()
+        private void ActivateWinningScreen()
         {
             LevelManager.AddUpdateable(this);
         }
 
+        private void DrawWinningText()
+        {
+            for (int i = 0; i < text.Count; i++)
+            {
+                text[i].RegisterSprite();
+                text[i].UpdatePos(new Vector2((StartXPos + letterWidth * i), StartYPos));
+            }
+        }
+
+        private void RemoveWinningText()
+        {
+            for (int i = 0; i < text.Count; i++)
+            {
+                text[i].UnregisterSprite();
+            }
+        }
 
         public void Update(GameTime gameTime)
         {
@@ -67,7 +110,7 @@ namespace LegendOfZelda
             }
 
             /* This block is to ensure there are some time before curtain starts to close after flashing ends. */
-            if ((flashAmt == totalFlash) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
+            else if ((flashAmt == totalFlash) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
             { 
                 DrawBlackCurtain();
                 curtainUpdateAmt++;
@@ -76,7 +119,7 @@ namespace LegendOfZelda
             }
 
             /* Screen will be all black after 16 updates */
-            if ((curtainUpdateAmt > 0) && (curtainUpdateAmt < curtainAmt) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + flashingClosingFrequency))
+            else if ((curtainUpdateAmt > 0) && (curtainUpdateAmt < curtainAmt) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + flashingClosingFrequency))
             {
                 DrawBlackCurtain();
                 curtainUpdateAmt++;
@@ -84,10 +127,19 @@ namespace LegendOfZelda
                 doneDrawing = true;
             }
 
-            if (doneDrawing && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 3000))
+            else if (doneDrawing && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 3000))
+            {
+                DrawWinningText();
+                doneDrawing = false;
+                lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
+                switchCamera = true;
+            }
+
+            else if (switchCamera && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 3000))
             {
                 GameState.CameraController.ChangeMenu(Menu.End);
-                doneDrawing = false;
+                RemoveWinningText();
+                switchCamera = false;
             }
         }
 	}
