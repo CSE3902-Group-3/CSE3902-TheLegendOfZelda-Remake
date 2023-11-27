@@ -5,11 +5,9 @@ namespace LegendOfZelda
 {
     internal class AllEnemiesDeadKeyDropEvent : ILevelEvent
     {
-        private int RoomNumber;
         private Vector2 Position;
-        public AllEnemiesDeadKeyDropEvent(int roomNumber, Vector2 position)
+        public AllEnemiesDeadKeyDropEvent(Vector2 position)
         {
-            RoomNumber = roomNumber;
             Position = position;
             LevelManager.AddUpdateable(this);
         }
