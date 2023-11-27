@@ -19,6 +19,8 @@ namespace LegendOfZelda
         private SpriteFactory spriteFactory;
         private LetterFactory letterFactory;
         private InventoryHUD inventoryHUD;
+        private HUDMapElement mapElement;
+        private MapHUD mapHUD;
 
         private Inventory inventory;
         private Link link;
@@ -46,6 +48,7 @@ namespace LegendOfZelda
 
         private Dictionary<AnimatedSprite, Vector2> MiniMap;
         private Dictionary<int, AnimatedSprite> IndexSpriteDic;
+        private Dictionary<int, Vector2> IndicatorPosDic;
 
         private int Level;
         private int RubiesCount;
@@ -53,18 +56,18 @@ namespace LegendOfZelda
         private int BombsCount;
         private int CurrentHealth;
         private int MaxHealth;
+        private int CurrentRoom;
 
         private Bomb bomb;
         private Key key;
         private OneRupee rupee;
+        private Map map;
+        private Compass compass;
 
-        private List<int> ElementList = new List<int>()
-        {
-            -1, -1, -1, -1, -1, -1, -1, -1,
-            -1, -1,  0,  2, -1,  1,  1, -1,
-            -1,  0,  2,  2,  2,  0, -1, -1,
-            -1, -1,  1,  2,  1, -1, -1, -1
-        };
+        public bool MapUnlock;
+        public bool CompassUnlock;
+
+        private List<int> ElementList;
 
 
         public LowerHUD()
@@ -72,10 +75,14 @@ namespace LegendOfZelda
             letterFactory = LetterFactory.GetInstance();
             spriteFactory = SpriteFactory.getInstance();
             inventoryHUD = InventoryHUD.GetInstance();
+            mapElement = HUDMapElement.GetInstance();
+            mapHUD = MapHUD.GetInstance();
 
             bomb = new Bomb(Vector2.Zero);
             key = new Key(Vector2.Zero);
             rupee = new OneRupee(Vector2.Zero);
+            map = new Map(Vector2.Zero);
+            compass = new Compass(Vector2.Zero);
 
             inventory = Inventory.getInstance();
             link = GameState.Link;
@@ -97,6 +104,7 @@ namespace LegendOfZelda
             Rubies = QuantityToSprite(RubiesCount);
             Keys = QuantityToSprite(KeysCount);
             Bombs = QuantityToSprite(BombsCount);
+            LocationIndicator = spriteFactory.CreateMiniMapIndicatorSprite();
             GetHealthSprite(CurrentHealth, MaxHealth);
 
             LowerHUDBasePos = GameState.CameraController.HUDLocation;
@@ -109,6 +117,8 @@ namespace LegendOfZelda
             BombsPos = new Vector2(LowerHUDBasePos.X + 96 * scale, LowerHUDBasePos.Y + 40 * scale);
             LifePos = new Vector2(LowerHUDBasePos.X + 176 * scale, LowerHUDBasePos.Y + 32 * scale);
 
+            ElementList = mapElement.GetMiniMapList(Level);
+            IndicatorPosDic = mapElement.GetMiniMapIndicator(Level);
             CreateMiniMap();
             CreateItemStringDict();
         }
@@ -127,7 +137,10 @@ namespace LegendOfZelda
             UpdateBoombs();
             UpdateHealth();
             UpdateSelectedItemSprite();
-
+            UpdateMapUnlock();
+            RegisterIndicatorSprite(true);
+            //RegisterMiniMapSprite(true);
+            
         }
 
         public void Show()
@@ -148,8 +161,7 @@ namespace LegendOfZelda
 
             RegisterLifeSprite(Life, LifePos);
 
-            RegisterMiniMapSprite();
-            
+            RegisterMiniMapSprite(true);
         }
 
         public void CreateMiniMap()
@@ -272,12 +284,36 @@ namespace LegendOfZelda
             }
         }
 
-        public void RegisterMiniMapSprite()
+        public void RegisterMiniMapSprite(bool unlock)
         {
-            foreach (KeyValuePair<AnimatedSprite, Vector2> element in MiniMap)
+            if (unlock)
             {
-                element.Key.RegisterSprite();
-                element.Key.UpdatePos(element.Value);
+                foreach (KeyValuePair<AnimatedSprite, Vector2> element in MiniMap)
+                {
+                    element.Key.RegisterSprite();
+                    element.Key.UpdatePos(element.Value);
+                }
+            }
+            else
+            {
+                foreach (KeyValuePair<AnimatedSprite, Vector2> element in MiniMap)
+                {
+                    element.Key.UnregisterSprite();
+                }
+            }
+        }
+
+        public void RegisterIndicatorSprite(bool unlock)
+        {
+            CurrentRoom = LevelManager.CurrentRoom;
+            if (unlock)
+            {
+                LocationIndicator.RegisterSprite();
+                LocationIndicator.UpdatePos(IndicatorPosDic[CurrentRoom]);
+            }
+            else
+            {
+                LocationIndicator.UnregisterSprite();
             }
         }
 
@@ -346,6 +382,32 @@ namespace LegendOfZelda
                 WeponB.UnregisterSprite();
                 WeponB = IndexSpriteDic[selectIndex];
                 RegisterSprite(WeponB, WeponBPos);
+            }
+        }
+
+        public void UpdateMapUnlock()
+        {
+            int newCount = inventory.GetQuantity(map);
+            if (newCount > 0)
+            {
+                MapUnlock = true;
+            }
+            else
+            {
+                MapUnlock = false;
+            }
+        }
+
+        public void UpdateCompassUnlock()
+        {
+            int newCount = inventory.GetQuantity(compass);
+            if (newCount > 0)
+            {
+                CompassUnlock = true;
+            }
+            else
+            {
+                CompassUnlock = false;
             }
         }
     }

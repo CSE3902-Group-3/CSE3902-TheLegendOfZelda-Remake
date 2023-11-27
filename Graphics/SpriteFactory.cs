@@ -1418,7 +1418,7 @@ namespace LegendOfZelda
             return newSprite;
         }
 
-        public AnimatedSprite CreateMapHUDSprite()
+        public AnimatedSprite CreateMapHUDBaseSprite()
         {
             Rectangle[] frames = new Rectangle[1]
             {
@@ -1655,6 +1655,28 @@ namespace LegendOfZelda
 
         }
 
+        public AnimatedSprite CreateMiniMapIndicatorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(528, 126, 8, 8)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateMapIndicatorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(519, 126, 2, 2)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
         public AnimatedSprite CreateMiniMapElement(int selector)
         {
             Rectangle[] frames;
@@ -1850,6 +1872,28 @@ namespace LegendOfZelda
             Rectangle[] frames = new Rectangle[1]
             {
                 new Rectangle(80, 16, 8, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateHUDMapSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(88, 0, 8, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateHUDCompassSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(258, 1, 12, 12)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
