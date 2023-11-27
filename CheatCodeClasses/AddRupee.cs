@@ -2,7 +2,7 @@
 
 namespace LegendOfZelda
 {
-	public class AddRupee
+	public class AddRupee : ICheatCode
 	{
 		private Inventory inventory;
 
@@ -11,7 +11,7 @@ namespace LegendOfZelda
 			inventory = GameState.Link.StateMachine.linkInventory;
 		}
 
-		public void AddRupeeToInventory()
+		public void Execute()
 		{
 			inventory.AddRupee(new FiveRupee(Vector2.Zero));
 		}

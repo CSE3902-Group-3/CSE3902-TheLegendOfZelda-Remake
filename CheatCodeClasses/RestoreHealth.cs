@@ -1,6 +1,6 @@
 ﻿namespace LegendOfZelda
 {
-	public class RestoreHealth
+	public class RestoreHealth : ICheatCode
 	{
 		private Link link;
 		public RestoreHealth()
@@ -8,9 +8,9 @@
 			link = GameState.Link;
 		}
 
-		public void HealLink()
+		public void Execute()
 		{
-			link.HP = link.GetMaxHP();
+			link.Heal(6.0f);
 		}
 	}
 }

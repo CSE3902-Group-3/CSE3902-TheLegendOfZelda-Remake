@@ -1,10 +1,14 @@
-﻿using System;
-namespace LegendOfZelda
+﻿namespace LegendOfZelda
 {
-	public class KillAllEnemies
+	public class KillAllEnemies : ICheatCode
 	{
 		public KillAllEnemies()
 		{
+		}
+
+		public void Execute()
+		{
+
 		}
 	}
 }

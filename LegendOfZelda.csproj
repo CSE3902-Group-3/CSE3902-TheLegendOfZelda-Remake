@@ -26,6 +26,7 @@
     <None Remove="Command\GameOverMenu\" />
     <None Remove="Command\GameWinningMenu\" />
     <None Remove="CheatCodeClasses\" />
+    <None Remove="Command\CheatCodes\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
@@ -52,6 +53,7 @@
     <Folder Include="Command\GameOverMenu\" />
     <Folder Include="Command\GameWinningMenu\" />
     <Folder Include="CheatCodeClasses\" />
+    <Folder Include="Command\CheatCodes\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Level\Levels\level1.json">
