@@ -1,0 +1,73 @@
+Mini map indicator for the link location;
+
+basePos = GameState.CameraController.HUDLocation;
+MiniMapPos(MMP) = new Vector2(basePos.X + 16, basePos.Y + 16);
+
+0upper = new Vector2(MMP.X + 2, MMP.Y);
+0lower = new Vector2(MMP.X + 2, MMP.Y + 4);
+1upper = new Vector2(MMP.X + 10, MMP.Y);
+1lower = new Vector2(MMP.X + 10, MMP.Y + 4);
+2upper = new Vector2(MMP.X + 18, MMP.Y);
+2lower = new Vector2(MMP.X + 18, MMP.Y + 4);
+3upper = new Vector2(MMP.X + 26, MMP.Y);
+3lower = new Vector2(MMP.X + 26, MMP.Y + 4);
+4upper = new Vector2(MMP.X + 34, MMP.Y);
+4lower = new Vector2(MMP.X + 34, MMP.Y + 4);
+5upper = new Vector2(MMP.X + 42, MMP.Y);
+5lower = new Vector2(MMP.X + 42, MMP.Y + 4);
+6upper = new Vector2(MMP.X + 50, MMP.Y);
+6lower = new Vector2(MMP.X + 50, MMP.Y + 4);
+7upper = new Vector2(MMP.X + 58, MMP.Y);
+7lower = new Vector2(MMP.X + 58, MMP.Y + 4);
+
+8upper = new Vector2(MMP.X + 2, MMP.Y + 8);
+8lower = new Vector2(MMP.X + 2, MMP.Y + 12);
+9upper = new Vector2(MMP.X + 10, MMP.Y + 8);
+9lower = new Vector2(MMP.X + 10, MMP.Y + 12);
+10upper = new Vector2(MMP.X + 18, MMP.Y + 8);
+10lower = new Vector2(MMP.X + 18, MMP.Y + 12);
+11upper = new Vector2(MMP.X + 26, MMP.Y + 8);
+11lower = new Vector2(MMP.X + 26, MMP.Y + 12);
+12upper = new Vector2(MMP.X + 34, MMP.Y + 8);
+12lower = new Vector2(MMP.X + 34, MMP.Y + 12);
+13upper = new Vector2(MMP.X + 42, MMP.Y + 8);
+13lower = new Vector2(MMP.X + 42, MMP.Y + 12);
+14upper = new Vector2(MMP.X + 50, MMP.Y + 8);
+14lower = new Vector2(MMP.X + 50, MMP.Y + 12);
+15upper = new Vector2(MMP.X + 58, MMP.Y + 8);
+15lower = new Vector2(MMP.X + 58, MMP.Y + 12);
+
+16upper = new Vector2(MMP.X + 2, MMP.Y + 16);
+16lower = new Vector2(MMP.X + 2, MMP.Y + 20);
+17upper = new Vector2(MMP.X + 10, MMP.Y + 16);
+17lower = new Vector2(MMP.X + 10, MMP.Y + 20);
+18upper = new Vector2(MMP.X + 18, MMP.Y + 16);
+18lower = new Vector2(MMP.X + 18, MMP.Y + 20);
+19upper = new Vector2(MMP.X + 26, MMP.Y + 16);
+19lower = new Vector2(MMP.X + 26, MMP.Y + 20);
+20upper = new Vector2(MMP.X + 34, MMP.Y + 16);
+20lower = new Vector2(MMP.X + 34, MMP.Y + 20);
+21upper = new Vector2(MMP.X + 42, MMP.Y + 16);
+21lower = new Vector2(MMP.X + 42, MMP.Y + 20);
+22upper = new Vector2(MMP.X + 50, MMP.Y + 16);
+22lower = new Vector2(MMP.X + 50, MMP.Y + 20);
+23upper = new Vector2(MMP.X + 58, MMP.Y + 16);
+23lower = new Vector2(MMP.X + 58, MMP.Y + 20);
+
+24upper = new Vector2(MMP.X + 2, MMP.Y + 24);
+24lower = new Vector2(MMP.X + 2, MMP.Y + 28);
+25upper = new Vector2(MMP.X + 10, MMP.Y + 24);
+25lower = new Vector2(MMP.X + 10, MMP.Y + 28);
+26upper = new Vector2(MMP.X + 18, MMP.Y + 24);
+26lower = new Vector2(MMP.X + 18, MMP.Y + 28);
+27upper = new Vector2(MMP.X + 26, MMP.Y + 24);
+27lower = new Vector2(MMP.X + 26, MMP.Y + 28);
+28upper = new Vector2(MMP.X + 34, MMP.Y + 24);
+28lower = new Vector2(MMP.X + 34, MMP.Y + 28);
+29upper = new Vector2(MMP.X + 42, MMP.Y + 24);
+29lower = new Vector2(MMP.X + 42, MMP.Y + 28);
+30upper = new Vector2(MMP.X + 50, MMP.Y + 24);
+30lower = new Vector2(MMP.X + 50, MMP.Y + 28);
+31upper = new Vector2(MMP.X + 58, MMP.Y + 24);
+31lower = new Vector2(MMP.X + 58, MMP.Y + 28);
+
