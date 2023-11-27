@@ -67,7 +67,7 @@ namespace LegendOfZelda
         {
             if (selection == 0)
             {
-                //To be added in the future
+                GameState.GetInstance().ResetGameState(); //This will likely be modified
             }
             else if (selection == 1)
             {
