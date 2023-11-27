@@ -26,7 +26,15 @@ namespace LegendOfZelda
         private LetterFactory(int scale)
         {
             game1 = Game1.getInstance();
-            letterTexture = game1.Content.Load<Texture2D>("Dungeon");
+
+            if (ShaderHolder.ShadersOn)
+            {
+                letterTexture = game1.Content.Load<Texture2D>("Dungeon - Numbered");
+            } else
+            {
+                letterTexture = game1.Content.Load<Texture2D>("Dungeon");
+            }
+            drawFramesPerAnimFrame = 1;
             this.scale = scale;
         }
 

@@ -12,7 +12,7 @@ namespace LegendOfZelda
     public class SpriteFactory
     {
         private static SpriteFactory instance;
-
+        
         public Texture2D linkTexture { get; private set; }
         private Texture2D enemiesTexture;
         private Texture2D enemyDeathTexture;
@@ -47,16 +47,33 @@ namespace LegendOfZelda
         public void LoadTextures()
         {
             ContentManager content = game1.Content;
-            linkTexture = content.Load<Texture2D>("Link");
-            dungeonTexture = content.Load<Texture2D>("Dungeon");
-            enemiesTexture = content.Load<Texture2D>("Enemies");
-            enemyDeathTexture = content.Load<Texture2D>("EnemyDeath");
-            bossesTexture = content.Load<Texture2D>("Bosses");
-            itemsTexture = content.Load<Texture2D>("Items");
-            npcTexture = content.Load<Texture2D>("NPC");
-            HUDTexture = content.Load<Texture2D>("HUD");
-            menuTexture = content.Load<Texture2D>("Menu");
-            pauseWord = content.Load<SpriteFont>("Pause");
+
+            if (ShaderHolder.ShadersOn)
+            {
+                linkTexture = content.Load<Texture2D>("Link - Numbered");
+                dungeonTexture = content.Load<Texture2D>("Dungeon - Numbered");
+                enemiesTexture = content.Load<Texture2D>("Enemies - Numbered");
+                enemyDeathTexture = content.Load<Texture2D>("EnemyDeath - Numbered");
+                bossesTexture = content.Load<Texture2D>("Bosses - Numbered");
+                itemsTexture = content.Load<Texture2D>("Items - Numbered");
+                npcTexture = content.Load<Texture2D>("NPC - Numbered");
+                HUDTexture = content.Load<Texture2D>("HUD - Numbered");
+                menuTexture = content.Load<Texture2D>("Menu - Numbered");
+                pauseWord = content.Load<SpriteFont>("Pause");
+
+            } else
+            {
+                linkTexture = content.Load<Texture2D>("Link");
+                dungeonTexture = content.Load<Texture2D>("Dungeon");
+                enemiesTexture = content.Load<Texture2D>("Enemies");
+                enemyDeathTexture = content.Load<Texture2D>("EnemyDeath");
+                bossesTexture = content.Load<Texture2D>("Bosses");
+                itemsTexture = content.Load<Texture2D>("Items");
+                npcTexture = content.Load<Texture2D>("NPC");
+                HUDTexture = content.Load<Texture2D>("HUD");
+                menuTexture = content.Load<Texture2D>("Menu");
+                pauseWord = content.Load<SpriteFont>("Pause");
+            }
         }
     
         public AnimatedSprite CreateLinkWalkDownSprite()
@@ -82,6 +99,7 @@ namespace LegendOfZelda
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            newSprite.ChangeBaseShader(ShaderHolder.standardPallet);
             return newSprite;
         }
 
