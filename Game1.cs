@@ -48,6 +48,8 @@ namespace LegendOfZelda
             _graphics.PreferredBackBufferHeight = ViewportHeight;
             _graphics.ApplyChanges();
 
+            if(ShaderHolder.ShadersOn) ShaderHolder.LoadShaders(Content);
+
             base.Initialize();
         }
 

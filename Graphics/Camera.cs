@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LegendOfZelda.Graphics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -13,21 +14,19 @@ namespace LegendOfZelda
         private float speed = 0;
         private Vector2 targetPos;
         private Action callback;
+        private IDrawer drawer;
+
         public Camera(Vector2 worldPos)
         {
             this.worldPos = worldPos;
             LevelManager.AddUpdateable(this, true);
+            drawer = ShaderHolder.ShadersOn ? new ShaderDrawer() : new StandardDrawer();
         }
         public void DrawAll(List<IDrawable> drawables, SpriteBatch spriteBatch)
         {
             Matrix transformMatrix = Matrix.CreateTranslation(-worldPos.X, -worldPos.Y, 0);
 
-            spriteBatch.Begin(SpriteSortMode.Immediate, samplerState: SamplerState.PointClamp, transformMatrix: transformMatrix);
-            foreach (IDrawable drawable in drawables)
-            {
-                drawable.Draw();
-            }
-            spriteBatch.End();
+            drawer.Draw(drawables, transformMatrix, spriteBatch);
         }
 
         //This method is offered as an alternative in case a list of lists is wanted to be drawn
@@ -35,15 +34,10 @@ namespace LegendOfZelda
         {
             Matrix transformMatrix = Matrix.CreateTranslation(-worldPos.X, -worldPos.Y, 0);
 
-            spriteBatch.Begin(SpriteSortMode.Immediate, samplerState: SamplerState.PointClamp, transformMatrix: transformMatrix);
             foreach (List<IDrawable> drawableList in drawables)
             {
-                foreach (IDrawable drawable in drawableList)
-                {
-                    drawable.Draw();
-                }
+                drawer.Draw(drawableList, transformMatrix, spriteBatch);
             }
-            spriteBatch.End();
         }
         public void PanToLocation(Vector2 newWorldPos, float speed, Action OnComplete = null)
         {

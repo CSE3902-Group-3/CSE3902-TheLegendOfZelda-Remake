@@ -13,6 +13,12 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin blink.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:blink.fx
+
 #begin Bosses.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -73,6 +79,18 @@
 /processorParam:TextureFormat=Color
 /build:EnemyDeath.png
 
+#begin flash1.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:flash1.fx
+
+#begin flash2.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:flash2.fx
+
 #begin HUD.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -120,6 +138,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Menu.png
+
+#begin normal.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:normal.fx
 
 #begin NPC.png
 /importer:TextureImporter
