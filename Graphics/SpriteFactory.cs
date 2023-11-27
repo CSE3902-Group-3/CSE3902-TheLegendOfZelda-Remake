@@ -1436,7 +1436,7 @@ namespace LegendOfZelda
             return newSprite;
         }
 
-        public AnimatedSprite CreateMapHUDSprite()
+        public AnimatedSprite CreateMapHUDBaseSprite()
         {
             Rectangle[] frames = new Rectangle[1]
             {
@@ -1476,7 +1476,7 @@ namespace LegendOfZelda
             return newSprite;
         }
 
-        public AnimatedSprite CreateWoodenBoomerangHUDSprite()
+        public AnimatedSprite CreateHUDBoomerangSprite()
         {
             Rectangle[] frames = new Rectangle[1]
             {
@@ -1533,6 +1533,16 @@ namespace LegendOfZelda
             Rectangle[] frames = new Rectangle[1]
             {
                 new Rectangle(633, 137, 8, 16)
+            };
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateArrowBowSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(630, 156, 16, 16)
             };
             AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             return newSprite;
@@ -1628,6 +1638,30 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        public AnimatedSprite CreateSelectorSprites(int selector)
+        {
+            Rectangle[] frames;
+            AnimatedSprite newSprite;
+            switch (selector)
+            {
+                case 0:
+                    frames = new Rectangle[1]
+                    {
+                        new Rectangle(519, 137, 16, 16)
+                    };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+                case 1:
+                    frames = new Rectangle[1]
+                    {
+                        new Rectangle(536, 137, 16, 16)
+                    };
+                    newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+                    return newSprite;
+            }
+            return null;
+        }
+
         public AnimatedSprite CreateHUDLadderSprite()
         {
             Rectangle[] frames = new Rectangle[1]
@@ -1637,6 +1671,28 @@ namespace LegendOfZelda
             AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             return newSprite;
 
+        }
+
+        public AnimatedSprite CreateMiniMapIndicatorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(528, 126, 8, 8)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateMapIndicatorSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(519, 126, 2, 2)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
         }
 
         public AnimatedSprite CreateMiniMapElement(int selector)
@@ -1834,6 +1890,28 @@ namespace LegendOfZelda
             Rectangle[] frames = new Rectangle[1]
             {
                 new Rectangle(80, 16, 8, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateHUDMapSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(88, 0, 8, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateHUDCompassSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(258, 1, 12, 12)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
