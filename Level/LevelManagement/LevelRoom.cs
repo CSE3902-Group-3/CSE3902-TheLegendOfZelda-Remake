@@ -137,6 +137,13 @@ namespace LegendOfZelda
                 enemy.Despawn();
             }
         }
+        public void KillAllEnemies()
+        {
+            foreach (IEnemy enemy in RoomEnemies)
+            {
+                enemy.Die();
+            }
+        }
         public void AddDoor(Direction direction, IDoor door)
         {
             RoomDoors.Add(direction, door);
