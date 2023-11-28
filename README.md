@@ -15,6 +15,12 @@ Remake of NES The Legend of Zelda game
 - Use right/left click to cycle rooms
 - After Link dies, use `Shift` to switch between options in game over menu. Use `Enter` to select the option.
 
+### Cheat codes
+- Use `C`+`P` to get 5 rupees.
+- Use `C`+`K` to get a key.
+- Use `C`+`H` to heal Link to max HP.
+- Use `C`+`O` to kill all enemies in current room.
+
 ## Major Known Bugs:
 - Interface HUD is not functional, does not update
 - The inventory system is not currently functional at all
