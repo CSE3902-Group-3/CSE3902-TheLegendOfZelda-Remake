@@ -6,7 +6,7 @@ namespace LegendOfZelda
 	public class GameOverMenu
 	{
 		private List<AnimatedSprite> Continue;
-		private List<AnimatedSprite> Save;
+		private List<AnimatedSprite> Quit;
 		private List<AnimatedSprite> Retry;
 
 		private LetterFactory letterFactory;
@@ -35,12 +35,12 @@ namespace LegendOfZelda
 				letterFactory.GetLetterSprite('E')
 			};
 
-			Save = new List<AnimatedSprite>()
+			Quit = new List<AnimatedSprite>()
 			{
-                letterFactory.GetLetterSprite('S'),
-				letterFactory.GetLetterSprite('A'),
-				letterFactory.GetLetterSprite('V'),
-				letterFactory.GetLetterSprite('E')
+                letterFactory.GetLetterSprite('Q'),
+				letterFactory.GetLetterSprite('U'),
+				letterFactory.GetLetterSprite('I'),
+				letterFactory.GetLetterSprite('T')
 			};
 
 			Retry = new List<AnimatedSprite>()
@@ -63,13 +63,13 @@ namespace LegendOfZelda
 			}
         }
 
-		private void DrawSaveWord()
+		private void DrawQuitWord()
 		{
             int startXPos = cameraXPos + graphicsDevice.Viewport.Width / 3;
             int startYPos = cameraYPos + graphicsDevice.Viewport.Height / 2;
-            for (int i = 0; i < Save.Count; i++)
+            for (int i = 0; i < Quit.Count; i++)
             {
-                Save[i].UpdatePos(new Vector2((startXPos + letterWidth * i), startYPos));
+                Quit[i].UpdatePos(new Vector2((startXPos + letterWidth * i), startYPos));
             }
         }
 
@@ -86,7 +86,7 @@ namespace LegendOfZelda
 		public void Draw()
 		{
 			DrawContinueWord();
-			DrawSaveWord();
+			DrawQuitWord();
 			DrawRetryWord();
 		}
 	}

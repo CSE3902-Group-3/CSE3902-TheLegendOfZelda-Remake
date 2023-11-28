@@ -11,7 +11,7 @@ namespace LegendOfZelda
         private int cameraXPos;
         private int cameraYPos;
         private Vector2 ContinuePos;
-        private Vector2 SavePos;
+        private Vector2 QuitPos;
         private Vector2 RetryPos;
         private GraphicsDevice graphicsDevice;
 
@@ -19,17 +19,17 @@ namespace LegendOfZelda
         {
             cameraXPos = 40000;
             cameraYPos = 0;
-            selection = 1;
+            selection = 2;
             graphicsDevice = Game1.getInstance().GraphicsDevice;
             ContinuePos = new Vector2((cameraXPos + graphicsDevice.Viewport.Width / 3) - 40, cameraYPos + graphicsDevice.Viewport.Height / 3);
-            SavePos = new Vector2((cameraXPos + graphicsDevice.Viewport.Width / 3) - 40, cameraYPos + graphicsDevice.Viewport.Height / 2);
+            QuitPos = new Vector2((cameraXPos + graphicsDevice.Viewport.Width / 3) - 40, cameraYPos + graphicsDevice.Viewport.Height / 2);
             RetryPos = new Vector2((cameraXPos + graphicsDevice.Viewport.Width / 3) - 40, (cameraYPos + graphicsDevice.Viewport.Height) * 2 / 3);
 
 
             IndicationHearts = new List<IItem>()
             {
                 new SelectionHeart(ContinuePos),
-                //new Heart(SavePos),
+                new SelectionHeart(QuitPos),
                 new SelectionHeart(RetryPos)
             };
 
@@ -43,12 +43,12 @@ namespace LegendOfZelda
         {
             IndicationHearts[selection].Remove();
 
-            if (selection == 1)
+            if (selection == 2)
             {
                 selection = 0;
             } else
             {
-                selection = 1;
+                selection++;
             }
 
             IndicationHearts[selection].Show();
@@ -80,7 +80,8 @@ namespace LegendOfZelda
         public void ExecuteSelection()
         {
             if (selection == 0) GameState.GetInstance().GameOverContinue();
-            if (selection == 1) GameState.GetInstance().ResetGameState();
+            if (selection == 1) Game1.getInstance().Exit();
+            if (selection == 2) GameState.GetInstance().ResetGameState();
         }
     }
 }
