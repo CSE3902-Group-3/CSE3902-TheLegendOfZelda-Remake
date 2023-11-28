@@ -36,7 +36,6 @@ Remake of NES The Legend of Zelda game
 - Sprites still animate when the game is paused
 - Fireballs are missing from the wizard room
 - Wizard takes damage
-- Main menu has green line on the left
 - Screen size is a square as opposed to a rectangle in the original
 - Pushable blocks do not reset upon reentry to a room
 - On some computers blocks sometimes cannot be pushed (we believe this is due to interruptions in key inputs)

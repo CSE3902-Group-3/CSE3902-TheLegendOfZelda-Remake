@@ -55,13 +55,13 @@ namespace LegendOfZelda
             {
                 number = number / 2;
                 XPos = 1 + number * letterWidth;
-                YPos = 19;
+                YPos = 149;
             }
             else
             {
                 number = number / 2;
                 XPos = 1 + number * letterWidth;
-                YPos = 11;
+                YPos = 141;
             }
 
             Rectangle[] frames = new Rectangle[1]
@@ -81,25 +81,25 @@ namespace LegendOfZelda
             {
                 number = number / 2;
                 XPos = 41 + number * letterWidth;
-                YPos = 19;
+                YPos = 149;
             }
             else if (number % 2 == 0 && number < 22)
             {
                 number = number / 2;
                 XPos = 41 + number * letterWidth;
-                YPos = 11;
+                YPos = 141;
             }
             else if ((number - 22) % 2 == 0)
             {
                 number = (number - 22) / 2;
                 XPos = 1 + number * letterWidth;
-                YPos = 27;
+                YPos = 157;
             }
             else if ((number - 22) % 2 != 0)
             {
                 number = (number - 22) / 2;
                 XPos = 1 + number * letterWidth;
-                YPos = 35;
+                YPos = 165;
             }
 
 
@@ -175,7 +175,7 @@ namespace LegendOfZelda
         {
             Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(17, 27, letterWidth, letterWidth)
+                new Rectangle(146, 27, letterWidth, letterWidth)
             };
             letterSprite = new AnimatedSprite(letterTexture, frames, SpriteEffects.None, 1, scale, true);
 
