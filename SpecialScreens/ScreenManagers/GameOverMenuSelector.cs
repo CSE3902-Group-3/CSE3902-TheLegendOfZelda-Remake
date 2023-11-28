@@ -80,8 +80,8 @@ namespace LegendOfZelda
         public void ExecuteSelection()
         {
             if (selection == 0) GameState.GetInstance().GameOverContinue();
-            if (selection == 1) Game1.getInstance().Exit();
-            if (selection == 2) GameState.GetInstance().ResetGameState();
+            else if (selection == 1) Game1.getInstance().Exit();
+            else if (selection == 2) GameState.GetInstance().ResetGameState();
         }
     }
 }
