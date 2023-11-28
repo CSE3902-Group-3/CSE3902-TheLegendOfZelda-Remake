@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Level\\LevelLoading"
+    "\\Graphics",
+    "\\Level",
+    "\\Level\\LevelLoading",
+    "\\Level\\LevelManagement",
+    "\\Player"
   ],
-  "SelectedNode": "\\Game1.cs",
+  "SelectedNode": "\\Graphics\\LetterFactory.cs",
   "PreviewInSolutionExplorer": false
 }

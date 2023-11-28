@@ -123,6 +123,10 @@ namespace LegendOfZelda
             }
             LevelRooms[CurrentRoom].Update(gameTime);
         }
+        public static void KillAllEnemiesInCurrentRoom()
+        {
+            CurrentLevelRoom.KillAllEnemies();
+        }
         public static bool AddDrawable(IDrawable drawable, bool persistent = false)
         {
             if (persistent && !PersistentDrawables.Contains(drawable))
