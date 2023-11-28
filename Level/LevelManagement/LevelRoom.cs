@@ -139,9 +139,9 @@ namespace LegendOfZelda
         }
         public void KillAllEnemies()
         {
-            for (int i = 0; i < RoomEnemies.Count; i++)
+            for (int i = RoomEnemies.Count - 1; i >= 0; i--)
             {
-                RoomEnemies[0].Die();
+                RoomEnemies[i].Die();
             }
         }
         public void AddDoor(Direction direction, IDoor door)
