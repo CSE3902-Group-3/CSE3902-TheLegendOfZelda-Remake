@@ -1,0 +1,76 @@
+Map indicator for the link location;
+
+basePos = new Vector2(GameState.CameraController.ItemMenuLocation.X, GameState.CameraController.ItemMenuLocation.Y + 87);
+MapPos(MP) = new Vector2(basePos.X + 128, basePos.Y + 8);
+
+0 = new Vector2(MP.X + 4, MP.Y + 4);
+1 = new Vector2(MP.X + 12, MP.Y + 4);
+2 = new Vector2(MP.X + 20, MP.Y + 4);
+3 = new Vector2(MP.X + 28, MP.Y + 4);
+4 = new Vector2(MP.X + 36, MP.Y + 4);
+5 = new Vector2(MP.X + 44, MP.Y + 4);
+6 = new Vector2(MP.X + 52, MP.Y + 4);
+7 = new Vector2(MP.X + 60, MP.Y + 4);
+
+8 = new Vector2(MP.X + 4, MP.Y + 12);
+9 = new Vector2(MP.X + 12, MP.Y + 12);
+10 = new Vector2(MP.X + 20, MP.Y + 12);
+11 = new Vector2(MP.X + 28, MP.Y + 12);
+12 = new Vector2(MP.X + 36, MP.Y + 12);
+13 = new Vector2(MP.X + 44, MP.Y + 12);
+14 = new Vector2(MP.X + 52, MP.Y + 12);
+15 = new Vector2(MP.X + 60, MP.Y + 12);
+
+16 = new Vector2(MP.X + 4, MP.Y + 20);
+17 = new Vector2(MP.X + 12, MP.Y + 20);
+18 = new Vector2(MP.X + 20, MP.Y + 20);
+19 = new Vector2(MP.X + 28, MP.Y + 20);
+20 = new Vector2(MP.X + 36, MP.Y + 20);
+21 = new Vector2(MP.X + 44, MP.Y + 20);
+22 = new Vector2(MP.X + 52, MP.Y + 20);
+23 = new Vector2(MP.X + 60, MP.Y + 20);
+
+24 = new Vector2(MP.X + 4, MP.Y + 28);
+25 = new Vector2(MP.X + 12, MP.Y + 28);
+26 = new Vector2(MP.X + 20, MP.Y + 28);
+27 = new Vector2(MP.X + 28, MP.Y + 28);
+28 = new Vector2(MP.X + 36, MP.Y + 28);
+29 = new Vector2(MP.X + 44, MP.Y + 28);
+30 = new Vector2(MP.X + 52, MP.Y + 28);
+31 = new Vector2(MP.X + 60, MP.Y + 28);
+
+32 = new Vector2(MP.X + 4, MP.Y + 36);
+33 = new Vector2(MP.X + 12, MP.Y + 36);
+34 = new Vector2(MP.X + 20, MP.Y + 36);
+35 = new Vector2(MP.X + 28, MP.Y + 36);
+36 = new Vector2(MP.X + 36, MP.Y + 36);
+37 = new Vector2(MP.X + 44, MP.Y + 36);
+38 = new Vector2(MP.X + 52, MP.Y + 36);
+39 = new Vector2(MP.X + 60, MP.Y + 36);
+
+40 = new Vector2(MP.X + 4, MP.Y + 44);
+41 = new Vector2(MP.X + 12, MP.Y + 44);
+42 = new Vector2(MP.X + 20, MP.Y + 44);
+43 = new Vector2(MP.X + 28, MP.Y + 44);
+44 = new Vector2(MP.X + 36, MP.Y + 44);
+45 = new Vector2(MP.X + 44, MP.Y + 44);
+46 = new Vector2(MP.X + 52, MP.Y + 44);
+47 = new Vector2(MP.X + 60, MP.Y + 44);
+
+48 = new Vector2(MP.X + 4, MP.Y + 52);
+49 = new Vector2(MP.X + 12, MP.Y + 52);
+50 = new Vector2(MP.X + 20, MP.Y + 52);
+51 = new Vector2(MP.X + 28, MP.Y + 52);
+52 = new Vector2(MP.X + 36, MP.Y + 52);
+53 = new Vector2(MP.X + 44, MP.Y + 52);
+54 = new Vector2(MP.X + 52, MP.Y + 52);
+55 = new Vector2(MP.X + 60, MP.Y + 52);
+
+56 = new Vector2(MP.X + 4, MP.Y + 60);
+57 = new Vector2(MP.X + 12, MP.Y + 60);
+58 = new Vector2(MP.X + 20, MP.Y + 60);
+59 = new Vector2(MP.X + 28, MP.Y + 60);
+60 = new Vector2(MP.X + 36, MP.Y + 60);
+61 = new Vector2(MP.X + 44, MP.Y + 60);
+62 = new Vector2(MP.X + 52, MP.Y + 60);
+63 = new Vector2(MP.X + 60, MP.Y + 60);

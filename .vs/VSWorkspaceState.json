@@ -1,12 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Enemies",
+    "\\Graphics",
     "\\Level",
     "\\Level\\LevelLoading",
     "\\Level\\LevelManagement",
-    "\\Sounds"
+    "\\Player"
   ],
-  "SelectedNode": "\\Sounds\\SoundFactory.cs",
+  "SelectedNode": "\\Graphics\\LetterFactory.cs",
   "PreviewInSolutionExplorer": false
 }

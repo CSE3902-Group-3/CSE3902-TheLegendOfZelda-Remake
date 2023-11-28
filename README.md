@@ -15,6 +15,12 @@ Remake of NES The Legend of Zelda game
 - Use right/left click to cycle rooms
 - After Link dies, use `Shift` to switch between options in game over menu. Use `Enter` to select the option.
 
+### Cheat codes
+- Use `C`+`P` to get 5 rupees.
+- Use `C`+`K` to get a key.
+- Use `C`+`H` to heal Link to max HP.
+- Use `C`+`O` to kill all enemies in current room.
+
 ## Major Known Bugs:
 - Interface HUD is not functional, does not update
 - The inventory system is not currently functional at all
@@ -36,7 +42,6 @@ Remake of NES The Legend of Zelda game
 - Sprites still animate when the game is paused
 - Fireballs are missing from the wizard room
 - Wizard takes damage
-- Main menu has green line on the left
 - Screen size is a square as opposed to a rectangle in the original
 - Pushable blocks do not reset upon reentry to a room
 - On some computers blocks sometimes cannot be pushed (we believe this is due to interruptions in key inputs)
@@ -116,6 +121,7 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 #### Sprint 5
 - Michael Herring reviewed Zhengyi Hu's code for readability in pull request #432
 - Gabriel DiFiore reviewed Zhengyi Hu's code for readability in PR #405
+- Ethan Glenwright reviewed Gabriel DiFiore's code for quality in PR #430
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
