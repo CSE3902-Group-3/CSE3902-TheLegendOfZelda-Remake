@@ -67,6 +67,7 @@ namespace LegendOfZelda
             if (Link.StateMachine.position == targetPosition)
             {
                 // Only change the state to IdleLinkState when the target position is reached
+                Link.StateMachine.isKnockedBack = false;
                 Link.StateMachine.ChangeState(new IdleLinkState());
             }
         }

@@ -92,10 +92,7 @@ namespace LegendOfZelda
                 counter++;
 			}
 
-			/* The length of overlay where link is spinning is tentatively set to 3000, this should always be
-			 * synchronized with Link to make sure LinkSpinningState and this screen have the same length.
-			 */
-            if ((counter == 1) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 3000))
+            if ((counter == 1) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2800))
 			{
 				DrawLightRed();
                 lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
