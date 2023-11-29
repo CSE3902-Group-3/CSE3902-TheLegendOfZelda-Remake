@@ -77,11 +77,29 @@ namespace LegendOfZelda
             IndicationHearts[selection].Show();
         }
 
+        public void RemoveSelector()
+        {
+            foreach (IItem item in IndicationHearts)
+            {
+                item.Remove();
+            }
+        }
+
         public void ExecuteSelection()
         {
-            if (selection == 0) GameState.GetInstance().GameOverContinue();
-            else if (selection == 1) Game1.getInstance().Exit();
-            else if (selection == 2) GameState.GetInstance().ResetGameState();
+            if (selection == 0)
+            {
+                GameState.GetInstance().GameOverContinue();
+                RemoveSelector();
+            }
+            else if (selection == 1)
+            {
+                Game1.getInstance().Exit();
+            }
+            else if (selection == 2)
+            {
+                GameState.GetInstance().ResetGameState();
+            }
         }
     }
 }
