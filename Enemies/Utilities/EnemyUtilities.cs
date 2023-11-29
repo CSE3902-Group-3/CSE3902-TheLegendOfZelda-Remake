@@ -30,14 +30,6 @@ namespace LegendOfZelda
                 { typeof(Skeleton) },
             };
 
-            List<Type> noBoomerangEffect = new()
-            {
-                { typeof(Aquamentus) },
-                { typeof(Dodongo) },
-                { typeof(WallMaster) },
-                { typeof(ZolBig) },
-            };
-
             Type weaponType = projectileCollidedWith.GetType();
             float damage = damageMap[weaponType];
 
@@ -53,10 +45,7 @@ namespace LegendOfZelda
                 {
                     enemy.Stun();
                 }
-                else if (!(weaponType == typeof(BoomerangProjectile)) && !noBoomerangEffect.Contains(enemyType))
-                {
-                    enemy.UpdateHealth(damage);
-                } else if (weaponType == typeof(BombProjectile) && enemyType == typeof(Dodongo)) // Dodongo is only affected by bombs
+                 else if ((weaponType == typeof(BombProjectile) && enemyType == typeof(Dodongo)) || (weaponType != typeof(BoomerangProjectile))) // Dodongo is only affected by bombs
                 {
                     enemy.UpdateHealth(damage);
                 }
