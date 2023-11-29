@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using static LegendOfZelda.SimpleEnemyStateMachine;
 
 namespace LegendOfZelda
 {
@@ -8,14 +9,26 @@ namespace LegendOfZelda
     {
         private IniFile iniFile;
 
+        public Dictionary<string, float> GameConfig;
         public ReadConfig(string iniFilePath)
         {
             iniFile = new IniFile(iniFilePath);
             Debug.WriteLine(System.IO.Directory.GetCurrentDirectory());
             Debug.WriteLine("Reading config file: " + iniFilePath);
+
+            GameConfig = new Dictionary<string, float>
+            {
+                { "Link.Speed", 5.0f },
+                { "Link.Health", 6.0f },
+                { "Game.Difficulty", 1.0f }
+            };
+
+            GetLinkSpeed();
+            GetLinkHealth();
+            GetDifficulty();
         }
 
-        public int GetLinkSpeed()
+        public void GetLinkSpeed()
         {
             string section = "Link";
             string key = "Speed";
@@ -27,25 +40,16 @@ namespace LegendOfZelda
                 if (int.TryParse(linkSpeed, out int speed))
                 {
                     // Successfully parsed, return the speed.
-                    return speed;
+                    GameConfig["Link.Speed"] = speed;
                 }
                 else
                 {
                     Debug.WriteLine("Failed to parse Link's speed. Check the INI file format.");
                 }
             }
-            else
-            {
-                // The key or section doesn't exist, return a default value of 5.
-                Debug.WriteLine("Link's speed key or section not found. Using default value: 5");
-                return 5;
-            }
-
-            // Default case: return 0 if there's an error.
-            return 0;
         }
 
-        public int GetLinkHealth()
+        public void GetLinkHealth()
         {
             string section = "Link";
             string key = "Health";
@@ -56,26 +60,17 @@ namespace LegendOfZelda
 
                 if (int.TryParse(linkHealth, out int health))
                 {
-                    // Successfully parsed, return the speed.
-                    return health;
+                    // Successfully parsed, return the health.
+                    GameConfig["Link.Health"] = health;
                 }
                 else
                 {
                     Debug.WriteLine("Failed to parse Link's health. Check the INI file format.");
                 }
             }
-            else
-            {
-                // The key or section doesn't exist, return a default value of 5.
-                Debug.WriteLine("Link's health key or section not found. Using default value: 5");
-                return 5;
-            }
-
-            // Default case: return 0 if there's an error.
-            return 0;
         }
 
-        public float GetDifficulty()
+        public void GetDifficulty()
         {
             string section = "Enemies";
             string key = "Difficulty";
@@ -95,22 +90,13 @@ namespace LegendOfZelda
                 if (difficultyMap.TryGetValue(difficultyString, out float difficultyMultiplier))
                 {
                     // Successfully mapped, return the difficulty multiplier.
-                    return difficultyMultiplier;
+                    GameConfig["Game.Difficulty"] = difficultyMultiplier;
                 }
                 else
                 {
                     Debug.WriteLine("Invalid difficulty level. Check the INI file format.");
                 }
             }
-            else
-            {
-                // The key or section doesn't exist, return a default value of 1.0 (Medium).
-                Debug.WriteLine("Difficulty key or section not found. Using default value: 1.0 (Medium)");
-                return 1.0f;
-            }
-
-            // Default case: return 0.0 if there's an error.
-            return 0.0f;
         }
     }
 }
