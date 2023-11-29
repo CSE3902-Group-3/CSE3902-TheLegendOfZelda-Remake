@@ -13,6 +13,7 @@ namespace LegendOfZelda
         public static Vector4[] invertedPallette { get; private set; }
         public static Vector4[] rot1Pallette { get; private set; }
         public static Vector4[] rot2Pallette { get; private set; }
+        public static Vector4[] scarletPallette { get; private set; }
 
         public static Vector4[] flash1Pallette { get; private set; }
         public static Vector4[] flash2Pallette { get; private set; }
@@ -251,6 +252,28 @@ namespace LegendOfZelda
                 rot2Pallette[i] = new Vector4(color.Z, color.X, color.Y, 1);
             }
             mainPallettes.Add(rot2Pallette);
+
+            //Scarlet and Gray
+            scarletPallette = new Vector4[32];
+            for (int i = 0; i < 32; i++)
+            {
+                float maxC = Math.Max(normalPallette[i].X, normalPallette[i].Y);
+                maxC = Math.Max(maxC, normalPallette[i].Z);
+                float minC = Math.Min(normalPallette[i].X, normalPallette[i].Y);
+                minC = Math.Min(minC, normalPallette[i].Z);
+
+                float averageBrightness = (normalPallette[i].X + normalPallette[i].Y + normalPallette[i].Z) / 3;
+
+                if(maxC - minC > 150/255f && maxC > 200/255f)
+                {
+                    scarletPallette[i] = new Vector4(averageBrightness, 0, 0, 1);
+                } else
+                {
+                    scarletPallette[i] = new Vector4(averageBrightness, averageBrightness, averageBrightness, 1);
+                }
+                
+            }
+            mainPallettes.Add(scarletPallette);
         }
     }
 }
