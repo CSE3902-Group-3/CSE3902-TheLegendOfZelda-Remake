@@ -44,7 +44,7 @@ namespace LegendOfZelda
                 }
                 else
                 {
-                    Debug.WriteLine("Failed to parse Link's speed. Check the INI file format.");
+                    Debug.WriteLine("Failed to parse Link's speed. Using default. Check INI file if you meant to set it.");
                 }
             }
         }
@@ -65,7 +65,7 @@ namespace LegendOfZelda
                 }
                 else
                 {
-                    Debug.WriteLine("Failed to parse Link's health. Check the INI file format.");
+                    Debug.WriteLine("Failed to parse Link's health. Using default. Check INI file if you meant to set it.");
                 }
             }
         }
@@ -94,7 +94,7 @@ namespace LegendOfZelda
                 }
                 else
                 {
-                    Debug.WriteLine("Invalid difficulty level. Check the INI file format.");
+                    Debug.WriteLine("Invalid difficulty level. Using default. Check INI file if you meant to set it.");
                 }
             }
         }
