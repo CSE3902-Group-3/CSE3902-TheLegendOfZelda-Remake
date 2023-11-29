@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +15,20 @@ namespace LegendOfZelda
 
         private const int scale = 4;
         private const int mapSize = 64;
+        private int CurrentRoom;
 
         private SpriteFactory spriteFactory;
+        private LowerHUD lowerHUD;
+        private HUDMapElement mapElement;
+        
+        private Inventory inventory;
+        private Map map;
+        private Compass compass;
 
         private AnimatedSprite MapHUDBase;
         private AnimatedSprite Map;
         private AnimatedSprite Compass;
+        private AnimatedSprite LocationIndicator;
 
         private Vector2 MapHUDBasePos;
         private Vector2 MapSpritePos;
@@ -27,41 +36,39 @@ namespace LegendOfZelda
         private Vector2 MapBasePos;
 
         private Dictionary<AnimatedSprite, Vector2> MapElement;
+        private Dictionary<int, Vector2> IndicatorPosDic;
 
-        private bool MapUnlock;
-        private bool CompassUnlock;
+        public bool MapUnlock;
+        public bool CompassUnlock;
 
-        private List<int> ElementList = new List<int>()
-        {
-            -1, -1, -1, -1, -1, -1, -1, -1,
-            -1, -1, -1, -1, -1, -1, -1, -1,
-            -1, -1, -1,  4, -1, -1, -1, -1,
-            -1, -1, -1, 12, -1,  4, -1, -1,
-            -1,  1,  5, 11,  3, 10, -1, -1,
-            -1, -1,  8,  7, -1, -1, -1, -1,
-            -1, -1, -1,  4, -1, -1, -1, -1,
-            -1, -1,  1, 15,  2, -1, -1, -1
-        };
+        private List<int> ElementList;
 
         public MapHUD()
         {
             spriteFactory = SpriteFactory.getInstance();
+            mapElement = HUDMapElement.GetInstance();
+            inventory = Inventory.getInstance();
 
-            MapHUDBase = spriteFactory.CreateMapHUDSprite();
-            Map = spriteFactory.CreateMapSprite();
-            Compass = spriteFactory.CreateCompassSprite();
+            map = new Map(Vector2.Zero);
+            compass = new Compass(Vector2.Zero);
 
-            // Only for the test
+            MapHUDBase = spriteFactory.CreateMapHUDBaseSprite();
+            Map = spriteFactory.CreateHUDMapSprite();
+            Compass = spriteFactory.CreateHUDCompassSprite();
+            LocationIndicator = spriteFactory.CreateMapIndicatorSprite();
+
             MapHUDBasePos = new Vector2(GameState.CameraController.ItemMenuLocation.X, GameState.CameraController.ItemMenuLocation.Y + 87 * scale);
             MapSpritePos = new Vector2(MapHUDBasePos.X + 48 * scale, MapHUDBasePos.Y + 24 * scale);
             CompassPos = new Vector2(MapHUDBasePos.X + 44 * scale, MapHUDBasePos.Y + 64 * scale);
             MapBasePos = new Vector2(MapHUDBasePos.X + 128 * scale, MapHUDBasePos.Y + 8 * scale);
 
+            ElementList = mapElement.GetMapList(1);
+            IndicatorPosDic = mapElement.GetMapIndicator(1);
             CreateMapElement();
 
             // The below values are for test now, should be changed later
-            MapUnlock = true;
-            CompassUnlock = true;
+            MapUnlock = false;
+            CompassUnlock = false;
         }
 
         public static MapHUD GetInstance()
@@ -74,17 +81,14 @@ namespace LegendOfZelda
 
         public void Update(GameTime gametime)
         {
-
+            UpdateMapUnlock();
+            UpdateCompassUnlock();
+            RegisterIndicatorSprite(true);
         }
 
         public void Show()
         {
             RegisterSprite(MapHUDBase, MapHUDBasePos);
-
-            RegisterMapCompassSprite(Map, MapSpritePos, MapUnlock);
-
-            RegisterMapCompassSprite(Compass, CompassPos, CompassUnlock);
-
             RegisterMap();
         }
 
@@ -100,14 +104,48 @@ namespace LegendOfZelda
             }
         }
 
-        public void UpdateMapUnlock(bool unlock)
+        public void UpdateMapUnlock()
         {
-            MapUnlock = unlock;
+            int newCount = inventory.GetQuantity(map);
+            if (newCount > 0)
+            {
+                MapUnlock = true;
+                RegisterSprite(Map, MapSpritePos);
+            }
+            else
+            {
+                MapUnlock = false;
+                Map.UnregisterSprite();
+            }
         }
 
-        public void UpdateCompassUnlock(bool unlock)
+        public void UpdateCompassUnlock()
         {
-            CompassUnlock = unlock;
+            int newCount = inventory.GetQuantity(compass);
+            if (newCount > 0)
+            {
+                CompassUnlock = true;
+                RegisterSprite(Compass, CompassPos);
+            }
+            else
+            {
+                CompassUnlock = false;
+                Compass.UnregisterSprite();
+            }
+        }
+
+        public void RegisterIndicatorSprite(bool unlock)
+        {
+            CurrentRoom = LevelManager.CurrentRoom;
+            if (unlock)
+            {
+                LocationIndicator.RegisterSprite();
+                LocationIndicator.UpdatePos(IndicatorPosDic[CurrentRoom]);
+            }
+            else
+            {
+                LocationIndicator.UnregisterSprite();
+            }
         }
 
         public void RegisterSprite(AnimatedSprite sprite, Vector2 pos)

@@ -5,7 +5,7 @@ Remake of NES The Legend of Zelda game
 ### Player controls
 - Arrow and `wasd` keys should move Link and change his facing direction.
 - The `z` and `n` key should cause Link to attack using his sword.
-- `b` for Link to use his secondary item
+- `x` for Link to use his secondary item
 
 ### Other controls
 - Use `Enter` to start the game from the starting menu
@@ -14,6 +14,12 @@ Remake of NES The Legend of Zelda game
 - Use `space` to pause or resume the game.
 - Use right/left click to cycle rooms
 - After Link dies, use `Shift` to switch between options in game over menu. Use `Enter` to select the option.
+
+### Cheat codes
+- Use `C`+`P` to get 5 rupees.
+- Use `C`+`K` to get a key.
+- Use `C`+`H` to heal Link to max HP.
+- Use `C`+`O` to kill all enemies in current room.
 
 ## Major Known Bugs:
 - Interface HUD is not functional, does not update
@@ -26,12 +32,8 @@ Remake of NES The Legend of Zelda game
 
 ## Minor Known Bugs:
 - Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
-- Link teleports and then walks in place when traveling through a door instead of walking through
-- Link does not receive invincibility frames when he collides with a slime
 - Enemies drop items when exiting a room
 - Goriya sometimes walks through certain walls
-- Link does not spin when he dies
-- Sword beam does not spawn in the correct position
 - The pause overlay does not affect Link's sprite
 - Sprites still animate when the game is paused
 - Fireballs are missing from the wizard room
@@ -115,6 +117,7 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 #### Sprint 5
 - Michael Herring reviewed Zhengyi Hu's code for readability in pull request #432
 - Gabriel DiFiore reviewed Zhengyi Hu's code for readability in PR #405
+- Ethan Glenwright reviewed Gabriel DiFiore's code for quality in PR #430
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections

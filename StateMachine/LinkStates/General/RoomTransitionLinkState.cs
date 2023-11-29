@@ -27,22 +27,23 @@ namespace LegendOfZelda
             {
                 case Direction.up:
                     Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
-                    targetPosition += new Vector2(0, -196);
+                    targetPosition += new Vector2(0, -215);
                     break;
                 case Direction.down:
                     Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
-                    targetPosition += new Vector2(0, 196);
+                    targetPosition += new Vector2(0, 215);
                     break;
                 case Direction.left:
                     Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkLeftSprite();
-                    targetPosition += new Vector2(-196, 0);
+                    targetPosition += new Vector2(-215, 0);
 
                     break;
                 case Direction.right:
                     Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
-                    targetPosition += new Vector2(196, 0);
+                    targetPosition += new Vector2(215, 0);
                     break;
             }
+            Link.Sprite.paused = true;
 
             LinkUtilities.UpdatePositions(Link, targetPosition);
         }
@@ -56,6 +57,7 @@ namespace LegendOfZelda
         public void Exit()
         {
             Link.StateMachine.canMove = true;
+            Link.Sprite.paused = false;
             Link.Velocity = 5;
         }
     }
