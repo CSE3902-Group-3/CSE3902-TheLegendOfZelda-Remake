@@ -47,7 +47,7 @@ namespace LegendOfZelda
 
                 CurrentRoom++;
             }
-            CurrentRoom = 1;
+            CurrentRoom = 0;
         }
         public bool SnapToRoom(int targetRoom)
         {
