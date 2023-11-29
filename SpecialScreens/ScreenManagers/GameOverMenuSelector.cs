@@ -52,6 +52,7 @@ namespace LegendOfZelda
             }
 
             IndicationHearts[selection].Show();
+            SoundFactory.PlaySound(SoundFactory.getInstance().LowHealth);
         }
 
         /*public void previousOption()
