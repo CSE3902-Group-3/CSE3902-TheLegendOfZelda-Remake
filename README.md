@@ -14,7 +14,7 @@ Remake of NES The Legend of Zelda game
 - Use `space` to pause or resume the game.
 - Use right/left click to cycle rooms
 - After Link dies, use `Shift` to switch between options in game over menu. Use `Enter` to select the option.
-- Use 'n' and 'm' to cycle through different color palletts
+- Use `n` and `m` to cycle through different color palletts
 
 ### Cheat codes
 - Use `C`+`P` to get 5 rupees.
