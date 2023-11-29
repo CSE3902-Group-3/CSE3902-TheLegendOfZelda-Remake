@@ -18,6 +18,7 @@ namespace LegendOfZelda
         public static MapHUD mapHUD;
         public static IController PlayerController;
         public static IController ItemMenuController;
+        public static IController cheatCodeController;
         public static GameState GetInstance()
         {
             if (Instance == null)
@@ -39,6 +40,7 @@ namespace LegendOfZelda
             lowerHUD = LowerHUD.GetInstance();
             PlayerController = new PlayerController(Link);
             ItemMenuController = new ItemMenuController();
+            cheatCodeController = new CheatCodeController();
         }
         public void SwitchState(IGameState state)
         {

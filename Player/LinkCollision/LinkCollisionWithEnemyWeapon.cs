@@ -9,6 +9,11 @@ namespace LegendOfZelda
 
         public static void HandleCollisionWithEnemyWeapon(CollisionInfo collision)
         {
+            if (GameState.Link.StateMachine.CurrentState is KnockBackLinkState)
+            {
+                return;
+            }
+
             IEnemyProjectile enemyProjectileCollidedWith = collision.CollidedWith.Collidable as IEnemyProjectile;
 
             var enemyDamageMap = new Dictionary<Type, float>
@@ -27,7 +32,8 @@ namespace LegendOfZelda
                 GameState.Link.damageCooldownTimer = GameState.Link.damageCooldownDuration;
             }
 
-            GameState.Link.StateMachine.ChangeState(new KnockBackLinkState());
+            if (GameState.Link.StateMachine.CurrentState is not DeathLinkState)
+                GameState.Link.StateMachine.ChangeState(new KnockBackLinkState());
         }
     }
 }

@@ -32,7 +32,7 @@ namespace LegendOfZelda
             }
 
             LinkUtilities.UpdatePositions(GameState.Link, newPosition);
-            GameState.Link.Velocity = 0;
+            GameState.Link.Velocity = 5;
         }
     }
 }
