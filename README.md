@@ -71,7 +71,7 @@ Remake of NES The Legend of Zelda game
 -   11/6: 82, 1664, 2, 221, 9975, 2805
 -   11/13: 82, 1831, 2, 231, 11001, 3103
 
-## Code Analsis:
+## Code Analysis:
 -  11/13: 1 warning: CS0219 (variable assigned but never used)
 
 ## Code Reviews:
