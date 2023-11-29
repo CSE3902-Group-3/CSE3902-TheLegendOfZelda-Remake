@@ -99,7 +99,7 @@ namespace LegendOfZelda
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new NormalAnimateEffect(newSprite));
-            newSprite.ChangeBaseShader(ShaderHolder.standardPallet);
+            newSprite.ChangeBaseShader(ShaderHolder.StandardPallet);
             return newSprite;
         }
 
