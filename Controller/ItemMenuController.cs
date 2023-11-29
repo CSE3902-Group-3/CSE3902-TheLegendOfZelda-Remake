@@ -27,6 +27,7 @@ namespace LegendOfZelda
             KeyCommands.Add(Keys.A, new SelectDownCommand());
             KeyCommands.Add(Keys.Right, new SelectRightCommand());
             KeyCommands.Add(Keys.D, new SelectRightCommand());
+            KeyCommands.Add(Keys.Z, new SelectCommand());
         }
 
         public void Update()

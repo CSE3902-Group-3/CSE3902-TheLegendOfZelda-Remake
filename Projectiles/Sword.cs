@@ -8,9 +8,6 @@ namespace LegendOfZelda
     {
         public RectCollider collider;
         public Vector2 spawnPos;
-
-        private LevelManager level;
-
         public Sword(Direction linkDirection, Vector2 linkPos)
         {
             // Set the spawn position based on Link's position and direction

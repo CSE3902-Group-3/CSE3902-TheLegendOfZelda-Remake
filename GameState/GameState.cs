@@ -18,6 +18,7 @@ namespace LegendOfZelda
         public static MapHUD mapHUD;
         public static IController PlayerController;
         public static IController ItemMenuController;
+        public static IController cheatCodeController;
         public static GameState GetInstance()
         {
             if (Instance == null)
@@ -28,9 +29,9 @@ namespace LegendOfZelda
         {
             LevelMaster = LevelManager.GetInstance();
             CollisionManager = new CollisionManager();
-            LevelMaster.StartLevel("level1.json");
+            LevelMaster.StartLevel("level2.json");
             Link = new Link();
-            LevelMaster.SnapToRoom(1);
+            LevelMaster.SnapToRoom(0);
             PauseManager = new PauseManager();
             BackgroundGenerator.GenerateMenuBackgrounds();
             State = new StartState();
@@ -39,6 +40,7 @@ namespace LegendOfZelda
             lowerHUD = LowerHUD.GetInstance();
             PlayerController = new PlayerController(Link);
             ItemMenuController = new ItemMenuController();
+            cheatCodeController = new CheatCodeController();
         }
         public void SwitchState(IGameState state)
         {
@@ -52,9 +54,9 @@ namespace LegendOfZelda
         {
             CameraController.Reset();
             CollisionManager = new CollisionManager();
-            LevelMaster.StartLevel("level1.json");
+            LevelMaster.StartLevel("level2.json");
             Link = new Link();
-            LevelMaster.SnapToRoom(1);
+            LevelMaster.SnapToRoom(0);
             PauseManager = new PauseManager();
             BackgroundGenerator.GenerateMenuBackgrounds();
             State = new NormalState();
@@ -66,7 +68,7 @@ namespace LegendOfZelda
         {
             CollisionManager = new CollisionManager();
             Link = new Link();
-            LevelMaster.SnapToRoom(1);
+            LevelMaster.SnapToRoom(0);
             PlayerController = new PlayerController(Link);
             CameraController.mainCamera.worldPos = LevelManager.CurrentRoomPosition;
             CameraController.ChangeMenu(Menu.Item);

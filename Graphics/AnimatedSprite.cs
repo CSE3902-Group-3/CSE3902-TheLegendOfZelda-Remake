@@ -35,7 +35,7 @@ namespace LegendOfZelda
         public SpriteEffects effect;
     }
 
-    public class AnimatedSprite : IAnimatedSprite
+    public class AnimatedSprite : IAnimatedSprite, IHasShader
     {
         
 
@@ -52,11 +52,15 @@ namespace LegendOfZelda
         public Vector2 pos { get { return drawInfo.pos; } }
         public bool paused { get; set; }
         public Color color { get { return drawInfo.color; } set { drawInfo.color = value; } }
-
-        private int flashCounter = 0;
         private bool _flashing = false;
 
         private bool persistent;
+
+        public Effect StandardShader { get; private set; }
+        public Effect ActiveShader { get; set; }
+
+        private int lastFrameNumber = -10;
+
         public bool flashing
         {
             get { return _flashing; }
@@ -64,11 +68,13 @@ namespace LegendOfZelda
             {
                 if (value)
                 {
-                    AddEffect(new FlashingEffect(this));
+                    IAnimatedSpriteEffect effect = ShaderHolder.ShadersOn ? new ShaderFlashingEffect(this) : new FlashingEffect(this);
+                    AddEffect(effect);
                 }
                 else
                 {
                     RemoveEffect(FlashingEffect.name);
+                    ActiveShader = StandardShader;
                 }
                 _flashing = value;
             }
@@ -82,11 +88,13 @@ namespace LegendOfZelda
             {
                 if (value)
                 {
-                    AddEffect(new BlinkEffect(this));
+                    IAnimatedSpriteEffect effect = ShaderHolder.ShadersOn ? new ShaderBlinkEffect(this) : new BlinkEffect(this);
+                    AddEffect(effect);
                 }
                 else
                 {
                     RemoveEffect(BlinkEffect.name);
+                    ActiveShader = StandardShader;
                 }
                 _blinking = value;
             }
@@ -107,7 +115,16 @@ namespace LegendOfZelda
             effectList = new List<IAnimatedSpriteEffect>();
 
             this.persistent = persistent;
+            StandardShader = ShaderHolder.normalShader;
+            ActiveShader = StandardShader;
             RegisterSprite();
+        }
+
+        public Effect ChangeBaseShader(Effect newShader)
+        {
+            Effect prevShader = StandardShader;
+            StandardShader = newShader;
+            return prevShader;
         }
 
         public bool AddEffect(IAnimatedSpriteEffect effect)
@@ -142,7 +159,11 @@ namespace LegendOfZelda
         {
             DrawSprite();
 
-            UpdateFrameCounter();        
+            if(lastFrameNumber != Game1.frameNumber)
+            {
+                lastFrameNumber = Game1.frameNumber;
+                UpdateFrameCounter();
+            }   
         }
 
         protected virtual void DrawSprite()

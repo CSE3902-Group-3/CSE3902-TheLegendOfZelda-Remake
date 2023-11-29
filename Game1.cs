@@ -25,6 +25,7 @@ namespace LegendOfZelda
 
         /* Game Difficulty */
         public float Difficulty;
+        public static int frameNumber { get; private set; } = 0;
 
         private Game1()
         {
@@ -54,6 +55,8 @@ namespace LegendOfZelda
             _graphics.PreferredBackBufferHeight = ViewportHeight;
             _graphics.ApplyChanges();
 
+            if(ShaderHolder.ShadersOn) ShaderHolder.LoadShaders(Content);
+
             base.Initialize();
         }
 
@@ -72,6 +75,7 @@ namespace LegendOfZelda
 
         protected override void Update(GameTime gameTime)
         {
+            frameNumber++;
             GameState.Update(gameTime);
             base.Update(gameTime);
         }

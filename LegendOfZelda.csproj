@@ -25,6 +25,8 @@
     <None Remove="SpecialScreens\WinningScreenDrawables\" />
     <None Remove="Command\GameOverMenu\" />
     <None Remove="Command\GameWinningMenu\" />
+    <None Remove="CheatCodeClasses\" />
+    <None Remove="Command\CheatCodes\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
@@ -44,12 +46,15 @@
   <ItemGroup>
     <Folder Include="LegendOfZelda\obj\Release\" />
     <Folder Include="ItemClasses\" />
+    <Folder Include="Level\LevelOverviewPictures\" />
     <Folder Include="SpecialScreens\" />
     <Folder Include="SpecialScreens\GameOverScreenDrawables\" />
     <Folder Include="SpecialScreens\ScreenManagers\" />
     <Folder Include="SpecialScreens\WinningScreenDrawables\" />
     <Folder Include="Command\GameOverMenu\" />
     <Folder Include="Command\GameWinningMenu\" />
+    <Folder Include="CheatCodeClasses\" />
+    <Folder Include="Command\CheatCodes\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Level\Levels\level1.json">
