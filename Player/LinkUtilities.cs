@@ -7,10 +7,15 @@ namespace LegendOfZelda
 
         public static Vector2 originalLinkPosition = new Vector2(LevelManager.CurrentRoomPosition.X + (LevelUtilities.RoomWidth - LevelUtilities.GridUnitSize) / 2, LevelManager.CurrentRoomPosition.Y + LevelUtilities.RoomHeight);
 
-        public static Vector2 upItemOffet = new Vector2(-30, 150);
-        public static Vector2 rightItemOffset = new Vector2(160, 0);
-        public static Vector2 leftItemOffset = new Vector2(90, 0);
-        public static Vector2 downItemOffset = new Vector2(30, 150);
+        public static Vector2 upBombOffset = new Vector2(15, -90);
+        public static Vector2 rightBombOffset = new Vector2(90, 0);
+        public static Vector2 leftBombOffset = new Vector2(-90, 0);
+        public static Vector2 downBombOffset = new Vector2(15, 90);
+
+        public static Vector2 upFireOffet = new Vector2(0, -90);
+        public static Vector2 rightFireOffset = new Vector2(90, 0);
+        public static Vector2 leftFireOffset = new Vector2(-90, 0);
+        public static Vector2 downFireOffset = new Vector2(0, 90);
 
         public static Vector2 upSwordBeamOffset = new Vector2(13, 0);
         public static Vector2 downSwordBeamOffset = new Vector2(20, 0);

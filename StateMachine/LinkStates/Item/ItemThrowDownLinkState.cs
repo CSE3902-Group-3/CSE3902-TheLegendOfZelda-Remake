@@ -24,14 +24,25 @@ namespace LegendOfZelda
             // Throw item
             if (Inventory.getInstance().SecondaryItem is Bomb)
             {
-                new BombProjectile(Link.StateMachine.position + LinkUtilities.downItemOffset);
-            } 
+                new BombProjectile(Link.StateMachine.position + LinkUtilities.downBombOffset);
+            }
             else if (Inventory.getInstance().SecondaryItem is Boomerang)
             {
-                new BoomerangProjectile(Link.StateMachine.position + LinkUtilities.downItemOffset, Direction.down, Link);
+                new BoomerangProjectile(Link.StateMachine.position + LinkUtilities.downBombOffset, Direction.down, Link);
             } else if (Inventory.getInstance().SecondaryItem is Candle)
             {
-                new FireProjectile(Link.StateMachine.position + LinkUtilities.downItemOffset, Direction.down);
+                new FireProjectile(Link.StateMachine.position + LinkUtilities.downFireOffset, Direction.down);
+            } 
+            else if (Inventory.getInstance().SecondaryItem is Bow)
+            {
+                if (Inventory.getInstance().GetQuantity(new Arrow(new Vector2(0, 0))) > 0)
+                {
+                    if (Inventory.getInstance().SpendRupee(1))
+                    {
+                        new ArrowProjectile(GameState.Link.StateMachine.position + LinkUtilities.downSwordBeamOffset, GameState.Link.StateMachine.currentDirection);
+                    }
+
+                }
             }
         }
 
