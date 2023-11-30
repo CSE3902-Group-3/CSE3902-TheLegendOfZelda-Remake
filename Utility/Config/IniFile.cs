@@ -4,7 +4,11 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 
-// Change this to match your program's normal namespace
+
+//
+// This class was largely taken from https://stackoverflow.com/questions/217902/reading-writing-an-ini-file
+// but was slightly modified for our game's folder structure and location of config ini file
+//
 namespace LegendOfZelda
 {
     public class IniFile   // revision 11
