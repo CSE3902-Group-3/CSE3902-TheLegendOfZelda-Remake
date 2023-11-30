@@ -7,10 +7,12 @@ namespace LegendOfZelda
         private Link Link;
 
         private Vector2 targetPosition;  // The position Link should move to
+        private Direction estDirection;
 
-        public KnockBackLinkState()
+        public KnockBackLinkState(Direction estimatedDirection)
         {
             Link = GameState.Link;
+            estDirection = estimatedDirection;
         }
 
         public void Enter()
@@ -38,7 +40,7 @@ namespace LegendOfZelda
                     break;
             }
 
-            targetPosition = LinkUtilities.CalcKnockback(Link);
+            targetPosition = LinkUtilities.CalcKnockback(estDirection, Link);
         }
 
         public void Execute()
