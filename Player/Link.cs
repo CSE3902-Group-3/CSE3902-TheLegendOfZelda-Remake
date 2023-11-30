@@ -107,6 +107,8 @@ namespace LegendOfZelda
 
         public void Die()
         {
+            Collider.Active = false;
+            LevelManager.RemoveCollider(Collider, true);
             this.StateMachine.ChangeState(new DeathLinkState());
             this.Reset();
         }

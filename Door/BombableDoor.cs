@@ -80,7 +80,7 @@ namespace LegendOfZelda
 
         private void HandleCollisionWhenUnlocked(CollisionInfo collision)
         {
-            if (collision.CollidedWith.Layer != CollisionLayer.Player) return;
+            if (collision.CollidedWith.Layer != CollisionLayer.Player && GameState.Link.StateMachine.isKnockedBack) return;
 
             player = GameState.Link;
             player.EnterRoomTransition();

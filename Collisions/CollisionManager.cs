@@ -36,7 +36,6 @@ namespace LegendOfZelda
     public class CollisionManager : IUpdateable
     {
         public static CollisionManager instance { get; private set;}
-        private Game1 game;
         private Dictionary<CollisionLayer, List<IRectCollider>> rectColliders;
         private Dictionary<CollisionLayer, List<CollisionLayer>> legalCollisions;
         
@@ -45,7 +44,6 @@ namespace LegendOfZelda
 
         public CollisionManager() {
             instance = this;
-            game = Game1.getInstance();
             
             rectColliders = new Dictionary<CollisionLayer, List<IRectCollider>>();
             foreach(CollisionLayer collisionLayer in Enum.GetValues(typeof(CollisionLayer)))

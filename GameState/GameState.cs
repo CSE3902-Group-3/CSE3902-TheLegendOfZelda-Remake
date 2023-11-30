@@ -66,7 +66,7 @@ namespace LegendOfZelda
         }
         public void GameOverContinue()
         {
-            CollisionManager = new CollisionManager();
+            //CollisionManager = new CollisionManager();
             Link = new Link();
             LevelMaster.SnapToRoom(0);
             PlayerController = new PlayerController(Link);
