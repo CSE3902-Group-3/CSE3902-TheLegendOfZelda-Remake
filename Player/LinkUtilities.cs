@@ -51,20 +51,20 @@ namespace LegendOfZelda
             return false;
         }
 
-        public static Vector2 CalcKnockback(Link link)
+        public static Vector2 CalcKnockback(Direction estimatedDirection, Link link)
         {
             Vector2 targetPosition = link.StateMachine.position;
 
             // Calculate the knockback direction based on Link's current direction
-            if (link.StateMachine.currentDirection == Direction.down)
+            if (estimatedDirection == Direction.down)
             {
                 targetPosition.Y -= 100;
             }
-            else if (link.StateMachine.currentDirection == Direction.up)
+            else if (estimatedDirection == Direction.up)
             {
                 targetPosition.Y += 100;
             }
-            else if (link.StateMachine.currentDirection == Direction.left)
+            else if (estimatedDirection == Direction.left)
             {
                 targetPosition.X += 100;
             }
