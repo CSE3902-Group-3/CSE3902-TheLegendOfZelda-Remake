@@ -10,7 +10,7 @@ namespace LegendOfZelda
     public static class ShaderHolder
     {
         public static readonly bool ShadersOn = true;
-        private static bool loaded = false;
+        //private static bool loaded = false;
         public static Effect normalShader;
 
         public static Effect Standard { get; private set; }
@@ -43,7 +43,7 @@ namespace LegendOfZelda
 
             normalShader = ShadersOn ? StandardPallet : Standard;
 
-            loaded = true;
+            //loaded = true;
         }
 
         public static void CyclePalletteForward()
