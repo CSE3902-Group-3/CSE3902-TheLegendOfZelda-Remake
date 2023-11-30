@@ -27,7 +27,12 @@ struct VertexShaderOutput
 float4 MainPS(VertexShaderOutput input) : COLOR
 {
     float4 index = tex2D(SpriteTextureSampler, input.TextureCoordinates);
-    float4 sampledColor = Pallet[index.r * 256] * input.Color * float4(1, 1, 1, index.a);
+    float4 sampledColor = Pallet[index.r * 256] * input.Color;
+    if (index.a == 0)
+    {
+        sampledColor = float4(0, 0, 0, 0);
+
+    }
     return sampledColor;
 }
 

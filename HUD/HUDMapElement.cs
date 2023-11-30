@@ -22,7 +22,7 @@ namespace LegendOfZelda
         private List<int> MapList;
 
         private Dictionary<int, Vector2> MiniMapIndicator;
-        private Dictionary<int, Vector2> MapIndicator;
+        //private Dictionary<int, Vector2> MapIndicator;
 
         public HUDMapElement()
         {

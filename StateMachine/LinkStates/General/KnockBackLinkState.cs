@@ -1,9 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LegendOfZelda
 {
@@ -12,10 +7,12 @@ namespace LegendOfZelda
         private Link Link;
 
         private Vector2 targetPosition;  // The position Link should move to
+        private Direction estDirection;
 
-        public KnockBackLinkState()
+        public KnockBackLinkState(Direction estimatedDirection)
         {
             Link = GameState.Link;
+            estDirection = estimatedDirection;
         }
 
         public void Enter()
@@ -43,7 +40,7 @@ namespace LegendOfZelda
                     break;
             }
 
-            targetPosition = LinkUtilities.CalcKnockback(Link);
+            targetPosition = LinkUtilities.CalcKnockback(estDirection, Link);
         }
 
         public void Execute()
@@ -67,6 +64,7 @@ namespace LegendOfZelda
             if (Link.StateMachine.position == targetPosition)
             {
                 // Only change the state to IdleLinkState when the target position is reached
+                Link.StateMachine.isKnockedBack = false;
                 Link.StateMachine.ChangeState(new IdleLinkState());
             }
         }

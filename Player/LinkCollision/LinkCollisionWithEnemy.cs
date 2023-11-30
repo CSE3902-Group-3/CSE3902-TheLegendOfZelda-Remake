@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System;
-using System.Diagnostics;
 
 namespace LegendOfZelda
 {
@@ -11,6 +10,11 @@ namespace LegendOfZelda
 
         public static void HandleCollisionWithEnemy(CollisionInfo collision)
         {
+            if (GameState.Link.StateMachine.CurrentState is KnockBackLinkState)
+            {
+                return;
+            }
+
             IEnemy enemyCollidedWith = collision.CollidedWith.Collidable as IEnemy;
 
             var enemyDamageMap = new Dictionary<Type, float>
@@ -33,7 +37,8 @@ namespace LegendOfZelda
                 GameState.Link.damageCooldownTimer = GameState.Link.damageCooldownDuration;
             }
 
-            GameState.Link.StateMachine.ChangeState(new KnockBackLinkState());
+            if (GameState.Link.StateMachine.CurrentState is not DeathLinkState)
+                GameState.Link.StateMachine.ChangeState(new KnockBackLinkState(collision.EstimatedDirection));
         }
     }
 }

@@ -8,8 +8,6 @@ namespace LegendOfZelda
     {
         private AnimatedSprite sprite;
         private IRectCollider collider;
-
-        private SpriteFactory spriteFactory;
         private float speed = 15;
         private const float accel = .25f;
 
@@ -31,13 +29,43 @@ namespace LegendOfZelda
 
         private const int boomerangWidth = 8;
 
-        public BoomerangProjectile(Vector2 position, Vector2 direction, IPlayer player)
+        public BoomerangProjectile(Vector2 position, Direction direction, IPlayer player)
         {
             SpriteFactory spriteFactory = SpriteFactory.getInstance();
             _pos = position;
             this.player = player;
 
-            dir = direction;
+            switch (direction)
+            {
+                case Direction.up:
+                    dir = new Vector2(0, -1);
+                    break;
+                case Direction.upRight:
+                    dir = new Vector2(1, -1);
+                    break;
+                case Direction.right:
+                    dir = new Vector2(1, 0);
+                    break;
+                case Direction.downRight:
+                    dir = new Vector2(1, 1);
+                    break;
+                case Direction.down:
+                    dir = new Vector2(0, 1);
+                    break;
+                case Direction.downLeft:
+                    dir = new Vector2(-1, 1);
+                    break;
+                case Direction.left:
+                    dir = new Vector2(-1, 0);
+                    break;
+                case Direction.upLeft:
+                    dir = new Vector2(-1, 1);
+                    break;
+                default:
+                    dir = Vector2.One;
+                    break;
+
+            }
             dir.Normalize();
 
             sprite = spriteFactory.CreateBoomerangSprite();

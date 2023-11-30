@@ -47,7 +47,7 @@ namespace LegendOfZelda
 
                 CurrentRoom++;
             }
-            CurrentRoom = 1;
+            CurrentRoom = 0;
         }
         public bool SnapToRoom(int targetRoom)
         {
@@ -122,6 +122,10 @@ namespace LegendOfZelda
                 PersistentUpdateables[i].Update(gameTime);
             }
             LevelRooms[CurrentRoom].Update(gameTime);
+        }
+        public static void KillAllEnemiesInCurrentRoom()
+        {
+            CurrentLevelRoom.KillAllEnemies();
         }
         public static bool AddDrawable(IDrawable drawable, bool persistent = false)
         {

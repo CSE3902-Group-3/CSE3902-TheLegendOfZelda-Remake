@@ -19,6 +19,8 @@ namespace LegendOfZelda
 
             keyUpMappings.Add(Keys.Q, new QuitCommand());
             keyUpMappings.Add(Keys.R, new ResetCommand(link));
+            keyUpMappings.Add(Keys.K, new PreviousPalletCommand());
+            keyUpMappings.Add(Keys.L, new NextPalletCommand());
 
             KeyDownMapping.Add(Keys.W, new MovingUpCommand(link));
             KeyDownMapping.Add(Keys.Up, new MovingUpCommand(link));
@@ -29,7 +31,7 @@ namespace LegendOfZelda
             KeyDownMapping.Add(Keys.D, new MovingRightCommand(link));
             KeyDownMapping.Add(Keys.Right, new MovingRightCommand(link));
 
-            KeyDownMapping.Add(Keys.B, new UseSecondaryItemCommand());
+            KeyDownMapping.Add(Keys.X, new UseSecondaryItemCommand());
 
             keyUpMappings.Add(Keys.W, new ToIdleCommand(link));
             keyUpMappings.Add(Keys.A, new ToIdleCommand(link));

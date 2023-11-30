@@ -5,19 +5,22 @@ namespace LegendOfZelda
 {
     public class Link : IPlayer, ICollidable, IUpdateable
     {
-        public ISprite Sprite { get; set; }
+        public IAnimatedSprite Sprite { get; set; }
         public Vector2 Pos { get { return Sprite.pos; } }
         public RectCollider Collider { get; set; }
-        public LinkStateMachine StateMachine{ get; private set; }
-        public float HP { get; private set; } = 1000;
-        public float MaxHP { get; private set; } = 6;
-        public int Velocity { get; set; } = 5; // link moves at 1pixel per frame in original NES game, scaled up to 1080p is roughly 5pixels per frame
+        public LinkStateMachine StateMachine { get; private set; }
+        public float HP { get; private set; } = Game1.getInstance().ReadConfig.GameConfig["Link.Health"];
+        public float MaxHP { get; private set; } = Game1.getInstance().ReadConfig.GameConfig["Link.Health"];
+        public int Velocity { get; set; } = (int)Game1.getInstance().ReadConfig.GameConfig["Link.Speed"]; // link moves at 1pixel per frame in original NES game, scaled up to 1080p is roughly 5pixels per frame
 
-        private float damageAnimationTimer = 0; // Initialize it to 0
-        private float damageAnimationDuration = 1.0f; // Set the duration (in seconds) for the animation
+        private float damageAnimationTimer = 0;
+        private float damageAnimationDuration = 1.0f; // Set the duration to 1s for damage animation
 
-        public float damageCooldownTimer  = 0; // Set the cooldown (in seconds) for damage
-        public float damageCooldownDuration = 1.0f;
+        public float damageCooldownTimer = 0;
+        public float damageCooldownDuration = 3.5f;// Set the cooldown time to 3.5s for damage repeated
+
+        public float swordBeamCooldown = 0;
+        public float SwordBeamCooldownDuration = 3.0f;  // Set cooldown time to 3 seconds
 
         public Link()
         {
@@ -46,7 +49,7 @@ namespace LegendOfZelda
         public void TakeDamage(float damage)
         {
             SoundFactory.PlaySound(SoundFactory.getInstance().LinkHurt);
-            this.HP -= damage;
+            this.HP -= damage * Game1.getInstance().Difficulty;
             if (this.HP <= 0)
             {
                 this.Die();
@@ -66,7 +69,7 @@ namespace LegendOfZelda
             this.StateMachine.isTakingDamage = false;
         }
 
-        public void Update (GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             damageCooldownTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -81,10 +84,14 @@ namespace LegendOfZelda
                     StopTakingDamage();
                 }
             }
+            if (swordBeamCooldown > 0)
+            {
+                swordBeamCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
 
             if (LinkUtilities.LinkChangedDirection())
             {
-                this.Velocity = 5;
+                this.Velocity = (int)Game1.getInstance().ReadConfig.GameConfig["Link.Speed"];
             }
 
             this.StateMachine.Update();
@@ -100,9 +107,9 @@ namespace LegendOfZelda
 
         public void Die()
         {
-            // just call Reset for now
-            Sprite.UnregisterSprite();
-            // Pust Link spinning death sprite here
+            Collider.Active = false;
+            LevelManager.RemoveCollider(Collider, true);
+            this.StateMachine.ChangeState(new DeathLinkState());
             this.Reset();
         }
 
@@ -113,6 +120,7 @@ namespace LegendOfZelda
 
         public void EnterRoomTransition()
         {
+            this.StateMachine.ChangeState(new IdleLinkState());
             this.StateMachine.ChangeState(new RoomTransitionLinkState());
         }
         public void ExitRoomTransition()

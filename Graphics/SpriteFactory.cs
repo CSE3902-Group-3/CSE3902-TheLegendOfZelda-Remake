@@ -99,7 +99,7 @@ namespace LegendOfZelda
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             newSprite.AddEffect(new NormalAnimateEffect(newSprite));
-            newSprite.ChangeBaseShader(ShaderHolder.standardPallet);
+            newSprite.ChangeBaseShader(ShaderHolder.StandardPallet);
             return newSprite;
         }
 
@@ -122,6 +122,20 @@ namespace LegendOfZelda
             {
                 new Rectangle(69, 11, 16, 16),
                 new Rectangle(86, 11, 16, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateLinkDeathSprite()
+        {
+            Rectangle[] frames = new Rectangle[3]
+            {
+                new Rectangle(35, 11, 16, 16),
+                new Rectangle(69, 11, 16, 16),
+                new Rectangle(1, 11, 16, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(linkTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
