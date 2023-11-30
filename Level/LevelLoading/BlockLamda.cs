@@ -54,7 +54,9 @@ namespace LegendOfZelda
                 MoveSouthPushableBlock,
                 ImpassibleBlackTile,
                 SpecialExteriorCollider,
-                Fire
+                Fire,
+                FireballFishStatue,
+                FireballDragonStatue
             };
         }
         public static BlockLamda GetInstance()
@@ -239,6 +241,18 @@ namespace LegendOfZelda
             Vector2 pos = LevelUtilities.CalculatePositionWallOffset(room, mapElement);
             Block block = new Block(SpriteFactory.CreateFireSprite(), pos);
             new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, LevelUtilities.GridUnitSize, LevelUtilities.GridUnitSize), CollisionLayer.Wall, block);
+        }
+        static void FireballFishStatue(Room room, MapElement mapElement)
+        {
+            Vector2 pos = LevelUtilities.CalculatePositionWallOffset(room, mapElement);
+            FireballStatue statue = new FireballStatue(SpriteFactory.CreateFishSculptureSprite(), pos);
+            new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, LevelUtilities.GridUnitSize, LevelUtilities.GridUnitSize), CollisionLayer.Wall, statue);
+        }
+        static void FireballDragonStatue(Room room, MapElement mapElement)
+        {
+            Vector2 pos = LevelUtilities.CalculatePositionWallOffset(room, mapElement);
+            FireballStatue statue = new FireballStatue(SpriteFactory.CreateDragonSculptureSprite(), pos);
+            new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, LevelUtilities.GridUnitSize, LevelUtilities.GridUnitSize), CollisionLayer.Wall, statue);
         }
     }
 }

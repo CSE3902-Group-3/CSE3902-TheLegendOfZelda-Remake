@@ -1,11 +1,20 @@
 {
     "Rooms": [
         {
-            "RoomNumber": 0,
+            "RoomNumber": 2,
+            "RoomXLocation": 0,
+            "RoomYLocation": 1,
             "AdjacentRooms": [
                 {
-                    "RoomNumber": 1,
-                    "Direction": "West"
+                    "RoomNumber": 3,
+                    "Direction": "East"
+                }
+            ],
+            "Events": [
+                {
+                    "EventNumber": 0,
+                    "XLocation": 6,
+                    "YLocation": 3
                 }
             ],
             "MapElements": [
@@ -17,7 +26,7 @@
                 },
                 {
                     "ElementType": "Block",
-                    "ElementValue": 13,
+                    "ElementValue": 9,
                     "XLocation": 0,
                     "YLocation": 0
                 },
@@ -29,13 +38,13 @@
                 },
                 {
                     "ElementType": "Block",
-                    "ElementValue": 15,
+                    "ElementValue": 11,
                     "XLocation": 0,
                     "YLocation": 0
                 },
                 {
                     "ElementType": "Block",
-                    "ElementValue": 16,
+                    "ElementValue": 12,
                     "XLocation": 0,
                     "YLocation": 0
                 },

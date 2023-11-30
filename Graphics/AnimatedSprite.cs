@@ -52,8 +52,6 @@ namespace LegendOfZelda
         public Vector2 pos { get { return drawInfo.pos; } }
         public bool paused { get; set; }
         public Color color { get { return drawInfo.color; } set { drawInfo.color = value; } }
-
-        private int flashCounter = 0;
         private bool _flashing = false;
 
         private bool persistent;
