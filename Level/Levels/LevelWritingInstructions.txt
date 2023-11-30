@@ -13,6 +13,14 @@
                 },
                 ...
             ],
+            "Events": [
+                {
+                    "EventNumber": 0,
+                    "XLocation": 8,
+                    "YLocation": 6
+                },
+                ...
+            ],
             "MapElements": [
                 {
                     "ElementType": "Block",
@@ -26,7 +34,10 @@
         ...
     ]
 
-2) There are three types of elements (ElementType): Block, Item, and Enemy. Each has a list of values (ElementValue). Refer to the following dictionaries for the meaning of the values:
+2)  There are three types of elements (ElementType): Block, Item, and Enemy. 
+    Each has a list of values (ElementValue). Refer to the following dictionaries 
+    for the meaning of the values:
+
     - Block dictionary:
     /**
          * Block Lamda Function Dictionary
@@ -72,6 +83,8 @@
          * ImpassibleBlackTile, 38
          * Room12ExteriorCollider, 39
          * Fire, 40
+         * FireballFishStatue, 41
+         * FireballDragonStatue, 42
     */
 
     - Item dictionary:
@@ -116,16 +129,21 @@
 3) Put bottom layer elements at the start of "MapElements" array:
     - for example put the wall exterior, the doors, then the floor tiles, then the other blocks, then the items / enemies on top
 
-4) Door location in MapElements now does matter and all doors must be placed at (0,0) so that the lamda can place them correctly.
+4) Door element location does not matter and they are just placed based the room and type (north, east, south, or west) of door
 
-5) Blocks are placed in a grid with x values of (0 - 11) and y values of (0 - 6), values less than or greater than these are out of bounds
+5) Blocks, items, enemies, and events are placed in a grid with x values (XLocation) of (0 - 11) and y values (YLocation) of (0 - 6), values less than or greater than these are out of bounds
 
-6) As enemies and items each have unique pixel sizes, they must be placed with precise pixel locations, here's some relevant information to help with this:
-    - viewport size: (1024 x 1024)
-    - room view size: (1024 x 704) spanning y vales 320 - 1024
-    - thickness of exterior wall: 128
-    - block size: 64
-
-7) Latest change is the addition of RoomXLocation and RoomYLocation, these values work similar to the mapElement block grid placements. Looking at the overview picture of the level, think of a grid starting at (0,0) and place the rooms accordingly.
+7) RoomXLocation and RoomYLocation places the rooms in a grid, two rooms obviously should not be contained within the same grid element
 
 8) 0 index everything!
+
+9) Events: Add the event number from the dictionary you want for that room and the specific location you want that event to watch or occur.
+- Event Dictionary:
+    AllEnemiesDeadKeyDrop, 0
+    AllEnemiesDeadBoomerangDrop, 1
+    AllEnemiesDeadOpenEastDoor, 2
+    PushBlockWestOpenWestDoor, 3
+    AllEnemiesDeadOpenWestDoor, 4
+    AllEnemiesDeadOpenSouthDoor, 5
+    AllEnemiesDeadOpenNorthDoor, 6
+

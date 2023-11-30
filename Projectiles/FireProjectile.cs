@@ -9,7 +9,6 @@ namespace LegendOfZelda
     public class FireProjectile : IPlayerProjectile
     {
         private AnimatedSprite sprite;
-        private SpriteFactory spriteFactory;
         private const float speed = 4;
 
         private Vector2 _pos;

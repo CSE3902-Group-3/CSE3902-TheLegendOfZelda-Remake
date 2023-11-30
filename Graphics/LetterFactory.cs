@@ -17,15 +17,12 @@ namespace LegendOfZelda
         public AnimatedSprite letterSprite;
 
         private Game1 game1;
-        private int drawFramesPerAnimFrame;
-        private const int slowAnimateFactor = 2;
-        private const int fastDrawFramesPerAnimFrame = 2;
         public int scale { get; private set; }
 
         private const int letterWidth = 8;
         private int XPos;
         private int YPos;
-
+        private int drawFramesPerAnimFrame;
         private LetterFactory(int scale)
         {
             game1 = Game1.getInstance();

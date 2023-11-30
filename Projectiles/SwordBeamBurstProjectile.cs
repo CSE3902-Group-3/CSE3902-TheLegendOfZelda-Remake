@@ -12,7 +12,6 @@ namespace LegendOfZelda
     {
         private AnimatedSprite sprite;
         private Game1 game;
-        private SpriteFactory spriteFactory;
         private const float speed = 4;
 
         private Vector2 _pos;
