@@ -11,7 +11,7 @@ namespace LegendOfZelda
         public CollisionLayer Layer { get; }
         public ICollidable Collidable { get; }
 
-        public static bool drawColliders = true;
+        public static bool drawColliders = false;
         private SpriteBatch spriteBatch;
         private Texture2D textureWithWhitePixel;
         private Rectangle locationOfWhitePixel;
