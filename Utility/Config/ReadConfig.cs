@@ -7,7 +7,12 @@ namespace LegendOfZelda
 {
     public class ReadConfig
     {
+        // number of config variables in the ini file
+        private const int numConfig = 5;
+
         private IniFile iniFile;
+        private delegate void anonFunc();
+        private anonFunc[] anonFuncs = new anonFunc[numConfig];
 
         public Dictionary<string, string> GameConfig;
         public ReadConfig(string iniFilePath)
@@ -25,9 +30,16 @@ namespace LegendOfZelda
                 { "Game.Level", "level1.json" }
             };
 
-            GetLinkSpeed();
-            GetLinkHealth();
-            GetDifficulty();
+            anonFuncs[0] = GetLinkSpeed;
+            anonFuncs[1] = GetLinkHealth;
+            anonFuncs[2] = GetLinkProjectileSpawnCooldown;
+            anonFuncs[3] = GetDifficulty;
+            anonFuncs[4] = GetStartLevel;
+
+            foreach (var func in anonFuncs)
+            {
+                func?.Invoke();
+            }
         }
 
         public void GetLinkSpeed()
@@ -72,7 +84,7 @@ namespace LegendOfZelda
             }
         }
 
-        public void GetProjectileSpawnCooldown()
+        public void GetLinkProjectileSpawnCooldown()
         {
             string section = "Link";
             string key = "ProjectileSpawnCooldown";
