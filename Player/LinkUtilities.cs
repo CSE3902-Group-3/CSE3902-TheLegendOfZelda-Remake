@@ -7,10 +7,10 @@ namespace LegendOfZelda
 
         public static Vector2 originalLinkPosition = new Vector2(LevelManager.CurrentRoomPosition.X + (LevelUtilities.RoomWidth - LevelUtilities.GridUnitSize) / 2, LevelManager.CurrentRoomPosition.Y + LevelUtilities.RoomHeight);
 
-        public static Vector2 upBombOffset = new Vector2(15, -90);
-        public static Vector2 rightBombOffset = new Vector2(90, 0);
-        public static Vector2 leftBombOffset = new Vector2(-90, 0);
-        public static Vector2 downBombOffset = new Vector2(15, 90);
+        public static Vector2 upBombOffset = new Vector2(15, -75);
+        public static Vector2 rightBombOffset = new Vector2(75, 0);
+        public static Vector2 leftBombOffset = new Vector2(-45, 0);
+        public static Vector2 downBombOffset = new Vector2(15, 75);
 
         public static Vector2 upFireOffet = new Vector2(0, -90);
         public static Vector2 rightFireOffset = new Vector2(90, 0);
@@ -20,6 +20,9 @@ namespace LegendOfZelda
         public static Vector2 upSwordBeamOffset = new Vector2(13, 0);
         public static Vector2 downSwordBeamOffset = new Vector2(20, 0);
         public static Vector2 leftRightSwordBeamOffset = new Vector2(0, 25);
+
+        public static Vector2 leftBoomerangOffset = new Vector2(-45, 15);
+        public static Vector2 rightBoomerangOffset = new Vector2(75, 15);
 
         public static int SnapToGrid(int position)
         {
