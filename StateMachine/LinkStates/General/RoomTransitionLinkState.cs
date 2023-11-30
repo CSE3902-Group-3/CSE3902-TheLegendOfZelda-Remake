@@ -57,8 +57,8 @@ namespace LegendOfZelda
         public void Exit()
         {
             Link.StateMachine.canMove = true;
+            Link.Velocity = (int)Game1.getInstance().ReadConfig.GameConfig["Link.Speed"];
             Link.Sprite.paused = false;
-            Link.Velocity = 5;
         }
     }
 }
