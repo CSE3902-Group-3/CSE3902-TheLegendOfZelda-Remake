@@ -2,10 +2,10 @@
 using Microsoft.Xna.Framework.Graphics;
 namespace LegendOfZelda.Graphics
 {
-    public class Background : ISprite
+    public class Background : ISprite, IHasShader
     {
-        private const int whitePixelX = 118;
-        private const int whitePixelY = 64;
+        private const int blackPixelX = 64;
+        private const int blackPixelY = 225;
         private const int backgroundWidth = 1024;
         private const int backgroundHeight = 1344;
 
@@ -16,12 +16,14 @@ namespace LegendOfZelda.Graphics
         
         public Vector2 pos { get; private set; }
 
+        public Effect ActiveShader => ShaderHolder.normalShader;
+
         public Background(int xPos, int yPos)
         {
             linkTexture = SpriteFactory.getInstance().linkTexture;
             spriteBatch = Game1.getInstance()._spriteBatch;
             dest = new Rectangle(xPos, yPos, backgroundWidth, backgroundHeight);
-            src = new Rectangle(whitePixelX, whitePixelY, 1, 1);
+            src = new Rectangle(blackPixelX, blackPixelY, 1, 1);
             pos = new Vector2(xPos, yPos);
 
             RegisterSprite();
@@ -29,7 +31,7 @@ namespace LegendOfZelda.Graphics
 
         public void Draw()
         {
-            spriteBatch.Draw(linkTexture, dest, src, Color.Black);
+            spriteBatch.Draw(linkTexture, dest, src, Color.White);
         }
 
         public void RegisterSprite()

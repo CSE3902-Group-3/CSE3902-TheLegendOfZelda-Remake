@@ -23,7 +23,7 @@ namespace LegendOfZelda
         {
             if (blinking)
             {
-                sprite.ActiveShader = ShaderHolder.blink;
+                sprite.ActiveShader = ShaderHolder.Blink;
             }
             else
             {

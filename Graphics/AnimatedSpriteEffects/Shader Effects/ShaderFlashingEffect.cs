@@ -24,13 +24,13 @@ namespace LegendOfZelda
             switch (flashCounter)
             {
                 case 0:
-                    sprite.ActiveShader = ShaderHolder.flash1;
+                    sprite.ActiveShader = ShaderHolder.Flash1;
                     break;
                 case 1:
-                    sprite.ActiveShader = ShaderHolder.flash2;
+                    sprite.ActiveShader = ShaderHolder.Flash2;
                     break;
                 case 2:
-                    sprite.ActiveShader = ShaderHolder.blink;
+                    sprite.ActiveShader = ShaderHolder.Blink;
                     break;
                 default:
                     sprite.ActiveShader = ShaderHolder.normalShader;

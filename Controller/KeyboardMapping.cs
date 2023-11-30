@@ -19,6 +19,8 @@ namespace LegendOfZelda
 
             keyUpMappings.Add(Keys.Q, new QuitCommand());
             keyUpMappings.Add(Keys.R, new ResetCommand(link));
+            keyUpMappings.Add(Keys.K, new PreviousPalletCommand());
+            keyUpMappings.Add(Keys.L, new NextPalletCommand());
 
             KeyDownMapping.Add(Keys.W, new MovingUpCommand(link));
             KeyDownMapping.Add(Keys.Up, new MovingUpCommand(link));
