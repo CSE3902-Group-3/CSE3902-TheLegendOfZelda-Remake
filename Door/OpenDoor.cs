@@ -48,7 +48,7 @@ namespace LegendOfZelda
         {
             foreach(CollisionInfo collision in collisions)
             {
-                if(collision.CollidedWith.Layer == CollisionLayer.Player)
+                if(collision.CollidedWith.Layer == CollisionLayer.Player && !GameState.Link.StateMachine.isKnockedBack)
                 {
                     player = GameState.Link;
                     player.EnterRoomTransition();

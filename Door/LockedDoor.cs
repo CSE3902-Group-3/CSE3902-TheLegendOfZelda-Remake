@@ -66,7 +66,7 @@ namespace LegendOfZelda
         {
             foreach (CollisionInfo collision in collisions)
             {
-                if (collision.CollidedWith.Layer == CollisionLayer.Player)
+                if (collision.CollidedWith.Layer == CollisionLayer.Player && !GameState.Link.StateMachine.isKnockedBack)
                 {
                     if (Closed) HandlePlayerCollisionWhenLocked();
                     else HandlePlayerCollisionWhenUnlocked();
