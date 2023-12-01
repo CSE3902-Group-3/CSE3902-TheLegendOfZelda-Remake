@@ -23,10 +23,8 @@ Remake of NES The Legend of Zelda game
 - Use `C`+`O` to kill all enemies in current room.
 
 ## Major Known Bugs:
-- Interface HUD is not functional, does not update
-- The inventory system is not currently functional at all
--   Link can not use any items
--   All items do nothing
+- Link can not use any items
+- All items do nothing
 - Blade trap does nothing
 - Dodongo takes damage from sword and player, does not eat bombs
 - Closed doors which open based on triggers (as opposed to locked doors) can never be opened
@@ -39,10 +37,7 @@ Remake of NES The Legend of Zelda game
 - Sprites still animate when the game is paused
 - Fireballs are missing from the wizard room
 - Wizard takes damage
-- Screen size is a square as opposed to a rectangle in the original
 - Pushable blocks do not reset upon reentry to a room
-- On some computers blocks sometimes cannot be pushed (we believe this is due to interruptions in key inputs)
-- Link sometimes takes more damage than expected when colliding with enemies
 
 ## Intentional Differences From Source Game:
 - Interaction with Wizard and spawning text is not implemented
