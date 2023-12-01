@@ -119,8 +119,6 @@ namespace LegendOfZelda
 			else if ((counter == 4) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
 			{
                 DrawBlackScreen();
-                new GameOverMenu();
-                new GameOverMenuSelector();
                 lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
 				counter++;
 			}
@@ -131,13 +129,13 @@ namespace LegendOfZelda
 			else if ((counter == 5) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
                 WriteWord();
+				GameState.CameraController.ChangeMenu(Menu.GameOver);
                 lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
                 counter++;
 			}
 
             else if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
-                GameState.CameraController.ChangeMenu(Menu.GameOver);
 				UnactivateGameOverScreen();
 				menu.Draw();
 				done = true;
