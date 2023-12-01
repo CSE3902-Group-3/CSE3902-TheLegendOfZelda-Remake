@@ -122,6 +122,7 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - Gabriel DiFiore reviewed Zhengyi Hu's code for readability in PR #405
 - Ethan Glenwright reviewed Gabriel DiFiore's code for quality in PR #430
 - Michael Herring reviewed Matt Curie's code for quality in PR #428
+- Gabriel DiFiore reviewed Matt Curie's code for quality in PR #468
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
