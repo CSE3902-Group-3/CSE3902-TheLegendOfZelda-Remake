@@ -38,7 +38,7 @@ namespace LegendOfZelda
             }
 
             if (GameState.Link.StateMachine.CurrentState is not DeathLinkState)
-                GameState.Link.StateMachine.ChangeState(new KnockBackLinkState());
+                GameState.Link.StateMachine.ChangeState(new KnockBackLinkState(collision.EstimatedDirection));
         }
     }
 }

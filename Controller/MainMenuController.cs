@@ -21,7 +21,20 @@ namespace LegendOfZelda
                 StartGameCommand.Execute();
                 ReleasedKey = false;
             }
-            else if (Keyboard.GetState().IsKeyUp(Keys.Enter) && !ReleasedKey)
+
+            if (Keyboard.GetState().IsKeyDown(Keys.K) && ReleasedKey)
+            {
+                ShaderHolder.CyclePalletteBackward();
+                ReleasedKey = false;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.L) && ReleasedKey)
+            {
+                ShaderHolder.CyclePalletteForward();
+                ReleasedKey = false;
+            }
+
+            if (Keyboard.GetState().IsKeyUp(Keys.Enter) && Keyboard.GetState().IsKeyUp(Keys.K) && Keyboard.GetState().IsKeyUp(Keys.L) && !ReleasedKey)
             {
                 ReleasedKey = true;
             }
