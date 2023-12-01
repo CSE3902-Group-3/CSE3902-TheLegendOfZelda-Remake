@@ -25,8 +25,6 @@ Remake of NES The Legend of Zelda game
 ## Major Known Bugs:
 - Interface HUD is not functional, does not update
 - The inventory system is not currently functional at all
--   Link can not use any items
--   All items do nothing
 - Blade trap does nothing
 - Dodongo takes damage from sword and player, does not eat bombs
 - Closed doors which open based on triggers (as opposed to locked doors) can never be opened
