@@ -9,9 +9,9 @@ namespace LegendOfZelda
         public Vector2 Pos { get { return Sprite.pos; } }
         public RectCollider Collider { get; set; }
         public LinkStateMachine StateMachine { get; private set; }
-        public float HP { get; private set; } = Game1.getInstance().ReadConfig.GameConfig["Link.Health"];
-        public float MaxHP { get; private set; } = Game1.getInstance().ReadConfig.GameConfig["Link.Health"];
-        public int Velocity { get; set; } = (int)Game1.getInstance().ReadConfig.GameConfig["Link.Speed"]; // link moves at 1pixel per frame in original NES game, scaled up to 1080p is roughly 5pixels per frame
+        public float HP { get; private set; } = float.Parse(Game1.getInstance().ReadConfig.GameConfig["Link.Health"]);
+        public float MaxHP { get; private set; } = float.Parse(Game1.getInstance().ReadConfig.GameConfig["Link.Health"]);
+        public int Velocity { get; set; } = int.Parse(Game1.getInstance().ReadConfig.GameConfig["Link.Speed"]); // link moves at 1pixel per frame in original NES game, scaled up to 1080p is roughly 5pixels per frame
 
         private float damageAnimationTimer = 0;
         private float damageAnimationDuration = 1.0f; // Set the duration to 1s for damage animation
