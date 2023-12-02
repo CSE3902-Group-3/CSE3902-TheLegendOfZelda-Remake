@@ -115,6 +115,8 @@ namespace LegendOfZelda
                 }
                 if (collidedWith == CollisionLayer.Player)
                 {
+                    Sprite.UpdatePos(Position);
+                    Collider.Pos = Position;
                     currentDetectionCooldown = detectionCooldown;
                     ResetPosition();
                 }
