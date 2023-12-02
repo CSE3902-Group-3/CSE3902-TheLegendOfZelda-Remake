@@ -25,7 +25,7 @@ namespace LegendOfZelda
                 { typeof(GelSmall), 0.5f },
                 { typeof(Rope), 0.5f },
                 { typeof(Skeleton), 0.5f },
-                { typeof(BladeTrap), 0.25f }
+                { typeof(SpikeTrap), 0.25f }
             };
 
             Type enemyType = enemyCollidedWith.GetType();
@@ -38,7 +38,7 @@ namespace LegendOfZelda
             }
 
             if (GameState.Link.StateMachine.CurrentState is not DeathLinkState)
-                GameState.Link.StateMachine.ChangeState(new KnockBackLinkState());
+                GameState.Link.StateMachine.ChangeState(new KnockBackLinkState(collision.EstimatedDirection));
         }
     }
 }

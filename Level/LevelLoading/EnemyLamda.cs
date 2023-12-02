@@ -43,7 +43,7 @@ namespace LegendOfZelda
         }
         static void BladeTrap(Room room, MapElement mapElement)
         {
-            IEnemy enemy = new BladeTrap(LevelUtilities.CalculatePositionWallOffset(room, mapElement));
+            IEnemy enemy = new SpikeTrap(LevelUtilities.CalculatePositionWallOffset(room, mapElement));
             LevelManager.CurrentLevelRoom.AddEnemy(enemy);
         }
         static void Dodongo(Room room, MapElement mapElement)

@@ -18,7 +18,7 @@ namespace LegendOfZelda
         private int CurrentRoom;
 
         private SpriteFactory spriteFactory;
-        private LowerHUD lowerHUD;
+        //private LowerHUD lowerHUD;
         private HUDMapElement mapElement;
         
         private Inventory inventory;

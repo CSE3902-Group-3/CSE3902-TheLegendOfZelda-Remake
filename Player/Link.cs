@@ -8,15 +8,15 @@ namespace LegendOfZelda
         public IAnimatedSprite Sprite { get; set; }
         public Vector2 Pos { get { return Sprite.pos; } }
         public RectCollider Collider { get; set; }
-        public LinkStateMachine StateMachine{ get; private set; }
-        public float HP { get; private set; } = 6;
-        public float MaxHP { get; private set; } = 6;
-        public int Velocity { get; set; } = 5; // link moves at 1pixel per frame in original NES game, scaled up to 1080p is roughly 5pixels per frame
+        public LinkStateMachine StateMachine { get; private set; }
+        public float HP { get; private set; } = Game1.getInstance().ReadConfig.GameConfig["Link.Health"];
+        public float MaxHP { get; private set; } = Game1.getInstance().ReadConfig.GameConfig["Link.Health"];
+        public int Velocity { get; set; } = (int)Game1.getInstance().ReadConfig.GameConfig["Link.Speed"]; // link moves at 1pixel per frame in original NES game, scaled up to 1080p is roughly 5pixels per frame
 
         private float damageAnimationTimer = 0;
         private float damageAnimationDuration = 1.0f; // Set the duration to 1s for damage animation
 
-        public float damageCooldownTimer = 0; 
+        public float damageCooldownTimer = 0;
         public float damageCooldownDuration = 3.5f;// Set the cooldown time to 3.5s for damage repeated
 
         public float spawnProjectileCooldown = 0;
@@ -49,7 +49,7 @@ namespace LegendOfZelda
         public void TakeDamage(float damage)
         {
             SoundFactory.PlaySound(SoundFactory.getInstance().LinkHurt);
-            this.HP -= damage;
+            this.HP -= damage * Game1.getInstance().Difficulty;
             if (this.HP <= 0)
             {
                 this.Die();
@@ -69,7 +69,7 @@ namespace LegendOfZelda
             this.StateMachine.isTakingDamage = false;
         }
 
-        public void Update (GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             damageCooldownTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -91,7 +91,7 @@ namespace LegendOfZelda
 
             if (LinkUtilities.LinkChangedDirection())
             {
-                this.Velocity = 5;
+                this.Velocity = (int)Game1.getInstance().ReadConfig.GameConfig["Link.Speed"];
             }
 
             this.StateMachine.Update();
