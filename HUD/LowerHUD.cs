@@ -237,15 +237,15 @@ namespace LegendOfZelda
             {
                 for (int i = 0; i < currentHealth / 2; i++)
                 {
-                    Life[i] = spriteFactory.CreateHeartSprite(2);
+                   // Life[i] = spriteFactory.CreateHeartSprite(2);
                 }
-                Life[currentHealth / 2] = spriteFactory.CreateHeartSprite(1);
+                //Life[currentHealth / 2] = spriteFactory.CreateHeartSprite(1);
             }
             else
             {
                 for (int i = 0; i < currentHealth / 2; i++)
                 {
-                    Life[i] = spriteFactory.CreateHeartSprite(2);
+                    //Life[i] = spriteFactory.CreateHeartSprite(2);
                 }
             }
         }

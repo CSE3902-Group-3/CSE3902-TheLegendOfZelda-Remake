@@ -23,9 +23,10 @@ Remake of NES The Legend of Zelda game
 - Use `C`+`O` to kill all enemies in current room.
 
 ## Major Known Bugs:
-- Link can not use any items
-- All items do nothing
-- Blade trap does nothing
+- Interface HUD is not functional, does not update
+- The inventory system is not currently functional at all
+-   Link can not use any items
+-   All items do nothing
 - Dodongo takes damage from sword and player, does not eat bombs
 - Closed doors which open based on triggers (as opposed to locked doors) can never be opened
 
@@ -126,3 +127,4 @@ See `Code Review/Sprint# Reflections.txt` for sprint reflections
 - Michael Herring: Reinvestigate HLSL shaders from sprint 2
 - Gabriel DiFiore: Config game with `.ini` file, load in custom Link health, enemy damage/difficulty, etc
 - Ethan Glenwright: Create the second dungeon / level
+- Matt Curie: Refactoring enemy code to better fit software engineering standards, more accurate enemy behaviors
