@@ -27,7 +27,6 @@ Remake of NES The Legend of Zelda game
 - The inventory system is not currently functional at all
 -   Link can not use any items
 -   All items do nothing
-- Blade trap does nothing
 - Dodongo takes damage from sword and player, does not eat bombs
 - Closed doors which open based on triggers (as opposed to locked doors) can never be opened
 
@@ -39,10 +38,7 @@ Remake of NES The Legend of Zelda game
 - Sprites still animate when the game is paused
 - Fireballs are missing from the wizard room
 - Wizard takes damage
-- Screen size is a square as opposed to a rectangle in the original
 - Pushable blocks do not reset upon reentry to a room
-- On some computers blocks sometimes cannot be pushed (we believe this is due to interruptions in key inputs)
-- Link sometimes takes more damage than expected when colliding with enemies
 
 ## Intentional Differences From Source Game:
 - Interaction with Wizard and spawning text is not implemented
@@ -122,6 +118,7 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - Gabriel DiFiore reviewed Zhengyi Hu's code for readability in PR #405
 - Ethan Glenwright reviewed Gabriel DiFiore's code for quality in PR #430
 - Michael Herring reviewed Matt Curie's code for quality in PR #428
+- Gabriel DiFiore reviewed Matt Curie's code for quality in PR #468
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
@@ -130,3 +127,4 @@ See `Code Review/Sprint# Reflections.txt` for sprint reflections
 - Michael Herring: Reinvestigate HLSL shaders from sprint 2
 - Gabriel DiFiore: Config game with `.ini` file, load in custom Link health, enemy damage/difficulty, etc
 - Ethan Glenwright: Create the second dungeon / level
+- Matt Curie: Refactoring enemy code to better fit software engineering standards, more accurate enemy behaviors
