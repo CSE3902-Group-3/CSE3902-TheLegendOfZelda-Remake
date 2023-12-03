@@ -1,12 +1,12 @@
 {
     "Rooms": [
         {
-            "RoomNumber": 0,
+            "RoomNumber": 1,
             "RoomXLocation": 1,
             "RoomYLocation": 0,
             "AdjacentRooms": [
                 {
-                    "RoomNumber": 1,
+                    "RoomNumber": 0,
                     "Direction": "East"
                 }
             ],
@@ -578,12 +578,12 @@
 
 
         {
-            "RoomNumber": 1,
+            "RoomNumber": 0,
             "RoomXLocation": 2,
             "RoomYLocation": 0,
             "AdjacentRooms": [
                 {
-                    "RoomNumber": 0,
+                    "RoomNumber": 1,
                     "Direction": "West"
                 },
                 {
@@ -1143,7 +1143,7 @@
             "RoomYLocation": 0,
             "AdjacentRooms": [
                 {
-                    "RoomNumber": 1,
+                    "RoomNumber": 0,
                     "Direction": "West"
                 }
             ],
@@ -1725,7 +1725,7 @@
             "RoomYLocation": 1,
             "AdjacentRooms": [
                 {
-                    "RoomNumber": 1,
+                    "RoomNumber": 0,
                     "Direction": "South"
                 },
                 {

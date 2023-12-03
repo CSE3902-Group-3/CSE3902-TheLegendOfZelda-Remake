@@ -51,6 +51,8 @@ namespace LegendOfZelda
                 if(collision.CollidedWith.Layer == CollisionLayer.Player && !GameState.Link.StateMachine.isKnockedBack)
                 {
                     player = GameState.Link;
+                    player.StateMachine.prevDirection = player.StateMachine.currentDirection;
+                    player.StateMachine.currentDirection = direction;
                     player.EnterRoomTransition();
                     LevelManager.GetInstance().TransitionToRoom(direction);
                     break;

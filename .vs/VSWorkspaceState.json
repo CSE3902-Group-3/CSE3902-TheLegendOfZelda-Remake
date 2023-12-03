@@ -1,12 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\GameState",
     "\\Graphics",
     "\\Level",
     "\\Level\\LevelLoading",
     "\\Level\\LevelManagement",
-    "\\Player"
+    "\\Player",
+    "\\StateMachine",
+    "\\StateMachine\\LinkStates",
+    "\\StateMachine\\LinkStates\\General"
   ],
-  "SelectedNode": "\\Level\\LevelManagement\\LevelRoom.cs",
+  "SelectedNode": "\\StateMachine\\LinkStates\\General\\RoomTransitionLinkState.cs",
   "PreviewInSolutionExplorer": false
 }

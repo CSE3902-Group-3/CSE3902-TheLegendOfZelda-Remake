@@ -120,12 +120,11 @@ namespace LegendOfZelda
 
         public void EnterRoomTransition()
         {
-            this.StateMachine.ChangeState(new IdleLinkState());
             this.StateMachine.ChangeState(new RoomTransitionLinkState());
         }
         public void ExitRoomTransition()
         {
-            // i don't think we need this??
+            this.StateMachine.ChangeState(new IdleLinkState());
         }
 
         public float GetCurrentHP()

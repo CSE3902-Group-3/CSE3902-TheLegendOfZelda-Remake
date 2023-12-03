@@ -89,6 +89,8 @@ namespace LegendOfZelda
         {
             LevelManager.GetInstance().TransitionToRoom(direction);
             player = GameState.Link;
+            player.StateMachine.prevDirection = player.StateMachine.currentDirection;
+            player.StateMachine.currentDirection = direction;
             player.EnterRoomTransition();
         }
 
