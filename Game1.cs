@@ -68,7 +68,7 @@ namespace LegendOfZelda
             SoundFactory.getInstance().LoadTextures();
             LevelUtilities.SetLevelLoadingValues(SpriteFactory.getInstance().scale);
 
-            Difficulty = ReadConfig.GameConfig["Game.Difficulty"];
+            Difficulty = float.Parse(ReadConfig.GameConfig["Game.Difficulty"]);
             // Game state
             GameState = GameState.GetInstance();
         }
