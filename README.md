@@ -22,6 +22,9 @@ Remake of NES The Legend of Zelda game
 - Use `C`+`H` to heal Link to max HP.
 - Use `C`+`O` to kill all enemies in current room.
 
+### `config.ini`
+- modify game constants related to Link speed/HP, game difficulty, start level, etc.
+
 ## Major Known Bugs:
 - Interface HUD is not functional, does not update
 - The inventory system is not currently functional at all
