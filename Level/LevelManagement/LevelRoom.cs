@@ -10,6 +10,8 @@ namespace LegendOfZelda
         private List<IDrawable> RoomDrawables;
         private List<IRectCollider> RoomColliders;
         private List<IEnemy> RoomEnemies;
+        private List<IPlayerProjectile> RoomPlayerProjectiles;
+        private List<IEnemyProjectile> RoomEnemyProjectiles;
         private Dictionary<Direction, IDoor> RoomDoors;
         public Vector2 RoomPosition { get { return roomPosition; } }
         private Vector2 roomPosition;
@@ -25,6 +27,8 @@ namespace LegendOfZelda
             RoomDrawables = new List<IDrawable>();
             RoomColliders = new List<IRectCollider>();
             RoomEnemies = new List<IEnemy>();
+            RoomPlayerProjectiles = new List<IPlayerProjectile>();
+            RoomEnemyProjectiles = new List<IEnemyProjectile>();
             RoomDoors = new Dictionary<Direction, IDoor>();
         }
         public void LoadRoom (Room room)
@@ -167,7 +171,35 @@ namespace LegendOfZelda
             {
                 GameState.CollisionManager.RemoveRectCollider(collider);
             }
+            DestroyAllProjectiles();
             CameraController.GetInstance().RemoveDrawablesFromMainCamera(RoomDrawables);
+        }
+        public void AddProjectile(IEnemyProjectile projectile)
+        {
+            RoomEnemyProjectiles.Add(projectile);
+        }
+        public void RemoveProjectile(IEnemyProjectile projectile)
+        {
+            RoomEnemyProjectiles.Remove(projectile);
+        }
+        public void AddProjectile(IPlayerProjectile projectile)
+        {
+            RoomPlayerProjectiles.Add(projectile);
+        }
+        public void RemoveProjectile(IPlayerProjectile projectile)
+        {
+            RoomPlayerProjectiles.Remove(projectile);
+        }
+        private void DestroyAllProjectiles()
+        {
+            for (int i = RoomEnemyProjectiles.Count - 1; i >= 0; i--)
+            {
+                RoomEnemyProjectiles[i].Destroy();
+            }
+            for (int i = RoomPlayerProjectiles.Count - 1; i >= 0; i--)
+            {
+                RoomPlayerProjectiles[i].Destroy();
+            }
         }
     }
 }
