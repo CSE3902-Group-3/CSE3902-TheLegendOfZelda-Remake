@@ -18,6 +18,8 @@ namespace LegendOfZelda
         private bool allowedToMove = true;
         public bool isColliding = false;
         public RectCollider Collider { get; private set; }
+        private bool isFrozen = false;
+        public bool Frozen { get { return isFrozen; } set { isFrozen = value; } }
         public Rope(Vector2 pos)
         {
             Position = pos;
@@ -54,7 +56,7 @@ namespace LegendOfZelda
         {
             Vector2 newPosition = new(Position.X, Position.Y);
 
-            if (allowedToMove)
+            if (!isFrozen && allowedToMove)
             {
                 // Cycle left and right movement
                 if (FacingLeft)

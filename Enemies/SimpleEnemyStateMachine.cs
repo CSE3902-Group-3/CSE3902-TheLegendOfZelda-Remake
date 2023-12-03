@@ -26,6 +26,8 @@ namespace LegendOfZelda
         public int Width;
         public int Height;
         public RectCollider Collider { get; set; }
+        private bool isFrozen = false;
+        public bool Frozen { get { return isFrozen; } set { isFrozen = value; } }
 
         public SimpleEnemyStateMachine(Vector2 pos, Vector2 offset, RectCollider collider, IEnemy enemy)
         {
@@ -76,7 +78,7 @@ namespace LegendOfZelda
 
         public void ChangePosition()
         {
-            if (allowedToMove)
+            if (!isFrozen && allowedToMove)
             {
                 Position += Direction * SpeedMultiplier;
                 Sprite.UpdatePos(Position);

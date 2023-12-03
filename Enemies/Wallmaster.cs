@@ -10,6 +10,8 @@ namespace LegendOfZelda
         public Vector2 Position { get; set; }
         public Vector2 Offset = new(0, 0);
         public RectCollider Collider { get; private set; }
+        private bool isFrozen = false;
+        public bool Frozen { get { return isFrozen; } set { isFrozen = value; } }
         public WallMaster(Vector2 pos)
         {
             Position = pos;

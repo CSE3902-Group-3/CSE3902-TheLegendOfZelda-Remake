@@ -16,6 +16,8 @@ namespace LegendOfZelda
         private readonly float interpolationSpeed = 0.05f; // Adjust this value to control the speed of interpolation
         private readonly float detectionCooldown = 2.0f; // Cooldown before re-detecting the player
         private float currentDetectionCooldown = 0.0f;
+        private bool isFrozen = false;
+        public bool Frozen { get { return isFrozen; } set { isFrozen = value; } }
         public SpikeTrap(Vector2 pos)
         {
             Position = pos;
@@ -62,9 +64,12 @@ namespace LegendOfZelda
         }
 
         public void ChangePosition() {
-            Position += Direction * 3;
-            Sprite.UpdatePos(Position);
-            Collider.Pos = Position;
+            if (!isFrozen)
+            {
+                Position += Direction * 3;
+                Sprite.UpdatePos(Position);
+                Collider.Pos = Position;
+            }
         }
 
         public void ChangeDirection() { }

@@ -17,6 +17,8 @@
                 GameState.Link.Heal(GameState.Link.MaxHP);
             else if (itemCollidedWith is FiveRupee || itemCollidedWith is OneRupee)
                 Inventory.getInstance().AddRupee(itemCollidedWith);
+            else if (itemCollidedWith is Clock)
+                LevelManager.FreezeEnemiesInCurrentRoom();
             else
                 Inventory.getInstance().AddItem(itemCollidedWith);
 

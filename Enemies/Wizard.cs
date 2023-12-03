@@ -13,6 +13,8 @@ namespace LegendOfZelda
         public Vector2 Position { get; set; }
         private float currentCooldown = 0.0f;
         public RectCollider Collider { get; private set; }
+        private bool isFrozen = false;
+        public bool Frozen { get { return isFrozen; } set { isFrozen = value; } }
 
         public Wizard(Vector2 pos)
         {

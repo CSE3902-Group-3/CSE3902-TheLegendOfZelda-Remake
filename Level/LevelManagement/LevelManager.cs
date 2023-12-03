@@ -71,6 +71,7 @@ namespace LegendOfZelda
             GameState.GetInstance().SwitchState(new RoomTransitionState());
             CameraController.GetInstance().PanCamToRoom(LevelRooms[targetRoom].RoomPosition, AfterRoomTransition);
             LevelRooms[CurrentRoom].DespawnEnemies();
+            LevelRooms[CurrentRoom].UnfreezeAllEnemies();
             PreviousRoom = CurrentRoom;
             CurrentRoom = targetRoom;
             LevelRooms[CurrentRoom].SwitchIn();
@@ -126,6 +127,14 @@ namespace LegendOfZelda
         public static void KillAllEnemiesInCurrentRoom()
         {
             CurrentLevelRoom.KillAllEnemies();
+        }
+        public static void FreezeEnemiesInCurrentRoom()
+        {
+            CurrentLevelRoom.FreezeAllEnemies();
+        }
+        public static void UnfreezeEnemiesInCurrentRoom()
+        {
+            CurrentLevelRoom.UnfreezeAllEnemies();
         }
         public static bool AddDrawable(IDrawable drawable, bool persistent = false)
         {

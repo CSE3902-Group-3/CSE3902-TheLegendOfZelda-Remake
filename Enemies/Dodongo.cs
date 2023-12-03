@@ -20,6 +20,8 @@ namespace LegendOfZelda
         private float currentCooldown = 0.0f;
         public bool isColliding = false;
         public RectCollider Collider { get; private set; }
+        private bool isFrozen = false;
+        public bool Frozen { get { return isFrozen; } set { isFrozen = value; } }
         public Dodongo(Vector2 pos)
         {
             Position = pos;
@@ -80,9 +82,12 @@ namespace LegendOfZelda
         }
         public void ChangePosition()
         {
-            Position += Direction;
-            Sprites[CurrentSprite].UpdatePos(Position);
-            Collider.Pos = Position;
+            if (!isFrozen)
+            {
+                Position += Direction;
+                Sprites[CurrentSprite].UpdatePos(Position);
+                Collider.Pos = Position;
+            }
         }
         public void Attack() { }
         public void UpdateHealth(float damagePoints)

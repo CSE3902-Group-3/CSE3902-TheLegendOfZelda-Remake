@@ -17,6 +17,8 @@ namespace LegendOfZelda
         private int PosIncrement = 1;
         private float currentCooldown = 0.0f;
         public RectCollider Collider { get; private set; }
+        private bool isFrozen = false;
+        public bool Frozen { get { return isFrozen; } set { isFrozen = value; } }
         public Aquamentus(Vector2 pos)
         {
             Position = pos;
@@ -53,15 +55,18 @@ namespace LegendOfZelda
         {
             Vector2 newPosition = new(Position.X, Position.Y);
             
-            // Cycle left and right movement
-            if (CycleCount > MaxCycles)
+            if (!isFrozen)
             {
-                CycleCount = 0;
-                PosIncrement *= -1;
-            }
+                // Cycle left and right movement
+                if (CycleCount > MaxCycles)
+                {
+                    CycleCount = 0;
+                    PosIncrement *= -1;
+                }
 
-            newPosition.X += PosIncrement;
-            CycleCount++;
+                newPosition.X += PosIncrement;
+                CycleCount++;
+            }
 
             Position = newPosition;
             Sprite.UpdatePos(Position);

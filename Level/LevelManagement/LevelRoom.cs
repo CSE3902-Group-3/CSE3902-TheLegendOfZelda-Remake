@@ -144,6 +144,20 @@ namespace LegendOfZelda
                 RoomEnemies[i].Die();
             }
         }
+        public void FreezeAllEnemies()
+        {
+            for (int i = RoomEnemies.Count - 1; i >= 0; i--)
+            {
+                RoomEnemies[i].Frozen = true;
+            }
+        }
+        public void UnfreezeAllEnemies()
+        {
+            for (int i = RoomEnemies.Count - 1; i >= 0; i--)
+            {
+                RoomEnemies[i].Frozen = false;
+            }
+        }
         public void AddDoor(Direction direction, IDoor door)
         {
             RoomDoors.Add(direction, door);

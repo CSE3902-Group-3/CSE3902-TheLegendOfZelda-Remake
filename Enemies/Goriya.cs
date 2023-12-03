@@ -18,6 +18,8 @@ namespace LegendOfZelda
         private bool allowedToMove = true;
         public bool isColliding = false;
         public RectCollider Collider { get; private set; }
+        private bool isFrozen = false;
+        public bool Frozen { get { return isFrozen; } set { isFrozen = value; } }
         public Goriya(Vector2 pos)
         {
             Position = pos;
@@ -63,7 +65,7 @@ namespace LegendOfZelda
         }
         public void ChangePosition()
         {
-            if (allowedToMove)
+            if (!isFrozen && allowedToMove)
             {
                 Position += Direction;
                 Sprites[CurrentSprite].UpdatePos(Position);

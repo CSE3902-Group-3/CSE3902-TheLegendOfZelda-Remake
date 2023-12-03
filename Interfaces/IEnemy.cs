@@ -5,6 +5,7 @@ namespace LegendOfZelda
     public interface IEnemy: IUpdateable, ICollidable
     {
         Vector2 Position { get; }
+        bool Frozen { get; set; }
         void Spawn();
         void Despawn();
         void UpdateHealth(float damagePoints);
