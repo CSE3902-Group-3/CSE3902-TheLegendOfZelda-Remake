@@ -66,7 +66,6 @@ namespace LegendOfZelda
             IndicatorPosDic = mapElement.GetMapIndicator(1);
             CreateMapElement();
 
-            // The below values are for test now, should be changed later
             MapUnlock = false;
             CompassUnlock = false;
         }
@@ -83,7 +82,7 @@ namespace LegendOfZelda
         {
             UpdateMapUnlock();
             UpdateCompassUnlock();
-            RegisterIndicatorSprite(true);
+            RegisterIndicatorSprite(CompassUnlock);
         }
 
         public void Show()

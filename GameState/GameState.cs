@@ -29,7 +29,7 @@ namespace LegendOfZelda
         {
             LevelMaster = LevelManager.GetInstance();
             CollisionManager = new CollisionManager();
-            LevelMaster.StartLevel("level2.json");
+            LevelMaster.StartLevel("level1.json");
             Link = new Link();
             LevelMaster.SnapToRoom(0);
             PauseManager = new PauseManager();
@@ -38,6 +38,8 @@ namespace LegendOfZelda
             RoomCycler.GetInstance();
             CameraController = CameraController.GetInstance();
             lowerHUD = LowerHUD.GetInstance();
+            inventoryHUD = InventoryHUD.GetInstance();
+            mapHUD = MapHUD.GetInstance();
             PlayerController = new PlayerController(Link);
             ItemMenuController = new ItemMenuController();
             cheatCodeController = new CheatCodeController();

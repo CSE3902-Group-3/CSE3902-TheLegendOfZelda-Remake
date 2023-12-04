@@ -58,6 +58,7 @@ namespace LegendOfZelda
             CreateIItemToString();
             CreateItemStringDict();
             CreateItemDict();
+            //Selector = Selector.GetInstance();
         }
 
         public static InventoryHUD GetInstance()

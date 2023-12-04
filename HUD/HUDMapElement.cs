@@ -80,7 +80,8 @@ namespace LegendOfZelda
                         {  3, new Vector2(MiniMapHUDBasePos.X + 26 * scale, MiniMapHUDBasePos.Y + 24 * scale) },
                         {  1, new Vector2(MiniMapHUDBasePos.X + 26 * scale, MiniMapHUDBasePos.Y + 28 * scale) },
                         {  2, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y + 28 * scale) },
-                        { 19, new Vector2(MiniMapHUDBasePos.X, MiniMapHUDBasePos.Y) }
+                        { 19, new Vector2(MiniMapHUDBasePos.X, MiniMapHUDBasePos.Y) },
+                        { 18, new Vector2(MiniMapHUDBasePos.X, MiniMapHUDBasePos.Y) }
                     };
                     break;
             }

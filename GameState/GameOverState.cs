@@ -19,6 +19,7 @@ namespace LegendOfZelda
         {
             gameOver.Update(gameTime);
             GameState.Link.Update(gameTime);
+            GameState.lowerHUD.Update(gameTime);
             if (gameOver.done == true)
             {
                 controller.Update();
