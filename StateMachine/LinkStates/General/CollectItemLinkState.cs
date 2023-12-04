@@ -37,6 +37,7 @@ namespace LegendOfZelda
             if (((AnimatedSprite)Link.Sprite).complete)
             {
                 Link.StateMachine.ChangeState(new IdleLinkState());
+                Item.Remove();
             }
         }
 

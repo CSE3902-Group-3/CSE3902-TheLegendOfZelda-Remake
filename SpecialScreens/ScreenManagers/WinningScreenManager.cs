@@ -139,6 +139,7 @@ namespace LegendOfZelda
             {
                 GameState.CameraController.ChangeMenu(Menu.End);
                 RemoveWinningText();
+                GameState.Link.Sprite.UnregisterSprite();
                 switchCamera = false;
             }
         }
