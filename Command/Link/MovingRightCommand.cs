@@ -3,17 +3,11 @@ namespace LegendOfZelda
 {
     public class MovingRightCommand : ICommands
     {
-
-        private IPlayer player;
-
-        public MovingRightCommand(IPlayer link)
-        {
-            this.player = link;
-        }
+        public MovingRightCommand(){}
 
         public void Execute()
         {
-            player.StateMachine.ChangeState(new WalkRightLinkState());
+            GameState.Link.StateMachine.ChangeState(new WalkRightLinkState());
         }
     }
 }

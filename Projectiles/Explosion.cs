@@ -56,6 +56,7 @@ namespace LegendOfZelda
 
             colliderWidth *= scale;
             colliderHeight *= scale;
+            LevelManager.CurrentLevelRoom.AddProjectile(this);
         }
 
         public void Update(GameTime gameTime)
@@ -101,6 +102,7 @@ namespace LegendOfZelda
             {
                 rectCollider.Active = false;
             }
+            LevelManager.CurrentLevelRoom.RemoveProjectile(this);
             LevelManager.RemoveUpdateable(this);
         }
 

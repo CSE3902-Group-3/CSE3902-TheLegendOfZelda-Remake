@@ -10,7 +10,10 @@ namespace LegendOfZelda
         private List<IDrawable> RoomDrawables;
         private List<IRectCollider> RoomColliders;
         private List<IEnemy> RoomEnemies;
+        private List<IPlayerProjectile> RoomPlayerProjectiles;
+        private List<IEnemyProjectile> RoomEnemyProjectiles;
         private Dictionary<Direction, IDoor> RoomDoors;
+        private List<IDrawable> DoorFrameSprites;
         public Vector2 RoomPosition { get { return roomPosition; } }
         private Vector2 roomPosition;
 
@@ -25,7 +28,10 @@ namespace LegendOfZelda
             RoomDrawables = new List<IDrawable>();
             RoomColliders = new List<IRectCollider>();
             RoomEnemies = new List<IEnemy>();
+            RoomPlayerProjectiles = new List<IPlayerProjectile>();
+            RoomEnemyProjectiles = new List<IEnemyProjectile>();
             RoomDoors = new Dictionary<Direction, IDoor>();
+            DoorFrameSprites = new List<IDrawable>();
         }
         public void LoadRoom (Room room)
         {
@@ -144,9 +150,10 @@ namespace LegendOfZelda
                 RoomEnemies[i].Die();
             }
         }
-        public void AddDoor(Direction direction, IDoor door)
+        public void AddDoor(Direction direction, IDoor door, IAnimatedSprite doorFrameSprite)
         {
             RoomDoors.Add(direction, door);
+            DoorFrameSprites.Add(doorFrameSprite);
         }
         public void OpenDoor(Direction direction)
         {
@@ -159,7 +166,8 @@ namespace LegendOfZelda
             {
                 GameState.CollisionManager.AddRectCollider(collider);
             }
-            CameraController.GetInstance().AddDrawablesToMainCamera(RoomDrawables);
+            CameraController.GetInstance().AddDrawablesToBackgroundOfMainCamera(RoomDrawables);
+            CameraController.GetInstance().AddDrawablesToForegroundOfMainCamera(DoorFrameSprites);
         }
         public void SwitchOut()
         {
@@ -167,7 +175,44 @@ namespace LegendOfZelda
             {
                 GameState.CollisionManager.RemoveRectCollider(collider);
             }
+            DestroyAllProjectiles();
             CameraController.GetInstance().RemoveDrawablesFromMainCamera(RoomDrawables);
+            CameraController.GetInstance().RemoveDrawablesFromMainCamera(DoorFrameSprites);
+        }
+        public void RemoveDoorFrames()
+        {
+            CameraController.GetInstance().RemoveDrawablesFromMainCamera(DoorFrameSprites);
+        }
+        public void AddDoorFrames()
+        {
+            CameraController.GetInstance().AddDrawablesToForegroundOfMainCamera(DoorFrameSprites);
+        }
+        public void AddProjectile(IEnemyProjectile projectile)
+        {
+            RoomEnemyProjectiles.Add(projectile);
+        }
+        public void RemoveProjectile(IEnemyProjectile projectile)
+        {
+            RoomEnemyProjectiles.Remove(projectile);
+        }
+        public void AddProjectile(IPlayerProjectile projectile)
+        {
+            RoomPlayerProjectiles.Add(projectile);
+        }
+        public void RemoveProjectile(IPlayerProjectile projectile)
+        {
+            RoomPlayerProjectiles.Remove(projectile);
+        }
+        private void DestroyAllProjectiles()
+        {
+            for (int i = RoomEnemyProjectiles.Count - 1; i >= 0; i--)
+            {
+                RoomEnemyProjectiles[i].Destroy();
+            }
+            for (int i = RoomPlayerProjectiles.Count - 1; i >= 0; i--)
+            {
+                RoomPlayerProjectiles[i].Destroy();
+            }
         }
     }
 }

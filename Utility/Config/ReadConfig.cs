@@ -146,8 +146,8 @@ namespace LegendOfZelda
                 // Map difficulty levels to float values
                 Dictionary<string, string> levelMap = new Dictionary<string, string>
                 {
-                    { "1", "level1.json" },
-                    { "2", "level2.json" }
+                    { "1", "1" },
+                    { "2", "2" }
                 };
 
                 if (levelMap.TryGetValue(levelString, out string level))

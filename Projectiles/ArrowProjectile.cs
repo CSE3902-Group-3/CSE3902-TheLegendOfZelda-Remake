@@ -50,6 +50,7 @@ namespace LegendOfZelda
             sprite.UpdatePos(position);
 
             LevelManager.AddUpdateable(this);
+            LevelManager.CurrentLevelRoom.AddProjectile(this);
         }
 
         //This method is overridden in the Blue Arrow and Sword Beam
@@ -105,6 +106,7 @@ namespace LegendOfZelda
             sprite.UnregisterSprite();
             LevelManager.RemoveUpdateable(this);
             collider.Active = false;
+            LevelManager.CurrentLevelRoom.RemoveProjectile(this);
         }
 
         public void OnCollision(List<CollisionInfo> collisions)

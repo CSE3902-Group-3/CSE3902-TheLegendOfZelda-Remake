@@ -4,53 +4,68 @@ namespace LegendOfZelda
     public class RoomTransitionLinkState : IState
     {
         private Link Link;
-
-        private Vector2 targetPosition;
+        private int LinkSpeed = int.Parse(Game1.getInstance().ReadConfig.GameConfig["Link.Speed"]);
+        private int MoveFrame;
+        private int CurrentFrame;
+        private int TotalFrames;
+        private Vector2 Dir;
 
         public RoomTransitionLinkState()
         {
             Link = GameState.Link;
-
-            targetPosition = Link.StateMachine.position;
         }
 
         public void Enter()
         {
-            Link.StateMachine.canMove = false;
-
             if (Link.Sprite != null)
             {
-                // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
+                Link.Sprite.UnregisterSprite();
             }
             switch (Link.StateMachine.currentDirection)
             {
                 case Direction.up:
                     Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkUpSprite();
-                    targetPosition += new Vector2(0, -215);
+                    Dir = new Vector2(0, -LinkSpeed);
+                    MoveFrame = 68;
+                    TotalFrames = 88;
                     break;
                 case Direction.down:
                     Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkDownSprite();
-                    targetPosition += new Vector2(0, 215);
+                    Dir = new Vector2(0, LinkSpeed);
+                    MoveFrame = 68;
+                    TotalFrames = 88;
                     break;
                 case Direction.left:
                     Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkLeftSprite();
-                    targetPosition += new Vector2(-215, 0);
-
+                    Dir = new Vector2(-LinkSpeed, 0);
+                    MoveFrame = 108;
+                    TotalFrames = 128;
                     break;
                 case Direction.right:
                     Link.Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
-                    targetPosition += new Vector2(215, 0);
+                    Dir = new Vector2(LinkSpeed, 0);
+                    MoveFrame = 108;
+                    TotalFrames = 128;
                     break;
             }
+            CurrentFrame = 0;
             Link.Sprite.paused = true;
-
-            LinkUtilities.UpdatePositions(Link, targetPosition);
         }
 
         public void Execute()
         {
-
+            if (CurrentFrame < 20)
+            {
+                LinkUtilities.UpdatePositions(Link, Link.Pos + Dir);
+            }
+            else if (CurrentFrame > MoveFrame && CurrentFrame < TotalFrames)
+            {
+                LinkUtilities.UpdatePositions(Link, Link.Pos + Dir);
+            } else if (CurrentFrame == TotalFrames)
+            {
+                GameState.Link.ExitRoomTransition();
+            }
+            CurrentFrame++;
         }
 
 

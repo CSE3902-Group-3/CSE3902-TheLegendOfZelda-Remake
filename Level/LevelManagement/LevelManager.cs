@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
@@ -7,6 +8,7 @@ namespace LegendOfZelda
     {
         private static LevelManager Instance;
 
+        public static int CurrentLevel { get; private set; }
         public static int CurrentRoom { get; private set; }
         private static int PreviousRoom;
         public static int NumberOfRooms { get; private set; }
@@ -14,11 +16,18 @@ namespace LegendOfZelda
         public static LevelRoom CurrentLevelRoom { get { return LevelRooms[CurrentRoom]; } }
 
         private static List<LevelRoom> LevelRooms;
-        private static List<IUpdateable> PersistentUpdateables;
-        private static List<IDrawable> PersistentDrawables;
-        private static List<IRectCollider> PersistentColliders;
+        private static List<IUpdateable> PersistentUpdateables = new List<IUpdateable>();
+        private static List<IDrawable> PersistentDrawables = new List<IDrawable>();
+        private static List<IRectCollider> PersistentColliders = new List<IRectCollider>();
         private static List<List<AdjacentRoom>> RoomListAdjacentRooms;
-        private LevelManager(){}
+        private LevelManager()
+        {
+            LevelRooms = new List<LevelRoom>
+            {
+                new LevelRoom()
+            };
+            CameraController.GetInstance().AddDrawablesToActiveMenuCamera(PersistentDrawables);
+        }
         public static LevelManager GetInstance()
         {
             if (Instance == null)
@@ -27,24 +36,20 @@ namespace LegendOfZelda
             }
             return Instance;
         }
-        public void StartLevel(string filename)
+        public void StartLevel(int levelNumber)
         {
-            RoomList roomList = LevelParser.Parse(filename);
+            CurrentLevel = levelNumber;
+            CameraController.GetInstance().AddDrawablesToForegroundOfMainCamera(PersistentDrawables);
+            RoomList roomList = LevelParser.Parse("level" + levelNumber + ".json");
             NumberOfRooms = roomList.Rooms.Count;
             CurrentRoom = 0;
             LevelRooms = new List<LevelRoom>();
-            PersistentUpdateables = new List<IUpdateable>();
-            PersistentDrawables = new List<IDrawable>();
-            PersistentColliders = new List<IRectCollider>();
             RoomListAdjacentRooms = new List<List<AdjacentRoom>>();
-            CameraController.GetInstance().AddPersistentDrawablesToMainCamera(PersistentDrawables);
-            CameraController.GetInstance().AddDrawablesToActiveMenuCamera(PersistentDrawables);
             foreach (Room room in roomList.Rooms)
             {
                 LevelRooms.Add(new LevelRoom());
                 LevelRooms[CurrentRoom].LoadRoom(room);
                 RoomListAdjacentRooms.Add(room.AdjacentRooms);
-
                 CurrentRoom++;
             }
             CurrentRoom = 0;
@@ -85,7 +90,12 @@ namespace LegendOfZelda
             CurrentRoom = PreviousRoom;
             LevelRooms[CurrentRoom].SwitchOut();
             CurrentRoom = temp;
-            GameState.Link.ExitRoomTransition();
+        }
+        public void TransitionToStartingRoom(Action afterPan)
+        {
+            CurrentRoom = 0;
+            CameraController.GetInstance().PanCamToRoom(LevelRooms[CurrentRoom].RoomPosition, afterPan);
+            LevelRooms[CurrentRoom].SwitchIn();
         }
         private static int DetermineRoomInDirection(int fromRoom, Direction direction)
         {

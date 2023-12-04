@@ -75,6 +75,7 @@ namespace LegendOfZelda
             int scale = spriteFactory.scale;
             collider = new RectCollider(new Rectangle((int)Pos.X, (int)Pos.Y, boomerangWidth * scale, boomerangWidth * scale), CollisionLayer.PlayerWeapon, this);
 
+            LevelManager.CurrentLevelRoom.AddProjectile(this);
             LevelManager.AddUpdateable(this);
         }
 
@@ -111,6 +112,7 @@ namespace LegendOfZelda
         {
             sprite.UnregisterSprite();
             collider.Active = false;
+            LevelManager.CurrentLevelRoom.RemoveProjectile(this);
             LevelManager.RemoveUpdateable(this);
         }
 

@@ -146,4 +146,5 @@
     AllEnemiesDeadOpenWestDoor, 4
     AllEnemiesDeadOpenSouthDoor, 5
     AllEnemiesDeadOpenNorthDoor, 6
+    ClosStartingDoorAfterStart, 7
 
