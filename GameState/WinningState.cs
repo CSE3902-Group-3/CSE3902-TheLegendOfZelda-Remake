@@ -12,6 +12,7 @@ namespace LegendOfZelda
 
         public WinningState()
         {
+            LevelManager.CurrentLevelRoom.RemoveDoorFrames();
             ScreenManager = new WinningScreenManager();
             menu = new WinningMenu();
             selector = new WinningSelector();

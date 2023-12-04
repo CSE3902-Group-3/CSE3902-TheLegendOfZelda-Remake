@@ -5,8 +5,10 @@ namespace LegendOfZelda
     public class AquamentusBallExplosion : IEnemyEffect
     {
         private readonly AnimatedSprite Sprite;
+        private int CreatedInRoom;
         public AquamentusBallExplosion(Vector2 position)
         {
+            CreatedInRoom = LevelManager.CurrentRoom;
             Sprite = SpriteFactory.getInstance().CreateExplosionSprite();
             SoundFactory.PlaySound(SoundFactory.getInstance().BombBlow);
             Sprite.UpdatePos(position);
@@ -15,7 +17,7 @@ namespace LegendOfZelda
 
         public void Dissipate()
         {
-            Sprite.UnregisterSprite();
+            LevelManager.RemoveDrawable(Sprite, CreatedInRoom);
         }
     }
 }

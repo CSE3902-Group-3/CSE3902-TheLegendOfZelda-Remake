@@ -69,7 +69,7 @@ namespace LegendOfZelda
             collider = new RectCollider(new Rectangle((int)_pos.X, (int)_pos.Y, colliderWidth * scale, colliderHeight * scale), CollisionLayer.PlayerWeapon, this);
 
             LevelManager.AddUpdateable(this);
-
+            LevelManager.CurrentLevelRoom.AddProjectile(this);
             timer = new Timer(delay, Destroy);
         }
 
@@ -80,6 +80,7 @@ namespace LegendOfZelda
 
         public void Destroy()
         {
+            LevelManager.CurrentLevelRoom.RemoveProjectile(this);
             LevelManager.RemoveUpdateable(this);
             sprite.UnregisterSprite();
             collider.Active = false;

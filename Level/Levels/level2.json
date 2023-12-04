@@ -14,6 +14,13 @@
                     "Direction": "North"
                 }
             ],
+            "Events": [
+                {
+                    "EventNumber": 7,
+                    "XLocation": 0,
+                    "YLocation": 0
+                }
+            ],
             "MapElements": [
                 {
                     "ElementType": "Block",
@@ -30,12 +37,6 @@
                 {
                     "ElementType": "Block",
                     "ElementValue": 14,
-                    "XLocation": 0,
-                    "YLocation": 0
-                },
-                {
-                    "ElementType": "Block",
-                    "ElementValue": 23,
                     "XLocation": 0,
                     "YLocation": 0
                 },

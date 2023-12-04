@@ -6,7 +6,7 @@
 
 		public ExecuteSelectionCommand()
 		{
-			selector = GameOverState.selector;
+			selector = GameState.Selector;
 		}
 
 		public void Execute()

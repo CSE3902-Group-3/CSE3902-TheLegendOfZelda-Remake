@@ -3,17 +3,11 @@ namespace LegendOfZelda
 {
     public class ResetCommand : ICommands
     {
-        //Prepare for later use
-        private Link link;
-
-        public ResetCommand(Link link)
-        {
-            this.link = link;
-        }
+        public ResetCommand(){}
 
         public void Execute()
         {
-            link.Die();
+            GameState.Link.Die();
         }
 
     }
