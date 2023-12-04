@@ -71,11 +71,11 @@ namespace LegendOfZelda
         {
             if (selection == 0)
             {
-                GameState.GetInstance().ResetGameState(); //This will likely be modified
+                GameState.GetInstance().SwitchState(new LevelTransitionState(1));
             }
             else if (selection == 1)
             {
-                //To be added in the future
+                GameState.GetInstance().SwitchState(new LevelTransitionState(2));
             }
             else if (selection == 2)
             {
