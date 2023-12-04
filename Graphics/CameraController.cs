@@ -100,11 +100,17 @@ namespace LegendOfZelda
 
         public void AddDrawablesToBackgroundOfMainCamera(List<IDrawable> drawablesList)
         {
-            mainCameraDrawables.Insert(0, drawablesList);
+            if (!mainCameraDrawables.Contains(drawablesList))
+            {
+                mainCameraDrawables.Insert(0, drawablesList);
+            }
         }
         public void AddDrawablesToForegroundOfMainCamera(List<IDrawable> drawablesList)
         {
-            mainCameraDrawables.Insert(mainCameraDrawables.Count, drawablesList);
+            if (!mainCameraDrawables.Contains(drawablesList))
+            {
+                mainCameraDrawables.Insert(mainCameraDrawables.Count, drawablesList);
+            }
         }
         public void RemovePersistentDrawablesFromMainCamera()
         {

@@ -10,6 +10,7 @@ namespace LegendOfZelda
 
         public GameOverState()
         {
+            LevelManager.CurrentLevelRoom.RemoveDoorFrames();
             gameOver = new GameOverScreen();
             controller = new GameOverMenuController();
         }

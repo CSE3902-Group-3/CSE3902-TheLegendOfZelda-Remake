@@ -11,6 +11,6 @@
     "\\StateMachine\\LinkStates",
     "\\StateMachine\\LinkStates\\General"
   ],
-  "SelectedNode": "\\StateMachine\\LinkStates\\General\\RoomTransitionLinkState.cs",
+  "SelectedNode": "\\GameState\\GameState.cs",
   "PreviewInSolutionExplorer": false
 }

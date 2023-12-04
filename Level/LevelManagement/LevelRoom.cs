@@ -179,6 +179,14 @@ namespace LegendOfZelda
             CameraController.GetInstance().RemoveDrawablesFromMainCamera(RoomDrawables);
             CameraController.GetInstance().RemoveDrawablesFromMainCamera(DoorFrameSprites);
         }
+        public void RemoveDoorFrames()
+        {
+            CameraController.GetInstance().RemoveDrawablesFromMainCamera(DoorFrameSprites);
+        }
+        public void AddDoorFrames()
+        {
+            CameraController.GetInstance().AddDrawablesToForegroundOfMainCamera(DoorFrameSprites);
+        }
         public void AddProjectile(IEnemyProjectile projectile)
         {
             RoomEnemyProjectiles.Add(projectile);
