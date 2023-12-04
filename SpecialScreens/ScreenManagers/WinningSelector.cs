@@ -67,6 +67,14 @@ namespace LegendOfZelda
             IndicationHearts[selection].Show();
         }
 
+        public void RemoveSelector()
+        {
+            foreach (IItem item in IndicationHearts)
+            {
+                item.Remove();
+            }
+        }
+
         public void ExecuteSelection()
         {
             if (selection == 0)
@@ -78,6 +86,7 @@ namespace LegendOfZelda
                 {
                     GameState.CameraController.ChangeMenu(Menu.Item);
                     GameState.GetInstance().SwitchState(new LevelTransitionState(1));
+                    RemoveSelector();
                 }
             }
             else if (selection == 1)
@@ -90,6 +99,7 @@ namespace LegendOfZelda
                 {
                     GameState.CameraController.ChangeMenu(Menu.Item);
                     GameState.GetInstance().SwitchState(new LevelTransitionState(2));
+                    RemoveSelector();
                 }
             }
             else if (selection == 2)
