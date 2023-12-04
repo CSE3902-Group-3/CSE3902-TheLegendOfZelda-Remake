@@ -3,30 +3,23 @@ namespace LegendOfZelda
 {
     public class PrimaryAttackCommand : ICommands
     {
-
-        private Link player;
-
-        public PrimaryAttackCommand(Link link)
-        {
-            player = link;
-
-        }
+        public PrimaryAttackCommand(){}
 
         public void Execute()
         {
-            switch (player.StateMachine.currentDirection)
+            switch (GameState.Link.StateMachine.currentDirection)
             {
                 case Direction.left:
-                    player.StateMachine.ChangeState(new AttackingLeftLinkState());
+                    GameState.Link.StateMachine.ChangeState(new AttackingLeftLinkState());
                     break;
                 case Direction.up:
-                    player.StateMachine.ChangeState(new AttackingUpLinkState());
+                    GameState.Link.StateMachine.ChangeState(new AttackingUpLinkState());
                     break;
                 case Direction.right:
-                    player.StateMachine.ChangeState(new AttackingRightLinkState());
+                    GameState.Link.StateMachine.ChangeState(new AttackingRightLinkState());
                     break;
                 case Direction.down:
-                    player.StateMachine.ChangeState(new AttackingDownLinkState());
+                    GameState.Link.StateMachine.ChangeState(new AttackingDownLinkState());
                     break;
             }
         }
