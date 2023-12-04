@@ -67,7 +67,7 @@ namespace LegendOfZelda
             IndicationHearts[selection].Show();
         }
 
-        public void RemoveSelector()
+        private void RemoveSelector()
         {
             foreach (IItem item in IndicationHearts)
             {
@@ -82,6 +82,7 @@ namespace LegendOfZelda
                 if (LevelManager.CurrentLevel == 1)
                 {
                     GameState.GetInstance().ResetGameState();
+                    RemoveSelector();
                 } else
                 {
                     GameState.CameraController.ChangeMenu(Menu.Item);
@@ -94,6 +95,7 @@ namespace LegendOfZelda
                 if (LevelManager.CurrentLevel == 2)
                 {
                     GameState.GetInstance().ResetGameState();
+                    RemoveSelector();
                 }
                 else
                 {
