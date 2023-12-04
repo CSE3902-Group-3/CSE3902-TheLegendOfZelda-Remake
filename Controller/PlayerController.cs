@@ -54,7 +54,7 @@ namespace LegendOfZelda
                         command.Execute();
                         isMovingHorizontally = true;
                     }
-                    else if(isVertical(key) && !isMovingHorizontally)
+                    else if (isVertical(key) && !isMovingHorizontally)
                     {
                         command.Execute();
                         isMovingVertically = true;
@@ -114,7 +114,7 @@ namespace LegendOfZelda
             {
                 PauseCommand.Execute();
                 ReleasedPause = false;
-            } 
+            }
             else if (Keyboard.GetState().IsKeyUp(Keys.Space) && !ReleasedPause)
             {
                 ReleasedPause = true;

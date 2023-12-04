@@ -57,12 +57,15 @@ namespace LegendOfZelda
             else
             {
                 Link.StateMachine.ChangeState(new IdleLinkState());
-            }
+            }            
         }
 
         public void Execute()
         {
-
+            if (((AnimatedSprite)Link.Sprite).complete)
+            {
+                Link.StateMachine.ChangeState(new IdleLinkState());
+            }
         }
 
         public void Exit()
