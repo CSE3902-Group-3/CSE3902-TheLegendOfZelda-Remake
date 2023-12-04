@@ -8,13 +8,14 @@ namespace LegendOfZelda
         private LevelStartScreen LevelStartScreen;
         public LevelTransitionState(int levelNumber)
         {
-            GameState.LevelManager.StartLevel("level" + levelNumber + ".json");
+            GameState.LevelManager.StartLevel(levelNumber);
             GameState.Link = new Link();
             LevelStartScreen = new LevelStartScreen(levelNumber);
         }
         public void Update(GameTime gameTime)
         {
-            LevelManager.Update(gameTime);
+            CameraController.GetInstance().mainCamera.Update(gameTime);
+            GameState.Link.Update(gameTime);
             LevelStartScreen.Update(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch)

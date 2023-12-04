@@ -63,7 +63,7 @@ namespace LegendOfZelda
                 LinkUtilities.UpdatePositions(Link, Link.Pos + Dir);
             } else if (CurrentFrame == TotalFrames)
             {
-                GameState.GetInstance().SwitchState(new NormalState());
+                GameState.Link.ExitRoomTransition();
             }
             CurrentFrame++;
         }

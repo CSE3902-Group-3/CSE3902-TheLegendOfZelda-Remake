@@ -66,8 +66,7 @@ namespace LegendOfZelda
                         IncrementLetterStage();
                         break;
                     case 6:
-                        LevelText[Counter - 1].UpdatePos(DetermineLetterPosition());
-                        IncrementStage();
+                        IncrementLetterStage();
                         break;
                     case 7:
                         IncrementLetterStage();
@@ -98,6 +97,10 @@ namespace LegendOfZelda
         }
         private void CameraPanUpStage()
         {
+            LinkUtilities.UpdatePositions(GameState.Link, LinkUtilities.originalLinkPosition + new Vector2(0, 228));
+            GameState.Link.StateMachine.prevDirection = GameState.Link.StateMachine.currentDirection;
+            GameState.Link.StateMachine.currentDirection = Direction.up;
+            GameState.Link.EnterRoomTransition();
             LevelManager.GetInstance().TransitionToStartingRoom(AfterCameraPanUp);
             IncrementStage();
         }

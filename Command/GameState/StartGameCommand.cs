@@ -11,7 +11,8 @@
         public void Execute()
         {
             CameraController.GetInstance().ChangeMenu(Menu.Item);
-            GameState.GetInstance().SwitchState(new LevelTransitionState(2));
+            int levelNumber = int.Parse(Game1.getInstance().ReadConfig.GameConfig["Game.Level"]);
+            GameState.GetInstance().SwitchState(new LevelTransitionState(levelNumber));
         }
     }
 }

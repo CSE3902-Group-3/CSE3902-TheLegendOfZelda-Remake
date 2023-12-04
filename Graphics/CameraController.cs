@@ -98,11 +98,11 @@ namespace LegendOfZelda
             }
         }
 
-        public void AddDrawablesToMainCamera(List<IDrawable> drawablesList)
+        public void AddDrawablesToBackgroundOfMainCamera(List<IDrawable> drawablesList)
         {
             mainCameraDrawables.Insert(0, drawablesList);
         }
-        public void AddPersistentDrawablesToMainCamera(List<IDrawable> drawablesList)
+        public void AddDrawablesToForegroundOfMainCamera(List<IDrawable> drawablesList)
         {
             mainCameraDrawables.Insert(mainCameraDrawables.Count, drawablesList);
         }

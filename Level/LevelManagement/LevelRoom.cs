@@ -13,6 +13,7 @@ namespace LegendOfZelda
         private List<IPlayerProjectile> RoomPlayerProjectiles;
         private List<IEnemyProjectile> RoomEnemyProjectiles;
         private Dictionary<Direction, IDoor> RoomDoors;
+        private List<IDrawable> DoorFrameSprites;
         public Vector2 RoomPosition { get { return roomPosition; } }
         private Vector2 roomPosition;
 
@@ -30,6 +31,7 @@ namespace LegendOfZelda
             RoomPlayerProjectiles = new List<IPlayerProjectile>();
             RoomEnemyProjectiles = new List<IEnemyProjectile>();
             RoomDoors = new Dictionary<Direction, IDoor>();
+            DoorFrameSprites = new List<IDrawable>();
         }
         public void LoadRoom (Room room)
         {
@@ -148,9 +150,10 @@ namespace LegendOfZelda
                 RoomEnemies[i].Die();
             }
         }
-        public void AddDoor(Direction direction, IDoor door)
+        public void AddDoor(Direction direction, IDoor door, IAnimatedSprite doorFrameSprite)
         {
             RoomDoors.Add(direction, door);
+            DoorFrameSprites.Add(doorFrameSprite);
         }
         public void OpenDoor(Direction direction)
         {
@@ -163,7 +166,8 @@ namespace LegendOfZelda
             {
                 GameState.CollisionManager.AddRectCollider(collider);
             }
-            CameraController.GetInstance().AddDrawablesToMainCamera(RoomDrawables);
+            CameraController.GetInstance().AddDrawablesToBackgroundOfMainCamera(RoomDrawables);
+            CameraController.GetInstance().AddDrawablesToForegroundOfMainCamera(DoorFrameSprites);
         }
         public void SwitchOut()
         {
@@ -173,6 +177,7 @@ namespace LegendOfZelda
             }
             DestroyAllProjectiles();
             CameraController.GetInstance().RemoveDrawablesFromMainCamera(RoomDrawables);
+            CameraController.GetInstance().RemoveDrawablesFromMainCamera(DoorFrameSprites);
         }
         public void AddProjectile(IEnemyProjectile projectile)
         {

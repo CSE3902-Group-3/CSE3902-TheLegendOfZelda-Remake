@@ -51,7 +51,7 @@ namespace LegendOfZelda
             CollisionManager = new CollisionManager();
             CameraController.Reset();
             CameraController.ChangeMenu(Menu.Item);
-            State = new LevelTransitionState(2);
+            State = new LevelTransitionState(LevelManager.CurrentLevel);
         }
         public void GameOverContinue()
         {

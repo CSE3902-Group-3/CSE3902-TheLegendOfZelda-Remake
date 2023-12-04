@@ -8,6 +8,7 @@ namespace LegendOfZelda
     {
         private static LevelManager Instance;
 
+        public static int CurrentLevel { get; private set; }
         public static int CurrentRoom { get; private set; }
         private static int PreviousRoom;
         public static int NumberOfRooms { get; private set; }
@@ -35,10 +36,11 @@ namespace LegendOfZelda
             }
             return Instance;
         }
-        public void StartLevel(string filename)
+        public void StartLevel(int levelNumber)
         {
-            CameraController.GetInstance().AddPersistentDrawablesToMainCamera(PersistentDrawables);
-            RoomList roomList = LevelParser.Parse(filename);
+            CurrentLevel = levelNumber;
+            CameraController.GetInstance().AddDrawablesToForegroundOfMainCamera(PersistentDrawables);
+            RoomList roomList = LevelParser.Parse("level" + levelNumber + ".json");
             NumberOfRooms = roomList.Rooms.Count;
             CurrentRoom = 0;
             LevelRooms = new List<LevelRoom>();
@@ -82,6 +84,7 @@ namespace LegendOfZelda
         }
         public void AfterRoomTransition()
         {
+            GameState.GetInstance().SwitchState(new NormalState());
             LevelRooms[CurrentRoom].SpawnEnemies();
             int temp = CurrentRoom;
             CurrentRoom = PreviousRoom;
