@@ -15,7 +15,6 @@ namespace LegendOfZelda
         private IRectCollider openCollider;
 
         private int wallSize = 32;
-        private IPlayer player;
         private Direction direction;
         public BombableDoor(Vector2 pos, Direction direction)
         {
@@ -92,10 +91,9 @@ namespace LegendOfZelda
         private void HandleCollisionWhenUnlocked(CollisionInfo collision)
         {
             if (collision.CollidedWith.Layer != CollisionLayer.Player && GameState.Link.StateMachine.isKnockedBack) return;
-            player.StateMachine.prevDirection = player.StateMachine.currentDirection;
-            player.StateMachine.currentDirection = direction;
-            player = GameState.Link;
-            player.EnterRoomTransition();
+            GameState.Link.StateMachine.prevDirection = GameState.Link.StateMachine.currentDirection;
+            GameState.Link.StateMachine.currentDirection = direction;
+            GameState.Link.EnterRoomTransition();
             LevelManager.GetInstance().TransitionToRoom(direction);
         }
 
