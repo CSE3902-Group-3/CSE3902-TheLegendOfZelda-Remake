@@ -92,6 +92,7 @@ namespace LegendOfZelda
             {
                 GameState.GetInstance().GameOverContinue();
                 RemoveSelector();
+                GameOverState.gameOver.menu.Remove();
             }
             else if (selection == 1)
             {
@@ -100,6 +101,8 @@ namespace LegendOfZelda
             else if (selection == 2)
             {
                 GameState.GetInstance().ResetGameState();
+                RemoveSelector();
+                GameOverState.gameOver.menu.Remove();
             }
         }
     }

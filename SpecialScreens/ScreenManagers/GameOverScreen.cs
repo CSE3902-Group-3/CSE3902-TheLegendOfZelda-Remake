@@ -11,7 +11,7 @@ namespace LegendOfZelda
 		private GameOverText text;
 		private double lastUpdate;
 		private int counter;
-		private GameOverMenu menu;
+		public GameOverMenu menu;
 		private bool activated;
 		public bool done;
 

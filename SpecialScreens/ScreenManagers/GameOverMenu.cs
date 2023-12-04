@@ -89,6 +89,22 @@ namespace LegendOfZelda
 			DrawQuitWord();
 			DrawRetryWord();
 		}
+
+		public void Remove()
+		{
+            for (int i = 0; i < Continue.Count; i++)
+            {
+				Continue[i].UnregisterSprite();
+            }
+            for (int i = 0; i < Quit.Count; i++)
+            {
+				Quit[i].UnregisterSprite();
+            }
+            for (int i = 0; i < Retry.Count; i++)
+            {
+				Retry[i].UnregisterSprite();
+            }
+        }
 	}
 }
 
