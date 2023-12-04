@@ -32,13 +32,14 @@ namespace LegendOfZelda
 
         public void Execute()
         {
-            Item.Use((Link.StateMachine.position - new Vector2(-5, 60)));
+            Item.Use((Link.StateMachine.position - new Vector2(-4, 60)));
 
             if (((AnimatedSprite)Link.Sprite).complete)
             {
                 Link.StateMachine.ChangeState(new IdleLinkState());
                 Item.Remove();
             }
+            Item.Remove();
         }
 
         public void Exit()
