@@ -71,13 +71,26 @@ namespace LegendOfZelda
         {
             if (selection == 0)
             {
-                GameState.CameraController.ChangeMenu(Menu.Item);
-                GameState.GetInstance().SwitchState(new LevelTransitionState(1));
+                if (LevelManager.CurrentLevel == 1)
+                {
+                    GameState.GetInstance().ResetGameState();
+                } else
+                {
+                    GameState.CameraController.ChangeMenu(Menu.Item);
+                    GameState.GetInstance().SwitchState(new LevelTransitionState(1));
+                }
             }
             else if (selection == 1)
             {
-                GameState.CameraController.ChangeMenu(Menu.Item);
-                GameState.GetInstance().SwitchState(new LevelTransitionState(2));
+                if (LevelManager.CurrentLevel == 2)
+                {
+                    GameState.GetInstance().ResetGameState();
+                }
+                else
+                {
+                    GameState.CameraController.ChangeMenu(Menu.Item);
+                    GameState.GetInstance().SwitchState(new LevelTransitionState(2));
+                }
             }
             else if (selection == 2)
             {
