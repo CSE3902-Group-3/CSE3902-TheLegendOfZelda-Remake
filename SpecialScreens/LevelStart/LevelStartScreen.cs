@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using LegendOfZelda.Graphics;
 using Microsoft.Xna.Framework;
 
 namespace LegendOfZelda
@@ -16,6 +17,7 @@ namespace LegendOfZelda
         public LevelStartScreen(int levelNumber)
         {
             CameraPos = LevelManager.CurrentRoomPosition + new Vector2(0, Game1.getInstance().GraphicsDevice.Viewport.Height);
+            new Background((int)CameraPos.X, (int)CameraPos.Y);
             CameraController.GetInstance().mainCamera.worldPos = CameraPos;
             ConstructLevelText(levelNumber);
             Counter = 0;

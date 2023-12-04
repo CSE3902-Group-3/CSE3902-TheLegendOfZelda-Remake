@@ -9,7 +9,7 @@ namespace LegendOfZelda
 {
     public static class ShaderHolder
     {
-        public static readonly bool ShadersOn = false;
+        public static readonly bool ShadersOn = true;
         //private static bool loaded = false;
         public static Effect normalShader;
 
