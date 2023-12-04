@@ -71,10 +71,12 @@ namespace LegendOfZelda
         {
             if (selection == 0)
             {
+                GameState.CameraController.ChangeMenu(Menu.Item);
                 GameState.GetInstance().SwitchState(new LevelTransitionState(1));
             }
             else if (selection == 1)
             {
+                GameState.CameraController.ChangeMenu(Menu.Item);
                 GameState.GetInstance().SwitchState(new LevelTransitionState(2));
             }
             else if (selection == 2)
