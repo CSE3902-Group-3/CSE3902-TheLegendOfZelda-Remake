@@ -25,6 +25,7 @@ namespace LegendOfZelda
         private int letterWidth;
         private LetterFactory letterFactory;
         private List<AnimatedSprite> text;
+        private AnimatedSprite Triforce;
         
         public WinningScreenManager()
 		{
@@ -45,6 +46,9 @@ namespace LegendOfZelda
             StartYPos = CameraYPos + (graphicsDevice.Viewport.Height / 3);
             letterWidth = 30;
             letterFactory = LetterFactory.GetInstance();
+            Triforce = SpriteFactory.getInstance().CreateTriforcePieceSprite();
+            LevelManager.AddDrawable(Triforce, true);
+            Triforce.UpdatePos(GameState.Link.Pos + new Vector2(5, -50));
 
             text = new List<AnimatedSprite>()
             {
@@ -137,6 +141,7 @@ namespace LegendOfZelda
 
             else if (switchCamera && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 3000))
             {
+                bool removed = LevelManager.RemoveDrawable(Triforce, true);
                 GameState.CameraController.ChangeMenu(Menu.End);
                 RemoveWinningText();
                 GameState.Link.Sprite.UnregisterSprite();
