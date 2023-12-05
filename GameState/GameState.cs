@@ -30,7 +30,7 @@ namespace LegendOfZelda
         {
             LevelManager = LevelManager.GetInstance();
             CollisionManager = new CollisionManager();
-            LevelMaster.StartLevel("level2.json");
+            LevelMaster.StartLevel("level1.json");
             Link = new Link();
             LevelMaster.SnapToRoom(0);
             PauseManager = new PauseManager();

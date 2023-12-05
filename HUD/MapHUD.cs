@@ -16,7 +16,6 @@ namespace LegendOfZelda
         private const int scale = 4;
         private const int mapSize = 64;
         private int CurrentRoom;
-        private int Level;
 
         private SpriteFactory spriteFactory;
         //private LowerHUD lowerHUD;
@@ -50,8 +49,6 @@ namespace LegendOfZelda
             mapElement = HUDMapElement.GetInstance();
             inventory = Inventory.getInstance();
 
-            Level = 2;
-
             map = new Map(Vector2.Zero);
             compass = new Compass(Vector2.Zero);
 
@@ -65,8 +62,8 @@ namespace LegendOfZelda
             CompassPos = new Vector2(MapHUDBasePos.X + 44 * scale, MapHUDBasePos.Y + 64 * scale);
             MapBasePos = new Vector2(MapHUDBasePos.X + 128 * scale, MapHUDBasePos.Y + 8 * scale);
 
-            ElementList = mapElement.GetMapList(Level);
-            IndicatorPosDic = mapElement.GetMapIndicator(Level);
+            ElementList = mapElement.GetMapList(1);
+            IndicatorPosDic = mapElement.GetMapIndicator(1);
             CreateMapElement();
 
             MapUnlock = false;
