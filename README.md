@@ -84,7 +84,7 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - Michael Herring reviewed Ethan Glenwright's code for readability in pull request #84
 - Gabriel DiFiore reviewed Zhenyi Hu's code for readability (See `Code Review/Sprint 2`)
 - Ethan Glenwright reviewed Matt Curie's code for quality in pull request #87
-- Ethan Glenwright reviewed Matt Curie`s code for quality in pull request #101
+- Ethan Glenwright reviewed Matt Curie`s code for readability in pull request #101
 - MengQi Lei reviewed Gabe DiFiore`s code for readability in pull request #102
 - MengQi Lei reviewed ZhengYi Hu's code for quality in pull request #104
 - Matthew Curie reviewed Michael's code for quality in pull request #72, #85, #94,
