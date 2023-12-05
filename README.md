@@ -19,6 +19,7 @@ Remake of NES The Legend of Zelda game
 ### Cheat codes
 - Use `C`+`P` to get 5 rupees.
 - Use `C`+`K` to get a key.
+- Use `C`+`T` to get a Bomb.
 - Use `C`+`H` to heal Link to max HP.
 - Use `C`+`O` to kill all enemies in current room.
 
