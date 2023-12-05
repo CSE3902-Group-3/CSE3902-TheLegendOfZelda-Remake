@@ -1,23 +1,31 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
-using System.Data;
 
 namespace LegendOfZelda
 {
     public class SpikeTrap : IEnemy
     {
-        private readonly AnimatedSprite Sprite;
-        private int Width = 16;
-        private int Height = 16;
+        public AnimatedSprite Sprite { get; set; }
+        public float Health { get; set; } = 2.0f;
+        public int Width { get; } = 16;
+        public int Height { get; } = 16;
+        public Type EnemyType { get; set; }
+        public EnemyItemDrop.EnemyClass Classification { get; } = EnemyItemDrop.EnemyClass.C;
         public Vector2 Position { get; set; }
+        public Vector2 Direction { get; set; } = new(0, 0);
+        public Vector2 Offset { get; set; } = new(0, 0);
+        public RectCollider Collider { get; }
+        public bool IsColliding { get; set; } = false;
+        public bool Frozen { get; set; } = false;
+        public bool AllowedToMove { get; set; } = true;
+        public Vector2 SpeedMultiplier { get; set; } = new(1, 1);
+        public float CurrentCooldown { get; set; } = 0.0f;
+        public double LastSwitch { get; set; } = 0;
         public Vector2 OriginalPosition;
-        public Vector2 Direction;
-        public RectCollider Collider { get; private set; }
         private readonly float interpolationSpeed = 0.05f; // Adjust this value to control the speed of interpolation
         private readonly float detectionCooldown = 2.0f; // Cooldown before re-detecting the player
         private float currentDetectionCooldown = 0.0f;
-        private bool isFrozen = false;
-        public bool Frozen { get { return isFrozen; } set { isFrozen = value; } }
         public SpikeTrap(Vector2 pos)
         {
             Position = pos;
@@ -64,7 +72,7 @@ namespace LegendOfZelda
         }
 
         public void ChangePosition() {
-            if (!isFrozen)
+            if (!Frozen)
             {
                 Position += Direction * 3;
                 Sprite.UpdatePos(Position);

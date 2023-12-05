@@ -20,7 +20,6 @@ namespace LegendOfZelda
                 new Goriya(Position),
                 new GelSmall(Position),
                 new ZolBig(Position),
-                new Wizard(Position),
                 new Aquamentus(Position),
                 new Rope(Position),
                 new Dodongo(Position),
