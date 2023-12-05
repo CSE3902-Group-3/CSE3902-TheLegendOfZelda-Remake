@@ -19,8 +19,8 @@ namespace LegendOfZelda
         public float damageCooldownTimer = 0;
         public float damageCooldownDuration = 3.5f;// Set the cooldown time to 3.5s for damage repeated
 
-        public float swordBeamCooldown = 0;
-        public float SwordBeamCooldownDuration = float.Parse(Game1.getInstance().ReadConfig.GameConfig["Link.ProjectileSpawnCooldown"]);  // Set cooldown time to 3 seconds
+        public float spawnProjectileCooldown = 0;
+        public float spawnProjectileCooldownDuration = float.Parse(Game1.getInstance().ReadConfig.GameConfig["Link.ProjectileSpawnCooldown"]);  // Set cooldown time to 3 seconds
 
         public Link()
         {
@@ -84,9 +84,9 @@ namespace LegendOfZelda
                     StopTakingDamage();
                 }
             }
-            if (swordBeamCooldown > 0)
+            if (spawnProjectileCooldown > 0)
             {
-                swordBeamCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                spawnProjectileCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
             if (LinkUtilities.LinkChangedDirection())

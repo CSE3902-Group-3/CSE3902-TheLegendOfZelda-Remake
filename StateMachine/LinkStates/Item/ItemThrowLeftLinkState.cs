@@ -14,32 +14,58 @@ namespace LegendOfZelda
 
         public void Enter()
         {
-            if (Link.Sprite != null)
+            if (Link.spawnProjectileCooldown <= 0)
             {
-                // if there was a previous sprite, cast then unregister sprite
-                ((AnimatedSprite)Link.Sprite).UnregisterSprite();
-            }
-            Link.StateMachine.canMove = false;
-            Link.Sprite = SpriteFactory.getInstance().CreateLinkThrowLeftSprite();
+                if (Link.Sprite != null)
+                {
+                    // if there was a previous sprite, cast then unregister sprite
+                    ((AnimatedSprite)Link.Sprite).UnregisterSprite();
+                }
+                Link.StateMachine.canMove = false;
+                Link.Sprite = SpriteFactory.getInstance().CreateLinkThrowLeftSprite();
 
-            // Throw item
-            if (Inventory.getInstance().SecondaryItem is Bomb)
-            {
-                new BombProjectile(Link.StateMachine.position + LinkUtilities.leftItemOffset);
+                // Throw item
+                if (Inventory.getInstance().SecondaryItem is Bomb)
+                {
+                    if (Inventory.getInstance().GetQuantity(new Bomb(new Vector2(0, 0))) > 0)
+                    {
+                        new BombProjectile(Link.StateMachine.position + LinkUtilities.leftBombOffset);
+                        Inventory.getInstance().RemoveItem(new Bomb(new Vector2(0, 0)));
+                    }
+                }
+                else if (Inventory.getInstance().SecondaryItem is Boomerang)
+                {
+                    new BoomerangProjectile(Link.StateMachine.position + LinkUtilities.leftBoomerangOffset, Direction.left, Link);
+                }
+                else if (Inventory.getInstance().SecondaryItem is Candle)
+                {
+                    new FireProjectile(Link.StateMachine.position + LinkUtilities.leftFireOffset, Direction.left);
+                }
+                else if (Inventory.getInstance().SecondaryItem is Bow)
+                {
+                    if (Inventory.getInstance().GetQuantity(new Arrow(new Vector2(0, 0))) > 0)
+                    {
+                        if (Inventory.getInstance().SpendRupee(1))
+                        {
+                            new ArrowProjectile(GameState.Link.StateMachine.position + LinkUtilities.leftRightSwordBeamOffset, GameState.Link.StateMachine.currentDirection);
+                        }
+
+                    }
+                }
+                Link.spawnProjectileCooldown = Link.spawnProjectileCooldownDuration;  // Reset the cooldown timer
             }
-            else if (Inventory.getInstance().SecondaryItem is Boomerang)
+            else
             {
-                new BoomerangProjectile(Link.StateMachine.position + LinkUtilities.leftItemOffset, Direction.left, Link);
-            }
-            else if (Inventory.getInstance().SecondaryItem is Candle)
-            {
-                new FireProjectile(Link.StateMachine.position + LinkUtilities.leftItemOffset, Direction.left);
-            }
+                Link.StateMachine.ChangeState(new IdleLinkState());
+            }            
         }
 
         public void Execute()
         {
-
+            if (((AnimatedSprite)Link.Sprite).complete)
+            {
+                Link.StateMachine.ChangeState(new IdleLinkState());
+            }
         }
 
         public void Exit()

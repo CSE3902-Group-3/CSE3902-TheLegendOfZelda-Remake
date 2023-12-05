@@ -9,7 +9,7 @@ namespace LegendOfZelda
         public void Execute()
         {
             IItem secondaryItem = Inventory.getInstance().SecondaryItem;
-            if (secondaryItem is Bomb || secondaryItem is Boomerang)
+            if (secondaryItem is Bomb || secondaryItem is Boomerang || secondaryItem is Candle || secondaryItem is Bow)
             {
                 switch (GameState.Link.StateMachine.currentDirection)
                 {
@@ -25,17 +25,6 @@ namespace LegendOfZelda
                     case Direction.down:
                         GameState.Link.StateMachine.ChangeState(new ItemThrowDownLinkState());
                         break;
-                }
-            }
-            else if (secondaryItem is Bow)
-            {
-                if (Inventory.getInstance().GetQuantity(new Arrow(new Vector2(0,0)))> 0)
-                {
-                    if (Inventory.getInstance().SpendRupee(1))
-                    {
-                        new ArrowProjectile(GameState.Link.StateMachine.position, GameState.Link.StateMachine.currentDirection);
-                    }
-
                 }
             }
             else if (secondaryItem is Fairy || secondaryItem is Potion)
