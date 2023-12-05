@@ -11,7 +11,7 @@ namespace LegendOfZelda
         public static LevelManager LevelManager { get; private set; }
         public static CameraController CameraController { get; private set; }
         public static PauseManager PauseManager { get; private set; }
-        public static CollisionManager CollisionManager { get; private set; }
+        public static CollisionManager CollisionManager { get; set; }
         public static Link Link { get; set; }
         public static LowerHUD LowerHUD { get; private set; }
         public static InventoryHUD InventoryHUD { get; private set; }
@@ -53,9 +53,6 @@ namespace LegendOfZelda
         }
         public void ResetGameState()
         {
-            CollisionManager = new CollisionManager();
-            CameraController.Reset();
-            CameraController.ChangeMenu(Menu.Item);
             State = new LevelTransitionState(LevelManager.CurrentLevel);
         }
         public void GameOverContinue()
