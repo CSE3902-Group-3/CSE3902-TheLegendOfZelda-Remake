@@ -18,7 +18,8 @@ Remake of NES The Legend of Zelda game
 
 ### Cheat codes
 - Use `C`+`P` to get 5 rupees.
-- Use `C`+`K` to get a key.
+- Use `C`+`J` to get a key.
+- Use `C`+`T` to get a Bomb.
 - Use `C`+`H` to heal Link to max HP.
 - Use `C`+`O` to kill all enemies in current room.
 
@@ -84,7 +85,7 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - Michael Herring reviewed Ethan Glenwright's code for readability in pull request #84
 - Gabriel DiFiore reviewed Zhenyi Hu's code for readability (See `Code Review/Sprint 2`)
 - Ethan Glenwright reviewed Matt Curie's code for quality in pull request #87
-- Ethan Glenwright reviewed Matt Curie`s code for quality in pull request #101
+- Ethan Glenwright reviewed Matt Curie`s code for readability in pull request #101
 - MengQi Lei reviewed Gabe DiFiore`s code for readability in pull request #102
 - MengQi Lei reviewed ZhengYi Hu's code for quality in pull request #104
 - Matthew Curie reviewed Michael's code for quality in pull request #72, #85, #94,
@@ -122,7 +123,9 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - Ethan Glenwright reviewed Gabriel DiFiore's code for quality in PR #430
 - Michael Herring reviewed Matt Curie's code for quality in PR #428
 - Gabriel DiFiore reviewed Matt Curie's code for quality in PR #468
-- Ethan Glenwright reviewed MengQi Li's code for readability in PR #473
+- Ethan Glenwright reviewed MengQi Lei's code for readability in PR #473
+- MengQi Lei reviewed Michael Herring's code for quality (See `Code Review/Sprint 5`)
+- MengQi Lei reviewed Matt Curie's code for readability (See `Code Review/Sprint 5`)
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
