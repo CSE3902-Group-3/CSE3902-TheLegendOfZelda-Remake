@@ -142,6 +142,7 @@ namespace LegendOfZelda
             UpdateHealth();
             UpdateSelectedItemSprite();
             UpdateMapUnlock();
+            UpdateCompassUnlock();
             RegisterIndicatorSprite(CompassUnlock);
             RegisterMiniMapSprite(MapUnlock);
         }

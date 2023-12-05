@@ -22,7 +22,7 @@ namespace LegendOfZelda
         private List<int> MapList;
 
         private Dictionary<int, Vector2> MiniMapIndicator;
-        //private Dictionary<int, Vector2> MapIndicator;
+        private Dictionary<int, Vector2> MapIndicator;
 
         public HUDMapElement()
         {
@@ -85,9 +85,9 @@ namespace LegendOfZelda
                         { 10, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y + 16 * scale) },
                         {  6, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y + 20 * scale) },
                         { 11, new Vector2(MiniMapHUDBasePos.X + 40 * scale, MiniMapHUDBasePos.Y + 16 * scale) },
-                        {  0, new Vector2(MiniMapHUDBasePos.X + 18 * scale, MiniMapHUDBasePos.Y + 28 * scale) },
+                        {  1, new Vector2(MiniMapHUDBasePos.X + 18 * scale, MiniMapHUDBasePos.Y + 28 * scale) },
                         {  3, new Vector2(MiniMapHUDBasePos.X + 26 * scale, MiniMapHUDBasePos.Y + 24 * scale) },
-                        {  1, new Vector2(MiniMapHUDBasePos.X + 26 * scale, MiniMapHUDBasePos.Y + 28 * scale) },
+                        {  0, new Vector2(MiniMapHUDBasePos.X + 26 * scale, MiniMapHUDBasePos.Y + 28 * scale) },
                         {  2, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y + 28 * scale) },
                         { 19, new Vector2(MiniMapHUDBasePos.X, MiniMapHUDBasePos.Y) },
                         { 18, new Vector2(MiniMapHUDBasePos.X, MiniMapHUDBasePos.Y) }
@@ -159,7 +159,7 @@ namespace LegendOfZelda
             switch (level)
             {
                 case 1:
-                    MiniMapIndicator = new Dictionary<int, Vector2>()
+                    MapIndicator = new Dictionary<int, Vector2>()
                     {
                         { 16, new Vector2(MapHUDBasePos.X + 20 * scale, MapHUDBasePos.Y + 20 * scale) },
                         { 17, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 20 * scale) },
@@ -179,11 +179,12 @@ namespace LegendOfZelda
                         {  0, new Vector2(MapHUDBasePos.X + 20 * scale, MapHUDBasePos.Y + 60 * scale) },
                         {  1, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 60 * scale) },
                         {  2, new Vector2(MapHUDBasePos.X + 36 * scale, MapHUDBasePos.Y + 60 * scale) },
-                        { 19, new Vector2(MapHUDBasePos.X, MapHUDBasePos.Y) }
+                        { 19, new Vector2(MapHUDBasePos.X, MapHUDBasePos.Y) },
+                        { 18, new Vector2(MapHUDBasePos.X, MapHUDBasePos.Y) }
                     };
                     break;
                 case 2:
-                    MiniMapIndicator = new Dictionary<int, Vector2>()
+                    MapIndicator = new Dictionary<int, Vector2>()
                     {
                         { 16, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 4 * scale) },
                         { 17, new Vector2(MapHUDBasePos.X + 36 * scale, MapHUDBasePos.Y + 4 * scale) },
@@ -206,7 +207,7 @@ namespace LegendOfZelda
                     };
                     break;
             }
-            return MiniMapIndicator;
+            return MapIndicator;
         }
     }
 }
