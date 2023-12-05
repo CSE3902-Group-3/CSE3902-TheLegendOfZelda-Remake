@@ -5,7 +5,7 @@ namespace LegendOfZelda
 {
     public class GameOverState : IGameState
     {
-        private GameOverScreen gameOver;
+        public static GameOverScreen gameOver;
         private GameOverMenuController controller;
 
         public GameOverState()
