@@ -1,8 +1,0 @@
-Author of the code review: MengQi Lei
-Date of the code review: 12/5/23
-Sprint number: 5
-Name of the .cs file being reviewed: SpikeTrap.cs
-Author of the .cs file being reviewed: Matt Curie
-Number of minutes taken to complete the review: 10 minutes
-Specific comments on what is readable and what is not:
-The whole class is vary readable with no magic numbers. Variables names are also precise and easy to understand. Some of the method calls and logics might not be vary easy to understand the first glance, but comments are added stating what their functionalities are.
