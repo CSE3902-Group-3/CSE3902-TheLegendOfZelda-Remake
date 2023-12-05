@@ -1,6 +1,7 @@
 ﻿using LegendOfZelda.Command.ItemMenu;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace LegendOfZelda
@@ -9,8 +10,8 @@ namespace LegendOfZelda
     {
         private KeyboardMapping controllerMappings;
         private ICommands command;
-        private Keys[] currKeys;
-        private Keys[] prevKeys;
+        private HashSet<Keys> currKeysSet;
+        private HashSet<Keys> prevKeysSet;
         private MouseState mouseState;
         private MouseState previousMouseState;
         private bool ReleasedPause;
@@ -20,8 +21,8 @@ namespace LegendOfZelda
         public PlayerController()
         {
             controllerMappings = new KeyboardMapping();
-            prevKeys = Array.Empty<Keys>();
-            currKeys = Array.Empty<Keys>();
+            prevKeysSet = new HashSet<Keys>();
+            currKeysSet = new HashSet<Keys>();
             ReleasedPause = false;
             PauseCommand = new PauseCommand(GameState.PauseManager);
             GoToItemMenuCommand = new GoToItemMenuCommand();
@@ -29,8 +30,10 @@ namespace LegendOfZelda
 
         public void Update()
         {
-            prevKeys = currKeys;
-            currKeys = Keyboard.GetState().GetPressedKeys();
+            prevKeysSet.Clear();
+            prevKeysSet.UnionWith(currKeysSet);
+            currKeysSet.Clear();
+            currKeysSet.UnionWith(Keyboard.GetState().GetPressedKeys());
 
             KeyDownEvents();
             KeyUpEvents();
@@ -44,7 +47,7 @@ namespace LegendOfZelda
             bool isMovingHorizontally = false;
             bool isMovingVertically = false;
 
-            foreach (Keys key in currKeys)
+            foreach (Keys key in currKeysSet)
             {
                 command = controllerMappings.KeyDownCommand(key);
                 if (command != null)
@@ -71,9 +74,9 @@ namespace LegendOfZelda
 
         private void KeyUpEvents()
         {
-            foreach (Keys key in prevKeys)
+            foreach (Keys key in prevKeysSet)
             {
-                if (!currKeys.Contains(key))
+                if (!currKeysSet.Contains(key))
                 {
                     command = controllerMappings.KeyUpCommand(key);
                     if (command != null)
