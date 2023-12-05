@@ -88,7 +88,7 @@ namespace LegendOfZelda
             inventory = Inventory.getInstance();
             link = GameState.Link;
 
-            Level = 1;
+            Level = 2;
             RubiesCount = inventory.GetQuantity(new OneRupee(Vector2.Zero));
             KeysCount = inventory.GetQuantity(new Key(Vector2.Zero));
             BombsCount = inventory.GetQuantity(new Bomb(Vector2.Zero));

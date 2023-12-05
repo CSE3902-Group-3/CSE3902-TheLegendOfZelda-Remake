@@ -1,0 +1,41 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace LegendOfZelda
+{
+    public class NormalState: IGameState
+    {
+<<<<<<< HEAD
+        public NormalState()
+        {
+=======
+        private LowerHUD lowerHUD;
+        public NormalState()
+        {
+            LevelManager.CurrentLevelRoom.AddDoorFrames();
+            lowerHUD = LowerHUD.GetInstance();
+            GameState.CheatCodeController = new CheatCodeController();
+>>>>>>> main
+        }
+        public void Update(GameTime gameTime)
+        {
+            LevelManager.Update(gameTime);
+            GameState.lowerHUD.Update(gameTime);
+            GameState.PlayerController.Update();
+            GameState.CollisionManager.Update(gameTime);
+<<<<<<< HEAD
+            GameState.cheatCodeController.Update();
+            GameState.mapHUD.Update(gameTime);
+            //GameState.inventoryHUD.Update(gameTime);    
+=======
+            GameState.CheatCodeController.Update();
+>>>>>>> main
+        }
+        public void Draw(SpriteBatch _spriteBatch) 
+        {
+            GameState.CameraController.Draw(_spriteBatch);
+            GameState.lowerHUD.Show();
+            GameState.mapHUD.Show();
+        }
+    }
+}
