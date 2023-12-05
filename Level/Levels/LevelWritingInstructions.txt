@@ -85,6 +85,7 @@
          * Fire, 40
          * FireballFishStatue, 41
          * FireballDragonStatue, 42
+         * LavaTile, 43
     */
 
     - Item dictionary:

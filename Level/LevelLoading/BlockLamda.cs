@@ -56,7 +56,8 @@ namespace LegendOfZelda
                 SpecialExteriorCollider,
                 Fire,
                 FireballFishStatue,
-                FireballDragonStatue
+                FireballDragonStatue,
+                LavaTile
             };
         }
         public static BlockLamda GetInstance()
@@ -253,6 +254,11 @@ namespace LegendOfZelda
             Vector2 pos = LevelUtilities.CalculatePositionWallOffset(room, mapElement);
             FireballStatue statue = new FireballStatue(SpriteFactory.CreateDragonSculptureSprite(), pos);
             new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, LevelUtilities.GridUnitSize, LevelUtilities.GridUnitSize), CollisionLayer.Wall, statue);
+        }
+        static void LavaTile(Room room, MapElement mapElement)
+        {
+            Vector2 pos = LevelUtilities.CalculatePositionWallOffset(room, mapElement);
+            new Block(SpriteFactory.CreateLavaTileSprite(), pos);
         }
     }
 }
