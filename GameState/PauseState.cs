@@ -8,6 +8,8 @@ namespace LegendOfZelda
         private IController Controller;
         public PauseState()
         {
+            LevelManager.RemoveDrawable(GameState.Link.Sprite, true);
+            LevelManager.AddDrawable(GameState.Link.Sprite);
             LevelManager.CurrentLevelRoom.RemoveDoorFrames();
             Controller = new PauseController(GameState.PauseManager);
         }
