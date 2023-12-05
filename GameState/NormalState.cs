@@ -11,18 +11,17 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             LevelManager.Update(gameTime);
-            GameState.lowerHUD.Update(gameTime);
+            GameState.LowerHUD.Update(gameTime);
             GameState.PlayerController.Update();
             GameState.CollisionManager.Update(gameTime);
-            GameState.cheatCodeController.Update();
-            GameState.mapHUD.Update(gameTime);
-            //GameState.inventoryHUD.Update(gameTime);    
+            GameState.CheatCodeController.Update();
+            GameState.MapHUD.Update(gameTime);  
         }
         public void Draw(SpriteBatch _spriteBatch) 
         {
             GameState.CameraController.Draw(_spriteBatch);
-            GameState.lowerHUD.Show();
-            GameState.mapHUD.Show();
+            GameState.LowerHUD.Show();
+            GameState.MapHUD.Show();
         }
     }
 }

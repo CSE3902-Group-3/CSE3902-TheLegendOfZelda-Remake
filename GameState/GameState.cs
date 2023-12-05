@@ -30,19 +30,18 @@ namespace LegendOfZelda
         {
             LevelManager = LevelManager.GetInstance();
             CollisionManager = new CollisionManager();
-            LevelMaster.StartLevel("level2.json");
-            Link = new Link();
-            LevelMaster.SnapToRoom(0);
             PauseManager = new PauseManager();
             BackgroundGenerator.GenerateMenuBackgrounds();
             State = new StartState();
-            RoomCycler.GetInstance();
+            Link = new Link();
+            Selector = new GameOverMenuSelector();
             CameraController = CameraController.GetInstance();
-            lowerHUD = LowerHUD.GetInstance();
-            inventoryHUD = InventoryHUD.GetInstance();
-            mapHUD = MapHUD.GetInstance();
-            PlayerController = new PlayerController(Link);
+            PlayerController = new PlayerController();
             ItemMenuController = new ItemMenuController();
+            CheatCodeController = new CheatCodeController();
+            LowerHUD = LowerHUD.GetInstance();
+            InventoryHUD = InventoryHUD.GetInstance();
+            MapHUD = MapHUD.GetInstance();
         }
         public void SwitchState(IGameState state)
         {

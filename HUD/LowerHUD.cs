@@ -88,7 +88,7 @@ namespace LegendOfZelda
             inventory = Inventory.getInstance();
             link = GameState.Link;
 
-            Level = 2;
+            Level = 1;
             RubiesCount = inventory.GetQuantity(new OneRupee(Vector2.Zero));
             KeysCount = inventory.GetQuantity(new Key(Vector2.Zero));
             BombsCount = inventory.GetQuantity(new Bomb(Vector2.Zero));
@@ -162,6 +162,18 @@ namespace LegendOfZelda
             RegisterListSprite(Bombs, BombsPos);
 
             RegisterLifeSprite(Life, LifePos);
+        }
+
+        public void GetLevel()
+        {
+            if (LevelManager.CurrentLevel == 0)
+            {
+                Level = 1;
+            }
+            else
+            {
+                Level = LevelManager.CurrentLevel;
+            }
         }
 
         public void CreateMiniMap()

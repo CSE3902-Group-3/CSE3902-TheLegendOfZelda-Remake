@@ -50,7 +50,7 @@ namespace LegendOfZelda
             mapElement = HUDMapElement.GetInstance();
             inventory = Inventory.getInstance();
 
-            Level = 2;
+            Level = 1;
 
             map = new Map(Vector2.Zero);
             compass = new Compass(Vector2.Zero);
@@ -92,6 +92,18 @@ namespace LegendOfZelda
         {
             RegisterSprite(MapHUDBase, MapHUDBasePos);
             RegisterMap();
+        }
+
+        public void GetLevel()
+        {
+            if (LevelManager.CurrentLevel == 0)
+            {
+                Level = 1;
+            }
+            else
+            {
+                Level = LevelManager.CurrentLevel;
+            }
         }
 
         public void CreateMapElement()
