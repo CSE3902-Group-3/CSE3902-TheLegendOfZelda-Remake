@@ -8,6 +8,8 @@ namespace LegendOfZelda
         private LowerHUD lowerHUD;
         public NormalState()
         {
+            LevelManager.RemoveDrawable(GameState.Link.Sprite);
+            LevelManager.AddDrawable(GameState.Link.Sprite, true);
             LevelManager.CurrentLevelRoom.AddDoorFrames();
             lowerHUD = LowerHUD.GetInstance();
             GameState.CheatCodeController = new CheatCodeController();

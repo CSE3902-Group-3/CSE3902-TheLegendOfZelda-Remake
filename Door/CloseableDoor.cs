@@ -114,6 +114,7 @@ namespace LegendOfZelda
 
                 openCollider.Active = false;
                 openSprite.UnregisterSprite();
+                SoundFactory.PlaySound(SoundFactory.getInstance().DoorUnlock);
 
                 Closed = true;
             }
