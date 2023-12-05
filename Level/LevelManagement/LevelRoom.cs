@@ -164,7 +164,6 @@ namespace LegendOfZelda
                 RoomEnemies[i].Frozen = false;
             }
         }
-        public void AddDoor(Direction direction, IDoor door)
         public void AddDoor(Direction direction, IDoor door, IAnimatedSprite doorFrameSprite)
         {
             RoomDoors.Add(direction, door);
