@@ -46,8 +46,6 @@
   <ItemGroup>
     <Folder Include="LegendOfZelda\obj\Release\" />
     <Folder Include="ItemClasses\" />
-    <Folder Include="Level\LevelOverviewPictures\" />
-    <Folder Include="SpecialScreens\" />
     <Folder Include="SpecialScreens\GameOverScreenDrawables\" />
     <Folder Include="SpecialScreens\ScreenManagers\" />
     <Folder Include="SpecialScreens\WinningScreenDrawables\" />
@@ -57,7 +55,7 @@
     <Folder Include="Command\CheatCodes\" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="Level\Levels\level1.json">
+    <None Update="Level\Levels\leve.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

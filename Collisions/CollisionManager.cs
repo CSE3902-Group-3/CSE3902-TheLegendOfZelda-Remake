@@ -51,14 +51,16 @@ namespace LegendOfZelda
                 rectColliders.Add(collisionLayer, new List<IRectCollider>());
             }
 
-            legalCollisions = new Dictionary<CollisionLayer, List<CollisionLayer>>();
-            legalCollisions.Add(CollisionLayer.Player, new List<CollisionLayer>{ CollisionLayer.Enemy, CollisionLayer.Wall, CollisionLayer.OuterWall, CollisionLayer.EnemyWeapon, CollisionLayer.Item, CollisionLayer.PlayerWeapon });
-            legalCollisions.Add(CollisionLayer.Enemy, new List<CollisionLayer> { CollisionLayer.Wall, CollisionLayer.OuterWall, CollisionLayer.PlayerWeapon, CollisionLayer.EnemyWeapon });
-            legalCollisions.Add(CollisionLayer.PlayerWeapon, new List<CollisionLayer> { CollisionLayer.OuterWall, CollisionLayer.Wall });
-            legalCollisions.Add(CollisionLayer.EnemyWeapon, new List<CollisionLayer> { CollisionLayer.OuterWall, CollisionLayer.Wall });
-            legalCollisions.Add(CollisionLayer.Wall, new List<CollisionLayer>());
-            legalCollisions.Add(CollisionLayer.OuterWall, new List<CollisionLayer>());
-            legalCollisions.Add(CollisionLayer.Item, new List<CollisionLayer>() { CollisionLayer.OuterWall});
+            legalCollisions = new Dictionary<CollisionLayer, List<CollisionLayer>>
+            {
+                { CollisionLayer.Player, new List<CollisionLayer> { CollisionLayer.Enemy, CollisionLayer.Wall, CollisionLayer.OuterWall, CollisionLayer.EnemyWeapon, CollisionLayer.Item, CollisionLayer.PlayerWeapon } },
+                { CollisionLayer.Enemy, new List<CollisionLayer> { CollisionLayer.Wall, CollisionLayer.OuterWall, CollisionLayer.PlayerWeapon, CollisionLayer.EnemyWeapon } },
+                { CollisionLayer.PlayerWeapon, new List<CollisionLayer> { CollisionLayer.OuterWall, CollisionLayer.Wall } },
+                { CollisionLayer.EnemyWeapon, new List<CollisionLayer> { CollisionLayer.OuterWall, CollisionLayer.Wall } },
+                { CollisionLayer.Wall, new List<CollisionLayer>() },
+                { CollisionLayer.OuterWall, new List<CollisionLayer>() },
+                { CollisionLayer.Item, new List<CollisionLayer>() { CollisionLayer.OuterWall } }
+            };
 
             collisionBuffer = new Dictionary<ICollidable, List<CollisionInfo>>();
         }
@@ -82,7 +84,6 @@ namespace LegendOfZelda
             colliderList.Remove(collider);
             return true;
         }
-
         public void Update(GameTime gameTime)
         {
             /*

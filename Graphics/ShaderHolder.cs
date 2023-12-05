@@ -48,12 +48,16 @@ namespace LegendOfZelda
 
         public static void CyclePalletteForward()
         {
+            if(!ShadersOn) return;
+
             currentPallette = (currentPallette + 1) % cyclePalletteList.Count;
             StandardPallet.Parameters["Pallet"].SetValue(cyclePalletteList[currentPallette]);
         }
 
         public static void CyclePalletteBackward()
         {
+            if(!ShadersOn) return;
+
             currentPallette--;
             if (currentPallette < 0) currentPallette = cyclePalletteList.Count - 1;
             StandardPallet.Parameters["Pallet"].SetValue(cyclePalletteList[currentPallette]);
@@ -61,6 +65,8 @@ namespace LegendOfZelda
 
         public static void SetPallette(Vector4[] newPallette)
         {
+            if (!ShadersOn) return;
+
             if (newPallette.Length != 32) return;
             StandardPallet.Parameters["Pallet"].SetValue(newPallette);
         }

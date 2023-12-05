@@ -6,7 +6,7 @@
 
         public NextSelectionCommand()
         {
-            selector = GameOverState.selector;
+            selector = GameState.Selector;
         }
 
         public void Execute()

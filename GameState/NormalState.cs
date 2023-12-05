@@ -5,10 +5,12 @@ namespace LegendOfZelda
 {
     public class NormalState: IGameState
     {
-        LowerHUD lowerHUD;
+        private LowerHUD lowerHUD;
         public NormalState()
         {
+            LevelManager.CurrentLevelRoom.AddDoorFrames();
             lowerHUD = LowerHUD.GetInstance();
+            GameState.CheatCodeController = new CheatCodeController();
         }
         public void Update(GameTime gameTime)
         {
@@ -16,7 +18,7 @@ namespace LegendOfZelda
             lowerHUD.Update(gameTime);
             GameState.PlayerController.Update();
             GameState.CollisionManager.Update(gameTime);
-            GameState.cheatCodeController.Update();
+            GameState.CheatCodeController.Update();
         }
         public void Draw(SpriteBatch _spriteBatch)
         {

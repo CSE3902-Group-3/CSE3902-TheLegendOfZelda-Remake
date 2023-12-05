@@ -26,6 +26,7 @@ namespace LegendOfZelda
                this
            );
             Collider.Active = true;
+            LevelManager.CurrentLevelRoom.AddProjectile(this);
         }
         public void Update(GameTime gameTime)
         {
@@ -37,6 +38,7 @@ namespace LegendOfZelda
         {
             new AquamentusBallExplosion(Position);
             Collider.Active = false;
+            LevelManager.CurrentLevelRoom.RemoveProjectile(this);
             LevelManager.RemoveUpdateable(this);
             LevelManager.RemoveDrawable(Sprite);
             Collider.Active = false;
