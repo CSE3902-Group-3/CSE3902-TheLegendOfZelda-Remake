@@ -46,6 +46,14 @@ namespace LegendOfZelda
                 this.HP += health;
         }
 
+        public void IncreaseMaxHealth()
+        {
+            if (this.MaxHP < 12)
+            {
+                this.MaxHP += 1;
+            }
+        }
+
         public void TakeDamage(float damage)
         {
             SoundFactory.PlaySound(SoundFactory.getInstance().LinkHurt);
