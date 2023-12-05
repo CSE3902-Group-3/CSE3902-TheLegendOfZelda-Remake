@@ -549,24 +549,6 @@
                     "ElementValue": 0,
                     "XLocation": 11,
                     "YLocation": 6
-                },
-                {
-                    "ElementType": "Item",
-                    "ElementValue": 10,
-                    "XLocation": 4,
-                    "YLocation": 6
-                },
-                {
-                    "ElementType": "Item",
-                    "ElementValue": 10,
-                    "XLocation": 4,
-                    "YLocation": 6
-                },
-                {
-                    "ElementType": "Item",
-                    "ElementValue": 10,
-                    "XLocation": 4,
-                    "YLocation": 6
                 }
             ]
         },
