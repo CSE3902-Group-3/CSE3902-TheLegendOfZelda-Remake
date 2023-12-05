@@ -41,7 +41,7 @@ namespace LegendOfZelda
 				ReleasedKey = false;
 				SoundFactory.PlaySound(SoundFactory.getInstance().EnemyDie);
 			}
-			else if (Keyboard.GetState().IsKeyDown(Keys.C) && Keyboard.GetState().IsKeyDown(Keys.K) && ReleasedKey)
+			else if (Keyboard.GetState().IsKeyDown(Keys.C) && Keyboard.GetState().IsKeyDown(Keys.J) && ReleasedKey)
 			{
 				addKeyCommand.Execute();
 				ReleasedKey = false;
@@ -54,7 +54,7 @@ namespace LegendOfZelda
 				SoundFactory.PlaySound(SoundFactory.getInstance().GetItem);
 			}
 
-            if (Keyboard.GetState().IsKeyUp(Keys.C) && Keyboard.GetState().IsKeyUp(Keys.H) && Keyboard.GetState().IsKeyUp(Keys.P) && Keyboard.GetState().IsKeyUp(Keys.K) && Keyboard.GetState().IsKeyUp(Keys.T) && !ReleasedKey)
+            if (Keyboard.GetState().IsKeyUp(Keys.C) && Keyboard.GetState().IsKeyUp(Keys.H) && Keyboard.GetState().IsKeyUp(Keys.P) && Keyboard.GetState().IsKeyUp(Keys.J) && Keyboard.GetState().IsKeyUp(Keys.T) && !ReleasedKey)
             {
                 ReleasedKey = true;
             }
