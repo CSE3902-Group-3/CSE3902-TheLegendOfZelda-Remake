@@ -122,6 +122,7 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - Ethan Glenwright reviewed Gabriel DiFiore's code for quality in PR #430
 - Michael Herring reviewed Matt Curie's code for quality in PR #428
 - Gabriel DiFiore reviewed Matt Curie's code for quality in PR #468
+- Ethan Glenwright reviewed MengQi Li's code for readability in PR #473
 
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
@@ -129,5 +130,5 @@ See `Code Review/Sprint# Reflections.txt` for sprint reflections
 #### Sprint 5 Topic Ideas:
 - Michael Herring: Reinvestigate HLSL shaders from sprint 2
 - Gabriel DiFiore: Config game with `.ini` file, load in custom Link health, enemy damage/difficulty, etc
-- Ethan Glenwright: Create the second dungeon / level
+- Ethan Glenwright: Create the second level and add a cool new level transition screen
 - Matt Curie: Refactoring enemy code to better fit software engineering standards, more accurate enemy behaviors
