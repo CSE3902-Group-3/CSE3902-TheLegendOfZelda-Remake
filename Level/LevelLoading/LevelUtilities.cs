@@ -70,20 +70,20 @@ namespace LegendOfZelda
         public static void GenerateExteriorColliders(Vector2 pos, Block block)
         {
             // North wall
-            new RectCollider(new Rectangle((int)pos.X + WallOffset, (int)pos.Y, (int)NorthDoorPosition.X - WallOffset, WallOffset), CollisionLayer.OuterWall, block);
-            new RectCollider(new Rectangle((int)pos.X + WallOffset + (int)NorthDoorPosition.X, (int)pos.Y, (int)NorthDoorPosition.X - WallOffset, WallOffset), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)pos.X + WallOffset, (int)pos.Y, (RoomWidth - WallOffset * 2 - GridUnitSize) / 2, WallOffset), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)pos.X + (RoomWidth + GridUnitSize) / 2, (int)pos.Y, (RoomWidth - WallOffset * 2 - GridUnitSize) / 2, WallOffset), CollisionLayer.OuterWall, block);
 
             // East wall
-            new RectCollider(new Rectangle((int)pos.X + RoomWidth - WallOffset, (int)pos.Y + WallOffset, WallOffset, (int)EastDoorPosition.Y - YMenuOffset - WallOffset), CollisionLayer.OuterWall, block);
-            new RectCollider(new Rectangle((int)pos.X + RoomWidth - WallOffset, (int)pos.Y + (int)EastDoorPosition.Y + WallOffset - YMenuOffset, WallOffset, (int)EastDoorPosition.Y - YMenuOffset - WallOffset), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)pos.X + RoomWidth - WallOffset, (int)pos.Y + WallOffset, WallOffset, (RoomHeight - WallOffset * 2 - GridUnitSize) / 2), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)pos.X + RoomWidth - WallOffset, (int)pos.Y + (RoomHeight + GridUnitSize) / 2, WallOffset, (RoomHeight - WallOffset * 2 - GridUnitSize) / 2), CollisionLayer.OuterWall, block);
 
             // South wall
-            new RectCollider(new Rectangle((int)pos.X + WallOffset, (int)pos.Y + RoomHeight - WallOffset, (int)SouthDoorPosition.X - WallOffset, WallOffset), CollisionLayer.OuterWall, block);
-            new RectCollider(new Rectangle((int)pos.X + WallOffset + (int)NorthDoorPosition.X, (int)pos.Y + RoomHeight - WallOffset, (int)SouthDoorPosition.X - WallOffset, WallOffset), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)pos.X + WallOffset, (int)pos.Y + RoomHeight - WallOffset, (RoomWidth - WallOffset * 2 - GridUnitSize) / 2, WallOffset), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)pos.X + (RoomWidth + GridUnitSize) / 2, (int)pos.Y + RoomHeight - WallOffset, (RoomWidth - WallOffset * 2 - GridUnitSize) / 2, WallOffset), CollisionLayer.OuterWall, block);
 
             // West wall
-            new RectCollider(new Rectangle((int)pos.X, (int)pos.Y + WallOffset, WallOffset, (int)WestDoorPosition.Y - YMenuOffset - WallOffset), CollisionLayer.OuterWall, block);
-            new RectCollider(new Rectangle((int)pos.X, (int)pos.Y + (int)WestDoorPosition.Y + WallOffset - YMenuOffset, WallOffset, (int)WestDoorPosition.Y - YMenuOffset - WallOffset), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)pos.X, (int)pos.Y + WallOffset, WallOffset, (RoomHeight - WallOffset * 2 - GridUnitSize) / 2), CollisionLayer.OuterWall, block);
+            new RectCollider(new Rectangle((int)pos.X, (int)pos.Y + (RoomHeight + GridUnitSize) / 2, WallOffset, (RoomHeight - WallOffset * 2 - GridUnitSize) / 2), CollisionLayer.OuterWall, block);
         }
         public static void GenerateSpecialExteriorColliders(Vector2 pos, Block block)
         {

@@ -1127,6 +1127,17 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        public AnimatedSprite CreateLavaTileSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(1018, 45, 16, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
         public AnimatedSprite CreateBlueTileSprite()
         {
             Rectangle[] frames = new Rectangle[1]
@@ -1225,12 +1236,33 @@ namespace LegendOfZelda
             AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
             return newSprite;
         }
+        public AnimatedSprite CreateNorthOpenDoorTopFrameSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(848, 11, 32, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
 
         public AnimatedSprite CreateWestOpenDoorSprite()
         {
             Rectangle[] frames = new Rectangle[1]
             {
                 new Rectangle(848, 44, 32, 32)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateWestOpenDoorTopFrameSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(848, 44, 16, 32)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
@@ -1248,11 +1280,33 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        public AnimatedSprite CreateEastOpenDoorTopFrameSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(864, 77, 16, 32)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
         public AnimatedSprite CreateSouthOpenDoorSprite()
         {
             Rectangle[] frames = new Rectangle[1]
             {
                 new Rectangle(848, 110, 32, 32)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateSouthOpenDoorTopFrameSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(848, 126, 32, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
@@ -1358,11 +1412,33 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        public AnimatedSprite CreateNorthHoleDoorTopFrameSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(947, 11, 32, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
         public AnimatedSprite CreateWestHoleDoorSprite()
         {
             Rectangle[] frames = new Rectangle[1]
             {
                 new Rectangle(947, 44, 32, 32)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateWestHoleDoorTopFrameSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(947, 44, 16, 32)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
@@ -1380,11 +1456,33 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        public AnimatedSprite CreateEastHoleDoorTopFrameSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(963, 77, 16, 32)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
         public AnimatedSprite CreateSouthHoleDoorSprite()
         {
             Rectangle[] frames = new Rectangle[1]
             {
                 new Rectangle(947, 110, 32, 32)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateSouthHoleDoorTopFrameSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(947, 126, 32, 16)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(dungeonTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);

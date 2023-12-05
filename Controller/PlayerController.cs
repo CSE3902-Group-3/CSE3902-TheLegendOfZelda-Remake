@@ -8,7 +8,6 @@ namespace LegendOfZelda
     public class PlayerController : IController
     {
         private KeyboardMapping controllerMappings;
-        private Link link;
         private ICommands command;
         private Keys[] currKeys;
         private Keys[] prevKeys;
@@ -18,10 +17,9 @@ namespace LegendOfZelda
         private PauseCommand PauseCommand;
         private GoToItemMenuCommand GoToItemMenuCommand;
 
-        public PlayerController(Link Link)
+        public PlayerController()
         {
-            link = Link;
-            controllerMappings = new KeyboardMapping(link);
+            controllerMappings = new KeyboardMapping();
             prevKeys = Array.Empty<Keys>();
             currKeys = Array.Empty<Keys>();
             ReleasedPause = false;

@@ -8,17 +8,18 @@ namespace LegendOfZelda
     {
         private static GameState Instance;
         private static IGameState State;
-        private static LevelManager LevelMaster;
-        public static CameraController CameraController;
-        public static PauseManager PauseManager;
-        public static CollisionManager CollisionManager;
-        public static Link Link;
-        public static LowerHUD lowerHUD;
-        public static InventoryHUD inventoryHUD;
-        public static MapHUD mapHUD;
-        public static IController PlayerController;
-        public static IController ItemMenuController;
-        public static IController cheatCodeController;
+        public static LevelManager LevelManager { get; private set; }
+        public static CameraController CameraController { get; private set; }
+        public static PauseManager PauseManager { get; private set; }
+        public static CollisionManager CollisionManager { get; private set; }
+        public static Link Link { get; set; }
+        public static LowerHUD LowerHUD { get; private set; }
+        public static InventoryHUD InventoryHUD { get; private set; }
+        public static MapHUD MapHUD { get; private set; }
+        public static GameOverMenuSelector Selector { get; private set; }
+        public static IController PlayerController { get; private set; }
+        public static IController ItemMenuController { get; private set; }
+        public static IController CheatCodeController { get; set; }
         public static GameState GetInstance()
         {
             if (Instance == null)
@@ -27,7 +28,7 @@ namespace LegendOfZelda
         }
         private GameState()
         {
-            LevelMaster = LevelManager.GetInstance();
+            LevelManager = LevelManager.GetInstance();
             CollisionManager = new CollisionManager();
             LevelMaster.StartLevel("level1.json");
             Link = new Link();
@@ -42,7 +43,6 @@ namespace LegendOfZelda
             mapHUD = MapHUD.GetInstance();
             PlayerController = new PlayerController(Link);
             ItemMenuController = new ItemMenuController();
-            cheatCodeController = new CheatCodeController();
         }
         public void SwitchState(IGameState state)
         {
@@ -54,28 +54,18 @@ namespace LegendOfZelda
         }
         public void ResetGameState()
         {
-            CameraController.Reset();
             CollisionManager = new CollisionManager();
-            LevelMaster.StartLevel("level2.json");
-            Link = new Link();
-            LevelMaster.SnapToRoom(0);
-            PauseManager = new PauseManager();
-            BackgroundGenerator.GenerateMenuBackgrounds();
-            State = new NormalState();
-            PlayerController = new PlayerController(Link);
-            ItemMenuController = new ItemMenuController();
-            LinkUtilities.UpdatePositions(Link, LinkUtilities.originalLinkPosition);
+            CameraController.Reset();
+            CameraController.ChangeMenu(Menu.Item);
+            State = new LevelTransitionState(LevelManager.CurrentLevel);
         }
         public void GameOverContinue()
         {
-            //CollisionManager = new CollisionManager();
             Link = new Link();
-            LevelMaster.SnapToRoom(0);
-            PlayerController = new PlayerController(Link);
-            CameraController.mainCamera.worldPos = LevelManager.CurrentRoomPosition;
-            CameraController.ChangeMenu(Menu.Item);
-            SwitchState(new NormalState());
+            LevelManager.SnapToRoom(0);
             LinkUtilities.UpdatePositions(Link, LinkUtilities.originalLinkPosition);
+            CameraController.ChangeMenu(Menu.Item);
+            State = new NormalState();
         }
         public void Update(GameTime gameTime)
         {
