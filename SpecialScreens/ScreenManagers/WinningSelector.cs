@@ -12,6 +12,7 @@ namespace LegendOfZelda
         private int cameraYPos;
         private Vector2 OptionOnePos;
         private Vector2 OptionTwoPos;
+        private Vector2 OptionThreePos;
         private GraphicsDevice graphicsDevice;
         private int ScreenWidth;
         private int ScreenHeight;
@@ -20,18 +21,20 @@ namespace LegendOfZelda
         {
             cameraXPos = 30000;
             cameraYPos = 0;
-            selection = 1;
+            selection = 2;
             ScreenWidth = 1024;
             ScreenHeight = 896;
             graphicsDevice = Game1.getInstance().GraphicsDevice;
             OptionOnePos = new Vector2((cameraXPos + ScreenWidth / 4) - 40, cameraYPos + ScreenHeight / 3);
-            OptionTwoPos = new Vector2((cameraXPos + ScreenWidth / 4) - 40, (cameraYPos + ScreenHeight) * 2 / 3);
+            OptionTwoPos = new Vector2((cameraXPos + ScreenWidth / 4) - 40, cameraYPos + ScreenHeight / 2);
+            OptionThreePos = new Vector2((cameraXPos + ScreenWidth / 4) - 40, (cameraYPos + ScreenHeight) * 2 / 3);
 
 
             IndicationHearts = new List<IItem>()
             {
                 new SelectionHeart(OptionOnePos),
-                new SelectionHeart(OptionTwoPos)
+                new SelectionHeart(OptionTwoPos),
+                new SelectionHeart(OptionThreePos)
             };
 
             foreach (IItem item in IndicationHearts)
@@ -44,16 +47,17 @@ namespace LegendOfZelda
         {
             IndicationHearts[selection].Remove();
 
-            if (selection == 1)
+            if (selection == 2)
             {
                 selection = 0;
             }
             else
             {
-                selection = 1;
+                selection++;
             }
 
             IndicationHearts[selection].Show();
+            SoundFactory.PlaySound(SoundFactory.getInstance().LowHealth);
         }
 
         public void Reset()
@@ -63,15 +67,46 @@ namespace LegendOfZelda
             IndicationHearts[selection].Show();
         }
 
+        private void RemoveSelector()
+        {
+            foreach (IItem item in IndicationHearts)
+            {
+                item.Remove();
+            }
+        }
+
         public void ExecuteSelection()
         {
             if (selection == 0)
             {
-                //To be added in the future
+                if (LevelManager.CurrentLevel == 1)
+                {
+                    GameState.GetInstance().ResetGameState();
+                    RemoveSelector();
+                } else
+                {
+                    GameState.CameraController.ChangeMenu(Menu.Item);
+                    GameState.GetInstance().SwitchState(new LevelTransitionState(1));
+                    RemoveSelector();
+                }
             }
             else if (selection == 1)
             {
-                //To be added in the future
+                if (LevelManager.CurrentLevel == 2)
+                {
+                    GameState.GetInstance().ResetGameState();
+                    RemoveSelector();
+                }
+                else
+                {
+                    GameState.CameraController.ChangeMenu(Menu.Item);
+                    GameState.GetInstance().SwitchState(new LevelTransitionState(2));
+                    RemoveSelector();
+                }
+            }
+            else if (selection == 2)
+            {
+                Game1.getInstance().Exit();
             }
         }
     }

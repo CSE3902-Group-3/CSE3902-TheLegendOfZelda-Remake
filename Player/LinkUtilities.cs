@@ -5,7 +5,7 @@ namespace LegendOfZelda
     public static class LinkUtilities
     {
 
-        public static Vector2 originalLinkPosition = new Vector2(LevelManager.CurrentRoomPosition.X + (LevelUtilities.RoomWidth - LevelUtilities.GridUnitSize) / 2, LevelManager.CurrentRoomPosition.Y + LevelUtilities.RoomHeight);
+        public static Vector2 originalLinkPosition { get { return new Vector2(LevelManager.CurrentRoomPosition.X + (LevelUtilities.RoomWidth - LevelUtilities.GridUnitSize) / 2, LevelManager.CurrentRoomPosition.Y + LevelUtilities.RoomHeight); } }
 
         public static Vector2 upBombOffset = new Vector2(15, -75);
         public static Vector2 rightBombOffset = new Vector2(75, 0);

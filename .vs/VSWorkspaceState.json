@@ -11,6 +11,6 @@
     "\\StateMachine\\LinkStates",
     "\\StateMachine\\LinkStates\\General"
   ],
-  "SelectedNode": "\\Graphics\\SpriteFactory.cs",
+  "SelectedNode": "\\GameState\\GameOverState.cs",
   "PreviewInSolutionExplorer": false
 }
