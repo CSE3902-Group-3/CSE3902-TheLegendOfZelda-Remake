@@ -54,7 +54,7 @@ namespace LegendOfZelda
 				SoundFactory.PlaySound(SoundFactory.getInstance().GetItem);
 			}
 
-            if (Keyboard.GetState().IsKeyUp(Keys.C) && Keyboard.GetState().IsKeyUp(Keys.H) && Keyboard.GetState().IsKeyUp(Keys.P) && Keyboard.GetState().IsKeyUp(Keys.K) && Keyboard.GetState().IsKeyUp(Keys.K) && !ReleasedKey)
+            if (Keyboard.GetState().IsKeyUp(Keys.C) && Keyboard.GetState().IsKeyUp(Keys.H) && Keyboard.GetState().IsKeyUp(Keys.P) && Keyboard.GetState().IsKeyUp(Keys.K) && Keyboard.GetState().IsKeyUp(Keys.T) && !ReleasedKey)
             {
                 ReleasedKey = true;
             }
