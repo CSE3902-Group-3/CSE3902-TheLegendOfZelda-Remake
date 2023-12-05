@@ -20,19 +20,18 @@ namespace LegendOfZelda
 
         public void Show()
         {
-            triforce.RegisterSprite();
+            LevelManager.AddDrawable(triforce);
             triforce.UpdatePos(position);
         }
 
         public void Remove()
         {
-            triforce.UnregisterSprite();
+            LevelManager.RemoveDrawable(triforce);
         }
 
         public IItem Collect()
         {
-            position = GameState.Link.Pos + new Vector2(5, -61);
-            triforce.UpdatePos(position);
+            LevelManager.RemoveDrawable(triforce);
             collider.Active = false;
             GameState.GetInstance().SwitchState(new WinningState());
             return this;
@@ -58,4 +57,3 @@ namespace LegendOfZelda
         }
     }
 }
-
