@@ -1,8 +1,0 @@
-Author of the code review: MengQi Lei
-Date of the code review: 12/5/23
-Sprint number: 5
-Name of the .cs file being reviewed: Palette & Shader classes
-Author of the .cs file being reviewed: Michael Herring
-Specific comments on code quality: Code quality is high, it is a really good choice to have holders for both pallets and shaders, and each classes are organized well. Some magic numbers here and there for me, but I believe those are nevessary and should be easier to understand if I have more knowledge about shaders and palettes.
-A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
-If we want to add more palette of another color, it would be super simple since the structure of palettes of shaders are already there, and is vary organized. It would be easy to just follow the pattern.
