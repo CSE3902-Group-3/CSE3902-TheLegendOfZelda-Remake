@@ -9,5 +9,6 @@ namespace LegendOfZelda
 {
     public interface IPlayerProjectile : IUpdateable, ICollidable
     {
+        void Destroy();
     }
 }

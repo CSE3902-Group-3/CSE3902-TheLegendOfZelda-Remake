@@ -1,20 +1,13 @@
 ﻿
 namespace LegendOfZelda
 {
-    //Class completed last minute in order to meet functionality check. Original author still needs to come back and finish the class.
     public class ToIdleCommand : ICommands
     {
-        private IPlayer player;
-
-        public ToIdleCommand(IPlayer link)
-        {
-            player = link;
-
-        }
+        public ToIdleCommand(){}
 
         public void Execute()
         {
-            player.StateMachine.ChangeState(new IdleLinkState());
+            GameState.Link.StateMachine.ChangeState(new IdleLinkState());
         }
     }
 }

@@ -3,17 +3,25 @@ namespace LegendOfZelda
 {
     public class SecondaryAttackCommand : ICommands
     {
-        // Prepare for later
-        private Link player;
-
-        public SecondaryAttackCommand(Link link)
-        {
-            player = link;
-        }
+        public SecondaryAttackCommand(){}
 
         public void Execute()
         {
-            //Prepare for later
+            switch (GameState.Link.StateMachine.currentDirection)
+            {
+                case Direction.left:
+                    GameState.Link.StateMachine.ChangeState(new AttackingLeftLinkState());
+                    break;
+                case Direction.up:
+                    GameState.Link.StateMachine.ChangeState(new AttackingUpLinkState());
+                    break;
+                case Direction.right:
+                    GameState.Link.StateMachine.ChangeState(new AttackingRightLinkState());
+                    break;
+                case Direction.down:
+                    GameState.Link.StateMachine.ChangeState(new AttackingDownLinkState());
+                    break;
+            }
         }
     }
 }

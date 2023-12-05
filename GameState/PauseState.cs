@@ -8,6 +8,7 @@ namespace LegendOfZelda
         private IController Controller;
         public PauseState()
         {
+            LevelManager.CurrentLevelRoom.RemoveDoorFrames();
             Controller = new PauseController(GameState.PauseManager);
         }
         public void Update(GameTime gameTime)

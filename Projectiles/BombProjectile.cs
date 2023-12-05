@@ -20,7 +20,7 @@ namespace LegendOfZelda
             sprite = spriteFactory.CreateBombSprite();
             SoundFactory.PlaySound(SoundFactory.getInstance().BombDrop);
             sprite.UpdatePos(pos);
-
+            LevelManager.CurrentLevelRoom.AddProjectile(this);
             new Timer(delay, SpawnExplosion);
         }
 
@@ -37,6 +37,7 @@ namespace LegendOfZelda
         }
         public void Destroy()
         {
+            LevelManager.CurrentLevelRoom.RemoveProjectile(this);
             sprite.UnregisterSprite();
             LevelManager.RemoveUpdateable(this);
         }

@@ -6,13 +6,12 @@ namespace LegendOfZelda
     public class GameOverState : IGameState
     {
         private GameOverScreen gameOver;
-        public static GameOverMenuSelector selector;
         private GameOverMenuController controller;
 
         public GameOverState()
         {
+            LevelManager.CurrentLevelRoom.RemoveDoorFrames();
             gameOver = new GameOverScreen();
-            selector = new GameOverMenuSelector();
             controller = new GameOverMenuController();
         }
         public void Update(GameTime gameTime)

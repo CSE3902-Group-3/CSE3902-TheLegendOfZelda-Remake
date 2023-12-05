@@ -9,6 +9,7 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             CameraController.GetInstance().mainCamera.Update(gameTime);
+            GameState.Link.Update(gameTime);
         }
         public void Draw(SpriteBatch _spriteBatch)
         {

@@ -15,7 +15,6 @@ namespace LegendOfZelda
         private IRectCollider openCollider;
 
         private int wallSize = 32;
-        private IPlayer player;
         private Direction direction;
         public BombableDoor(Vector2 pos, Direction direction)
         {
@@ -23,7 +22,6 @@ namespace LegendOfZelda
             wallSize *= spriteFactory.scale;
             Closed = true;
             this.direction = direction;
-            LevelManager.CurrentLevelRoom.AddDoor(direction, this);
 
             switch (direction)
             {
@@ -33,6 +31,9 @@ namespace LegendOfZelda
                     closedSprite = spriteFactory.CreateWallNorthSprite();
                     closedSprite.UpdatePos(pos);
                     openCollider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, wallSize, wallSize / 2), CollisionLayer.OuterWall, this);
+                    IAnimatedSprite northFrame = spriteFactory.CreateNorthHoleDoorTopFrameSprite();
+                    northFrame.UpdatePos(pos);
+                    LevelManager.CurrentLevelRoom.AddDoor(direction, this, northFrame);
                     break;
                 case Direction.right:
                     openSprite = spriteFactory.CreateEastHoleDoorSprite();
@@ -40,6 +41,9 @@ namespace LegendOfZelda
                     closedSprite = spriteFactory.CreateWallEastSprite();
                     closedSprite.UpdatePos(pos);
                     openCollider = new RectCollider(new Rectangle((int)pos.X + wallSize / 2, (int)pos.Y, wallSize / 2, wallSize), CollisionLayer.OuterWall, this);
+                    IAnimatedSprite eastFrame = spriteFactory.CreateEastHoleDoorTopFrameSprite();
+                    eastFrame.UpdatePos(pos + new Vector2(64, 0));
+                    LevelManager.CurrentLevelRoom.AddDoor(direction, this, eastFrame);
                     break;
                 case Direction.down:
                     openSprite = spriteFactory.CreateSouthHoleDoorSprite();
@@ -47,6 +51,9 @@ namespace LegendOfZelda
                     closedSprite = spriteFactory.CreateWallSouthSprite();
                     closedSprite.UpdatePos(pos);
                     openCollider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y + wallSize / 2, wallSize, wallSize / 2), CollisionLayer.OuterWall, this);
+                    IAnimatedSprite southFrame = spriteFactory.CreateSouthHoleDoorTopFrameSprite();
+                    southFrame.UpdatePos(pos + new Vector2(0, 64));
+                    LevelManager.CurrentLevelRoom.AddDoor(direction, this, southFrame);
                     break;
                 case Direction.left:
                     openSprite = spriteFactory.CreateWestHoleDoorSprite();
@@ -54,6 +61,9 @@ namespace LegendOfZelda
                     closedSprite = spriteFactory.CreateWallWestSprite();
                     closedSprite.UpdatePos(pos);
                     openCollider = new RectCollider(new Rectangle((int)pos.X, (int)pos.Y, wallSize / 2, wallSize), CollisionLayer.OuterWall, this);
+                    IAnimatedSprite westFrame = spriteFactory.CreateWestHoleDoorTopFrameSprite();
+                    westFrame.UpdatePos(pos);
+                    LevelManager.CurrentLevelRoom.AddDoor(direction, this, westFrame);
                     break;
             }
 
@@ -81,9 +91,9 @@ namespace LegendOfZelda
         private void HandleCollisionWhenUnlocked(CollisionInfo collision)
         {
             if (collision.CollidedWith.Layer != CollisionLayer.Player && GameState.Link.StateMachine.isKnockedBack) return;
-
-            player = GameState.Link;
-            player.EnterRoomTransition();
+            GameState.Link.StateMachine.prevDirection = GameState.Link.StateMachine.currentDirection;
+            GameState.Link.StateMachine.currentDirection = direction;
+            GameState.Link.EnterRoomTransition();
             LevelManager.GetInstance().TransitionToRoom(direction);
         }
 
