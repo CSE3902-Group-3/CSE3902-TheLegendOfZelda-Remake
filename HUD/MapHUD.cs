@@ -50,7 +50,7 @@ namespace LegendOfZelda
             mapElement = HUDMapElement.GetInstance();
             inventory = Inventory.getInstance();
 
-            Level = 1;
+            GetLevel();
 
             map = new Map(Vector2.Zero);
             compass = new Compass(Vector2.Zero);
@@ -83,6 +83,7 @@ namespace LegendOfZelda
 
         public void Update(GameTime gametime)
         {
+            GetLevel();
             UpdateMapUnlock();
             UpdateCompassUnlock();
             RegisterIndicatorSprite(CompassUnlock);
