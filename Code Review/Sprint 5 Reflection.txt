@@ -1,0 +1,4 @@
+Sprint 5 Reflection:
+
+This was definitely one of our most successful and smooth sprints. We were able to finish most of the functionality and bug fixes before the deadline of the sprint and we were able
+to catch up on a lot of issues we had left over from previous sprints.
