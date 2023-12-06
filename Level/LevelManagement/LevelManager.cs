@@ -53,6 +53,19 @@ namespace LegendOfZelda
                 CurrentRoom++;
             }
             CurrentRoom = 0;
+
+            if (ShaderHolder.ShadersOn)
+            {
+                switch (levelNumber)
+                {
+                    case 1:
+                        ShaderHolder.SetPallette(PalletHolder.normalPallette);
+                        break;
+                    case 2:
+                        ShaderHolder.SetPallette(PalletHolder.dung2Pallette);
+                        break;
+                }
+            }
         }
         public bool SnapToRoom(int targetRoom)
         {
