@@ -32,7 +32,6 @@ Remake of NES The Legend of Zelda game
 - Map item does nothing
 - Clock item does nothing
 - Clicking to the bonus enemy room in dungeon 1 crashes the game
-- Entering the Wizard room by any means crashes the game
 - Link's health does not update
 
 ## Minor Known Bugs:
