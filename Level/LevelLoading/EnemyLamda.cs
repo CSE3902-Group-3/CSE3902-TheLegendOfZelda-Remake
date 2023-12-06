@@ -21,7 +21,8 @@ namespace LegendOfZelda
                 Skeleton,
                 WallMaster,
                 Wizard,
-                ZolBig
+                ZolBig,
+                BlueGoriya
             };
         }
         public static EnemyLamda GetInstance()
@@ -84,6 +85,11 @@ namespace LegendOfZelda
         static void ZolBig(Room room, MapElement mapElement)
         {
             IEnemy enemy = new ZolBig(LevelUtilities.CalculatePositionWallOffset(room, mapElement));
+            LevelManager.CurrentLevelRoom.AddEnemy(enemy);
+        }
+        static void BlueGoriya(Room room, MapElement mapElement)
+        {
+            IEnemy enemy = new BlueGoriya(LevelUtilities.CalculatePositionWallOffset(room, mapElement));
             LevelManager.CurrentLevelRoom.AddEnemy(enemy);
         }
     }
