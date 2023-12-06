@@ -23,8 +23,8 @@ Remake of NES The Legend of Zelda game
 - Use `C`+`H` to heal Link to max HP.
 - Use `C`+`O` to kill all enemies in current room.
 
-### `config.ini`
-- modify game constants related to Link speed/HP, game difficulty, start level, etc.
+### Config file: `config.ini`
+- Edit this file to modify game constants related to Link speed/HP, game difficulty, start level, etc.
 
 ## Major Known Bugs:
 - Dodongo does not eat bombs
