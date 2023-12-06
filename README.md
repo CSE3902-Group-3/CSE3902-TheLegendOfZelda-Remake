@@ -28,12 +28,16 @@ Remake of NES The Legend of Zelda game
 
 ## Major Known Bugs:
 - Dodongo does not eat bombs
+- Compass item does nothing
+- Map item does nothing
+- Clock item does nothing
+- Clicking to the bonus enemy room in dungeon 1 crashes the game
+- Entering the Wizard room by any means crashes the game
 
 ## Minor Known Bugs:
-- Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
-- Goriya sometimes walks through certain walls
-- Sprites still animate when the game is paused
-- Wizard takes damage
+- If an enemy damages you and pushes you into a wall, it can keep damaging you and effectively instant kill you
+- Link can only use secondary weapon while standing still
+- The minimap in the item menu is missing the rightmost room in the row three up from the bottom
 
 ## Intentional Differences From Source Game:
 - Interaction with Wizard and spawning text is not implemented
