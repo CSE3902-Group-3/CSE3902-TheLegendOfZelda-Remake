@@ -119,7 +119,7 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - MengQi Lei reviewed Michael Herring's code for quality (See `Code Review/Sprint 5`)
 - MengQi Lei reviewed Matt Curie's code for readability (See `Code Review/Sprint 5`)
 
-## Sprint Reflections:
+#### Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
 
 #### Sprint 5 Topic Ideas:
