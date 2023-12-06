@@ -1,23 +1,30 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
     public class Rope : IEnemy
     {
-        private AnimatedSprite Sprite;
-        private int Width = 16;
-        private int Height = 16;
-        private float Health { get; set; } = 0.5f;
+        public AnimatedSprite Sprite { get; set; }
+        public int Width { get; set; } = 16;
+        public int Height { get; set; } = 16;
+        public Type EnemyType { get; set; }
+        public EnemyItemDrop.EnemyClass Classification { get; } = EnemyItemDrop.EnemyClass.B;
+        public float Health { get; set; } = 0.5f;
         public Vector2 Position { get; set; }
-        private Vector2 Center;
+        public Vector2 Direction { get; set; } = new(0, 0);
+        public Vector2 Offset { get; set; } = new(0, 0);
+        public Vector2 SpeedMultiplier { get; set; } = new(1, 1);
+        public double LastSwitch { get; set; } = 0;
+        public float CurrentCooldown { get; set; } = 0.0f;
+        public bool AllowedToMove { get; set; } = true;
+        public bool IsColliding { get; set; } = false;
+        public RectCollider Collider { get; private set; }
+        public bool Frozen { get; set; } = false;
+        public Vector2 Center;
         private readonly int PosIncrement = 5;
         private bool FacingLeft = false;
-        private double LastSwitch = 0;
-        private float currentCooldown = 0.0f;
-        private bool allowedToMove = true;
-        public bool isColliding = false;
-        public RectCollider Collider { get; private set; }
         public Rope(Vector2 pos)
         {
             Position = pos;
@@ -54,7 +61,7 @@ namespace LegendOfZelda
         {
             Vector2 newPosition = new(Position.X, Position.Y);
 
-            if (allowedToMove)
+            if (!Frozen && AllowedToMove)
             {
                 // Cycle left and right movement
                 if (FacingLeft)
@@ -105,8 +112,8 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
-            currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
-            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000 && isColliding == false)
+            CurrentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000 && IsColliding == false)
             {
                 LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
                 ChangeDirection();
@@ -121,19 +128,19 @@ namespace LegendOfZelda
 
                 if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Wall)
                 {
-                    isColliding = true;
+                    IsColliding = true;
                     ChangeDirection();
                     Sprite.UpdatePos(Position);
                     Collider.Pos = Position;
                     ChangePosition();
-                    isColliding = false;
+                    IsColliding = false;
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
-                    if (currentCooldown <= 0)
+                    if (CurrentCooldown <= 0)
                     {
                         EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
-                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        CurrentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
                         Sprite.flashing = true;
                         new Timer(1.0f, StopFlashing);
                     }
@@ -142,13 +149,13 @@ namespace LegendOfZelda
         }
         public void Stun()
         {
-            allowedToMove = false;
+            AllowedToMove = false;
             SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit);
             new Timer(2.0f, CompleteStun);
         }
         public void CompleteStun()
         {
-            allowedToMove = true;
+            AllowedToMove = true;
         }
         public void StopFlashing()
         {

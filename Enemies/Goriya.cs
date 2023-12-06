@@ -8,16 +8,25 @@ namespace LegendOfZelda
     {
         private readonly List<AnimatedSprite> Sprites;
         private int CurrentSprite;
-        private float Health { get; set; } = 3.0f;
+        public AnimatedSprite Sprite { get; set; }
+        public float Health { get; set; } = 3.0f;
+        public int Width { get; }
+        public int Height { get; }
+        public Type EnemyType { get; set; }
+        public EnemyItemDrop.EnemyClass Classification { get; } = EnemyItemDrop.EnemyClass.C;
         public Vector2 Position { get; set; }
+        public Vector2 Direction { get; set; } = new(1, 0);
+        public Vector2 Offset { get; set; } = new(0, 0);
+        public RectCollider Collider { get; }
+        public bool IsColliding { get; set; } = false;
+        public bool Frozen { get; set; } = false;
+
+        public bool AllowedToMove { get; set; } = true;
+        public Vector2 SpeedMultiplier { get; set; } = new(1, 1);
+        public float CurrentCooldown { get; set; } = 0.0f;
+        public double LastSwitch { get; set; } = 0;
         private Vector2 Center;
-        private Vector2 Direction = new(1, 0);
-        private double LastSwitch = 0;
         private int UpdateCount = 0;
-        private float currentCooldown = 0.0f;
-        private bool allowedToMove = true;
-        public bool isColliding = false;
-        public RectCollider Collider { get; private set; }
         public Goriya(Vector2 pos)
         {
             Position = pos;
@@ -63,7 +72,7 @@ namespace LegendOfZelda
         }
         public void ChangePosition()
         {
-            if (allowedToMove)
+            if (!Frozen && AllowedToMove)
             {
                 Position += Direction;
                 Sprites[CurrentSprite].UpdatePos(Position);
@@ -117,7 +126,7 @@ namespace LegendOfZelda
         }
         public void Update(GameTime gameTime)
         {
-            currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
+            CurrentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
             if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
             {
                 LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
@@ -149,10 +158,10 @@ namespace LegendOfZelda
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
-                    if (currentCooldown <= 0)
+                    if (CurrentCooldown <= 0)
                     {
                         EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
-                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        CurrentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
                         Sprites[CurrentSprite].flashing = true;
                         new Timer(1.0f, StopFlashing);
                     }
@@ -161,13 +170,13 @@ namespace LegendOfZelda
         }
         public void Stun()
         {
-            allowedToMove = false;
+            AllowedToMove = false;
             SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit);
             new Timer(2.0f, CompleteStun);
         }
         public void CompleteStun()
         {
-            allowedToMove = true;
+            AllowedToMove = true;
         }
         public void StopFlashing()
         {
