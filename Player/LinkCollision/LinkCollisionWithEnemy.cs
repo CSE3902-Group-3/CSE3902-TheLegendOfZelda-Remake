@@ -22,6 +22,7 @@ namespace LegendOfZelda
                 { typeof(Aquamentus), 0.5f },
                 { typeof(Bat), 0.5f },
                 { typeof(Goriya), 1.0f },
+                { typeof(BlueGoriya), 1.0f },
                 { typeof(GelSmall), 0.5f },
                 { typeof(Rope), 0.5f },
                 { typeof(Skeleton), 0.5f },
