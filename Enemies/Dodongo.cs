@@ -9,17 +9,25 @@ namespace LegendOfZelda
         private readonly List<AnimatedSprite> Sprites;
         private readonly List<AnimatedSprite> HurtSprites;
         private int CurrentSprite;
-        private int Width = 16;
-        private int Height = 16;
-        private float Health { get; set; } = 8.0f;
+        public AnimatedSprite Sprite { get; set; }
+        public float Health { get; set; } = 8.0f;
+        public int Width { get; } = 16;
+        public int Height { get; } = 16;
+        public Type EnemyType { get; set; }
+        public EnemyItemDrop.EnemyClass Classification { get; } = EnemyItemDrop.EnemyClass.D;
         public Vector2 Position { get; set; }
+        public Vector2 Direction { get; set; } = new(0, 0);
+        public Vector2 Offset { get; set; } = new(0, 0);
+        public RectCollider Collider { get; }
+        public bool IsColliding { get; set; } = false;
+        public bool Frozen { get; set; } = false;
+
+        public bool AllowedToMove { get; set; } = true;
+        public Vector2 SpeedMultiplier { get; set; } = new(1, 1);
+        public float CurrentCooldown { get; set; } = 0.0f;
+        public double LastSwitch { get; set; } = 0;
         private Vector2 Center;
-        private Vector2 Direction;
-        private double LastSwitch = 0;
         private bool Injured = false;
-        private float currentCooldown = 0.0f;
-        public bool isColliding = false;
-        public RectCollider Collider { get; private set; }
         public Dodongo(Vector2 pos)
         {
             Position = pos;
@@ -80,9 +88,12 @@ namespace LegendOfZelda
         }
         public void ChangePosition()
         {
-            Position += Direction;
-            Sprites[CurrentSprite].UpdatePos(Position);
-            Collider.Pos = Position;
+            if (!Frozen)
+            {
+                Position += Direction;
+                Sprites[CurrentSprite].UpdatePos(Position);
+                Collider.Pos = Position;
+            }
         }
         public void Attack() { }
         public void UpdateHealth(float damagePoints)
@@ -139,7 +150,7 @@ namespace LegendOfZelda
         }
         public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000 && isColliding == false)
+            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000 && IsColliding == false)
             {
                 LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
 
@@ -155,20 +166,20 @@ namespace LegendOfZelda
 
                 if (collidedWith == CollisionLayer.OuterWall || collidedWith == CollisionLayer.Wall)
                 {
-                    isColliding = true;
+                    IsColliding = true;
                     Direction *= -1;
                     Sprites[CurrentSprite].UpdatePos(Position);
                     Collider.Pos = Position;
                     ChangePosition();
-                    isColliding = false;
+                    IsColliding = false;
                     ChangeDirection();
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
-                    if (currentCooldown <= 0)
+                    if (CurrentCooldown <= 0)
                     {
                         EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
-                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        CurrentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
                         Sprites[CurrentSprite].flashing = true;
                         new Timer(1.0f, StopFlashing);
                     }
