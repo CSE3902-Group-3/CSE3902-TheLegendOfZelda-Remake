@@ -1,7 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\GameState",
+    "\\Door",
     "\\Graphics",
     "\\Level",
     "\\Level\\LevelLoading",
@@ -11,6 +11,6 @@
     "\\StateMachine\\LinkStates",
     "\\StateMachine\\LinkStates\\General"
   ],
-  "SelectedNode": "\\Graphics\\SpriteFactory.cs",
+  "SelectedNode": "\\Door\\BombableDoor.cs",
   "PreviewInSolutionExplorer": false
 }

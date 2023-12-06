@@ -11,7 +11,7 @@ namespace LegendOfZelda
 		private GameOverText text;
 		private double lastUpdate;
 		private int counter;
-		private GameOverMenu menu;
+		public GameOverMenu menu;
 		private bool activated;
 		public bool done;
 
@@ -99,14 +99,14 @@ namespace LegendOfZelda
 				counter++;
             }
 
-            if ((counter == 2) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
+            else if ((counter == 2) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
 			{
 				DrawNormalRed();
 				lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
 				counter++;
 			}
 
-            if ((counter == 3) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
+            else if ((counter == 3) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
 			{
 				DrawDarkRed();
 				lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
@@ -116,11 +116,9 @@ namespace LegendOfZelda
 			/* Link should become black & white at this moment, when screen turns black, which is 4100 milliseconds
 			 * after gameover screen starts to draw. This is a tentative number based on the time I used now.
 			 */
-			if ((counter == 4) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
+			else if ((counter == 4) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 500))
 			{
                 DrawBlackScreen();
-                new GameOverMenu();
-                new GameOverMenuSelector();
                 lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
 				counter++;
 			}
@@ -128,16 +126,16 @@ namespace LegendOfZelda
 			/* Link dissapearing animation should finish before word is written, 
 			 * once again 800 here is a tentative time.
 			 */
-			if ((counter == 5) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
+			else if ((counter == 5) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
                 WriteWord();
+				GameState.CameraController.ChangeMenu(Menu.GameOver);
                 lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
                 counter++;
 			}
 
-            if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
+            else if ((counter == 6) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 2000))
 			{
-                GameState.CameraController.ChangeMenu(Menu.GameOver);
 				UnactivateGameOverScreen();
 				menu.Draw();
 				done = true;

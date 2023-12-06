@@ -9,6 +9,7 @@ namespace LegendOfZelda
 		private AddRupeeCommand addRupeeCommand;
 		private KillEnemiesCommand killEnemiesCommand;
 		private AddKeyCommand addKeyCommand;
+		private AddBombCommand addBombCommand;
 
 		public CheatCodeController()
 		{
@@ -17,6 +18,7 @@ namespace LegendOfZelda
 			addRupeeCommand = new AddRupeeCommand();
 			killEnemiesCommand = new KillEnemiesCommand();
 			addKeyCommand = new AddKeyCommand();
+			addBombCommand = new AddBombCommand();
 		}
 
 		public void Update()
@@ -31,7 +33,7 @@ namespace LegendOfZelda
 			{
 				addRupeeCommand.Execute();
 				ReleasedKey = false;
-				SoundFactory.PlaySound(SoundFactory.getInstance().GetItem);
+				SoundFactory.PlaySound(SoundFactory.getInstance().GetRupee);
 			}
 			else if (Keyboard.GetState().IsKeyDown(Keys.C) && Keyboard.GetState().IsKeyDown(Keys.O) && ReleasedKey)
 			{
@@ -39,14 +41,20 @@ namespace LegendOfZelda
 				ReleasedKey = false;
 				SoundFactory.PlaySound(SoundFactory.getInstance().EnemyDie);
 			}
-			else if (Keyboard.GetState().IsKeyDown(Keys.C) && Keyboard.GetState().IsKeyDown(Keys.K) && ReleasedKey)
+			else if (Keyboard.GetState().IsKeyDown(Keys.C) && Keyboard.GetState().IsKeyDown(Keys.J) && ReleasedKey)
 			{
 				addKeyCommand.Execute();
 				ReleasedKey = false;
                 SoundFactory.PlaySound(SoundFactory.getInstance().GetItem);
             }
+			else if (Keyboard.GetState().IsKeyDown(Keys.C) && Keyboard.GetState().IsKeyDown(Keys.T) && ReleasedKey)
+			{
+				addBombCommand.Execute();
+				ReleasedKey = false;
+				SoundFactory.PlaySound(SoundFactory.getInstance().GetItem);
+			}
 
-            if (Keyboard.GetState().IsKeyUp(Keys.C) && Keyboard.GetState().IsKeyUp(Keys.H) && Keyboard.GetState().IsKeyUp(Keys.P) && Keyboard.GetState().IsKeyUp(Keys.K) && !ReleasedKey)
+            if (Keyboard.GetState().IsKeyUp(Keys.C) && Keyboard.GetState().IsKeyUp(Keys.H) && Keyboard.GetState().IsKeyUp(Keys.P) && Keyboard.GetState().IsKeyUp(Keys.J) && Keyboard.GetState().IsKeyUp(Keys.T) && !ReleasedKey)
             {
                 ReleasedKey = true;
             }

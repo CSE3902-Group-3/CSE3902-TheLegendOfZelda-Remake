@@ -7,6 +7,7 @@ namespace LegendOfZelda
     {
         private List<AnimatedSprite> PlayFirstDungeon;
         private List<AnimatedSprite> PlaySecondDungeon;
+        private List<AnimatedSprite> Quit;
 
         private LetterFactory letterFactory;
         private int cameraXPos;
@@ -69,6 +70,14 @@ namespace LegendOfZelda
                 letterFactory.GetLetterSprite('N')
             };
 
+            Quit = new List<AnimatedSprite>()
+            {
+                letterFactory.GetLetterSprite('Q'),
+                letterFactory.GetLetterSprite('U'),
+                letterFactory.GetLetterSprite('I'),
+                letterFactory.GetLetterSprite('T')
+            };
+
         }
 
         private void DrawFirstDungeonWord()
@@ -84,10 +93,20 @@ namespace LegendOfZelda
         private void DrawSecondDungeonWord()
         {
             int startXPos = cameraXPos + ScreenWidth / 4;
-            int startYPos = cameraYPos + ScreenHeight * 2 / 3;
+            int startYPos = cameraYPos + ScreenHeight / 2;
             for (int i = 0; i < PlaySecondDungeon.Count; i++)
             {
                 PlaySecondDungeon[i].UpdatePos(new Vector2((startXPos + letterWidth * i), startYPos));
+            }
+        }
+
+        private void DrawQuitWord()
+        {
+            int startXPos = cameraXPos + ScreenWidth / 4;
+            int startYPos = (cameraYPos + ScreenHeight) * 2/ 3;
+            for (int i = 0; i < Quit.Count; i++)
+            {
+                Quit[i].UpdatePos(new Vector2((startXPos + letterWidth * i), startYPos));
             }
         }
 
@@ -95,6 +114,7 @@ namespace LegendOfZelda
         {
             DrawFirstDungeonWord();
             DrawSecondDungeonWord();
+            DrawQuitWord();
         }
     }
 }

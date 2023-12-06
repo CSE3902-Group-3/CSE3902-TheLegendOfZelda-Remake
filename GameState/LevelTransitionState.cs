@@ -8,6 +8,9 @@ namespace LegendOfZelda
         private LevelStartScreen LevelStartScreen;
         public LevelTransitionState(int levelNumber)
         {
+            GameState.CollisionManager = new CollisionManager();
+            GameState.CameraController.Reset();
+            GameState.CameraController.ChangeMenu(Menu.Item);
             GameState.LevelManager.StartLevel(levelNumber);
             GameState.Link = new Link();
             LevelStartScreen = new LevelStartScreen(levelNumber);

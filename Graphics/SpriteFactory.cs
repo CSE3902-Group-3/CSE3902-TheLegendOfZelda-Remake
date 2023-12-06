@@ -1056,7 +1056,7 @@ namespace LegendOfZelda
                 new Rectangle(274, 16, 12, 16)
             };
 
-            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame * slowAnimateFactor, scale, true);
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame * slowAnimateFactor, scale);
             newSprite.AddEffect(new NormalAnimateEffect(newSprite));
             return newSprite;
         }
