@@ -35,7 +35,10 @@ Remake of NES The Legend of Zelda game
 - Entering the Wizard room by any means crashes the game
 
 ## Minor Known Bugs:
-- If an enemy damages you and pushes you into a wall, it can keep damaging you and effectively instant kill you
+- If an enemy damages Link and pushes him into a wall, and then happens to move closer, "smashing" Link into the wall, it can cause a variety of effects such as:
+-   Link dies instantly
+-   Link becomes permanently invincible to enemies
+-   Link bounces around wildly, then dies, and upon continuing his sprite remains where he died like a dead body
 - Link can only use secondary weapon while standing still
 - The minimap in the item menu is missing the rightmost room in the row three up from the bottom
 
