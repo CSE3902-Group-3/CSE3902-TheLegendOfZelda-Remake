@@ -1,0 +1,8 @@
+Author of the code review: Zhengyi Hu
+Date of the code review: 12/5/23
+Sprint number: 5
+Name of the .cs file being reviewed: Cheat Code interface & classes & CheatCodeController.cs
+Author of the .cs file being reviewed: Mengqi Lei
+Number of minutes taken to complete the review: 15 minutes
+The code quality is high and well organized. Function of each class can be easily understand. Other teammates can easily add new cheat codes using the interface.
+One hypothetical change is if there is a list for the cheat codes can be poped out if the player hit some key it will be easier for player to use it.
