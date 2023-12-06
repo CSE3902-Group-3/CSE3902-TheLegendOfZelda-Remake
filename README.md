@@ -53,7 +53,8 @@ Remake of NES The Legend of Zelda game
 - One room in dungeon 1 contains enemies not in any other room, such as Dodongo (room 20)
 - Item spawn rates are drastically increased
 - Shader related effects look different from the original game
-- Game over menu is simplified since options like saving are not available in this game
+- "Save" option in Game Over Menu is replaced by "Quit" option
+- Options to play dungeon 1, 2 and quit the game are given after winning, instead of automatically exit the dungeon
 - The intro sequence is different from the original
 - Enemy movement patterns may vary slightly
 - The time it takes to push the pushable blocks may vary slightly
