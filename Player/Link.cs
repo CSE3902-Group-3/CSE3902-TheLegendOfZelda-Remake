@@ -22,6 +22,8 @@ namespace LegendOfZelda
         public float swordBeamCooldown = 0;
         public float SwordBeamCooldownDuration = float.Parse(Game1.getInstance().ReadConfig.GameConfig["Link.ProjectileSpawnCooldown"]);  // Set cooldown time to 3 seconds
 
+        private bool invincible = false;
+
         public Link()
         {
             Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
@@ -94,6 +96,11 @@ namespace LegendOfZelda
                 this.Velocity = int.Parse(Game1.getInstance().ReadConfig.GameConfig["Link.Speed"]);
             }
 
+            if (invincible)
+            {
+                Heal(MaxHP);
+            }
+
             this.StateMachine.Update();
             LinkUtilities.UpdatePositions(this, this.Sprite.pos);
 
@@ -135,6 +142,11 @@ namespace LegendOfZelda
         public float GetMaxHP()
         {
             return MaxHP;
+        }
+
+        public void SetInvincible(bool invincible)
+        {
+            this.invincible = invincible;
         }
     }
 }

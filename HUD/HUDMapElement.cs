@@ -131,9 +131,9 @@ namespace LegendOfZelda
                         -1, -1, -1, -1, -1, -1, -1, -1,
                         -1, -1,  1,  6, -1, -1, -1, -1,
                         -1, -1, -1, 12, -1,  4, -1, -1,
-                        -1,  1,  5, 11,  3, 10, -1, -1,
-                        -1, -1,  8,  7, -1, -1, -1, -1,
-                        -1, -1, -1,  4, -1, -1, -1, -1,
+                        -1,  1,  7, 11,  3, 10, -1, -1,
+                        -1, -1,  9,  7,  2, -1, -1, -1,
+                        -1, -1, -1, 12, -1, -1, -1, -1,
                         -1, -1,  1, 15,  2, -1, -1, -1
                     };
                     break;
@@ -176,8 +176,8 @@ namespace LegendOfZelda
                         {  5, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 44 * scale) },
                         {  6, new Vector2(MapHUDBasePos.X + 36 * scale, MapHUDBasePos.Y + 44 * scale) },
                         {  3, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 52 * scale) },
-                        {  0, new Vector2(MapHUDBasePos.X + 20 * scale, MapHUDBasePos.Y + 60 * scale) },
-                        {  1, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 60 * scale) },
+                        {  1, new Vector2(MapHUDBasePos.X + 20 * scale, MapHUDBasePos.Y + 60 * scale) },
+                        {  0, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 60 * scale) },
                         {  2, new Vector2(MapHUDBasePos.X + 36 * scale, MapHUDBasePos.Y + 60 * scale) },
                         { 19, new Vector2(MapHUDBasePos.X, MapHUDBasePos.Y) },
                         { 18, new Vector2(MapHUDBasePos.X, MapHUDBasePos.Y) }

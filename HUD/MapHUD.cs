@@ -17,6 +17,7 @@ namespace LegendOfZelda
         private const int mapSize = 64;
         private int CurrentRoom;
         private int Level;
+        private int PrevLevl;
 
         private SpriteFactory spriteFactory;
         private HUDMapElement mapElement;
@@ -50,6 +51,7 @@ namespace LegendOfZelda
             inventory = Inventory.getInstance();
 
             GetLevel();
+            PrevLevl = Level;
 
             map = new Map(Vector2.Zero);
             compass = new Compass(Vector2.Zero);
@@ -83,6 +85,14 @@ namespace LegendOfZelda
         public void Update(GameTime gametime)
         {
             GetLevel();
+            if (Level != PrevLevl)
+            {
+                UnregisterMap();
+                ElementList = mapElement.GetMapList(Level);
+                IndicatorPosDic = mapElement.GetMapIndicator(Level);
+                CreateMapElement();
+                PrevLevl = Level;
+            }
             UpdateMapUnlock();
             UpdateCompassUnlock();
             RegisterIndicatorSprite(CompassUnlock);
@@ -118,6 +128,45 @@ namespace LegendOfZelda
             }
         }
 
+        public void RegisterIndicatorSprite(bool unlock)
+        {
+            CurrentRoom = LevelManager.CurrentRoom;
+            if (unlock)
+            {
+                LocationIndicator.RegisterSprite();
+                LocationIndicator.UpdatePos(IndicatorPosDic[CurrentRoom]);
+            }
+            else
+            {
+                LocationIndicator.UnregisterSprite();
+            }
+        }
+
+        public void RegisterSprite(AnimatedSprite sprite, Vector2 pos)
+        {
+            sprite.RegisterSprite();
+            sprite.UpdatePos(pos);
+        }
+
+        public void RegisterMap()
+        {
+            foreach (KeyValuePair<AnimatedSprite, Vector2> element in MapElement)
+            {
+                element.Key.RegisterSprite();
+                element.Key.UpdatePos(element.Value);
+            }
+        }
+
+        public void UnregisterMap()
+        {
+            foreach (KeyValuePair<AnimatedSprite, Vector2> element in MapElement)
+            {
+                element.Key.UnregisterSprite();
+            }
+        }
+
+        // Update Methods
+
         public void UpdateMapUnlock()
         {
             int newCount = inventory.GetQuantity(map);
@@ -145,48 +194,6 @@ namespace LegendOfZelda
             {
                 CompassUnlock = false;
                 Compass.UnregisterSprite();
-            }
-        }
-
-        public void RegisterIndicatorSprite(bool unlock)
-        {
-            CurrentRoom = LevelManager.CurrentRoom;
-            if (unlock)
-            {
-                LocationIndicator.RegisterSprite();
-                LocationIndicator.UpdatePos(IndicatorPosDic[CurrentRoom]);
-            }
-            else
-            {
-                LocationIndicator.UnregisterSprite();
-            }
-        }
-
-        public void RegisterSprite(AnimatedSprite sprite, Vector2 pos)
-        {
-            sprite.RegisterSprite();
-            sprite.UpdatePos(pos);
-        }
-
-        public void RegisterMapCompassSprite(AnimatedSprite sprite, Vector2 pos, bool unlock)
-        {
-            if (unlock)
-            {
-                sprite.RegisterSprite();
-                sprite.UpdatePos(pos);
-            }
-            else
-            {
-                sprite.UnregisterSprite();
-            }
-        }
-
-        public void RegisterMap()
-        {
-            foreach (KeyValuePair<AnimatedSprite, Vector2> element in MapElement)
-            {
-                element.Key.RegisterSprite();
-                element.Key.UpdatePos(element.Value);
             }
         }
 

@@ -57,6 +57,7 @@ namespace LegendOfZelda
         private int CurrentHealth;
         private int MaxHealth;
         private int CurrentRoom;
+        private int PrevLevel;
 
         private Bomb bomb;
         private Key key;
@@ -87,6 +88,7 @@ namespace LegendOfZelda
             link = GameState.Link;
 
             GetLevel();
+            PrevLevel = Level;
             RubiesCount = inventory.GetQuantity(new OneRupee(Vector2.Zero));
             KeysCount = inventory.GetQuantity(new Key(Vector2.Zero));
             BombsCount = inventory.GetQuantity(new Bomb(Vector2.Zero));
@@ -133,6 +135,14 @@ namespace LegendOfZelda
         public void Update(GameTime gameTime)
         {
             GetLevel();
+            if (PrevLevel != Level)
+            {
+                UnregisterMiniMapSprite();
+                UpdateLevel();
+                ElementList = mapElement.GetMiniMapList(Level);
+                CreateMiniMap();
+                IndicatorPosDic = mapElement.GetMiniMapIndicator(Level);
+            }
             link = GameState.Link;
             UpdateRubies();
             UpdateKeys();
@@ -143,6 +153,7 @@ namespace LegendOfZelda
             UpdateCompassUnlock();
             RegisterIndicatorSprite(CompassUnlock);
             RegisterMiniMapSprite(MapUnlock);
+            PrevLevel = Level;
         }
 
         public void Show()
@@ -298,9 +309,9 @@ namespace LegendOfZelda
 
         public void RegisterMiniMapSprite(bool unlock)
         {
-            if (unlock)
+            if (unlock && (PrevLevel == Level))
             {
-                NoMiniMapSprite.UnregisterSprite();
+                //NoMiniMapSprite.UnregisterSprite();
                 foreach (KeyValuePair<AnimatedSprite, Vector2> element in MiniMap)
                 {
                     element.Key.RegisterSprite();
@@ -309,13 +320,21 @@ namespace LegendOfZelda
             }
             else
             {
-                Vector2 basePos = new Vector2(LevelIndicatorPos.X, LevelIndicatorPos.Y + 8 * scale);
-                NoMiniMapSprite.RegisterSprite();
-                NoMiniMapSprite.UpdatePos(basePos);
+                //Vector2 basePos = new Vector2(LevelIndicatorPos.X, LevelIndicatorPos.Y + 8 * scale);
+                //NoMiniMapSprite.RegisterSprite();
+                //NoMiniMapSprite.UpdatePos(basePos);
                 foreach (KeyValuePair<AnimatedSprite, Vector2> element in MiniMap)
                 {
                     element.Key.UnregisterSprite();
                 }
+            }
+        }
+
+        public void UnregisterMiniMapSprite()
+        {
+            foreach (KeyValuePair<AnimatedSprite, Vector2> element in MiniMap)
+            {
+                element.Key.UnregisterSprite();
             }
         }
 
@@ -342,6 +361,12 @@ namespace LegendOfZelda
         }
 
         // Update Methods
+        public void UpdateLevel()
+        {
+            LevelNumber.UnregisterSprite();
+            LevelNumber = letterFactory.GetLetterSprite(Level);
+            RegisterSprite(LevelNumber, LevelNumberPos);
+        }
 
         public void UpdateRubies()
         {

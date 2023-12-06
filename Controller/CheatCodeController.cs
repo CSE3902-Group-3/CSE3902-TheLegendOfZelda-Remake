@@ -9,6 +9,7 @@ namespace LegendOfZelda
 		private AddRupeeCommand addRupeeCommand;
 		private KillEnemiesCommand killEnemiesCommand;
 		private AddKeyCommand addKeyCommand;
+		private InvincibleCommand invincibleCommand;
 
 		public CheatCodeController()
 		{
@@ -17,6 +18,7 @@ namespace LegendOfZelda
 			addRupeeCommand = new AddRupeeCommand();
 			killEnemiesCommand = new KillEnemiesCommand();
 			addKeyCommand = new AddKeyCommand();
+			invincibleCommand = new InvincibleCommand();
 		}
 
 		public void Update()
@@ -42,6 +44,12 @@ namespace LegendOfZelda
 			else if (Keyboard.GetState().IsKeyDown(Keys.C) && Keyboard.GetState().IsKeyDown(Keys.K) && ReleasedKey)
 			{
 				addKeyCommand.Execute();
+				ReleasedKey = false;
+                SoundFactory.PlaySound(SoundFactory.getInstance().GetItem);
+            }
+			else if (Keyboard.GetState().IsKeyDown(Keys.C) && Keyboard.GetState().IsKeyDown(Keys.F5) && ReleasedKey)
+			{
+				invincibleCommand.Execute();
 				ReleasedKey = false;
                 SoundFactory.PlaySound(SoundFactory.getInstance().GetItem);
             }

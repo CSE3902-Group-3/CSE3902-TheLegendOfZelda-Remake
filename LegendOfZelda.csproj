@@ -51,8 +51,6 @@
     <Folder Include="SpecialScreens\WinningScreenDrawables\" />
     <Folder Include="Command\GameOverMenu\" />
     <Folder Include="Command\GameWinningMenu\" />
-    <Folder Include="CheatCodeClasses\" />
-    <Folder Include="Command\CheatCodes\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Level\Levels\level1.json">
