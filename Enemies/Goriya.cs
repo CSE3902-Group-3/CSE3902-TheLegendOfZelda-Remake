@@ -166,7 +166,7 @@ namespace LegendOfZelda
                         {
                             Sprites[i].flashing = true;
                         }
-                        new Timer(10.0f, StopFlashing);
+                        new Timer(1.0f, StopFlashing);
                     }
                 }
             }
