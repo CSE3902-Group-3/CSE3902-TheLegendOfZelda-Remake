@@ -119,10 +119,10 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 - MengQi Lei reviewed Michael Herring's code for quality (See `Code Review/Sprint 5`)
 - MengQi Lei reviewed Matt Curie's code for readability (See `Code Review/Sprint 5`)
 
-#### Sprint Reflections:
+## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
 
-#### Sprint 5 Topic Ideas:
+## Sprint 5 Topic Ideas:
 - Michael Herring: Reinvestigate HLSL shaders from sprint 2
 - Gabriel DiFiore: Config game with `.ini` file, load in custom Link health, enemy damage/difficulty, etc
 - Ethan Glenwright: Create the second level and add a cool new level transition screen
