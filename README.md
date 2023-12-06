@@ -14,7 +14,7 @@ Remake of NES The Legend of Zelda game
 - Use `space` to pause or resume the game.
 - Use right/left click to cycle rooms
 - After Link dies, use `Shift` to switch between options in game over menu. Use `Enter` to select the option.
-- Use `k` and `l` to cycle through different color palletts
+- Use `k` and `l` to cycle through different color palletts (when controlling Link or on the main menu)
 
 ### Cheat codes
 - Use `C`+`P` to get 5 rupees.
@@ -27,8 +27,7 @@ Remake of NES The Legend of Zelda game
 - modify game constants related to Link speed/HP, game difficulty, start level, etc.
 
 ## Major Known Bugs:
-- Dodongo takes damage from sword and player, does not eat bombs
-- Closed doors which open based on triggers (as opposed to locked doors) can never be opened
+- Dodongo does not eat bombs
 
 ## Minor Known Bugs:
 - Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
@@ -40,12 +39,12 @@ Remake of NES The Legend of Zelda game
 - Interaction with Wizard and spawning text is not implemented
 - The exit of the dungeon is closed
 - Right and left clicking to switch between rooms
-- One room contains an instance of every item (room 19)
-- One room contains enemies not in any other room (room 20)
-- There is an extra room with no doors to house Dodongo
+- One room in dungeon 1 contains an instance of every item (room 19)
+- One room in dungeon 1 contains enemies not in any other room, such as Dodongo (room 20)
 - Item spawn rates are drastically increased
 - Shader related effects look different from the original game
 - Game over menu is simplified since options like saving are not available in this game
+- The intro sequence is different from the original
 - Enemy movement patterns may vary slightly
 - The time it takes to push the pushable blocks may vary slightly
 
