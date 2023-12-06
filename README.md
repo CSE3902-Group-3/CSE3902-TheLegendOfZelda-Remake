@@ -49,7 +49,8 @@ Remake of NES The Legend of Zelda game
 - The time it takes to push the pushable blocks may vary slightly
 
 ## Tools:
-- We had an implementation which used HLSL shaders to color sprites more accurately, but due to bugs in Monogame on Mac, we were forced to remove this
+- We used HLSL to write shaders for the game
+- We used MS paint to modify sprite assets taken from https://www.spriters-resource.com/nes/legendofzelda/
 
 ## Code Metrics:
 -   Maintainability, Cyclomatic Complexity, Depth of Inheritance, Class Coupling, Lines of Code, Lines of Executable Code:
