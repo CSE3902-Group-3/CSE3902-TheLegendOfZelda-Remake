@@ -22,7 +22,7 @@ namespace LegendOfZelda
         public float spawnProjectileCooldown = 0;
         public float spawnProjectileCooldownDuration = float.Parse(Game1.getInstance().ReadConfig.GameConfig["Link.ProjectileSpawnCooldown"]);  // Set cooldown time to 3 seconds
 
-        private double lastUpdate = 0;
+        private double lastLowHealthBeep = 0; // The GameTime when low health sound was last played, initializing to 0
         public Link()
         {
             Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
@@ -105,10 +105,11 @@ namespace LegendOfZelda
 
             ((AnimatedSprite)this.Sprite).flashing = this.StateMachine.isTakingDamage;
 
-            if ((this.HP <= 1) && (this.HP > 0) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 1000))
+            // Play the low health beep once per second when HP is 0.5 or 1
+            if ((this.HP <= 1) && (this.HP > 0) && (gameTime.TotalGameTime.TotalMilliseconds > lastLowHealthBeep + 1000))
             {
                 SoundFactory.PlaySound(SoundFactory.getInstance().LowHealth);
-                lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
+                lastLowHealthBeep = gameTime.TotalGameTime.TotalMilliseconds;
             }
         }
 
