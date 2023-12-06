@@ -34,6 +34,7 @@ Remake of NES The Legend of Zelda game
 - Clicking to the bonus enemy room in dungeon 1 crashes the game
 - Link's health does not update
 - Rope sometimes goes through walls
+- Wallmaster does not grab Link
 
 ## Minor Known Bugs:
 - If an enemy damages Link and pushes him into a wall, and then happens to move closer, "smashing" Link into the wall, it can cause a variety of effects such as:
