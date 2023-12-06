@@ -162,8 +162,11 @@ namespace LegendOfZelda
                     {
                         EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
                         CurrentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
-                        Sprites[CurrentSprite].flashing = true;
-                        new Timer(1.0f, StopFlashing);
+                        for(int i = 0; i < Sprites.Count; i++)
+                        {
+                            Sprites[i].flashing = true;
+                        }
+                        new Timer(10.0f, StopFlashing);
                     }
                 }
             }
@@ -180,7 +183,10 @@ namespace LegendOfZelda
         }
         public void StopFlashing()
         {
-            Sprites[CurrentSprite].flashing = false;
+            for (int i = 0; i < Sprites.Count; i++)
+            {
+                Sprites[i].flashing = false;
+            }
         }
         public void DropItem()
         {

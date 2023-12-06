@@ -90,7 +90,7 @@ namespace LegendOfZelda
 
         private void HandleCollisionWhenUnlocked(CollisionInfo collision)
         {
-            if (collision.CollidedWith.Layer != CollisionLayer.Player && GameState.Link.StateMachine.isKnockedBack) return;
+            if (collision.CollidedWith.Layer != CollisionLayer.Player || GameState.Link.StateMachine.isKnockedBack) return;
             GameState.Link.StateMachine.prevDirection = GameState.Link.StateMachine.currentDirection;
             GameState.Link.StateMachine.currentDirection = direction;
             GameState.Link.EnterRoomTransition();
