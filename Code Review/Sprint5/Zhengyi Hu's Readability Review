@@ -1,0 +1,7 @@
+Author of the code review: MengQi Lei
+Date of the code review: 12/5/23
+Sprint number: 5
+Name of the .cs file being reviewed: Shader & Palette classes
+Author of the .cs file being reviewed: Michael Herring
+Number of minutes taken to complete the review: 30 minutes
+I am not familiar with the shader and palette so it's hard for me to know functions of each class and method for right away. But after careful reading, I think all the methods and classes are clear and well organized. If there are some comments for methods it will be easier to understand.
