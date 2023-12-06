@@ -59,17 +59,20 @@ namespace LegendOfZelda
 
         public void TakeDamage(float damage)
         {
-            SoundFactory.PlaySound(SoundFactory.getInstance().LinkHurt);
-            this.HP -= damage * Game1.getInstance().Difficulty;
-            if (this.HP <= 0)
+            if (!invincible)
             {
-                this.Die();
-                SoundFactory.PlaySound(SoundFactory.getInstance().LinkDie);
+                SoundFactory.PlaySound(SoundFactory.getInstance().LinkHurt);
+                this.HP -= damage * Game1.getInstance().Difficulty;
+                if (this.HP <= 0)
+                {
+                    this.Die();
+                    SoundFactory.PlaySound(SoundFactory.getInstance().LinkDie);
+                }
+
+                this.StateMachine.isTakingDamage = true;
+                this.damageAnimationTimer = this.damageAnimationDuration;
+                this.damageCooldownTimer = this.damageCooldownDuration;
             }
-           
-            this.StateMachine.isTakingDamage = true;
-            this.damageAnimationTimer = this.damageAnimationDuration;
-            this.damageCooldownTimer = this.damageCooldownDuration;
         }
 
         public void StopTakingDamage()
@@ -100,11 +103,6 @@ namespace LegendOfZelda
             if (LinkUtilities.LinkChangedDirection())
             {
                 this.Velocity = int.Parse(Game1.getInstance().ReadConfig.GameConfig["Link.Speed"]);
-            }
-
-            if (invincible)
-            {
-                Heal(MaxHP);
             }
 
             this.StateMachine.Update();
