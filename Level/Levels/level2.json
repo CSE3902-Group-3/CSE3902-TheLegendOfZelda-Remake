@@ -5876,19 +5876,19 @@
                 },
                 {
                     "ElementType": "Enemy",
-                    "ElementValue": 5,
+                    "ElementValue": 11,
                     "XLocation": 6,
                     "YLocation": 2
                 },
                 {
                     "ElementType": "Enemy",
-                    "ElementValue": 5,
+                    "ElementValue": 11,
                     "XLocation": 6,
                     "YLocation": 4
                 },
                 {
                     "ElementType": "Enemy",
-                    "ElementValue": 5,
+                    "ElementValue": 11,
                     "XLocation": 6,
                     "YLocation": 4
                 }

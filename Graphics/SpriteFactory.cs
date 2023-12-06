@@ -670,6 +670,55 @@ namespace LegendOfZelda
             newSprite.AddEffect(new NormalAnimateEffect(newSprite));
             return newSprite;
         }
+        public AnimatedSprite CreateBlueGoriyaDownSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(222, 28, 16, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(enemiesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            newSprite.AddEffect(new MirrorAnimateEffect(newSprite));
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBlueGoriyaUpSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(239, 28, 16, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(enemiesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            newSprite.AddEffect(new MirrorAnimateEffect(newSprite));
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBlueGoriyaRightSprite()
+        {
+            Rectangle[] frames = new Rectangle[2]
+            {
+                new Rectangle(256, 28, 16, 16),
+                new Rectangle(273, 28, 16, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(enemiesTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            return newSprite;
+        }
+
+        public AnimatedSprite CreateBlueGoriyaLeftSprite()
+        {
+            Rectangle[] frames = new Rectangle[2]
+            {
+                new Rectangle(256, 28, 16, 16),
+                new Rectangle(273, 28, 16, 16)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(enemiesTexture, frames, SpriteEffects.FlipHorizontally, drawFramesPerAnimFrame, scale);
+            newSprite.AddEffect(new NormalAnimateEffect(newSprite));
+            return newSprite;
+        }
 
         public AnimatedSprite CreateWallmasterSprite()
         {

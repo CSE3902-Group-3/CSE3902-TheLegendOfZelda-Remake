@@ -14,7 +14,7 @@ Remake of NES The Legend of Zelda game
 - Use `space` to pause or resume the game.
 - Use right/left click to cycle rooms
 - After Link dies, use `Shift` to switch between options in game over menu. Use `Enter` to select the option.
-- Use `k` and `l` to cycle through different color palletts
+- Use `k` and `l` to cycle through different color palletts (when controlling Link or on the main menu)
 
 ### Cheat codes
 - Use `C`+`P` to get 5 rupees.
@@ -23,34 +23,47 @@ Remake of NES The Legend of Zelda game
 - Use `C`+`H` to heal Link to max HP.
 - Use `C`+`O` to kill all enemies in current room.
 
-### `config.ini`
-- modify game constants related to Link speed/HP, game difficulty, start level, etc.
+### Config file: `config.ini`
+- Edit this file to modify game constants related to Link speed/HP, game difficulty, start level, etc.
 
 ## Major Known Bugs:
-- Dodongo takes damage from sword and player, does not eat bombs
-- Closed doors which open based on triggers (as opposed to locked doors) can never be opened
+- Dodongo does not eat bombs
+- Compass item does nothing
+- Map item does nothing
+- Clock item does nothing
+- Clicking to the bonus enemy room in dungeon 1 crashes the game
+- Link's health does not update
+- Rope sometimes goes through walls
+- Wallmaster does not grab Link
 
 ## Minor Known Bugs:
-- Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
-- Goriya sometimes walks through certain walls
-- Sprites still animate when the game is paused
-- Wizard takes damage
+- If an enemy damages Link and pushes him into a wall, and then happens to move closer, "smashing" Link into the wall, it can cause a variety of effects such as:
+- Link dies instantly
+- Link becomes permanently invincible to enemies
+- Link bounces around wildly, then dies, and upon continuing his sprite remains where he died like a dead body
+- The minimap in the item menu is missing the rightmost room in the row three up from the bottom
+- Link cannot throw boomerang diagonally
+
+## Plans for work during finals week:
+- We plan to fix all of the major known bugs before our final presentation and any of the minor known bugs that we can get to.
 
 ## Intentional Differences From Source Game:
 - Interaction with Wizard and spawning text is not implemented
 - The exit of the dungeon is closed
 - Right and left clicking to switch between rooms
-- One room contains an instance of every item (room 19)
-- One room contains enemies not in any other room (room 20)
-- There is an extra room with no doors to house Dodongo
+- One room in dungeon 1 contains an instance of every item (room 19)
+- One room in dungeon 1 contains enemies not in any other room, such as Dodongo (room 20)
 - Item spawn rates are drastically increased
 - Shader related effects look different from the original game
-- Game over menu is simplified since options like saving are not available in this game
+- "Save" option in Game Over Menu is replaced by "Quit" option
+- Options to play dungeon 1, 2 and quit the game are given after winning, instead of automatically exit the dungeon
+- The intro sequence is different from the original
 - Enemy movement patterns may vary slightly
 - The time it takes to push the pushable blocks may vary slightly
 
 ## Tools:
-- We had an implementation which used HLSL shaders to color sprites more accurately, but due to bugs in Monogame on Mac, we were forced to remove this
+- We used HLSL to write shaders for the game
+- We used MS paint to modify sprite assets taken from https://www.spriters-resource.com/nes/legendofzelda/
 
 ## Code Metrics:
 -   Maintainability, Cyclomatic Complexity, Depth of Inheritance, Class Coupling, Lines of Code, Lines of Executable Code:
@@ -63,10 +76,12 @@ Remake of NES The Legend of Zelda game
 -   11/6: 82, 1664, 2, 221, 9975, 2805
 -   11/13: 82, 1831, 2, 231, 11001, 3103
 -   11/29: 83, 2513, 2, 298, 15164, 4203
+-   12/6: 83, 2981, 2, 317, 16346, 4643
 
 ## Code Analysis:
 -  11/13: 1 warning: CS0219 (variable assigned but never used)
 -  11/29: 8 warnings for fields assigned but never used
+-  12/6: No warnings!
 
 ## Code Reviews:
 When possible, we tried to do our code reviews as part of pull requests, which are listed below. In cases where that was impossible (no PR's ready for review), we wrote them in text files.
@@ -122,7 +137,7 @@ When possible, we tried to do our code reviews as part of pull requests, which a
 ## Sprint Reflections:
 See `Code Review/Sprint# Reflections.txt` for sprint reflections
 
-#### Sprint 5 Topic Ideas:
+## Sprint 5 Topic Ideas:
 - Michael Herring: Reinvestigate HLSL shaders from sprint 2
 - Gabriel DiFiore: Config game with `.ini` file, load in custom Link health, enemy damage/difficulty, etc
 - Ethan Glenwright: Create the second level and add a cool new level transition screen
