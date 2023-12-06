@@ -20,7 +20,6 @@ namespace LegendOfZelda
         private LetterFactory letterFactory;
         private InventoryHUD inventoryHUD;
         private HUDMapElement mapElement;
-        private MapHUD mapHUD;
 
         private Inventory inventory;
         private Link link;
@@ -77,7 +76,6 @@ namespace LegendOfZelda
             spriteFactory = SpriteFactory.getInstance();
             inventoryHUD = InventoryHUD.GetInstance();
             mapElement = HUDMapElement.GetInstance();
-            mapHUD = MapHUD.GetInstance();
 
             bomb = new Bomb(Vector2.Zero);
             key = new Key(Vector2.Zero);

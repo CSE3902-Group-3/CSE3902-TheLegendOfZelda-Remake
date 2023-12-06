@@ -19,7 +19,6 @@ namespace LegendOfZelda
         private int Level;
 
         private SpriteFactory spriteFactory;
-        //private LowerHUD lowerHUD;
         private HUDMapElement mapElement;
         
         private Inventory inventory;

@@ -41,7 +41,6 @@ namespace LegendOfZelda
             inventory = Inventory.getInstance();
 
             InventoryHUDBase = spriteFactory.CreateInventoryHUDSprite();
-            // Should be able to change to the selected item, this is only for test now
             SelectedItem = letterFactory.GetBlankSprite();
             CreateItemInFramesSprites();
             CreateItemAboveFramesSprites();
@@ -58,7 +57,6 @@ namespace LegendOfZelda
             CreateIItemToString();
             CreateItemStringDict();
             CreateItemDict();
-            //Selector = Selector.GetInstance();
         }
 
         public static InventoryHUD GetInstance()
@@ -70,7 +68,6 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
-            //UpdatePos();
             Selector.Update();
             UpdateInventoryInUnlock();
             UpdateSelectedItemSprite();
@@ -78,7 +75,6 @@ namespace LegendOfZelda
 
         public void Show()
         {
-            //LoadContent();
             Selector = Selector.GetInstance();
 
             RegisterSprite(InventoryHUDBase, InventoryHUDBasePos);
@@ -88,8 +84,6 @@ namespace LegendOfZelda
             RegisterDictionarySprite(ItemsInFrame, InventoryInFrameUnlock, InventoryItemsPosDict);
 
             RegisterDictionarySprite(ItemsAboveFrame, InventoryAboveFrameUnlock, InventoryItemsAbovePosDict);
-
-            //Selector.Show();
         }
 
         public void CreateItemInFramesSprites()
@@ -152,7 +146,6 @@ namespace LegendOfZelda
             };
         }
 
-        // Set all to true for test
         public void CreateInventoryInUnlock()
         {
             InventoryInFrameUnlock = new Dictionary<string, bool>
@@ -274,7 +267,6 @@ namespace LegendOfZelda
         }
 
         // Update Methods
-
         public void UpdateInventoryInUnlock()
         {
             foreach (KeyValuePair<IItem, string> item in IItemToString)
