@@ -78,8 +78,8 @@ namespace LegendOfZelda
         }
         static void Wizard(Room room, MapElement mapElement)
         {
-            IEnemy enemy = new Wizard(LevelUtilities.CalculateWizardCenterPosition(room, mapElement));
-            LevelManager.CurrentLevelRoom.AddEnemy(enemy);
+            Wizard enemy = new Wizard(LevelUtilities.CalculateWizardCenterPosition(room, mapElement));
+            LevelManager.CurrentLevelRoom.AddEnemy(enemy as IEnemy);
         }
         static void ZolBig(Room room, MapElement mapElement)
         {

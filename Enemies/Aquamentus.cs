@@ -1,24 +1,34 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
     public class Aquamentus : IEnemy
     {
-        private readonly AnimatedSprite Sprite;
-        private int Width = 24;
-        private int Height = 32;
-        private int FireballSpeed = 5;
-        private float Health = 6.0f;
+        public AnimatedSprite Sprite { get; set; }
+        public float Health { get; set; } = 6.0f;
+        public int Width { get; } = 24;
+        public int Height { get; } = 32;
+        public Type EnemyType { get; set; }
+        public EnemyItemDrop.EnemyClass Classification { get; } = EnemyItemDrop.EnemyClass.D;
         public Vector2 Position { get; set; }
+        public Vector2 Direction { get; set; } = new(0, 0);
+        public Vector2 Offset { get; set; } = new(0, 0);
+        public RectCollider Collider { get; }
+        public bool IsColliding { get; set; } = false;
+        public bool Frozen { get; set; } = false;
+
+        public bool AllowedToMove { get; set; } = true;
+        public Vector2 SpeedMultiplier { get; set; } = new(1, 1);
+        public float CurrentCooldown { get; set; } = 0.0f;
+        public double LastSwitch { get; set; } = 0;
+
+        private int FireballSpeed = 5;
         private Vector2 Center;
         private int CycleCount = 0;
         private readonly int MaxCycles = 50;
         private int PosIncrement = 1;
-        private float currentCooldown = 0.0f;
-        public RectCollider Collider { get; private set; }
-        private bool isFrozen = false;
-        public bool Frozen { get { return isFrozen; } set { isFrozen = value; } }
         public Aquamentus(Vector2 pos)
         {
             Position = pos;
@@ -55,7 +65,7 @@ namespace LegendOfZelda
         {
             Vector2 newPosition = new(Position.X, Position.Y);
             
-            if (!isFrozen)
+            if (!Frozen)
             {
                 // Cycle left and right movement
                 if (CycleCount > MaxCycles)
@@ -103,7 +113,7 @@ namespace LegendOfZelda
 
         public void Update(GameTime gameTime)
         {
-            currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
+            CurrentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
             ChangePosition();
             if (CycleCount == MaxCycles)
             {
@@ -122,10 +132,10 @@ namespace LegendOfZelda
                 }
                 else if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
-                    if (currentCooldown <= 0)
+                    if (CurrentCooldown <= 0)
                     {
                         EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
-                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        CurrentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
                         Sprite.flashing = true;
                         new Timer(1.0f, StopFlashing);
                     }

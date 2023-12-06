@@ -4,12 +4,11 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-    public class Wizard : IEnemy
+    public class Wizard : IUpdateable, ICollidable
     {
         private int Width = 18;
         private int Height = 18;
         private readonly AnimatedSprite Sprite;
-        private float Health { get; set; } = 1.0f;
         public Vector2 Position { get; set; }
         private float currentCooldown = 0.0f;
         public RectCollider Collider { get; private set; }
@@ -39,8 +38,6 @@ namespace LegendOfZelda
         {
             Sprite.UnregisterSprite();
         }
-        public void Die() { }
-        public void ChangePosition() { }
         public void Attack()
         {
             // Mechanics of this attack can be changed later
@@ -51,9 +48,6 @@ namespace LegendOfZelda
             SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit);
             Sprite.flashing = true;
         }
-
-        public void ChangeDirection() { }
-
         public void Update(GameTime gameTime)
         {
             currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
@@ -68,13 +62,10 @@ namespace LegendOfZelda
                 {
                     if (currentCooldown <= 0)
                     {
-                        EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
                         currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
                     }
                 }
             }
         }
-        public void Stun() { }
-        public void DropItem() { }
     }
 }
