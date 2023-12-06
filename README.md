@@ -27,20 +27,14 @@ Remake of NES The Legend of Zelda game
 - modify game constants related to Link speed/HP, game difficulty, start level, etc.
 
 ## Major Known Bugs:
-- Interface HUD is not functional, does not update
-- The inventory system is not currently functional at all
 - Dodongo takes damage from sword and player, does not eat bombs
 - Closed doors which open based on triggers (as opposed to locked doors) can never be opened
 
 ## Minor Known Bugs:
 - Occational run time error when loading textures. This is due to MGCB editor not generating xnb file in Project/bin/Debug/net6.0/Content locally.
-- Enemies drop items when exiting a room
 - Goriya sometimes walks through certain walls
-- The pause overlay does not affect Link's sprite
 - Sprites still animate when the game is paused
-- Fireballs are missing from the wizard room
 - Wizard takes damage
-- Pushable blocks do not reset upon reentry to a room
 
 ## Intentional Differences From Source Game:
 - Interaction with Wizard and spawning text is not implemented
