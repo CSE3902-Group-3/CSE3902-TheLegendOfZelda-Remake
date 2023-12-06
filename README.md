@@ -142,3 +142,4 @@ See `Code Review/Sprint# Reflections.txt` for sprint reflections
 - Gabriel DiFiore: Config game with `.ini` file, load in custom Link health, enemy damage/difficulty, etc
 - Ethan Glenwright: Create the second level and add a cool new level transition screen
 - Matt Curie: Refactoring enemy code to better fit software engineering standards, more accurate enemy behaviors
+- MengQi Lei: Cheat codes to give items, heal link, etc
