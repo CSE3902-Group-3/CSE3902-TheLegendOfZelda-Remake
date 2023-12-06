@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using static LegendOfZelda.SimpleEnemyStateMachine;
+using static LegendOfZelda.EnemyStateMachine;
 
 namespace LegendOfZelda
 {

@@ -53,6 +53,19 @@ namespace LegendOfZelda
                 CurrentRoom++;
             }
             CurrentRoom = 0;
+
+            if (ShaderHolder.ShadersOn)
+            {
+                switch (levelNumber)
+                {
+                    case 1:
+                        ShaderHolder.SetPallette(PalletHolder.normalPallette);
+                        break;
+                    case 2:
+                        ShaderHolder.SetPallette(PalletHolder.dung2Pallette);
+                        break;
+                }
+            }
         }
         public bool SnapToRoom(int targetRoom)
         {
@@ -76,6 +89,7 @@ namespace LegendOfZelda
             GameState.GetInstance().SwitchState(new RoomTransitionState());
             CameraController.GetInstance().PanCamToRoom(LevelRooms[targetRoom].RoomPosition, AfterRoomTransition);
             LevelRooms[CurrentRoom].DespawnEnemies();
+            LevelRooms[CurrentRoom].UnfreezeAllEnemies();
             PreviousRoom = CurrentRoom;
             CurrentRoom = targetRoom;
             LevelRooms[CurrentRoom].SwitchIn();
@@ -136,6 +150,14 @@ namespace LegendOfZelda
         public static void KillAllEnemiesInCurrentRoom()
         {
             CurrentLevelRoom.KillAllEnemies();
+        }
+        public static void FreezeEnemiesInCurrentRoom()
+        {
+            CurrentLevelRoom.FreezeAllEnemies();
+        }
+        public static void UnfreezeEnemiesInCurrentRoom()
+        {
+            CurrentLevelRoom.UnfreezeAllEnemies();
         }
         public static bool AddDrawable(IDrawable drawable, bool persistent = false)
         {

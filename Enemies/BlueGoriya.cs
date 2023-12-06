@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-    public class Goriya : IEnemy
+    public class BlueGoriya : IEnemy
     {
         private readonly List<AnimatedSprite> Sprites;
         private int CurrentSprite;
         public AnimatedSprite Sprite { get; set; }
-        public float Health { get; set; } = 3.0f;
+        public float Health { get; set; } = 5.0f;
         public int Width { get; }
         public int Height { get; }
         public Type EnemyType { get; set; }
@@ -27,15 +27,15 @@ namespace LegendOfZelda
         public double LastSwitch { get; set; } = 0;
         private Vector2 Center;
         private int UpdateCount = 0;
-        public Goriya(Vector2 pos)
+        public BlueGoriya(Vector2 pos)
         {
             Position = pos;
             Sprites = new List<AnimatedSprite>
             {
-                SpriteFactory.getInstance().CreateGoriyaRightSprite(),
-                SpriteFactory.getInstance().CreateGoriyaLeftSprite(),
-                SpriteFactory.getInstance().CreateGoriyaDownSprite(),
-                SpriteFactory.getInstance().CreateGoriyaUpSprite()
+                SpriteFactory.getInstance().CreateBlueGoriyaRightSprite(),
+                SpriteFactory.getInstance().CreateBlueGoriyaLeftSprite(),
+                SpriteFactory.getInstance().CreateBlueGoriyaDownSprite(),
+                SpriteFactory.getInstance().CreateBlueGoriyaUpSprite()
             };
 
             foreach (AnimatedSprite goriya in Sprites)

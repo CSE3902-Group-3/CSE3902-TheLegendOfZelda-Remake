@@ -19,11 +19,12 @@ namespace LegendOfZelda
         public float damageCooldownTimer = 0;
         public float damageCooldownDuration = 3.5f;// Set the cooldown time to 3.5s for damage repeated
 
-        public float swordBeamCooldown = 0;
-        public float SwordBeamCooldownDuration = float.Parse(Game1.getInstance().ReadConfig.GameConfig["Link.ProjectileSpawnCooldown"]);  // Set cooldown time to 3 seconds
+        public float spawnProjectileCooldown = 0;
+        public float spawnProjectileCooldownDuration = float.Parse(Game1.getInstance().ReadConfig.GameConfig["Link.ProjectileSpawnCooldown"]);  // Set cooldown time to 3 seconds
 
         private bool invincible = false;
-
+        private double lastLowHealthBeep = 0; // The GameTime when low health sound was last played, initializing to 0
+        
         public Link()
         {
             Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
@@ -48,6 +49,14 @@ namespace LegendOfZelda
                 this.HP += health;
         }
 
+        public void IncreaseMaxHealth()
+        {
+            if (this.MaxHP < 12)
+            {
+                this.MaxHP += 1;
+            }
+        }
+
         public void TakeDamage(float damage)
         {
             SoundFactory.PlaySound(SoundFactory.getInstance().LinkHurt);
@@ -57,10 +66,7 @@ namespace LegendOfZelda
                 this.Die();
                 SoundFactory.PlaySound(SoundFactory.getInstance().LinkDie);
             }
-            if (this.HP >= 1)
-            {
-                SoundFactory.PlaySound(SoundFactory.getInstance().LowHealth);
-            }
+           
             this.StateMachine.isTakingDamage = true;
             this.damageAnimationTimer = this.damageAnimationDuration;
             this.damageCooldownTimer = this.damageCooldownDuration;
@@ -86,9 +92,9 @@ namespace LegendOfZelda
                     StopTakingDamage();
                 }
             }
-            if (swordBeamCooldown > 0)
+            if (spawnProjectileCooldown > 0)
             {
-                swordBeamCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                spawnProjectileCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
             if (LinkUtilities.LinkChangedDirection())
@@ -105,6 +111,13 @@ namespace LegendOfZelda
             LinkUtilities.UpdatePositions(this, this.Sprite.pos);
 
             ((AnimatedSprite)this.Sprite).flashing = this.StateMachine.isTakingDamage;
+
+            // Play the low health beep once per second when HP is 0.5 or 1
+            if ((this.HP <= 1) && (this.HP > 0) && (gameTime.TotalGameTime.TotalMilliseconds > lastLowHealthBeep + 1000))
+            {
+                SoundFactory.PlaySound(SoundFactory.getInstance().LowHealth);
+                lastLowHealthBeep = gameTime.TotalGameTime.TotalMilliseconds;
+            }
         }
 
         public void Reset()

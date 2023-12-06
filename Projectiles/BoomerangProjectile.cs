@@ -9,7 +9,7 @@ namespace LegendOfZelda
         private AnimatedSprite sprite;
         private IRectCollider collider;
         private float speed = 15;
-        private const float accel = .25f;
+        private const float accel = .4f;
 
         private Vector2 _pos;
         private Vector2 Pos

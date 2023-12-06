@@ -1,0 +1,10 @@
+Sprint 5 Reflection:
+
+This was definitely one of our most successful and smooth sprints. We were able to finish most of the functionality 
+and bug fixes before the deadline of the sprint and we were able to catch up on a lot of issues we had left over 
+from previous sprints. Part of what made this sprint successful is that most of the work we needed to do consisted of
+bug fixes that we were aware of from the start of the sprint, so we didn't have very many new issues popping up right
+at the deadline. Also, people seemed to do their work earlier and stay active during the whole sprint. Since this is
+the last sprint, we do not plan on making any changes to our process, but if we were continuing the project we would
+keep some of the things we did this time that went well. Specifically, trying to precisely plan out tasks and
+responsibility at the start of the sprint and having strict requirements for testing of PR's worked well for us.

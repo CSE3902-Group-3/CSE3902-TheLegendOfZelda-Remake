@@ -33,7 +33,7 @@ namespace LegendOfZelda
             RoomDoors = new Dictionary<Direction, IDoor>();
             DoorFrameSprites = new List<IDrawable>();
         }
-        public void LoadRoom (Room room)
+        public void LoadRoom(Room room)
         {
             roomPosition = new Vector2(LevelUtilities.RoomWidth * room.RoomXLocation, LevelUtilities.RoomHeight * room.RoomYLocation * -1);
             ProcessMapElements(room);
@@ -148,6 +148,20 @@ namespace LegendOfZelda
             for (int i = RoomEnemies.Count - 1; i >= 0; i--)
             {
                 RoomEnemies[i].Die();
+            }
+        }
+        public void FreezeAllEnemies()
+        {
+            for (int i = RoomEnemies.Count - 1; i >= 0; i--)
+            {
+                RoomEnemies[i].Frozen = true;
+            }
+        }
+        public void UnfreezeAllEnemies()
+        {
+            for (int i = RoomEnemies.Count - 1; i >= 0; i--)
+            {
+                RoomEnemies[i].Frozen = false;
             }
         }
         public void AddDoor(Direction direction, IDoor door, IAnimatedSprite doorFrameSprite)

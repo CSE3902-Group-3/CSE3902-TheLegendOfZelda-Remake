@@ -53,7 +53,7 @@
     <Folder Include="Command\GameWinningMenu\" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="Level\Levels\level1.json">
+    <None Update="Level\Levels\leve.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
