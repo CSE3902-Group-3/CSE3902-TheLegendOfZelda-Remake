@@ -22,6 +22,7 @@ namespace LegendOfZelda
         public float spawnProjectileCooldown = 0;
         public float spawnProjectileCooldownDuration = float.Parse(Game1.getInstance().ReadConfig.GameConfig["Link.ProjectileSpawnCooldown"]);  // Set cooldown time to 3 seconds
 
+        private double lastUpdate = 0;
         public Link()
         {
             Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
@@ -63,10 +64,7 @@ namespace LegendOfZelda
                 this.Die();
                 SoundFactory.PlaySound(SoundFactory.getInstance().LinkDie);
             }
-            if (this.HP >= 1)
-            {
-                SoundFactory.PlaySound(SoundFactory.getInstance().LowHealth);
-            }
+           
             this.StateMachine.isTakingDamage = true;
             this.damageAnimationTimer = this.damageAnimationDuration;
             this.damageCooldownTimer = this.damageCooldownDuration;
@@ -106,6 +104,12 @@ namespace LegendOfZelda
             LinkUtilities.UpdatePositions(this, this.Sprite.pos);
 
             ((AnimatedSprite)this.Sprite).flashing = this.StateMachine.isTakingDamage;
+
+            if ((this.HP <= 1) && (this.HP > 0) && (gameTime.TotalGameTime.TotalMilliseconds > lastUpdate + 1000))
+            {
+                SoundFactory.PlaySound(SoundFactory.getInstance().LowHealth);
+                lastUpdate = gameTime.TotalGameTime.TotalMilliseconds;
+            }
         }
 
         public void Reset()
