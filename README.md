@@ -33,14 +33,17 @@ Remake of NES The Legend of Zelda game
 - Clock item does nothing
 - Clicking to the bonus enemy room in dungeon 1 crashes the game
 - Link's health does not update
+- Link can only use projectiles while standing still
 
 ## Minor Known Bugs:
 - If an enemy damages Link and pushes him into a wall, and then happens to move closer, "smashing" Link into the wall, it can cause a variety of effects such as:
   -  Link dies instantly
   - Link becomes permanently invincible to enemies
   - Link bounces around wildly, then dies, and upon continuing his sprite remains where he died like a dead body
-- Link can only use secondary weapon while standing still
 - The minimap in the item menu is missing the rightmost room in the row three up from the bottom
+
+## Plans for work during finals week:
+- We plan to fix all of the major known bugs before our final presentation and any of the minor known bugs that we can get to.
 
 ## Intentional Differences From Source Game:
 - Interaction with Wizard and spawning text is not implemented
