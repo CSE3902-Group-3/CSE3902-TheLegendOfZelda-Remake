@@ -33,6 +33,7 @@ Remake of NES The Legend of Zelda game
 - Clock item does nothing
 - Clicking to the bonus enemy room in dungeon 1 crashes the game
 - Entering the Wizard room by any means crashes the game
+- Link's health does not update
 
 ## Minor Known Bugs:
 - If an enemy damages Link and pushes him into a wall, and then happens to move closer, "smashing" Link into the wall, it can cause a variety of effects such as:
