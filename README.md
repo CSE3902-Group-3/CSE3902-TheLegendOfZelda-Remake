@@ -29,11 +29,6 @@ Remake of NES The Legend of Zelda game
 
 ## Major Known Bugs:
 - Dodongo does not eat bombs
-- Compass item does nothing
-- Map item does nothing
-- Clock item does nothing
-- Clicking to the bonus enemy room in dungeon 1 crashes the game
-- Link's health does not update
 - Rope sometimes goes through walls
 - Wallmaster does not grab Link
 

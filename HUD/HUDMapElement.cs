@@ -22,7 +22,7 @@ namespace LegendOfZelda
         private List<int> MapList;
 
         private Dictionary<int, Vector2> MiniMapIndicator;
-        //private Dictionary<int, Vector2> MapIndicator;
+        private Dictionary<int, Vector2> MapIndicator;
 
         public HUDMapElement()
         {
@@ -51,6 +51,15 @@ namespace LegendOfZelda
                         -1, -1,  1,  2,  1, -1, -1, -1
                     };
                     break;
+                case 2:
+                    MiniMapList = new List<int>()
+                    {
+                        -1, -1, -1,  0,  2,  1, -1, -1,
+                        -1, -1, -1, -1,  2,  2, -1, -1,
+                        -1, -1, -1, -1,  2,  2, -1, -1,
+                        -1, -1,  0,  2,  2,  0, -1, -1
+                    };
+                    break;
             }
             return MiniMapList;
         }
@@ -76,11 +85,35 @@ namespace LegendOfZelda
                         { 10, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y + 16 * scale) },
                         {  6, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y + 20 * scale) },
                         { 11, new Vector2(MiniMapHUDBasePos.X + 40 * scale, MiniMapHUDBasePos.Y + 16 * scale) },
-                        {  0, new Vector2(MiniMapHUDBasePos.X + 18 * scale, MiniMapHUDBasePos.Y + 28 * scale) },
+                        {  1, new Vector2(MiniMapHUDBasePos.X + 18 * scale, MiniMapHUDBasePos.Y + 28 * scale) },
                         {  3, new Vector2(MiniMapHUDBasePos.X + 26 * scale, MiniMapHUDBasePos.Y + 24 * scale) },
-                        {  1, new Vector2(MiniMapHUDBasePos.X + 26 * scale, MiniMapHUDBasePos.Y + 28 * scale) },
+                        {  0, new Vector2(MiniMapHUDBasePos.X + 26 * scale, MiniMapHUDBasePos.Y + 28 * scale) },
                         {  2, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y + 28 * scale) },
-                        { 19, new Vector2(MiniMapHUDBasePos.X, MiniMapHUDBasePos.Y) }
+                        { 19, new Vector2(MiniMapHUDBasePos.X, MiniMapHUDBasePos.Y) },
+                        { 18, new Vector2(MiniMapHUDBasePos.X, MiniMapHUDBasePos.Y) }
+                    };
+                    break;
+                case 2:
+                    MiniMapIndicator = new Dictionary<int, Vector2>()
+                    {
+                        { 16, new Vector2(MiniMapHUDBasePos.X + 26 * scale, MiniMapHUDBasePos.Y) },
+                        { 17, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y) },
+                        { 14, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y + 4 * scale) },
+                        { 15, new Vector2(MiniMapHUDBasePos.X + 42 * scale, MiniMapHUDBasePos.Y + 4 * scale) },
+                        { 12, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y + 8 * scale) },
+                        { 10, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y + 12 * scale) },
+                        { 13, new Vector2(MiniMapHUDBasePos.X + 42 * scale, MiniMapHUDBasePos.Y + 8 * scale) },
+                        { 11, new Vector2(MiniMapHUDBasePos.X + 42 * scale, MiniMapHUDBasePos.Y + 12 * scale) },
+                        {  8, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y + 16 * scale) },
+                        {  6, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y + 20 * scale) },
+                        {  9, new Vector2(MiniMapHUDBasePos.X + 42 * scale, MiniMapHUDBasePos.Y + 16 * scale) },
+                        {  7, new Vector2(MiniMapHUDBasePos.X + 42 * scale, MiniMapHUDBasePos.Y + 20 * scale) },
+                        {  2, new Vector2(MiniMapHUDBasePos.X + 18 * scale, MiniMapHUDBasePos.Y + 24 * scale) },
+                        {  3, new Vector2(MiniMapHUDBasePos.X + 26 * scale, MiniMapHUDBasePos.Y + 24 * scale) },
+                        {  0, new Vector2(MiniMapHUDBasePos.X + 26 * scale, MiniMapHUDBasePos.Y + 28 * scale) },
+                        {  4, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y + 24 * scale) },
+                        {  1, new Vector2(MiniMapHUDBasePos.X + 34 * scale, MiniMapHUDBasePos.Y + 28 * scale) },
+                        {  5, new Vector2(MiniMapHUDBasePos.X + 42 * scale, MiniMapHUDBasePos.Y + 24 * scale) }
                     };
                     break;
             }
@@ -96,12 +129,25 @@ namespace LegendOfZelda
                     {
                         -1, -1, -1, -1, -1, -1, -1, -1,
                         -1, -1, -1, -1, -1, -1, -1, -1,
-                        -1, -1, -1,  4, -1, -1, -1, -1,
+                        -1, -1,  1,  6, -1, -1, -1, -1,
                         -1, -1, -1, 12, -1,  4, -1, -1,
-                        -1,  1,  5, 11,  3, 10, -1, -1,
-                        -1, -1,  8,  7, -1, -1, -1, -1,
-                        -1, -1, -1,  4, -1, -1, -1, -1,
+                        -1,  1,  7, 11,  3, 10, -1, -1,
+                        -1, -1,  9,  7,  2, -1, -1, -1,
+                        -1, -1, -1, 12, -1, -1, -1, -1,
                         -1, -1,  1, 15,  2, -1, -1, -1
+                    };
+                    break;
+                case 2:
+                    MapList = new List<int>()
+                    {
+                        -1, -1, -1,  1,  6, -1, -1, -1,
+                        -1, -1, -1, -1, 13,  6, -1, -1,
+                        -1, -1, -1, -1, 13, 14, -1, -1,
+                        -1, -1, -1, -1, 13, 14, -1, -1,
+                        -1, -1, -1, -1, 13, 14, -1, -1,
+                        -1, -1, -1, -1, 13, 14, -1, -1,
+                        -1, -1,  1,  7, 15, 10, -1, -1,
+                        -1, -1, -1, 13, 10, -1, -1, -1
                     };
                     break;
             }
@@ -113,7 +159,7 @@ namespace LegendOfZelda
             switch (level)
             {
                 case 1:
-                    MiniMapIndicator = new Dictionary<int, Vector2>()
+                    MapIndicator = new Dictionary<int, Vector2>()
                     {
                         { 16, new Vector2(MapHUDBasePos.X + 20 * scale, MapHUDBasePos.Y + 20 * scale) },
                         { 17, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 20 * scale) },
@@ -130,14 +176,38 @@ namespace LegendOfZelda
                         {  5, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 44 * scale) },
                         {  6, new Vector2(MapHUDBasePos.X + 36 * scale, MapHUDBasePos.Y + 44 * scale) },
                         {  3, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 52 * scale) },
-                        {  0, new Vector2(MapHUDBasePos.X + 20 * scale, MapHUDBasePos.Y + 60 * scale) },
-                        {  1, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 60 * scale) },
+                        {  1, new Vector2(MapHUDBasePos.X + 20 * scale, MapHUDBasePos.Y + 60 * scale) },
+                        {  0, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 60 * scale) },
                         {  2, new Vector2(MapHUDBasePos.X + 36 * scale, MapHUDBasePos.Y + 60 * scale) },
-                        { 19, new Vector2(MapHUDBasePos.X, MapHUDBasePos.Y) }
+                        { 19, new Vector2(MapHUDBasePos.X, MapHUDBasePos.Y) },
+                        { 18, new Vector2(MapHUDBasePos.X, MapHUDBasePos.Y) }
+                    };
+                    break;
+                case 2:
+                    MapIndicator = new Dictionary<int, Vector2>()
+                    {
+                        { 16, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 4 * scale) },
+                        { 17, new Vector2(MapHUDBasePos.X + 36 * scale, MapHUDBasePos.Y + 4 * scale) },
+                        { 14, new Vector2(MapHUDBasePos.X + 36 * scale, MapHUDBasePos.Y + 12 * scale) },
+                        { 15, new Vector2(MapHUDBasePos.X + 44 * scale, MapHUDBasePos.Y + 12 * scale) },
+                        { 12, new Vector2(MapHUDBasePos.X + 36 * scale, MapHUDBasePos.Y + 20 * scale) },
+                        { 13, new Vector2(MapHUDBasePos.X + 44 * scale, MapHUDBasePos.Y + 20 * scale) },
+                        { 10, new Vector2(MapHUDBasePos.X + 36 * scale, MapHUDBasePos.Y + 28 * scale) },
+                        { 11, new Vector2(MapHUDBasePos.X + 44 * scale, MapHUDBasePos.Y + 28 * scale) },
+                        {  8, new Vector2(MapHUDBasePos.X + 36 * scale, MapHUDBasePos.Y + 36 * scale) },
+                        {  9, new Vector2(MapHUDBasePos.X + 44 * scale, MapHUDBasePos.Y + 36 * scale) },
+                        {  6, new Vector2(MapHUDBasePos.X + 36 * scale, MapHUDBasePos.Y + 44 * scale) },
+                        {  7, new Vector2(MapHUDBasePos.X + 44 * scale, MapHUDBasePos.Y + 44 * scale) },
+                        {  2, new Vector2(MapHUDBasePos.X + 20 * scale, MapHUDBasePos.Y + 52 * scale) },
+                        {  3, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 52 * scale) },
+                        {  4, new Vector2(MapHUDBasePos.X + 36 * scale, MapHUDBasePos.Y + 52 * scale) },
+                        {  5, new Vector2(MapHUDBasePos.X + 44 * scale, MapHUDBasePos.Y + 52 * scale) },
+                        {  0, new Vector2(MapHUDBasePos.X + 28 * scale, MapHUDBasePos.Y + 60 * scale) },
+                        {  1, new Vector2(MapHUDBasePos.X + 36 * scale, MapHUDBasePos.Y + 60 * scale) }
                     };
                     break;
             }
-            return MiniMapIndicator;
+            return MapIndicator;
         }
     }
 }

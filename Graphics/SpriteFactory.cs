@@ -1627,6 +1627,17 @@ namespace LegendOfZelda
             return newSprite;
         }
 
+        public AnimatedSprite CreateNoMiniMapSprite()
+        {
+            Rectangle[] frames = new Rectangle[1]
+            {
+                new Rectangle(649, 9, 64, 32)
+            };
+
+            AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
+            return newSprite;
+        }
+
         public AnimatedSprite CreateWoodenSwoardSprite()
         {
             Rectangle[] frames = new Rectangle[1]
@@ -1838,7 +1849,7 @@ namespace LegendOfZelda
         {
             Rectangle[] frames = new Rectangle[1]
             {
-                new Rectangle(528, 126, 8, 8)
+                new Rectangle(519, 126, 8, 8)
             };
 
             AnimatedSprite newSprite = new AnimatedSprite(HUDTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
@@ -2078,6 +2089,8 @@ namespace LegendOfZelda
             AnimatedSprite newSprite = new AnimatedSprite(itemsTexture, frames, SpriteEffects.None, drawFramesPerAnimFrame, scale, true);
             return newSprite;
         }
+
+        
 
         public AnimatedSprite CreateMainMenuSprite()
         {

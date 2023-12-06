@@ -22,7 +22,9 @@ namespace LegendOfZelda
         public float spawnProjectileCooldown = 0;
         public float spawnProjectileCooldownDuration = float.Parse(Game1.getInstance().ReadConfig.GameConfig["Link.ProjectileSpawnCooldown"]);  // Set cooldown time to 3 seconds
 
+        private bool invincible = false;
         private double lastLowHealthBeep = 0; // The GameTime when low health sound was last played, initializing to 0
+        
         public Link()
         {
             Sprite = SpriteFactory.getInstance().CreateLinkWalkRightSprite();
@@ -57,17 +59,20 @@ namespace LegendOfZelda
 
         public void TakeDamage(float damage)
         {
-            SoundFactory.PlaySound(SoundFactory.getInstance().LinkHurt);
-            this.HP -= damage * Game1.getInstance().Difficulty;
-            if (this.HP <= 0)
+            if (!invincible)
             {
-                this.Die();
-                SoundFactory.PlaySound(SoundFactory.getInstance().LinkDie);
+                SoundFactory.PlaySound(SoundFactory.getInstance().LinkHurt);
+                this.HP -= damage * Game1.getInstance().Difficulty;
+                if (this.HP <= 0)
+                {
+                    this.Die();
+                    SoundFactory.PlaySound(SoundFactory.getInstance().LinkDie);
+                }
+
+                this.StateMachine.isTakingDamage = true;
+                this.damageAnimationTimer = this.damageAnimationDuration;
+                this.damageCooldownTimer = this.damageCooldownDuration;
             }
-           
-            this.StateMachine.isTakingDamage = true;
-            this.damageAnimationTimer = this.damageAnimationDuration;
-            this.damageCooldownTimer = this.damageCooldownDuration;
         }
 
         public void StopTakingDamage()
@@ -148,6 +153,11 @@ namespace LegendOfZelda
         public float GetMaxHP()
         {
             return MaxHP;
+        }
+
+        public void SetInvincible(bool invincible)
+        {
+            this.invincible = invincible;
         }
     }
 }

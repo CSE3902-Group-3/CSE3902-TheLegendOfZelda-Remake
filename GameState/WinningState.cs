@@ -23,6 +23,7 @@ namespace LegendOfZelda
         {
             ScreenManager.Update(gameTime);
             controller.Update();
+            GameState.LowerHUD.Update(gameTime);
         }
         public void Draw(SpriteBatch _spriteBatch)
         {
