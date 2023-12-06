@@ -9509,6 +9509,11 @@
                     "EventNumber": 4,
                     "XLocation": 0,
                     "YLocation": 0
+                },
+                {
+                    "EventNumber": 8,
+                    "XLocation": 6,
+                    "YLocation": 3
                 }
             ],
             "MapElements": [
@@ -10045,12 +10050,6 @@
                     "ElementValue": 3,
                     "XLocation": 10,
                     "YLocation": 0
-                },
-                {
-                    "ElementType": "Item",
-                    "ElementValue": 9,
-                    "XLocation": 6,
-                    "YLocation": 3
                 }
             ]
         }

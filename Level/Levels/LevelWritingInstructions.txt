@@ -149,4 +149,5 @@
     AllEnemiesDeadOpenSouthDoor, 5
     AllEnemiesDeadOpenNorthDoor, 6
     ClosStartingDoorAfterStart, 7
+    AllEnemiesDeadHeartContainerDrop, 8
 
