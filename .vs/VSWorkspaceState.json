@@ -1,7 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Door",
+    "\\Enemies",
     "\\Graphics",
     "\\Level",
     "\\Level\\LevelLoading",
@@ -11,6 +11,6 @@
     "\\StateMachine\\LinkStates",
     "\\StateMachine\\LinkStates\\General"
   ],
-  "SelectedNode": "\\Door\\BombableDoor.cs",
+  "SelectedNode": "\\Enemies\\Rope.cs",
   "PreviewInSolutionExplorer": false
 }

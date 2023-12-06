@@ -11,13 +11,6 @@ namespace LegendOfZelda
         {
             keyUpMappings = new Dictionary<Keys, ICommands>
             {
-                { Keys.Q, new QuitCommand() },
-                { Keys.R, new ResetCommand() },
-                { Keys.K, new PreviousPalletCommand() },
-                { Keys.L, new NextPalletCommand() },
-                { Keys.Z, new PrimaryAttackCommand() },
-                { Keys.N, new PrimaryAttackCommand() },
-                { Keys.X, new UseSecondaryItemCommand() },
                 { Keys.W, new ToIdleCommand() },
                 { Keys.A, new ToIdleCommand() },
                 { Keys.S, new ToIdleCommand() },
@@ -30,6 +23,13 @@ namespace LegendOfZelda
 
             KeyDownMapping = new Dictionary<Keys, ICommands>
             {
+                { Keys.Q, new QuitCommand() },
+                { Keys.R, new ResetCommand() },
+                { Keys.K, new PreviousPalletCommand() },
+                { Keys.L, new NextPalletCommand() },
+                { Keys.Z, new PrimaryAttackCommand() },
+                { Keys.N, new PrimaryAttackCommand() },
+                { Keys.X, new UseSecondaryItemCommand() },
                 { Keys.W, new MovingUpCommand() },
                 { Keys.Up, new MovingUpCommand() },
                 { Keys.A, new MovingLeftCommand() },
