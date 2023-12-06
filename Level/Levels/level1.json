@@ -8175,6 +8175,13 @@
                     "Direction": "South"
                 }
             ],
+            "Events": [
+                {
+                    "EventNumber": 0,
+                    "XLocation": 3,
+                    "YLocation": 3
+                }
+            ],
             "MapElements": [
                 {
                     "ElementType": "Block",

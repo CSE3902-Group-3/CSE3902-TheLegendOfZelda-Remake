@@ -18,7 +18,8 @@ namespace LegendOfZelda
                 AllEnemiesDeadOpenWestDoor,
                 AllEnemiesDeadOpenSouthDoor,
                 AllEnemiesDeadOpenNorthDoor,
-                CloseStartingDoorAfterStart
+                CloseStartingDoorAfterStart,
+                AllEnemiesDeadHeartContainerDrop
             };
         }
         public static EventLamda GetInstance()
@@ -60,6 +61,10 @@ namespace LegendOfZelda
         public static void CloseStartingDoorAfterStart(Room room, LevelEvent levelEvent)
         {
             new CloseStartingDoorAfterStartEvent(room);
+        }
+        public static void AllEnemiesDeadHeartContainerDrop(Room room, LevelEvent levelEvent)
+        {
+            new AllEnemiesDeadHeartContainerDropEvent(LevelUtilities.CalculatePositionWallOffset(room, levelEvent));
         }
     }
 }
