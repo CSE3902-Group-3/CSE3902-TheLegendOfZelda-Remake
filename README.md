@@ -75,10 +75,12 @@ Remake of NES The Legend of Zelda game
 -   11/6: 82, 1664, 2, 221, 9975, 2805
 -   11/13: 82, 1831, 2, 231, 11001, 3103
 -   11/29: 83, 2513, 2, 298, 15164, 4203
+-   12/6: 83, 2981, 2, 317, 16346, 4643
 
 ## Code Analysis:
 -  11/13: 1 warning: CS0219 (variable assigned but never used)
 -  11/29: 8 warnings for fields assigned but never used
+-  12/6: No warnings!
 
 ## Code Reviews:
 When possible, we tried to do our code reviews as part of pull requests, which are listed below. In cases where that was impossible (no PR's ready for review), we wrote them in text files.
