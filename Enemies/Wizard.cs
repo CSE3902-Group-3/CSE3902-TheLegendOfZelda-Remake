@@ -4,16 +4,28 @@ using System.Collections.Generic;
 
 namespace LegendOfZelda
 {
-    public class Wizard : IUpdateable, ICollidable
+    public class Wizard : IEnemy
     {
-        private int Width = 18;
-        private int Height = 18;
-        private readonly AnimatedSprite Sprite;
+        public int Width { get; set; } = 18;
+        public int Height { get; set; } = 18;
+        public AnimatedSprite Sprite { get; set; }
         public Vector2 Position { get; set; }
-        private float currentCooldown = 0.0f;
-        public RectCollider Collider { get; private set; }
-        private bool isFrozen = false;
-        public bool Frozen { get { return isFrozen; } set { isFrozen = value; } }
+        public float CurrentCooldown { get; set; } = 0.0f;
+        public RectCollider Collider { get; }
+
+        public bool Frozen { get; set; } = true;
+        public float Health { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public Type EnemyType { get; set ; }
+
+        public EnemyItemDrop.EnemyClass Classification => throw new NotImplementedException();
+
+        public Vector2 Direction { get; set; } = new(0, 0);
+        public Vector2 Offset { get; set; } = new(0, 0);
+        public bool IsColliding { get; set; } = false;
+        public bool AllowedToMove { get; set; } = false;
+        public Vector2 SpeedMultiplier { get; set; } = new(0, 0);
+        public double LastSwitch { get; set; } = 0.0f;
 
         public Wizard(Vector2 pos)
         {
@@ -31,26 +43,24 @@ namespace LegendOfZelda
         }
         public void Spawn()
         {
-            new EnemySpawnEffect(Position);
-            Sprite.RegisterSprite();
+            EnemyStateMachine.Spawn(this);
         }
         public void Despawn()
         {
-            Sprite.UnregisterSprite();
+            EnemyStateMachine.Despawn(this);
         }
         public void Attack()
         {
             // Mechanics of this attack can be changed later
-            new FireProjectile(Position, Direction.right);
+            new FireProjectile(Position, LegendOfZelda.Direction.right);
         }
         public void UpdateHealth(float damagePoints)
         {
-            SoundFactory.PlaySound(SoundFactory.getInstance().EnemyHit);
-            Sprite.flashing = true;
+            EnemyStateMachine.UpdateHealth(this, damagePoints);
         }
         public void Update(GameTime gameTime)
         {
-            currentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
+            CurrentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
         }
 
         public void OnCollision(List<CollisionInfo> collisions)
@@ -60,12 +70,22 @@ namespace LegendOfZelda
                 CollisionLayer collidedWith = collision.CollidedWith.Layer;
                 if (collidedWith == CollisionLayer.PlayerWeapon)
                 {
-                    if (currentCooldown <= 0)
+                    if (CurrentCooldown <= 0)
                     {
-                        currentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
+                        CurrentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
                     }
                 }
             }
         }
+
+        public void Stun() { }
+
+        public void ChangePosition() { }
+
+        public void ChangeDirection() { }
+
+        public void Die() { }
+
+        public void DropItem() { }
     }
 }
