@@ -40,6 +40,7 @@ Remake of NES The Legend of Zelda game
 - Link becomes permanently invincible to enemies
 - Link bounces around wildly, then dies, and upon continuing his sprite remains where he died like a dead body
 - The minimap in the item menu is missing the rightmost room in the row three up from the bottom
+- Link cannot throw boomerang diagonally
 
 ## Plans for work during finals week:
 - We plan to fix all of the major known bugs before our final presentation and any of the minor known bugs that we can get to.
