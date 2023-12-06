@@ -36,9 +36,9 @@ Remake of NES The Legend of Zelda game
 
 ## Minor Known Bugs:
 - If an enemy damages Link and pushes him into a wall, and then happens to move closer, "smashing" Link into the wall, it can cause a variety of effects such as:
--   Link dies instantly
--   Link becomes permanently invincible to enemies
--   Link bounces around wildly, then dies, and upon continuing his sprite remains where he died like a dead body
+- -  Link dies instantly
+- - Link becomes permanently invincible to enemies
+- - Link bounces around wildly, then dies, and upon continuing his sprite remains where he died like a dead body
 - Link can only use secondary weapon while standing still
 - The minimap in the item menu is missing the rightmost room in the row three up from the bottom
 
