@@ -7,7 +7,6 @@ namespace LegendOfZelda
     public class Dodongo : IEnemy
     {
         private readonly List<AnimatedSprite> Sprites;
-        private readonly List<AnimatedSprite> HurtSprites;
         private int CurrentSprite;
         public AnimatedSprite Sprite { get; set; }
         public float Health { get; set; } = 8.0f;
@@ -27,7 +26,6 @@ namespace LegendOfZelda
         public float CurrentCooldown { get; set; } = 0.0f;
         public double LastSwitch { get; set; } = 0;
         private Vector2 Center;
-        private bool Injured = false;
         public Dodongo(Vector2 pos)
         {
             Position = pos;
@@ -39,20 +37,7 @@ namespace LegendOfZelda
                 SpriteFactory.getInstance().CreateDodongoUpSprite()
             };
 
-            HurtSprites = new List<AnimatedSprite>
-            {
-                SpriteFactory.getInstance().CreateDodongoRightHitSprite(),
-                SpriteFactory.getInstance().CreateDodongoLeftHitSprite(),
-                SpriteFactory.getInstance().CreateDodongoDownHitSprite(),
-                SpriteFactory.getInstance().CreateDodongoUpHitSprite()
-            };
-
             foreach (AnimatedSprite dodongo in Sprites)
-            {
-                dodongo.UnregisterSprite();
-            }
-
-            foreach (AnimatedSprite dodongo in HurtSprites)
             {
                 dodongo.UnregisterSprite();
             }
@@ -104,21 +89,11 @@ namespace LegendOfZelda
             // Indicate damage, or if health has reached 0, die
             if (Health < 0)
             {
-                Sprites[CurrentSprite] = HurtSprites[CurrentSprite];
                 Die();
             }
             else
             {
-                if (!Injured)
-                {
-                    Sprites[CurrentSprite] = HurtSprites[CurrentSprite];
-                }
-                else
-                {
-                    Sprites[CurrentSprite] = Sprites[CurrentSprite];
-                }
                 Sprites[CurrentSprite].UpdatePos(Position);
-                Injured = !Injured;
             }
         }
 
@@ -174,14 +149,18 @@ namespace LegendOfZelda
                     IsColliding = false;
                     ChangeDirection();
                 }
-                else if (collidedWith == CollisionLayer.PlayerWeapon)
+                else if (collision.CollidedWith.Collidable is Explosion)
                 {
                     if (CurrentCooldown <= 0)
                     {
                         EnemyUtilities.HandleWeaponCollision(this, GetType(), collision);
                         CurrentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
-                        Sprites[CurrentSprite].flashing = true;
+                        foreach(IAnimatedSprite sprite in Sprites)
+                        {
+                            sprite.flashing = true;
+                        }
                         new Timer(1.0f, StopFlashing);
+                        new Timer(CurrentCooldown, EndCooldown);
                     }
                 }
             }
@@ -190,8 +169,17 @@ namespace LegendOfZelda
         public void Stun() { }
         public void StopFlashing()
         {
-            Sprites[CurrentSprite].flashing = false;
+            foreach (IAnimatedSprite sprite in Sprites)
+            {
+                sprite.flashing = false;
+            }
         }
+
+        private void EndCooldown()
+        {
+            CurrentCooldown = -1;
+        }
+
         public void DropItem()
         {
             Center = EnemyUtilities.GetCenter(Position, Width, Height);
