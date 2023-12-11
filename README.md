@@ -28,16 +28,15 @@ Remake of NES The Legend of Zelda game
 - Edit this file to modify game constants related to Link speed/HP, game difficulty, start level, etc.
 
 ## Major Known Bugs:
-- Dodongo does not eat bombs
 - Rope sometimes goes through walls
 - Wallmaster does not grab Link
+- Clock item causes some enemies (those with multiple directional sprites) to teleport all over the place
 
 ## Minor Known Bugs:
 - If an enemy damages Link and pushes him into a wall, and then happens to move closer, "smashing" Link into the wall, it can cause a variety of effects such as:
-- Link dies instantly
-- Link becomes permanently invincible to enemies
-- Link bounces around wildly, then dies, and upon continuing his sprite remains where he died like a dead body
-- Link cannot throw boomerang diagonally
+  - Link dies instantly
+  - Link becomes permanently invincible to enemies
+  - Link bounces around wildly, then dies, and upon continuing his sprite remains where he died like a dead body
 
 ## Plans for work during finals week:
 - We plan to fix all of the major known bugs before our final presentation and any of the minor known bugs that we can get to.
@@ -55,6 +54,8 @@ Remake of NES The Legend of Zelda game
 - The intro sequence is different from the original
 - Enemy movement patterns may vary slightly
 - The time it takes to push the pushable blocks may vary slightly
+- Dodongo's behavior is different from original game
+- Link cannot throw boomerang diagonally
 
 ## Tools:
 - We used HLSL to write shaders for the game
