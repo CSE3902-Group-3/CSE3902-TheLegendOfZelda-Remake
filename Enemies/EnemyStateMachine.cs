@@ -71,6 +71,56 @@ namespace LegendOfZelda
             enemy.Collider.Pos = enemy.Position + enemy.Offset;
         }
 
+        public static void ApplyKnockback(IEnemy enemy, Direction knockbackDirection)
+        {
+            Vector2 newDirection;
+
+            switch (knockbackDirection)
+            {
+                case Direction.up:
+                    newDirection = new(0, 1);
+                    break;
+                case Direction.down:
+                    newDirection = new(0, -1);
+                    break;
+                case Direction.left:
+                    newDirection = new(1, 0);
+                    break;
+                case Direction.right:
+                    newDirection = new(-1, 0);
+                    break;
+                case Direction.upLeft:
+                    newDirection = new(1, 1);
+                    break;
+                case Direction.upRight:
+                    newDirection = new(-1, 1);
+                    break;
+                case Direction.downLeft:
+                    newDirection = new(1, 1);
+                    break;
+                case Direction.downRight:
+                    newDirection = new(-1, -1);
+                    break;
+                default:
+                    newDirection = Vector2.Zero;
+                    break;
+            }
+
+            // Define knockback parameters
+            float knockbackDistance = 20.0f;
+            float knockbackSpeed = 1.0f;
+
+            // Calculate the target position after knockback
+            Vector2 targetPosition = enemy.Position + newDirection * knockbackDistance;
+
+            // Apply knockback using linear interpolation
+            enemy.Position = Vector2.Lerp(enemy.Position, targetPosition, knockbackSpeed);
+
+            // Update the sprite and collider positions
+            enemy.Sprite.UpdatePos(enemy.Position);
+            enemy.Collider.Pos = enemy.Position + enemy.Offset;
+        }
+
         public static void UpdateHealth(IEnemy enemy, float damagePoints)
         {
             enemy.Health -= damagePoints;
@@ -107,6 +157,7 @@ namespace LegendOfZelda
                     if (enemy.CurrentCooldown <= 0)
                     {
                         EnemyUtilities.HandleWeaponCollision(enemy, enemy.EnemyType, collision);
+                        ApplyKnockback(enemy, collision.EstimatedDirection);
                         enemy.CurrentCooldown = EnemyUtilities.DAMAGE_COOLDOWN; // Reset the cooldown timer
                         enemy.Sprite.flashing = true;
                         new Timer(1.0f, () => StopFlashing(enemy));
