@@ -11,6 +11,7 @@ namespace LegendOfZelda
 		private AddKeyCommand addKeyCommand;
 		private InvincibleCommand invincibleCommand;
 		private AddBombCommand addBombCommand;
+		private GetClockCommand getClockCommand;
 
 		public CheatCodeController()
 		{
@@ -21,6 +22,7 @@ namespace LegendOfZelda
 			addKeyCommand = new AddKeyCommand();
 			invincibleCommand = new InvincibleCommand();
 			addBombCommand = new AddBombCommand();
+			getClockCommand = new GetClockCommand();
 		}
 
 		public void Update()
@@ -61,6 +63,12 @@ namespace LegendOfZelda
 				ReleasedKey = false;
 				SoundFactory.PlaySound(SoundFactory.getInstance().GetItem);
 			}
+            else if (Keyboard.GetState().IsKeyDown(Keys.C) && Keyboard.GetState().IsKeyDown(Keys.G) && ReleasedKey)
+            {
+                getClockCommand.Execute();
+                ReleasedKey = false;
+                SoundFactory.PlaySound(SoundFactory.getInstance().GetItem);
+            }
 
             if (Keyboard.GetState().IsKeyUp(Keys.C) && Keyboard.GetState().IsKeyUp(Keys.H) && Keyboard.GetState().IsKeyUp(Keys.P) && Keyboard.GetState().IsKeyUp(Keys.J) && Keyboard.GetState().IsKeyUp(Keys.T) && !ReleasedKey)
             {
