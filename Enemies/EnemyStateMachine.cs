@@ -107,7 +107,7 @@ namespace LegendOfZelda
             }
 
             // Define knockback parameters
-            float knockbackDistance = 20.0f;
+            float knockbackDistance = 30.0f;
             float knockbackSpeed = 1.0f;
 
             // Calculate the target position after knockback
