@@ -150,14 +150,19 @@ namespace LegendOfZelda
         }
         public void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000 && IsColliding == false)
+            CurrentCooldown -= (float)gameTime.ElapsedGameTime.TotalSeconds; // Decrement the cooldown timer
+            if (!Frozen)
             {
-                LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
-
-                ChangeDirection();
+                if (gameTime.TotalGameTime.TotalMilliseconds > LastSwitch + 1000)
+                {
+                    LastSwitch = gameTime.TotalGameTime.TotalMilliseconds;
+                    ChangeDirection();
+                }
+                ChangePosition();
+                Collider.Pos = Position;
             }
-            ChangePosition();
         }
+
         public void OnCollision(List<CollisionInfo> collisions)
         {
             foreach (CollisionInfo collision in collisions)
