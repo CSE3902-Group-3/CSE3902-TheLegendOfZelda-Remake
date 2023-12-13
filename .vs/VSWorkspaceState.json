@@ -5,12 +5,8 @@
     "\\Graphics",
     "\\Level",
     "\\Level\\LevelLoading",
-    "\\Level\\LevelManagement",
-    "\\Player",
-    "\\StateMachine",
-    "\\StateMachine\\LinkStates",
-    "\\StateMachine\\LinkStates\\General"
+    "\\Level\\LevelManagement"
   ],
-  "SelectedNode": "\\Enemies\\Rope.cs",
+  "SelectedNode": "\\LegendOfZelda.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -14,6 +14,18 @@ namespace LegendOfZelda
             GameState.LevelManager.StartLevel(levelNumber);
             GameState.Link = new Link();
             LevelStartScreen = new LevelStartScreen(levelNumber);
+            if (ShaderHolder.ShadersOn)
+            {
+                switch (levelNumber)
+                {
+                    case 1:
+                        ShaderHolder.SetPallette(PalletHolder.normalPallette);
+                        break;
+                    case 2:
+                        ShaderHolder.SetPallette(PalletHolder.dung2Pallette);
+                        break;
+                }
+            }
         }
         public void Update(GameTime gameTime)
         {
