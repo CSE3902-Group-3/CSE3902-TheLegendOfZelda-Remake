@@ -49,23 +49,11 @@ namespace LegendOfZelda
             {
                 LevelRooms.Add(new LevelRoom());
                 LevelRooms[CurrentRoom].LoadRoom(room);
+                LevelRooms[CurrentRoom].SwitchOut();
                 RoomListAdjacentRooms.Add(room.AdjacentRooms);
                 CurrentRoom++;
             }
             CurrentRoom = 0;
-
-            if (ShaderHolder.ShadersOn)
-            {
-                switch (levelNumber)
-                {
-                    case 1:
-                        ShaderHolder.SetPallette(PalletHolder.normalPallette);
-                        break;
-                    case 2:
-                        ShaderHolder.SetPallette(PalletHolder.dung2Pallette);
-                        break;
-                }
-            }
         }
         public bool SnapToRoom(int targetRoom)
         {
