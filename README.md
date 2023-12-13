@@ -23,6 +23,7 @@ Remake of NES The Legend of Zelda game
 - Use `C`+`H` to heal Link to max HP.
 - Use `C`+`O` to kill all enemies in current room.
 - Use `C`+`F5` to make Link invincible.
+- Use `C`+`G` to spawn a clock directly above Link.
 
 ### Config file: `config.ini`
 - Edit this file to modify game constants related to Link speed/HP, game difficulty, start level, etc.
